@@ -11,6 +11,7 @@ struct UniversityNotFoundView: View {
     @Binding var domain : String
     @Binding var isPresented : Bool
     
+    
     var body: some View {
         VStack {
             Text("SORRY!")
