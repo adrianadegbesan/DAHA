@@ -9,7 +9,6 @@ import SwiftUI
 
 //View for Sign Up Button
 struct SignUpButton: View {
-    
     var body: some View {
         NavigationLink(destination: SchoolEmailScreen()) {
             ZStack {

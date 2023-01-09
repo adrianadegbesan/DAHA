@@ -7,30 +7,28 @@
 
 import SwiftUI
 
-struct ContinueButton: View {
+struct FirstContinueButton: View {
     
     @Binding var schoolFound: Bool
     @Binding var isPresented: Bool
     @Binding var email: String
     @Binding var shouldNavigate: Bool
+    @Binding var domain: String
     @State private var showAlert_noemail : Bool = false
     @State private var showAlert_invalidemail : Bool = false
-    
-    
-    var domain: String {
-        let temp_email = email
-        if (temp_email == ""){
-            return ""
-        } 
-        return temp_email
-    }
+    @State var isValid : Bool = false
+
     
     var body: some View {
         Button(action: {
-            if email == ""{
+            isValid = isValidEmailAddress(emailAddressString: email)
+            domain = getDomain(email: email)
+//            schoolFound = firestoreManager.verifyDomain(domain: domain)
+            
+            if (email.isEmpty || email.trimmingCharacters(in: .whitespaces).isEmpty){
                 showAlert_noemail = true
             }
-            else if !email.contains("@"){
+            else if !isValid{
                 showAlert_invalidemail = true
             }
             else if !schoolFound {
@@ -64,7 +62,7 @@ struct ContinueButton: View {
 
 struct ContinueButton_Previews: PreviewProvider {
     static var previews: some View {
-        ContinueButton(schoolFound: .constant(false), isPresented: .constant(false), email: .constant("adrian25@"), shouldNavigate: .constant(false))
+        FirstContinueButton(schoolFound: .constant(false), isPresented: .constant(false), email: .constant("adrian25@stanford.edu"), shouldNavigate: .constant(false), domain: .constant(""))
             .previewLayout(.sizeThatFits)
     }
 }

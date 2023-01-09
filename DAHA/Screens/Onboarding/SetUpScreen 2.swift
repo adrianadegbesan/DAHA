@@ -9,8 +9,8 @@ import SwiftUI
 
 //Initial Set Up Screen for logging on to DAHA
 struct SetUpScreen: View {
-    
     var body: some View {
+        NavigationView {
             ZStack {
                 // Sets background color to WHITE
                 BackgroundColor(color: greyBackground)
@@ -24,20 +24,20 @@ struct SetUpScreen: View {
                     // Sign Up Button in middle
                         SignUpButton()
                             .padding(.bottom, 10)
-                           
+                    
                     // Login Button on bottom
                         LoginButton()
                     
                     Spacer()
                 }
             }
+        }
+        
     }
 }
 
 struct SetUpScreen_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            SetUpScreen()
-        }
+        SetUpScreen()
     }
 }

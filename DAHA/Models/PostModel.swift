@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 
-struct Post: Identifiable, Codable {
+struct PostModel: Identifiable, Codable {
     @DocumentID var id: String?
     var title: String?
     var userID: String?
@@ -20,7 +20,7 @@ struct Post: Identifiable, Codable {
     var condition: String?
     var category: String?
     var price: String?
-    var imageURLs : [String]?
+    var imageURLs : [String?]
     var channel: String?
 }
 

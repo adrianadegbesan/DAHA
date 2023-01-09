@@ -14,6 +14,7 @@ struct MainScreen: View {
     
     var body: some View {
         
+        NavigationView {
             VStack(spacing: 0){
                 
                 ZStack(){
@@ -49,6 +50,7 @@ struct MainScreen: View {
                     .frame(alignment: .bottom)
                 
             } //: VStack
+        } //: Navigation
     }
 }
 

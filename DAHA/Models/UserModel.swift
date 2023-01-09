@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 
-struct User: Identifiable, Codable {
+struct UserModel: Identifiable, Codable {
     let id: String?
     let username: String?
     let email: String?
     let firstname: String?
     let lastname: String?
-    let channels: [String]?
+    let channels: [String?]
 }

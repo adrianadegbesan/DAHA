@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UniversityNotFoundView: View {
-    @Binding var email : String
+    @Binding var domain : String
     @Binding var isPresented : Bool
     
     var body: some View {
@@ -22,7 +22,7 @@ struct UniversityNotFoundView: View {
                 .font(.system(size: 21, weight: .bold))
             
             GroupBox {
-                Text("DAHA is not available \(email). \nIf you think this is a mistake, please check that you have entered your correct .edu email.")
+                Text("DAHA is not available \(domain). \nIf you think this is a mistake, please check that you have entered your correct .edu email.")
                     .foregroundColor(Color.init(hex: darkGrey))
                     .font(.system(size: 15, weight: .semibold))
             }
@@ -45,7 +45,7 @@ struct UniversityNotFoundView: View {
 struct UniversityNotFoundView_Previews: PreviewProvider {
     
     static var previews: some View {
-        UniversityNotFoundView(email : .constant("@gonzaga.edu"), isPresented: .constant(true))
+        UniversityNotFoundView(domain : .constant("@gonzaga.edu"), isPresented: .constant(true))
             .previewLayout(.sizeThatFits)
     }
 }

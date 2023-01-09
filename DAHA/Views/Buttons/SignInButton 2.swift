@@ -1,5 +1,5 @@
 //
-//  SignUpButton.swift
+//  SignInButton.swift
 //  DAHA
 //
 //  Created by Adrian Adegbesan on 1/7/23.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-//View for Sign Up Button
-struct SignUpButton: View {
+struct SignInButton: View {
+    @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     
     var body: some View {
-        NavigationLink(destination: SchoolEmailScreen()) {
+        Button(action: {isOnboardingViewActive = false} ) {
             ZStack {
                 // Blue Button background
                 RoundedRectangle(cornerRadius: 33)
@@ -21,31 +21,20 @@ struct SignUpButton: View {
                 // Putting Sign Up and Icon side-by-side
                 HStack {
                     // Sign Up Text
-                    Text("SIGN UP")
+                    Text("SIGN IN")
                         .font(
                             .system(size:30, weight: .bold)
                         )
                         .foregroundColor(.white)
                         .padding(3)
-                    
-                    // Person icon
-                    Image(systemName: "person.crop.circle.fill.badge.plus")
-                        .font(
-                            .system(size:30, weight: .bold)
-                        )
-                        .foregroundColor(.white)
-                    
                 } //: HStack
-                
             } //: ZStack
-        } //: Navigation
+        } //: Button
     }
 }
 
-struct SignUpButton_Previews: PreviewProvider {
+struct SignInButton_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpButton()
-            .previewLayout(.sizeThatFits)
+        SignInButton()
     }
 }
-
