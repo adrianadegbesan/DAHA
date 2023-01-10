@@ -16,14 +16,15 @@ struct FirstContinueButton: View {
     @Binding var domain: String
     @State private var showAlert_noemail : Bool = false
     @State private var showAlert_invalidemail : Bool = false
+    @State private var cannot_verify : Bool = false
     @State var isValid : Bool = false
+    @EnvironmentObject var firestoreManager : FirestoreManager
 
     
     var body: some View {
         Button(action: {
             isValid = isValidEmailAddress(emailAddressString: email)
             domain = getDomain(email: email)
-//            schoolFound = firestoreManager.verifyDomain(domain: domain)
             
             if (email.isEmpty || email.trimmingCharacters(in: .whitespaces).isEmpty){
                 showAlert_noemail = true
@@ -31,11 +32,17 @@ struct FirstContinueButton: View {
             else if !isValid{
                 showAlert_invalidemail = true
             }
-            else if !schoolFound {
-                isPresented = true
-            } else {
-                shouldNavigate = true
+             else {
+                 Task {
+                     await firestoreManager.verifyDomain(domain: domain, schoolFound: $schoolFound, cannot_verify: $cannot_verify)
+                     if schoolFound == true {
+                         shouldNavigate = true
+                     } else {
+                         isPresented = true
+                     }
+                 }
             }
+           
         } ) {
             ZStack {
                 // Blue Button background
@@ -56,6 +63,7 @@ struct FirstContinueButton: View {
         } //: Button
         .alert("No Email Provided", isPresented: $showAlert_noemail, actions: {}, message: { Text("Please input an email address")})
         .alert("Invalid Email Provided", isPresented: $showAlert_invalidemail, actions: {}, message: { Text("Please input a valid email address")})
+        .alert("Cannot Verify Email Address", isPresented: $cannot_verify, actions: {}, message: {Text("Cannot verify email address, please check your network connection and try again later")})
 
     }
 }

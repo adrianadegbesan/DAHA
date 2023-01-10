@@ -9,7 +9,7 @@ import SwiftUI
 
 //Initial Set Up Screen for logging on to DAHA
 struct SetUpScreen: View {
-    
+    @EnvironmentObject var firestoreManager : FirestoreManager
     var body: some View {
             ZStack {
                 // Sets background color to WHITE
@@ -39,5 +39,6 @@ struct SetUpScreen_Previews: PreviewProvider {
         NavigationView {
             SetUpScreen()
         }
+        .environmentObject(FirestoreManager())
     }
 }

@@ -8,25 +8,28 @@
 import Foundation
 import SwiftUI
 import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class FirestoreManager: ObservableObject {
     
     private var db = Firestore.firestore()
     
-    func verifyDomain(domain: String) -> Bool {
+    func verifyDomain(domain: String, schoolFound: Binding<Bool>, cannot_verify: Binding<Bool>) async {
         var found: Bool = false
+        print(domain)
         
-        db.collection("Universities").whereField("Domain", isEqualTo: domain)
-            .getDocuments() { (querySnapshot, err) in
-                if err != nil {
-                    found = false
-                    print("Couldn't Find")
-                } else {
-                    found = true
-                    
-                }
-            }
-        
-        return found
+        do {
+            let snapshot = try await db.collection("Universities").whereField("Domain", isEqualTo: domain).getDocuments()
+            found = !snapshot.isEmpty
+            print(found)
+            schoolFound.wrappedValue = found
+        }
+        catch {
+            print("couldn't find")
+            found = false
+            cannot_verify.wrappedValue = true
+        }
+    
     }
 }
