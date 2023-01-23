@@ -27,7 +27,7 @@ struct EmailVerificationScreen: View {
             ScrollView{
                 Image("Logo")
                 Spacer().frame(height: screenHeight * 0.2)
-                Text("Please input the verification code we sent to the email you provided:")
+                Text("Please type in the verification code we just sent to your email:")
                     .padding(.horizontal, 40)
                     .padding(.bottom, 30)
                     .font(.system(size: 18, weight: .black))
@@ -45,11 +45,11 @@ struct EmailVerificationScreen: View {
                             incorrect_code = true
                         }
                     }
-                    .padding(.horizontal, 120)
+                    .padding(.horizontal, 150)
                 Divider()
-                    .padding(.horizontal, 120)
+                    .padding(.horizontal, 150)
                     .frame(height: 4)
-                    .overlay(Color(hex: incorrect_code ? red_color : deepBlue).padding(.horizontal, 120))
+                    .overlay(Color(hex: incorrect_code ? red_color : deepBlue).padding(.horizontal, 150))
                 Spacer().frame(height: screenHeight * 0.25)
                 ResendButton(email: email, error_alert: $error_alert, error_message: $error_message, code: $code)
                     .padding(.bottom, 40)

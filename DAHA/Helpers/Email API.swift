@@ -13,9 +13,17 @@ import PostmarkSwift
 
 func sendVerificationEmail(email: String, error_alert: Binding<Bool>, error_message: Binding<String>) async ->  Int  {
 
+    var serverTokenString = ""
+    
+    if let emailToken = Bundle.main.infoDictionary?["EMAIL_TOKEN"] as? String {
+        serverTokenString = emailToken
+    } else {
+        error_alert.wrappedValue = true
+    }
+    
     let code = Int.random(in: 100000..<999999)
     
-    let client = PostmarkSwift.Client(serverToken: "c86d0c64-001d-482e-922f-46007b24e764")
+    let client = PostmarkSwift.Client(serverToken: serverTokenString)
     
     let message = PostmarkSwift.OutgoingEmail(
         from: "team@appdaha.com",

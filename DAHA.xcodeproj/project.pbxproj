@@ -121,6 +121,7 @@
 		82DF4CB12973C7FA00A309CF /* DAHA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DAHA.entitlements; sourceTree = "<group>"; };
 		82DF4CB229775B5300A309CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82E75AC2297E321600742F18 /* Email API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Email API.swift"; sourceTree = "<group>"; };
+		82E75AC8297F104200742F18 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +154,7 @@
 		82CEFC252969CB2C00C55F67 = {
 			isa = PBXGroup;
 			children = (
+				82E75AC8297F104200742F18 /* Config.xcconfig */,
 				82CEFC302969CB2C00C55F67 /* DAHA */,
 				82CEFC2F2969CB2C00C55F67 /* Products */,
 			);
@@ -445,6 +447,7 @@
 /* Begin XCBuildConfiguration section */
 		82CEFC3A2969CB2D00C55F67 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82E75AC8297F104200742F18 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -505,6 +508,7 @@
 		};
 		82CEFC3B2969CB2D00C55F67 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82E75AC8297F104200742F18 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

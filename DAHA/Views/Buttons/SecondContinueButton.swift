@@ -21,6 +21,7 @@ struct SecondContinueButton: View {
     @State private var usernameInUse: Bool = false
     @State private var account_created: Bool = false
     @State private var errorCreatingAccountAlert: Bool = false
+    @State private var shouldNavigate: Bool = false
     @AppStorage("university") var university: String = ""
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = false
     @AppStorage("accountcreated") var isAccountCreated: Bool = false
@@ -43,6 +44,7 @@ struct SecondContinueButton: View {
                 if (usernameInUse){
                     error = true
                     error_message = "Username already in use"
+                    usernameInUse.toggle()
                 } else if (password_temp.count < 6){
                     error = true
                     error_message = "Password length cannot be less than 6 characters"
@@ -56,17 +58,20 @@ struct SecondContinueButton: View {
                     error = true
                     error_message = "Please fill all fields"
                 } else {
-                    let cur_id = Auth.auth().currentUser?.uid
+//                    let cur_id = Auth.auth().currentUser?.uid
                     let cur_email = email_system
                     
                     username_system = username_temp
-                    if cur_id != nil && cur_email != ""{
-                        let current = UserModel(id: cur_id, username: username_temp, email: cur_email, firstname: firstname_temp, lastname: lastname_temp, channels: [], university: university)
+                    if cur_email != ""{
+                        let current = UserModel(id: nil, username: username_temp, email: cur_email, firstname: firstname_temp, lastname: lastname_temp, channels: [], university: university)
                         Task {
                             await firestoreManager.createAccount(email: cur_email, password: password_temp, user: current, cannot_create: $errorCreatingAccountAlert, creation_complete: $account_created)
+                            
+                            print(account_created)
                             if account_created {
                                 isAccountCreated = true
                             }
+                            shouldNavigate = account_created
                         }
                     }
                     else {
@@ -92,6 +97,9 @@ struct SecondContinueButton: View {
                         .padding(3)
                 } //: HStack
             } //: ZStack
+            NavigationLink(destination: MainScreen().navigationBarHidden(true), isActive: $shouldNavigate){
+                EmptyView()
+            }
         } //:Button
         .alert("Error Creating Account", isPresented: $errorCreatingAccountAlert, actions: {}, message: {Text("There was an error creating your account, please check your network connection and try again later")})
     }

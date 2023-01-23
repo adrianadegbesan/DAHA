@@ -22,7 +22,7 @@ struct ContentView: View {
         SetUpScreen()
       } else if !isOnboardingViewActive && !isAccountCreated {
           CreateAccountScreen()
-      } else {
+      } else if isAccountCreated{
         MainScreen()
       }
     } //: ZStack

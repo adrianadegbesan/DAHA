@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  DAHA
+//
+//  Created by Adrian Adegbesan on 1/23/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+EMAIL_TOKEN = c86d0c64-001d-482e-922f-46007b24e764

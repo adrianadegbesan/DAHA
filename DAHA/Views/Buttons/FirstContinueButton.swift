@@ -69,13 +69,12 @@ struct FirstContinueButton: View {
         .alert("No Email Provided", isPresented: $showAlert_noemail, actions: {}, message: { Text("Please input an email address")})
         .alert("Invalid Email Provided", isPresented: $showAlert_invalidemail, actions: {}, message: { Text("Please input a valid email address")})
         .alert("Cannot Verify Email Address", isPresented: $cannot_verify, actions: {}, message: {Text("Cannot verify email address, please check your network connection and try again later")})
-
     }
 }
 
 struct ContinueButton_Previews: PreviewProvider {
     static var previews: some View {
-        FirstContinueButton(schoolFound: .constant(false), isPresented: .constant(false), email: .constant("adrian25@stanford.edu"), shouldNavigate: .constant(false), domain: .constant(""))
+        FirstContinueButton(schoolFound: .constant(false), isPresented: .constant(false), email: .constant("team@appdaha.com"), shouldNavigate: .constant(false), domain: .constant(""))
             .previewLayout(.sizeThatFits)
             .environmentObject(FirestoreManager())
             .environmentObject(AuthManager())

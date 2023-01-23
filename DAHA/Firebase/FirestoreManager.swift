@@ -63,14 +63,32 @@ class FirestoreManager: ObservableObject {
             cannot_verify.wrappedValue = true
         }
     }
+    
+    func checkIfEmailExists(email: String) async -> Bool{
+        
+        do {
+            let methods = try await Auth.auth().fetchSignInMethods(forEmail: email)
+            if methods.isEmpty{
+                return false
+            } else {
+                return true
+            }
+            
+        }
+        catch {
+            return true
+        }
+    }
 
     
     func createAccount(email: String, password: String, user: UserModel, cannot_create: Binding<Bool>, creation_complete: Binding<Bool>) async {
-        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         do {
-            try await Auth.auth().currentUser?.link(with: credential)
+            try await Auth.auth().createUser(withEmail: email, password: password)
+            let cur_id = Auth.auth().currentUser?.uid
+            var user_temp = user
+            user_temp.id = cur_id
             do {
-                try db.collection("Users").document(user.id!).setData(from: user)
+                try db.collection("Users").document(user_temp.id!).setData(from: user_temp)
                 creation_complete.wrappedValue = true
             }
             
@@ -80,12 +98,16 @@ class FirestoreManager: ObservableObject {
                 cannot_create.wrappedValue = true
             }
         }
-        catch AuthErrorCode.providerAlreadyLinked{
+        catch AuthErrorCode.emailAlreadyInUse{
+            let cur_id = Auth.auth().currentUser?.uid
+            var user_temp = user
+            user_temp.id = cur_id
             do {
-                try db.collection("Users").document(user.id!).setData(from: user)
+                try db.collection("Users").document(user_temp.id!).setData(from: user_temp)
                 creation_complete.wrappedValue = true
             }
             catch {
+                print("error_uploading")
                 cannot_create.wrappedValue = true
             }
         }

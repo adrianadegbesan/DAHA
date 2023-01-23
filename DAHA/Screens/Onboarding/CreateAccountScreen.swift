@@ -67,10 +67,6 @@ struct CreateAccountScreen: View {
             }//: ZStack
             .onAppear{
                 print( Auth.auth().currentUser ?? "nil")
-                if( Auth.auth().currentUser == nil){
-                    isOnboardingViewActive = true
-                }
-                isOnboardingViewActive = false
             }
             .alert("Error Creating Account", isPresented: $error, actions: {}, message: {Text(error_message)} )
            }
