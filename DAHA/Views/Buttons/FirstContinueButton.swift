@@ -17,8 +17,11 @@ struct FirstContinueButton: View {
     @State private var showAlert_noemail : Bool = false
     @State private var showAlert_invalidemail : Bool = false
     @State private var cannot_verify : Bool = false
+    @State private var uni_temp : String = ""
     @State var isValid : Bool = false
+    @AppStorage("university") var university: String = ""
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @EnvironmentObject var authentication: AuthManager
 
     
     var body: some View {
@@ -26,7 +29,7 @@ struct FirstContinueButton: View {
             isValid = isValidEmailAddress(emailAddressString: email)
             domain = getDomain(email: email)
             
-            if (email.isEmpty || email.trimmingCharacters(in: .whitespaces).isEmpty){
+            if (email.trimmingCharacters(in: .whitespaces).isEmpty){
                 showAlert_noemail = true
             }
             else if !isValid{
@@ -34,8 +37,10 @@ struct FirstContinueButton: View {
             }
              else {
                  Task {
-                     await firestoreManager.verifyDomain(domain: domain, schoolFound: $schoolFound, cannot_verify: $cannot_verify)
+                     await firestoreManager.verifyDomain(domain: domain, schoolFound: $schoolFound, cannot_verify: $cannot_verify, uni_temp: $uni_temp)
                      if schoolFound == true {
+                         university = uni_temp
+                         print("The university is \(university)")
                          shouldNavigate = true
                      } else {
                          isPresented = true
@@ -72,5 +77,7 @@ struct ContinueButton_Previews: PreviewProvider {
     static var previews: some View {
         FirstContinueButton(schoolFound: .constant(false), isPresented: .constant(false), email: .constant("adrian25@stanford.edu"), shouldNavigate: .constant(false), domain: .constant(""))
             .previewLayout(.sizeThatFits)
+            .environmentObject(FirestoreManager())
+            .environmentObject(AuthManager())
     }
 }

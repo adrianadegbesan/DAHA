@@ -12,6 +12,7 @@ import Firebase
 
 @main
 struct DAHAApp: App {
+    @StateObject var authentication = AuthManager()
     @StateObject var firestoreManager = FirestoreManager()
     
     init() {
@@ -23,8 +24,8 @@ struct DAHAApp: App {
             NavigationView {
                 ContentView()
             }
+            .environmentObject(authentication)
             .environmentObject(firestoreManager)
-            
         }
     }
 }

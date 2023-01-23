@@ -14,13 +14,14 @@ struct SchoolEmailScreen: View {
     @State private var isPresented : Bool = false
     @State private var shouldNavigate : Bool = false
     @State private var domain: String = ""
+    @EnvironmentObject var firestoreManager : FirestoreManager
     
     var body: some View {
         ZStack {
             BackgroundColor(color: greyBackground)
-            VStack {
+            ScrollView {
                 Image("Logo")
-                Spacer()
+                Spacer().frame(height: screenHeight * 0.2)
 
                 Text("MY SCHOOL EMAIL IS ...")
                     .font(.system(size: 26, weight: .black))
@@ -30,16 +31,18 @@ struct SchoolEmailScreen: View {
                     .font(.system(size: 12, weight: .light))
                     .padding(.horizontal, 40)
               
-                Spacer().frame(height: screenHeight * 0.3)
+                Spacer().frame(height: screenHeight * 0.23)
                 FirstContinueButton(schoolFound: $schoolFound, isPresented: $isPresented, email: $email, shouldNavigate: $shouldNavigate, domain: $domain)
                     .padding(.bottom, 20)
                 
 
-                NavigationLink(destination: CreateAccountScreen(), isActive: $shouldNavigate){
+                NavigationLink(destination: EmailVerificationScreen(email: $email), isActive: $shouldNavigate){
                     EmptyView()
                 }
             } //: VStack
+            .ignoresSafeArea(.keyboard)
         }//: ZStack
+        .ignoresSafeArea(.keyboard)
         .sheet(isPresented: $isPresented){
             UniversityNotFoundView(domain: $domain, isPresented: $isPresented)
         }
@@ -50,6 +53,7 @@ struct SchoolEmailScreen: View {
 struct SchoolEmailScreen_Previews: PreviewProvider {
     static var previews: some View {
         SchoolEmailScreen()
+            .environmentObject(FirestoreManager())
     }
 }
 

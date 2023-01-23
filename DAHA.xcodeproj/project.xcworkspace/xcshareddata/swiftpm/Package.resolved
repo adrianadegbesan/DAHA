@@ -91,6 +91,15 @@
       }
     },
     {
+      "identity" : "postmark-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aronbudinszky/postmark-swift.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "5a83fb142a5508fe0b72843947dbc0e9a92dc153"
+      }
+    },
+    {
       "identity" : "promises",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",

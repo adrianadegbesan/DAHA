@@ -21,7 +21,8 @@ struct PostModel: Identifiable, Codable {
     var category: String?
     var price: String?
     var imageURLs : [String?]
-    var channel: String?
+//    var channel: String?
+    var savers: [String?]
 }
 
 

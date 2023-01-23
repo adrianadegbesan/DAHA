@@ -11,7 +11,8 @@ import SwiftUI
 struct SignUpButton: View {
     
     var body: some View {
-        NavigationLink(destination: SchoolEmailScreen()) {
+        NavigationLink(destination: SchoolEmailScreen()
+            .navigationTitle("")){
             ZStack {
                 // Blue Button background
                 RoundedRectangle(cornerRadius: 33)
