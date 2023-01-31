@@ -185,8 +185,7 @@
 				82CBC2A529879986001966E3 /* PostScreen.swift */,
 				82CEFC612969CE3700C55F67 /* PostModal.swift */,
 			);
-			name = Posts;
-			path = "Onboarding and Login/Posts";
+			path = Posts;
 			sourceTree = "<group>";
 		};
 		82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */ = {
@@ -280,7 +279,6 @@
 				82CEFC3F2969CB9500C55F67 /* Helpers */,
 				82CEFC402969CB9C00C55F67 /* Models */,
 				82CEFC692969CE8600C55F67 /* Onboarding and Login */,
-				823602062985ADD5002E7AEC /* Posts */,
 				82CEFC412969CBB600C55F67 /* Screens */,
 				82CEFC422969CBBF00C55F67 /* Views */,
 				82CEFC352969CB2D00C55F67 /* Assets.xcassets */,
@@ -335,6 +333,7 @@
 		82CEFC422969CBBF00C55F67 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				823602062985ADD5002E7AEC /* Posts */,
 				82CEFC752969CF3E00C55F67 /* HeaderView.swift */,
 				8294FAE6296BB945004001AE /* CustomInputField.swift */,
 				82CEFC772969CF5A00C55F67 /* TabBarView.swift */,
