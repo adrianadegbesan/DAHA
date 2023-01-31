@@ -50,7 +50,7 @@ struct EmailVerificationScreen: View {
                     .padding(.horizontal, 150)
                     .frame(height: 4)
                     .overlay(Color(hex: incorrect_code ? red_color : deepBlue).padding(.horizontal, 150))
-                Spacer().frame(height: screenHeight * 0.25)
+                Spacer().frame(height: 20)
                 ResendButton(email: email, error_alert: $error_alert, error_message: $error_message, code: $code)
                     .padding(.bottom, 40)
             } //: VStack
@@ -62,7 +62,7 @@ struct EmailVerificationScreen: View {
         }
         .alert("Error Verifying Email", isPresented: $error_alert, actions: {}, message: { Text("Error Verifying email, please check your network connection and try again later")})
         
-        NavigationLink(destination: CreateAccountScreen(), isActive: $should_navigate){
+        NavigationLink(destination: CreateAccountScreen().navigationBarHidden(true), isActive: $should_navigate){
             EmptyView()
         }
 

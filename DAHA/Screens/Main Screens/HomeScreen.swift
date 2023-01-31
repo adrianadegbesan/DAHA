@@ -10,19 +10,31 @@ import SwiftUI
 // Home Screen
 struct HomeScreen: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = false
+    @AppStorage("signedin") var isSignedIn: Bool = false
+    @AppStorage("university") var university: String = ""
     
     var body: some View {
             ZStack {
                 BackgroundColor(color: greyBackground)
-                VStack {
-                    HeaderView(title: "Stanford", showMessages: true, showSettings: false)
+                VStack(spacing: 0) {
+                    HeaderView(title: university, showMessages: true, showSettings: false)
                         .frame(alignment: .top)
-                        Spacer()
-                        Button(action: {isOnboardingViewActive = true}, label: {
-                            Text("Log Out")
-                                .font(.system(size:20, weight: .bold))
-                    }) //: Button
-                        .padding()
+                        ScrollView{
+                            ForEach(1..<100){ i in
+                                Text("\(i)")
+                            }
+                        }
+                        .background(.ultraThinMaterial)
+//                    Spacer()
+    
+//                        Button(action: {
+//                            isOnboardingViewActive = true
+//                            isSignedIn = false
+//                        }, label: {
+//                            Text("Log Out")
+//                                .font(.system(size:20, weight: .bold))
+//                    }) //: Button
+                    PageBottomDivider()
                 } //: VStack
             } //: ZStack
     }

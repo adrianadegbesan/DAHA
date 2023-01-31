@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823601FC2981F3AC002E7AEC /* SignInButton.swift */; };
+		823602012981F81D002E7AEC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602002981F81D002E7AEC /* LoginScreen.swift */; };
+		823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602022981F84E002E7AEC /* ForgotPasswordButton.swift */; };
+		823602052985ABF0002E7AEC /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602042985ABF0002E7AEC /* PostView.swift */; };
+		82360208298748CC002E7AEC /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82360207298748CC002E7AEC /* CategoryView.swift */; };
+		8236020A298748DF002E7AEC /* ReportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82360209298748DF002E7AEC /* ReportButton.swift */; };
+		8236020C298748E9002E7AEC /* BuyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8236020B298748E9002E7AEC /* BuyButton.swift */; };
+		8236020E298791BE002E7AEC /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8236020D298791BE002E7AEC /* BookmarkButton.swift */; };
+		8236021029879425002E7AEC /* PostDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8236020F29879425002E7AEC /* PostDescriptionView.swift */; };
 		8236CFDF296D34210086AB15 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8236CFDE296D34210086AB15 /* FirebaseAnalytics */; };
 		8236CFE1296D34210086AB15 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 8236CFE0296D34210086AB15 /* FirebaseAnalyticsOnDeviceConversion */; };
 		8236CFE3296D34210086AB15 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8236CFE2296D34210086AB15 /* FirebaseAnalyticsSwift */; };
@@ -28,6 +37,11 @@
 		8294FAE5296BB661004001AE /* SavedPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE4296BB661004001AE /* SavedPosts.swift */; };
 		8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE6296BB945004001AE /* CustomInputField.swift */; };
 		8294FAE9296BCB76004001AE /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */; };
+		82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC29F298795E4001966E3 /* PostActionView.swift */; };
+		82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A1298796E7001966E3 /* PosterInfoView.swift */; };
+		82CBC2A429879752001966E3 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A329879752001966E3 /* PostImageView.swift */; };
+		82CBC2A629879986001966E3 /* PostScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A529879986001966E3 /* PostScreen.swift */; };
+		82CBC2A92988D1A2001966E3 /* PageBottomDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A82988D1A2001966E3 /* PageBottomDivider.swift */; };
 		82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC312969CB2C00C55F67 /* DAHAApp.swift */; };
 		82CEFC342969CB2C00C55F67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC332969CB2C00C55F67 /* ContentView.swift */; };
 		82CEFC362969CB2D00C55F67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82CEFC352969CB2D00C55F67 /* Assets.xcassets */; };
@@ -60,7 +74,6 @@
 		82CEFC832969CFF400C55F67 /* DMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC822969CFF400C55F67 /* DMButton.swift */; };
 		82CEFC852969D00D00C55F67 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC842969D00D00C55F67 /* SettingsButton.swift */; };
 		82CEFC872969D02400C55F67 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC862969D02400C55F67 /* LoginButton.swift */; };
-		82CEFC892969D05000C55F67 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC882969D05000C55F67 /* SignInButton.swift */; };
 		82CEFC8B2969D06700C55F67 /* FirstContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */; };
 		82D2D0DF296BD41200CB4B9A /* EmailVerificationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2D0DE296BD41200CB4B9A /* EmailVerificationScreen.swift */; };
 		82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */; };
@@ -72,12 +85,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		823601FC2981F3AC002E7AEC /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
+		823602002981F81D002E7AEC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		823602022981F84E002E7AEC /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
+		823602042985ABF0002E7AEC /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		82360207298748CC002E7AEC /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		82360209298748DF002E7AEC /* ReportButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportButton.swift; sourceTree = "<group>"; };
+		8236020B298748E9002E7AEC /* BuyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButton.swift; sourceTree = "<group>"; };
+		8236020D298791BE002E7AEC /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
+		8236020F29879425002E7AEC /* PostDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDescriptionView.swift; sourceTree = "<group>"; };
 		8236CFFC296F2AF00086AB15 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8294FAAB296B9F5B004001AE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8294FAAD296B9F64004001AE /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		8294FAE4296BB661004001AE /* SavedPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPosts.swift; sourceTree = "<group>"; };
 		8294FAE6296BB945004001AE /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
+		82CBC29F298795E4001966E3 /* PostActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionView.swift; sourceTree = "<group>"; };
+		82CBC2A1298796E7001966E3 /* PosterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterInfoView.swift; sourceTree = "<group>"; };
+		82CBC2A329879752001966E3 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
+		82CBC2A529879986001966E3 /* PostScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreen.swift; sourceTree = "<group>"; };
+		82CBC2A82988D1A2001966E3 /* PageBottomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageBottomDivider.swift; sourceTree = "<group>"; };
 		82CEFC2E2969CB2C00C55F67 /* DAHA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DAHA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82CEFC312969CB2C00C55F67 /* DAHAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAHAApp.swift; sourceTree = "<group>"; };
 		82CEFC332969CB2C00C55F67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,7 +138,6 @@
 		82CEFC822969CFF400C55F67 /* DMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMButton.swift; sourceTree = "<group>"; };
 		82CEFC842969D00D00C55F67 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		82CEFC862969D02400C55F67 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
-		82CEFC882969D05000C55F67 /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstContinueButton.swift; sourceTree = "<group>"; };
 		82CEFC8C2969D0DF00C55F67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		82D2D0DE296BD41200CB4B9A /* EmailVerificationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationScreen.swift; sourceTree = "<group>"; };
@@ -151,6 +177,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		823602062985ADD5002E7AEC /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				823602042985ABF0002E7AEC /* PostView.swift */,
+				82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */,
+				82CBC2A529879986001966E3 /* PostScreen.swift */,
+				82CEFC612969CE3700C55F67 /* PostModal.swift */,
+			);
+			name = Posts;
+			path = "Onboarding and Login/Posts";
+			sourceTree = "<group>";
+		};
+		82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				82360207298748CC002E7AEC /* CategoryView.swift */,
+				82360209298748DF002E7AEC /* ReportButton.swift */,
+				8236020B298748E9002E7AEC /* BuyButton.swift */,
+				8236020D298791BE002E7AEC /* BookmarkButton.swift */,
+				8236020F29879425002E7AEC /* PostDescriptionView.swift */,
+				82CBC29F298795E4001966E3 /* PostActionView.swift */,
+				82CBC2A1298796E7001966E3 /* PosterInfoView.swift */,
+				82CBC2A329879752001966E3 /* PostImageView.swift */,
+			);
+			path = PostViewComponentsPostViewComponents;
+			sourceTree = "<group>";
+		};
+		82CED4FA2981EE9B009B5507 /* SetUpScreen */ = {
+			isa = PBXGroup;
+			children = (
+				82CEFC6A2969CEA500C55F67 /* SetUpScreen.swift */,
+				82CEFC7E2969CFB700C55F67 /* SignUpButton.swift */,
+				82CEFC862969D02400C55F67 /* LoginButton.swift */,
+			);
+			path = SetUpScreen;
+			sourceTree = "<group>";
+		};
+		82CED4FC2981EF56009B5507 /* EmailVerificationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				82D2D0DE296BD41200CB4B9A /* EmailVerificationScreen.swift */,
+				82DF4CAB296F5C6B00A309CF /* ResendButton.swift */,
+			);
+			path = EmailVerificationScreen;
+			sourceTree = "<group>";
+		};
+		82CED4FD2981EF74009B5507 /* SchoolEmailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				82CEFC732969CF0100C55F67 /* SchoolEmailScreen.swift */,
+				82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */,
+				82CEFC7B2969CF8D00C55F67 /* UniversityNotFoundView.swift */,
+			);
+			path = SchoolEmailScreen;
+			sourceTree = "<group>";
+		};
+		82CED4FE2981EFFE009B5507 /* CreateAccountScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */,
+				82DF4CAD296F614500A309CF /* SecondContinueButton.swift */,
+			);
+			path = CreateAccountScreen;
+			sourceTree = "<group>";
+		};
+		82CED4FF2981F171009B5507 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				823602002981F81D002E7AEC /* LoginScreen.swift */,
+				823601FC2981F3AC002E7AEC /* SignInButton.swift */,
+				823602022981F84E002E7AEC /* ForgotPasswordButton.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
 		82CEFC252969CB2C00C55F67 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +279,8 @@
 				82D2D0E0296CAD4E00CB4B9A /* Firebase */,
 				82CEFC3F2969CB9500C55F67 /* Helpers */,
 				82CEFC402969CB9C00C55F67 /* Models */,
+				82CEFC692969CE8600C55F67 /* Onboarding and Login */,
+				823602062985ADD5002E7AEC /* Posts */,
 				82CEFC412969CBB600C55F67 /* Screens */,
 				82CEFC422969CBBF00C55F67 /* Views */,
 				82CEFC352969CB2D00C55F67 /* Assets.xcassets */,
@@ -225,7 +328,6 @@
 				82CEFC532969CC9B00C55F67 /* LaunchScreen.swift */,
 				82CEFC552969CD4A00C55F67 /* Main Screens */,
 				82CEFC602969CE1B00C55F67 /* Secondary Screens */,
-				82CEFC692969CE8600C55F67 /* Onboarding */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -237,7 +339,7 @@
 				8294FAE6296BB945004001AE /* CustomInputField.swift */,
 				82CEFC772969CF5A00C55F67 /* TabBarView.swift */,
 				82CEFC792969CF7100C55F67 /* BackgroundColor.swift */,
-				82CEFC7B2969CF8D00C55F67 /* UniversityNotFoundView.swift */,
+				82CBC2A82988D1A2001966E3 /* PageBottomDivider.swift */,
 				82CEFC7D2969CFA100C55F67 /* Buttons */,
 			);
 			path = Views;
@@ -258,7 +360,6 @@
 		82CEFC602969CE1B00C55F67 /* Secondary Screens */ = {
 			isa = PBXGroup;
 			children = (
-				82CEFC612969CE3700C55F67 /* PostModal.swift */,
 				82CEFC632969CE5200C55F67 /* DMScreen.swift */,
 				82CEFC652969CE5F00C55F67 /* SearchBarScreen.swift */,
 				82CEFC672969CE7E00C55F67 /* SettingsScreen.swift */,
@@ -266,30 +367,25 @@
 			path = "Secondary Screens";
 			sourceTree = "<group>";
 		};
-		82CEFC692969CE8600C55F67 /* Onboarding */ = {
+		82CEFC692969CE8600C55F67 /* Onboarding and Login */ = {
 			isa = PBXGroup;
 			children = (
-				82CEFC6A2969CEA500C55F67 /* SetUpScreen.swift */,
+				82CED4FA2981EE9B009B5507 /* SetUpScreen */,
+				82CED4FF2981F171009B5507 /* LoginScreen */,
+				82CED4FD2981EF74009B5507 /* SchoolEmailScreen */,
+				82CED4FC2981EF56009B5507 /* EmailVerificationScreen */,
+				82CED4FE2981EFFE009B5507 /* CreateAccountScreen */,
 				82CEFC6D2969CEBA00C55F67 /* Test.swift */,
-				82CEFC732969CF0100C55F67 /* SchoolEmailScreen.swift */,
-				82D2D0DE296BD41200CB4B9A /* EmailVerificationScreen.swift */,
-				8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */,
 			);
-			path = Onboarding;
+			path = "Onboarding and Login";
 			sourceTree = "<group>";
 		};
 		82CEFC7D2969CFA100C55F67 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				82CEFC7E2969CFB700C55F67 /* SignUpButton.swift */,
 				82CEFC802969CFCA00C55F67 /* PostButton.swift */,
 				82CEFC822969CFF400C55F67 /* DMButton.swift */,
 				82CEFC842969D00D00C55F67 /* SettingsButton.swift */,
-				82CEFC862969D02400C55F67 /* LoginButton.swift */,
-				82CEFC882969D05000C55F67 /* SignInButton.swift */,
-				82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */,
-				82DF4CAB296F5C6B00A309CF /* ResendButton.swift */,
-				82DF4CAD296F614500A309CF /* SecondContinueButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -398,44 +494,57 @@
 			files = (
 				82CEFC502969CC5B00C55F67 /* DeviceDimensions.swift in Sources */,
 				82CEFC812969CFCA00C55F67 /* PostButton.swift in Sources */,
+				8236020A298748DF002E7AEC /* ReportButton.swift in Sources */,
 				82CEFC5F2969CE0700C55F67 /* ProfileScreen.swift in Sources */,
 				82CEFC342969CB2C00C55F67 /* ContentView.swift in Sources */,
 				82CEFC572969CD5A00C55F67 /* MainScreen.swift in Sources */,
+				823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */,
 				82CEFC542969CC9B00C55F67 /* LaunchScreen.swift in Sources */,
 				82CEFC832969CFF400C55F67 /* DMButton.swift in Sources */,
 				82CEFC592969CD7400C55F67 /* HomeScreen.swift in Sources */,
 				82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */,
 				82CEFC522969CC7000C55F67 /* UserAuth.swift in Sources */,
 				82CEFC7A2969CF7100C55F67 /* BackgroundColor.swift in Sources */,
-				82CEFC892969D05000C55F67 /* SignInButton.swift in Sources */,
 				82CEFC762969CF3E00C55F67 /* HeaderView.swift in Sources */,
 				8294FAE5296BB661004001AE /* SavedPosts.swift in Sources */,
+				8236020C298748E9002E7AEC /* BuyButton.swift in Sources */,
+				82360208298748CC002E7AEC /* CategoryView.swift in Sources */,
+				823602052985ABF0002E7AEC /* PostView.swift in Sources */,
 				82E75AC3297E321600742F18 /* Email API.swift in Sources */,
 				82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */,
 				82CEFC482969CC0500C55F67 /* Text.swift in Sources */,
+				823602012981F81D002E7AEC /* LoginScreen.swift in Sources */,
 				82CEFC5D2969CDEB00C55F67 /* SavedScreen.swift in Sources */,
 				82CEFC622969CE3700C55F67 /* PostModal.swift in Sources */,
 				8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */,
 				82DF4CAC296F5C6B00A309CF /* ResendButton.swift in Sources */,
 				82CEFC852969D00D00C55F67 /* SettingsButton.swift in Sources */,
 				82CEFC8B2969D06700C55F67 /* FirstContinueButton.swift in Sources */,
+				82CBC2A429879752001966E3 /* PostImageView.swift in Sources */,
 				8236CFFD296F2AF00086AB15 /* AuthManager.swift in Sources */,
 				82CEFC682969CE7E00C55F67 /* SettingsScreen.swift in Sources */,
 				82CEFC642969CE5200C55F67 /* DMScreen.swift in Sources */,
 				82CEFC462969CBF000C55F67 /* Images.swift in Sources */,
 				82CEFC4C2969CC3300C55F67 /* TextField.swift in Sources */,
+				82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */,
+				82CBC2A92988D1A2001966E3 /* PageBottomDivider.swift in Sources */,
 				8294FAAE296B9F64004001AE /* PostModel.swift in Sources */,
+				82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */,
 				82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */,
 				82D2D0DF296BD41200CB4B9A /* EmailVerificationScreen.swift in Sources */,
+				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,
 				82CEFC442969CBDB00C55F67 /* Colors.swift in Sources */,
 				82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */,
 				82CEFC7F2969CFB700C55F67 /* SignUpButton.swift in Sources */,
 				82CEFC7C2969CF8D00C55F67 /* UniversityNotFoundView.swift in Sources */,
 				82CEFC742969CF0100C55F67 /* SchoolEmailScreen.swift in Sources */,
+				8236021029879425002E7AEC /* PostDescriptionView.swift in Sources */,
 				82CEFC872969D02400C55F67 /* LoginButton.swift in Sources */,
+				8236020E298791BE002E7AEC /* BookmarkButton.swift in Sources */,
 				82CEFC782969CF5A00C55F67 /* TabBarView.swift in Sources */,
 				82CEFC6E2969CEBA00C55F67 /* Test.swift in Sources */,
 				82CEFC662969CE5F00C55F67 /* SearchBarScreen.swift in Sources */,
+				82CBC2A629879986001966E3 /* PostScreen.swift in Sources */,
 				8294FAE9296BCB76004001AE /* CreateAccountScreen.swift in Sources */,
 				82CEFC5B2969CDD300C55F67 /* SearchScreen.swift in Sources */,
 				8294FAAC296B9F5B004001AE /* UserModel.swift in Sources */,

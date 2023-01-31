@@ -16,6 +16,8 @@ import FirebaseFirestoreSwift
 class FirestoreManager: ObservableObject {
     
     @AppStorage("accountcreated") var isAccountCreated: Bool = false
+    @AppStorage("username") var username_system: String = ""
+    @AppStorage("email") var email_system: String = ""
     
     
     private var db = Firestore.firestore()
@@ -79,40 +81,5 @@ class FirestoreManager: ObservableObject {
             return true
         }
     }
-
     
-    func createAccount(email: String, password: String, user: UserModel, cannot_create: Binding<Bool>, creation_complete: Binding<Bool>) async {
-        do {
-            try await Auth.auth().createUser(withEmail: email, password: password)
-            let cur_id = Auth.auth().currentUser?.uid
-            var user_temp = user
-            user_temp.id = cur_id
-            do {
-                try db.collection("Users").document(user_temp.id!).setData(from: user_temp)
-                creation_complete.wrappedValue = true
-            }
-            
-            catch {
-                print("error uploading")
-                print(error.localizedDescription)
-                cannot_create.wrappedValue = true
-            }
-        }
-        catch AuthErrorCode.emailAlreadyInUse{
-            let cur_id = Auth.auth().currentUser?.uid
-            var user_temp = user
-            user_temp.id = cur_id
-            do {
-                try db.collection("Users").document(user_temp.id!).setData(from: user_temp)
-                creation_complete.wrappedValue = true
-            }
-            catch {
-                print("error_uploading")
-                cannot_create.wrappedValue = true
-            }
-        }
-        catch {
-            cannot_create.wrappedValue = true
-        }
-    }
 }

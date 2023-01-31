@@ -9,14 +9,18 @@ import SwiftUI
 
 // Profile Screen
 struct ProfileScreen: View {
+    
+    @AppStorage("username") var username_system: String = ""
     var body: some View {
         ZStack {
             BackgroundColor(color: greyBackground)
-            VStack {
-                HeaderView(title: "Profile", showMessages: false, showSettings: true)
+            VStack(spacing: 0){
+                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true)
                 .frame(alignment: .top)
                 Spacer()
+                PageBottomDivider()
             } //: VStack
+            
         } //: ZStack
 
     }

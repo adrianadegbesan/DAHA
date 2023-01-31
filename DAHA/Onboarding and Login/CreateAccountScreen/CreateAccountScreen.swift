@@ -10,7 +10,6 @@ import Firebase
 
 struct CreateAccountScreen: View {
     
-        @AppStorage("onboarding") var isOnboardingViewActive: Bool = false
         @State private var firstname : String = ""
         @State private var lastname : String = ""
         @State private var username : String = ""
@@ -19,9 +18,6 @@ struct CreateAccountScreen: View {
         @State private var shouldNavigate : Bool = false
         @State private var error : Bool = false
         @State private var error_message : String = ""
-    
-
-        
         @EnvironmentObject var firestoreManager : FirestoreManager
         
         var body: some View {

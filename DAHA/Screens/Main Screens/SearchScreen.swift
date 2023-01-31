@@ -14,10 +14,11 @@ struct SearchScreen: View {
         
         ZStack {
             BackgroundColor(color: greyBackground)
-            VStack {
+            VStack(spacing: 0) {
                 HeaderView(title: "Search", showMessages: false, showSettings: false)
                 .frame(alignment: .top)
                 Spacer()
+                PageBottomDivider()
             } //: VStack
         } //: ZStack
     }

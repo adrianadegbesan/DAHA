@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginButton: View {
     var body: some View {
-        NavigationLink(destination: Test()) {
+        NavigationLink(destination: LoginScreen()) {
             Text("LOGIN")
                 .font(
                     .system(size:30, weight: .bold)

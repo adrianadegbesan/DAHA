@@ -42,3 +42,20 @@ let whiteBackground = "ffffff"
 let darkGrey = "484848"
 let deepBlue = "0076FF"
 let red_color = "FF0000"
+
+ // Category Colors
+
+let category_colors = [
+    "Bikes": "001685",
+    "Tech": "BB0F0F",
+    "Clothing": "0FBB2A",
+    "Cars": "00C5D6",
+    "Art": "D89000",
+    "Furniture": "5400D3",
+    "Books": "03A597",
+    "Games":  "C5BF03",
+    "Tickets": "D400D8",
+    "General": "000000"
+]
+
+

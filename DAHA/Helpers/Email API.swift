@@ -26,7 +26,7 @@ func sendVerificationEmail(email: String, error_alert: Binding<Bool>, error_mess
     let client = PostmarkSwift.Client(serverToken: serverTokenString)
     
     let message = PostmarkSwift.OutgoingEmail(
-        from: "team@appdaha.com",
+        from: "team@joindaha.com",
         to: email,
         subject: "Verification Code",
         textBody: "Hello! Your verification code to create a DAHA Account is \(code)"

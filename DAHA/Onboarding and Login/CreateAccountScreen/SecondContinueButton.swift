@@ -11,6 +11,7 @@ import FirebaseAuth
 struct SecondContinueButton: View {
     
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @EnvironmentObject var authentication: AuthManager
     @Binding var firstName : String
     @Binding var lastName : String
     @Binding var username : String
@@ -24,7 +25,7 @@ struct SecondContinueButton: View {
     @State private var shouldNavigate: Bool = false
     @AppStorage("university") var university: String = ""
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = false
-    @AppStorage("accountcreated") var isAccountCreated: Bool = false
+    @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
 
@@ -35,6 +36,7 @@ struct SecondContinueButton: View {
             Task {
                 let username_temp = username.replacingOccurrences(of: " ", with: "")
                 let password_temp = password.replacingOccurrences(of: " ", with: "")
+                print(password)
                 let reconfirmpassword_temp = reconfirm_password.replacingOccurrences(of: " ", with: "")
                 let firstname_temp = firstName.replacingOccurrences(of: " ", with: "")
                 let lastname_temp = lastName.replacingOccurrences(of: " ", with: "")
@@ -54,6 +56,9 @@ struct SecondContinueButton: View {
                 } else if (username_temp.count < 5){
                     error = true
                     error_message = "Username length cannot be less than 5 characters"
+                } else if (username_temp.count > 9){
+                        error = true
+                        error_message = "Username length cannot be greater than 9 characters"
                 } else if (username_temp.isEmpty || password_temp.isEmpty || reconfirmpassword_temp.isEmpty || firstname_temp.isEmpty || lastname_temp.isEmpty){
                     error = true
                     error_message = "Please fill all fields"
@@ -61,15 +66,18 @@ struct SecondContinueButton: View {
 //                    let cur_id = Auth.auth().currentUser?.uid
                     let cur_email = email_system
                     
-                    username_system = username_temp
+                   
                     if cur_email != ""{
                         let current = UserModel(id: nil, username: username_temp, email: cur_email, firstname: firstname_temp, lastname: lastname_temp, channels: [], university: university)
                         Task {
-                            await firestoreManager.createAccount(email: cur_email, password: password_temp, user: current, cannot_create: $errorCreatingAccountAlert, creation_complete: $account_created)
+                            print(password_temp)
+                            await authentication.createAccount(email: cur_email, password: password_temp, user: current, cannot_create: $errorCreatingAccountAlert, creation_complete: $account_created)
                             
                             print(account_created)
                             if account_created {
-                                isAccountCreated = true
+                                username_system = username_temp.trimmingCharacters(in: .whitespaces)
+                                isSignedIn = true
+                                isOnboardingViewActive = false
                             }
                             shouldNavigate = account_created
                         }
