@@ -13,7 +13,7 @@ struct SavedScreen: View {
         ZStack {
             BackgroundColor(color: greyBackground)
             VStack(spacing: 0) {
-                HeaderView(title: "Saved", showMessages: false, showSettings: false)
+                HeaderView(title: "Saved", showMessages: false, showSettings: false, showSearchBar: false)
                 .frame(alignment: .top)
                 Spacer()
                 PageBottomDivider()

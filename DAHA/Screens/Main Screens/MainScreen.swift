@@ -9,33 +9,35 @@ import SwiftUI
 
 struct MainScreen: View {
     
-    @State var selectedIndex = 0
-
+//    @State var selectedIndex = 0
+    @State var shouldNavigate: Bool = false
     
     var body: some View {
         
         TabView{
             HomeScreen()
                 .tabItem {
-                    Label("", systemImage: "house")
+                    Label("Home", systemImage: "house")
                 }
 
             SearchScreen()
                 .tabItem{
-                    Label("", systemImage: "magnifyingglass")
+                    Label("Search", systemImage: "magnifyingglass")
                 }
 
             SavedScreen()
                 .tabItem{
-                    Label("", systemImage: "bookmark")
+                    Label("Saved", systemImage: "bookmark")
                 }
 
             ProfileScreen()
                 .tabItem{
-                    Label("", systemImage: "person.circle")
+                    Label("Profile", systemImage: "person.circle")
                 }
+            
         } //TabView
         .accentColor(Color(hex: "0703d0"))
+        
 //
         
     }

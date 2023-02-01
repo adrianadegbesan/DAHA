@@ -15,6 +15,7 @@ struct PostModal: View {
     @Binding var reported: Bool
     @Environment(\.dismiss) private var dismiss
     var images = ["GreenBike", "GreenBike2", "GreenBike3"]
+    @State var owner : Bool
     
     var body: some View {
             VStack{
@@ -28,7 +29,7 @@ struct PostModal: View {
 
                 PostModalDescription(post: post)
                 
-                PostModalPostActions(post: post, saved: $saved)
+                PostModalPostActions(post: post, saved: $saved, owner: owner)
                 
                 Spacer()
             }
@@ -44,6 +45,6 @@ struct PostModal_Previews: PreviewProvider {
         let startTimestamp: Timestamp = Timestamp(date: startTime!)
         
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: startTimestamp, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
-        PostModal(post: post, saved: .constant(false), reported: .constant(false))
+        PostModal(post: post, saved: .constant(false), reported: .constant(false), owner: true)
     }
 }

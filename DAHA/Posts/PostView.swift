@@ -8,6 +8,8 @@
 import SwiftUI
 import Firebase
 
+//Check for if owner in wrapper(list)
+
 struct PostView: View {
     @State var post: PostModel
     @State var saved = false
@@ -15,6 +17,7 @@ struct PostView: View {
     
     @State private var selected : Bool = false
     @State private var buyNavigate : Bool = false
+    @State var owner : Bool
     
     
     var body: some View {
@@ -28,7 +31,7 @@ struct PostView: View {
                 
                 PostDescriptionView(post: post)
                 
-                PostActionView(post: post, saved: $saved)
+                PostActionView(post: post, saved: $saved, owner: owner)
                     .layoutPriority(1)
             }
             
@@ -55,7 +58,7 @@ struct PostView: View {
             selected = true
         }
         .sheet(isPresented: $selected){
-            PostModal(post: post, saved: $saved, reported: $reported)
+            PostModal(post: post, saved: $saved, reported: $reported, owner: owner)
         }
     }
 }
@@ -68,7 +71,7 @@ struct PostView_Previews: PreviewProvider {
         
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
         NavigationView{
-            PostView(post: post)
+            PostView(post: post, owner: false)
         }
     }
 }

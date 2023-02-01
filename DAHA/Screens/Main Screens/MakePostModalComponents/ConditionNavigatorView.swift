@@ -12,7 +12,7 @@ struct ConditionNavigatorView: View {
     @Binding var post: PostModel
     @State var selected: String = ""
     
-    let conditions = ["New", "Good", "Broken"]
+    let conditions = ["New", "Good", "Worn-Out"]
     
     var body: some View {
         HStack{

@@ -15,7 +15,7 @@ struct ProfileScreen: View {
         ZStack {
             BackgroundColor(color: greyBackground)
             VStack(spacing: 0){
-                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true)
+                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false)
                 .frame(alignment: .top)
                 Spacer()
                 PageBottomDivider()

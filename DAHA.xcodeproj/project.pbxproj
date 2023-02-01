@@ -50,6 +50,7 @@
 		82B6B2D7298AD29300027E5A /* CategoryViewPrev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2D6298AD29300027E5A /* CategoryViewPrev.swift */; };
 		82B6B2D9298ADAE700027E5A /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2D8298ADAE700027E5A /* ForgotPasswordScreen.swift */; };
 		82B6B2DB298AE00800027E5A /* PasswordResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2DA298AE00800027E5A /* PasswordResetButton.swift */; };
+		82B6B2DD298AE9BF00027E5A /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2DC298AE9BF00027E5A /* DeleteButton.swift */; };
 		82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC29F298795E4001966E3 /* PostActionView.swift */; };
 		82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A1298796E7001966E3 /* PosterInfoView.swift */; };
 		82CBC2A429879752001966E3 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A329879752001966E3 /* PostImageView.swift */; };
@@ -129,6 +130,7 @@
 		82B6B2D6298AD29300027E5A /* CategoryViewPrev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewPrev.swift; sourceTree = "<group>"; };
 		82B6B2D8298ADAE700027E5A /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
 		82B6B2DA298AE00800027E5A /* PasswordResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetButton.swift; sourceTree = "<group>"; };
+		82B6B2DC298AE9BF00027E5A /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		82CBC29F298795E4001966E3 /* PostActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionView.swift; sourceTree = "<group>"; };
 		82CBC2A1298796E7001966E3 /* PosterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterInfoView.swift; sourceTree = "<group>"; };
 		82CBC2A329879752001966E3 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				82CBC29F298795E4001966E3 /* PostActionView.swift */,
 				82CBC2A1298796E7001966E3 /* PosterInfoView.swift */,
 				82CBC2A329879752001966E3 /* PostImageView.swift */,
+				82B6B2DC298AE9BF00027E5A /* DeleteButton.swift */,
 			);
 			path = PostViewComponentsPostViewComponents;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				82CBC2A429879752001966E3 /* PostImageView.swift in Sources */,
 				8236CFFD296F2AF00086AB15 /* AuthManager.swift in Sources */,
 				82B6B2C62989F38F00027E5A /* CategorySelectorView.swift in Sources */,
+				82B6B2DD298AE9BF00027E5A /* DeleteButton.swift in Sources */,
 				82CEFC682969CE7E00C55F67 /* SettingsScreen.swift in Sources */,
 				82CEFC642969CE5200C55F67 /* DMScreen.swift in Sources */,
 				82B6B2CD298A14DC00027E5A /* ConditionIcon.swift in Sources */,

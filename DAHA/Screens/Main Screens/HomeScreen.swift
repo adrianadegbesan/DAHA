@@ -18,7 +18,7 @@ struct HomeScreen: View {
             ZStack {
                 BackgroundColor(color: greyBackground)
                 VStack(spacing: 0) {
-                    HeaderView(title: university, showMessages: true, showSettings: false)
+                    HeaderView(title: university, showMessages: true, showSettings: false, showSearchBar: true)
                         .frame(alignment: .top)
                     Spacer()
 //                        ScrollView{
@@ -26,7 +26,9 @@ struct HomeScreen: View {
 //                                Text("\(i)")
 //                            }
 //                        }
-//                        .background(.ultraThinMaterial)
+//                        .refreshable {
+//
+//                        }
 //                    Spacer()
     
 //                        Button(action: {
@@ -42,7 +44,7 @@ struct HomeScreen: View {
                 
                 VStack{
                     PostButton()
-                    .offset(x: screenWidth * 0.33, y: screenWidth * 0.65)
+                    .offset(x: screenWidth * 0.35, y: screenHeight * 0.325)
                 }
                 
                 NavigationLink(destination: MakePostScreen(), isActive: $shouldNavigate){

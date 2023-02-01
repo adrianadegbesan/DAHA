@@ -10,8 +10,8 @@ import SwiftUI
 struct PageBottomDivider: View {
     var body: some View {
         Divider()
+            .frame(maxHeight: 2)
             .overlay(Color(hex: darkGrey))
-            .frame(maxHeight: 3)
             .padding(.bottom, 7)
     }
 }

@@ -13,6 +13,7 @@ struct HeaderView: View {
     let title: String
     let showMessages: Bool
     let showSettings: Bool
+    let showSearchBar: Bool
     
     var body: some View {
         VStack(spacing: 0) {
@@ -44,8 +45,8 @@ struct HeaderView: View {
                 
             } //: HStack
             Divider()
+                .frame(height: 2)
                 .overlay(Color(hex: "000000"))
-                .frame(maxHeight: 1)
         } //: ZStack
         .background(.gray.opacity(0.09))
         
@@ -54,7 +55,7 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title: "Stanford", showMessages: true, showSettings: false)
+        HeaderView(title: "Stanford", showMessages: true, showSettings: false, showSearchBar: false)
             .previewLayout(.sizeThatFits)
     }
 }
