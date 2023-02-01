@@ -116,4 +116,14 @@ class AuthManager: ObservableObject {
             error_alert.wrappedValue = true
         }
     }
+    
+    func sendPasswordReset(email: String, error_alert: Binding<Bool>, success_alert: Binding<Bool>){
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if error != nil{
+                error_alert.wrappedValue = true
+            } else {
+                success_alert.wrappedValue = true
+            }
+        }
+    }
 }

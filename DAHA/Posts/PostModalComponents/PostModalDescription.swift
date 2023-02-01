@@ -45,7 +45,7 @@ struct PostModalDescription: View {
             
             HStack{
                 Text(post.description)
-                    .lineLimit(3)
+                    .lineLimit(4)
             }
             .padding(.bottom, 10)
         }

@@ -16,11 +16,10 @@ struct PostModalPosterInfo: View {
             Text("@\(post.username)")
                 .fontWeight(.semibold)
                 .foregroundColor(.gray)
-            // TIMESTAMP SORT OUT
             Image(systemName:"circle.fill")
                 .scaleEffect(0.5)
                 .foregroundColor(.gray)
-            Text(post.postedAt!.dateValue().timeAgoDisplay())
+            Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
                 .fontWeight(.semibold)
                 .foregroundColor(.gray)
             Spacer()

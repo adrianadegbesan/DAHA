@@ -12,18 +12,18 @@ struct ForgotPasswordButton: View {
     @State private var shouldNavigate : Bool = false
     
     var body: some View {
-        Button(action: {}){
+        NavigationLink(destination: ForgotPasswordScreen()){
             HStack{
                 Text("Forgot Password")
                     .foregroundColor(.gray)
             }
         }
-    }
 }
-
-struct ForgotPasswordButton_Previews: PreviewProvider {
-    static var previews: some View {
-        ForgotPasswordButton()
+    
+    struct ForgotPasswordButton_Previews: PreviewProvider {
+        static var previews: some View {
+            ForgotPasswordButton()
+        }
     }
+    
 }
-

@@ -27,7 +27,7 @@ struct EmailVerificationScreen: View {
             ScrollView{
                 Image("Logo")
                 Spacer().frame(height: screenHeight * 0.2)
-                Text("Please type in the verification code we just sent to your email:")
+                Text("Please enter the verification code we just sent to your email:")
                     .padding(.horizontal, 40)
                     .padding(.bottom, 30)
                     .font(.system(size: 18, weight: .black))

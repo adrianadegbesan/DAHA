@@ -31,7 +31,7 @@ struct UniversityNotFoundView: View {
             .padding(.horizontal, 20)
             
             
-            Text("Want DAHA to come to your school? Send us an email to let us know!")
+            Text("Want DAHA to come to your school? Send us an email (team@joindaha.com) to let us know!")
                 .foregroundColor(Color.init(hex: darkGrey))
                 .font(.system(size: 13, weight: .regular))
                 .padding(.horizontal, screenWidth * 0.1)

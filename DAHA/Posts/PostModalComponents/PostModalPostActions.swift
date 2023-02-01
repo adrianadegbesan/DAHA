@@ -14,8 +14,10 @@ struct PostModalPostActions: View {
     var body: some View {
         HStack{
             BookmarkButton(post: post, saved: $saved)
+                .scaleEffect(1.2)
             Spacer()
             BuyButton(post: post)
+                .scaleEffect(1.2)
         }
     }
 }

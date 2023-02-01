@@ -23,7 +23,7 @@ struct PosterInfoView: View {
             //Sort out timestamp
             //Post.postedAt
             
-            Text(post.postedAt!.dateValue().timeAgoDisplay())
+            Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
                 .font(.system(size: 12, weight: .semibold))
                 .lineLimit(1)
                 .layoutPriority(1)
