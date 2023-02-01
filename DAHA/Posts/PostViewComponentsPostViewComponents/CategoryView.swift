@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoryView: View {
     
     @State var post: PostModel
-    @State var reported: Bool = false
+    @Binding var reported: Bool 
     
     var body: some View {
         HStack{
@@ -25,10 +25,10 @@ struct CategoryView: View {
             
             Text(post.condition.uppercased())
                 .lineLimit(1)
-                .foregroundColor(.white)
+//                .foregroundColor(.white)
                 .font(.system(size: 10, weight: .bold))
                 .padding(10)
-                .background(Capsule().fill(.gray))
+                .background(Capsule().stroke(lineWidth: 2))
                 .padding(.trailing, 10)
             
             Spacer()
@@ -41,6 +41,6 @@ struct CategoryView: View {
 struct CategoryView_Previews: PreviewProvider {
     static var previews: some View {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
-        CategoryView(post: post)
+        CategoryView(post: post, reported: .constant(false))
     }
 }

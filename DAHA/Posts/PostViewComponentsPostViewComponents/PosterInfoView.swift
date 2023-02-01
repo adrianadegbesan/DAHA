@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct PosterInfoView: View {
     
@@ -13,7 +14,7 @@ struct PosterInfoView: View {
     var body: some View {
         HStack{
             Text("@\(post.username)")
-                .fontWeight(.semibold)
+                .font(.system(size: 14, weight: .semibold))
                 .lineLimit(1)
                 .foregroundColor(.gray)
             
@@ -22,8 +23,8 @@ struct PosterInfoView: View {
             //Sort out timestamp
             //Post.postedAt
             
-            Text("5 mins ago")
-                .fontWeight(.semibold)
+            Text(post.postedAt!.dateValue().timeAgoDisplay())
+                .font(.system(size: 12, weight: .semibold))
                 .lineLimit(1)
                 .layoutPriority(1)
                 .foregroundColor(.gray)
@@ -34,7 +35,10 @@ struct PosterInfoView: View {
 
 struct PosterInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
+        let startTime = Date.now
+        let startTimestamp: Timestamp = Timestamp(date: startTime)
+        
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: startTimestamp, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
         PosterInfoView(post: post)
     }
 }

@@ -10,13 +10,10 @@ import SwiftUI
 //Button used to go to Posts Screen
 struct PostButton: View {
     var body: some View {
-        NavigationLink(destination: {}){
+        NavigationLink(destination: MakePostScreen()){
             ZStack {
-                Image(systemName: "circle.fill")
-                    .font(.system(size: 65, weight: .bold))
-                    .foregroundColor(.white)
                 Image(systemName: "plus.circle.fill")
-                    .font(.system(size: 65, weight: .bold))
+                    .font(.system(size: 75, weight: .bold))
             }
         } .foregroundColor(.black)
     }

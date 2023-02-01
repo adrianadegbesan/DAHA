@@ -24,6 +24,21 @@ struct PostModel: Identifiable, Codable {
     var imageURLs : [String]
     var channel: String
     var savers: [String]
+    
+    init(id: String? = nil, title: String, userID: String, username: String, description: String, postedAt: Timestamp? = nil, condition: String, category: String, price: String, imageURLs: [String], channel: String, savers: [String]) {
+        self.id = id
+        self.title = title
+        self.userID = userID
+        self.username = username
+        self.description = description
+        self.postedAt = postedAt
+        self.condition = condition
+        self.category = category
+        self.price = price
+        self.imageURLs = imageURLs
+        self.channel = channel
+        self.savers = savers
+    }
 }
 
 

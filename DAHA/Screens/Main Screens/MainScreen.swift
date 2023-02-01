@@ -35,6 +35,7 @@ struct MainScreen: View {
                     Label("", systemImage: "person.circle")
                 }
         } //TabView
+        .accentColor(Color(hex: "0703d0"))
 //
         
     }
