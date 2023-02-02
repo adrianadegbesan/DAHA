@@ -45,7 +45,7 @@ struct HeaderView: View {
                 
             } //: HStack
             Divider()
-                .frame(height: 2)
+                .frame(height: 0.5)
                 .overlay(Color(hex: "000000"))
         } //: ZStack
         .background(.gray.opacity(0.09))

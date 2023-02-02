@@ -24,6 +24,7 @@ struct MakePostButton: View {
                     .padding(.bottom, 14)
             }
         }
+        // ALERT
     }
 }
 

@@ -12,6 +12,7 @@ struct CategoryIconView: View {
     @State var category : String
     @Binding var selected : String
     @Binding var post : PostModel
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ZStack{
@@ -30,10 +31,12 @@ struct CategoryIconView: View {
             if selected != category {
                 selected = category
                 post.category = category
+                dismiss()
                 
             } else {
                 selected = ""
                 post.category = ""
+                dismiss()
             }
         }
     }

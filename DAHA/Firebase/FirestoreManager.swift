@@ -19,6 +19,10 @@ class FirestoreManager: ObservableObject {
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
     
+    var posts: [PostModel] = []
+    var saved_posts: [PostModel] = []
+    var my_posts: [PostModel] = []
+    
     
     private var db = Firestore.firestore()
     

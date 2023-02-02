@@ -11,9 +11,7 @@ struct MakePostScreen: View {
     
     @State var post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [])
     
-    @State var price : String = ""
-    @State var title : String = ""
-    @State var description : String = ""
+    @State var images: [UIImage] = []
     
     
     var body: some View {
@@ -25,6 +23,8 @@ struct MakePostScreen: View {
                     .padding(.bottom, 10)
                 MakePostTextInputs(post: $post)
                     .padding(.bottom, 10)
+                ImageSelectorView(images: $images)
+                    .padding(.leading, 15)
         
                 Spacer()
             }

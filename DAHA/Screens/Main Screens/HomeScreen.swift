@@ -41,7 +41,7 @@ struct HomeScreen: View {
                     
                     PageBottomDivider()
                 } //: VStack
-                
+//
                 VStack{
                     PostButton()
                     .offset(x: screenWidth * 0.35, y: screenHeight * 0.325)
@@ -50,17 +50,14 @@ struct HomeScreen: View {
                 NavigationLink(destination: MakePostScreen(), isActive: $shouldNavigate){
                     EmptyView()
                 }
-
-                
                 
             } //: ZStack
+            .navigationBarBackButtonHidden(true)
     }
 }
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
             HomeScreen()
-        }
     }
 }

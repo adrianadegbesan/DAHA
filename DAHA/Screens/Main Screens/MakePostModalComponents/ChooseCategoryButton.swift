@@ -20,7 +20,7 @@ struct ChooseCategoryButton: View {
                     .padding(10)
                     .background(Capsule().stroke(lineWidth: 5))
                     .padding(.trailing, 10)
-                    .foregroundColor(.black)
+                    .foregroundColor(.blue)
                     .onTapGesture {
                         isPresented = true
                     }

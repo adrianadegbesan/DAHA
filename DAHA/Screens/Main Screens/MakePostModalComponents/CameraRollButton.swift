@@ -1,0 +1,41 @@
+//
+//  PickPhotoButton.swift
+//  DAHA
+//
+//  Created by Adrian Adegbesan on 2/2/23.
+//
+
+import SwiftUI
+import PhotosUI
+
+struct CameraRollButton: View {
+    
+    @Binding var images: [UIImage]
+    @State private var isPresented: Bool = false
+    
+    var body: some View {
+        
+        
+
+        Image(systemName: "photo")
+            .resizable()
+            .foregroundColor(images.count == 3 ? .gray : .blue)
+            .frame(width: screenWidth * 0.2, height: screenHeight * 0.08)
+            .padding(.trailing, screenHeight * 0.03)
+            .onTapGesture {
+                if images.count < 3{
+                    isPresented = true
+                }
+            }
+            .sheet(isPresented: $isPresented){
+                PhotoPicker(images: $images, selectionLimit: 3, filter: .images)
+            }
+    }
+}
+
+struct CameraRollButton_Previews: PreviewProvider {
+    static var previews: some View {
+        let images: [UIImage] = []
+        CameraRollButton(images: .constant(images))
+    }
+}

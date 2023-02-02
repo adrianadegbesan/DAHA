@@ -34,7 +34,6 @@
 		8236CFFD296F2AF00086AB15 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8236CFFC296F2AF00086AB15 /* AuthManager.swift */; };
 		8294FAAC296B9F5B004001AE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAAB296B9F5B004001AE /* UserModel.swift */; };
 		8294FAAE296B9F64004001AE /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAAD296B9F64004001AE /* PostModel.swift */; };
-		8294FAE5296BB661004001AE /* SavedPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE4296BB661004001AE /* SavedPosts.swift */; };
 		8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE6296BB945004001AE /* CustomInputField.swift */; };
 		8294FAE9296BCB76004001AE /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */; };
 		82B6B2BB2989EC0E00027E5A /* MakePostScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */; };
@@ -55,6 +54,11 @@
 		82B6B2E4298B73E000027E5A /* ChooseCategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2E3298B73E000027E5A /* ChooseCategoryButton.swift */; };
 		82B6B2E6298B75D800027E5A /* CategoryIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2E5298B75D800027E5A /* CategoryIconView.swift */; };
 		82B6B2E9298B787E00027E5A /* CategoryModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2E8298B787E00027E5A /* CategoryModal.swift */; };
+		82B6B2EC298C3BD300027E5A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2EB298C3BD200027E5A /* Network.swift */; };
+		82B6B2EE298C3FFB00027E5A /* ImageSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2ED298C3FFA00027E5A /* ImageSelectorView.swift */; };
+		82B6B2F0298C438E00027E5A /* CameraRollButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2EF298C438E00027E5A /* CameraRollButton.swift */; };
+		82B6B2F2298C4F1500027E5A /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F1298C4F1500027E5A /* CameraButton.swift */; };
+		82B6B2F4298C514400027E5A /* ImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F3298C514400027E5A /* ImagePreview.swift */; };
 		82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC29F298795E4001966E3 /* PostActionView.swift */; };
 		82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A1298796E7001966E3 /* PosterInfoView.swift */; };
 		82CBC2A429879752001966E3 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A329879752001966E3 /* PostImageView.swift */; };
@@ -118,7 +122,6 @@
 		8236CFFC296F2AF00086AB15 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8294FAAB296B9F5B004001AE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8294FAAD296B9F64004001AE /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
-		8294FAE4296BB661004001AE /* SavedPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPosts.swift; sourceTree = "<group>"; };
 		8294FAE6296BB945004001AE /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
 		82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreen.swift; sourceTree = "<group>"; };
@@ -139,6 +142,11 @@
 		82B6B2E3298B73E000027E5A /* ChooseCategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCategoryButton.swift; sourceTree = "<group>"; };
 		82B6B2E5298B75D800027E5A /* CategoryIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryIconView.swift; sourceTree = "<group>"; };
 		82B6B2E8298B787E00027E5A /* CategoryModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModal.swift; sourceTree = "<group>"; };
+		82B6B2EB298C3BD200027E5A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		82B6B2ED298C3FFA00027E5A /* ImageSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorView.swift; sourceTree = "<group>"; };
+		82B6B2EF298C438E00027E5A /* CameraRollButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRollButton.swift; sourceTree = "<group>"; };
+		82B6B2F1298C4F1500027E5A /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
+		82B6B2F3298C514400027E5A /* ImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreview.swift; sourceTree = "<group>"; };
 		82CBC29F298795E4001966E3 /* PostActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionView.swift; sourceTree = "<group>"; };
 		82CBC2A1298796E7001966E3 /* PosterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterInfoView.swift; sourceTree = "<group>"; };
 		82CBC2A329879752001966E3 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
@@ -223,10 +231,10 @@
 			isa = PBXGroup;
 			children = (
 				823602042985ABF0002E7AEC /* PostView.swift */,
-				82B6B2D4298AD21800027E5A /* PostViewPrev.swift */,
-				82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */,
 				82CEFC612969CE3700C55F67 /* PostModal.swift */,
+				82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */,
 				82CBC2AA2989BA79001966E3 /* PostModalComponents */,
+				82B6B2D4298AD21800027E5A /* PostViewPrev.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -242,6 +250,10 @@
 				82B6B2E3298B73E000027E5A /* ChooseCategoryButton.swift */,
 				82B6B2E5298B75D800027E5A /* CategoryIconView.swift */,
 				82B6B2E8298B787E00027E5A /* CategoryModal.swift */,
+				82B6B2ED298C3FFA00027E5A /* ImageSelectorView.swift */,
+				82B6B2EF298C438E00027E5A /* CameraRollButton.swift */,
+				82B6B2F1298C4F1500027E5A /* CameraButton.swift */,
+				82B6B2F3298C514400027E5A /* ImagePreview.swift */,
 				82B6B2E7298B784200027E5A /* OtherImplementations */,
 			);
 			path = MakePostModalComponents;
@@ -254,6 +266,14 @@
 				82B6B2C52989F38F00027E5A /* CategorySelectorView.swift */,
 			);
 			path = OtherImplementations;
+			sourceTree = "<group>";
+		};
+		82B6B2EA298C3BB300027E5A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				82B6B2EB298C3BD200027E5A /* Network.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */ = {
@@ -358,6 +378,7 @@
 				82CEFC8C2969D0DF00C55F67 /* Info.plist */,
 				82CEFC312969CB2C00C55F67 /* DAHAApp.swift */,
 				82CEFC332969CB2C00C55F67 /* ContentView.swift */,
+				82B6B2EA298C3BB300027E5A /* Network */,
 				82D2D0E0296CAD4E00CB4B9A /* Firebase */,
 				82CEFC3F2969CB9500C55F67 /* Helpers */,
 				82CEFC402969CB9C00C55F67 /* Models */,
@@ -400,7 +421,6 @@
 				82CEFC512969CC7000C55F67 /* UserAuth.swift */,
 				8294FAAB296B9F5B004001AE /* UserModel.swift */,
 				8294FAAD296B9F64004001AE /* PostModel.swift */,
-				8294FAE4296BB661004001AE /* SavedPosts.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -580,6 +600,7 @@
 			files = (
 				82CEFC502969CC5B00C55F67 /* DeviceDimensions.swift in Sources */,
 				82CEFC812969CFCA00C55F67 /* PostButton.swift in Sources */,
+				82B6B2F2298C4F1500027E5A /* CameraButton.swift in Sources */,
 				8236020A298748DF002E7AEC /* ReportButton.swift in Sources */,
 				82CEFC5F2969CE0700C55F67 /* ProfileScreen.swift in Sources */,
 				82B6B2CB298A13E100027E5A /* ConditionNavigatorView.swift in Sources */,
@@ -595,15 +616,17 @@
 				82CEFC592969CD7400C55F67 /* HomeScreen.swift in Sources */,
 				82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */,
 				82CEFC522969CC7000C55F67 /* UserAuth.swift in Sources */,
+				82B6B2EE298C3FFB00027E5A /* ImageSelectorView.swift in Sources */,
 				82CEFC7A2969CF7100C55F67 /* BackgroundColor.swift in Sources */,
 				82CEFC762969CF3E00C55F67 /* HeaderView.swift in Sources */,
-				8294FAE5296BB661004001AE /* SavedPosts.swift in Sources */,
 				8236020C298748E9002E7AEC /* BuyButton.swift in Sources */,
 				82360208298748CC002E7AEC /* CategoryView.swift in Sources */,
 				82B6B2DF298B270300027E5A /* TermsConditionsScreen.swift in Sources */,
 				823602052985ABF0002E7AEC /* PostView.swift in Sources */,
 				82E75AC3297E321600742F18 /* Email API.swift in Sources */,
 				82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */,
+				82B6B2EC298C3BD300027E5A /* Network.swift in Sources */,
+				82B6B2F4298C514400027E5A /* ImagePreview.swift in Sources */,
 				82B6B2D3298A531300027E5A /* Date.swift in Sources */,
 				82CBC2B02989BBD7001966E3 /* PostModalPosterInfo.swift in Sources */,
 				82CEFC482969CC0500C55F67 /* Text.swift in Sources */,
@@ -625,6 +648,7 @@
 				82B6B2DD298AE9BF00027E5A /* DeleteButton.swift in Sources */,
 				82CEFC682969CE7E00C55F67 /* SettingsScreen.swift in Sources */,
 				82CEFC642969CE5200C55F67 /* DMScreen.swift in Sources */,
+				82B6B2F0298C438E00027E5A /* CameraRollButton.swift in Sources */,
 				82B6B2CD298A14DC00027E5A /* ConditionIcon.swift in Sources */,
 				82B6B2E4298B73E000027E5A /* ChooseCategoryButton.swift in Sources */,
 				82CEFC462969CBF000C55F67 /* Images.swift in Sources */,

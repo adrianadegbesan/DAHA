@@ -12,6 +12,7 @@ struct CategoryModal: View {
     @Binding var post: PostModel
     @Binding var selected: String
     
+    
     let categories: [String] = ["General", "Clothing", "Tech", "Bikes", "Cars", "Art", "Furniture", "Books", "Games", "Tickets"]
     
     var body: some View {

@@ -72,5 +72,7 @@ struct CreateAccountScreen: View {
 struct CreateAccountScreen_Previews: PreviewProvider {
     static var previews: some View {
         CreateAccountScreen()
+            .environmentObject(FirestoreManager())
+            .environmentObject(AuthManager())
     }
 }

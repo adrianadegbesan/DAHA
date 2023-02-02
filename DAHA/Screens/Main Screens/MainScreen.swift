@@ -37,6 +37,7 @@ struct MainScreen: View {
             
         } //TabView
         .accentColor(Color(hex: "0703d0"))
+        .navigationBarBackButtonHidden(true)
         
 //
         

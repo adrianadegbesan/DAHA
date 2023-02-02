@@ -18,22 +18,24 @@ struct PostModal: View {
     @State var owner : Bool
     
     var body: some View {
+        ScrollView {
             VStack{
-                PostModalActions()
+                    PostModalActions()
+                    
+                    PostModalPosterInfo(post: post)
                 
-                PostModalPosterInfo(post: post)
-            
-                    
-                CategoryView(post: post, reported: $reported)
-                    
+                        
+                    CategoryView(post: post, reported: $reported)
+                        
 
-                PostModalDescription(post: post)
-                
-                PostModalPostActions(post: post, saved: $saved, owner: owner)
-                
-                Spacer()
-            }
+                    PostModalDescription(post: post)
+                    
+                    PostModalPostActions(post: post, saved: $saved, owner: owner)
+                    
+                    Spacer()
+                }
             .padding()
+        }
     }
 }
 

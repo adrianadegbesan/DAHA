@@ -118,5 +118,6 @@ struct SecondContinueButton_Previews: PreviewProvider {
     static var previews: some View {
         SecondContinueButton(firstName: .constant("jack"), lastName:  .constant("jack"), username:  .constant("jack"), password:  .constant("jack"), reconfirm_password:  .constant("jack"), error: .constant(false), error_message: .constant(""))
             .environmentObject(FirestoreManager())
+            .environmentObject(AuthManager())
     }
 }

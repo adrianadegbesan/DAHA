@@ -17,10 +17,10 @@ struct ConditionIcon: View {
         if (selected == condition){
             Text(condition.uppercased())
                 .lineLimit(1)
-//                .foregroundColor(.black)
+                .foregroundColor(.blue)
                 .font(.system(size: 10, weight: .bold))
                 .padding(10)
-                .background(Capsule().stroke(lineWidth: 5))
+                .background(Capsule().stroke(.blue, lineWidth: 5))
                 .padding(.trailing, 10)
                 .onTapGesture {
                     selected = ""

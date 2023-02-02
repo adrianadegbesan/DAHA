@@ -14,6 +14,7 @@ import Firebase
 struct DAHAApp: App {
     @StateObject var authentication = AuthManager()
     @StateObject var firestoreManager = FirestoreManager()
+    @StateObject var network = Network()
     
     init() {
         FirebaseApp.configure()
@@ -26,6 +27,7 @@ struct DAHAApp: App {
             }
             .environmentObject(authentication)
             .environmentObject(firestoreManager)
+            .environmentObject(network)
         }
     }
 }
