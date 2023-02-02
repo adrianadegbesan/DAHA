@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
   @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
   @AppStorage("signedin") var isSignedIn: Bool = false
+  @AppStorage("termsagreed") var agreedToTerms: Bool = false
   @AppStorage("university") var university: String = ""
   @AppStorage("username") var username_system: String = ""
   @AppStorage("email") var email_system: String = ""
@@ -20,10 +21,10 @@ struct ContentView: View {
     ZStack {
       if isOnboardingViewActive {
         SetUpScreen()
-//      } else if !isOnboardingViewActive && !isAccountCreated {
-//          CreateAccountScreen()
-      } else if isSignedIn{
-        MainScreen()
+      } else if isSignedIn && !agreedToTerms{
+        TermsConditionsScreen()
+      } else if isSignedIn && agreedToTerms{
+          MainScreen()
       }
     } //: ZStack
   }

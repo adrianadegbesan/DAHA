@@ -56,9 +56,9 @@ struct EmailVerificationScreen: View {
             } //: VStack
         } //: ZStack
         .onAppear{
-//            Task {
-//                code = String(await sendVerificationEmail(email: email, error_alert: $error_alert, error_message: $error_message) )
-//            }
+            Task {
+                code = String(await sendVerificationEmail(email: email, error_alert: $error_alert, error_message: $error_message) )
+            }
         }
         .alert("Error Verifying Email", isPresented: $error_alert, actions: {}, message: { Text("Error Verifying email, please check your network connection and try again later")})
         

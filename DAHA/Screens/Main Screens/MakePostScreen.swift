@@ -19,9 +19,12 @@ struct MakePostScreen: View {
     var body: some View {
         ScrollView {
             VStack{
-                CategorySelectorView(post: $post)
+                ChooseCategoryButton(post: $post)
                     .padding(.bottom, 10)
                 ConditionNavigatorView(post: $post)
+                    .padding(.bottom, 10)
+                MakePostTextInputs(post: $post)
+                    .padding(.bottom, 10)
         
                 Spacer()
             }

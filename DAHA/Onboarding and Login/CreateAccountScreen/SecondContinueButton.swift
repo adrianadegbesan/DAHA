@@ -105,7 +105,7 @@ struct SecondContinueButton: View {
                         .padding(3)
                 } //: HStack
             } //: ZStack
-            NavigationLink(destination: MainScreen().navigationBarHidden(true), isActive: $shouldNavigate){
+            NavigationLink(destination: TermsConditionsScreen().navigationBarHidden(true), isActive: $shouldNavigate){
                 EmptyView()
             }
         } //:Button

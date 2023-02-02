@@ -15,9 +15,7 @@ struct PostModalPostActions: View {
     var body: some View {
         HStack{
             if owner {
-                Spacer()
-                DeleteButton(post: post)
-                    .scaleEffect(1.2)
+                EmptyView()
             } else {
                 BookmarkButton(post: post, saved: $saved)
                     .scaleEffect(1.2)

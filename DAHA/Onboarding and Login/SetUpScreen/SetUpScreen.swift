@@ -40,5 +40,6 @@ struct SetUpScreen_Previews: PreviewProvider {
             SetUpScreen()
         }
         .environmentObject(FirestoreManager())
+        .environmentObject(AuthManager())
     }
 }

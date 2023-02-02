@@ -44,12 +44,12 @@ struct PostView: View {
             }
             
         } //HStack
-        .frame(width: screenWidth * 0.89, height: screenHeight * 0.22)
+        .frame(width: screenWidth * 0.902, height: screenHeight * 0.22)
         .padding()
-        .overlay (
+        .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 2)
-                .shadow(radius: 3, y: 1)
+                .shadow(radius: 3, y: 1.5)
         )
         .onTapGesture(count: 2) {
             buyNavigate = true
@@ -59,6 +59,7 @@ struct PostView: View {
         }
         .sheet(isPresented: $selected){
             PostModal(post: post, saved: $saved, reported: $reported, owner: owner)
+            
         }
     }
 }

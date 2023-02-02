@@ -33,6 +33,7 @@ struct LoginScreen: View {
                 SignInButton(email: $email, password: $password)
                 ForgotPasswordButton()
             }
+            .background(.ultraThinMaterial)
         }
         
         
@@ -42,6 +43,7 @@ struct LoginScreen: View {
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
         LoginScreen()
+            .environmentObject(AuthManager())
     }
 }
 

@@ -100,7 +100,7 @@ class AuthManager: ObservableObject {
         catch {
             
             error_alert.wrappedValue = true
-            error_message.wrappedValue = " is Invalid Email/Password"
+            error_message.wrappedValue = "Invalid Email or Password"
             print(error.localizedDescription)
             return false
         }
