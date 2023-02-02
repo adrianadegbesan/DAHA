@@ -22,6 +22,7 @@ struct ImagePreview: View {
                     .padding(.bottom, 15)
                 Image(systemName: "multiply.circle")
                     .resizable()
+                    .foregroundColor(.red)
                     .frame(width: 18, height: 18)
                     .onTapGesture {
                         let index = images.firstIndex(of: image!)
