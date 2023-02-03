@@ -14,7 +14,7 @@ struct ImagePreview: View {
     
     var body: some View {
         if image != nil{
-            ZStack {
+            ZStack{
                 Image(uiImage: image!)
                     .resizable()
                     .scaledToFit()

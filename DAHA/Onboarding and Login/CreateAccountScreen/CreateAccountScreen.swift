@@ -64,6 +64,9 @@ struct CreateAccountScreen: View {
             .onAppear{
                 print( Auth.auth().currentUser ?? "nil")
             }
+            .onTapGesture {
+                hideKeyboard()
+            }
             .alert("Error Creating Account", isPresented: $error, actions: {}, message: {Text(error_message)} )
            }
         }

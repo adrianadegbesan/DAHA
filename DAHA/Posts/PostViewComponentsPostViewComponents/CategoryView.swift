@@ -15,18 +15,20 @@ struct CategoryView: View {
     var body: some View {
         HStack{
             
-            Text(post.category.uppercased())
+   
+            Label(post.category.uppercased(), systemImage: category_images[post.category] ?? "")
                 .lineLimit(1)
+                .layoutPriority(1)
                 .foregroundColor(.white)
-                .font(.system(size: 10, weight: .bold))
+                .font(.system(size: 7.5, weight: .bold))
                 .padding(10)
                 .background(Capsule().fill(Color(hex: category_colors[post.category] ?? "000000")))
                 .padding(.trailing, 10)
             
             Text(post.condition.uppercased())
                 .lineLimit(1)
-//                .foregroundColor(.white)
-                .font(.system(size: 10, weight: .bold))
+            //                .foregroundColor(.white)
+                .font(.system(size: 7.5, weight: .bold))
                 .padding(10)
                 .background(Capsule().stroke(lineWidth: 2))
                 .padding(.trailing, 10)

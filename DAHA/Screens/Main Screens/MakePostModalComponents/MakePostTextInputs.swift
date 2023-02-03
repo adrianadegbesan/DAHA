@@ -36,7 +36,6 @@ struct MakePostTextInputs: View {
                     }
                     post.title = title
                 }
-                .keyboardType(.numberPad)
                 .textFieldStyle(OutlinedTextFieldStyle())
                 .padding(.leading)
                 .padding(.trailing, screenWidth * 0.288)

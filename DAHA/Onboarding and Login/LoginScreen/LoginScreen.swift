@@ -35,8 +35,9 @@ struct LoginScreen: View {
             }
             .background(.ultraThinMaterial)
         }
-        
-        
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 }
 

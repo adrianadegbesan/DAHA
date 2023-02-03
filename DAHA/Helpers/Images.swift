@@ -29,6 +29,19 @@ extension Image {
     }
 }
 
+let category_images = [
+    "Bikes": "bicycle",
+    "Tech": "iphone",
+    "Clothing": "tshirt.fill",
+    "Cars": "car.fill",
+    "Art": "pencil.and.outline",
+    "Furniture": "sofa.fill",
+    "Books": "text.book.closed.fill",
+    "Games":  "gamecontroller.fill",
+    "Tickets": "ticket.fill",
+    "General": "bag.fill"
+]
+
 
 struct PhotoPicker: UIViewControllerRepresentable {
     
@@ -95,42 +108,80 @@ struct PhotoPicker: UIViewControllerRepresentable {
 }
 
 
-struct ImagePickerView: UIViewControllerRepresentable {
+//struct ImagePickerView: UIViewControllerRepresentable {
+//
+//    @Binding var selectedImage: [UIImage]
+//    @Environment(\.presentationMode) var isPresented
+//    var sourceType: UIImagePickerController.SourceType
+//
+//    func makeUIViewController(context: Context) -> UIImagePickerController {
+//        let imagePicker = UIImagePickerController()
+//        imagePicker.sourceType = self.sourceType
+//        return imagePicker
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+//
+//    }
+//
+//    func makeCoordinator() -> Coordinator {
+//            return Coordinator(picker: self)
+//    }
+//
+//}
+//
+//
+//class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+//    var picker: ImagePickerView
+//
+//    init(picker: ImagePickerView) {
+//        self.picker = picker
+//    }
+//
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        guard let selectedImage = info[.originalImage] as? UIImage else { return }
+//        self.picker.selectedImage.append(selectedImage)
+//
+//        print("count is: \(self.picker.selectedImage.count)!")
+//        self.picker.isPresented.wrappedValue.dismiss()
+//    }
+//
+//}
 
-    @Binding var selectedImage: [UIImage]
-    @Environment(\.presentationMode) var isPresented
-    var sourceType: UIImagePickerController.SourceType
-        
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = self.sourceType
-        return imagePicker
+struct ImagePicker: UIViewControllerRepresentable {
+    @Binding var image: UIImage?
+    @Environment(\.presentationMode) var presentationMode
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = context.coordinator
+        return picker
     }
 
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
 
     }
-    
+
     func makeCoordinator() -> Coordinator {
-            return Coordinator(picker: self)
+        Coordinator(self)
     }
 
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        let parent: ImagePicker
+
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let uiImage = info[.originalImage] as? UIImage {
+                parent.image =  uiImage
+            }
+
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+    }
 }
 
 
-class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    var picker: ImagePickerView
-    
-    init(picker: ImagePickerView) {
-        self.picker = picker
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let selectedImage = info[.originalImage] as? UIImage else { return }
-        print(selectedImage)
-        self.picker.selectedImage.append(selectedImage)
-        print(self.picker.selectedImage)
-        self.picker.isPresented.wrappedValue.dismiss()
-    }
-    
-}

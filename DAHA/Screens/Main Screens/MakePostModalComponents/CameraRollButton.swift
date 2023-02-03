@@ -20,7 +20,7 @@ struct CameraRollButton: View {
         Image(systemName: "photo")
             .resizable()
             .foregroundColor(images.count == 3 ? .gray : .blue)
-            .frame(width: screenWidth * 0.2, height: screenHeight * 0.08)
+            .frame(width: screenWidth * 0.23, height: screenHeight * 0.08)
             .padding(.trailing, screenHeight * 0.03)
             .onTapGesture {
                 if images.count < 3{

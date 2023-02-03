@@ -231,10 +231,10 @@
 			isa = PBXGroup;
 			children = (
 				823602042985ABF0002E7AEC /* PostView.swift */,
+				82B6B2D4298AD21800027E5A /* PostViewPrev.swift */,
 				82CEFC612969CE3700C55F67 /* PostModal.swift */,
 				82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */,
 				82CBC2AA2989BA79001966E3 /* PostModalComponents */,
-				82B6B2D4298AD21800027E5A /* PostViewPrev.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";

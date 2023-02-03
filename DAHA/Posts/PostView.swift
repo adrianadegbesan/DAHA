@@ -39,7 +39,7 @@ struct PostView: View {
             
             PostImageView(post: post)
                 
-            NavigationLink(destination: MainScreen(), isActive: $buyNavigate){
+            NavigationLink(destination: Test(), isActive: $buyNavigate){
                 EmptyView()
             }
             
@@ -59,7 +59,7 @@ struct PostView: View {
         }
         .sheet(isPresented: $selected){
             PostModal(post: post, saved: $saved, reported: $reported, owner: owner)
-        
+            
         }
     }
 }

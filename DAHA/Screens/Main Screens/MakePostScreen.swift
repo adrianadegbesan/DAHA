@@ -32,8 +32,10 @@ struct MakePostScreen: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: MakePostScreenExit(), trailing: MakePostButton(post: $post))
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
-    
 }
 
 struct MakePostScreen_Previews: PreviewProvider {

@@ -60,6 +60,9 @@ struct EmailVerificationScreen: View {
                 code = String(await sendVerificationEmail(email: email, error_alert: $error_alert, error_message: $error_message) )
             }
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
         .alert("Error Verifying Email", isPresented: $error_alert, actions: {}, message: { Text("Error Verifying email, please check your network connection and try again later")})
         
         NavigationLink(destination: CreateAccountScreen().navigationBarHidden(true), isActive: $should_navigate){

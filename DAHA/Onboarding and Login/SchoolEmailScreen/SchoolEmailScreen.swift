@@ -42,6 +42,9 @@ struct SchoolEmailScreen: View {
             } //: VStack
             .ignoresSafeArea(.keyboard)
         }//: ZStack
+        .onTapGesture {
+            hideKeyboard()
+        }
         .ignoresSafeArea(.keyboard)
         .sheet(isPresented: $isPresented){
             UniversityNotFoundView(domain: $domain, isPresented: $isPresented)

@@ -15,8 +15,14 @@ struct ImageSelectorView: View {
         VStack{
             HStack{
                 CameraRollButton(images: $images)
+                    .onChange(of: images) { value in
+                        print (images.count)
+                    }
                 
                 CameraButton(images: $images)
+                    .onChange(of: images) { value in
+                        print (images.count)
+                    }
                 
                 Spacer()
                 
