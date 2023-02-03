@@ -23,7 +23,7 @@ struct BuyButton: View {
                     .lineLimit(1)
                 Image(systemName: "paperplane.fill")
                 
-                NavigationLink(destination: MainScreen(), isActive: $shouldNavigate){
+                NavigationLink(destination: Test(), isActive: $shouldNavigate){
                     EmptyView()
                 }
                 

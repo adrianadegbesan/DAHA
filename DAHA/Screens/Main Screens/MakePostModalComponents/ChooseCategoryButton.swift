@@ -26,7 +26,7 @@ struct ChooseCategoryButton: View {
                     }
             
             if (selected != ""){
-                Text(selected.uppercased())
+                Label(post.category.uppercased(), systemImage: category_images[post.category] ?? "")
                     .lineLimit(1)
                     .foregroundColor(.white)
                     .font(.system(size: 15, weight: .bold))

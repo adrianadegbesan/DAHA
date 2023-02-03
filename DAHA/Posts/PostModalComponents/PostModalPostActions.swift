@@ -20,8 +20,8 @@ struct PostModalPostActions: View {
                 BookmarkButton(post: post, saved: $saved)
                     .scaleEffect(1.2)
                 Spacer()
-                BuyButton(post: post)
-                    .scaleEffect(1.2)
+//                BuyButton(post: post)
+//                    .scaleEffect(1.2)
             }
         }
     }
@@ -30,6 +30,9 @@ struct PostModalPostActions: View {
 struct PostModalPostActions_Previews: PreviewProvider {
     static var previews: some View {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
-        PostModalPostActions(post: post, saved: .constant(false), owner: true)
+        NavigationView{
+            PostModalPostActions(post: post, saved: .constant(false), owner: false)
+            
+        }
     }
 }
