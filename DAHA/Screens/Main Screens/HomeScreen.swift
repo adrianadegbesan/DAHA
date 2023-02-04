@@ -21,14 +21,13 @@ struct HomeScreen: View {
                     HeaderView(title: university, showMessages: true, showSettings: false, showSearchBar: true)
                         .frame(alignment: .top)
                     Spacer()
-//                        ScrollView{
-//                            ForEach(1..<100){ i in
-//                                Text("\(i)")
-//                            }
-//                        }
-//                        .refreshable {
-//
-//                        }
+                        ScrollView{
+                            ProgressView()
+                                
+                        }
+                        .refreshable {
+
+                        }
 //                    Spacer()
     
 //                        Button(action: {

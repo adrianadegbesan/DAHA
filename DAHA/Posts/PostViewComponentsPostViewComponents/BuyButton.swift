@@ -19,6 +19,7 @@ struct BuyButton: View {
         }){
             HStack(spacing: 0){
                 Text("BUY")
+                    .font(.system(size: 12, weight: .bold))
                     .layoutPriority(1)
                     .lineLimit(1)
                 Image(systemName: "paperplane.fill")

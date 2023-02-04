@@ -9,10 +9,22 @@ import SwiftUI
 
 // Button used to go to DM Page
 struct DMButton: View {
+    @State var shouldNavigate = false
+    
     var body: some View {
-        NavigationLink(destination: {}) {
+//        NavigationLink(destination: {}) {
+        Button(action: {
+            MediumFeedback()
+            shouldNavigate = true
+            
+        }) {
             Image(systemName: "paperplane.fill")
-                .headerImage()
+                    .headerImage()
+            
+            NavigationLink(destination: Test(), isActive: $shouldNavigate){
+                EmptyView()
+            }
+    //        }
         }
         .foregroundColor(.black)
     }

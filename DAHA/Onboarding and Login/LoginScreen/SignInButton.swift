@@ -23,7 +23,7 @@ struct SignInButton: View {
     
     var body: some View {
         Button(action: {
-            
+            MediumFeedback()
             Task{
                 loggedIn = await authentication.signIn(email: email, password: password, error_alert: $error_alert, error_message: $error_message, username_temp: $username_temp)
             }

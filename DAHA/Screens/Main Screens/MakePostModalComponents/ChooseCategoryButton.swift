@@ -14,16 +14,18 @@ struct ChooseCategoryButton: View {
     
     var body: some View {
         HStack {
-            Text("Choose Category")
-                    .lineLimit(1)
-                    .font(.system(size: 15, weight: .bold))
-                    .padding(10)
-                    .background(Capsule().stroke(lineWidth: 5))
-                    .padding(.trailing, 10)
-                    .foregroundColor(.blue)
-                    .onTapGesture {
-                        isPresented = true
-                    }
+            Button(action: {
+                HeavyFeedback()
+                isPresented = true
+            }) {
+                Text("Choose Category")
+                        .lineLimit(1)
+                        .font(.system(size: 15, weight: .bold))
+                        .padding(10)
+                        .background(Capsule().stroke(lineWidth: 5))
+                        .padding(.trailing, 10)
+                        .foregroundColor(.blue)
+            }
             
             if (selected != ""){
                 Label(post.category.uppercased(), systemImage: category_images[post.category] ?? "")

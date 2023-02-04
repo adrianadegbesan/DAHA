@@ -32,7 +32,7 @@ struct HeaderView: View {
                         Text(title)
                             .channelText()
                     }
-                }.offset(x: -39)
+                }.offset(x: -38.2)
                 // Specific offset to get tounded rectangle attached to DAHA logo
                 Spacer()
                 

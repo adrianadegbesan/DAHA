@@ -13,25 +13,26 @@ struct CameraButton: View{
     @State private var isPresented: Bool = false
     
     var body: some View {
-        Image(systemName: "camera")
-            .resizable()
-            .foregroundColor(images.count == 3 ? .gray : .blue)
-            .frame(width: screenWidth * 0.23, height: screenHeight * 0.08)
-            .onTapGesture {
-                if images.count < 3{
-                    isPresented = true
-                }
+        Button(action: {
+            if images.count < 3{
+                HeavyFeedback()
+                isPresented = true
             }
-            .sheet(isPresented: $isPresented){
-//                ImagePickerView(selectedImage: self.$images, sourceType: .camera)
-                ImagePicker(image: $image)
-                    .onChange(of: image){ value in
-                        if image != nil{
-                            images.append(image!)
-                        }
+        }) {
+            Image(systemName: "camera")
+                .resizable()
+                .foregroundColor(images.count == 3 ? .gray : .blue)
+                .frame(width: screenWidth * 0.23, height: screenHeight * 0.08)
+        }
+        .sheet(isPresented: $isPresented){
+//                ImagePickerView(selectedImage: self.$image, sourceType: .camera)
+            ImagePicker(image: $image)
+                .onChange(of: image){ value in
+                    if image != nil{
+                        images.append(image!)
                     }
-                
             }
+        }
     }
 }
 

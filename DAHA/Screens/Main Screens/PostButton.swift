@@ -9,15 +9,27 @@ import SwiftUI
 
 //Button used to go to Posts Screen
 struct PostButton: View {
+    
+    @State var shouldNavigate : Bool = false
     var body: some View {
-        NavigationLink(destination: MakePostScreen()){
-            ZStack {
-                Image(systemName: "plus.circle.fill")
-                    .font(.system(size: 75, weight: .bold))
+        
+        Button(action: {
+            HeavyFeedback()
+            shouldNavigate = true
+        }){
+                ZStack {
+                    Image(systemName: "plus.circle.fill")
+                        .font(.system(size: 75, weight: .bold))
+                    
+                    NavigationLink(destination: MakePostScreen(), isActive: $shouldNavigate){
+                        EmptyView()
+                    }
+                }
+                .foregroundColor(.black)
             }
-        } .foregroundColor(.black)
+        }
     }
-}
+
 
 struct PostButton_Previews: PreviewProvider {
     static var previews: some View {

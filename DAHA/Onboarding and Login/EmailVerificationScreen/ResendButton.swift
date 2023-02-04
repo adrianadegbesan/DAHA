@@ -18,6 +18,7 @@ struct ResendButton: View {
     
     var body: some View {
         Button(action: {
+            MediumFeedback()
             Task {
                 code = String(await sendVerificationEmail(email: email, error_alert: $error_alert, error_message: $error_message))
             }

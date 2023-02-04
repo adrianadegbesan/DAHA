@@ -15,30 +15,34 @@ struct ConditionIcon: View {
     
     var body: some View {
         if (selected == condition){
-            Text(condition.uppercased())
-                .lineLimit(1)
-                .foregroundColor(.blue)
-                .font(.system(size: 10, weight: .bold))
-                .padding(10)
-                .background(Capsule().stroke(.blue, lineWidth: 5))
-                .padding(.trailing, 10)
-                .onTapGesture {
-                    selected = ""
-                    post.condition = ""
-                }
+            Button(action: {
+                LightFeedback()
+                selected = ""
+                post.condition = ""
+            }) {
+                Text(condition.uppercased())
+                    .lineLimit(1)
+                    .foregroundColor(.blue)
+                    .font(.system(size: 10, weight: .bold))
+                    .padding(10)
+                    .background(Capsule().stroke(.blue, lineWidth: 5))
+                    .padding(.trailing, 10)
+            }
             
         } else {
-            Text(condition.uppercased())
-                .lineLimit(1)
-//                .foregroundColor(.black)
-                .font(.system(size: 10, weight: .bold))
-                .padding(10)
-                .background(Capsule().stroke(lineWidth: 2))
-                .padding(.trailing, 10)
-                .onTapGesture {
-                    selected = condition
-                    post.condition = condition
-                }
+            Button(action: {
+                LightFeedback()
+                selected = condition
+                post.condition = condition
+            }) {
+                Text(condition.uppercased())
+                    .lineLimit(1)
+                    .foregroundColor(.black)
+                    .font(.system(size: 10, weight: .bold))
+                    .padding(10)
+                    .background(Capsule().stroke(.black, lineWidth: 2))
+                    .padding(.trailing, 10)
+            }
             
         }
 

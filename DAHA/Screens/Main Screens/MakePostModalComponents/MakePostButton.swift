@@ -12,11 +12,11 @@ struct MakePostButton: View {
     @Binding var post : PostModel
     var body: some View {
         Button(action:{
-            
+            MediumFeedback()
         }){
             ZStack{
                 Capsule().fill(Color(hex: deepBlue))
-                    .frame(width: 68, height: 30)
+                    .frame(width: screenWidth * 0.15, height: screenHeight * 0.04)
                     .offset(y: -7)
                 Text("Post")
                     .font(.system(size: 18, weight: .bold))

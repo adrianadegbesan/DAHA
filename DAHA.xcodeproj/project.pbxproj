@@ -59,6 +59,7 @@
 		82B6B2F0298C438E00027E5A /* CameraRollButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2EF298C438E00027E5A /* CameraRollButton.swift */; };
 		82B6B2F2298C4F1500027E5A /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F1298C4F1500027E5A /* CameraButton.swift */; };
 		82B6B2F4298C514400027E5A /* ImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F3298C514400027E5A /* ImagePreview.swift */; };
+		82B6B2F6298E018B00027E5A /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F5298E018B00027E5A /* Haptics.swift */; };
 		82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC29F298795E4001966E3 /* PostActionView.swift */; };
 		82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A1298796E7001966E3 /* PosterInfoView.swift */; };
 		82CBC2A429879752001966E3 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A329879752001966E3 /* PostImageView.swift */; };
@@ -147,6 +148,7 @@
 		82B6B2EF298C438E00027E5A /* CameraRollButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRollButton.swift; sourceTree = "<group>"; };
 		82B6B2F1298C4F1500027E5A /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		82B6B2F3298C514400027E5A /* ImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreview.swift; sourceTree = "<group>"; };
+		82B6B2F5298E018B00027E5A /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		82CBC29F298795E4001966E3 /* PostActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionView.swift; sourceTree = "<group>"; };
 		82CBC2A1298796E7001966E3 /* PosterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterInfoView.swift; sourceTree = "<group>"; };
 		82CBC2A329879752001966E3 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				82CEFC4B2969CC3300C55F67 /* TextField.swift */,
 				82E75AC2297E321600742F18 /* Email API.swift */,
 				82B6B2D2298A531300027E5A /* Date.swift */,
+				82B6B2F5298E018B00027E5A /* Haptics.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				82CEFC7C2969CF8D00C55F67 /* UniversityNotFoundView.swift in Sources */,
 				82CEFC742969CF0100C55F67 /* SchoolEmailScreen.swift in Sources */,
 				8236021029879425002E7AEC /* PostDescriptionView.swift in Sources */,
+				82B6B2F6298E018B00027E5A /* Haptics.swift in Sources */,
 				82CEFC872969D02400C55F67 /* LoginButton.swift in Sources */,
 				82B6B2E6298B75D800027E5A /* CategoryIconView.swift in Sources */,
 				8236020E298791BE002E7AEC /* BookmarkButton.swift in Sources */,

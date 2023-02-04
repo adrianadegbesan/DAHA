@@ -26,6 +26,7 @@ struct FirstContinueButton: View {
     
     var body: some View {
         Button(action: {
+            MediumFeedback()
             isValid = isValidEmailAddress(emailAddressString: email)
             domain = getDomain(email: email)
             

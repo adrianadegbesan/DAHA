@@ -12,11 +12,17 @@ struct ForgotPasswordButton: View {
     @State private var shouldNavigate : Bool = false
     
     var body: some View {
-        NavigationLink(destination: ForgotPasswordScreen()){
+        Button(action: {
+            LightFeedback()
+            shouldNavigate = true
+        }){
             HStack{
                 Text("Forgot Password")
                     .foregroundColor(.gray)
+                
+                NavigationLink("", destination: ForgotPasswordScreen(), isActive: $shouldNavigate)
             }
+            
         }
 }
     

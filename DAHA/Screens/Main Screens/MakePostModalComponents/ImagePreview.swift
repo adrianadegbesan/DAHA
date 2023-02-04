@@ -17,7 +17,9 @@ struct ImagePreview: View {
             ZStack{
                 Image(uiImage: image!)
                     .resizable()
+//                    .cornerRadius(15)
                     .scaledToFit()
+                    .clipped()
                     .frame(width: screenWidth * 0.925, height: screenHeight * 0.9)
                     .padding(.bottom, 15)
                 Image(systemName: "multiply.circle")
@@ -30,7 +32,7 @@ struct ImagePreview: View {
                             images.remove(at: index!)
                         }
                     }
-                    .offset(x: -screenWidth * 0.42, y: -screenHeight * 0.17)
+                    .offset(x: -screenWidth * 0.42, y: -screenHeight * 0.2)
             }
         }
     }

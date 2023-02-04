@@ -19,18 +19,20 @@ struct TermsConditionsScreen: View {
                 .padding(.bottom, 20)
             Text("Terms and Conditions")
                 .titleText()
-            PageBottomDivider()
-                .padding(.horizontal, 15)
-            ScrollView{
-                VStack(alignment: .leading){
-                    Text("Terms")
-                        .frame(alignment: .leading)
+            VStack(spacing: 0){
+                PageBottomDivider()
+                    .padding(.horizontal, 15)
+                ScrollView{
+                    VStack(alignment: .leading){
+                        Text("Terms")
+                            .frame(alignment: .leading)
+                    }
                 }
-            }
-            .padding(.horizontal, 15)
-            PageBottomDivider()
                 .padding(.horizontal, 15)
-                .padding(.bottom, 15)
+                PageBottomDivider()
+                    .padding(.horizontal, 15)
+                    .padding(.bottom, 15)
+            }
             HStack{
                 Image(systemName: toggle ? "checkmark.square.fill" : "square")
                     .scaleEffect(1.3)

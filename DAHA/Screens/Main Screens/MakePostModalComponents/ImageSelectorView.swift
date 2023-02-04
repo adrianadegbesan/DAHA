@@ -10,6 +10,7 @@ import SwiftUI
 struct ImageSelectorView: View {
  
     @Binding var images: [UIImage]
+    @State var image: UIImage?
     
     var body: some View {
         VStack{
@@ -31,9 +32,7 @@ struct ImageSelectorView: View {
             
             if !images.isEmpty{
                 TabView {
-                    //post.imageURLs
                     ForEach(images, id: \.self) { image in
-                    //AsyncImage
                         ImagePreview(image: image, images:$images)
                       
                   } //: LOOP
@@ -44,7 +43,7 @@ struct ImageSelectorView: View {
                 .frame(width: screenWidth * 0.94, height: screenHeight * 0.45)
                 .overlay (
                    Rectangle()
-                        .strokeBorder(lineWidth: 5)
+                        .strokeBorder(lineWidth: 4)
                 )
             }
         }

@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct LoginButton: View {
+    @State var shouldNavigate = false
     var body: some View {
-        NavigationLink(destination: LoginScreen()) {
+        Button(action: {
+            MediumFeedback()
+            shouldNavigate = true
+            
+        }) {
             Text("LOGIN")
-                .font(
-                    .system(size:30, weight: .bold)
-                )
+                    .font(
+                        .system(size:30, weight: .bold)
+                    )
                 .foregroundColor(Color.init(hex: darkGrey))
+            NavigationLink(destination: LoginScreen(), isActive: $shouldNavigate){
+                EmptyView()
+            }
         }
     }
 }

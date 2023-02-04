@@ -13,12 +13,16 @@ struct MakePostScreenExit: View {
     var body: some View {
         VStack{
             HStack{
-                Image(systemName: "multiply")
-                    .padding(.bottom, 10)
-                    .scaleEffect(1.5)
-                    .onTapGesture {
-                        dismiss()
-                    }
+                Button(action: {
+                    MediumFeedback()
+                    dismiss()
+                }){
+                    Image(systemName: "multiply")
+                        .padding(.bottom, 10)
+                        .padding(.trailing, 0)
+                        .scaleEffect(1.5)
+                }
+                .foregroundColor(.black)
                 Text("Cancel")
                     .font(.system(size: 18, weight: .bold))
                     .padding(.bottom, 14)

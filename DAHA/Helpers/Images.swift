@@ -110,7 +110,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
 
 //struct ImagePickerView: UIViewControllerRepresentable {
 //
-//    @Binding var selectedImage: [UIImage]
+//    @Binding var selectedImage: UIImage?
 //    @Environment(\.presentationMode) var isPresented
 //    var sourceType: UIImagePickerController.SourceType
 //
@@ -140,9 +140,8 @@ struct PhotoPicker: UIViewControllerRepresentable {
 //
 //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 //        guard let selectedImage = info[.originalImage] as? UIImage else { return }
-//        self.picker.selectedImage.append(selectedImage)
+//        self.picker.selectedImage = selectedImage
 //
-//        print("count is: \(self.picker.selectedImage.count)!")
 //        self.picker.isPresented.wrappedValue.dismiss()
 //    }
 //

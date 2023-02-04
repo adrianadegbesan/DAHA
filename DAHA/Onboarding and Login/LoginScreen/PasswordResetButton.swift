@@ -17,6 +17,7 @@ struct PasswordResetButton: View {
     
     var body: some View {
         Button(action: {
+            MediumFeedback()
             authentication.sendPasswordReset(email: email, error_alert: $error_alert, success_alert: $success_alert)
         }){
             ZStack {

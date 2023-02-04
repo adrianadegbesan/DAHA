@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct SettingsButton: View {
+    @State var shouldNavigate = false
+    
     var body: some View {
-        NavigationLink(destination: {}) {
+        Button(action: {
+            MediumFeedback()
+            shouldNavigate = true
+            
+        }) {
             Image(systemName: "gearshape")
-                .headerImage()
+                    .headerImage()
+            
+            NavigationLink(destination: Test(), isActive: $shouldNavigate){
+                EmptyView()
+            }
         }
         .foregroundColor(.black)
     }
