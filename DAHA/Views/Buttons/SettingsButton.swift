@@ -12,7 +12,7 @@ struct SettingsButton: View {
     
     var body: some View {
         Button(action: {
-            MediumFeedback()
+//            MediumFeedback()
             shouldNavigate = true
             
         }) {

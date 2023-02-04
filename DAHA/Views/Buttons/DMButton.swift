@@ -14,7 +14,7 @@ struct DMButton: View {
     var body: some View {
 //        NavigationLink(destination: {}) {
         Button(action: {
-            MediumFeedback()
+//            MediumFeedback()
             shouldNavigate = true
             
         }) {

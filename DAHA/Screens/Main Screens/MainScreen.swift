@@ -17,28 +17,27 @@ struct MainScreen: View {
         TabView{
             HomeScreen()
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("", systemImage: "house")
                 }
 
             SearchScreen()
                 .tabItem{
-                    Label("Search", systemImage: "magnifyingglass")
+                    Label("", systemImage: "magnifyingglass")
                 }
 
             SavedScreen()
                 .tabItem{
-                    Label("Saved", systemImage: "bookmark")
+                    Label("", systemImage: "bookmark")
                 }
 
             ProfileScreen()
                 .tabItem{
-                    Label("Profile", systemImage: "person.circle")
+                    Label("", systemImage: "person.circle")
                 }
             
         } //TabView
         .accentColor(Color(hex: "0703d0"))
         .navigationBarBackButtonHidden(true)
-        
 //
         
     }

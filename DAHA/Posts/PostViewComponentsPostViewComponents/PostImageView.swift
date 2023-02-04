@@ -24,13 +24,13 @@ struct PostImageView: View {
           } //: LOOP
         } //: TAB
         .tabViewStyle(PageTabViewStyle())
-//        .indexViewStyle(.page(backgroundDisplayMode: .automatic))
-        .padding(3)
+        .padding(2.7)
         .frame(width: screenWidth * 0.385, height: screenHeight * 0.21)
         .overlay (
             RoundedRectangle(cornerRadius: 15)
-                .strokeBorder(.gray.opacity(0.5), lineWidth: 4)
+                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 3.75)
         )
+      
     }
 }
 

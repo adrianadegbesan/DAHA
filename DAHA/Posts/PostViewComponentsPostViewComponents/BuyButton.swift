@@ -15,6 +15,7 @@ struct BuyButton: View {
     var body: some View {
         Button(action: {
             //MessagingAction
+            LightFeedback()
             shouldNavigate = true
         }){
             HStack(spacing: 0){

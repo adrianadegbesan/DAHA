@@ -16,7 +16,7 @@ struct HeaderView: View {
     let showSearchBar: Bool
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 0){
             HStack{
                 // Left half of black block (DAHA logo)
                 Image("Logo")

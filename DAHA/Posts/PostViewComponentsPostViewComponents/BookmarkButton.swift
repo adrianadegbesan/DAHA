@@ -15,20 +15,25 @@ struct BookmarkButton: View {
     var body: some View {
         
         if !saved{
-            Image(systemName: "bookmark")
-                .font(.system(size: 23, weight: .bold))
-                .onTapGesture {
-                    //Save Function
-                    saved.toggle()
-                }
+            Button(action: {
+                LightFeedback()
+                saved.toggle()
+            }) {
+                Image(systemName: "bookmark")
+                    .font(.system(size: 23, weight: .bold))
+            }
+            .foregroundColor(.black)
         } else {
-            Image(systemName: "bookmark.fill")
-                .font(.system(size: 23, weight: .bold))
-                .foregroundColor(Color(hex: deepBlue))
-                .onTapGesture {
-                    //Save Function
-                    saved.toggle()
-                }
+            Button(action: {
+                LightFeedback()
+                saved.toggle()
+                
+            }) {
+                Image(systemName: "bookmark.fill")
+                    .font(.system(size: 23, weight: .bold))
+                    .foregroundColor(Color(hex: deepBlue))
+            }
+            .foregroundColor(.black)
         }
         //ALERT
     }

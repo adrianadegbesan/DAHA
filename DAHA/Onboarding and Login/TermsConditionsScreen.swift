@@ -48,9 +48,10 @@ struct TermsConditionsScreen: View {
             }
             Button(action: {
                 if toggle {
+                    LightFeedback()
                     agreedToTerms = true
                     shouldNavigate = true
-                }
+                } 
             }){
                 ZStack {
                     // Blue Button background

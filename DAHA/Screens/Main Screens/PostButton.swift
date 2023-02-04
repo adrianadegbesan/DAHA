@@ -14,7 +14,7 @@ struct PostButton: View {
     var body: some View {
         
         Button(action: {
-            HeavyFeedback()
+            MediumFeedback()
             shouldNavigate = true
         }){
                 ZStack {

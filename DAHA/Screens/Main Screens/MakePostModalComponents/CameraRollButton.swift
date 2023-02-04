@@ -19,7 +19,7 @@ struct CameraRollButton: View {
 
         Button(action: {
             if images.count < 3{
-                HeavyFeedback()
+                LightFeedback()
                 isPresented = true
             }
         }){

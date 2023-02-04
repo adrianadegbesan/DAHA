@@ -40,7 +40,7 @@ struct PostModalDescription: View {
             .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
             .overlay (
                 RoundedRectangle(cornerRadius: 15)
-                    .strokeBorder(lineWidth: 2)
+                    .strokeBorder(lineWidth: 4)
             )
             
             HStack{

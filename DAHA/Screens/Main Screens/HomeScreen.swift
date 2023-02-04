@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 // Home Screen
 struct HomeScreen: View {
@@ -13,6 +14,9 @@ struct HomeScreen: View {
     @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("university") var university: String = ""
     @State var shouldNavigate : Bool = false
+
+    
+    let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: nil, condition: "Good", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
     
     var body: some View {
             ZStack {
@@ -20,15 +24,16 @@ struct HomeScreen: View {
                 VStack(spacing: 0) {
                     HeaderView(title: university, showMessages: true, showSettings: false, showSearchBar: true)
                         .frame(alignment: .top)
-                    Spacer()
+//                    Spacer()
                         ScrollView{
-                            ProgressView()
+                            PostView(post: post, owner: false)
+                                .padding(.top, 15)
                                 
                         }
                         .refreshable {
 
                         }
-//                    Spacer()
+                    Spacer()
     
 //                        Button(action: {
 //                            isOnboardingViewActive = true
