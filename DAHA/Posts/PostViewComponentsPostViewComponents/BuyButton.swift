@@ -19,11 +19,15 @@ struct BuyButton: View {
             shouldNavigate = true
         }){
             HStack(spacing: 0){
-                Text("BUY")
-                    .font(.system(size: 12, weight: .bold))
+                Text("BUY ")
+                    .fixedSize(horizontal: true, vertical: false)
+                    .font(.system(size: 11, weight: .bold))
+                    .minimumScaleFactor(0.5)
                     .layoutPriority(1)
                     .lineLimit(1)
                 Image(systemName: "paperplane.fill")
+                    .font(.system(size: 11, weight: .bold))
+                    .minimumScaleFactor(0.5)
                 
                 NavigationLink(destination: Test(), isActive: $shouldNavigate){
                     EmptyView()
@@ -32,7 +36,7 @@ struct BuyButton: View {
             }
             .padding(.vertical, 6)
             .padding(.horizontal, 12)
-            .font(.system(size: 15, weight: .bold))
+//            .font(.system(size: 15, weight: .bold))
             .foregroundColor(.white)
             .background(Capsule().fill(Color(hex: deepBlue)))
             //ALERT

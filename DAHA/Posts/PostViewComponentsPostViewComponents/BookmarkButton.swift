@@ -20,7 +20,7 @@ struct BookmarkButton: View {
                 saved.toggle()
             }) {
                 Image(systemName: "bookmark")
-                    .font(.system(size: 23, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
             }
             .foregroundColor(.black)
         } else {

@@ -25,10 +25,7 @@ struct ImagePreview: View {
                         .strokeBorder(lineWidth: 3)
                     )
                     .scaleEffect(0.93)
-                    
-
-//                    .frame(width: screenWidth * 0.925, height: screenHeight * 0.9)
-//                    .padding(.bottom, 15)
+            
                 Image(systemName: "multiply.circle.fill")
                     .foregroundColor(.red)
                     .font(.system(size: 20))

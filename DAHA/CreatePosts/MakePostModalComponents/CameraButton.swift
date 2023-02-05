@@ -15,7 +15,6 @@ struct CameraButton: View{
     var body: some View {
         Button(action: {
             if images.count < 3{
-                LightFeedback()
                 isPresented = true
             }
         }) {

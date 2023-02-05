@@ -14,7 +14,6 @@ struct MakePostScreenExit: View {
         VStack{
             HStack{
                 Button(action: {
-                    MediumFeedback()
                     dismiss()
                 }){
                     Image(systemName: "multiply")
