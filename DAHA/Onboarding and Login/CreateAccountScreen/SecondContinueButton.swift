@@ -33,7 +33,7 @@ struct SecondContinueButton: View {
     
     var body: some View {
         Button(action: {
-            MediumFeedback()
+            LightFeedback()
             Task {
                 let username_temp = username.replacingOccurrences(of: " ", with: "")
                 let password_temp = password.replacingOccurrences(of: " ", with: "")

@@ -11,7 +11,7 @@ struct LoginButton: View {
     @State var shouldNavigate = false
     var body: some View {
         Button(action: {
-            MediumFeedback()
+            LightFeedback()
             shouldNavigate = true
             
         }) {

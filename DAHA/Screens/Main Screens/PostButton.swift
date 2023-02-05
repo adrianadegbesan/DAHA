@@ -19,7 +19,7 @@ struct PostButton: View {
         }){
                 ZStack {
                     Image(systemName: "plus.circle.fill")
-                        .font(.system(size: 75, weight: .bold))
+                        .font(.system(size: 65, weight: .bold))
                     
                     NavigationLink(destination: MakePostScreen(), isActive: $shouldNavigate){
                         EmptyView()

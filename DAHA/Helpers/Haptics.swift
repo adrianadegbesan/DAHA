@@ -24,3 +24,8 @@ func LightFeedback() {
     generator.impactOccurred()
 }
 
+func SoftFeedback() {
+    let generator = UIImpactFeedbackGenerator(style: .soft)
+    generator.impactOccurred()
+}
+

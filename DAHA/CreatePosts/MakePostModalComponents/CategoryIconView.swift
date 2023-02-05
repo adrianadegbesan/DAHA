@@ -17,13 +17,13 @@ struct CategoryIconView: View {
     var body: some View {
         Button(action: {
             if selected != category {
-                LightFeedback()
+                SoftFeedback()
                 selected = category
                 post.category = category
                 dismiss()
                 
             } else {
-                LightFeedback()
+                SoftFeedback()
                 selected = ""
                 post.category = ""
                 dismiss()

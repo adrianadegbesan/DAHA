@@ -19,6 +19,8 @@ struct PostView: View {
     @State private var buyNavigate : Bool = false
     @State var owner : Bool
     
+    @Environment(\.colorScheme) var colorScheme
+    
     
     var body: some View {
         
@@ -67,15 +69,15 @@ struct PostView: View {
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 2)
+                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 4)
                 .shadow(radius: 3, y: 1.5)
         )
-        .background(.white)
+        .background(colorScheme == .dark ? .black : .white)
         .cornerRadius(20)
-        .onTapGesture(count: 2) {
-            MediumFeedback()
-            buyNavigate = true
-        }
+//        .onTapGesture(count: 2) {
+//            MediumFeedback()
+//            buyNavigate = true
+//        }
         .onTapGesture {
             LightFeedback()
             selected = true

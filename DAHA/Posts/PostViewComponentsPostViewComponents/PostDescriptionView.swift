@@ -30,6 +30,7 @@ struct PostDescriptionView: View {
             .padding(.bottom, 1)
             
         }
+//        .foregroundColor(.black)
     }
 }
 

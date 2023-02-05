@@ -15,7 +15,7 @@ struct ChooseCategoryButton: View {
     var body: some View {
         HStack {
             Button(action: {
-                MediumFeedback()
+                LightFeedback()
                 isPresented = true
             }) {
                 Text("Choose Category")

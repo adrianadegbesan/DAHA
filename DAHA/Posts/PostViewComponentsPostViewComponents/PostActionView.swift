@@ -16,6 +16,7 @@ struct PostActionView: View {
     var body: some View {
         HStack{
             Text(post.price)
+//                .foregroundColor(.black)
                 .font(.system(size: 20, weight: .bold))
                 .layoutPriority(1)
             

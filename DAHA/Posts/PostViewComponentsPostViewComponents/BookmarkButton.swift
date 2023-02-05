@@ -11,6 +11,7 @@ struct BookmarkButton: View {
     
     @State var post: PostModel
     @Binding var saved: Bool
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         
@@ -20,9 +21,9 @@ struct BookmarkButton: View {
                 saved.toggle()
             }) {
                 Image(systemName: "bookmark")
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 23, weight: .bold))
             }
-            .foregroundColor(.black)
+            .foregroundColor(colorScheme == .dark ? .white : .black)
         } else {
             Button(action: {
                 LightFeedback()

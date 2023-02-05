@@ -16,7 +16,7 @@ struct SignUpButton: View {
 //        NavigationLink(destination: SchoolEmailScreen()
 //            .navigationTitle("")){
         Button(action: {
-            MediumFeedback()
+            LightFeedback()
             shouldNavigate = true
         }) {
             ZStack {

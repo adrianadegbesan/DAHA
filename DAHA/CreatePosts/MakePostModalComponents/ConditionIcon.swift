@@ -12,11 +12,13 @@ struct ConditionIcon: View {
     @Binding var post: PostModel
     @State var condition : String
     @Binding var selected : String
+    @Environment(\.colorScheme) var colorScheme
+    
     
     var body: some View {
         if (selected == condition){
             Button(action: {
-                LightFeedback()
+                SoftFeedback()
                 selected = ""
                 post.condition = ""
             }) {
@@ -37,10 +39,10 @@ struct ConditionIcon: View {
             }) {
                 Text(condition.uppercased())
                     .lineLimit(1)
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
                     .font(.system(size: 10, weight: .bold))
                     .padding(10)
-                    .background(Capsule().stroke(.black, lineWidth: 2))
+                    .background(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                     .padding(.trailing, 10)
             }
             

@@ -13,7 +13,6 @@ struct ForgotPasswordButton: View {
     
     var body: some View {
         Button(action: {
-            LightFeedback()
             shouldNavigate = true
         }){
             HStack{
