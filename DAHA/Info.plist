@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>DAHA needs permission to record audio</string>
 	<key>NSCameraUsageDescription</key>
-	<string>We need permission for your system camera</string>
+	<string>DAHA needs permission to use your camera</string>
 	<key>EMAIL_TOKEN</key>
 	<string>$(EMAIL_TOKEN)</string>
 	<key>CFBundleURLTypes</key>

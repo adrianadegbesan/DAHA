@@ -13,18 +13,23 @@ struct CategoryViewPrev: View {
     var body: some View {
         HStack{
             
-            Label(post.category.uppercased(), systemImage: category_images[post.category] ?? "")
+//            Label(post.category.uppercased(), systemImage: category_images[post.category] ?? "")
+            (Text(Image(systemName: category_images[post.category] ?? "")) + Text(" ") + Text(post.category.uppercased()))
                 .lineLimit(1)
+                .minimumScaleFactor(0.001)
+                .fixedSize(horizontal: true, vertical: false)
+                .font(.system(size: 8.5, weight: .bold))
                 .foregroundColor(.white)
-                .font(.system(size: 7.5, weight: .bold))
+                .layoutPriority(1)
                 .padding(10)
                 .background(Capsule().fill(Color(hex: category_colors[post.category] ?? "000000")))
-                .padding(.trailing, 10)
+                .padding(.trailing, 6)
             
             Text(post.condition.uppercased())
                 .lineLimit(1)
-//                .foregroundColor(.white)
-                .font(.system(size: 7.5, weight: .bold))
+                .minimumScaleFactor(0.001)
+                .fixedSize(horizontal: true, vertical: false)
+                .font(.system(size: 8.5, weight: .bold))
                 .padding(10)
                 .background(Capsule().stroke(lineWidth: 2))
                 .padding(.trailing, 10)

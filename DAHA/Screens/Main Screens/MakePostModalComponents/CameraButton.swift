@@ -25,13 +25,7 @@ struct CameraButton: View{
                 .frame(width: screenWidth * 0.23, height: screenHeight * 0.08)
         }
         .sheet(isPresented: $isPresented){
-//                ImagePickerView(selectedImage: self.$image, sourceType: .camera)
-            ImagePicker(image: $image)
-                .onChange(of: image){ value in
-                    if image != nil{
-                        images.append(image!)
-                    }
-            }
+            CustomCameraView(capturedImage: $image, images: $images)
         }
     }
 }

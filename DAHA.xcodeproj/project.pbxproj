@@ -60,6 +60,9 @@
 		82B6B2F2298C4F1500027E5A /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F1298C4F1500027E5A /* CameraButton.swift */; };
 		82B6B2F4298C514400027E5A /* ImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F3298C514400027E5A /* ImagePreview.swift */; };
 		82B6B2F6298E018B00027E5A /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F5298E018B00027E5A /* Haptics.swift */; };
+		82B6B2F8298F27A100027E5A /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F7298F27A100027E5A /* Camera.swift */; };
+		82B6B2FA298F394300027E5A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F9298F394300027E5A /* CameraView.swift */; };
+		82B6B2FC298F3C8300027E5A /* CustomCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2FB298F3C8300027E5A /* CustomCameraView.swift */; };
 		82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC29F298795E4001966E3 /* PostActionView.swift */; };
 		82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A1298796E7001966E3 /* PosterInfoView.swift */; };
 		82CBC2A429879752001966E3 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A329879752001966E3 /* PostImageView.swift */; };
@@ -149,6 +152,9 @@
 		82B6B2F1298C4F1500027E5A /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		82B6B2F3298C514400027E5A /* ImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreview.swift; sourceTree = "<group>"; };
 		82B6B2F5298E018B00027E5A /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		82B6B2F7298F27A100027E5A /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		82B6B2F9298F394300027E5A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		82B6B2FB298F3C8300027E5A /* CustomCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCameraView.swift; sourceTree = "<group>"; };
 		82CBC29F298795E4001966E3 /* PostActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionView.swift; sourceTree = "<group>"; };
 		82CBC2A1298796E7001966E3 /* PosterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterInfoView.swift; sourceTree = "<group>"; };
 		82CBC2A329879752001966E3 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
@@ -413,6 +419,9 @@
 				82E75AC2297E321600742F18 /* Email API.swift */,
 				82B6B2D2298A531300027E5A /* Date.swift */,
 				82B6B2F5298E018B00027E5A /* Haptics.swift */,
+				82B6B2F7298F27A100027E5A /* Camera.swift */,
+				82B6B2F9298F394300027E5A /* CameraView.swift */,
+				82B6B2FB298F3C8300027E5A /* CustomCameraView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -616,6 +625,7 @@
 				82B6B2E9298B787E00027E5A /* CategoryModal.swift in Sources */,
 				82B6B2CF298A16BD00027E5A /* MakePostTextInputs.swift in Sources */,
 				82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */,
+				82B6B2FA298F394300027E5A /* CameraView.swift in Sources */,
 				82CEFC592969CD7400C55F67 /* HomeScreen.swift in Sources */,
 				82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */,
 				82CEFC522969CC7000C55F67 /* UserAuth.swift in Sources */,
@@ -627,6 +637,7 @@
 				82B6B2DF298B270300027E5A /* TermsConditionsScreen.swift in Sources */,
 				823602052985ABF0002E7AEC /* PostView.swift in Sources */,
 				82E75AC3297E321600742F18 /* Email API.swift in Sources */,
+				82B6B2FC298F3C8300027E5A /* CustomCameraView.swift in Sources */,
 				82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */,
 				82B6B2EC298C3BD300027E5A /* Network.swift in Sources */,
 				82B6B2F4298C514400027E5A /* ImagePreview.swift in Sources */,
@@ -656,6 +667,7 @@
 				82B6B2E4298B73E000027E5A /* ChooseCategoryButton.swift in Sources */,
 				82CEFC462969CBF000C55F67 /* Images.swift in Sources */,
 				82B6B2D5298AD21800027E5A /* PostViewPrev.swift in Sources */,
+				82B6B2F8298F27A100027E5A /* Camera.swift in Sources */,
 				82CBC2AE2989BB21001966E3 /* PostModalDescription.swift in Sources */,
 				82CEFC4C2969CC3300C55F67 /* TextField.swift in Sources */,
 				82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */,

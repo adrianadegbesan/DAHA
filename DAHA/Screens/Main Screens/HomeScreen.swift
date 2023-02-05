@@ -27,7 +27,7 @@ struct HomeScreen: View {
 //                    Spacer()
                         ScrollView{
                             PostView(post: post, owner: false)
-                                .padding(.top, 15)
+                                .padding(.top, 10)
                                 
                         }
                         .refreshable {
@@ -35,13 +35,6 @@ struct HomeScreen: View {
                         }
                     Spacer()
     
-//                        Button(action: {
-//                            isOnboardingViewActive = true
-//                            isSignedIn = false
-//                        }, label: {
-//                            Text("Log Out")
-//                                .font(.system(size:20, weight: .bold))
-//                    }) //: Button
                     
                     PageBottomDivider()
                 } //: VStack

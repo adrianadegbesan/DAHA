@@ -16,19 +16,24 @@ struct CategoryView: View {
         HStack{
             
    
-            Label(post.category.uppercased(), systemImage: category_images[post.category] ?? "")
+//            Label(post.category.uppercased(), systemImage: category_images[post.category] ?? "")
+            
+            (Text(Image(systemName: category_images[post.category] ?? "")) + Text(" ") + Text(post.category.uppercased()))
                 .lineLimit(1)
+                .fixedSize(horizontal: true, vertical: false)
+                .minimumScaleFactor(0.001)
+                .font(.system(size: 9.5, weight: .bold))
                 .layoutPriority(1)
                 .foregroundColor(.white)
-                .font(.system(size: 7, weight: .bold))
                 .padding(10)
                 .background(Capsule().fill(Color(hex: category_colors[post.category] ?? "000000")))
-                .padding(.trailing, 10)
+                .padding(.trailing, 6)
             
             Text(post.condition.uppercased())
                 .lineLimit(1)
-            //                .foregroundColor(.white)
-                .font(.system(size: 7, weight: .bold))
+                .fixedSize(horizontal: true, vertical: false)
+                .minimumScaleFactor(0.001)
+                .font(.system(size: 9.5, weight: .bold))
                 .padding(10)
                 .background(Capsule().stroke(lineWidth: 2))
                 .padding(.trailing, 10)

@@ -38,13 +38,32 @@ struct PostView: View {
             Spacer()
             
             PostImageView(post: post)
+            
+//            if !post.imageURLs.isEmpty{
+//                PostImageView(post: post)
+//            }
+            
+            
+            
+//            else {
+//                Image(systemName: category_images[post.category] ?? "bag.fill")
+//                    .scaleEffect(5)
+//                    .frame(width: screenWidth * 0.385, height: screenHeight * 0.21)
+//                    .foregroundColor(Color(hex: category_colors[post.category] ?? "000000") )
+//                    .overlay (
+//                        RoundedRectangle(cornerRadius: 15)
+//                            .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 3.75)
+//                    )
+//            }
+            
+           
                 
             NavigationLink(destination: Test(), isActive: $buyNavigate){
                 EmptyView()
             }
             
         } //HStack
-        .frame(width: screenWidth * 0.902, height: screenHeight * 0.22)
+        .frame(width: screenWidth * 0.902, height: screenHeight * 0.2)
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 20)

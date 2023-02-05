@@ -31,7 +31,7 @@ struct MakePostScreen: View {
             .padding()
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: MakePostScreenExit(), trailing: MakePostButton(post: $post))
+        .navigationBarItems(leading: MakePostScreenExit(), trailing: MakePostButton(post: $post, images: $images))
         .onTapGesture {
             hideKeyboard()
         }

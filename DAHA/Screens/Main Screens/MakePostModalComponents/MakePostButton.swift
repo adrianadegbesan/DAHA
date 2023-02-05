@@ -10,6 +10,8 @@ import SwiftUI
 struct MakePostButton: View {
     
     @Binding var post : PostModel
+    @Binding var images: [UIImage]
+    
     var body: some View {
         Button(action:{
             MediumFeedback()
@@ -31,6 +33,7 @@ struct MakePostButton: View {
 struct MakePostButton_Previews: PreviewProvider {
     static var previews: some View {
         let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [])
-        MakePostButton(post: .constant(post))
+        let images : [UIImage] = []
+        MakePostButton(post: .constant(post), images: .constant(images))
     }
 }

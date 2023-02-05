@@ -17,15 +17,13 @@ struct ImagePreview: View {
             ZStack{
                 Image(uiImage: image!)
                     .resizable()
-//                    .cornerRadius(15)
                     .scaledToFit()
                     .clipped()
                     .frame(width: screenWidth * 0.925, height: screenHeight * 0.9)
                     .padding(.bottom, 15)
-                Image(systemName: "multiply.circle")
-                    .resizable()
+                Image(systemName: "multiply.circle.fill")
                     .foregroundColor(.red)
-                    .frame(width: 18, height: 18)
+                    .font(.system(size: 20))
                     .onTapGesture {
                         let index = images.firstIndex(of: image!)
                         if index != nil{

@@ -23,8 +23,9 @@ struct PostDescriptionView: View {
             
             HStack{
                 Text(post.description)
-                    .font(.system(size: 15))
+                    .font(.system(size: 12.5))
                     .lineLimit(2)
+                    
             }
             .padding(.bottom, 1)
             

@@ -43,9 +43,38 @@ struct PostModalDescription: View {
                     .strokeBorder(lineWidth: 4)
             )
             
+//            if !post.imageURLs.isEmpty {
+//                TabView {
+//                    //post.imageURLs
+//                    ForEach(images, id: \.self) { item in
+//                    //AsyncImage
+//                      Image(item)
+//                      .resizable()
+//                      .cornerRadius(15)
+//                  } //: LOOP
+//                } //: TAB
+//                .tabViewStyle(PageTabViewStyle())
+//                .indexViewStyle(.page(backgroundDisplayMode: .always))
+//                .padding(2.3)
+//                .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
+//                .overlay (
+//                    RoundedRectangle(cornerRadius: 15)
+//                        .strokeBorder(lineWidth: 4)
+//                )
+//
+//            } else {
+//                Image(systemName: category_images[post.category] ?? "bag.fill")
+//                    .scaleEffect(10)
+//                    .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
+//                    .foregroundColor(Color(hex: category_colors[post.category] ?? "000000") )
+//                    .overlay (
+//                        RoundedRectangle(cornerRadius: 15)
+//                            .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 3.75)
+//                    )
+//            }
+            
             HStack{
                 Text(post.description)
-                    .lineLimit(4)
             }
             .padding(.bottom, 10)
         }
