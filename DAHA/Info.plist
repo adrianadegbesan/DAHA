@@ -18,13 +18,6 @@
 	<key>EMAIL_TOKEN</key>
 	<string>$(EMAIL_TOKEN)</string>
 	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIColorName</key>
-		<string>BackgroundGrey</string>
-		<key>UIImageName</key>
-		<string>Splash Screen</string>
-		<key>UILaunchScreen</key>
-		<dict/>
-	</dict>
+	<dict/>
 </dict>
 </plist>

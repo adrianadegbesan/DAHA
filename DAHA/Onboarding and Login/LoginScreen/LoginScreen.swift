@@ -33,7 +33,7 @@ struct LoginScreen: View {
                 SignInButton(email: $email, password: $password)
                 ForgotPasswordButton()
             }
-            .background(.ultraThinMaterial)
+//            .background(.ultraThinMaterial)
         }
         .onTapGesture {
             hideKeyboard()

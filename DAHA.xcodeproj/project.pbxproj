@@ -394,6 +394,7 @@
 				82DF4CB12973C7FA00A309CF /* DAHA.entitlements */,
 				82CEFC8C2969D0DF00C55F67 /* Info.plist */,
 				82CEFC312969CB2C00C55F67 /* DAHAApp.swift */,
+				82CEFC532969CC9B00C55F67 /* LaunchScreen.swift */,
 				82CEFC332969CB2C00C55F67 /* ContentView.swift */,
 				82B6B2EA298C3BB300027E5A /* Network */,
 				82D2D0E0296CAD4E00CB4B9A /* Firebase */,
@@ -450,7 +451,6 @@
 		82CEFC412969CBB600C55F67 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				82CEFC532969CC9B00C55F67 /* LaunchScreen.swift */,
 				82CEFC552969CD4A00C55F67 /* Main Screens */,
 				82CEFC602969CE1B00C55F67 /* Secondary Screens */,
 			);

@@ -23,7 +23,7 @@ struct DAHAApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                LaunchScreen()
             }
             .environmentObject(authentication)
             .environmentObject(firestoreManager)
