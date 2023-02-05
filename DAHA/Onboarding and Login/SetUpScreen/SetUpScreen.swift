@@ -13,7 +13,7 @@ struct SetUpScreen: View {
     var body: some View {
             ZStack {
                 // Sets background color to WHITE
-                BackgroundColor(color: greyBackground)
+//                BackgroundColor(color: greyBackground)
                 // Vertical Stack of Logo, Sign-up, and Login
                 VStack {
                     // DAHA logo on top

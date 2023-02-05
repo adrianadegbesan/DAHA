@@ -22,7 +22,7 @@ struct CreateAccountScreen: View {
         
         var body: some View {
             ZStack {
-                BackgroundColor(color: greyBackground)
+//                BackgroundColor(color: greyBackground)
                 ScrollView {
                     Image("Logo")
                     Spacer().frame(height: 0.09 * screenHeight)
