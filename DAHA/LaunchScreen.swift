@@ -11,6 +11,7 @@ struct LaunchScreen: View {
     @State private var isActive = false
     @State private var size = 0.8
     @State private var opacity = 0.5
+    @EnvironmentObject var network: Network
     
     var body: some View {
         
@@ -22,7 +23,7 @@ struct LaunchScreen: View {
                         Image("Logo")
                         Text("DOES ANYONE HAVE A...?")
                         .font(
-                            .system(size:25, weight: .bold)
+                            .system(size:22, weight: .bold)
                         )
                 }
                 .padding(.bottom, screenWidth * 0.32)
@@ -49,6 +50,7 @@ struct LaunchScreen: View {
 struct LaunchScreen_Previews: PreviewProvider {
     static var previews: some View {
         LaunchScreen()
+            .environmentObject(Network())
             .previewLayout(.sizeThatFits)
     }
 }

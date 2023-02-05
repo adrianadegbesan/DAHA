@@ -66,6 +66,17 @@ struct MakePostTextInputs: View {
             }
             .padding(.leading, 16)
         }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button(action: {
+                    hideKeyboard()
+                }){
+                        Text(Image(systemName: "multiply"))
+                            .foregroundColor(.gray)
+                }
+            }
+        }
     }
 }
 

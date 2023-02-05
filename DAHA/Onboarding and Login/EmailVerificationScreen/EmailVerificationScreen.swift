@@ -55,6 +55,17 @@ struct EmailVerificationScreen: View {
                     .padding(.bottom, 40)
             } //: VStack
         } //: ZStack
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button(action: {
+                    hideKeyboard()
+                }){
+                        Text(Image(systemName: "multiply"))
+                            .foregroundColor(.gray)
+                }
+            }
+        }
         .onAppear{
             Task {
                 code = String(await sendVerificationEmail(email: email, error_alert: $error_alert, error_message: $error_message) )
@@ -68,6 +79,7 @@ struct EmailVerificationScreen: View {
         NavigationLink(destination: CreateAccountScreen().navigationBarHidden(true), isActive: $should_navigate){
             EmptyView()
         }
+        
 
     }
 }

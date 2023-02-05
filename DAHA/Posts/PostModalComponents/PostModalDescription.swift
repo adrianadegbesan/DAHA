@@ -16,13 +16,17 @@ struct PostModalDescription: View {
             HStack{
                 Text(post.title)
                     .lineLimit(1)
-                    .font(.system(size: 25, weight: .bold))
+                    .minimumScaleFactor(0.5)
+                    .font(.system(size: 19, weight: .bold))
+                   
                 
                 Spacer()
                 
                 Text(post.price)
                     .lineLimit(1)
-                    .font(.system(size: 22, weight: .bold))
+                    .minimumScaleFactor(0.5)
+                    .font(.system(size: 16, weight: .bold))
+                 
             } //:HStack
             
             TabView {

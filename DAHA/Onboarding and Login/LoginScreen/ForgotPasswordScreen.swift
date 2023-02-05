@@ -37,7 +37,17 @@ struct ForgotPasswordScreen: View {
                 
                 PasswordResetButton(email: $email)
             }
-            .background(.ultraThinMaterial)
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button(action: {
+                    hideKeyboard()
+                }){
+                        Text(Image(systemName: "multiply"))
+                            .foregroundColor(.gray)
+                }
+            }
         }
     }
 }

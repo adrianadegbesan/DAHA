@@ -18,7 +18,7 @@ struct PostModalPostActions: View {
                 EmptyView()
             } else {
                 BookmarkButton(post: post, saved: $saved)
-                    .scaleEffect(1.2)
+                    .scaleEffect(1)
                 Spacer()
 //                BuyButton(post: post)
 //                    .scaleEffect(1.2)

@@ -20,20 +20,20 @@ struct PostModal: View {
     var body: some View {
         ScrollView {
             VStack{
-                    PostModalActions()
-                    
-                    PostModalPosterInfo(post: post)
+                PostModalActions()
                 
-                        
-                    CategoryView(post: post, reported: $reported)
-                        
-
-                    PostModalDescription(post: post)
-                    
-                    PostModalPostActions(post: post, saved: $saved, owner: owner)
-                    
-                    Spacer()
-                }
+                PostModalPosterInfo(post: post)
+                
+                
+                CategoryView(post: post, reported: $reported)
+                
+                
+                PostModalDescription(post: post)
+                
+                PostModalPostActions(post: post, saved: $saved, owner: owner)
+                
+                Spacer()
+            }
             .padding()
         }
     }
@@ -50,3 +50,5 @@ struct PostModal_Previews: PreviewProvider {
         PostModal(post: post, saved: .constant(false), reported: .constant(false), owner: true)
     }
 }
+
+// 2019 Giant Bike

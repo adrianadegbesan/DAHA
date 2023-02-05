@@ -14,13 +14,16 @@ struct PostModalPosterInfo: View {
     var body: some View {
         HStack{
             Text("@\(post.username)")
-                .fontWeight(.semibold)
+                .minimumScaleFactor(0.5)
+                .font(.system(size: 13, weight: .bold))
                 .foregroundColor(.gray)
             Image(systemName:"circle.fill")
-                .scaleEffect(0.5)
+                .minimumScaleFactor(0.5)
+                .font(.system(size: 8, weight: .bold))
                 .foregroundColor(.gray)
             Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
-                .fontWeight(.semibold)
+                .minimumScaleFactor(0.5)
+                .font(.system(size: 13, weight: .bold))
                 .foregroundColor(.gray)
             Spacer()
         } //:HStack

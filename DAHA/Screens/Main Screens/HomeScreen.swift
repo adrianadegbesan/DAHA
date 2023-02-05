@@ -28,7 +28,6 @@ struct HomeScreen: View {
                         ScrollView{
                             PostView(post: post, owner: false)
                                 .padding(.top, 7)
-                                
                         }
                         .refreshable {
 
@@ -49,6 +48,17 @@ struct HomeScreen: View {
                 }
                 
             } //: ZStack
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button(action: {
+                        hideKeyboard()
+                    }){
+                            Text(Image(systemName: "multiply"))
+                                .foregroundColor(.gray)
+                    }
+                }
+            }
             .navigationBarBackButtonHidden(true)
     }
 }
