@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CustomCameraView: View {
     
-    let cameraService = CameraService()
+    @Binding var cameraService: CameraService
     @Binding var capturedImage: UIImage?
     @Binding var images: [UIImage]
     
@@ -56,7 +56,6 @@ struct CustomCameraView: View {
                 Button(action:{
                     LightFeedback()
                     cameraService.capturePhoto()
-                    
                 }){
                     Image(systemName: "circle")
                         .font(.system(size: 72))

@@ -284,6 +284,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		82B6B2FD298F502400027E5A /* CreatePosts */ = {
+			isa = PBXGroup;
+			children = (
+				82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */,
+				82B6B2BC2989EC9700027E5A /* MakePostModalComponents */,
+			);
+			path = CreatePosts;
+			sourceTree = "<group>";
+		};
 		82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +401,7 @@
 				82CEFC402969CB9C00C55F67 /* Models */,
 				82CEFC692969CE8600C55F67 /* Onboarding and Login */,
 				82CEFC412969CBB600C55F67 /* Screens */,
+				82B6B2FD298F502400027E5A /* CreatePosts */,
 				823602062985ADD5002E7AEC /* Posts */,
 				82CEFC422969CBBF00C55F67 /* Views */,
 				82CEFC352969CB2D00C55F67 /* Assets.xcassets */,
@@ -469,8 +479,6 @@
 				82CEFC5C2969CDEB00C55F67 /* SavedScreen.swift */,
 				82CEFC5E2969CE0700C55F67 /* ProfileScreen.swift */,
 				82CEFC802969CFCA00C55F67 /* PostButton.swift */,
-				82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */,
-				82B6B2BC2989EC9700027E5A /* MakePostModalComponents */,
 			);
 			path = "Main Screens";
 			sourceTree = "<group>";

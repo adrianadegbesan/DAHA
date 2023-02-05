@@ -11,6 +11,7 @@ struct CameraButton: View{
     @Binding var images: [UIImage]
     @State var image: UIImage? = nil
     @State private var isPresented: Bool = false
+    @State var cameraService = CameraService()
     
     var body: some View {
         Button(action: {
@@ -25,7 +26,7 @@ struct CameraButton: View{
                 .frame(width: screenWidth * 0.23, height: screenHeight * 0.08)
         }
         .sheet(isPresented: $isPresented){
-            CustomCameraView(capturedImage: $image, images: $images)
+            CustomCameraView(cameraService: $cameraService, capturedImage: $image, images: $images)
         }
     }
 }
