@@ -14,13 +14,21 @@ struct ImagePreview: View {
     
     var body: some View {
         if image != nil{
-            ZStack{
+            ZStack(alignment: .topLeading){
                 Image(uiImage: image!)
                     .resizable()
-                    .scaledToFit()
+                    .cornerRadius(15)
                     .clipped()
-                    .frame(width: screenWidth * 0.925, height: screenHeight * 0.9)
-                    .padding(.bottom, 15)
+                    .scaledToFit()
+                    .overlay (
+                       RoundedRectangle(cornerRadius: 15)
+                        .strokeBorder(lineWidth: 3)
+                    )
+                    .scaleEffect(0.93)
+                    
+
+//                    .frame(width: screenWidth * 0.925, height: screenHeight * 0.9)
+//                    .padding(.bottom, 15)
                 Image(systemName: "multiply.circle.fill")
                     .foregroundColor(.red)
                     .font(.system(size: 20))
@@ -30,7 +38,7 @@ struct ImagePreview: View {
                             images.remove(at: index!)
                         }
                     }
-                    .offset(x: -screenWidth * 0.42, y: -screenHeight * 0.2)
+                    .offset(x: 0.5, y: 1.35)
             }
         }
     }

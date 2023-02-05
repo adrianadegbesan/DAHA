@@ -41,10 +41,10 @@ struct ImageSelectorView: View {
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .padding(2.3)
                 .frame(width: screenWidth * 0.94, height: screenHeight * 0.45)
-                .overlay (
-                   Rectangle()
-                        .strokeBorder(lineWidth: 4)
-                )
+//                .overlay (
+//                   Rectangle()
+//                        .strokeBorder(lineWidth: 4)
+//                )
             }
         }
     }
