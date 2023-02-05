@@ -17,6 +17,9 @@ struct ContentView: View {
     
   @EnvironmentObject var authentication: AuthManager
   @EnvironmentObject var network: Network
+
+  @State private var opacity = 0.2
+    
   
   var body: some View {
     ZStack {
@@ -29,6 +32,12 @@ struct ContentView: View {
           MainScreen()
       }
     } //: ZStack
+    .opacity(opacity)
+    .onAppear{
+        withAnimation(.easeIn(duration: 0.3)){
+            self.opacity = 1
+        }
+    }
   }
 }
 

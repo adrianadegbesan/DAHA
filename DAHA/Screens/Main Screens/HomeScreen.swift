@@ -27,7 +27,7 @@ struct HomeScreen: View {
 //                    Spacer()
                         ScrollView{
                             PostView(post: post, owner: false)
-                                .padding(.top, 10)
+                                .padding(.top, 7)
                                 
                         }
                         .refreshable {

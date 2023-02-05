@@ -32,9 +32,12 @@ struct PostModalDescription: View {
                   Image(item)
                   .resizable()
                   .cornerRadius(15)
+                  .clipped()
               } //: LOOP
             } //: TAB
             .tabViewStyle(PageTabViewStyle())
+            .cornerRadius(15)
+            .padding(0.8)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
             .padding(2.3)
             .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
@@ -42,6 +45,7 @@ struct PostModalDescription: View {
                 RoundedRectangle(cornerRadius: 15)
                     .strokeBorder(lineWidth: 4)
             )
+            .clipped()
             
 //            if !post.imageURLs.isEmpty {
 //                TabView {

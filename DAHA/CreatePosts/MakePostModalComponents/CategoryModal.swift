@@ -32,29 +32,33 @@ struct CategoryModal: View {
                 Spacer()
                 HStack{
                     CategoryIconView(category: "General", selected: $selected, post: $post)
+                        .padding(.trailing, 10)
                     CategoryIconView(category: "Clothing", selected: $selected, post: $post)
                 }
                 .padding(.bottom, 25)
                 HStack{
                     CategoryIconView(category: "Tech", selected: $selected, post: $post)
+                        .padding(.trailing, 10)
                     CategoryIconView(category: "Bikes", selected: $selected, post: $post)
                 }
                 .padding(.bottom, 25)
                 HStack{
                     CategoryIconView(category: "Cars", selected: $selected, post: $post)
+                        .padding(.trailing, 10)
                     CategoryIconView(category: "Art", selected: $selected, post: $post)
                 }
                 .padding(.bottom, 25)
                 HStack{
                     CategoryIconView(category: "Furniture", selected: $selected, post: $post)
+                        .padding(.trailing, 10)
                     CategoryIconView(category: "Books", selected: $selected, post: $post)
                 }
                 .padding(.bottom, 25)
                 HStack{
                     CategoryIconView(category: "Games", selected: $selected, post: $post)
+                        .padding(.trailing, 10)
                     CategoryIconView(category: "Tickets", selected: $selected, post: $post)
                 }
-                .background(.ultraThinMaterial)
                 .padding(.bottom, 25)
             }
         }

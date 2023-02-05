@@ -69,7 +69,7 @@ struct PostView: View {
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 4)
+                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 4.5)
                 .shadow(radius: 3, y: 1.5)
         )
         .background(colorScheme == .dark ? .black : .white)

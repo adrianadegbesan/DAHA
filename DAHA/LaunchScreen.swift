@@ -15,7 +15,7 @@ struct LaunchScreen: View {
     var body: some View {
         
         if isActive{
-            ContentView()
+                ContentView()
         } else {
             VStack{
                 VStack{
@@ -30,7 +30,7 @@ struct LaunchScreen: View {
                 .opacity(opacity)
                 .onAppear{
                     withAnimation(.easeIn(duration: 0.8)){
-                        self.size = 0.9
+                        self.size = 0.95
                         self.opacity = 1.0
                     }
                 }
