@@ -20,7 +20,7 @@ struct SettingsButton: View {
             Image(systemName: "gearshape")
                     .headerImage()
             
-            NavigationLink(destination: Test(), isActive: $shouldNavigate){
+            NavigationLink(destination: SettingsScreen(), isActive: $shouldNavigate){
                 EmptyView()
             }
         }

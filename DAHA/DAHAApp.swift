@@ -15,6 +15,7 @@ struct DAHAApp: App {
     @StateObject var authentication = AuthManager()
     @StateObject var firestoreManager = FirestoreManager()
     @StateObject var network = Network()
+    @AppStorage("isDarkMode") private var isDarkMode = "System"
     
     init() {
         FirebaseApp.configure()
@@ -28,6 +29,9 @@ struct DAHAApp: App {
             .environmentObject(authentication)
             .environmentObject(firestoreManager)
             .environmentObject(network)
+            .preferredColorScheme(isDarkMode == "On" ? .dark : (isDarkMode == "Off" ? .light : nil))
         }
     }
 }
+
+// (colorScheme == .dark && isDarkMode)

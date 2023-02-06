@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct SettingsScreen: View {
+    
+    @AppStorage("isDarkMode") private var isDarkMode = "System"
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        List{
+            HStack{
+                Text("Dark Mode")
+                Spacer()
+                Picker("Mode", selection: $isDarkMode){
+                    Text("On").tag("On")
+                    Text("Off").tag("Off")
+                    Text("System").tag("System")
+                }
+                .pickerStyle(SegmentedPickerStyle())
+            }
+        }
+//        .navigationTitle("Settings")
     }
 }
 
