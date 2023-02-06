@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsButton: View {
     @State var shouldNavigate = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         Button(action: {
@@ -23,7 +24,7 @@ struct SettingsButton: View {
                 EmptyView()
             }
         }
-        .foregroundColor(.black)
+        .foregroundColor(colorScheme == .dark ? .white : .black)
     }
 }
 

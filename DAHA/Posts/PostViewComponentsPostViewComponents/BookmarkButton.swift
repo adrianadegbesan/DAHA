@@ -17,7 +17,7 @@ struct BookmarkButton: View {
         
         if !saved{
             Button(action: {
-                LightFeedback()
+                SoftFeedback()
                 saved.toggle()
             }) {
                 Image(systemName: "bookmark")

@@ -14,6 +14,7 @@ struct HeaderView: View {
     let showMessages: Bool
     let showSettings: Bool
     let showSearchBar: Bool
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(spacing: 0){
@@ -21,18 +22,24 @@ struct HeaderView: View {
                 // Left half of black block (DAHA logo)
                 Image("Logo")
                     .scaleEffect(0.6)
+                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2).scaleEffect(0.6))
                 ZStack {
                     // Right half of black block (Page title)
-                    RoundedRectangle(cornerRadius: 12)
+                    Rectangle()
                         // Specific dimensions of rounded rectangle
-                        .frame(width: 170, height: 67)
+                        .frame(width: 170, height: 66.4)
+                        .cornerRadius(18, corners: [.topRight, .bottomRight])
                         .foregroundColor(.black)
+                        .background((Rectangle().cornerRadius(18, corners: [.topRight, .bottomRight]).foregroundColor(colorScheme == .dark ? .white : .black).scaleEffect(1.018)))
+                      
+                        
                         
                     HStack{
                         Text(title)
                             .channelText()
+                            .foregroundColor(colorScheme == .dark ? .black : .white)
                     }
-                }.offset(x: -38.2)
+                }.offset(x: -30)
                 // Specific offset to get tounded rectangle attached to DAHA logo
                 Spacer()
                 
@@ -46,9 +53,9 @@ struct HeaderView: View {
             } //: HStack
             Divider()
                 .frame(height: 0.5)
-                .overlay(Color(hex: darkGrey))
+                .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
         } //: ZStack
-        .background(Color(hex: "f6f6f6"))
+//        .background(.gray.opacity(0.25))
         
     }
 }

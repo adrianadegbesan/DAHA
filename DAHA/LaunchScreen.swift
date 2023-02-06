@@ -33,7 +33,7 @@ struct LaunchScreen: View {
                 .scaleEffect(size)
                 .opacity(opacity)
                 .onAppear{
-                    withAnimation(.easeIn(duration: 0.85)){
+                    withAnimation(.easeIn(duration: 0.8)){
                         self.size = 1
                         self.opacity = 1.0
                     }

@@ -11,6 +11,8 @@ import SwiftUI
 struct PostButton: View {
     
     @State var shouldNavigate : Bool = false
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         
         Button(action: {
@@ -26,6 +28,7 @@ struct PostButton: View {
                     }
                 }
                 .foregroundColor(.black)
+                .background(Circle().fill(.white).scaleEffect(colorScheme == .dark ? 0.9 : 0.8))
             }
         }
     }

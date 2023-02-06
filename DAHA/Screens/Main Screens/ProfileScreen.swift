@@ -13,7 +13,7 @@ struct ProfileScreen: View {
     @AppStorage("username") var username_system: String = ""
     var body: some View {
         ZStack {
-            BackgroundColor(color: greyBackground)
+//            BackgroundColor(color: greyBackground)
             VStack(spacing: 0){
                 HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false)
                 .frame(alignment: .top)
@@ -21,12 +21,8 @@ struct ProfileScreen: View {
                 PageBottomDivider()
             } //: VStack
             
-            VStack{
-                PostButton()
-                .offset(x: screenWidth * 0.35, y: screenHeight * 0.325)
-            }
-            
         } //: ZStack
+//        .background(.gray)
 
     }
 }

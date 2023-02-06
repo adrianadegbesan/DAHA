@@ -20,7 +20,7 @@ struct HomeScreen: View {
     
     var body: some View {
             ZStack {
-                BackgroundColor(color: greyBackground)
+//                BackgroundColor(color: greyBackground)
                 VStack(spacing: 0) {
                     HeaderView(title: university, showMessages: true, showSettings: false, showSearchBar: true)
                         .frame(alignment: .top)
@@ -48,6 +48,7 @@ struct HomeScreen: View {
                 }
                 
             } //: ZStack
+//            .background(.gray)
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()

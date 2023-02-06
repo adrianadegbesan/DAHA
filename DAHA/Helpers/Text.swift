@@ -14,16 +14,20 @@ extension Text {
     // extension for title text
     func titleText() -> some View {
         self
+            .lineLimit(1)
+            .minimumScaleFactor(0.01)
         .font(
-            .system(size:20, weight: .bold)
+            .system(size:17, weight: .bold)
         )
     }
     
     // extension for channel text
     func channelText() -> some View {
         self
+            .lineLimit(1)
+            .minimumScaleFactor(0.01)
             .font(
-                .system(size:20, weight: .bold)
+                .system(size:17, weight: .bold)
         )
             .foregroundColor(.white)
     }    

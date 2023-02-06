@@ -10,6 +10,7 @@ import SwiftUI
 // Button used to go to DM Page
 struct DMButton: View {
     @State var shouldNavigate = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
 //        NavigationLink(destination: {}) {
@@ -18,7 +19,7 @@ struct DMButton: View {
             shouldNavigate = true
             
         }) {
-            Image(systemName: "paperplane.fill")
+            Image(systemName: "paperplane")
                     .headerImage()
             
             NavigationLink(destination: Test(), isActive: $shouldNavigate){
@@ -26,7 +27,7 @@ struct DMButton: View {
             }
     //        }
         }
-        .foregroundColor(.black)
+        .foregroundColor(colorScheme == .dark ? .white : .black)
     }
 }
 

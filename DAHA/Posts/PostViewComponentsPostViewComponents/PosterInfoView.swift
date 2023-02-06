@@ -14,8 +14,9 @@ struct PosterInfoView: View {
     var body: some View {
         HStack{
             Text("@\(post.username)")
-                .font(.system(size: 14, weight: .semibold))
                 .lineLimit(1)
+                .minimumScaleFactor(0.001)
+                .font(.system(size: 14, weight: .semibold))
                 .foregroundColor(.gray)
             
             Spacer()
@@ -24,9 +25,9 @@ struct PosterInfoView: View {
             //Post.postedAt
             
             Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
-                .font(.system(size: 12, weight: .semibold))
                 .lineLimit(1)
-                .layoutPriority(1)
+                .minimumScaleFactor(0.001)
+                .font(.system(size: 12, weight: .semibold))
                 .foregroundColor(.gray)
         }
         .padding(.bottom, 1)

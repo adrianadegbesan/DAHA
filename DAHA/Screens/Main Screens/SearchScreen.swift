@@ -13,7 +13,7 @@ struct SearchScreen: View {
     var body: some View {
         
         ZStack {
-            BackgroundColor(color: greyBackground)
+//            BackgroundColor(color: greyBackground)
             VStack(spacing: 0) {
                 HeaderView(title: "Search", showMessages: false, showSettings: false,showSearchBar: true)
                 .frame(alignment: .top)
@@ -21,6 +21,7 @@ struct SearchScreen: View {
                 PageBottomDivider()
             } //: VStack
         } //: ZStack
+//        .background(.gray)
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 Spacer()
