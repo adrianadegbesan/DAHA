@@ -41,7 +41,6 @@ struct PostModalDescription: View {
             } //: TAB
             .tabViewStyle(PageTabViewStyle())
             .cornerRadius(15)
-            .padding(0.8)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
             .padding(2.3)
             .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)

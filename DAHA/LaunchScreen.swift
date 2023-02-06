@@ -12,6 +12,7 @@ struct LaunchScreen: View {
     @State private var size = 0.8
     @State private var opacity = 0.5
     @EnvironmentObject var network: Network
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         
@@ -21,6 +22,8 @@ struct LaunchScreen: View {
             VStack{
                 VStack{
                         Image("Logo")
+                        .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
+                        .padding(.bottom, 4)
                         Text("DOES ANYONE HAVE A...?")
                         .font(
                             .system(size:22, weight: .bold)
@@ -30,8 +33,8 @@ struct LaunchScreen: View {
                 .scaleEffect(size)
                 .opacity(opacity)
                 .onAppear{
-                    withAnimation(.easeIn(duration: 0.8)){
-                        self.size = 0.95
+                    withAnimation(.easeIn(duration: 0.85)){
+                        self.size = 1
                         self.opacity = 1.0
                     }
                 }
