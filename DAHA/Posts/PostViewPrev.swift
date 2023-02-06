@@ -23,6 +23,8 @@ struct PostViewPrev: View {
                 PostDescriptionView(post: post)
                 
                 Text(post.price)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.3)
                     .font(.system(size: 20, weight: .bold))
                     .layoutPriority(1)
             }

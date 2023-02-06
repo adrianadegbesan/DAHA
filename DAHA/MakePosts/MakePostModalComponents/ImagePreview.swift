@@ -29,6 +29,7 @@ struct ImagePreview: View {
                 Image(systemName: "multiply.circle.fill")
                     .foregroundColor(.red)
                     .font(.system(size: 20))
+                    .background(Circle().fill(.white))
                     .onTapGesture {
                         let index = images.firstIndex(of: image!)
                         if index != nil{

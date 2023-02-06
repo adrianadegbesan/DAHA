@@ -11,6 +11,7 @@ struct ChooseCategoryButton: View {
     @State var isPresented: Bool = false
     @State var selected: String = ""
     @Binding var post: PostModel
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         HStack {
@@ -34,6 +35,7 @@ struct ChooseCategoryButton: View {
                     .font(.system(size: 15, weight: .bold))
                     .padding(10)
                     .background(Capsule().fill(Color(hex: category_colors[selected] ?? "000000")))
+                    .overlay((selected == "General" && colorScheme == .dark) ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
                     .padding(.trailing, 10)
             }
             

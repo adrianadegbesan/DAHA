@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CategoryViewPrev: View {
     @State var post: PostModel
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         HStack{
@@ -23,6 +24,7 @@ struct CategoryViewPrev: View {
                 .layoutPriority(1)
                 .padding(10)
                 .background(Capsule().fill(Color(hex: category_colors[post.category] ?? "000000")))
+                .overlay((post.category == "General" && colorScheme == .dark) ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
                 .padding(.trailing, 6)
             
             Text(post.condition.uppercased())

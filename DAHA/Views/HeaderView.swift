@@ -48,7 +48,7 @@ struct HeaderView: View {
                 .frame(height: 0.5)
                 .overlay(Color(hex: darkGrey))
         } //: ZStack
-        .background(Color(hex: greyBackground))
+        .background(Color(hex: "f6f6f6"))
         
     }
 }

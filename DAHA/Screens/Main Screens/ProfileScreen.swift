@@ -21,6 +21,11 @@ struct ProfileScreen: View {
                 PageBottomDivider()
             } //: VStack
             
+            VStack{
+                PostButton()
+                .offset(x: screenWidth * 0.35, y: screenHeight * 0.325)
+            }
+            
         } //: ZStack
 
     }

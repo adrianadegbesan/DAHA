@@ -10,24 +10,26 @@ import SwiftUI
 struct CategoryView: View {
     
     @State var post: PostModel
-    @Binding var reported: Bool 
+    @Binding var reported: Bool
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         HStack{
             
-   
-//            Label(post.category.uppercased(), systemImage: category_images[post.category] ?? "")
             
-            (Text(Image(systemName: category_images[post.category] ?? "")) + Text(" ") + Text(post.category.uppercased()))
-                .lineLimit(1)
-                .fixedSize(horizontal: true, vertical: false)
-                .minimumScaleFactor(0.001)
-                .font(.system(size: 9.5, weight: .bold))
-                .layoutPriority(1)
-                .foregroundColor(.white)
-                .padding(10)
-                .background(Capsule().fill(Color(hex: category_colors[post.category] ?? "000000")))
-                .padding(.trailing, 6)
+                (Text(Image(systemName: category_images[post.category] ?? "")) + Text(" ") + Text(post.category.uppercased()))
+                    .lineLimit(1)
+                    .fixedSize(horizontal: true, vertical: false)
+                    .minimumScaleFactor(0.001)
+                    .font(.system(size: 9.5, weight: .bold))
+                    .layoutPriority(1)
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .background(Capsule().fill(Color(hex: category_colors[post.category] ?? "000000")))
+                    .overlay((post.category == "General" && colorScheme == .dark) ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
+                    .padding(.trailing, 6)
+//            }
+            
             
             Text(post.condition.uppercased())
                 .lineLimit(1)

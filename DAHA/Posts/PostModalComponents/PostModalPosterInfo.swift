@@ -19,7 +19,7 @@ struct PostModalPosterInfo: View {
                 .foregroundColor(.gray)
             Image(systemName:"circle.fill")
                 .minimumScaleFactor(0.5)
-                .font(.system(size: 8, weight: .bold))
+                .font(.system(size: 5, weight: .bold))
                 .foregroundColor(.gray)
             Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
                 .minimumScaleFactor(0.5)
