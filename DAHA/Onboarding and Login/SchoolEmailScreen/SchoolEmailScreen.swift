@@ -18,7 +18,6 @@ struct SchoolEmailScreen: View {
     
     var body: some View {
         ZStack {
-//            BackgroundColor(color: greyBackground)
             ScrollView {
                 Image("Logo")
                 Spacer().frame(height: screenHeight * 0.2)
@@ -42,6 +41,18 @@ struct SchoolEmailScreen: View {
             } //: VStack
             .ignoresSafeArea(.keyboard)
         }//: ZStack
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button(action: {
+                    hideKeyboard()
+                }){
+                        Text(Image(systemName: "multiply"))
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                }
+            }
+        }
         .onTapGesture {
             hideKeyboard()
         }

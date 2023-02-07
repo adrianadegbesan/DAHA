@@ -22,7 +22,7 @@ struct DMButton: View {
             Image(systemName: "paperplane")
                     .headerImage()
             
-            NavigationLink(destination: Test(), isActive: $shouldNavigate){
+            NavigationLink(destination: DMScreen(), isActive: $shouldNavigate){
                 EmptyView()
             }
     //        }

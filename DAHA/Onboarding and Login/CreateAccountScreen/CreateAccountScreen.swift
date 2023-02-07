@@ -61,6 +61,18 @@ struct CreateAccountScreen: View {
                     }
                 } //: VStack
             }//: ZStack
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button(action: {
+                        hideKeyboard()
+                    }){
+                            Text(Image(systemName: "multiply"))
+                                .fontWeight(.bold)
+                                .foregroundColor(.gray)
+                    }
+                }
+            }
             .onAppear{
                 print( Auth.auth().currentUser ?? "nil")
             }

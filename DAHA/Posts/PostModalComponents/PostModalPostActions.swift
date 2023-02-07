@@ -20,6 +20,7 @@ struct PostModalPostActions: View {
                 Spacer()
                 BookmarkButton(post: post, saved: $saved)
                     .scaleEffect(1)
+                    .padding(.trailing, 10)
               
 //                BuyButton(post: post)
 //                    .scaleEffect(1.2)

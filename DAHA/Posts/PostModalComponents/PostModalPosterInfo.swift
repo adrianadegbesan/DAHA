@@ -27,6 +27,7 @@ struct PostModalPosterInfo: View {
                 .foregroundColor(.gray)
             Spacer()
         } //:HStack
+        .padding(.leading, 10)
     }
 }
 

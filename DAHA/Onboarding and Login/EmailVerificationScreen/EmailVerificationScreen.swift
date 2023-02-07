@@ -23,7 +23,6 @@ struct EmailVerificationScreen: View {
     
     var body: some View {
         ZStack{
-//            BackgroundColor(color: greyBackground)
             ScrollView{
                 Image("Logo")
                 Spacer().frame(height: screenHeight * 0.2)
@@ -62,6 +61,7 @@ struct EmailVerificationScreen: View {
                     hideKeyboard()
                 }){
                         Text(Image(systemName: "multiply"))
+                            .fontWeight(.bold)
                             .foregroundColor(.gray)
                 }
             }

@@ -27,7 +27,7 @@ struct HeaderView: View {
                     // Right half of black block (Page title)
                     Rectangle()
                         // Specific dimensions of rounded rectangle
-                        .frame(width: 170, height: 66.4)
+                        .frame(width: 170, height: colorScheme == .dark ? 66.4 : 65.5)
                         .cornerRadius(18, corners: [.topRight, .bottomRight])
                         .foregroundColor(.black)
                         .background((Rectangle().cornerRadius(18, corners: [.topRight, .bottomRight]).foregroundColor(colorScheme == .dark ? .white : .black).scaleEffect(1.018)))
@@ -37,7 +37,7 @@ struct HeaderView: View {
                     HStack{
                         Text(title)
                             .channelText()
-                            .foregroundColor(colorScheme == .dark ? .black : .white)
+                            .foregroundColor(.white)
                     }
                 }.offset(x: -30)
                 // Specific offset to get tounded rectangle attached to DAHA logo

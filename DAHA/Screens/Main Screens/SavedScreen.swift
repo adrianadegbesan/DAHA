@@ -11,7 +11,6 @@ import SwiftUI
 struct SavedScreen: View {
     var body: some View {
         ZStack {
-//            BackgroundColor(color: greyBackground)
             VStack(spacing: 0) {
                 HeaderView(title: "Saved", showMessages: false, showSettings: false, showSearchBar: false)
                 .frame(alignment: .top)
@@ -19,7 +18,6 @@ struct SavedScreen: View {
                 PageBottomDivider()
             } //: VStack
         } //: ZStack
-//        .background(.gray)
     }
 }
 

@@ -45,6 +45,7 @@ struct ForgotPasswordScreen: View {
                     hideKeyboard()
                 }){
                         Text(Image(systemName: "multiply"))
+                            .fontWeight(.bold)
                             .foregroundColor(.gray)
                 }
             }

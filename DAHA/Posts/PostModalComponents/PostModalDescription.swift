@@ -18,6 +18,7 @@ struct PostModalDescription: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .font(.system(size: 19, weight: .bold))
+                    
                    
                 
                 Spacer()
@@ -28,6 +29,8 @@ struct PostModalDescription: View {
                     .font(.system(size: 16, weight: .bold))
                  
             } //:HStack
+            .padding(.leading, 10)
+            .padding(.trailing, 10)
             
             TabView {
                 //post.imageURLs
@@ -35,18 +38,20 @@ struct PostModalDescription: View {
                 //AsyncImage
                   Image(item)
                   .resizable()
-                  .cornerRadius(15)
+//                  .cornerRadius(15)
                   .clipped()
               } //: LOOP
             } //: TAB
             .tabViewStyle(PageTabViewStyle())
-            .cornerRadius(15)
+//            .cornerRadius(15)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
             .padding(2.3)
-            .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
+            .frame(width: screenWidth, height: screenHeight * 0.35)
+//            .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
             .overlay (
-                RoundedRectangle(cornerRadius: 15)
-                    .strokeBorder(lineWidth: 4)
+//                RoundedRectangle(cornerRadius: 15)
+                Rectangle()
+                    .strokeBorder(lineWidth: 3)
             )
             .clipped()
             

@@ -13,19 +13,25 @@ struct SettingsScreen: View {
     
     var body: some View {
         
-        List{
-            HStack{
-                Text("Dark Mode")
-                Spacer()
-                Picker("Mode", selection: $isDarkMode){
-                    Text("On").tag("On")
-                    Text("Off").tag("Off")
-                    Text("System").tag("System")
+        VStack {
+            List{
+                HStack{
+                    Text("Dark Mode")
+                    Spacer()
+                    Picker("Mode", selection: $isDarkMode){
+                        Text("On").tag("On")
+                        Text("Off").tag("Off")
+                        Text("System").tag("System")
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
-                .pickerStyle(SegmentedPickerStyle())
+            }
+            HStack{
+                Text("Version \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0")")
+                
             }
         }
-//        .navigationTitle("Settings")
+        .navigationTitle("Settings")
     }
 }
 

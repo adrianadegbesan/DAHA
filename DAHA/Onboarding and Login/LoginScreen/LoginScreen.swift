@@ -42,6 +42,7 @@ struct LoginScreen: View {
                     hideKeyboard()
                 }){
                         Text(Image(systemName: "multiply"))
+                            .fontWeight(.bold)
                             .foregroundColor(.gray)
                 }
             }

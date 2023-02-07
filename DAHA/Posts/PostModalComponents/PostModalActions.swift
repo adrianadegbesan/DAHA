@@ -27,6 +27,7 @@ struct PostModalActions: View {
                     }
                 Spacer()
             } //:HStack
+            .padding(.leading, 10)
         }
  
     }

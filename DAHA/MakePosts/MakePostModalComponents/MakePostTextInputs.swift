@@ -73,7 +73,8 @@ struct MakePostTextInputs: View {
                     hideKeyboard()
                 }){
                         Text(Image(systemName: "multiply"))
-                            .foregroundColor(.gray)
+                        .fontWeight(.bold)
+                        .foregroundColor(.gray)
                 }
             }
         }

@@ -23,7 +23,7 @@ struct LaunchScreen: View {
                 VStack{
                         Image("Logo")
                         .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
-                        .padding(.bottom, 4)
+                        .padding(.bottom, 8)
                         Text("DOES ANYONE HAVE A...?")
                         .font(
                             .system(size:22, weight: .bold)

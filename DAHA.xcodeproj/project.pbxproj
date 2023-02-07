@@ -37,6 +37,7 @@
 		8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE6296BB945004001AE /* CustomInputField.swift */; };
 		8294FAE9296BCB76004001AE /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */; };
 		82ACC67F2991738300589E1E /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC67E2991738300589E1E /* Shapes.swift */; };
+		82ACC6812991BA7B00589E1E /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6802991BA7B00589E1E /* Async.swift */; };
 		82B6B2BB2989EC0E00027E5A /* MakePostScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */; };
 		82B6B2BE2989ECD300027E5A /* MakePostScreenExit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */; };
 		82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2C32989EE8800027E5A /* MakePostButton.swift */; };
@@ -130,6 +131,7 @@
 		8294FAE6296BB945004001AE /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
 		82ACC67E2991738300589E1E /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		82ACC6802991BA7B00589E1E /* Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreen.swift; sourceTree = "<group>"; };
 		82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreenExit.swift; sourceTree = "<group>"; };
 		82B6B2C32989EE8800027E5A /* MakePostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostButton.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				82B6B2F9298F394300027E5A /* CameraView.swift */,
 				82B6B2FB298F3C8300027E5A /* CustomCameraView.swift */,
 				82ACC67E2991738300589E1E /* Shapes.swift */,
+				82ACC6802991BA7B00589E1E /* Async.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				82B6B2CF298A16BD00027E5A /* MakePostTextInputs.swift in Sources */,
 				82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */,
 				82B6B2FA298F394300027E5A /* CameraView.swift in Sources */,
+				82ACC6812991BA7B00589E1E /* Async.swift in Sources */,
 				82CEFC592969CD7400C55F67 /* HomeScreen.swift in Sources */,
 				82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */,
 				82CEFC522969CC7000C55F67 /* UserAuth.swift in Sources */,
