@@ -35,18 +35,7 @@ struct LoginScreen: View {
             }
 //            .background(.ultraThinMaterial)
         }
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button(action: {
-                    hideKeyboard()
-                }){
-                        Text(Image(systemName: "multiply"))
-                            .fontWeight(.bold)
-                            .foregroundColor(.gray)
-                }
-            }
-        }
+        .keyboardControl()
         .onTapGesture {
             hideKeyboard()
         }

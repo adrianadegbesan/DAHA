@@ -10,6 +10,7 @@ import SwiftUI
 
 
 
+
 extension Text {
     // extension for title text
     func titleText() -> some View {
@@ -77,4 +78,27 @@ extension View {
         UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
     }
 }
+
+extension View {
+    func keyboardControl() -> some View {
+        self
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button(action: {
+                        hideKeyboard()
+                    }){
+                            Text(Image(systemName: "multiply"))
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+            .submitLabel(.return)
+            .onSubmit {
+                hideKeyboard()
+            }
+    }
+}
+
 

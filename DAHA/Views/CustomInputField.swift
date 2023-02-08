@@ -38,6 +38,7 @@ struct CustomInputField: View {
             Divider()
                 .background(Color(.darkGray))
         }
+        .keyboardControl()
     }
 }
 

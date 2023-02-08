@@ -36,7 +36,11 @@ struct MakePostTextInputs: View {
                     }
                     post.title = title
                 }
-                .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "t.square")))
+                .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "cart.fill")))
+                .submitLabel(.return)
+                .onSubmit {
+                    hideKeyboard()
+                }
                 .padding(.leading)
                 .padding(.trailing, screenWidth * 0.288)
                 .padding(.bottom, 10)
@@ -48,6 +52,12 @@ struct MakePostTextInputs: View {
                             description = String(description.prefix(200))
                         }
                         post.description = description
+                        
+                        if description.last == "\n"{
+                            description = String(description.dropLast(1))
+                            post.description = description
+                            hideKeyboard()
+                        }
                     }
                     .frame(width: screenWidth * 0.6, height: screenWidth * 0.3)
                     .padding()
@@ -59,25 +69,15 @@ struct MakePostTextInputs: View {
                     .padding(.trailing, screenWidth * 0.24)
                     .padding(.bottom, 10)
                 if description == ""{
-                    Text("Description")
+                     Text(" Description")
                         .foregroundColor(Color(UIColor.systemGray4))
                         .offset(x: -screenWidth * 0.2965, y: -screenHeight * 0.0535)
                 }
             }
             .padding(.leading, 16)
         }
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button(action: {
-                    hideKeyboard()
-                }){
-                        Text(Image(systemName: "multiply"))
-                        .fontWeight(.bold)
-                        .foregroundColor(.gray)
-                }
-            }
-        }
+        .keyboardControl()
+
     }
 }
 

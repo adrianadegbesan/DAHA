@@ -54,18 +54,7 @@ struct EmailVerificationScreen: View {
                     .padding(.bottom, 40)
             } //: VStack
         } //: ZStack
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button(action: {
-                    hideKeyboard()
-                }){
-                        Text(Image(systemName: "multiply"))
-                            .fontWeight(.bold)
-                            .foregroundColor(.gray)
-                }
-            }
-        }
+        .keyboardControl()
         .onAppear{
             Task {
                 code = String(await sendVerificationEmail(email: email, error_alert: $error_alert, error_message: $error_message) )

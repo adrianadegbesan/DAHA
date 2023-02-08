@@ -41,18 +41,7 @@ struct SchoolEmailScreen: View {
             } //: VStack
             .ignoresSafeArea(.keyboard)
         }//: ZStack
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button(action: {
-                    hideKeyboard()
-                }){
-                        Text(Image(systemName: "multiply"))
-                            .fontWeight(.bold)
-                            .foregroundColor(.gray)
-                }
-            }
-        }
+        .keyboardControl()
         .onTapGesture {
             hideKeyboard()
         }

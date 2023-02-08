@@ -36,6 +36,8 @@ struct NextButton: View {
                 if Int(post.price) == 0 {
                     post.price = "Free"
                 }
+                post.description = post.description.replacingOccurrences(of: " ", with: "")
+                post.title = post.title.replacingOccurrences(of: " ", with: "")
                 shouldNavigate = true
             }
             
@@ -43,7 +45,7 @@ struct NextButton: View {
             Text("Next")
                 .font(.system(size: 18, weight: .bold))
                 .padding(.bottom, 14)
-                .foregroundColor(colorScheme == .dark ? .white : .black)
+//                .foregroundColor(colorScheme == .dark ? .white : .black)
             
             NavigationLink(destination: PostConfirmationScreen(post: $post, images: $images, post_created: $post_created), isActive: $shouldNavigate){
                 EmptyView()

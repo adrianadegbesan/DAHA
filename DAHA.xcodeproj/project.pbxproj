@@ -605,6 +605,7 @@
 			packageReferences = (
 				8236CFDD296D34210086AB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				82E75AC4297E35F600742F18 /* XCRemoteSwiftPackageReference "postmark-swift" */,
+				82ACC68A2994157600589E1E /* XCRemoteSwiftPackageReference "KeyboardAvoider" */,
 			);
 			productRefGroup = 82CEFC2F2969CB2C00C55F67 /* Products */;
 			projectDirPath = "";
@@ -947,6 +948,14 @@
 			requirement = {
 				branch = master;
 				kind = branch;
+			};
+		};
+		82ACC68A2994157600589E1E /* XCRemoteSwiftPackageReference "KeyboardAvoider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/michaelhenry/KeyboardAvoider.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		82E75AC4297E35F600742F18 /* XCRemoteSwiftPackageReference "postmark-swift" */ = {
