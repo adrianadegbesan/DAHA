@@ -31,59 +31,51 @@ struct PostModalDescription: View {
             } //:HStack
             .padding(.leading, 10)
             .padding(.trailing, 10)
-            
-            TabView {
-                //post.imageURLs
-                ForEach(images, id: \.self) { item in
-                //AsyncImage
-                  Image(item)
-                  .resizable()
-//                  .cornerRadius(15)
-                  .clipped()
-              } //: LOOP
-            } //: TAB
-            .tabViewStyle(PageTabViewStyle())
-//            .cornerRadius(15)
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
-            .padding(2.3)
-            .frame(width: screenWidth, height: screenHeight * 0.35)
-//            .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
-            .overlay (
-//                RoundedRectangle(cornerRadius: 15)
-                Rectangle()
-                    .strokeBorder(lineWidth: 1.5)
-            )
-            .clipped()
-            
-//            if !post.imageURLs.isEmpty {
-//                TabView {
-//                    //post.imageURLs
-//                    ForEach(images, id: \.self) { item in
-//                    //AsyncImage
-//                      Image(item)
-//                      .resizable()
-//                      .cornerRadius(15)
-//                  } //: LOOP
-//                } //: TAB
-//                .tabViewStyle(PageTabViewStyle())
-//                .indexViewStyle(.page(backgroundDisplayMode: .always))
-//                .padding(2.3)
-//                .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
-//                .overlay (
-//                    RoundedRectangle(cornerRadius: 15)
-//                        .strokeBorder(lineWidth: 4)
-//                )
-//
-//            } else {
-//                Image(systemName: category_images[post.category] ?? "bag.fill")
-//                    .scaleEffect(10)
-//                    .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
-//                    .foregroundColor(Color(hex: category_colors[post.category] ?? "000000") )
-//                    .overlay (
-//                        RoundedRectangle(cornerRadius: 15)
-//                            .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 3.75)
-//                    )
-//            }
+
+            if !post.imageURLs.isEmpty {
+                TabView {
+                    //post.imageURLs
+                    ForEach(post.imageURLs, id: \.self) { item in
+                        AsyncImage(url: URL(string: item), transaction: Transaction(animation: .spring(response:0.5, dampingFraction: 0.6, blendDuration: 0.25))) { phase in
+                            switch phase {
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .clipped()
+                                    .transition(.scale)
+                            case .failure(_):
+                                Image("Logo").opacity(0.8)
+                            case .empty:
+                                Image("Logo").opacity(0.8)
+                            @unknown default:
+                                ProgressView()
+                            }
+                        }
+                  } //: LOOP
+                } //: TAB
+                .tabViewStyle(PageTabViewStyle())
+    //            .cornerRadius(15)
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
+                .padding(2.3)
+                .frame(width: screenWidth, height: screenHeight * 0.35)
+    //            .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
+                .overlay (
+    //                RoundedRectangle(cornerRadius: 15)
+                    Rectangle()
+                        .strokeBorder(lineWidth: 1.5)
+                )
+                .clipped()
+
+            } else {
+                Image(systemName: category_images[post.category] ?? "bag.fill")
+                    .scaleEffect(10)
+                    .frame(width: screenWidth, height: screenHeight * 0.35)
+                    .foregroundColor(Color(hex: category_colors[post.category] ?? "000000") )
+                    .overlay (
+                        Rectangle()
+                            .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 1.5)
+                    )
+            }
             
             HStack{
                 Text(post.description)

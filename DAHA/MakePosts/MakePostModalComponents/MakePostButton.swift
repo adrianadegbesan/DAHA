@@ -11,11 +11,10 @@ struct MakePostButton: View {
     
     @Binding var post : PostModel
     @Binding var images: [UIImage]
-    @State private var uploading: Bool = false
-    @State private var error_alert: Bool = false
     @Binding var post_created: Bool
+    @Binding var uploading: Bool
+    @State private var error_alert: Bool = false
     @Environment(\.dismiss) var dismiss
-   
     @EnvironmentObject var firestoreManager : FirestoreManager
     
     
@@ -37,16 +36,14 @@ struct MakePostButton: View {
             
         }){
             ZStack{
-                Capsule().fill(Color(hex: deepBlue))
-                    .frame(width: screenWidth * 0.15, height: screenHeight * 0.04)
-                    .offset(y: -7)
                 Text("Post")
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.system(size: 25, weight: .heavy))
+                    .padding()
                     .foregroundColor(.white)
-                    .padding(.bottom, 14)
+                    .background(Capsule().fill(Color(hex: deepBlue)))
             }
         }
-        // ALERT
+        .alert("Error Uploading Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
     }
 }
 
@@ -54,6 +51,7 @@ struct MakePostButton_Previews: PreviewProvider {
     static var previews: some View {
         let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [])
         let images : [UIImage] = []
-        MakePostButton(post: .constant(post), images: .constant(images), post_created: .constant(false))
+        MakePostButton(post: .constant(post), images: .constant(images), post_created: .constant(false), uploading: .constant(false))
+            .environmentObject(FirestoreManager())
     }
 }

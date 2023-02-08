@@ -41,23 +41,6 @@ struct PostView: View {
             
             PostImageView(post: post)
             
-//            if !post.imageURLs.isEmpty{
-//                PostImageView(post: post)
-//            }
-            
-            
-            
-//            else {
-//                Image(systemName: category_images[post.category] ?? "bag.fill")
-//                    .scaleEffect(5)
-//                    .frame(width: screenWidth * 0.385, height: screenHeight * 0.21)
-//                    .foregroundColor(Color(hex: category_colors[post.category] ?? "000000") )
-//                    .overlay (
-//                        RoundedRectangle(cornerRadius: 15)
-//                            .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 3.75)
-//                    )
-//            }
-            
            
                 
             NavigationLink(destination: Test(), isActive: $buyNavigate){
@@ -70,15 +53,10 @@ struct PostView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 3)
-//                .shadow( radius: 3, y: 1.5)
                 .shadow(color: colorScheme == .dark ? .white : .black, radius: 2, y: 0)
         )
         .background(colorScheme == .dark ? .black.opacity(0.95) : .white)
         .cornerRadius(20)
-//        .onTapGesture(count: 2) {
-//            MediumFeedback()
-//            buyNavigate = true
-//        }
         .onTapGesture {
             LightFeedback()
             selected = true
@@ -95,7 +73,7 @@ struct PostView_Previews: PreviewProvider {
         let startTime = calendar.date(byAdding: .day, value: -2, to: Date())
         let startTimestamp: Timestamp = Timestamp(date: startTime!)
         
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [])
         NavigationView{
             PostView(post: post, owner: false)
         }

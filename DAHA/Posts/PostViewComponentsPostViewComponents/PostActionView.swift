@@ -15,7 +15,7 @@ struct PostActionView: View {
     
     var body: some View {
         HStack{
-            Text("$\(post.price)")
+            (Text(post.price == "Free" ? "" : "$") + Text(post.price))
 //                .foregroundColor(.black)
                 .lineLimit(1)
                 .minimumScaleFactor(0.3)

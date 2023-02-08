@@ -16,7 +16,7 @@ struct HomeScreen: View {
     @State var shouldNavigate : Bool = false
 
     
-    let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: nil, condition: "Good", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
+//    let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: nil, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [])
     
     var body: some View {
             ZStack {
@@ -25,8 +25,8 @@ struct HomeScreen: View {
                         .frame(alignment: .top)
 //                    Spacer()
                         ScrollView{
-                            PostView(post: post, owner: false)
-                                .padding(.top, 10)
+//                            PostView(post: post, owner: false)
+//                                .padding(.top, 10)
                         }
                         .refreshable {
 

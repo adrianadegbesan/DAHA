@@ -38,12 +38,12 @@ struct SecondContinueButton: View {
                 LightFeedback()
                 uploading = true
                 Task {
-                    let username_temp = username.replacingOccurrences(of: " ", with: "")
+                    let username_temp = username.replacingOccurrences(of: " ", with: "").lowercased()
                     let password_temp = password.replacingOccurrences(of: " ", with: "")
                     print(password)
                     let reconfirmpassword_temp = reconfirm_password.replacingOccurrences(of: " ", with: "")
-                    let firstname_temp = firstName.replacingOccurrences(of: " ", with: "")
-                    let lastname_temp = lastName.replacingOccurrences(of: " ", with: "")
+                    let firstname_temp = firstName.replacingOccurrences(of: " ", with: "").lowercased()
+                    let lastname_temp = lastName.replacingOccurrences(of: " ", with: "").lowercased()
                     
                     await firestoreManager.verifyUsername(username: username_temp, usernameInUse:$usernameInUse, cannot_verify:$errorCreatingAccountAlert)
                     print(usernameInUse)
