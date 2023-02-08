@@ -13,6 +13,7 @@ import FirebaseFirestoreSwift
 
 class AuthManager: ObservableObject {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    @AppStorage("university") var university: String = ""
     @AppStorage("accountcreated") var isAccountCreated: Bool = false
     @Published var userSession: FirebaseAuth.User?
     
@@ -66,7 +67,7 @@ class AuthManager: ObservableObject {
         }
     }
     
-    func signIn(email: String, password: String, error_alert: Binding<Bool>, error_message: Binding<String>, username_temp: Binding<String>) async -> Bool {
+    func signIn(email: String, password: String, error_alert: Binding<Bool>, error_message: Binding<String>, username_temp: Binding<String>, university_temp: Binding<String>) async -> Bool {
         
        var found: Bool = false
         do {
@@ -81,6 +82,7 @@ class AuthManager: ObservableObject {
                     print(doc[0].data())
                     let document = doc[0].data()
                     username_temp.wrappedValue = document["username"] as! String
+                    university_temp.wrappedValue = document["university"] as! String
                     return true
                 }
             }

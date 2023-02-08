@@ -14,21 +14,24 @@ struct SignInButton: View {
     @Binding var password: String
     @State private var loggedIn: Bool = false
     @State private var username_temp: String = ""
+    @State private var university_temp: String = ""
     @State private var error_alert: Bool = false
     @State private var error_message: String = ""
     @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var authentication: AuthManager
     @AppStorage("username") var username_system: String = ""
+    @AppStorage("university") var university: String = ""
     
     
     var body: some View {
         Button(action: {
             LightFeedback()
             Task{
-                loggedIn = await authentication.signIn(email: email, password: password, error_alert: $error_alert, error_message: $error_message, username_temp: $username_temp)
+                loggedIn = await authentication.signIn(email: email, password: password, error_alert: $error_alert, error_message: $error_message, username_temp: $username_temp, university_temp: $university_temp)
             }
             if loggedIn {
                 username_system = username_temp
+                university = university_temp
                 isOnboardingViewActive = false
                 isSignedIn = true
             }
