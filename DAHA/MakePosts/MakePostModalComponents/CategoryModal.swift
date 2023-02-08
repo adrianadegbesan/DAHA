@@ -20,9 +20,7 @@ struct CategoryModal: View {
 //            BackgroundColor(color: greyBackground)
             
             VStack{
-                Capsule()
-                    .frame(width: 40, height: 8)
-                    .foregroundColor(.gray)
+               ModalCapsule()
                     .padding(.top, 10)
                 Spacer()
                 Text("Categories")
@@ -60,6 +58,7 @@ struct CategoryModal: View {
                     CategoryIconView(category: "Tickets", selected: $selected, post: $post)
                 }
                 .padding(.bottom, 25)
+                Spacer()
             }
         }
     }

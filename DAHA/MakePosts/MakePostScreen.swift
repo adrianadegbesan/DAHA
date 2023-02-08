@@ -9,9 +9,11 @@ import SwiftUI
 
 struct MakePostScreen: View {
     
-    @State var post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [])
+    @State var post: PostModel = PostModel(id: nil, title: "", userID: "", username: "", description: "", postedAt: nil, condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [])
     
     @State var images: [UIImage] = []
+    @State private var post_created: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     
     var body: some View {
@@ -31,7 +33,11 @@ struct MakePostScreen: View {
             .padding()
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: MakePostScreenExit(), trailing: MakePostButton(post: $post, images: $images))
+        .navigationBarItems(leading: MakePostScreenExit(), trailing: MakePostButton(post: $post, images: $images, post_created: $post_created).onChange(of: post_created){ value in
+            if post_created{
+                dismiss()
+            }
+        })
         .onTapGesture {
             hideKeyboard()
         }

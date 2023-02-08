@@ -23,7 +23,7 @@ struct PostModalDescription: View {
                 
                 Spacer()
                 
-                Text(post.price)
+                Text("$\(post.price)")
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .font(.system(size: 16, weight: .bold))
@@ -51,7 +51,7 @@ struct PostModalDescription: View {
             .overlay (
 //                RoundedRectangle(cornerRadius: 15)
                 Rectangle()
-                    .strokeBorder(lineWidth: 3)
+                    .strokeBorder(lineWidth: 1.5)
             )
             .clipped()
             
@@ -95,7 +95,7 @@ struct PostModalDescription: View {
 
 struct PostModalDescription_Previews: PreviewProvider {
     static var previews: some View {
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [])
         PostModalDescription(post: post)
     }
 }

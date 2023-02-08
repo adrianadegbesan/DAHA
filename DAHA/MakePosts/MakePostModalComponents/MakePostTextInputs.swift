@@ -24,7 +24,7 @@ struct MakePostTextInputs: View {
                     post.price = "$\(price)"
                 }
                 .keyboardType(.numberPad)
-                .textFieldStyle(OutlinedTextFieldStyle())
+                .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "dollarsign")))
                 .padding(.leading)
                 .padding(.trailing, screenWidth * 0.6)
                 .padding(.bottom, 10)
@@ -36,7 +36,7 @@ struct MakePostTextInputs: View {
                     }
                     post.title = title
                 }
-                .textFieldStyle(OutlinedTextFieldStyle())
+                .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "t.square")))
                 .padding(.leading)
                 .padding(.trailing, screenWidth * 0.288)
                 .padding(.bottom, 10)

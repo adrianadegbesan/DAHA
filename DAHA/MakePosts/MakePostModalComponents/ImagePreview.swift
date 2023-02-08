@@ -25,6 +25,7 @@ struct ImagePreview: View {
                         .strokeBorder(lineWidth: 3)
                     )
                     .scaleEffect(0.93)
+
             
                 Image(systemName: "multiply.circle.fill")
                     .foregroundColor(.red)
@@ -33,7 +34,7 @@ struct ImagePreview: View {
                     .onTapGesture {
                         let index = images.firstIndex(of: image!)
                         if index != nil{
-                            images.remove(at: index!)
+                                images.remove(at: index!)
                         }
                     }
                     .offset(x: 0.5, y: 1.35)

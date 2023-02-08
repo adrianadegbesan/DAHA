@@ -13,9 +13,7 @@ struct PostModalActions: View {
     var body: some View {
         VStack{
             HStack{
-                Capsule()
-                    .frame(width: 35, height: 8)
-                    .foregroundColor(.gray)
+                    ModalCapsule()
             } //: HStack
             .padding(.bottom, 8)
             HStack{

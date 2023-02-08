@@ -11,13 +11,16 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseStorage
 
 
 class FirestoreManager: ObservableObject {
     
-    @AppStorage("accountcreated") var isAccountCreated: Bool = false
+    @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
+    @Environment(\.dismiss) var dismiss
+    
     
     var posts: [PostModel] = []
     var saved_posts: [PostModel] = []
@@ -25,6 +28,7 @@ class FirestoreManager: ObservableObject {
     
     
     private var db = Firestore.firestore()
+    private var storage = Storage.storage()
     
     func verifyDomain(domain: String, schoolFound: Binding<Bool>, cannot_verify: Binding<Bool>, uni_temp: Binding<String>) async {
         var found: Bool = false
@@ -86,11 +90,98 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    func uploadImages(images: [UIImage]) async -> [String]{
+        var urls : [String] = []
+        var error_found = false
+        let storageRef = storage.reference()
+        
+        if !images.isEmpty{
+            for image in images {
+                let imageData = image.jpegData(compressionQuality: 0.8)
+                guard imageData != nil else {
+                    return ["error"]
+                }
+                let fileRef = storageRef.child("\(university)_images/\(UUID().uuidString).jpg")
+                
+                do {
+                    _ = try await fileRef.putDataAsync(imageData!)
+                    let url = try await fileRef.downloadURL()
+                    urls.append(url.absoluteString)
+                }
+                catch {
+                    error_found = true
+                }
+            }
+        }
+        
+        if error_found == true{
+            return ["error"]
+        } else {
+            return urls
+        }
+    }
+    
+    func makePost(post: PostModel, images: [UIImage], post_created: Binding<Bool>, completion: @escaping (Error?) -> Void) async {
+        
+        var urls : [String] = []
+        if !images.isEmpty{
+            urls = await uploadImages(images: images)
+        }
+        print(urls)
+        
+        if urls == ["error"]{
+            completion(uploadError("Couldn't upload images"))
+        }
+        
+        var post_temp = post
+        
+        post_temp.imageURLs.append(contentsOf: urls)
+        
+        let cur_id = Auth.auth().currentUser?.uid
+        
+        if cur_id == nil{
+            completion(uploadError("User Account Error"))
+        }
+        
+        post_temp.userID = cur_id!
+        post_temp.username = username_system
+        post_temp.channel = university
+        post_temp.price = "\(post.price)"
+        
+        var ref: DocumentReference? = nil
+        
+        do {
+            ref = try db.collection("\(university)_Posts").addDocument(from: post_temp){ err in
+                if let err = err{
+                    completion(uploadError(err.localizedDescription))
+                } else {
+                    print("Post was completed with ID: \(ref!.documentID)")
+                    post_created.wrappedValue = true
+                    print(post_created.wrappedValue)
+                }
+            }
+        }
+        catch {
+            completion(uploadError("Error uploading post"))
+        }
+    }
+    
+    
+
     
     
     
     
+}
+
+struct uploadError: Error {
+    let message: String
     
+    init(_ message : String){
+        self.message = message
+    }
     
-    
+    public var localizedDescription: String{
+        return message
+    }
 }

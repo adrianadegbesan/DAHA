@@ -37,7 +37,6 @@ struct HeaderView: View {
                     HStack{
                         Text(title)
                             .channelText()
-                            .foregroundColor(.white)
                     }
                 }.offset(x: -30)
                 // Specific offset to get tounded rectangle attached to DAHA logo
