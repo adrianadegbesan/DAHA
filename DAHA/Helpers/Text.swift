@@ -27,7 +27,7 @@ extension Text {
             .lineLimit(1)
             .minimumScaleFactor(0.01)
             .font(
-                .system(size:17, weight: .bold)
+                .system(size:20, weight: .bold)
         )
             .foregroundColor(.white)
     }    

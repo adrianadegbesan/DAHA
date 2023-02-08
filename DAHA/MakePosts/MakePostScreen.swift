@@ -12,6 +12,7 @@ struct MakePostScreen: View {
     @State var post: PostModel = PostModel(id: nil, title: "", userID: "", username: "", description: "", postedAt: nil, condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [])
     
     @State var images: [UIImage] = []
+    @State var post_created: Bool = false
     @Environment(\.dismiss) var dismiss
     
     
@@ -31,13 +32,15 @@ struct MakePostScreen: View {
             }
             .padding()
         }
+        .onChange(of: post_created) { value in
+            if post_created {
+                dismiss()
+            }
+        }
         .navigationBarBackButtonHidden(true)
-//        .navigationBarItems(leading: MakePostScreenExit(), trailing: MakePostButton(post: $post, images: $images, post_created: $post_created).onChange(of: post_created){ value in
-//            if post_created{
-//                dismiss()
-//            }
-//        })
-        .navigationBarItems(leading: MakePostScreenExit(), trailing: NextButton(post: $post, images: $images))
+
+        .navigationBarItems(leading: MakePostScreenExit(), trailing: NextButton(post: $post, images: $images, post_created: $post_created))
+        
         .onTapGesture {
             hideKeyboard()
         }
