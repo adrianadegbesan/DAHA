@@ -34,7 +34,7 @@ struct ContentView: View {
     } //: ZStack
     .opacity(opacity)
     .onAppear{
-        withAnimation(.easeIn(duration: 0.3)){
+        withAnimation(.easeIn(duration: 0.6)){
             self.opacity = 1
         }
     }

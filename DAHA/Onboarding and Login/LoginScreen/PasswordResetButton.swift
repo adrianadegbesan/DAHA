@@ -13,6 +13,7 @@ struct PasswordResetButton: View {
     @State private var error_alert: Bool = false
     @State private var success_alert: Bool = false
     @EnvironmentObject var authentication: AuthManager
+    @Environment(\.colorScheme) var colorScheme
     
     
     var body: some View {
@@ -25,6 +26,7 @@ struct PasswordResetButton: View {
                 RoundedRectangle(cornerRadius: 33)
                     .fill(Color.init(hex: deepBlue))
                     .frame(width: 160, height: 54)
+                    .overlay(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                 
                 // Putting Sign Up and Icon side-by-side
                 HStack {

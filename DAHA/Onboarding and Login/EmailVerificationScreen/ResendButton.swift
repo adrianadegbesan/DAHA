@@ -15,6 +15,7 @@ struct ResendButton: View {
     @Binding var code: String
     
     @EnvironmentObject var authentication: AuthManager
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         Button(action: {
@@ -28,6 +29,7 @@ struct ResendButton: View {
                 RoundedRectangle(cornerRadius: 33)
                     .fill(Color.init(hex: deepBlue))
                     .frame(width: 180, height: 55)
+                    .overlay(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
             
                 HStack {
                     // Continue Text

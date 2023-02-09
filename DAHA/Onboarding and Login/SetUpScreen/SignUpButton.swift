@@ -11,6 +11,7 @@ import SwiftUI
 struct SignUpButton: View {
     
     @State var shouldNavigate: Bool = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
 //        NavigationLink(destination: SchoolEmailScreen()
@@ -24,6 +25,7 @@ struct SignUpButton: View {
                     RoundedRectangle(cornerRadius: 33)
                         .fill(Color.init(hex: deepBlue))
                         .frame(width: 202, height: 64)
+                        .overlay(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                     
                     // Putting Sign Up and Icon side-by-side
                     HStack {

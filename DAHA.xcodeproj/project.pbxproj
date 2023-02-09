@@ -41,6 +41,7 @@
 		82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6822992E20200589E1E /* ModalCapsule.swift */; };
 		82ACC68729936E3100589E1E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68629936E3100589E1E /* NextButton.swift */; };
 		82ACC68929936E4300589E1E /* PostConfirmationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68829936E4300589E1E /* PostConfirmationScreen.swift */; };
+		82ACC68E29959FB100589E1E /* AnimationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68D29959FB100589E1E /* AnimationTest.swift */; };
 		82B6B2BB2989EC0E00027E5A /* MakePostScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */; };
 		82B6B2BE2989ECD300027E5A /* MakePostScreenExit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */; };
 		82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2C32989EE8800027E5A /* MakePostButton.swift */; };
@@ -138,6 +139,7 @@
 		82ACC6822992E20200589E1E /* ModalCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCapsule.swift; sourceTree = "<group>"; };
 		82ACC68629936E3100589E1E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		82ACC68829936E4300589E1E /* PostConfirmationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostConfirmationScreen.swift; sourceTree = "<group>"; };
+		82ACC68D29959FB100589E1E /* AnimationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTest.swift; sourceTree = "<group>"; };
 		82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreen.swift; sourceTree = "<group>"; };
 		82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreenExit.swift; sourceTree = "<group>"; };
 		82B6B2C32989EE8800027E5A /* MakePostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostButton.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 			children = (
 				82DF4CB12973C7FA00A309CF /* DAHA.entitlements */,
 				82CEFC8C2969D0DF00C55F67 /* Info.plist */,
+				82ACC68D29959FB100589E1E /* AnimationTest.swift */,
 				82CEFC312969CB2C00C55F67 /* DAHAApp.swift */,
 				82CEFC532969CC9B00C55F67 /* LaunchScreen.swift */,
 				82CEFC332969CB2C00C55F67 /* ContentView.swift */,
@@ -677,6 +680,7 @@
 				82B6B2BB2989EC0E00027E5A /* MakePostScreen.swift in Sources */,
 				82B6B2BE2989ECD300027E5A /* MakePostScreenExit.swift in Sources */,
 				82CBC2B22989BC2F001966E3 /* PostModalPostActions.swift in Sources */,
+				82ACC68E29959FB100589E1E /* AnimationTest.swift in Sources */,
 				82DF4CAC296F5C6B00A309CF /* ResendButton.swift in Sources */,
 				82CEFC852969D00D00C55F67 /* SettingsButton.swift in Sources */,
 				82CEFC8B2969D06700C55F67 /* FirstContinueButton.swift in Sources */,

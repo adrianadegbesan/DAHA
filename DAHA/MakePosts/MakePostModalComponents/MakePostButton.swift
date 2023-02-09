@@ -20,7 +20,7 @@ struct MakePostButton: View {
     
     var body: some View {
         Button(action:{
-            if !(uploading){
+            if !(uploading || post_created){
                 MediumFeedback()
                 uploading = true
                 Task {

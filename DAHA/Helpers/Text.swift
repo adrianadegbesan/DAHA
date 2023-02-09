@@ -28,7 +28,7 @@ extension Text {
             .lineLimit(1)
             .minimumScaleFactor(0.01)
             .font(
-                .system(size:20, weight: .bold)
+                .system(size:19, weight: .bold)
         )
             .foregroundColor(.white)
     }    
@@ -82,6 +82,10 @@ extension View {
 extension View {
     func keyboardControl() -> some View {
         self
+            .submitLabel(.return)
+            .onSubmit {
+                hideKeyboard()
+            }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
@@ -93,10 +97,6 @@ extension View {
                             .foregroundColor(.gray)
                     }
                 }
-            }
-            .submitLabel(.return)
-            .onSubmit {
-                hideKeyboard()
             }
     }
 }

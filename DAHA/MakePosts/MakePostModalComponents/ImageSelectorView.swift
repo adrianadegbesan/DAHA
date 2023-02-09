@@ -16,14 +16,8 @@ struct ImageSelectorView: View {
         VStack{
             HStack{
                 CameraRollButton(images: $images)
-                    .onChange(of: images) { value in
-                        print (images.count)
-                    }
                 
                 CameraButton(images: $images)
-                    .onChange(of: images) { value in
-                        print (images.count)
-                    }
                 
                 Spacer()
                 
@@ -41,10 +35,10 @@ struct ImageSelectorView: View {
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .padding(2.3)
                 .frame(width: screenWidth * 0.94, height: screenHeight * 0.45)
-//                .overlay (
-//                   Rectangle()
-//                        .strokeBorder(lineWidth: 4)
-//                )
+            } else {
+                Color.clear
+                    .padding(2.3)
+                    .frame(width: screenWidth * 0.94, height: screenHeight * 0.45)
             }
         }
     }

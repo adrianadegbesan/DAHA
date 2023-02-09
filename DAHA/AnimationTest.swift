@@ -1,14 +1,13 @@
 //
-//  LaunchScreen.swift
+//  AnimationTest.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 1/7/23.
+//  Created by Adrian Adegbesan on 2/9/23.
 //
 
 import SwiftUI
 
-struct LaunchScreen: View {
-    
+struct AnimationTest: View {
     
     @State private var isActive = false
     @State private var size = 0.8
@@ -16,10 +15,10 @@ struct LaunchScreen: View {
     @EnvironmentObject var network: Network
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var size1 = 0.01
-    @State private var size2 = 0.01
-    @State private var size3 = 0.01
-    @State private var size4 = 0.01
+    @State private var size1 = 0.2
+    @State private var size2 = 0.2
+    @State private var size3 = 0.2
+    @State private var size4 = 0.2
 
     
     var body: some View {
@@ -37,6 +36,7 @@ struct LaunchScreen: View {
                             .font(
                                 .system(size:22, weight: .bold)
                             )
+                        //                        .scaleEffect(textsize)
                         
                         Text(".")
                             .font(
@@ -77,22 +77,22 @@ struct LaunchScreen: View {
                         self.size1 = 1
                     }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.25){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.15){
                     withAnimation {
                         self.size2 = 1
                     }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.85){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.65){
                     withAnimation {
                         self.size3 = 1
                     }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.45){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.15){
                     withAnimation {
                         self.size4 = 1
                     }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.2){
                     withAnimation {
                         self.isActive = true
                     }
@@ -102,10 +102,8 @@ struct LaunchScreen: View {
     }
 }
 
-struct LaunchScreen_Previews: PreviewProvider {
+struct AnimationTest_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchScreen()
-            .environmentObject(Network())
-            .previewLayout(.sizeThatFits)
+        AnimationTest()
     }
 }

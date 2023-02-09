@@ -18,14 +18,9 @@ struct MakePostScreenExit: View {
                     dismiss()
                 }){
                     Image(systemName: "multiply")
-                        .padding(.bottom, 10)
-                        .padding(.trailing, 0)
                         .scaleEffect(1.5)
                 }
                 .foregroundColor(colorScheme == .dark ? .white : .black)
-                Text("Cancel")
-                    .font(.system(size: 18, weight: .bold))
-                    .padding(.bottom, 14)
             } //:HStack
         }
  

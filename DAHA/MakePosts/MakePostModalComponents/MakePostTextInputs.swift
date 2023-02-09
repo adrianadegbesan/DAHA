@@ -66,12 +66,12 @@ struct MakePostTextInputs: View {
                     
                             .stroke(Color(UIColor.systemGray4), lineWidth: 2)
                     }
-                    .padding(.trailing, screenWidth * 0.24)
+                    .padding(.trailing, screenWidth * 0.25)
                     .padding(.bottom, 10)
                 if description == ""{
                      Text(" Description")
                         .foregroundColor(Color(UIColor.systemGray4))
-                        .offset(x: -screenWidth * 0.2965, y: -screenHeight * 0.0535)
+                        .offset(x: -screenWidth * 0.305, y: -screenHeight * 0.0535)
                 }
             }
             .padding(.leading, 16)

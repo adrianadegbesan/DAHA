@@ -12,7 +12,8 @@ struct TermsConditionsScreen: View {
     @State var toggle : Bool = false
     @State var shouldNavigate : Bool = false
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
-    
+    @Environment(\.colorScheme) var colorScheme
+     
     var body: some View {
         VStack{
             Image("Logo")
@@ -58,6 +59,7 @@ struct TermsConditionsScreen: View {
                     RoundedRectangle(cornerRadius: 33)
                         .fill(toggle ? Color.init(hex: deepBlue) : .gray)
                         .frame(width: 180, height: 55)
+                        .overlay(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                     
                     HStack {
                         // Continue Text

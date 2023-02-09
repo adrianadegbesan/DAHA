@@ -22,9 +22,10 @@ class FirestoreManager: ObservableObject {
     @Environment(\.dismiss) var dismiss
     
     
-    var posts: [PostModel] = []
-    var saved_posts: [PostModel] = []
-    var my_posts: [PostModel] = []
+    @State var posts: [PostModel] = []
+    @State var saved_posts: [PostModel] = []
+    @State var my_posts: [PostModel] = []
+    @State var search_results: [PostModel] = []
     
     
     private var db = Firestore.firestore()
@@ -91,7 +92,11 @@ class FirestoreManager: ObservableObject {
     }
     
     func uploadImages(images: [UIImage]) async -> [String]{
+        
+//        var result : [String : [String]]
         var urls : [String] = []
+//        var ids : [String] = []
+        
         var error_found = false
         let storageRef = storage.reference()
         
@@ -101,7 +106,10 @@ class FirestoreManager: ObservableObject {
                 guard imageData != nil else {
                     return ["error"]
                 }
-                let fileRef = storageRef.child("\(university)_images/\(UUID().uuidString).jpg")
+                let cur_id = "\(university)_images/\(UUID().uuidString).jpg"
+//                ids.append(cur_id)
+                
+                let fileRef = storageRef.child(cur_id)
                 
                 do {
                     _ = try await fileRef.putDataAsync(imageData!)

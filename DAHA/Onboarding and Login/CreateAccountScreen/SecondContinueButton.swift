@@ -29,6 +29,7 @@ struct SecondContinueButton: View {
     @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
+    @Environment(\.colorScheme) var colorScheme
 
     
     
@@ -99,6 +100,7 @@ struct SecondContinueButton: View {
                 RoundedRectangle(cornerRadius: 33)
                     .fill(Color.init(hex: deepBlue))
                     .frame(width: 180, height: 55)
+                    .overlay(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                 
                 HStack {
                     // Continue Text

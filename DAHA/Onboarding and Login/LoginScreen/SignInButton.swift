@@ -21,7 +21,7 @@ struct SignInButton: View {
     @EnvironmentObject var authentication: AuthManager
     @AppStorage("username") var username_system: String = ""
     @AppStorage("university") var university: String = ""
-    
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         Button(action: {
@@ -41,6 +41,7 @@ struct SignInButton: View {
                 RoundedRectangle(cornerRadius: 33)
                     .fill(Color.init(hex: deepBlue))
                     .frame(width: 202, height: 64)
+                    .overlay(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                 
                 // Putting Sign Up and Icon side-by-side
                 HStack {
