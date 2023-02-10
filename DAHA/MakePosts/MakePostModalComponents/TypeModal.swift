@@ -9,12 +9,23 @@ import SwiftUI
 
 struct TypeModal: View {
     
-    @Binding var post: PostModel
     @Binding var selected: String
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack{
-            ModalCapsule()
+            HStack{
+                Image(systemName: "multiply")
+                    .font(.system(size: 25, weight: .heavy))
+                    .onTapGesture {
+                        dismiss()
+                    }
+                    .padding(.leading, 15)
+                    .padding(.top, 5)
+                Spacer().frame(width: screenWidth * 0.37)
+                ModalCapsule()
+                Spacer()
+            }
                  .padding(.top, 10)
             Spacer().frame(height: screenHeight * 0.08)
              Text("Types")
@@ -22,9 +33,9 @@ struct TypeModal: View {
                      .system(size:30, weight: .heavy)
                  )
              Spacer().frame(height: screenHeight * 0.08)
-             TypeIcon(post: $post, selected: $selected, type: "Listing")
+             TypeIcon(selected: $selected, type: "Listing")
              Spacer().frame(height: screenHeight * 0.08)
-             TypeIcon(post: $post, selected: $selected, type: "Request")
+             TypeIcon(selected: $selected, type: "Request")
              Spacer()
             
         }
@@ -33,7 +44,6 @@ struct TypeModal: View {
 
 struct TypeModal_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
-        TypeModal(post: .constant(post), selected: .constant(""))
+        TypeModal(selected: .constant(""))
     }
 }

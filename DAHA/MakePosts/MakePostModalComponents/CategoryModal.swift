@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CategoryModal: View {
     
-    @Binding var post: PostModel
+//    @Binding var post: PostModel
     @Binding var selected: String
-    
+    @Environment(\.dismiss) private var dismiss
     
     let categories: [String] = ["General", "Clothing", "Tech", "Bikes", "Cars", "Art", "Furniture", "Books", "Games", "Tickets"]
     
@@ -20,7 +20,19 @@ struct CategoryModal: View {
 //            BackgroundColor(color: greyBackground)
             
             VStack{
-               ModalCapsule()
+                HStack{
+                    Image(systemName: "multiply")
+                        .font(.system(size: 25, weight: .heavy))
+                        .onTapGesture {
+                            dismiss()
+                        }
+                        .padding(.leading, 15)
+                        .padding(.top, 5)
+                    Spacer().frame(width: screenWidth * 0.37)
+                    ModalCapsule()
+                    Spacer()
+                }
+              
                     .padding(.top, 10)
                 Spacer()
                 Text("Categories")
@@ -29,33 +41,33 @@ struct CategoryModal: View {
                     )
                 Spacer()
                 HStack{
-                    CategoryIconView(category: "General", selected: $selected, post: $post)
+                    CategoryIconView(category: "General", selected: $selected)
                         .padding(.trailing, 10)
-                    CategoryIconView(category: "Clothing", selected: $selected, post: $post)
+                    CategoryIconView(category: "Clothing", selected: $selected)
                 }
                 .padding(.bottom, 25)
                 HStack{
-                    CategoryIconView(category: "Tech", selected: $selected, post: $post)
+                    CategoryIconView(category: "Tech", selected: $selected)
                         .padding(.trailing, 10)
-                    CategoryIconView(category: "Bikes", selected: $selected, post: $post)
+                    CategoryIconView(category: "Bikes", selected: $selected)
                 }
                 .padding(.bottom, 25)
                 HStack{
-                    CategoryIconView(category: "Cars", selected: $selected, post: $post)
+                    CategoryIconView(category: "Cars", selected: $selected)
                         .padding(.trailing, 10)
-                    CategoryIconView(category: "Art", selected: $selected, post: $post)
+                    CategoryIconView(category: "Art", selected: $selected)
                 }
                 .padding(.bottom, 25)
                 HStack{
-                    CategoryIconView(category: "Furniture", selected: $selected, post: $post)
+                    CategoryIconView(category: "Furniture", selected: $selected)
                         .padding(.trailing, 10)
-                    CategoryIconView(category: "Books", selected: $selected, post: $post)
+                    CategoryIconView(category: "Books", selected: $selected)
                 }
                 .padding(.bottom, 25)
                 HStack{
-                    CategoryIconView(category: "Games", selected: $selected, post: $post)
+                    CategoryIconView(category: "Games", selected: $selected)
                         .padding(.trailing, 10)
-                    CategoryIconView(category: "Tickets", selected: $selected, post: $post)
+                    CategoryIconView(category: "Tickets", selected: $selected)
                 }
                 .padding(.bottom, 25)
                 Spacer()
@@ -66,7 +78,6 @@ struct CategoryModal: View {
 
 struct CategoryModal_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
-        CategoryModal(post: .constant(post), selected: .constant(""))
+        CategoryModal(selected: .constant(""))
     }
 }

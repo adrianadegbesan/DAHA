@@ -28,8 +28,8 @@ struct ImageSelectorView: View {
                 TabView {
                     ForEach(images, id: \.self) { image in
                         ImagePreview(image: image, images:$images)
-                      
-                  } //: LOOP
+                        
+                    } //: LOOP
                 } //: TAB
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
@@ -38,7 +38,7 @@ struct ImageSelectorView: View {
             } else {
                 Color.clear
                     .padding(2.3)
-                    .frame(width: screenWidth * 0.94, height: screenHeight * 0.45)
+                    .frame(width: screenWidth * 0.1, height: screenHeight * 0.1)
             }
         }
     }

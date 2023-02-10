@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ChooseCategoryButton: View {
-    @State var isPresented: Bool = false
-    @State var selected: String = ""
-    @Binding var post: PostModel
+    @State var categoryPresented: Bool = false
+    @Binding var selected: String
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -18,7 +17,7 @@ struct ChooseCategoryButton: View {
             Button(action: {
                 LightFeedback()
                 if selected == "" {
-                    isPresented = true
+                    categoryPresented = true
                 } else {
                     withAnimation{
                         selected = ""
@@ -44,7 +43,7 @@ struct ChooseCategoryButton: View {
             }
             
             if (selected != ""){
-                Label(post.category.uppercased(), systemImage: category_images[post.category] ?? "")
+                Label(selected.uppercased(), systemImage: category_images[selected] ?? "")
                     .lineLimit(1)
                     .foregroundColor(.white)
                     .font(.system(size: 13, weight: .bold))
@@ -55,8 +54,8 @@ struct ChooseCategoryButton: View {
             }
             
         }
-        .sheet(isPresented: $isPresented){
-                CategoryModal(post: $post, selected: $selected)
+        .sheet(isPresented: $categoryPresented){
+                CategoryModal(selected: $selected)
         }
     }
 }
@@ -64,7 +63,6 @@ struct ChooseCategoryButton: View {
 
 struct ChooseCategoryButton_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
-        ChooseCategoryButton(post: .constant(post))
+        ChooseCategoryButton(selected: .constant(""))
     }
 }

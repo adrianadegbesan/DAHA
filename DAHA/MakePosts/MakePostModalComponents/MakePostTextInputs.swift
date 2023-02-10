@@ -13,10 +13,11 @@ struct MakePostTextInputs: View {
     @State var title: String = ""
     @State var description: String = ""
     @Binding var post: PostModel
+    @Binding var type : String
     
     var body: some View {
         VStack{
-            TextField(post.type == "Request" ? "Willing to Pay" : "Price", text: $price)
+            TextField(type == "Request" ? "Willing to Pay" : "Price", text: $price)
                 .onChange(of: price) { value in
                     if price.count > 5{
                         price = String(price.prefix(5))
@@ -84,6 +85,6 @@ struct MakePostTextInputs: View {
 struct MakePostTextInputs_Previews: PreviewProvider {
     static var previews: some View {
         let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
-        MakePostTextInputs(post: .constant(post))
+        MakePostTextInputs(post: .constant(post), type: .constant(""))
     }
 }

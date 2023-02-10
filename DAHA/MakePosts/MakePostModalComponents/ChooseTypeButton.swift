@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ChooseTypeButton: View {
-    @Binding var post: PostModel
-    @State var selected: String = ""
+//    @Binding var post: PostModel
+    @Binding var selected: String
     @State var isPresented: Bool = false
     @Environment(\.colorScheme) var colorScheme
     
@@ -46,7 +46,7 @@ struct ChooseTypeButton: View {
             }
             
             if (selected != ""){
-                Label(post.type.uppercased(), systemImage: type_images[post.type] ?? "")
+                Label(selected.uppercased(), systemImage: type_images[selected] ?? "")
                     .lineLimit(1)
                     .foregroundColor(.white)
                     .font(.system(size: 13, weight: .bold))
@@ -58,15 +58,15 @@ struct ChooseTypeButton: View {
             
         }
         .sheet(isPresented: $isPresented){
-                TypeModal(post: $post, selected: $selected)
+                TypeModal(selected: $selected)
         }
     }
 }
 
 struct ChooseTypeButton_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
+//        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
         
-        ChooseTypeButton(post: .constant(post))
+        ChooseTypeButton(selected: .constant(""))
     }
 }
