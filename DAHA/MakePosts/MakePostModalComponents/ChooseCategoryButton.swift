@@ -49,7 +49,7 @@ struct ChooseCategoryButton: View {
                     .font(.system(size: 13, weight: .bold))
                     .padding(10)
                     .background(Capsule().fill(Color(hex: category_colors[selected] ?? "000000")))
-                    .overlay((selected == "General" && colorScheme == .dark) ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
+                    .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 3))
                     .padding(.trailing, 10)
             }
             

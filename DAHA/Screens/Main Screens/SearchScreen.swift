@@ -37,6 +37,7 @@ struct SearchScreen: View {
                             .background(Circle().fill(.white).scaleEffect(colorScheme == .dark ? 1 : 0.4))
                             .background(Circle().stroke(colorScheme == .dark ? .white : .black, lineWidth: colorScheme == .dark ? 1 : 3))
                             .onTapGesture {
+                                LightFeedback()
                                 withAnimation{
                                     category = ""
                                 }
@@ -49,7 +50,7 @@ struct SearchScreen: View {
                             .font(.system(size: 13, weight: .bold))
                             .padding(10)
                             .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
-                            .overlay((category == "General" && colorScheme == .dark) ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
+                            .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 3))
                             .padding(.trailing, 10)
                         
                     }
