@@ -86,6 +86,7 @@ extension View {
             .onSubmit {
                 hideKeyboard()
             }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()

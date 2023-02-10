@@ -53,11 +53,11 @@ struct SearchBarScreen: View {
             
             Spacer()
         }
-        .onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-                keyboardFocused = true
-            }
-        }
+//        .onAppear{
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+//                keyboardFocused = true
+//            }
+//        }
         .keyboardControl()
     }
 }
