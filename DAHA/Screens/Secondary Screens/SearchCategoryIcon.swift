@@ -1,18 +1,16 @@
 //
-//  CategoryIconView.swift
+//  SearchCategoryIcon.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 2/1/23.
+//  Created by Adrian Adegbesan on 2/10/23.
 //
 
 import SwiftUI
 
-struct CategoryIconView: View {
+struct SearchCategoryIcon: View {
     
     @State var category : String
     @Binding var selected : String
-//    @Binding var post : PostModel
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -20,34 +18,30 @@ struct CategoryIconView: View {
             if selected != category {
                 SoftFeedback()
                 selected = category
-//                post.category = category
-                dismiss()
                 
             } else {
                 SoftFeedback()
                 selected = ""
-//                post.category = ""
-                dismiss()
             }
         }) {
             ZStack{
                 RoundedRectangle(cornerRadius: 23)
                     .fill(Color(hex: category_colors[category] ?? "000000"))
-//                    .fill(selected == category ? Color(hex: category_colors[category] ?? "000000") : .gray)
-                    .frame(width: screenWidth * 0.44, height: screenHeight * 0.1)
+                    .frame(width: screenWidth * 0.34, height: screenHeight * 0.075)
                 
                 Label(category.uppercased(), systemImage: category_images[category] ?? "")
                     .font(
-                        .system(size:20, weight: .bold)
+                        .system(size:15, weight: .bold)
                     )
                     .foregroundColor(.white)
             }
+            .background(RoundedRectangle(cornerRadius: 23).stroke(colorScheme == .dark ? .white : .black, lineWidth: colorScheme == .dark ? 2 : 4))
         }
     }
 }
 
-struct CategoryIconView_Previews: PreviewProvider {
+struct SearchCategoryIcon_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryIconView(category: "General", selected: .constant(""))
+        SearchCategoryIcon(category: "General", selected: .constant(""))
     }
 }

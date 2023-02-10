@@ -13,6 +13,7 @@ struct SearchScreen: View {
     @State var query = ""
     @State var category = ""
     @State var type = ""
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         
@@ -29,12 +30,36 @@ struct SearchScreen: View {
                     .padding(.horizontal, screenWidth * 0.06)
                     .padding(.bottom, 25)
                 HStack{
-                    ChooseCategoryButton(selected: $category)
-                        .padding(.trailing, 4)
+                    if category != "" {
+                        
+                        Text(Image(systemName: "multiply.circle.fill"))
+                            .font(.system(size: 13, weight: .bold))
+                            .background(Circle().fill(.white).scaleEffect(colorScheme == .dark ? 1 : 0.4))
+                            .background(Circle().stroke(colorScheme == .dark ? .white : .black, lineWidth: colorScheme == .dark ? 1 : 3))
+                            .onTapGesture {
+                                withAnimation{
+                                    category = ""
+                                }
+                            }
+                            .foregroundColor(.red)
+                        
+                        Label(category.uppercased(), systemImage: category_images[category] ?? "")
+                            .lineLimit(1)
+                            .foregroundColor(.white)
+                            .font(.system(size: 13, weight: .bold))
+                            .padding(10)
+                            .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
+                            .overlay((category == "General" && colorScheme == .dark) ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
+                            .padding(.trailing, 10)
+                        
+                    }
+                        
                     ChooseTypeButton(selected: $type)
                 }
-                .padding(.bottom, 15)
-
+                .padding(.bottom, 25)
+                SearchCategories(selected: $category)
+                
+              
                     
                 Spacer()
             } //: VStack

@@ -37,7 +37,7 @@ struct PostViewPrev: View {
                             .minimumScaleFactor(0.3)
                             .font(.system(size: 15, weight: .bold))
                             .layoutPriority(1)
-                            .foregroundColor(Color(hex: deepBlue))
+                            .foregroundColor(Color(hex: category_colors[post.category] ?? "000000"))
                     }
                
                 }

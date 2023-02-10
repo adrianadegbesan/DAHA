@@ -43,7 +43,7 @@ struct MakePostTextInputs: View {
                     hideKeyboard()
                 }
                 .padding(.leading)
-                .padding(.trailing, screenWidth * 0.5)
+                .padding(.trailing, screenWidth * 0.3)
                 .padding(.bottom, 10)
             
             ZStack {

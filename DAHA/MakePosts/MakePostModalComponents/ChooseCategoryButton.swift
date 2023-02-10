@@ -55,7 +55,7 @@ struct ChooseCategoryButton: View {
             
         }
         .sheet(isPresented: $categoryPresented){
-                CategoryModal(selected: $selected)
+                CategoryModal(selected: $selected, modal: true)
         }
     }
 }
