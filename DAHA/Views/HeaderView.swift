@@ -17,7 +17,7 @@ struct HeaderView: View {
     let showSearchBar: Bool
     let slidingBar : Bool
     var tabIndex : Binding<Int>?
-    var tabs : Binding<[String]>?
+    var tabs : [String]?
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -55,9 +55,8 @@ struct HeaderView: View {
                 
             } //: HStack
             if slidingBar == true {
-                SlidingTabView(selection: tabIndex ?? .constant(0), tabs: tabs?.wrappedValue ?? [""], font: .headline.weight(.black), activeAccentColor: Color(hex: deepBlue), inactiveAccentColor: colorScheme == .dark ? .white : .black)
-            }
-            else {
+                SlidingTabView(selection: tabIndex ?? .constant(0), tabs: tabs ?? [""], font: .headline.weight(.black), activeAccentColor: Color(hex: deepBlue), inactiveAccentColor: colorScheme == .dark ? .white : .black)
+            } else if !showSearchBar {
                 Divider()
                     .frame(height: 0.5)
                     .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
@@ -70,7 +69,7 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title: "Stanford", showMessages: true, showSettings: false, showSearchBar: false, slidingBar: true, tabIndex: .constant(0), tabs: .constant(["LISTINGS", "REQUESTS"]))
+        HeaderView(title: "Stanford", showMessages: true, showSettings: false, showSearchBar: false, slidingBar: true, tabIndex: .constant(0), tabs: ["LISTINGS", "REQUESTS"])
             .previewLayout(.sizeThatFits)
     }
 }

@@ -20,11 +20,13 @@ struct EmailVerificationScreen: View {
     @State private var incorrect_code : Bool = false
     @EnvironmentObject var authentication: AuthManager
     @AppStorage("email") var email_system: String = ""
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         ZStack{
             ScrollView{
                 Image("Logo")
+                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                 Spacer().frame(height: screenHeight * 0.2)
                 Text("Please enter the verification code we just sent to your email:")
                     .padding(.horizontal, 40)

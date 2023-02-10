@@ -10,12 +10,14 @@ import SwiftUI
 struct ForgotPasswordScreen: View {
     
     @State var email : String = ""
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         ZStack {
             ScrollView{
                 Spacer().frame(height: screenHeight * 0.15)
                 Image("Logo")
+                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                     .padding(.bottom, 50)
                 
                 Text("Forgot Password")

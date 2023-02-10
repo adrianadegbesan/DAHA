@@ -15,11 +15,13 @@ struct SchoolEmailScreen: View {
     @State private var shouldNavigate : Bool = false
     @State private var domain: String = ""
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         ZStack {
             ScrollView {
                 Image("Logo")
+                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                 Spacer().frame(height: screenHeight * 0.2)
 
                 Text("MY SCHOOL EMAIL IS ...")

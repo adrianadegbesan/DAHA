@@ -11,11 +11,31 @@ import SwiftUI
 struct ProfileScreen: View {
     
     @AppStorage("username") var username_system: String = ""
+    @State private var tabIndex : Int = 0
+    @State private var tabs : [String] = ["MY POSTS", "SAVED"]
+
     var body: some View {
         ZStack {
             VStack(spacing: 0){
-                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false, slidingBar: false, tabIndex: nil, tabs: nil)
+                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false, slidingBar: true, tabIndex: $tabIndex, tabs: tabs)
                 .frame(alignment: .top)
+                if tabIndex == 0{
+                    ScrollView{
+//                            PostView(post: post, owner: false)
+//                                .padding(.top, 10)
+                    }
+                    .refreshable {
+
+                    }
+                } else if tabIndex == 1 {
+                    ScrollView{
+//                            PostView(post: post, owner: false)
+//                                .padding(.top, 10)
+                    }
+                    .refreshable {
+
+                    }
+                }
                 Spacer()
                 PageBottomDivider()
             } //: VStack

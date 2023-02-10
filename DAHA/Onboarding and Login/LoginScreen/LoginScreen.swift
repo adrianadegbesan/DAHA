@@ -14,6 +14,7 @@ struct LoginScreen: View {
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
+    @Environment(\.colorScheme) var colorScheme
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -23,6 +24,7 @@ struct LoginScreen: View {
             ScrollView{
                 Spacer().frame(height: screenHeight * 0.15)
                 Image("Logo")
+                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                     .padding(.bottom, 60)
                 CustomInputField(imageName: "envelope.fill", placeholderText: "Email", text: $email, secure: false)
                     .padding(.bottom, 30)

@@ -27,7 +27,7 @@ struct MakePostTextInputs: View {
                 .keyboardType(.numberPad)
                 .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "dollarsign")))
                 .padding(.leading)
-                .padding(.trailing, screenWidth * 0.4)
+                .padding(.trailing, screenWidth * 0.5)
                 .padding(.bottom, 10)
             
             TextField("Title", text: $title)
@@ -43,7 +43,7 @@ struct MakePostTextInputs: View {
                     hideKeyboard()
                 }
                 .padding(.leading)
-                .padding(.trailing, screenWidth * 0.288)
+                .padding(.trailing, screenWidth * 0.5)
                 .padding(.bottom, 10)
             
             ZStack {
@@ -67,7 +67,7 @@ struct MakePostTextInputs: View {
                     
                             .stroke(Color(UIColor.systemGray4), lineWidth: 2)
                     }
-                    .padding(.trailing, screenWidth * 0.25)
+                    .padding(.trailing, screenWidth * 0.245)
                     .padding(.bottom, 10)
                 if description == ""{
                      Text(" Description")

@@ -26,6 +26,16 @@ struct PostModalPosterInfo: View {
                 .font(.system(size: 13, weight: .bold))
                 .foregroundColor(.gray)
             Spacer()
+            
+            if (post.type == "Request"){
+                Text("REQUEST")
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.3)
+                    .font(.system(size: 13, weight: .bold))
+                    .layoutPriority(1)
+                    .foregroundColor(Color(hex: deepBlue))
+                    .padding(.trailing, 10)
+            }
         } //:HStack
         .padding(.leading, 10)
     }
@@ -36,7 +46,7 @@ struct PostModalPosterInfo_Previews: PreviewProvider {
         let startTime = Date.now
         let startTimestamp: Timestamp = Timestamp(date: startTime)
         
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: startTimestamp, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "")
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: startTimestamp, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "Request")
         PostModalPosterInfo(post: post)
     }
 }

@@ -22,7 +22,7 @@ struct HomeScreen: View {
     var body: some View {
             ZStack {
                 VStack(spacing: 0) {
-                    HeaderView(title: university, showMessages: true, showSettings: false, showSearchBar: true, slidingBar: true, tabIndex: $tabIndex, tabs: $tabs)
+                    HeaderView(title: university, showMessages: true, showSettings: false, showSearchBar: true, slidingBar: true, tabIndex: $tabIndex, tabs: tabs)
                         .frame(alignment: .top)
 //                    Spacer()
                     if tabIndex == 0{

@@ -27,11 +27,11 @@ struct MakePostScreen: View {
                             .padding(.trailing, 4)
                         ChooseTypeButton(selected: $type)
                     }
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 20)
                     ConditionNavigatorView(post: $post)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 25)
                     MakePostTextInputs(post: $post, type: $type)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 20)
                     ImageSelectorView(images: $images)
                         .padding(.leading, 15)
                         .onChange(of: images){ image in

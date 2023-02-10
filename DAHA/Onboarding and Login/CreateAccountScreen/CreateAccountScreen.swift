@@ -19,12 +19,14 @@ struct CreateAccountScreen: View {
         @State private var error : Bool = false
         @State private var error_message : String = ""
         @EnvironmentObject var firestoreManager : FirestoreManager
-        
+        @Environment(\.colorScheme) var colorScheme
+         
         var body: some View {
             ZStack {
 //                BackgroundColor(color: greyBackground)
                 ScrollView {
                     Image("Logo")
+                        .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                     Spacer().frame(height: 0.09 * screenHeight)
                     Text(" CREATE ACCOUNT ")
                         .font(.system(size: 26, weight: .black))

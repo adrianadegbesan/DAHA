@@ -38,8 +38,8 @@ struct ChooseTypeButton: View {
                 } else {
                     Text(Image(systemName: "multiply.circle.fill"))
                         .font(.system(size: 13, weight: .bold))
-                        .background(Circle().fill(.white))
-                        .background(Circle().stroke(colorScheme == .dark ? .white : .black, lineWidth: 1))
+                        .background(Circle().fill(.white).scaleEffect(colorScheme == .dark ? 1 : 0.6))
+                        .background(Circle().stroke(colorScheme == .dark ? .white : .black, lineWidth: colorScheme == .dark ? 1 : 3))
                         .foregroundColor(.red)
                 }
             

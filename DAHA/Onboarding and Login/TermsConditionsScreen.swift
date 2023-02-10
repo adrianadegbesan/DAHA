@@ -17,6 +17,7 @@ struct TermsConditionsScreen: View {
     var body: some View {
         VStack{
             Image("Logo")
+                .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                 .padding(.bottom, 20)
             Text("Terms and Conditions")
                 .titleText()

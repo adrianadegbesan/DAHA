@@ -19,16 +19,16 @@ struct BuyButton: View {
             shouldNavigate = true
         }){
             HStack(spacing: 0){
-                Text(post.type == "Request" ? "LEND " : "BUY ")
+                Text(post.type == "Request" ? "PROVIDE " : "BUY ")
                     .minimumScaleFactor(0.05)
                     .fixedSize(horizontal: true, vertical: false)
-                    .font(.system(size: 14, weight: .bold))
+                    .font(.system(size: 13, weight: .bold))
                 
                     .layoutPriority(1)
                     .lineLimit(1)
                 Image(systemName: "paperplane.fill")
                     .minimumScaleFactor(0.05)
-                    .font(.system(size: 14, weight: .bold))
+                    .font(.system(size: 13, weight: .bold))
                 
                 
                 NavigationLink(destination: Test(), isActive: $shouldNavigate){

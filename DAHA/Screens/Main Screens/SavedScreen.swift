@@ -14,6 +14,13 @@ struct SavedScreen: View {
             VStack(spacing: 0) {
                 HeaderView(title: "Saved", showMessages: false, showSettings: false, showSearchBar: false, slidingBar: false, tabIndex: nil, tabs: nil)
                 .frame(alignment: .top)
+                ScrollView{
+//                            PostView(post: post, owner: false)
+//                                .padding(.top, 10)
+                }
+                .refreshable {
+
+                }
                 Spacer()
                 PageBottomDivider()
             } //: VStack

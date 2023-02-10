@@ -10,6 +10,8 @@ import SwiftUI
 
 struct SetUpScreen: View {
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
             ZStack {
 
@@ -17,8 +19,8 @@ struct SetUpScreen: View {
                   
                     Spacer()
                     Image("Logo")
+                        .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                         .padding(.bottom, 20)
-                    
                    
                         SignUpButton()
                             .padding(.bottom, 10)
