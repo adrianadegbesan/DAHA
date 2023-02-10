@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SlidingTabView
 
 // Header View utilised throughout this app
 struct HeaderView: View {
@@ -14,6 +15,9 @@ struct HeaderView: View {
     let showMessages: Bool
     let showSettings: Bool
     let showSearchBar: Bool
+    let slidingBar : Bool
+    var tabIndex : Binding<Int>?
+    var tabs : Binding<[String]>?
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -50,18 +54,23 @@ struct HeaderView: View {
                 }
                 
             } //: HStack
-            Divider()
-                .frame(height: 0.5)
-                .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
-        } //: ZStack
-//        .background(.gray.opacity(0.25))
+            if slidingBar == true {
+                SlidingTabView(selection: tabIndex ?? .constant(0), tabs: tabs?.wrappedValue ?? [""], font: .headline.weight(.black), activeAccentColor: Color(hex: deepBlue), inactiveAccentColor: colorScheme == .dark ? .white : .black)
+            }
+            else {
+                Divider()
+                    .frame(height: 0.5)
+                    .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
+            }
+        } //: VStack
+
         
     }
 }
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title: "Stanford", showMessages: true, showSettings: false, showSearchBar: false)
+        HeaderView(title: "Stanford", showMessages: true, showSettings: false, showSearchBar: false, slidingBar: true, tabIndex: .constant(0), tabs: .constant(["LISTINGS", "REQUESTS"]))
             .previewLayout(.sizeThatFits)
     }
 }

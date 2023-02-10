@@ -42,6 +42,11 @@ let category_images = [
     "General": "bag.fill"
 ]
 
+let type_images = [
+    "Request" : "figure.stand.line.dotted.figure.stand",
+    "Listing" : "cart.circle"
+]
+
 
 struct PhotoPicker: UIViewControllerRepresentable {
     

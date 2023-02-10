@@ -14,7 +14,7 @@ struct ProfileScreen: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0){
-                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false)
+                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false, slidingBar: false, tabIndex: nil, tabs: nil)
                 .frame(alignment: .top)
                 Spacer()
                 PageBottomDivider()

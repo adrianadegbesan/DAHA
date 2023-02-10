@@ -1,17 +1,19 @@
 //
-//  ChooseCategoryButton.swift
+//  ItemTypeView.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 2/1/23.
+//  Created by Adrian Adegbesan on 2/9/23.
 //
 
 import SwiftUI
 
-struct ChooseCategoryButton: View {
-    @State var isPresented: Bool = false
-    @State var selected: String = ""
+struct ChooseTypeButton: View {
     @Binding var post: PostModel
+    @State var selected: String = ""
+    @State var isPresented: Bool = false
     @Environment(\.colorScheme) var colorScheme
+    
+    let types = ["Listing", "Request"]
     
     var body: some View {
         HStack {
@@ -26,7 +28,7 @@ struct ChooseCategoryButton: View {
                 }
             }) {
                 if (selected == ""){
-                    Text("Choose Category")
+                    Text("Choose Post Type")
                             .lineLimit(1)
                             .font(.system(size: 13, weight: .bold))
                             .padding(10)
@@ -44,27 +46,27 @@ struct ChooseCategoryButton: View {
             }
             
             if (selected != ""){
-                Label(post.category.uppercased(), systemImage: category_images[post.category] ?? "")
+                Label(post.type.uppercased(), systemImage: type_images[post.type] ?? "")
                     .lineLimit(1)
                     .foregroundColor(.white)
                     .font(.system(size: 13, weight: .bold))
                     .padding(10)
-                    .background(Capsule().fill(Color(hex: category_colors[selected] ?? "000000")))
-                    .overlay((selected == "General" && colorScheme == .dark) ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
+                    .background(Capsule().fill(.black))
+                    .overlay( colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
                     .padding(.trailing, 10)
             }
             
         }
         .sheet(isPresented: $isPresented){
-                CategoryModal(post: $post, selected: $selected)
+                TypeModal(post: $post, selected: $selected)
         }
     }
 }
 
-
-struct ChooseCategoryButton_Previews: PreviewProvider {
+struct ChooseTypeButton_Previews: PreviewProvider {
     static var previews: some View {
         let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
-        ChooseCategoryButton(post: .constant(post))
+        
+        ChooseTypeButton(post: .constant(post))
     }
 }

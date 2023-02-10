@@ -16,7 +16,7 @@ struct MakePostTextInputs: View {
     
     var body: some View {
         VStack{
-            TextField("Price", text: $price)
+            TextField(post.type == "Request" ? "Willing to Pay" : "Price", text: $price)
                 .onChange(of: price) { value in
                     if price.count > 5{
                         price = String(price.prefix(5))
@@ -26,7 +26,7 @@ struct MakePostTextInputs: View {
                 .keyboardType(.numberPad)
                 .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "dollarsign")))
                 .padding(.leading)
-                .padding(.trailing, screenWidth * 0.6)
+                .padding(.trailing, screenWidth * 0.4)
                 .padding(.bottom, 10)
             
             TextField("Title", text: $title)

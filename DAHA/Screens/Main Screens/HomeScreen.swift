@@ -7,23 +7,25 @@
 
 import SwiftUI
 import Firebase
+import SlidingTabView
 
 // Home Screen
 struct HomeScreen: View {
-    @AppStorage("onboarding") var isOnboardingViewActive: Bool = false
-    @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("university") var university: String = ""
     @State var shouldNavigate : Bool = false
+    @State private var tabIndex : Int = 0
+    @State private var tabs : [String] = ["LISTINGS", "REQUESTS"]
 
     
-//    let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: nil, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [])
+//    let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: nil, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type = "")
     
     var body: some View {
             ZStack {
                 VStack(spacing: 0) {
-                    HeaderView(title: university, showMessages: true, showSettings: false, showSearchBar: true)
+                    HeaderView(title: university, showMessages: true, showSettings: false, showSearchBar: true, slidingBar: true, tabIndex: $tabIndex, tabs: $tabs)
                         .frame(alignment: .top)
 //                    Spacer()
+                    if tabIndex == 0{
                         ScrollView{
 //                            PostView(post: post, owner: false)
 //                                .padding(.top, 10)
@@ -31,6 +33,16 @@ struct HomeScreen: View {
                         .refreshable {
 
                         }
+                    } else if tabIndex == 1 {
+                        ScrollView{
+//                            PostView(post: post, owner: false)
+//                                .padding(.top, 10)
+                        }
+                        .refreshable {
+
+                        }
+                    }
+                     
                     Spacer()
     
                     

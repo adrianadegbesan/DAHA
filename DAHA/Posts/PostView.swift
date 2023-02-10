@@ -41,8 +41,8 @@ struct PostView: View {
             
             PostImageView(post: post)
             
-           
-                
+            
+            
             NavigationLink(destination: Test(), isActive: $buyNavigate){
                 EmptyView()
             }

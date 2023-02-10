@@ -20,11 +20,13 @@ struct MakePostScreen: View {
         ScrollViewReader { value in
             ScrollView {
                 VStack{
-                    ChooseCategoryButton(post: $post)
+                    HStack{
+                        ChooseCategoryButton(post: $post)
+                            .padding(.trailing, 4)
+                        ChooseTypeButton(post: $post)
+                    }
                         .padding(.bottom, 10)
                     ConditionNavigatorView(post: $post)
-                        .padding(.bottom, 10)
-                    ItemTypeView(post: $post)
                         .padding(.bottom, 10)
                     MakePostTextInputs(post: $post)
                         .padding(.bottom, 10)

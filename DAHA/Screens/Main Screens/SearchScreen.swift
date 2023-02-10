@@ -14,7 +14,7 @@ struct SearchScreen: View {
         
         ZStack {
             VStack(spacing: 0) {
-                HeaderView(title: "Search", showMessages: false, showSettings: false,showSearchBar: true)
+                HeaderView(title: "Search", showMessages: false, showSettings: false,showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil)
                 .frame(alignment: .top)
                 Spacer()
                 PageBottomDivider()
