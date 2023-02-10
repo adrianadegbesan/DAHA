@@ -13,6 +13,7 @@ struct SearchScreen: View {
     @State var query = ""
     @State var category = ""
     @State var type = ""
+    @State var shouldNavigate = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -24,8 +25,8 @@ struct SearchScreen: View {
                 TextField("Does Anyone Have A...?", text: $query)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
                     .submitLabel(.search)
-                    .onSubmit {
-                        hideKeyboard()
+                    .onTapGesture {
+                        shouldNavigate = true
                     }
                     .padding(.horizontal, screenWidth * 0.06)
                     .padding(.bottom, 25)
@@ -53,6 +54,11 @@ struct SearchScreen: View {
                             .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 3))
                             .padding(.trailing, 10)
                         
+                    } else {
+                        Text(" . ")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(.clear)
+                            .background(Circle().stroke(.clear, lineWidth: 3))
                     }
                         
                     ChooseTypeButton(selected: $type)
@@ -64,6 +70,10 @@ struct SearchScreen: View {
                     
                 Spacer()
             } //: VStack
+            
+            NavigationLink(destination: SearchBarScreen(query: $query, category: $category, type: $type), isActive: $shouldNavigate){
+                EmptyView()
+            }
         } //: ZStack
         .keyboardControl()
     }
