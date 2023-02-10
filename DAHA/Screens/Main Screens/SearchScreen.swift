@@ -44,6 +44,7 @@ struct SearchScreen: View {
                                 .onTapGesture {
                                     LightFeedback()
                                     withAnimation{
+                                        hideKeyboard()
                                         category = ""
                                     }
                                 }
@@ -74,18 +75,26 @@ struct SearchScreen: View {
                     
                     Spacer()
                 }
+                .onTapGesture {
+                    hideKeyboard()
+                }
                 .opacity(keyboardFocused == true ? 0.2 : 1)
                 .ignoresSafeArea(.keyboard, edges: .bottom)
+              
                 
                 
                 Spacer()
-                PageBottomDivider()
+                
                 NavigationLink(destination: SearchBarScreen(query: $query, category: $category, type: $type), isActive: $shouldNavigate){
                     EmptyView()
                 }
-                Spacer()
+                PageBottomDivider()
+//                Spacer()
             }//: VStack
-    }
+            .onTapGesture {
+                hideKeyboard()
+            }
+        }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .keyboardControl()
       

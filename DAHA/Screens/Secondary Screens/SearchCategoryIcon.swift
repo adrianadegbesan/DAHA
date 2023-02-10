@@ -15,6 +15,7 @@ struct SearchCategoryIcon: View {
     
     var body: some View {
         Button(action: {
+            hideKeyboard()
             if selected != category {
                 SoftFeedback()
                 selected = category

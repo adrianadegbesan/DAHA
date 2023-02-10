@@ -44,6 +44,9 @@ struct SearchCategories: View {
             }
             .padding(.bottom, 12)
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 }
 
