@@ -49,7 +49,7 @@ struct MakePostButton: View {
 
 struct MakePostButton_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [])
+        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
         let images : [UIImage] = []
         MakePostButton(post: .constant(post), images: .constant(images), post_created: .constant(false), uploading: .constant(false))
             .environmentObject(FirestoreManager())

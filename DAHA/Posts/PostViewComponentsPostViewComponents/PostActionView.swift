@@ -39,7 +39,7 @@ struct PostActionView: View {
 
 struct PostActionView_Previews: PreviewProvider {
     static var previews: some View {
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [])
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "")
         PostActionView(post:post , saved: .constant(false), owner: false)
     }
 }

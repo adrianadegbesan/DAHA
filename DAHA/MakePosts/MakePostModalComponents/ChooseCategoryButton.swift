@@ -49,7 +49,7 @@ struct ChooseCategoryButton: View {
 
 struct ChooseCategoryButton_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [])
+        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
         ChooseCategoryButton(post: .constant(post))
     }
 }

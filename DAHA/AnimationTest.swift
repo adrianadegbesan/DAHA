@@ -36,7 +36,6 @@ struct AnimationTest: View {
                             .font(
                                 .system(size:22, weight: .bold)
                             )
-                        //                        .scaleEffect(textsize)
                         
                         Text(".")
                             .font(

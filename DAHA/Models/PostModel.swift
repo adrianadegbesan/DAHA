@@ -24,9 +24,10 @@ struct PostModel: Identifiable, Codable {
     var imageURLs : [String]
     var channel: String
     var savers: [String]
+    var type: String
 //    var imageIDs: [String]
     
-    init(id: String? = nil, title: String, userID: String, username: String, description: String, postedAt: Timestamp? = nil, condition: String, category: String, price: String, imageURLs: [String], channel: String, savers: [String]) {
+    init(id: String? = nil, title: String, userID: String, username: String, description: String, postedAt: Timestamp? = nil, condition: String, category: String, price: String, imageURLs: [String], channel: String, savers: [String], type: String) {
         self.id = id
         self.title = title
         self.userID = userID
@@ -39,6 +40,7 @@ struct PostModel: Identifiable, Codable {
         self.imageURLs = imageURLs
         self.channel = channel
         self.savers = savers
+        self.type = type
 //        self.imageIDs = imageIDs
     }
 }

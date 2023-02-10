@@ -42,6 +42,8 @@
 		82ACC68729936E3100589E1E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68629936E3100589E1E /* NextButton.swift */; };
 		82ACC68929936E4300589E1E /* PostConfirmationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68829936E4300589E1E /* PostConfirmationScreen.swift */; };
 		82ACC68E29959FB100589E1E /* AnimationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68D29959FB100589E1E /* AnimationTest.swift */; };
+		82ACC6902995CBED00589E1E /* ItemTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68F2995CBED00589E1E /* ItemTypeView.swift */; };
+		82ACC6922995CC1E00589E1E /* TypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6912995CC1E00589E1E /* TypeIcon.swift */; };
 		82B6B2BB2989EC0E00027E5A /* MakePostScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */; };
 		82B6B2BE2989ECD300027E5A /* MakePostScreenExit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */; };
 		82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2C32989EE8800027E5A /* MakePostButton.swift */; };
@@ -140,6 +142,8 @@
 		82ACC68629936E3100589E1E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		82ACC68829936E4300589E1E /* PostConfirmationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostConfirmationScreen.swift; sourceTree = "<group>"; };
 		82ACC68D29959FB100589E1E /* AnimationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTest.swift; sourceTree = "<group>"; };
+		82ACC68F2995CBED00589E1E /* ItemTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypeView.swift; sourceTree = "<group>"; };
+		82ACC6912995CC1E00589E1E /* TypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeIcon.swift; sourceTree = "<group>"; };
 		82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreen.swift; sourceTree = "<group>"; };
 		82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreenExit.swift; sourceTree = "<group>"; };
 		82B6B2C32989EE8800027E5A /* MakePostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostButton.swift; sourceTree = "<group>"; };
@@ -274,6 +278,8 @@
 				82B6B2EF298C438E00027E5A /* CameraRollButton.swift */,
 				82B6B2F1298C4F1500027E5A /* CameraButton.swift */,
 				82B6B2F3298C514400027E5A /* ImagePreview.swift */,
+				82ACC68F2995CBED00589E1E /* ItemTypeView.swift */,
+				82ACC6912995CC1E00589E1E /* TypeIcon.swift */,
 				82B6B2E7298B784200027E5A /* OtherImplementations */,
 			);
 			path = MakePostModalComponents;
@@ -646,6 +652,7 @@
 				82CEFC342969CB2C00C55F67 /* ContentView.swift in Sources */,
 				82CEFC572969CD5A00C55F67 /* MainScreen.swift in Sources */,
 				823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */,
+				82ACC6902995CBED00589E1E /* ItemTypeView.swift in Sources */,
 				82CEFC542969CC9B00C55F67 /* LaunchScreen.swift in Sources */,
 				82B6B2D7298AD29300027E5A /* CategoryViewPrev.swift in Sources */,
 				82CEFC832969CFF400C55F67 /* DMButton.swift in Sources */,
@@ -718,6 +725,7 @@
 				82CEFC7C2969CF8D00C55F67 /* UniversityNotFoundView.swift in Sources */,
 				82CEFC742969CF0100C55F67 /* SchoolEmailScreen.swift in Sources */,
 				8236021029879425002E7AEC /* PostDescriptionView.swift in Sources */,
+				82ACC6922995CC1E00589E1E /* TypeIcon.swift in Sources */,
 				82B6B2F6298E018B00027E5A /* Haptics.swift in Sources */,
 				82CEFC872969D02400C55F67 /* LoginButton.swift in Sources */,
 				82B6B2E6298B75D800027E5A /* CategoryIconView.swift in Sources */,

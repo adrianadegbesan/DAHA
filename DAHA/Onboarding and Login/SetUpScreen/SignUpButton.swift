@@ -45,7 +45,7 @@ struct SignUpButton: View {
                             .foregroundColor(.white)
                         
                     } //: HStack
-                NavigationLink(destination: SchoolEmailScreen().navigationTitle(""), isActive: $shouldNavigate){
+                NavigationLink(destination: SchoolEmailScreen(), isActive: $shouldNavigate){
                     EmptyView()
                 }
                     

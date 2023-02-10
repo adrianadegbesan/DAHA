@@ -77,7 +77,7 @@ struct FirstContinueButton: View {
 
 struct ContinueButton_Previews: PreviewProvider {
     static var previews: some View {
-        FirstContinueButton(schoolFound: .constant(false), isPresented: .constant(false), email: .constant("team@appdaha.com"), shouldNavigate: .constant(false), domain: .constant(""))
+        FirstContinueButton(schoolFound: .constant(false), isPresented: .constant(false), email: .constant("team@joindaha.com"), shouldNavigate: .constant(false), domain: .constant(""))
             .previewLayout(.sizeThatFits)
             .environmentObject(FirestoreManager())
             .environmentObject(AuthManager())

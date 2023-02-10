@@ -34,4 +34,3 @@ struct DAHAApp: App {
     }
 }
 
-// (colorScheme == .dark && isDarkMode)

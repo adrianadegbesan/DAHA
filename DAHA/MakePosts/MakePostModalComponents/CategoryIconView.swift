@@ -46,7 +46,7 @@ struct CategoryIconView: View {
 
 struct CategoryIconView_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [])
+        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
         CategoryIconView(category: "Bikes", selected: .constant(""), post: .constant(post))
     }
 }

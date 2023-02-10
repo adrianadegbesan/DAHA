@@ -52,7 +52,7 @@ struct PostViewPrev_Previews: PreviewProvider {
         let startTime = calendar.date(byAdding: .day, value: -1, to: Date())
         let startTimestamp: Timestamp = Timestamp(date: startTime!)
         
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [])
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "")
         PostViewPrev(post: post)
     }
 }

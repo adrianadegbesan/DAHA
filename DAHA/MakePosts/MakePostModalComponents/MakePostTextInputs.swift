@@ -83,7 +83,7 @@ struct MakePostTextInputs: View {
 
 struct MakePostTextInputs_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [])
+        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
         MakePostTextInputs(post: .constant(post))
     }
 }

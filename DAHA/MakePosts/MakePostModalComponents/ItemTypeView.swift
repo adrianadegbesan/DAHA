@@ -1,33 +1,33 @@
 //
-//  ConditionNavigatorView.swift
+//  ItemTypeView.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 1/31/23.
+//  Created by Adrian Adegbesan on 2/9/23.
 //
 
 import SwiftUI
 
-struct ConditionNavigatorView: View {
-    
+struct ItemTypeView: View {
     @Binding var post: PostModel
     @State var selected: String = ""
     
-    let conditions = ["New", "Good", "Worn-Out"]
+    let types = ["Listing", "Request"]
     
     var body: some View {
         HStack{
-            ForEach(conditions, id: \.self){ condition in
-                ConditionIcon(post: $post, condition: condition, selected: $selected)
+            ForEach(types, id: \.self){ type in
+                TypeIcon(post: $post, selected: $selected, type: type)
                     .padding(.horizontal)
             }
         }
+
     }
 }
 
-struct ConditionNavigatorView_Previews: PreviewProvider {
+struct ItemTypeView_Previews: PreviewProvider {
     static var previews: some View {
         let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
         
-        ConditionNavigatorView(post: .constant(post))
+        ItemTypeView(post: .constant(post))
     }
 }

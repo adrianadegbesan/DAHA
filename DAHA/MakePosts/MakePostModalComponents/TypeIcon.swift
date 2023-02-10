@@ -1,28 +1,28 @@
 //
-//  ConditionIcon.swift
+//  TypeIcon.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 1/31/23.
+//  Created by Adrian Adegbesan on 2/9/23.
 //
 
 import SwiftUI
 
-struct ConditionIcon: View {
+struct TypeIcon: View {
     
     @Binding var post: PostModel
-    @State var condition : String
     @Binding var selected : String
+    @State var type : String
     @Environment(\.colorScheme) var colorScheme
     
     
     var body: some View {
-        if (selected == condition){
+        if (selected == type){
             Button(action: {
                 SoftFeedback()
                 selected = ""
-                post.condition = ""
+                post.type = ""
             }) {
-                Text(condition.uppercased())
+                Text(type.uppercased())
                     .lineLimit(1)
                     .foregroundColor(.blue)
                     .font(.system(size: 10, weight: .bold))
@@ -34,10 +34,10 @@ struct ConditionIcon: View {
         } else {
             Button(action: {
                 LightFeedback()
-                selected = condition
-                post.condition = condition
+                selected = type
+                post.type = type
             }) {
-                Text(condition.uppercased())
+                Text(type.uppercased())
                     .lineLimit(1)
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                     .font(.system(size: 10, weight: .bold))
@@ -51,10 +51,10 @@ struct ConditionIcon: View {
     }
 }
 
-struct ConditionIcon_Previews: PreviewProvider {
+struct TypeIcon_Previews: PreviewProvider {
     static var previews: some View {
         let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
         
-        ConditionIcon(post: .constant(post), condition: "Good", selected: .constant("Good"))
+        TypeIcon(post: .constant(post), selected: .constant("Request"), type: "Request")
     }
 }
