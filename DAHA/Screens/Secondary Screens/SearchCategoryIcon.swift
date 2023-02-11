@@ -16,14 +16,14 @@ struct SearchCategoryIcon: View {
     var body: some View {
         Button(action: {
             hideKeyboard()
-            if selected != category {
-                SoftFeedback()
-                selected = category
-                
-            } else {
-                SoftFeedback()
-                selected = ""
-            }
+                if selected != category {
+                    SoftFeedback()
+                    selected = category
+                    
+                } else {
+                    SoftFeedback()
+                    selected = ""
+                }
         }) {
             ZStack{
                 RoundedRectangle(cornerRadius: 23)
@@ -43,6 +43,7 @@ struct SearchCategoryIcon: View {
 
 struct SearchCategoryIcon_Previews: PreviewProvider {
     static var previews: some View {
+        
         SearchCategoryIcon(category: "General", selected: .constant(""))
     }
 }

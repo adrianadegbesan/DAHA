@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82218BF42998031F0092BA94 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 82218BF32998031F0092BA94 /* BottomSheet */; };
 		823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823601FC2981F3AC002E7AEC /* SignInButton.swift */; };
 		823602012981F81D002E7AEC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602002981F81D002E7AEC /* LoginScreen.swift */; };
 		823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602022981F84E002E7AEC /* ForgotPasswordButton.swift */; };
@@ -233,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8236CFF9296D34210086AB15 /* FirebasePerformance in Frameworks */,
+				82218BF42998031F0092BA94 /* BottomSheet in Frameworks */,
 				8236CFE3296D34210086AB15 /* FirebaseAnalyticsSwift in Frameworks */,
 				8236CFE7296D34210086AB15 /* FirebaseAuth in Frameworks */,
 				8236CFDF296D34210086AB15 /* FirebaseAnalytics in Frameworks */,
@@ -588,6 +590,7 @@
 				8236CFFA296D34210086AB15 /* FirebaseStorage */,
 				82E75AC5297E35F600742F18 /* PostmarkSwift */,
 				82ACC6962995F60F00589E1E /* SlidingTabView */,
+				82218BF32998031F0092BA94 /* BottomSheet */,
 			);
 			productName = DAHA;
 			productReference = 82CEFC2E2969CB2C00C55F67 /* DAHA.app */;
@@ -622,6 +625,7 @@
 				82E75AC4297E35F600742F18 /* XCRemoteSwiftPackageReference "postmark-swift" */,
 				82ACC68A2994157600589E1E /* XCRemoteSwiftPackageReference "KeyboardAvoider" */,
 				82ACC6952995F60E00589E1E /* XCRemoteSwiftPackageReference "SlidingTabView" */,
+				82218BF22998031F0092BA94 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = 82CEFC2F2969CB2C00C55F67 /* Products */;
 			projectDirPath = "";
@@ -962,6 +966,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		82218BF22998031F0092BA94 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamfootdev/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.4;
+			};
+		};
 		8236CFDD296D34210086AB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -997,6 +1009,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		82218BF32998031F0092BA94 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82218BF22998031F0092BA94 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
 		8236CFDE296D34210086AB15 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8236CFDD296D34210086AB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BottomSheet
 
 struct ChooseTypeButton: View {
 //    @Binding var post: PostModel
@@ -57,9 +58,12 @@ struct ChooseTypeButton: View {
             }
             
         }
-        .sheet(isPresented: $isPresented){
-                TypeModal(selected: $selected)
+        .bottomSheet(isPresented: $isPresented, detents: [.medium(), .large()]){
+            TypeModal(selected: $selected)
         }
+//        .sheet(isPresented: $isPresented){
+//                TypeModal(selected: $selected)
+//        }
     }
 }
 

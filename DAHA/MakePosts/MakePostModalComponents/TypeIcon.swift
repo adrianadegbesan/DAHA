@@ -31,11 +31,11 @@ struct TypeIcon: View {
             ZStack{
                 RoundedRectangle(cornerRadius: 23)
                     .fill(.black)
-                    .frame(width: screenWidth * 0.6, height: screenHeight * 0.14)
+                    .frame(width: screenWidth * 0.55, height: screenHeight * 0.12)
                 
                 Label(type.uppercased(), systemImage: type_images[type] ?? "")
                     .font(
-                        .system(size:30, weight: .bold)
+                        .system(size:27, weight: .bold)
                     )
                     .foregroundColor(.white)
             }

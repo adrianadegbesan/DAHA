@@ -27,14 +27,14 @@ struct TypeModal: View {
                 Spacer()
             }
                  .padding(.top, 10)
-            Spacer().frame(height: screenHeight * 0.08)
+            Spacer().frame(height: screenHeight * 0.035)
              Text("Types")
                  .font(
                      .system(size:30, weight: .heavy)
                  )
-             Spacer().frame(height: screenHeight * 0.08)
+             Spacer().frame(height: screenHeight * 0.05)
              TypeIcon(selected: $selected, type: "Listing")
-             Spacer().frame(height: screenHeight * 0.08)
+             Spacer().frame(height: screenHeight * 0.05)
              TypeIcon(selected: $selected, type: "Request")
              Spacer()
             

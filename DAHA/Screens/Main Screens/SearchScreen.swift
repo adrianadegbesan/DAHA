@@ -20,9 +20,9 @@ struct SearchScreen: View {
     var body: some View {
         GeometryReader { _ in
             VStack(spacing: 0) {
-                Spacer()
                 HeaderView(title: "Search", showMessages: false, showSettings: false, showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil)
                     .frame(alignment: .top)
+             
                 TextField("Does Anyone Have A...?", text: $query)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
                     .submitLabel(.search)
@@ -35,12 +35,13 @@ struct SearchScreen: View {
                     .ignoresSafeArea(.keyboard, edges: .bottom)
                 VStack {
                     HStack{
-                        if category != "" {
+                        if category != ""{
                             
                             Text(Image(systemName: "multiply.circle.fill"))
                                 .font(.system(size: 13, weight: .bold))
                                 .background(Circle().fill(.white).scaleEffect(colorScheme == .dark ? 1 : 0.4))
                                 .background(Circle().stroke(colorScheme == .dark ? .white : .black, lineWidth: colorScheme == .dark ? 1 : 3))
+                                .disabled(keyboardFocused)
                                 .onTapGesture {
                                     LightFeedback()
                                     withAnimation{
@@ -66,17 +67,20 @@ struct SearchScreen: View {
                                 .background(Circle().stroke(.clear, lineWidth: 3))
                         }
                         
-                        ChooseTypeButton(selected: $type)
+                            ChooseTypeButton(selected: $type)
+                            .disabled(keyboardFocused)
+                       
                     }
                     .padding(.bottom, 25)
                     .ignoresSafeArea(.keyboard, edges: .bottom)
-                    SearchCategories(selected: $category)
+                        SearchCategories(selected: $category)
+                        .disabled(keyboardFocused)
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                     
                     Spacer()
                 }
                 .onTapGesture {
-                    hideKeyboard()
+                    keyboardFocused = false
                 }
                 .opacity(keyboardFocused == true ? 0.2 : 1)
                 .ignoresSafeArea(.keyboard, edges: .bottom)

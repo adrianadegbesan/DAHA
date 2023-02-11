@@ -38,6 +38,13 @@ struct PostViewPrev: View {
                             .font(.system(size: 15, weight: .bold))
                             .layoutPriority(1)
                             .foregroundColor(Color(hex: category_colors[post.category] ?? "000000"))
+                    } else {
+                        Text("LISTING")
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.3)
+                            .font(.system(size: 15, weight: .bold))
+                            .layoutPriority(1)
+                            .foregroundColor(Color(hex: category_colors[post.category] ?? "000000"))
                     }
                
                 }
