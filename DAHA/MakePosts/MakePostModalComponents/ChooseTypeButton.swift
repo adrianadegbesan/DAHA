@@ -58,12 +58,9 @@ struct ChooseTypeButton: View {
             }
             
         }
-        .bottomSheet(isPresented: $isPresented, detents: [.medium(), .large()]){
-            TypeModal(selected: $selected)
+        .sheet(isPresented: $isPresented){
+                TypeModal(selected: $selected)
         }
-//        .sheet(isPresented: $isPresented){
-//                TypeModal(selected: $selected)
-//        }
     }
 }
 

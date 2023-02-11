@@ -13,6 +13,7 @@ struct TypeIcon: View {
     @Binding var selected : String
     @State var type : String
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) var colorScheme
     
     
     var body: some View {
@@ -32,6 +33,7 @@ struct TypeIcon: View {
                 RoundedRectangle(cornerRadius: 23)
                     .fill(.black)
                     .frame(width: screenWidth * 0.55, height: screenHeight * 0.12)
+                    .overlay(RoundedRectangle(cornerRadius: 23).stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                 
                 Label(type.uppercased(), systemImage: type_images[type] ?? "")
                     .font(

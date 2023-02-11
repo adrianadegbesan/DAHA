@@ -33,8 +33,8 @@ struct CategoryIconView: View {
             ZStack{
                 RoundedRectangle(cornerRadius: 23)
                     .fill(Color(hex: category_colors[category] ?? "000000"))
-//                    .fill(selected == category ? Color(hex: category_colors[category] ?? "000000") : .gray)
                     .frame(width: screenWidth * 0.44, height: screenHeight * 0.1)
+                    .overlay(RoundedRectangle(cornerRadius: 23).stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                 
                 Label(category.uppercased(), systemImage: category_images[category] ?? "")
                     .font(
