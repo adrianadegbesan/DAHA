@@ -22,10 +22,22 @@ class FirestoreManager: ObservableObject {
     @Environment(\.dismiss) var dismiss
     
     
-    @State var posts: [PostModel] = []
+    @State var listings: [PostModel] = []
+    @State var listings_loading: Bool = false
+    
+    @State var requests: [PostModel] = []
+    @State var requests_loading: Bool = false
+    
     @State var saved_posts: [PostModel] = []
+    @State var saved_loading: Bool = false
+    
     @State var my_posts: [PostModel] = []
+    @State var my_posts_loading: Bool = false
+    
     @State var search_results: [PostModel] = []
+    @State var search_results_loading: Bool = false
+    
+    @State var userId = Auth.auth().currentUser?.uid
     
     
     private var db = Firestore.firestore()
@@ -174,9 +186,164 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    func convertToPost(doc : QueryDocumentSnapshot) -> PostModel {
+        let data = doc.data()
+        let result = PostModel(id: data["id"] as! String,
+                  title: data["title"] as! String,
+                  userID: data["userID"] as! String,
+                  username: data["username"] as! String,
+                  description: data["description"] as! String,
+                  postedAt: data["postedAt"] as! Timestamp,
+                  condition: data["condition"] as! String,
+                  category: data["category"] as! String,
+                  price: data["price"] as! String,
+                  imageURLs: data["imageURLs"] as! [String],
+                  channel: data["channel"] as! String,
+                  savers: data["savers"] as! [String],
+                  type: data["type"] as! String, keywordsForLookup: data["keywordsForLookup"] as! [String])
+        return result
+    }
+    
+    func getListings() async {
+        do {
+            listings_loading = true
+            var temp: [PostModel] = []
+            let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Listing").order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+            let documents = snapshot.documents
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            listings = temp
+            listings_loading = false
+            
+        }
+        catch {
+            listings_loading = false
+            print("error")
+        }
+    }
+    
+    func getRequests() async {
+        do {
+            requests_loading = true
+            var temp: [PostModel] = []
+            let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Request").order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+            let documents = snapshot.documents
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            requests = temp
+            requests_loading = false
+            
+        }
+        catch {
+            requests_loading = false
+            print("error")
+        }
+    }
+    
+    func getSaved() async {
+        do {
+            saved_loading = true
+            var temp: [PostModel] = []
+            
+            if userId == nil{
+                return
+            }
+            
+            let snapshot = try await db.collection("\(university)_Posts").whereField("savers", arrayContains: userId!).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+            let documents = snapshot.documents
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            saved_posts = temp
+            saved_loading = false
+            
+        }
+        catch {
+            saved_loading = false
+            print("error")
+        }
+    }
+    
+    func userPosts() async {
+        do {
+            my_posts_loading = true
+            var temp: [PostModel] = []
+            
+            if userId == nil{
+                return
+            }
+            
+            let snapshot = try await db.collection("\(university)_Posts").whereField("userID", isEqualTo:userId!).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+            let documents = snapshot.documents
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            my_posts = temp
+            my_posts_loading = false
+            
+        }
+        catch {
+            my_posts_loading = false
+            print("error")
+        }
+    }
+    
+    func searchPosts(query : String, type: String, category: String) async {
+        do {
+            search_results_loading = true
+            var temp: [PostModel] = []
+            
+            if type != "" && category == ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            if type != "" && category != ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            
+            else {
+                let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            search_results = temp
+            search_results_loading = false
+            
+        }
+        catch {
+            search_results_loading = false
+            print("error")
+        }
+
+    }
+    
+    
     
 
     
+    
+
     
     
     

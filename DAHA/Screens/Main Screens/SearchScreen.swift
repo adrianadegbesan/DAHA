@@ -61,8 +61,8 @@ struct SearchScreen: View {
                                 .padding(.trailing, 10)
                             
                         } else {
-                            Text(" . ")
-                                .font(.system(size: 16, weight: .bold))
+                            Text(" ... ")
+                                .font(.system(size: 13, weight: .bold))
                                 .foregroundColor(.clear)
                                 .background(Circle().stroke(.clear, lineWidth: 3))
                         }
@@ -71,7 +71,7 @@ struct SearchScreen: View {
                             .disabled(keyboardFocused)
                        
                     }
-                    .padding(.bottom, 25)
+                    Spacer().frame(height: screenHeight * 0.02)
                     .ignoresSafeArea(.keyboard, edges: .bottom)
                         SearchCategories(selected: $category)
                         .disabled(keyboardFocused)

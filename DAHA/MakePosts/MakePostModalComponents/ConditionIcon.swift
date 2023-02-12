@@ -53,7 +53,7 @@ struct ConditionIcon: View {
 
 struct ConditionIcon_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
+        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "", keywordsForLookup: [])
         
         ConditionIcon(post: .constant(post), condition: "Good", selected: .constant("Good"))
     }

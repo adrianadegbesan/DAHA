@@ -26,7 +26,7 @@ struct MakePostTextInputs: View {
                 }
                 .keyboardType(.numberPad)
                 .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "dollarsign")))
-                .padding(.leading)
+                .padding(.leading, screenWidth * 0.045)
                 .padding(.trailing, screenWidth * 0.5)
                 .padding(.bottom, 10)
             
@@ -42,8 +42,8 @@ struct MakePostTextInputs: View {
                 .onSubmit {
                     hideKeyboard()
                 }
-                .padding(.leading)
-                .padding(.trailing, screenWidth * 0.3)
+                .padding(.leading, screenWidth * 0.045)
+                .padding(.trailing, screenWidth * 0.25)
                 .padding(.bottom, 10)
             
             ZStack {
@@ -84,7 +84,7 @@ struct MakePostTextInputs: View {
 
 struct MakePostTextInputs_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "")
+        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "", keywordsForLookup: [])
         MakePostTextInputs(post: .constant(post), type: .constant(""))
     }
 }

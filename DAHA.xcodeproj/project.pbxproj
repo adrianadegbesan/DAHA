@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		82218BF42998031F0092BA94 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 82218BF32998031F0092BA94 /* BottomSheet */; };
+		82218BF629986BCB0092BA94 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218BF529986BCB0092BA94 /* MessageManager.swift */; };
+		82218BF829988DF90092BA94 /* PostScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218BF729988DF90092BA94 /* PostScrollView.swift */; };
 		823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823601FC2981F3AC002E7AEC /* SignInButton.swift */; };
 		823602012981F81D002E7AEC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602002981F81D002E7AEC /* LoginScreen.swift */; };
 		823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602022981F84E002E7AEC /* ForgotPasswordButton.swift */; };
@@ -50,8 +52,6 @@
 		82B6B2BB2989EC0E00027E5A /* MakePostScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */; };
 		82B6B2BE2989ECD300027E5A /* MakePostScreenExit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */; };
 		82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2C32989EE8800027E5A /* MakePostButton.swift */; };
-		82B6B2C62989F38F00027E5A /* CategorySelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2C52989F38F00027E5A /* CategorySelectorView.swift */; };
-		82B6B2C82989F45300027E5A /* CategoryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2C72989F45300027E5A /* CategoryIcon.swift */; };
 		82B6B2CB298A13E100027E5A /* ConditionNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2CA298A13E100027E5A /* ConditionNavigatorView.swift */; };
 		82B6B2CD298A14DC00027E5A /* ConditionIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2CC298A14DC00027E5A /* ConditionIcon.swift */; };
 		82B6B2CF298A16BD00027E5A /* MakePostTextInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2CE298A16BD00027E5A /* MakePostTextInputs.swift */; };
@@ -125,6 +125,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		82218BF529986BCB0092BA94 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		82218BF729988DF90092BA94 /* PostScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScrollView.swift; sourceTree = "<group>"; };
 		823601FC2981F3AC002E7AEC /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		823602002981F81D002E7AEC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		823602022981F84E002E7AEC /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
@@ -151,8 +153,6 @@
 		82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreen.swift; sourceTree = "<group>"; };
 		82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreenExit.swift; sourceTree = "<group>"; };
 		82B6B2C32989EE8800027E5A /* MakePostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostButton.swift; sourceTree = "<group>"; };
-		82B6B2C52989F38F00027E5A /* CategorySelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectorView.swift; sourceTree = "<group>"; };
-		82B6B2C72989F45300027E5A /* CategoryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryIcon.swift; sourceTree = "<group>"; };
 		82B6B2CA298A13E100027E5A /* ConditionNavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionNavigatorView.swift; sourceTree = "<group>"; };
 		82B6B2CC298A14DC00027E5A /* ConditionIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionIcon.swift; sourceTree = "<group>"; };
 		82B6B2CE298A16BD00027E5A /* MakePostTextInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostTextInputs.swift; sourceTree = "<group>"; };
@@ -287,18 +287,8 @@
 				82ACC68F2995CBED00589E1E /* ChooseTypeButton.swift */,
 				82ACC6932995EEED00589E1E /* TypeModal.swift */,
 				82ACC6912995CC1E00589E1E /* TypeIcon.swift */,
-				82B6B2E7298B784200027E5A /* OtherImplementations */,
 			);
 			path = MakePostModalComponents;
-			sourceTree = "<group>";
-		};
-		82B6B2E7298B784200027E5A /* OtherImplementations */ = {
-			isa = PBXGroup;
-			children = (
-				82B6B2C72989F45300027E5A /* CategoryIcon.swift */,
-				82B6B2C52989F38F00027E5A /* CategorySelectorView.swift */,
-			);
-			path = OtherImplementations;
 			sourceTree = "<group>";
 		};
 		82B6B2EA298C3BB300027E5A /* Network */ = {
@@ -382,6 +372,7 @@
 			children = (
 				8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */,
 				82DF4CAD296F614500A309CF /* SecondContinueButton.swift */,
+				82B6B2DE298B270300027E5A /* TermsConditionsScreen.swift */,
 			);
 			path = CreateAccountScreen;
 			sourceTree = "<group>";
@@ -508,6 +499,7 @@
 				82CEFC5C2969CDEB00C55F67 /* SavedScreen.swift */,
 				82CEFC5E2969CE0700C55F67 /* ProfileScreen.swift */,
 				82CEFC802969CFCA00C55F67 /* PostButton.swift */,
+				82218BF729988DF90092BA94 /* PostScrollView.swift */,
 			);
 			path = "Main Screens";
 			sourceTree = "<group>";
@@ -532,7 +524,6 @@
 				82CED4FD2981EF74009B5507 /* SchoolEmailScreen */,
 				82CED4FC2981EF56009B5507 /* EmailVerificationScreen */,
 				82CED4FE2981EFFE009B5507 /* CreateAccountScreen */,
-				82B6B2DE298B270300027E5A /* TermsConditionsScreen.swift */,
 				82CEFC6D2969CEBA00C55F67 /* Test.swift */,
 			);
 			path = "Onboarding and Login";
@@ -552,6 +543,7 @@
 			children = (
 				82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */,
 				8236CFFC296F2AF00086AB15 /* AuthManager.swift */,
+				82218BF529986BCB0092BA94 /* MessageManager.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -681,6 +673,7 @@
 				8236020C298748E9002E7AEC /* BuyButton.swift in Sources */,
 				82360208298748CC002E7AEC /* CategoryView.swift in Sources */,
 				82B6B2DF298B270300027E5A /* TermsConditionsScreen.swift in Sources */,
+				82218BF829988DF90092BA94 /* PostScrollView.swift in Sources */,
 				823602052985ABF0002E7AEC /* PostView.swift in Sources */,
 				82E75AC3297E321600742F18 /* Email API.swift in Sources */,
 				82B6B2FC298F3C8300027E5A /* CustomCameraView.swift in Sources */,
@@ -706,7 +699,6 @@
 				82CBC2A429879752001966E3 /* PostImageView.swift in Sources */,
 				82ACC68729936E3100589E1E /* NextButton.swift in Sources */,
 				8236CFFD296F2AF00086AB15 /* AuthManager.swift in Sources */,
-				82B6B2C62989F38F00027E5A /* CategorySelectorView.swift in Sources */,
 				82ACC67F2991738300589E1E /* Shapes.swift in Sources */,
 				82B6B2DD298AE9BF00027E5A /* DeleteButton.swift in Sources */,
 				82CEFC682969CE7E00C55F67 /* SettingsScreen.swift in Sources */,
@@ -733,9 +725,9 @@
 				82CEFC442969CBDB00C55F67 /* Colors.swift in Sources */,
 				82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */,
 				82CEFC7F2969CFB700C55F67 /* SignUpButton.swift in Sources */,
-				82B6B2C82989F45300027E5A /* CategoryIcon.swift in Sources */,
 				82CEFC7C2969CF8D00C55F67 /* UniversityNotFoundView.swift in Sources */,
 				82CEFC742969CF0100C55F67 /* SchoolEmailScreen.swift in Sources */,
+				82218BF629986BCB0092BA94 /* MessageManager.swift in Sources */,
 				8236021029879425002E7AEC /* PostDescriptionView.swift in Sources */,
 				82ACC6922995CC1E00589E1E /* TypeIcon.swift in Sources */,
 				82B6B2F6298E018B00027E5A /* Haptics.swift in Sources */,

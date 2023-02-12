@@ -72,6 +72,17 @@ func getDomain(email: String) -> String{
     return temp_email
 }
 
+extension String {
+    func generateStringSequence() -> [String] {
+        guard self.count > 0 else {return [] }
+        var sequences: [String] = []
+        for i in 1...self.count {
+            sequences.append(String(self.prefix(i)))
+        }
+        return sequences
+    }
+}
+
 extension View {
     func hideKeyboard() {
         let resign = #selector(UIResponder.resignFirstResponder)

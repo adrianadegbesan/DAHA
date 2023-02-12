@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import BottomSheet
 
 struct ChooseTypeButton: View {
 //    @Binding var post: PostModel

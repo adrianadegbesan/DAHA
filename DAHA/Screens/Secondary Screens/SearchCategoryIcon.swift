@@ -18,11 +18,14 @@ struct SearchCategoryIcon: View {
             hideKeyboard()
                 if selected != category {
                     SoftFeedback()
-                    selected = category
-                    
+                    withAnimation{
+                        selected = category
+                    }
                 } else {
                     SoftFeedback()
-                    selected = ""
+                    withAnimation{
+                        selected = ""
+                    }
                 }
         }) {
             ZStack{
