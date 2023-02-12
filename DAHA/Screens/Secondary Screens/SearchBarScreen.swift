@@ -54,6 +54,8 @@ struct SearchBarScreen: View {
                 }
             }
             
+            PageBottomDivider()
+            
             PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
             .onAppear {
                     Task {
@@ -70,6 +72,7 @@ struct SearchBarScreen: View {
 
 struct SearchBarScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBarScreen(query: .constant(""), category: .constant(""), type: .constant(""))
+        SearchBarScreen(query: .constant(" "), category: .constant(""), type: .constant(""))
+            .environmentObject(FirestoreManager())
     }
 }

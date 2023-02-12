@@ -49,7 +49,7 @@ struct PostImageView: View {
             .clipped()
         } else {
             Image(systemName: category_images[post.category] ?? "bag.fill")
-                .scaleEffect(4)
+                .scaleEffect(3)
                 .frame(width: screenWidth * 0.385, height: screenHeight * 0.21)
                 .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                 .overlay (

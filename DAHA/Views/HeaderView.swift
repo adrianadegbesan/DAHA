@@ -55,7 +55,7 @@ struct HeaderView: View {
                 
             } //: HStack
             if slidingBar == true {
-                SlidingTabView(selection: tabIndex ?? .constant(0), tabs: tabs ?? [""], font: .headline.weight(.black), activeAccentColor: Color(hex: deepBlue), inactiveAccentColor: colorScheme == .dark ? .white : .black)
+                SlidingTabView(selection: tabIndex ?? .constant(0), tabs: tabs ?? [""], font: .headline.weight(.black), activeAccentColor: Color(hex: deepBlue), inactiveAccentColor: colorScheme == .dark ? .white : .black, selectionBarHeight: 9.5, selectionBarBackgroundHeight: 9.5)
                     .padding(.bottom, 0)
             } else if !showSearchBar {
                 Divider()

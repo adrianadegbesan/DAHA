@@ -88,6 +88,7 @@ struct PostScrollView: View {
             let posts : [PostModel] = []
             
             PostScrollView(posts: .constant(posts), loading: .constant(false), screen: "Listings", query: .constant(""), type: .constant(""), category: .constant(""))
+                .environmentObject(FirestoreManager())
         }
     }
 }

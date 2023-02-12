@@ -78,7 +78,7 @@ struct PostModalDescription: View {
 
             } else {
                 Image(systemName: category_images[post.category] ?? "bag.fill")
-                    .scaleEffect(7)
+                    .scaleEffect(4)
                     .frame(width: screenWidth, height: screenHeight * 0.35)
                     .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                     .overlay (
