@@ -30,8 +30,8 @@ struct HomeScreen: View {
                         PostScrollView(posts: $firestoreManager.requests, loading: $firestoreManager.requests_loading, screen: "Requests", query: .constant(""), type: .constant(""), category: .constant(""))
                     }
                      
-                    Spacer()
-    
+//                    Spacer()
+//    
                     
                     PageBottomDivider()
                 } //: VStack

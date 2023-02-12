@@ -24,7 +24,7 @@ struct SearchBarScreen: View {
                 .submitLabel(.search)
                 .onSubmit {
                     Task {
-                        await firestoreManager.searchPosts(query: query, type: type, category: category)
+                        await firestoreManager.searchPosts(query: query.lowercased(), type: type, category: category)
                     }
                 }
                 .padding(.horizontal, screenWidth * 0.03)
@@ -57,7 +57,7 @@ struct SearchBarScreen: View {
         PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
         .onAppear {
                 Task {
-                    await firestoreManager.searchPosts(query: query, type: type, category: category)
+                    await firestoreManager.searchPosts(query: query.lowercased(), type: type, category: category)
                 }
         }
         .keyboardControl()

@@ -75,11 +75,20 @@ func getDomain(email: String) -> String{
 extension String {
     func generateStringSequence() -> [String] {
         guard self.count > 0 else {return [] }
-        var sequences: [String] = []
-        for i in 1...self.count {
-            sequences.append(String(self.prefix(i)).lowercased())
+//        var sequences: [String] = []
+//        for i in 1...self.count {
+//            sequences.append(String(self.prefix(i)).lowercased())
+//        }
+//        return sequences
+        var substrings = [String]()
+        for i in 0 ..< self.count {
+            for j in i+1 ... self.count {
+                substrings.append(String(self[self.index(self.startIndex, offsetBy: i) ..< self.index(self.startIndex, offsetBy: j)]))
+            }
         }
-        return sequences
+        
+        substrings = substrings.map { $0.lowercased() }
+        return substrings
     }
 }
 
