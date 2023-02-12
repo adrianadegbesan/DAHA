@@ -43,6 +43,15 @@ class FirestoreManager: ObservableObject {
     private var db = Firestore.firestore()
     private var storage = Storage.storage()
     
+    init(){
+        Task {
+            await getListings()
+            await getRequests()
+            await getSaved()
+            await userPosts()
+        }
+    }
+    
     func verifyDomain(domain: String, schoolFound: Binding<Bool>, cannot_verify: Binding<Bool>, uni_temp: Binding<String>) async {
         var found: Bool = false
         var uni: String = ""
