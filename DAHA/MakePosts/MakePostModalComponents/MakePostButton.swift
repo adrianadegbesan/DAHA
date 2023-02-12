@@ -30,6 +30,13 @@ struct MakePostButton: View {
                             print(error!.localizedDescription)
                         }
                     }
+                    if post_created {
+                        if post.type == "Listing"{
+                            await firestoreManager.getListings()
+                        } else if post.type == "Request"{
+                            await firestoreManager.getRequests()
+                        }
+                    }
                     uploading = false
                 }
             }

@@ -16,25 +16,24 @@ struct PostScrollView: View {
     @Binding var type: String
     @Binding var category: String
     @EnvironmentObject var firestoreManager : FirestoreManager
-    @EnvironmentObject var network: Network
     
     var body: some View {
         ScrollView{
             
-            if !network.connected {
-                Text("Please check your internet connection")
-                    .titleText()
-            }
-            else if loading {
+            if loading {
                 ProgressView()
+                    .padding(.top, 10)
             } else if posts.isEmpty{
                 ProgressView()
+                    .padding(.top, 10)
             } else {
                 ForEach(posts) { post in
                     if post.userID == firestoreManager.userId{
                         PostView(post: post, owner: true)
+                            .padding(.top, 10)
                     } else {
                         PostView(post: post, owner: false)
+                            .padding(.top, 10)
                     }
                 }
             }
@@ -71,8 +70,12 @@ struct PostScrollView: View {
                 }
             }
         }
-        .onAppear{
-            network.checkConnection()
+        .onChange(of: posts.count){ value in
+            print(posts)
+        }
+        .onChange(of: loading){ value in
+            print(loading)
+            
         }
     }
     

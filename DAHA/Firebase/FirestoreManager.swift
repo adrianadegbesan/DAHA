@@ -22,22 +22,22 @@ class FirestoreManager: ObservableObject {
     @Environment(\.dismiss) var dismiss
     
     
-    @State var listings: [PostModel] = []
-    @State var listings_loading: Bool = false
+    @Published var listings: [PostModel] = []
+    @Published var listings_loading: Bool = false
     
-    @State var requests: [PostModel] = []
-    @State var requests_loading: Bool = false
+    @Published var requests: [PostModel] = []
+    @Published var requests_loading: Bool = false
     
-    @State var saved_posts: [PostModel] = []
-    @State var saved_loading: Bool = false
+    @Published var saved_posts: [PostModel] = []
+    @Published var saved_loading: Bool = false
     
-    @State var my_posts: [PostModel] = []
-    @State var my_posts_loading: Bool = false
+    @Published var my_posts: [PostModel] = []
+    @Published var my_posts_loading: Bool = false
     
-    @State var search_results: [PostModel] = []
-    @State var search_results_loading: Bool = false
+    @Published var search_results: [PostModel] = []
+    @Published var search_results_loading: Bool = false
     
-    @State var userId = Auth.auth().currentUser?.uid
+    @Published var userId = Auth.auth().currentUser?.uid
     
     
     private var db = Firestore.firestore()
@@ -175,7 +175,6 @@ class FirestoreManager: ObservableObject {
         post_temp.userID = cur_id!
         post_temp.username = username_system
         post_temp.channel = university
-        post_temp.price = "\(post.price)"
         
         var ref: DocumentReference? = nil
         
@@ -197,19 +196,20 @@ class FirestoreManager: ObservableObject {
     
     func convertToPost(doc : QueryDocumentSnapshot) -> PostModel {
         let data = doc.data()
-        let result = PostModel(id: data["id"] as! String,
+        let result = PostModel(id: data["id"] as? String ?? "",
                   title: data["title"] as! String,
                   userID: data["userID"] as! String,
                   username: data["username"] as! String,
                   description: data["description"] as! String,
-                  postedAt: data["postedAt"] as! Timestamp,
+                               postedAt: data["postedAt"] as? Timestamp ?? Timestamp(date: Date.now),
                   condition: data["condition"] as! String,
                   category: data["category"] as! String,
                   price: data["price"] as! String,
                   imageURLs: data["imageURLs"] as! [String],
                   channel: data["channel"] as! String,
                   savers: data["savers"] as! [String],
-                  type: data["type"] as! String, keywordsForLookup: data["keywordsForLookup"] as! [String])
+                  type: data["type"] as! String,
+                  keywordsForLookup: data["keywordsForLookup"] as? [String] ?? [])
         return result
     }
     
@@ -223,8 +223,10 @@ class FirestoreManager: ObservableObject {
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            listings = temp
+            self.listings = temp
+            print(self.listings)
             listings_loading = false
+            print(listings_loading)
             
         }
         catch {
@@ -243,7 +245,7 @@ class FirestoreManager: ObservableObject {
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            requests = temp
+            self.requests = temp
             requests_loading = false
             
         }
@@ -268,7 +270,7 @@ class FirestoreManager: ObservableObject {
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            saved_posts = temp
+            self.saved_posts = temp
             saved_loading = false
             
         }
@@ -293,7 +295,7 @@ class FirestoreManager: ObservableObject {
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            my_posts = temp
+            self.my_posts = temp
             my_posts_loading = false
             
         }
@@ -336,7 +338,7 @@ class FirestoreManager: ObservableObject {
                 }
             }
             
-            search_results = temp
+            search_results.append(contentsOf: temp)
             search_results_loading = false
             
         }

@@ -22,7 +22,6 @@ struct MakePostTextInputs: View {
                     if price.count > 5{
                         price = String(price.prefix(5))
                     }
-                    post.price = "$\(price)"
                 }
                 .keyboardType(.numberPad)
                 .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "dollarsign")))

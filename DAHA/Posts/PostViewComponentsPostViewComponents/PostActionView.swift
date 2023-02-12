@@ -23,15 +23,6 @@ struct PostActionView: View {
                 .layoutPriority(1)
             
             if owner == true {
-                if (post.type == "Request"){
-                    Text("REQUEST")
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.3)
-                        .font(.system(size: 15, weight: .bold))
-                        .layoutPriority(1)
-                        .foregroundColor(Color(hex: deepBlue))
-                }
-                
                 Spacer()
                 DeleteButton(post: post)
                 

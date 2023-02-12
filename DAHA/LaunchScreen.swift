@@ -13,7 +13,6 @@ struct LaunchScreen: View {
     @State private var isActive = false
     @State private var size = 0.8
     @State private var opacity = 0.5
-    @EnvironmentObject var network: Network
     @Environment(\.colorScheme) var colorScheme
     
     @State private var size1 = 0.01

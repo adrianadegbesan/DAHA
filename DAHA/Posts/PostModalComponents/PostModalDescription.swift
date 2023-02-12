@@ -12,7 +12,7 @@ struct PostModalDescription: View {
     var images = ["GreenBike", "GreenBike2", "GreenBike3"]
     
     var body: some View {
-        VStack{
+        VStack(alignment: .leading){
             HStack{
                 Text(post.title)
                     .lineLimit(1)
@@ -23,7 +23,7 @@ struct PostModalDescription: View {
                 
                 Spacer()
                 
-                Text("$\(post.price)")
+                (Text(post.price == "Free" ? "" : "$") + Text(post.price))
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .font(.system(size: 16, weight: .bold))
@@ -36,13 +36,19 @@ struct PostModalDescription: View {
                 TabView {
                     //post.imageURLs
                     ForEach(post.imageURLs, id: \.self) { item in
-                        AsyncImage(url: URL(string: item), transaction: Transaction(animation: .spring(response:0.5, dampingFraction: 0.6, blendDuration: 0.25))) { phase in
+                        AsyncImage(url: URL(string: item)) { phase in
                             switch phase {
                             case .success(let image):
                                 image
                                     .resizable()
+                                    .scaledToFit()
                                     .clipped()
                                     .transition(.scale)
+                                    .overlay (
+                        //                RoundedRectangle(cornerRadius: 15)
+                                        Rectangle()
+                                            .strokeBorder(lineWidth: 1.5)
+                                    )
                             case .failure(_):
                                 Image("Logo").opacity(0.8)
                             case .empty:
@@ -59,11 +65,6 @@ struct PostModalDescription: View {
                 .padding(2.3)
                 .frame(width: screenWidth, height: screenHeight * 0.35)
     //            .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
-                .overlay (
-    //                RoundedRectangle(cornerRadius: 15)
-                    Rectangle()
-                        .strokeBorder(lineWidth: 1.5)
-                )
                 .clipped()
 
             } else {
@@ -79,6 +80,7 @@ struct PostModalDescription: View {
             
             HStack{
                 Text(post.description)
+                    .padding(.leading, 10)
             }
             .padding(.bottom, 10)
         }

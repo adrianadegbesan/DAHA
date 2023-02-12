@@ -15,9 +15,8 @@ struct HomeScreen: View {
     @State var shouldNavigate : Bool = false
     @State private var tabIndex : Int = 0
     @State private var tabs : [String] = ["LISTINGS", "REQUESTS"]
+    @EnvironmentObject var firestoreManager : FirestoreManager
 
-    
-//    let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: nil, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type = "")
     
     var body: some View {
             ZStack {
@@ -26,21 +25,9 @@ struct HomeScreen: View {
                         .frame(alignment: .top)
 //                    Spacer()
                     if tabIndex == 0{
-                        ScrollView{
-//                            PostView(post: post, owner: false)
-//                                .padding(.top, 10)
-                        }
-                        .refreshable {
-
-                        }
+                        PostScrollView(posts: $firestoreManager.listings, loading: $firestoreManager.listings_loading, screen: "Listings", query: .constant(""), type: .constant(""), category: .constant(""))
                     } else if tabIndex == 1 {
-                        ScrollView{
-//                            PostView(post: post, owner: false)
-//                                .padding(.top, 10)
-                        }
-                        .refreshable {
-
-                        }
+                        PostScrollView(posts: $firestoreManager.requests, loading: $firestoreManager.requests_loading, screen: "Requests", query: .constant(""), type: .constant(""), category: .constant(""))
                     }
                      
                     Spacer()

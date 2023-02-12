@@ -33,7 +33,6 @@ struct PostModalPosterInfo: View {
                     .minimumScaleFactor(0.3)
                     .font(.system(size: 13, weight: .bold))
                     .layoutPriority(1)
-                    .foregroundColor(Color(hex: category_colors[post.category] ?? "000000"))
                     .padding(.trailing, 10)
             } else {
                 Text("LISTING")
@@ -41,7 +40,6 @@ struct PostModalPosterInfo: View {
                     .minimumScaleFactor(0.3)
                     .font(.system(size: 13, weight: .bold))
                     .layoutPriority(1)
-                    .foregroundColor(Color(hex: category_colors[post.category] ?? "000000"))
                     .padding(.trailing, 10)
             }
         } //:HStack

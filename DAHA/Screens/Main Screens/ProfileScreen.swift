@@ -13,6 +13,7 @@ struct ProfileScreen: View {
     @AppStorage("username") var username_system: String = ""
     @State private var tabIndex : Int = 0
     @State private var tabs : [String] = ["MY POSTS", "SAVED"]
+    @EnvironmentObject var firestoreManager : FirestoreManager
 
     var body: some View {
         ZStack {
@@ -20,21 +21,9 @@ struct ProfileScreen: View {
                 HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false, slidingBar: true, tabIndex: $tabIndex, tabs: tabs)
                 .frame(alignment: .top)
                 if tabIndex == 0{
-                    ScrollView{
-//                            PostView(post: post, owner: false)
-//                                .padding(.top, 10)
-                    }
-                    .refreshable {
-
-                    }
+                    PostScrollView(posts: $firestoreManager.my_posts, loading: $firestoreManager.my_posts_loading, screen: "User", query: .constant(""), type: .constant(""), category: .constant(""))
                 } else if tabIndex == 1 {
-                    ScrollView{
-//                            PostView(post: post, owner: false)
-//                                .padding(.top, 10)
-                    }
-                    .refreshable {
-
-                    }
+                    PostScrollView(posts: $firestoreManager.saved_posts, loading: $firestoreManager.saved_loading, screen: "Saved", query: .constant(""), type: .constant(""), category: .constant(""))
                 }
                 Spacer()
                 PageBottomDivider()

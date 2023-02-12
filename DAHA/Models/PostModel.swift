@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 
 
 struct PostModel: Identifiable, Codable {
-    @DocumentID var id: String?
+    var id: String
     var title: String
     var userID: String
     var username: String
@@ -27,7 +27,7 @@ struct PostModel: Identifiable, Codable {
     var type: String
     var keywordsForLookup : [String]
     
-    init(id: String? = nil, title: String, userID: String, username: String, description: String, postedAt: Timestamp? = nil, condition: String, category: String, price: String, imageURLs: [String], channel: String, savers: [String], type: String, keywordsForLookup: [String]) {
+    init(id: String = "", title: String, userID: String, username: String, description: String, postedAt: Timestamp? = nil, condition: String, category: String, price: String, imageURLs: [String], channel: String, savers: [String], type: String, keywordsForLookup: [String]) {
         self.id = id
         self.title = title
         self.userID = userID

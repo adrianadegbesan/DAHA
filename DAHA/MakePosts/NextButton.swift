@@ -44,9 +44,11 @@ struct NextButton: View {
                 if Int(post.price) == 0 {
                     post.price = "Free"
                 }
-                post.description = post.description.replacingOccurrences(of: " ", with: "")
-                post.title = post.title.replacingOccurrences(of: " ", with: "")
+                post.description = post.description.trimmingCharacters(in: .whitespacesAndNewlines)
+                post.title = post.title.trimmingCharacters(in: .whitespacesAndNewlines)
                 post.keywordsForLookup = post.title.generateStringSequence()
+                post.id = UUID().uuidString
+                
                 shouldNavigate = true
             }
             
