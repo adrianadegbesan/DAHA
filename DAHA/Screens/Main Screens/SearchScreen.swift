@@ -27,7 +27,9 @@ struct SearchScreen: View {
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
                     .submitLabel(.search)
                     .onSubmit {
-                        shouldNavigate = true
+                        if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
+                            shouldNavigate = true
+                        }
                     }
                     .focused($keyboardFocused)
                     .padding(.horizontal, screenWidth * 0.06)

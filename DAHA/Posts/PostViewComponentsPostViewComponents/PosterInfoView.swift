@@ -11,23 +11,30 @@ import Firebase
 struct PosterInfoView: View {
     
     @State var post: PostModel
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         HStack{
             Text("@\(post.username)")
                 .lineLimit(1)
                 .minimumScaleFactor(0.001)
-                .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: 12, weight: .semibold))
                 .foregroundColor(.gray)
+                .padding(.trailing)
             
             Spacer()
             
-            //Sort out timestamp
-            //Post.postedAt
+            Text(post.type == "Listing" ? Image(systemName: "cart.circle") : Image(systemName: "figure.stand.line.dotted.figure.stand"))
+                .lineLimit(1)
+                .minimumScaleFactor(0.001)
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundColor(colorScheme == .dark ? .white : .black)
+                
+            Spacer()
             
             Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
                 .lineLimit(1)
                 .minimumScaleFactor(0.001)
-                .font(.system(size: 12, weight: .semibold))
+                .font(.system(size: 9, weight: .semibold))
                 .foregroundColor(.gray)
         }
         .padding(.bottom, 1)

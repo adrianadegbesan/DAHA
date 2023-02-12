@@ -25,7 +25,6 @@ struct ProfileScreen: View {
                 } else if tabIndex == 1 {
                     PostScrollView(posts: $firestoreManager.saved_posts, loading: $firestoreManager.saved_loading, screen: "Saved", query: .constant(""), type: .constant(""), category: .constant(""))
                 }
-                Spacer()
                 PageBottomDivider()
             } //: VStack
             

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct PostModalDescription: View {
     @State var post: PostModel
-    var images = ["GreenBike", "GreenBike2", "GreenBike3"]
+    @State var opacity = 0.1
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(alignment: .leading){
@@ -36,25 +37,33 @@ struct PostModalDescription: View {
                 TabView {
                     //post.imageURLs
                     ForEach(post.imageURLs, id: \.self) { item in
-                        AsyncImage(url: URL(string: item)) { phase in
-                            switch phase {
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .scaledToFit()
-                                    .clipped()
-                                    .transition(.scale)
-                                    .overlay (
-                        //                RoundedRectangle(cornerRadius: 15)
-                                        Rectangle()
-                                            .strokeBorder(lineWidth: 1.5)
-                                    )
-                            case .failure(_):
-                                Image("Logo").opacity(0.8)
-                            case .empty:
-                                Image("Logo").opacity(0.8)
-                            @unknown default:
-                                ProgressView()
+                        ZStack {
+                            AsyncImage(url: URL(string: item)){ phase in
+                                switch phase {
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipped()
+                                        .transition(.scale)
+                                        .overlay (
+                            //                RoundedRectangle(cornerRadius: 15)
+                                            Rectangle()
+                                                .strokeBorder(lineWidth: 3)
+                                        )
+                                        .opacity(opacity)
+                                        .onAppear{
+                                            withAnimation(.easeIn(duration: 0.3)){
+                                                opacity = 1
+                                            }
+                                        }
+                                case .failure(_):
+                                    Image("Logo").overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear)).opacity(0.8)
+                                case .empty:
+                                    ProgressView()
+                                @unknown default:
+                                    ProgressView()
+                                }
                             }
                         }
                   } //: LOOP

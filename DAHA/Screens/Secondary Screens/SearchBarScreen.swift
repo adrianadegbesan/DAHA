@@ -13,6 +13,7 @@ struct SearchBarScreen: View {
     @Binding var category : String
     @Binding var type : String
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var firestoreManager : FirestoreManager
     @FocusState private var keyboardFocused: Bool
     
     var body: some View {
@@ -22,7 +23,9 @@ struct SearchBarScreen: View {
                 .focused($keyboardFocused)
                 .submitLabel(.search)
                 .onSubmit {
-                    hideKeyboard()
+                    Task {
+                        await firestoreManager.searchPosts(query: query, type: type, category: category)
+                    }
                 }
                 .padding(.horizontal, screenWidth * 0.03)
                 .padding(.bottom, 10)
@@ -50,16 +53,17 @@ struct SearchBarScreen: View {
                         .padding(.trailing, 10)
                 }
             }
-            
-            Spacer()
         }
-//        .onAppear{
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-//                keyboardFocused = true
-//            }
-//        }
+        PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
+        .onAppear {
+                Task {
+                    await firestoreManager.searchPosts(query: query, type: type, category: category)
+                }
+        }
         .keyboardControl()
     }
+      
+ 
 }
 
 struct SearchBarScreen_Previews: PreviewProvider {

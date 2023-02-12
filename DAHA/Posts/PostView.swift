@@ -28,6 +28,7 @@ struct PostView: View {
             VStack(alignment: .leading) {
                 
                 PosterInfoView(post: post)
+                Spacer().frame(height: 10)
                 
                 CategoryView(post: post, reported: $reported)
                 
@@ -52,7 +53,8 @@ struct PostView: View {
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 3)
+                .strokeBorder(lineWidth: 1.5)
+//                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 1.5)
                 .shadow(color: colorScheme == .dark ? .white : .black, radius: 2, y: 0)
         )
         .background(colorScheme == .dark ? .black.opacity(0.95) : .white)

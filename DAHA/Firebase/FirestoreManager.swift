@@ -13,7 +13,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
 
-
+@MainActor
 class FirestoreManager: ObservableObject {
     
     @AppStorage("university") var university: String = ""
@@ -201,7 +201,7 @@ class FirestoreManager: ObservableObject {
                   userID: data["userID"] as! String,
                   username: data["username"] as! String,
                   description: data["description"] as! String,
-                               postedAt: data["postedAt"] as? Timestamp ?? Timestamp(date: Date.now),
+                  postedAt: data["postedAt"] as? Timestamp ?? Timestamp(date: Date.now),
                   condition: data["condition"] as! String,
                   category: data["category"] as! String,
                   price: data["price"] as! String,
@@ -209,13 +209,14 @@ class FirestoreManager: ObservableObject {
                   channel: data["channel"] as! String,
                   savers: data["savers"] as! [String],
                   type: data["type"] as! String,
-                  keywordsForLookup: data["keywordsForLookup"] as? [String] ?? [])
+                  keywordsForLookup: data["keywordsForLookup"] as! [String])
         return result
     }
     
     func getListings() async {
         do {
             listings_loading = true
+                
             var temp: [PostModel] = []
             let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Listing").order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
             let documents = snapshot.documents
@@ -223,11 +224,9 @@ class FirestoreManager: ObservableObject {
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            self.listings = temp
-            print(self.listings)
-            listings_loading = false
-            print(listings_loading)
             
+            self.listings = temp
+            listings_loading = false
         }
         catch {
             listings_loading = false
@@ -310,7 +309,34 @@ class FirestoreManager: ObservableObject {
             search_results_loading = true
             var temp: [PostModel] = []
             
-            if type != "" && category == ""{
+            if type != "" && category != "" && query == ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            else if type == "" && category != "" && query == ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            else if type != "" && category == "" && query == ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            else if type != "" && category == ""{
                 let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
                 let documents = snapshot.documents
                 for document in documents{
@@ -319,7 +345,16 @@ class FirestoreManager: ObservableObject {
                 }
             }
             
-            if type != "" && category != ""{
+            else if type == "" && category != ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            else if type != "" && category != ""{
                 let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
                 let documents = snapshot.documents
                 for document in documents{
@@ -338,7 +373,7 @@ class FirestoreManager: ObservableObject {
                 }
             }
             
-            search_results.append(contentsOf: temp)
+            search_results = temp
             search_results_loading = false
             
         }

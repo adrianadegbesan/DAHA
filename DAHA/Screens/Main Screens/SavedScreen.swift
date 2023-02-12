@@ -17,7 +17,6 @@ struct SavedScreen: View {
                 HeaderView(title: "Saved", showMessages: false, showSettings: false, showSearchBar: false, slidingBar: false, tabIndex: nil, tabs: nil)
                 .frame(alignment: .top)
                 PostScrollView(posts: $firestoreManager.saved_posts, loading: $firestoreManager.saved_loading, screen: "Saved", query: .constant(""), type: .constant(""), category: .constant(""))
-                Spacer()
                 PageBottomDivider()
             } //: VStack
         } //: ZStack

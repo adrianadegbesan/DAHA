@@ -17,6 +17,7 @@ struct PostViewPrev: View {
             VStack(alignment: .leading) {
                 
                 PosterInfoView(post: post)
+                Spacer().frame(height: 10)
                 
                 CategoryViewPrev(post: post)
                 
@@ -60,7 +61,9 @@ struct PostViewPrev: View {
         .padding()
         .overlay (
             RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 3)
+                .strokeBorder(lineWidth: 1.5)
+
+//                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 1.5)
                 .shadow(radius: 3, y: 1)
         )
         .background(colorScheme == .dark ? .black.opacity(0.95)  : .white)
