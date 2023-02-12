@@ -47,7 +47,7 @@ struct NextButton: View {
                 post.description = post.description.trimmingCharacters(in: .whitespacesAndNewlines)
                 post.title = post.title.trimmingCharacters(in: .whitespacesAndNewlines)
                 post.keywordsForLookup = post.title.generateStringSequence()
-                post.id = UUID().uuidString
+//                post.id = UUID().uuidString
                 
                 shouldNavigate = true
             }

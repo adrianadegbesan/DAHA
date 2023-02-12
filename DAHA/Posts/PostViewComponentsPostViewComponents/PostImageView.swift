@@ -49,13 +49,17 @@ struct PostImageView: View {
             .clipped()
         } else {
             Image(systemName: category_images[post.category] ?? "bag.fill")
-                .scaleEffect(5)
+                .scaleEffect(4)
                 .frame(width: screenWidth * 0.385, height: screenHeight * 0.21)
-                .foregroundColor(Color(hex: category_colors[post.category] ?? "000000") )
+                .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                 .overlay (
                     RoundedRectangle(cornerRadius: 15)
-                        .strokeBorder((colorScheme != .dark && post.category != "General") ? Color(hex: category_colors[post.category] ?? "000000"): .white , lineWidth: 1)
+                        .strokeBorder(lineWidth: 1.5)
                 )
+//                .overlay (
+//                    RoundedRectangle(cornerRadius: 15)
+//                        .strokeBorder((colorScheme != .dark && post.category != "General") ? Color(hex: category_colors[post.category] ?? "000000"): .white , lineWidth: 1)
+//                )
         }
       
       

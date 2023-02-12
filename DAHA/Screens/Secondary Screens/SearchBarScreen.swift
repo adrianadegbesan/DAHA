@@ -17,14 +17,14 @@ struct SearchBarScreen: View {
     @FocusState private var keyboardFocused: Bool
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
             TextField("Does Anyone Have A...?", text: $query)
                 .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
                 .focused($keyboardFocused)
                 .submitLabel(.search)
                 .onSubmit {
                     Task {
-                        await firestoreManager.searchPosts(query: query.lowercased(), type: type, category: category)
+                        await firestoreManager.searchPosts(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
                     }
                 }
                 .padding(.horizontal, screenWidth * 0.03)
@@ -53,13 +53,15 @@ struct SearchBarScreen: View {
                         .padding(.trailing, 10)
                 }
             }
+            
+            PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
+            .onAppear {
+                    Task {
+                        await firestoreManager.searchPosts(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
+                    }
+            }
         }
-        PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
-        .onAppear {
-                Task {
-                    await firestoreManager.searchPosts(query: query.lowercased(), type: type, category: category)
-                }
-        }
+
         .keyboardControl()
     }
       

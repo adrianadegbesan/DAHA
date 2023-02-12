@@ -156,7 +156,6 @@ class FirestoreManager: ObservableObject {
         if !images.isEmpty{
             urls = await uploadImages(images: images)
         }
-        print(urls)
         
         if urls == ["error"]{
             completion(uploadError("Couldn't upload images"))
@@ -176,21 +175,46 @@ class FirestoreManager: ObservableObject {
         post_temp.username = username_system
         post_temp.channel = university
         
-        var ref: DocumentReference? = nil
+//        var ref: DocumentReference? = nil
         
         do {
-            ref = try db.collection("\(university)_Posts").addDocument(from: post_temp){ err in
+            
+            try db.collection("\(university)_Posts").document(post.id).setData(from: post_temp){ err in 
                 if let err = err{
                     completion(uploadError(err.localizedDescription))
                 } else {
-                    print("Post was completed with ID: \(ref!.documentID)")
+                    print("Post completed")
                     post_created.wrappedValue = true
                     print(post_created.wrappedValue)
                 }
             }
+            if post.type == "Listing"{
+               await getListings()
+            } else if post.type == "Request"{
+                await getRequests()
+            }
+
         }
         catch {
             completion(uploadError("Error uploading post"))
+        }
+    }
+    
+    func deletePost(post: PostModel, deleted : Binding<Bool>, error_alert: Binding<Bool>) async {
+        for url in post.imageURLs{
+            let storageRef = storage.reference(forURL: url)
+            storageRef.delete() { error in
+                if error != nil {
+                    print("error deleting post")
+                }
+            }
+        }
+        do {
+            try await db.collection("\(university)_Posts").document(post.id).delete()
+            deleted.wrappedValue = true
+        }
+        catch {
+            error_alert.wrappedValue = true
         }
     }
     
@@ -226,6 +250,7 @@ class FirestoreManager: ObservableObject {
             }
             
             self.listings = temp
+            print(self.listings)
             listings_loading = false
         }
         catch {

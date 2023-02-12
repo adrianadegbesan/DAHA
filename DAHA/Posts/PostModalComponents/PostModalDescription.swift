@@ -78,12 +78,13 @@ struct PostModalDescription: View {
 
             } else {
                 Image(systemName: category_images[post.category] ?? "bag.fill")
-                    .scaleEffect(10)
+                    .scaleEffect(7)
                     .frame(width: screenWidth, height: screenHeight * 0.35)
-                    .foregroundColor(Color(hex: category_colors[post.category] ?? "000000") )
+                    .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                     .overlay (
+        //                RoundedRectangle(cornerRadius: 15)
                         Rectangle()
-                            .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 1.5)
+                            .strokeBorder(lineWidth: 3)
                     )
             }
             

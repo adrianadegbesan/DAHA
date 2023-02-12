@@ -20,19 +20,24 @@ struct PostScrollView: View {
     var body: some View {
         ScrollView{
             
+           
+            
             if posts.isEmpty{
                 ProgressView()
                     .padding(.top, 10)
             } else {
+                
+                Spacer().frame(height: 10)
+                
                 ForEach(posts) { post in
                     
 
                     if post.userID == firestoreManager.userId{
                         PostView(post: post, owner: true)
-                            .padding(.top, 10)
+                            .padding(.bottom, 10)
                     } else {
                         PostView(post: post, owner: false)
-                            .padding(.top, 10)
+                            .padding(.bottom, 10)
                     }
                 }
             }
