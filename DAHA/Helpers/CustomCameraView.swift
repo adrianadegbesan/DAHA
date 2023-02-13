@@ -28,8 +28,35 @@ struct CustomCameraView: View {
                 case .success(let photo):
                     if let data = photo.fileDataRepresentation(){
                         capturedImage = UIImage(data: data)
+                        
                         if capturedImage != nil{
-                            images.append(capturedImage!)
+                            let sideLength = min(
+                                capturedImage!.size.width,
+                                capturedImage!.size.height
+                            ) + 35
+                            let sourceSize = capturedImage!.size
+                            let xOffset = (sourceSize.width - sideLength) / 2.0
+                            let yOffset = (sourceSize.height - sideLength) / 2.0
+                            
+                            let cropRect = CGRect(
+                                x: xOffset,
+                                y: yOffset,
+                                width: sideLength,
+                                height: sideLength
+                            ).integral
+                            
+                            let sourceCGImage = capturedImage!.cgImage!
+                            let croppedCGImage = sourceCGImage.cropping(
+                                to: cropRect
+                            )!
+                            
+                            let croppedImage = UIImage(
+                                cgImage: croppedCGImage,
+                                scale: capturedImage!.imageRendererFormat.scale,
+                                orientation: capturedImage!.imageOrientation
+                            )
+                            
+                            images.append(croppedImage)
                         }
                         presentationMode.wrappedValue.dismiss()
                     } else {

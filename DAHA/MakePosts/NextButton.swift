@@ -19,6 +19,8 @@ struct NextButton: View {
     @State var error_message: String = ""
     @State var shouldNavigate: Bool = false
     @Environment(\.colorScheme) var colorScheme
+    @State var post_temp : Bool = false
+    
     
     var body: some View {
         Button(action:{
@@ -47,7 +49,7 @@ struct NextButton: View {
                 post.description = post.description.trimmingCharacters(in: .whitespacesAndNewlines)
                 post.title = post.title.trimmingCharacters(in: .whitespacesAndNewlines)
                 post.keywordsForLookup = post.title.generateStringSequence()
-//                post.id = UUID().uuidString
+                post.id = UUID().uuidString
                 
                 shouldNavigate = true
             }

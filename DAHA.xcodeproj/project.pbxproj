@@ -273,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */,
-				82B6B2C32989EE8800027E5A /* MakePostButton.swift */,
 				82B6B2CA298A13E100027E5A /* ConditionNavigatorView.swift */,
 				82B6B2CC298A14DC00027E5A /* ConditionIcon.swift */,
 				82B6B2CE298A16BD00027E5A /* MakePostTextInputs.swift */,
@@ -305,6 +304,7 @@
 				82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */,
 				82ACC68829936E4300589E1E /* PostConfirmationScreen.swift */,
 				82ACC68629936E3100589E1E /* NextButton.swift */,
+				82B6B2C32989EE8800027E5A /* MakePostButton.swift */,
 				82B6B2BC2989EC9700027E5A /* MakePostModalComponents */,
 			);
 			path = MakePosts;

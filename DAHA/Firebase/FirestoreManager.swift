@@ -150,6 +150,26 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    func convertPostModelToDictionary(post: PostModel) -> [String : Any] {
+        var result : [String : Any] = [:]
+        result["id"] = post.id
+        result["title"] = post.title
+        result["userID"] = post.userID
+        result["username"] = post.username
+        result["description"] = post.description
+        result["postedAt"] = Timestamp(date: Date.now)
+        result["condition"] = post.condition
+        result["category"] = post.category
+        result["price"] = post.price
+        result["imageURLs"] = post.imageURLs
+        result["channel"] = post.channel
+        result["savers"] = post.savers
+        result["type"] = post.type
+        result["keywordsForLookup"] = post.keywordsForLookup
+        
+        return result
+    }
+    
     func makePost(post: PostModel, images: [UIImage], post_created: Binding<Bool>, completion: @escaping (Error?) -> Void) async {
         
         var urls : [String] = []
@@ -174,30 +194,24 @@ class FirestoreManager: ObservableObject {
         post_temp.userID = cur_id!
         post_temp.username = username_system
         post_temp.channel = university
-        
-//        var ref: DocumentReference? = nil
-        
+    
         do {
-            
-            try db.collection("\(university)_Posts").document(post.id).setData(from: post_temp){ err in 
-                if let err = err{
-                    completion(uploadError(err.localizedDescription))
-                } else {
-                    print("Post completed")
-                    post_created.wrappedValue = true
-                    print(post_created.wrappedValue)
-                }
-            }
-            if post.type == "Listing"{
-               await getListings()
-            } else if post.type == "Request"{
-                await getRequests()
-            }
+                 
+                 try db.collection("\(university)_Posts").document(post.id).setData(from: post_temp){ err in
+                     if let err = err{
+                         completion(uploadError(err.localizedDescription))
+                     } else {
+                         print("Post completed")
+                         post_created.wrappedValue = true
+                         print(post_created.wrappedValue)
+                     }
+                 }
 
-        }
-        catch {
-            completion(uploadError("Error uploading post"))
-        }
+         }
+           catch {
+               completion(uploadError("Error uploading post"))
+           }
+        
     }
     
     func deletePost(post: PostModel, deleted : Binding<Bool>, error_alert: Binding<Bool>) async {
@@ -250,7 +264,6 @@ class FirestoreManager: ObservableObject {
             }
             
             self.listings = temp
-            print(self.listings)
             listings_loading = false
         }
         catch {

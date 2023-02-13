@@ -37,7 +37,7 @@ extension Color {
     }
 }
 
-let greyBackground = "dfdfdf"
+let greyBackground = "F6F6F6"
 let whiteBackground = "ffffff"
 let darkGrey = "484848"
 let deepBlue = "0076FF"

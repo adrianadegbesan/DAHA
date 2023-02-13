@@ -57,7 +57,7 @@ struct PostView: View {
 //                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 1.5)
                 .shadow(color: colorScheme == .dark ? .white : .black, radius: 2, y: 0)
         )
-        .background(colorScheme == .dark ? .black.opacity(0.95) : .white)
+        .background(colorScheme == .dark ? .black.opacity(0.95) : Color(hex: greyBackground))
         .cornerRadius(20)
         .onTapGesture {
             LightFeedback()

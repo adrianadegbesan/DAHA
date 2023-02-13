@@ -54,7 +54,11 @@ struct SearchBarScreen: View {
                 }
             }
             
-            PageBottomDivider()
+            Spacer()
+            
+            Divider()
+                .frame(maxHeight: 0.5)
+                .overlay(Color(hex: darkGrey))
             
             PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
             .onAppear {
@@ -72,7 +76,7 @@ struct SearchBarScreen: View {
 
 struct SearchBarScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBarScreen(query: .constant(" "), category: .constant(""), type: .constant(""))
+        SearchBarScreen(query: .constant(" "), category: .constant("General"), type: .constant(""))
             .environmentObject(FirestoreManager())
     }
 }

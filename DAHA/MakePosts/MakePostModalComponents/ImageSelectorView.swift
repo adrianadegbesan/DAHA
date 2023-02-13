@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ImageSelectorView: View {
- 
+    
     @Binding var images: [UIImage]
     @State var image: UIImage?
     @Environment(\.colorScheme) var colorScheme
@@ -41,14 +41,9 @@ struct ImageSelectorView: View {
                     Color.clear
                         .padding(2.3)
                     
-                    Image("Logo")
-                        .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
-                        .opacity(0.7)
-                        .padding(.bottom, screenHeight * 0.05)
-                        
+                        .frame(width: screenWidth * 0.94, height: screenHeight * 0.2)
+                    
                 }
-                .frame(width: screenWidth * 0.94, height: screenHeight * 0.45)
-             
             }
         }
     }

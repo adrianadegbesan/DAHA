@@ -52,6 +52,9 @@ struct MakePostScreen: View {
                     dismiss()
                 }
             }
+            .onAppear{
+                print("post_created is \(post_created)! ")
+            }
             .navigationBarBackButtonHidden(true)
 
             .navigationBarItems(leading: MakePostScreenExit(), trailing: NextButton(post: $post, images: $images, post_created: $post_created, category: $category, type: $type))
@@ -62,7 +65,6 @@ struct MakePostScreen: View {
         }
     }
 }
-
 struct MakePostScreen_Previews: PreviewProvider {
     static var previews: some View {
         MakePostScreen()

@@ -16,70 +16,89 @@ struct PostScrollView: View {
     @Binding var type: String
     @Binding var category: String
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        ScrollView{
-            
-           
-            
-            if posts.isEmpty{
-                ProgressView()
-                    .padding(.top, 10)
-            } else {
+        ZStack {
+            ScrollView{
+               
                 
-                Spacer().frame(height: 10)
-                
-                ForEach(posts) { post in
+                if posts.isEmpty{
+                    ProgressView()
+                        .padding(.top, 10)
+                } else {
                     
+                    Spacer().frame(height: 10)
+                    
+                    ForEach(posts) { post in
 
-                    if post.userID == firestoreManager.userId{
-                        PostView(post: post, owner: true)
-                            .padding(.bottom, 10)
-                    } else {
-                        PostView(post: post, owner: false)
-                            .padding(.bottom, 10)
+                        if post.userID == firestoreManager.userId{
+                            PostView(post: post, owner: true)
+                                .padding(.bottom, 10)
+                        } else {
+                            PostView(post: post, owner: false)
+                                .padding(.bottom, 10)
+                        }
+                    }
+                }
+                
+            }
+            .refreshable {
+                if screen == "Listings"{
+                    Task {
+                        await firestoreManager.getListings()
+                    }
+                }
+                
+                if screen == "Requests" {
+                    Task {
+                        await firestoreManager.getRequests()
+                    }
+                }
+                
+                if screen == "Saved" {
+                    Task {
+                        await firestoreManager.getSaved()
+                    }
+                }
+                
+                if screen == "User" {
+                    Task {
+                        await firestoreManager.userPosts()
+                    }
+                }
+                
+                if screen == "Search" {
+                    Task {
+                        await firestoreManager.searchPosts(query: query, type: type, category: category)
                     }
                 }
             }
-            
-        }
-        .refreshable {
-            if screen == "Listings"{
-                Task {
-                    await firestoreManager.getListings()
+            .onAppear{
+                if screen == "Listings"{
+                    Task {
+                        await firestoreManager.getListings()
+                    }
+                }
+
+                if screen == "Requests" {
+                    Task {
+                        await firestoreManager.getRequests()
+                    }
+                }
+
+                if screen == "Saved" {
+                    Task {
+                        await firestoreManager.getSaved()
+                    }
+                }
+
+                if screen == "User" {
+                    Task {
+                        await firestoreManager.userPosts()
+                    }
                 }
             }
-            
-            if screen == "Requests" {
-                Task {
-                    await firestoreManager.getRequests()
-                }
-            }
-            
-            if screen == "Saved" {
-                Task {
-                    await firestoreManager.getSaved()
-                }
-            }
-            
-            if screen == "User" {
-                Task {
-                    await firestoreManager.userPosts()
-                }
-            }
-            
-            if screen == "Search" {
-                Task {
-                    await firestoreManager.searchPosts(query: query, type: type, category: category)
-                }
-            }
-        }
-        .onChange(of: posts.count){ value in
-            print(posts)
-        }
-        .onChange(of: loading){ value in
-            print(loading)
-            
         }
     }
     

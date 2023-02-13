@@ -27,25 +27,18 @@ struct PostModalPosterInfo: View {
                 .foregroundColor(.gray)
             Spacer()
             
-            if (post.type == "Request"){
-                Text("REQUEST")
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.3)
-                    .font(.system(size: 13, weight: .bold))
-                    .layoutPriority(1)
-                    .padding(.trailing, 10)
-            } else {
-                Text("LISTING")
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.3)
-                    .font(.system(size: 13, weight: .bold))
-                    .layoutPriority(1)
-                    .padding(.trailing, 10)
+            (Text(Image(systemName: type_images[post.type] ?? "")) + Text(" ") + Text(post.type.uppercased()))
+                .lineLimit(1)
+                .minimumScaleFactor(0.3)
+                .font(.system(size: 13, weight: .bold))
+                .layoutPriority(1)
+                .padding(.trailing, 10)
+
             }
-        } //:HStack
         .padding(.leading, 10)
+        } //:HStack
+       
     }
-}
 
 struct PostModalPosterInfo_Previews: PreviewProvider {
     static var previews: some View {

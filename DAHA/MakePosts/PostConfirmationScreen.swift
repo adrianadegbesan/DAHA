@@ -51,6 +51,7 @@ struct PostConfirmationScreen: View {
                 
                 MakePostButton(post: $post, images: $images, post_created: $post_created, uploading: $uploading).onChange(of: post_created){ value in
                     if post_created {
+                        print("DONE")
                         dismiss()
                     }
                 }

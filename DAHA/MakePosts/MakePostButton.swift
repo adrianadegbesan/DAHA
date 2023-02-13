@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct MakePostButton: View {
     
     @Binding var post : PostModel
@@ -30,6 +29,11 @@ struct MakePostButton: View {
                             print(error!.localizedDescription)
                         }
                     }
+//                    if post.type == "Listing"{
+//                        await firestoreManager.getListings()
+//                    } else if post.type == "Request"{
+//                        await firestoreManager.getRequests()
+//                    }
                     uploading = false
                 }
             }
@@ -37,7 +41,7 @@ struct MakePostButton: View {
         }){
             ZStack{
                 Text("Post")
-                    .font(.system(size: 25, weight: .heavy))
+                    .font(.system(size: 18, weight: .heavy))
                     .padding()
                     .foregroundColor(.white)
                     .background(Capsule().fill(Color(hex: deepBlue)))
@@ -46,7 +50,6 @@ struct MakePostButton: View {
         .alert("Error Uploading Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
     }
 }
-
 struct MakePostButton_Previews: PreviewProvider {
     static var previews: some View {
         let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "", keywordsForLookup: [])

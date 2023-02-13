@@ -10,6 +10,7 @@ import SwiftUI
 struct PostModalDescription: View {
     @State var post: PostModel
     @State var opacity = 0.1
+    @State var descriptionScroll : Bool = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
