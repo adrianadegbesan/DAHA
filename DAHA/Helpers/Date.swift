@@ -29,18 +29,18 @@ extension Date {
         } else if secondsAgo < hour {
             
             if secondsAgo / minute == 1 {
-                return "\(secondsAgo / minute) minute ago"
+                return "\(secondsAgo / minute) min ago"
             }
             
-            return "\(secondsAgo / minute) minutes ago"
+            return "\(secondsAgo / minute) mins ago"
             
         } else if secondsAgo < day {
             
             if secondsAgo / hour == 1 {
-                return "\(secondsAgo / hour) hour ago"
+                return "\(secondsAgo / hour) hr ago"
             }
             
-            return "\(secondsAgo / hour) hours ago"
+            return "\(secondsAgo / hour) hrs ago"
             
         } else if secondsAgo < week {
 

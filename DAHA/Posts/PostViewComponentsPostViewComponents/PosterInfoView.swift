@@ -13,7 +13,7 @@ struct PosterInfoView: View {
     @State var post: PostModel
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        HStack{
+        HStack(spacing: 3){
             Text("@\(post.username)")
                 .lineLimit(1)
                 .minimumScaleFactor(0.001)
@@ -22,7 +22,7 @@ struct PosterInfoView: View {
             
             Image(systemName:"circle.fill")
                 .minimumScaleFactor(0.5)
-                .font(.system(size: 4, weight: .bold))
+                .font(.system(size: 3.5, weight: .bold))
                 .foregroundColor(.gray)
             
             Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
@@ -39,10 +39,6 @@ struct PosterInfoView: View {
                 .font(.system(size: post.type == "Request" ? 13.5 : 16, weight: .medium))
                 
                 .foregroundColor(colorScheme == .dark ? .white : .black)
-                
-            
-            
-
         }
         .padding(.bottom, 1)
     }

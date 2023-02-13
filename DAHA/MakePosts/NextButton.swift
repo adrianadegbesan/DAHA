@@ -28,9 +28,7 @@ struct NextButton: View {
             post.category = category
             post.type = type
             
-            if post.price.replacingOccurrences(of: " ", with: "") == "" {
-                post.price = "Free"
-            } else if post.category.replacingOccurrences(of: " ", with: "") == ""{
+            if post.category.replacingOccurrences(of: " ", with: "") == ""{
                 error_message = "Please choose a category"
                 error_alert = true
             } else if post.type.replacingOccurrences(of: " ", with: "") == ""{
@@ -43,7 +41,9 @@ struct NextButton: View {
                 error_message = "Please enter a title"
                 error_alert = true
             } else {
-                if Int(post.price) == 0 {
+                if post.price.replacingOccurrences(of: " ", with: "") == "" {
+                    post.price = "Free"
+                } else if Int(post.price) == 0 {
                     post.price = "Free"
                 }
                 post.description = post.description.trimmingCharacters(in: .whitespacesAndNewlines)
