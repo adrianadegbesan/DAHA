@@ -10,6 +10,7 @@
 		82218BF42998031F0092BA94 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 82218BF32998031F0092BA94 /* BottomSheet */; };
 		82218BF629986BCB0092BA94 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218BF529986BCB0092BA94 /* MessageManager.swift */; };
 		82218BF829988DF90092BA94 /* PostScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218BF729988DF90092BA94 /* PostScrollView.swift */; };
+		82218BFD299ACC110092BA94 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 82218BFC299ACC110092BA94 /* SDWebImageSwiftUI */; };
 		823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823601FC2981F3AC002E7AEC /* SignInButton.swift */; };
 		823602012981F81D002E7AEC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602002981F81D002E7AEC /* LoginScreen.swift */; };
 		823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602022981F84E002E7AEC /* ForgotPasswordButton.swift */; };
@@ -242,6 +243,7 @@
 				8236CFE9296D34210086AB15 /* FirebaseCrashlytics in Frameworks */,
 				8236CFE1296D34210086AB15 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				8236CFED296D34210086AB15 /* FirebaseFirestore in Frameworks */,
+				82218BFD299ACC110092BA94 /* SDWebImageSwiftUI in Frameworks */,
 				8236CFF3296D34210086AB15 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				8236CFFB296D34210086AB15 /* FirebaseStorage in Frameworks */,
 				8236CFEB296D34210086AB15 /* FirebaseDynamicLinks in Frameworks */,
@@ -583,6 +585,7 @@
 				82E75AC5297E35F600742F18 /* PostmarkSwift */,
 				82ACC6962995F60F00589E1E /* SlidingTabView */,
 				82218BF32998031F0092BA94 /* BottomSheet */,
+				82218BFC299ACC110092BA94 /* SDWebImageSwiftUI */,
 			);
 			productName = DAHA;
 			productReference = 82CEFC2E2969CB2C00C55F67 /* DAHA.app */;
@@ -618,6 +621,7 @@
 				82ACC68A2994157600589E1E /* XCRemoteSwiftPackageReference "KeyboardAvoider" */,
 				82ACC6952995F60E00589E1E /* XCRemoteSwiftPackageReference "SlidingTabView" */,
 				82218BF22998031F0092BA94 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				82218BFB299ACC110092BA94 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 82CEFC2F2969CB2C00C55F67 /* Products */;
 			projectDirPath = "";
@@ -966,6 +970,14 @@
 				minimumVersion = 0.2.4;
 			};
 		};
+		82218BFB299ACC110092BA94 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		8236CFDD296D34210086AB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1005,6 +1017,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 82218BF22998031F0092BA94 /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
+		};
+		82218BFC299ACC110092BA94 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82218BFB299ACC110092BA94 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		8236CFDE296D34210086AB15 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

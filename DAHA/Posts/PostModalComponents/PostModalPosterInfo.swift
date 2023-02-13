@@ -10,6 +10,7 @@ import Firebase
 
 struct PostModalPosterInfo: View {
     @State var post: PostModel
+
     
     var body: some View {
         HStack{

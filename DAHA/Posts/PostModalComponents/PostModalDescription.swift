@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct PostModalDescription: View {
     @State var post: PostModel
     @State var opacity = 0.1
     @State var descriptionScroll : Bool = false
+    @Binding var saved: Bool
+    @State var owner: Bool
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -38,35 +41,26 @@ struct PostModalDescription: View {
                 TabView {
                     //post.imageURLs
                     ForEach(post.imageURLs, id: \.self) { item in
-                        ZStack {
-                            AsyncImage(url: URL(string: item)){ phase in
-                                switch phase {
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        .clipped()
-                                        .transition(.scale)
-                                        .overlay (
-                            //                RoundedRectangle(cornerRadius: 15)
-                                            Rectangle()
-                                                .strokeBorder(lineWidth: 3)
-                                        )
-                                        .opacity(opacity)
-                                        .onAppear{
-                                            withAnimation(.easeIn(duration: 0.3)){
-                                                opacity = 1
-                                            }
-                                        }
-                                case .failure(_):
-                                    Image("Logo").overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear)).opacity(0.8)
-                                case .empty:
-                                    ProgressView()
-                                @unknown default:
-                                    ProgressView()
+                        
+                        WebImage(url: URL(string: item))
+                            .resizable()
+                            .placeholder{
+                                ProgressView()
+                            }
+                            .indicator(.activity)
+                            .scaledToFit()
+                            .clipped()
+                            .opacity(opacity)
+                            .transition(.scale)
+                            .overlay (
+                                Rectangle()
+                                    .strokeBorder(lineWidth: 3)
+                            )
+                            .onAppear{
+                                withAnimation(.easeIn(duration: 0.3)){
+                                    opacity = 1
                                 }
                             }
-                        }
                   } //: LOOP
                 } //: TAB
                 .tabViewStyle(PageTabViewStyle())
@@ -89,11 +83,24 @@ struct PostModalDescription: View {
                     )
             }
             
-            HStack{
-                Text(post.description)
-                    .padding(.leading, 10)
+            HStack {
+                HStack{
+                    Text(post.description)
+                        .padding(.leading, 10)
+                    Spacer()
+                }
+                .padding(.bottom, 10)
+                .frame(width: screenWidth * 0.9)
+                
+                HStack{
+                    if !owner {
+                        Spacer()
+                        BookmarkButton(post: post, saved: $saved)
+                            .padding(.trailing, 10)
+                    }
+                }
+                .padding(.bottom, 10)
             }
-            .padding(.bottom, 10)
         }
     }
 }
@@ -101,6 +108,6 @@ struct PostModalDescription: View {
 struct PostModalDescription_Previews: PreviewProvider {
     static var previews: some View {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [])
-        PostModalDescription(post: post)
+        PostModalDescription(post: post, saved: .constant(false), owner: false)
     }
 }

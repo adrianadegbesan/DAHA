@@ -11,33 +11,76 @@ struct BookmarkButton: View {
     
     @State var post: PostModel
     @Binding var saved: Bool
+    @State var save_alert: Bool = false
+    @State var unsave_alert: Bool = false
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var firestoreManager : FirestoreManager
     
     var body: some View {
         
-        if !saved{
-            Button(action: {
-                SoftFeedback()
-                saved.toggle()
-            }) {
+        Button(action: {
+            SoftFeedback()
+            if saved {
+                Task{
+                    let result = await firestoreManager.unsavePost(post: post)
+                    if result {
+                        withAnimation{
+                            saved.toggle()
+                        }
+                        await firestoreManager.getSaved()
+                        if post.type == "Listing"{
+                            await firestoreManager.getListings()
+                        } else {
+                            await firestoreManager.getSaved()
+                        }
+                    } else {
+                        unsave_alert = true
+                    }
+                }
+               
+            } else {
+                Task{
+                    let result = await firestoreManager.savePost(post: post)
+                    if result {
+                        withAnimation{
+                            saved.toggle()
+                        }
+                        await firestoreManager.getSaved()
+                        if post.type == "Listing"{
+                            await firestoreManager.getListings()
+                        } else {
+                            await firestoreManager.getSaved()
+                        }
+                    } else {
+                        save_alert = true
+                    }
+                }
+            }
+            
+        }){
+            if saved{
+                Image(systemName: "bookmark.fill")
+                    .minimumScaleFactor(0.05)
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundColor(Color(hex: deepBlue))
+            } else {
                 Image(systemName: "bookmark")
                     .minimumScaleFactor(0.05)
                     .font(.system(size: 22, weight: .bold))
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
             }
-            .foregroundColor(colorScheme == .dark ? .white : .black)
-        } else {
-            Button(action: {
-                LightFeedback()
-                saved.toggle()
-                
-            }) {
-                Image(systemName: "bookmark.fill")
-                    .font(.system(size: 23, weight: .bold))
-                    .foregroundColor(Color(hex: deepBlue))
-            }
-            .foregroundColor(.black)
         }
-        //ALERT
+        .onAppear{
+            let cur_id = firestoreManager.userId
+            if cur_id != nil{
+                if post.savers.contains(cur_id!){
+                    saved = true
+                }
+            }
+        }
+        .alert("Error Saving Post", isPresented: $save_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
+        .alert("Error Unsaving Post", isPresented: $unsave_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
+        
     }
 }
 

@@ -17,12 +17,13 @@ struct PostScrollView: View {
     @Binding var category: String
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
+    @AppStorage("username") var username_system: String = ""
+    @State var refresh: Bool = false
     
     var body: some View {
         ZStack {
             ScrollView{
                
-                
                 if posts.isEmpty{
                     ProgressView()
                         .padding(.top, 10)
@@ -32,7 +33,7 @@ struct PostScrollView: View {
                     
                     ForEach(posts) { post in
 
-                        if post.userID == firestoreManager.userId{
+                        if post.username == username_system {
                             PostView(post: post, owner: true)
                                 .padding(.bottom, 10)
                         } else {
@@ -44,6 +45,7 @@ struct PostScrollView: View {
                 
             }
             .refreshable {
+                refresh.toggle()
                 if screen == "Listings"{
                     Task {
                         await firestoreManager.getListings()

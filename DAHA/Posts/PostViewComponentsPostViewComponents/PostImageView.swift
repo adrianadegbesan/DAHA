@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 
 
 struct PostImageView: View {
    @State var post: PostModel
+   @State var opacity: Double = 0.1
    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -18,22 +20,39 @@ struct PostImageView: View {
         if !post.imageURLs.isEmpty{
             TabView {
                 ForEach(post.imageURLs, id: \.self) { item in
-                    AsyncImage(url: URL(string: item), transaction: Transaction(animation: .easeIn(duration: 0.3))) { phase in
-                        switch phase {
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .cornerRadius(15)
-                                .clipped()
-//                                .transition(.scale)
-                        case .failure(_):
-                            Image("Logo").overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear)).opacity(0.8)
-                        case .empty:
-                            ProgressView()
-                        @unknown default:
+                    
+                    WebImage(url: URL(string: item))
+                        .resizable()
+                        .placeholder{
                             ProgressView()
                         }
-                    }
+                        .indicator(.activity)
+                        .cornerRadius(15, corners: .allCorners)
+                        .clipped()
+                        .opacity(opacity)
+                        .onAppear{
+                            withAnimation(.easeIn(duration: 0.3)){
+                                opacity = 1
+                            }
+                        }
+                        
+                        
+//                    AsyncImage(url: URL(string: item), transaction: Transaction(animation: .easeIn(duration: 0.3))) { phase in
+//                        switch phase {
+//                        case .success(let image):
+//                            image
+//                                .resizable()
+//                                .cornerRadius(15)
+//                                .clipped()
+////                                .transition(.scale)
+//                        case .failure(_):
+//                            Image("Logo").overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear)).opacity(0.8)
+//                        case .empty:
+//                            ProgressView()
+//                        @unknown default:
+//                            ProgressView()
+//                        }
+//                    }
                  
               } //: LOOP
             } //: TAB

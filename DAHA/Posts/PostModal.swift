@@ -19,7 +19,7 @@ struct PostModal: View {
     
     var body: some View {
         ScrollView {
-            VStack{
+            VStack(alignment: .leading){
                 PostModalActions()
                 
                 PostModalPosterInfo(post: post)
@@ -29,9 +29,9 @@ struct PostModal: View {
                     .padding(.leading, 10)
                     .padding(.trailing, 10)
                 
-                PostModalDescription(post: post)
+                PostModalDescription(post: post, saved: $saved, owner: owner)
                 
-                PostModalPostActions(post: post, saved: $saved, owner: owner)
+//                PostModalPostActions(post: post, saved: $saved, owner: owner)
                 
                 Spacer()
             }

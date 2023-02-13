@@ -232,6 +232,41 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    func savePost(post: PostModel) async -> Bool {
+        
+        let postRef = db.collection("\(university)_Posts").document(post.id)
+        
+        if userId == nil{
+            return false
+        }
+        
+        do {
+            try await postRef.updateData(["savers": FieldValue.arrayUnion([userId!])])
+            return true
+            
+        }
+        catch {
+            return false
+        }
+    }
+    
+    func unsavePost(post: PostModel) async -> Bool {
+        let postRef = db.collection("\(university)_Posts").document(post.id)
+        
+        if userId == nil{
+            return false
+        }
+        
+        do {
+            try await postRef.updateData(["savers": FieldValue.arrayRemove([userId!])])
+            return true
+        }
+        catch {
+            return false
+        }
+    }
+    
+    
     func convertToPost(doc : QueryDocumentSnapshot) -> PostModel {
         let data = doc.data()
         let result = PostModel(id: data["id"] as? String ?? "",
@@ -421,6 +456,8 @@ class FirestoreManager: ObservableObject {
         }
 
     }
+    
+    
     
     
     

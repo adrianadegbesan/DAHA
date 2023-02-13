@@ -84,7 +84,7 @@ struct SearchScreen: View {
                 .onTapGesture {
                     keyboardFocused = false
                 }
-                .opacity(keyboardFocused == true ? 0.2 : 1)
+                .opacity(keyboardFocused == true ? 0.1 : 1)
                 .ignoresSafeArea(.keyboard, edges: .bottom)
               
                 
