@@ -15,6 +15,7 @@ class AuthManager: ObservableObject {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @AppStorage("university") var university: String = ""
     @AppStorage("accountcreated") var isAccountCreated: Bool = false
+    @AppStorage("id") var user_id = ""
     @Published var userSession: FirebaseAuth.User?
     
     private var db = Firestore.firestore()
@@ -22,6 +23,7 @@ class AuthManager: ObservableObject {
     init(){
         self.userSession = Auth.auth().currentUser
         if (self.userSession != nil){
+            user_id = Auth.auth().currentUser!.uid
             print("DEBUG: The current User Session is \(self.userSession!)")
         } else {
             print("DEBUG: The current User Session is nil")

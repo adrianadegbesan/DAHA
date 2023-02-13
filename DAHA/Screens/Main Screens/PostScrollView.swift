@@ -18,6 +18,7 @@ struct PostScrollView: View {
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("username") var username_system: String = ""
+    @AppStorage("id") var user_id = ""
     @State var refresh: Bool = false
     
     var body: some View {
@@ -33,7 +34,7 @@ struct PostScrollView: View {
                     
                     ForEach(posts) { post in
 
-                        if post.username == username_system {
+                        if post.userID == user_id {
                             PostView(post: post, owner: true)
                                 .padding(.bottom, 10)
                         } else {
