@@ -12,6 +12,7 @@ struct PostActionView: View {
     @State var post: PostModel
     @Binding var saved: Bool
     @State var owner: Bool
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         HStack{
@@ -24,6 +25,13 @@ struct PostActionView: View {
             
             if owner == true {
                 Spacer()
+//                Image(systemName: "checkmark.circle")
+//                    .foregroundColor(.green)
+//                    .font(.system(size: 23, weight: .semibold))
+//                    .background(Circle().fill(.white))
+//                    .overlay(Circle().stroke(colorScheme == .dark ? .white : .black, lineWidth: 3))
+//                    .padding(.trailing,8)
+//                Spacer()
                 DeleteButton(post: post)
                 
             } else {
@@ -40,6 +48,7 @@ struct PostActionView: View {
 struct PostActionView_Previews: PreviewProvider {
     static var previews: some View {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "Request", keywordsForLookup: [])
-        PostActionView(post:post , saved: .constant(false), owner: false)
+        PostActionView(post:post , saved: .constant(false), owner: true)
+            .environmentObject(FirestoreManager())
     }
 }

@@ -19,8 +19,16 @@ struct LoginScreen: View {
     @State private var email: String = ""
     @State private var password: String = ""
     
+    @State var progressOpacity = 0.0
+    @State var screenOpacity = 1.0
+    
+    @State var uploading = false
+    
     var body: some View {
         ZStack{
+            ProgressView()
+                .opacity(progressOpacity)
+                .scaleEffect(2.5)
             ScrollView{
                 Spacer().frame(height: screenHeight * 0.15)
                 Image("Logo")
@@ -32,14 +40,25 @@ struct LoginScreen: View {
                 CustomInputField(imageName: "lock.fill", placeholderText: "Password", text: $password, secure: true)
                     .padding(.bottom, 40)
                     .padding(.horizontal, screenWidth * 0.2)
-                SignInButton(email: $email, password: $password)
+                SignInButton(email: $email, password: $password, uploading: $uploading)
                 ForgotPasswordButton()
             }
-//            .background(.ultraThinMaterial)
+            .opacity(screenOpacity)
+            .disabled(uploading)
         }
         .keyboardControl()
         .onTapGesture {
             hideKeyboard()
+        }
+        .onChange(of: uploading) { value in
+            if uploading {
+                screenOpacity = 0.5
+                progressOpacity = 1.0
+            } else if !uploading {
+                screenOpacity = 1.0
+                progressOpacity = 0.0
+            }
+            
         }
     }
 }

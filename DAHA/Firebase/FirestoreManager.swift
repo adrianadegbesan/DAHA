@@ -19,6 +19,8 @@ class FirestoreManager: ObservableObject {
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
+    @AppStorage("signedin") var isSignedIn: Bool = false
+    @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @Environment(\.dismiss) var dismiss
     
     
@@ -45,10 +47,12 @@ class FirestoreManager: ObservableObject {
     
     init(){
         Task {
-            await getListings()
-            await getRequests()
-            await getSaved()
-            await userPosts()
+            if isSignedIn && agreedToTerms{
+                await getListings()
+                await getRequests()
+                await getSaved()
+                await userPosts()
+            }
         }
     }
     

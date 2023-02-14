@@ -14,6 +14,7 @@ struct SearchScreen: View {
     @State var category = ""
     @State var type = ""
     @State var shouldNavigate = false
+    @State var opacity = 1.0
     @FocusState private var keyboardFocused: Bool
     @Environment(\.colorScheme) var colorScheme
     
@@ -84,7 +85,19 @@ struct SearchScreen: View {
                 .onTapGesture {
                     keyboardFocused = false
                 }
-                .opacity(keyboardFocused == true ? 0.1 : 1)
+                .opacity(opacity)
+                .onChange(of: keyboardFocused){ value in
+                    if keyboardFocused{
+                        withAnimation {
+                            opacity = 0.1
+                        }
+                    } else{
+                        withAnimation {
+                            opacity = 1
+                        }
+                    }
+                }
+                
                 .ignoresSafeArea(.keyboard, edges: .bottom)
               
                 

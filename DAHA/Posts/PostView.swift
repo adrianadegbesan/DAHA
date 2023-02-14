@@ -78,6 +78,7 @@ struct PostView_Previews: PreviewProvider {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [])
         NavigationView{
             PostView(post: post, owner: false)
+                .environmentObject(FirestoreManager())
         }
     }
 }

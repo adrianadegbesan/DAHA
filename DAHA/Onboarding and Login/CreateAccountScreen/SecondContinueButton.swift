@@ -23,7 +23,7 @@ struct SecondContinueButton: View {
     @State private var account_created: Bool = false
     @State private var errorCreatingAccountAlert: Bool = false
     @State private var shouldNavigate: Bool = false
-    @State private var uploading: Bool = false
+    @Binding var uploading: Bool
     @AppStorage("university") var university: String = ""
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = false
     @AppStorage("signedin") var isSignedIn: Bool = false
@@ -91,8 +91,8 @@ struct SecondContinueButton: View {
                             isOnboardingViewActive = true
                         }
                     }
+                    uploading = false
                 }
-                uploading = false
         }
         }){
             ZStack {
@@ -123,7 +123,7 @@ struct SecondContinueButton: View {
 
 struct SecondContinueButton_Previews: PreviewProvider {
     static var previews: some View {
-        SecondContinueButton(firstName: .constant("jack"), lastName:  .constant("jack"), username:  .constant("jack"), password:  .constant("jack"), reconfirm_password:  .constant("jack"), error: .constant(false), error_message: .constant(""))
+        SecondContinueButton(firstName: .constant("jack"), lastName:  .constant("jack"), username:  .constant("jack"), password:  .constant("jack"), reconfirm_password:  .constant("jack"), error: .constant(false), error_message: .constant(""), uploading: .constant(false))
             .environmentObject(FirestoreManager())
             .environmentObject(AuthManager())
     }

@@ -18,12 +18,17 @@ struct CreateAccountScreen: View {
         @State private var shouldNavigate : Bool = false
         @State private var error : Bool = false
         @State private var error_message : String = ""
+        @State var uploading : Bool = false
+        @State var progressOpacity = 0.0
+        @State var screenOpacity = 1.0
         @EnvironmentObject var firestoreManager : FirestoreManager
         @Environment(\.colorScheme) var colorScheme
          
         var body: some View {
             ZStack {
-//                BackgroundColor(color: greyBackground)
+                ProgressView()
+                    .opacity(progressOpacity)
+                    .scaleEffect(2.5)
                 ScrollView {
                     Image("Logo")
                         .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
@@ -55,13 +60,15 @@ struct CreateAccountScreen: View {
                     
                     Spacer().frame(height: screenHeight * 0.18)
                     
-                    SecondContinueButton(firstName: $firstname, lastName: $lastname, username: $username, password: $password, reconfirm_password: $reconfirmPassword, error: $error, error_message: $error_message)
+                    SecondContinueButton(firstName: $firstname, lastName: $lastname, username: $username, password: $password, reconfirm_password: $reconfirmPassword, error: $error, error_message: $error_message, uploading: $uploading)
                         .padding(.bottom, 20)
 
                     NavigationLink(destination: MainScreen(), isActive: $shouldNavigate){
                         EmptyView()
                     }
-                } //: VStack
+                } //: ScrollView
+                .opacity(screenOpacity)
+                .disabled(uploading)
             }//: ZStack
             .keyboardControl()
             .onAppear{
@@ -69,6 +76,15 @@ struct CreateAccountScreen: View {
             }
             .onTapGesture {
                 hideKeyboard()
+            }
+            .onChange(of: uploading) { value in
+                if uploading {
+                    screenOpacity = 0.5
+                    progressOpacity = 1.0
+                } else if !uploading {
+                    screenOpacity = 1.0
+                    progressOpacity = 0.0
+                }
             }
             .alert("Error Creating Account", isPresented: $error, actions: {}, message: {Text(error_message)} )
            }

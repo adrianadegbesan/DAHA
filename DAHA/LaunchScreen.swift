@@ -14,6 +14,7 @@ struct LaunchScreen: View {
     @State private var size = 0.8
     @State private var opacity = 0.5
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var firestoreManager : FirestoreManager
     
     @State private var size1 = 0.01
     @State private var size2 = 0.01
@@ -93,6 +94,12 @@ struct LaunchScreen: View {
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
                     withAnimation {
+//                        Task{
+//                           await firestoreManager.getListings()
+//                           await firestoreManager.getSaved()
+//                           await firestoreManager.getRequests()
+//                           await firestoreManager.userPosts()
+//                        }
                         self.isActive = true
                     }
                 }

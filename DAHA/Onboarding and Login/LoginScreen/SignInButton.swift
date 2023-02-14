@@ -12,6 +12,7 @@ struct SignInButton: View {
     @AppStorage("signedin") var isSignedIn: Bool = false
     @Binding var email: String
     @Binding var password: String
+    @Binding var uploading: Bool
     @State private var loggedIn: Bool = false
     @State private var username_temp: String = ""
     @State private var university_temp: String = ""
@@ -22,19 +23,27 @@ struct SignInButton: View {
     @AppStorage("username") var username_system: String = ""
     @AppStorage("university") var university: String = ""
     @Environment(\.colorScheme) var colorScheme
-    
     var body: some View {
         Button(action: {
             LightFeedback()
-            Task{
-                loggedIn = await authentication.signIn(email: email, password: password, error_alert: $error_alert, error_message: $error_message, username_temp: $username_temp, university_temp: $university_temp)
+            if !uploading{
+                uploading = true
+                Task{
+                    loggedIn = await authentication.signIn(email: email, password: password, error_alert: $error_alert, error_message: $error_message, username_temp: $username_temp, university_temp: $university_temp)
+                    if loggedIn {
+                        username_system = username_temp
+                        university = university_temp
+                        uploading = false
+                        isOnboardingViewActive = false
+                        isSignedIn = true
+                    } else {
+                        uploading = false
+                    }
+                }
+
             }
-            if loggedIn {
-                username_system = username_temp
-                university = university_temp
-                isOnboardingViewActive = false
-                isSignedIn = true
-            }
+            
+         
         }) {
             ZStack {
                 // Blue Button background
@@ -61,7 +70,7 @@ struct SignInButton: View {
 
 struct SignInButton_Previews: PreviewProvider {
     static var previews: some View {
-        SignInButton(email: .constant("DAHA@daha.com"), password:.constant("12345"))
+        SignInButton(email: .constant("DAHA@daha.com"), password:.constant("12345"), uploading: .constant(false))
         
     }
 }

@@ -71,7 +71,7 @@ struct PostModalDescription: View {
     //            .cornerRadius(15)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .padding(2.3)
-                .frame(width: screenWidth, height: screenHeight * 0.35)
+                .frame(width: screenWidth, height: screenHeight * 0.4)
     //            .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
                 .clipped()
 
