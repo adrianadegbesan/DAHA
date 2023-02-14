@@ -69,7 +69,7 @@ class AuthManager: ObservableObject {
         }
     }
     
-    func signIn(email: String, password: String, error_alert: Binding<Bool>, error_message: Binding<String>, username_temp: Binding<String>, university_temp: Binding<String>) async -> Bool {
+    func signIn(email: String, password: String, error_alert: Binding<Bool>, error_message: Binding<String>, username_temp: Binding<String>, university_temp: Binding<String>, terms_temp: Binding<Bool>) async -> Bool {
         
        var found: Bool = false
         do {
@@ -85,6 +85,7 @@ class AuthManager: ObservableObject {
                     let document = doc[0].data()
                     username_temp.wrappedValue = document["username"] as! String
                     university_temp.wrappedValue = document["university"] as! String
+                    terms_temp.wrappedValue = document["terms"] as! Bool
                     return true
                 }
             }
@@ -128,6 +129,21 @@ class AuthManager: ObservableObject {
             } else {
                 success_alert.wrappedValue = true
             }
+        }
+    }
+    
+    func hasAgreedToTerms() async {
+        if user_id == ""{
+            return
+        }
+        do {
+            let userRef = db.collection("Users").document(user_id)
+            try await userRef.updateData([
+                "terms" : true
+            ])
+        }
+        catch {
+            print("Unable to send terms agreement to database")
         }
     }
 }

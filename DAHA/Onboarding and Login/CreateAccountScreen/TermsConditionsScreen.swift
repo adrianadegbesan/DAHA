@@ -13,6 +13,7 @@ struct TermsConditionsScreen: View {
     @State var shouldNavigate : Bool = false
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var authentication : AuthManager
      
     var body: some View {
         VStack{
@@ -52,6 +53,9 @@ struct TermsConditionsScreen: View {
                 if toggle {
                     LightFeedback()
                     agreedToTerms = true
+                    Task{
+                        await authentication.hasAgreedToTerms()
+                    }
                     shouldNavigate = true
                 } 
             }){
@@ -86,6 +90,7 @@ struct TermsConditionsScreen_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             TermsConditionsScreen()
+                .environmentObject(AuthManager())
         }
     }
 }

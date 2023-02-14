@@ -17,4 +17,5 @@ struct UserModel: Identifiable, Codable {
     var lastname: String?
     var channels: [String?]
     var university: String?
+    var terms: Bool?
 }

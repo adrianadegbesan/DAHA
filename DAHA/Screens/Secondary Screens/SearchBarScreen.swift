@@ -59,6 +59,7 @@ struct SearchBarScreen: View {
             Divider()
                 .frame(maxHeight: 0.5)
                 .overlay(Color(hex: darkGrey))
+                .padding(.top, 10)
             
             PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
             .onAppear {

@@ -73,7 +73,7 @@ struct SecondContinueButton: View {
                         
                         
                         if cur_email != ""{
-                            let current = UserModel(id: nil, username: username_temp, email: cur_email, firstname: firstname_temp, lastname: lastname_temp, channels: [], university: university)
+                            let current = UserModel(id: nil, username: username_temp, email: cur_email, firstname: firstname_temp, lastname: lastname_temp, channels: [], university: university, terms: false)
                             Task {
                                 print(password_temp)
                                 await authentication.createAccount(email: cur_email, password: password_temp, user: current, cannot_create: $errorCreatingAccountAlert, creation_complete: $account_created)

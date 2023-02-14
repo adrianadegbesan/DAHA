@@ -127,12 +127,11 @@ class FirestoreManager: ObservableObject {
         
         if !images.isEmpty{
             for image in images {
-                let imageData = image.jpegData(compressionQuality: 0.8)
+                let imageData = image.jpegData(compressionQuality: 0.7)
                 guard imageData != nil else {
                     return ["error"]
                 }
                 let cur_id = "\(university)_images/\(UUID().uuidString).jpg"
-//                ids.append(cur_id)
                 
                 let fileRef = storageRef.child(cur_id)
                 
@@ -220,9 +219,17 @@ class FirestoreManager: ObservableObject {
     
     func deletePost(post: PostModel, deleted : Binding<Bool>, error_alert: Binding<Bool>) async {
         for url in post.imageURLs{
-            let storageRef = storage.reference(forURL: url)
-            storageRef.delete() { error in
-                if error != nil {
+            let true_url = URL(string: url)
+            if true_url != nil{
+                do {
+                    let storageRef = try storage.reference(for: true_url!)
+                    storageRef.delete() { error in
+                        if error != nil {
+                            print("error deleting post")
+                        }
+                    }
+                }
+                catch {
                     print("error deleting post")
                 }
             }

@@ -10,12 +10,14 @@ import SwiftUI
 struct SignInButton: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @AppStorage("signedin") var isSignedIn: Bool = false
+    @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @Binding var email: String
     @Binding var password: String
     @Binding var uploading: Bool
     @State private var loggedIn: Bool = false
     @State private var username_temp: String = ""
     @State private var university_temp: String = ""
+    @State private var terms_temp: Bool = false
     @State private var error_alert: Bool = false
     @State private var error_message: String = ""
     @EnvironmentObject var firestoreManager : FirestoreManager
@@ -29,10 +31,11 @@ struct SignInButton: View {
             if !uploading{
                 uploading = true
                 Task{
-                    loggedIn = await authentication.signIn(email: email, password: password, error_alert: $error_alert, error_message: $error_message, username_temp: $username_temp, university_temp: $university_temp)
+                    loggedIn = await authentication.signIn(email: email, password: password, error_alert: $error_alert, error_message: $error_message, username_temp: $username_temp, university_temp: $university_temp, terms_temp: $terms_temp)
                     if loggedIn {
                         username_system = username_temp
                         university = university_temp
+                        agreedToTerms = terms_temp
                         uploading = false
                         isOnboardingViewActive = false
                         isSignedIn = true

@@ -20,14 +20,19 @@ struct PostScrollView: View {
     @AppStorage("username") var username_system: String = ""
     @AppStorage("id") var user_id = ""
     @State var refresh: Bool = false
+    @State var screenOpacity = 0.1
     
     var body: some View {
         ZStack {
             ScrollView{
                
-                if posts.isEmpty{
-                    ProgressView()
-                        .padding(.top, 10)
+              if posts.isEmpty{
+                    VStack{
+                        Image("Logo")
+                            .opacity(0.8)
+                            .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
+                            .padding(.top, screenHeight * 0.15)
+                    }
                 } else {
                     
                     Spacer().frame(height: 10)
@@ -100,6 +105,9 @@ struct PostScrollView: View {
                     Task {
                         await firestoreManager.userPosts()
                     }
+                }
+                withAnimation{
+                    screenOpacity = 1
                 }
             }
         }

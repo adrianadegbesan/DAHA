@@ -92,7 +92,6 @@
 		82CEFC482969CC0500C55F67 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC472969CC0500C55F67 /* Text.swift */; };
 		82CEFC4C2969CC3300C55F67 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC4B2969CC3300C55F67 /* TextField.swift */; };
 		82CEFC502969CC5B00C55F67 /* DeviceDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC4F2969CC5B00C55F67 /* DeviceDimensions.swift */; };
-		82CEFC522969CC7000C55F67 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC512969CC7000C55F67 /* UserAuth.swift */; };
 		82CEFC542969CC9B00C55F67 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC532969CC9B00C55F67 /* LaunchScreen.swift */; };
 		82CEFC572969CD5A00C55F67 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC562969CD5A00C55F67 /* MainScreen.swift */; };
 		82CEFC592969CD7400C55F67 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC582969CD7400C55F67 /* HomeScreen.swift */; };
@@ -194,7 +193,6 @@
 		82CEFC472969CC0500C55F67 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		82CEFC4B2969CC3300C55F67 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		82CEFC4F2969CC5B00C55F67 /* DeviceDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDimensions.swift; sourceTree = "<group>"; };
-		82CEFC512969CC7000C55F67 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		82CEFC532969CC9B00C55F67 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		82CEFC562969CD5A00C55F67 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		82CEFC582969CD7400C55F67 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
@@ -462,7 +460,6 @@
 			isa = PBXGroup;
 			children = (
 				82CEFC4F2969CC5B00C55F67 /* DeviceDimensions.swift */,
-				82CEFC512969CC7000C55F67 /* UserAuth.swift */,
 				8294FAAB296B9F5B004001AE /* UserModel.swift */,
 				8294FAAD296B9F64004001AE /* PostModel.swift */,
 			);
@@ -669,7 +666,6 @@
 				82B6B2FA298F394300027E5A /* CameraView.swift in Sources */,
 				82CEFC592969CD7400C55F67 /* HomeScreen.swift in Sources */,
 				82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */,
-				82CEFC522969CC7000C55F67 /* UserAuth.swift in Sources */,
 				82ACC6992996B2FA00589E1E /* SearchCategories.swift in Sources */,
 				82B6B2EE298C3FFB00027E5A /* ImageSelectorView.swift in Sources */,
 				82CEFC7A2969CF7100C55F67 /* BackgroundColor.swift in Sources */,
