@@ -30,9 +30,7 @@ struct PostModal: View {
                     .padding(.trailing, 10)
                 
                 PostModalDescription(post: post, saved: $saved, owner: owner)
-                
-//                PostModalPostActions(post: post, saved: $saved, owner: owner)
-                
+                  
                 Spacer()
             }
             .padding()

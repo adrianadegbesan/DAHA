@@ -16,6 +16,7 @@ struct MakePostScreen: View {
     @Environment(\.dismiss) var dismiss
     @State var category: String = ""
     @State var type: String = ""
+//    @State var post_alert: Bool = false
     
     
     var body: some View {
@@ -54,8 +55,13 @@ struct MakePostScreen: View {
             }
             .onAppear{
                 print("post_created is \(post_created)! ")
+//                if post_created{
+//                    post_alert = true
+//                }
             }
+//            .alert("Post Created", isPresented: $post_alert, actions: {}, message: {Text("Your post was successfully created!")})
             .navigationBarBackButtonHidden(true)
+            
 
             .navigationBarItems(leading: MakePostScreenExit(), trailing: NextButton(post: $post, images: $images, post_created: $post_created, category: $category, type: $type))
             

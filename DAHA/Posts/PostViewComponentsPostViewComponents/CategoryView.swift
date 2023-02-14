@@ -26,7 +26,7 @@ struct CategoryView: View {
                     .foregroundColor(.white)
                     .padding(10)
                     .background(Capsule().fill(Color(hex: category_colors[post.category] ?? "000000")))
-                    .overlay((post.category == "General" && colorScheme == .dark) ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
+                    .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 3))
                     .padding(.trailing, 6)
 //            }
             

@@ -28,10 +28,10 @@ struct NextButton: View {
             post.category = category
             post.type = type
             
-            if post.category.replacingOccurrences(of: " ", with: "") == ""{
+            if post.category.replacingOccurrences(of: " ", with: "") == "" {
                 error_message = "Please choose a category"
                 error_alert = true
-            } else if post.type.replacingOccurrences(of: " ", with: "") == ""{
+            } else if post.type.replacingOccurrences(of: " ", with: "") == "" {
                 error_message = "Please select a post type"
                 error_alert = true
             } else if post.condition.replacingOccurrences(of: " ", with: "") == ""{

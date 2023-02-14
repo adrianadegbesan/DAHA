@@ -39,29 +39,33 @@ struct PostModalDescription: View {
 
             if !post.imageURLs.isEmpty {
                 TabView {
-                    //post.imageURLs
+                    
                     ForEach(post.imageURLs, id: \.self) { item in
-                        
-                        WebImage(url: URL(string: item))
-                            .resizable()
-                            .placeholder{
-                                ProgressView()
-                            }
-                            .indicator(.activity)
-                            .scaledToFit()
-                            .clipped()
-                            .opacity(opacity)
-                            .transition(.scale)
-                            .overlay (
-                                Rectangle()
-                                    .strokeBorder(lineWidth: 3)
-                            )
-                            .onAppear{
-                                withAnimation(.easeIn(duration: 0.3)){
-                                    opacity = 1
+                        GeometryReader { proxy in
+                            WebImage(url: URL(string: item))
+                                .resizable()
+                                .placeholder{
+                                    ProgressView()
                                 }
-                            }
-                  } //: LOOP
+                                .indicator(.activity)
+                                .scaledToFit()
+                                .clipped()
+                                .opacity(opacity)
+                                .transition(.scale)
+                                .overlay (
+                                    Rectangle()
+                                        .strokeBorder(lineWidth: 3)
+                                )
+                                .onAppear{
+                                    withAnimation(.easeIn(duration: 0.3)){
+                                        opacity = 1
+                                    }
+                                }
+                                .modifier(ImageModifier(contentSize: CGSize(width: proxy.size.width, height: proxy.size.height)))
+                        } //: GeometryReader
+                      } //: LOOP
+                    
+                    
                 } //: TAB
                 .tabViewStyle(PageTabViewStyle())
     //            .cornerRadius(15)
