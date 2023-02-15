@@ -16,7 +16,7 @@ struct PostView: View {
     @State var reported = false
     
     @State private var selected : Bool = false
-    @State private var buyNavigate : Bool = false
+    @State private var shouldNavigate : Bool = false
     @State var owner : Bool
     
     @Environment(\.colorScheme) var colorScheme
@@ -44,7 +44,7 @@ struct PostView: View {
             
             
             
-            NavigationLink(destination: Test(), isActive: $buyNavigate){
+            NavigationLink(destination: PostModal(post: post, saved: $saved, reported: $reported, owner: owner).navigationBarBackButtonHidden(true), isActive: $shouldNavigate){
                 EmptyView()
             }
             
@@ -62,11 +62,12 @@ struct PostView: View {
         .padding(.horizontal, colorScheme == .light ? 3 : 0)
         .onTapGesture {
             LightFeedback()
-            selected = true
+//            selected = true
+            shouldNavigate = true
         }
-        .sheet(isPresented: $selected){
-            PostModal(post: post, saved: $saved, reported: $reported, owner: owner)
-        }
+//        .sheet(isPresented: $selected){
+//            PostModal(post: post, saved: $saved, reported: $reported, owner: owner)
+//        }
     }
 }
 

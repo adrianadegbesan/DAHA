@@ -36,7 +36,7 @@ struct PostModalPosterInfo: View {
                 .padding(.trailing, 10)
 
             }
-        .padding(.leading, 10)
+        .padding(.leading, 12)
         } //:HStack
        
     }

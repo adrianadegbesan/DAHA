@@ -62,7 +62,7 @@ struct PostScrollView: View {
                                                     self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
                                                 }
                                                 .onReceive(self.time) { (_) in
-                                                    if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
+                                                    if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 70{
                                                         if screen == "Search" {
                                                             print("updating")
                                                             Task {
@@ -205,13 +205,13 @@ struct PostScrollView: View {
                 .onAppear{
                     if screen == "Listings"{
                         Task {
-                            await firestoreManager.getListings()
+                            await firestoreManager.getRequests()
                         }
                     }
 
                     if screen == "Requests" {
                         Task {
-                            await firestoreManager.getRequests()
+                            await firestoreManager.getListings()
                         }
                     }
 

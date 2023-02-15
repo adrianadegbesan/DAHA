@@ -12,20 +12,21 @@ struct PostModalActions: View {
     
     var body: some View {
         VStack{
-            HStack{
-                    ModalCapsule()
-            } //: HStack
-            .padding(.bottom, 8)
+//            HStack{
+//                    ModalCapsule()
+//            } //: HStack
+//            .padding(.bottom, 8)
             HStack{
                 Image(systemName: "multiply")
+                    .font(.system(size: 28, weight: .heavy))
                     .padding(.bottom, 10)
-                    .scaleEffect(1.5)
                     .onTapGesture {
+                        SoftFeedback()
                         dismiss()
                     }
                 Spacer()
             } //:HStack
-            .padding(.leading, 10)
+            .padding(.leading, 4)
         }
  
     }

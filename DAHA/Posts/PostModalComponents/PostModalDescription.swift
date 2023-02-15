@@ -34,8 +34,8 @@ struct PostModalDescription: View {
                     .font(.system(size: 16, weight: .bold))
                  
             } //:HStack
-            .padding(.leading, 10)
-            .padding(.trailing, 10)
+            .padding(.leading, 12)
+            .padding(.trailing, 12)
 
             if !post.imageURLs.isEmpty {
                 TabView {
@@ -90,7 +90,7 @@ struct PostModalDescription: View {
             HStack {
                 HStack{
                     Text(post.description)
-                        .padding(.leading, 10)
+                        .padding(.leading, 12)
                     Spacer()
                 }
                 .padding(.bottom, 10)
