@@ -38,12 +38,12 @@ struct PostScrollView: View {
                               .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                               .padding(.top, screenHeight * 0.15)
                               .padding(.leading, screenWidth * 0.35)
-                          if screen == "Saved" {
-                              Text("No Saved Posts")
-                                  .font(.system(size: 20, weight: .black))
-                                  .padding(.top, 10)
-                                  .padding(.leading, screenWidth * 0.35)
-                          }
+//                          if screen == "Saved" {
+//                              Text("No Saved Posts")
+//                                  .font(.system(size: 16, weight: .heavy))
+//                                  .padding(.top, 10)
+//                                  .padding(.leading, screenWidth * 0.35)
+//                          }
                         }
                     } else {
                         

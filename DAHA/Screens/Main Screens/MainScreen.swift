@@ -36,6 +36,10 @@ struct MainScreen: View {
                 }
             
         } //TabView
+        .onAppear{
+            let appearance: UITabBarAppearance = UITabBarAppearance()
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
         .accentColor(Color(hex: "0703d0"))
         .navigationBarBackButtonHidden(true)
 //

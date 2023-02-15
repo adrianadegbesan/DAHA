@@ -57,16 +57,17 @@ struct PostViewPrev: View {
         
             
         } //HStack
-        .frame(width: screenWidth * 0.89, height: screenHeight * 0.2)
+        .frame(width: screenWidth * 0.902, height: screenHeight * 0.2)
         .padding()
-        .overlay (
+        .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(lineWidth: 1.5)
+                .strokeBorder(lineWidth: colorScheme == .dark ? 1.5 : 3)
 
-//                .strokeBorder(Color(hex: category_colors[post.category] ?? "000000"), lineWidth: 1.5)
-                .shadow(radius: 3, y: 1)
+                .shadow(color: colorScheme == .dark ? .white : .black, radius: 2, y: 0)
         )
-        .background(colorScheme == .dark ? .black.opacity(0.95) : Color(hex: greyBackground))
+        .background(colorScheme == .dark ? .black.opacity(0.95) : .white)
+        .cornerRadius(20)
+        .padding(.horizontal, colorScheme == .light ? 3 : 0)
     }
 }
 

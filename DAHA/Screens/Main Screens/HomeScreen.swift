@@ -33,7 +33,7 @@ struct HomeScreen: View {
 //                    Spacer()
 //    
                     
-                    PageBottomDivider()
+//                    PageBottomDivider()
                 } //: VStack
 //
                 VStack{

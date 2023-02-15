@@ -1,13 +1,12 @@
 //
-//  SearchScreen.swift
+//  SearchTest.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 1/7/23.
+//  Created by Adrian Adegbesan on 2/15/23.
 //
 
 import SwiftUI
 
-// Search Screen
 struct SearchScreen: View {
     
     @State var query = ""
@@ -17,98 +16,142 @@ struct SearchScreen: View {
     @State var opacity = 1.0
     @FocusState private var keyboardFocused: Bool
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var firestoreManager : FirestoreManager
+    @State var searched = false
     
     var body: some View {
         GeometryReader { _ in
             VStack(spacing: 0) {
-                HeaderView(title: "Search", showMessages: false, showSettings: false, showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil, screen: "Search")
-                    .frame(alignment: .top)
-             
-                TextField("Does Anyone Have A...?", text: $query)
-                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
-                    .submitLabel(.search)
-                    .onSubmit {
-                        if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
-                            shouldNavigate = true
-                        }
-                    }
-                    .focused($keyboardFocused)
-                    .padding(.horizontal, screenWidth * 0.06)
-                    .padding(.bottom, 25)
-                    .ignoresSafeArea(.keyboard, edges: .bottom)
-                VStack {
-                    HStack{
-                        if category != ""{
-                            
-                            Text(Image(systemName: "multiply.circle.fill"))
-                                .font(.system(size: 13, weight: .bold))
-                                .background(Circle().fill(.white).scaleEffect(colorScheme == .dark ? 1 : 0.4))
-                                .background(Circle().stroke(colorScheme == .dark ? .white : .black, lineWidth: colorScheme == .dark ? 1 : 3))
-                                .disabled(keyboardFocused)
-                                .onTapGesture {
-                                    LightFeedback()
-                                    withAnimation{
-                                        hideKeyboard()
-                                        category = ""
-                                    }
-                                }
-                                .foregroundColor(.red)
-                            
-                            Label(category.uppercased(), systemImage: category_images[category] ?? "")
-                                .lineLimit(1)
-                                .foregroundColor(.white)
-                                .font(.system(size: 13, weight: .bold))
-                                .padding(10)
-                                .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
-                                .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 3))
-                                .padding(.trailing, 10)
-                            
-                        } else {
-                            Text(" ... ")
-                                .font(.system(size: 13, weight: .bold))
-                                .foregroundColor(.clear)
-                                .background(Circle().stroke(.clear, lineWidth: 3))
-                        }
-                        
-                            ChooseTypeButton(selected: $type)
-                            .disabled(keyboardFocused)
-                       
-                    }
-                    Spacer().frame(height: screenHeight * 0.02)
-                    .ignoresSafeArea(.keyboard, edges: .bottom)
-                        SearchCategories(selected: $category)
-                        .disabled(keyboardFocused)
-                        .ignoresSafeArea(.keyboard, edges: .bottom)
+                
+                
+                if !searched{
                     
-                    Spacer()
+                    HeaderView(title: "Search", showMessages: false, showSettings: false, showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil, screen: "Search")
+                        .frame(alignment: .top)
+                    
                 }
-                .onTapGesture {
-                    keyboardFocused = false
-                }
-                .opacity(opacity)
-                .onChange(of: keyboardFocused){ value in
-                    if keyboardFocused{
-                        withAnimation {
-                            opacity = 0.1
+                
+                HStack{
+                    
+                    if searched {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 25, weight: .heavy))
+                            .padding(.bottom, 25)
+                            .padding(.leading, 15)
+                            .onTapGesture {
+                                SoftFeedback()
+                                withAnimation(.easeIn(duration: 0.3)){
+                                    opacity = 1
+                                    keyboardFocused = false
+                                    searched = false
+                                }
+                            }
+                            
+                    }
+                    
+                    
+                    TextField("Does Anyone Have A...?", text: $query)
+                        .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
+                        .submitLabel(.search)
+                        .onSubmit {
+                            if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
+                                Task {
+                                    await firestoreManager.searchPosts(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
+                                }
+                                withAnimation(.easeIn(duration: 0.3)){
+                                    searched = true
+                                }
+                            }
                         }
-                    } else{
-                        withAnimation {
-                            opacity = 1
+                        .focused($keyboardFocused)
+//                        .background(Color.primary.opacity(0.05))
+                        .padding(.horizontal, screenWidth * 0.058)
+                        .padding(.bottom, 25)
+                        .ignoresSafeArea(.keyboard, edges: .bottom)
+                }
+                .padding(.top, searched ? 24 : 10)
+              
+             
+                if !searched {
+                    VStack {
+                        
+                        SearchButtons(keyboardFocused: $keyboardFocused, category: $category, type: $type)
+                            .ignoresSafeArea(.keyboard, edges: .bottom)
+                        
+                        Spacer().frame(height: screenHeight * 0.02)
+                        
+                        .ignoresSafeArea(.keyboard, edges: .bottom)
+                        
+                        SearchCategories(selected: $category)
+                            .disabled(keyboardFocused)
+                            .ignoresSafeArea(.keyboard, edges: .bottom)
+                        
+                        Spacer()
+                    }
+                    
+                    
+                    .onTapGesture {
+                        keyboardFocused = false
+                    }
+                    .opacity(opacity)
+                    .onChange(of: keyboardFocused){ value in
+                        if keyboardFocused{
+                            withAnimation {
+                                if colorScheme == .dark{
+                                    opacity = 0.1
+                                } else {
+                                    opacity = 0.04
+                                }
+                                
+                            }
+                        } else{
+                            withAnimation {
+                                opacity = 1
+                            }
                         }
                     }
+                    
+                    .ignoresSafeArea(.keyboard, edges: .bottom)
+                    
+                } else {
+                    VStack(spacing: 0){
+                        HStack{
+                            if category != "" {
+                                Label(category.uppercased(), systemImage: category_images[category] ?? "")
+                                    .lineLimit(1)
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 13, weight: .bold))
+                                    .padding(10)
+                                    .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
+                                    .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 3))
+                                    .padding(.trailing, 10)
+                            }
+                            
+                            if type != "" {
+                                Label(type.uppercased(), systemImage: type_images[type] ?? "")
+                                    .lineLimit(1)
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 13, weight: .bold))
+                                    .padding(10)
+                                    .background(Capsule().fill(.black))
+                                    .overlay( colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
+                                    .padding(.trailing, 10)
+                            }
+                               
+                        }
+                        Spacer().frame(height: 10)
+                        
+                        Divider()
+                            .frame(maxHeight : 0.1)
+                            .overlay(Color(hex: darkGrey))
+                            .padding(.top, 10)
+                        
+                        PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
+                        
+                    }
+                    
                 }
-                
-                .ignoresSafeArea(.keyboard, edges: .bottom)
-              
-                
-                
-                Spacer()
-                
-                NavigationLink(destination: SearchBarScreen(query: $query, category: $category, type: $type), isActive: $shouldNavigate){
-                    EmptyView()
-                }
-                PageBottomDivider()
-//                Spacer()
+            
             }//: VStack
             .onTapGesture {
                 hideKeyboard()
@@ -123,5 +166,6 @@ struct SearchScreen: View {
 struct SearchScreen_Previews: PreviewProvider {
     static var previews: some View {
         SearchScreen()
+            .environmentObject(FirestoreManager())
     }
 }
