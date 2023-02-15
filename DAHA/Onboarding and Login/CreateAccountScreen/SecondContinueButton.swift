@@ -85,7 +85,7 @@ struct SecondContinueButton: View {
                                     isSignedIn = true
                                     isOnboardingViewActive = false
                                 }
-                                shouldNavigate = account_created
+//                                shouldNavigate = account_created
                             }
                         }
                         else {
