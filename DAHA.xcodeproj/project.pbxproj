@@ -21,6 +21,9 @@
 		82218C12299C96580092BA94 /* TermsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C11299C96580092BA94 /* TermsSettingsView.swift */; };
 		82218C16299C970C0092BA94 /* TermsSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */; };
 		82218C18299C97820092BA94 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C17299C97820092BA94 /* NotificationsView.swift */; };
+		82218C1C299CB3510092BA94 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C1B299CB3510092BA94 /* ScrollView.swift */; };
+		82218C1F299CB8DC0092BA94 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 82218C1E299CB8DC0092BA94 /* SwiftUIPullToRefresh */; };
+		82218C22299CD0180092BA94 /* RefreshableScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 82218C21299CD0180092BA94 /* RefreshableScrollView */; };
 		823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823601FC2981F3AC002E7AEC /* SignInButton.swift */; };
 		823602012981F81D002E7AEC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602002981F81D002E7AEC /* LoginScreen.swift */; };
 		823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602022981F84E002E7AEC /* ForgotPasswordButton.swift */; };
@@ -147,6 +150,7 @@
 		82218C11299C96580092BA94 /* TermsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsSettingsView.swift; sourceTree = "<group>"; };
 		82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsSettingsScreen.swift; sourceTree = "<group>"; };
 		82218C17299C97820092BA94 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		82218C1B299CB3510092BA94 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		823601FC2981F3AC002E7AEC /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		823602002981F81D002E7AEC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		823602022981F84E002E7AEC /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 			files = (
 				8236CFF9296D34210086AB15 /* FirebasePerformance in Frameworks */,
 				82218BF42998031F0092BA94 /* BottomSheet in Frameworks */,
+				82218C1F299CB8DC0092BA94 /* SwiftUIPullToRefresh in Frameworks */,
 				8236CFE3296D34210086AB15 /* FirebaseAnalyticsSwift in Frameworks */,
 				8236CFE7296D34210086AB15 /* FirebaseAuth in Frameworks */,
 				8236CFDF296D34210086AB15 /* FirebaseAnalytics in Frameworks */,
@@ -267,6 +272,7 @@
 				8236CFEB296D34210086AB15 /* FirebaseDynamicLinks in Frameworks */,
 				8236CFF7296D34210086AB15 /* FirebaseMessaging in Frameworks */,
 				82E75AC6297E35F600742F18 /* PostmarkSwift in Frameworks */,
+				82218C22299CD0180092BA94 /* RefreshableScrollView in Frameworks */,
 				8236CFF1296D34210086AB15 /* FirebaseFunctions in Frameworks */,
 				8236CFE5296D34210086AB15 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				8236CFF5296D34210086AB15 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
@@ -508,6 +514,7 @@
 				82ACC67E2991738300589E1E /* Shapes.swift */,
 				82218C00299C66BA0092BA94 /* Email.swift */,
 				82218C02299C67110092BA94 /* EmailClass.swift */,
+				82218C1B299CB3510092BA94 /* ScrollView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -637,6 +644,8 @@
 				82ACC6962995F60F00589E1E /* SlidingTabView */,
 				82218BF32998031F0092BA94 /* BottomSheet */,
 				82218BFC299ACC110092BA94 /* SDWebImageSwiftUI */,
+				82218C1E299CB8DC0092BA94 /* SwiftUIPullToRefresh */,
+				82218C21299CD0180092BA94 /* RefreshableScrollView */,
 			);
 			productName = DAHA;
 			productReference = 82CEFC2E2969CB2C00C55F67 /* DAHA.app */;
@@ -673,6 +682,8 @@
 				82ACC6952995F60E00589E1E /* XCRemoteSwiftPackageReference "SlidingTabView" */,
 				82218BF22998031F0092BA94 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				82218BFB299ACC110092BA94 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				82218C1D299CB8DC0092BA94 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */,
+				82218C20299CD0180092BA94 /* XCRemoteSwiftPackageReference "RefreshableScrollView" */,
 			);
 			productRefGroup = 82CEFC2F2969CB2C00C55F67 /* Products */;
 			projectDirPath = "";
@@ -786,6 +797,7 @@
 				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,
 				82CEFC442969CBDB00C55F67 /* Colors.swift in Sources */,
 				82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */,
+				82218C1C299CB3510092BA94 /* ScrollView.swift in Sources */,
 				82CEFC7F2969CFB700C55F67 /* SignUpButton.swift in Sources */,
 				82CEFC7C2969CF8D00C55F67 /* UniversityNotFoundView.swift in Sources */,
 				82CEFC742969CF0100C55F67 /* SchoolEmailScreen.swift in Sources */,
@@ -1038,6 +1050,22 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		82218C1D299CB8DC0092BA94 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-pull-to-refresh";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		82218C20299CD0180092BA94 /* XCRemoteSwiftPackageReference "RefreshableScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elegantchaos/RefreshableScrollView";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		8236CFDD296D34210086AB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1082,6 +1110,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 82218BFB299ACC110092BA94 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		82218C1E299CB8DC0092BA94 /* SwiftUIPullToRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82218C1D299CB8DC0092BA94 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */;
+			productName = SwiftUIPullToRefresh;
+		};
+		82218C21299CD0180092BA94 /* RefreshableScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82218C20299CD0180092BA94 /* XCRemoteSwiftPackageReference "RefreshableScrollView" */;
+			productName = RefreshableScrollView;
 		};
 		8236CFDE296D34210086AB15 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

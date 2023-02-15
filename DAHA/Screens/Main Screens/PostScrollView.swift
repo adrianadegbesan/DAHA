@@ -21,101 +21,227 @@ struct PostScrollView: View {
     @AppStorage("username") var username_system: String = ""
     @AppStorage("id") var user_id = ""
     @State var screenOpacity = 0.1
+    @State var time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
     
     var body: some View {
         ZStack {
-            ScrollView{
-               
-              if posts.isEmpty{
-                  VStack{
-                      Image("Logo")
-                          .opacity(0.8)
-                          .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
-                          .padding(.top, screenHeight * 0.15)
-                      if screen == "Saved" {
-                          Text("No Saved Posts")
-                              .font(.system(size: 20, weight: .black))
-                              .padding(.top, 10)
-                      }
-                    }
-                } else {
+          
+            GeometryReader { g in
+                ScrollView{
+    //                GeometryReader { geo in
+                        ProgressView()
+                            .offset(y: -40)
+                            .scaleEffect(1.5)
+    //                .onAppear{
+    //                    self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
+    //                }
+    //                .onReceive(self.time) { (_) in
+    //                    if geo.frame(.global).maxY
+    //                    //                        .frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
+    //                }
+    //            }
                     
-                    Spacer().frame(height: 10)
-                    
-                    ForEach(posts) { post in
 
-                        if post.userID == Auth.auth().currentUser?.uid {
-                            PostView(post: post, owner: false)
-                                .padding(.bottom, 10)
-                        } else {
-                            PostView(post: post, owner: false)
-                                .padding(.bottom, 10)
+                  if posts.isEmpty{
+                      VStack{
+                          Image("Logo")
+                              .opacity(0.8)
+                              .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
+                              .padding(.top, screenHeight * 0.15)
+                              .padding(.leading, screenWidth * 0.35)
+                          if screen == "Saved" {
+                              Text("No Saved Posts")
+                                  .font(.system(size: 20, weight: .black))
+                                  .padding(.top, 10)
+                                  .padding(.leading, screenWidth * 0.35)
+                          }
+                        }
+                    } else {
+                        
+                        Spacer().frame(height: 10)
+                        
+                        ForEach(posts) { post in
+                            
+                            ZStack{
+                                if post.userID == Auth.auth().currentUser?.uid {
+                                    
+                                    if post.id == posts.last!.id {
+//                                        GeometryReader{ g in
+                                            PostView(post: post, owner: true)
+                                                .padding(.bottom, 10)
+                                                .onAppear{
+                                                    self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
+                                                }
+                                                .onReceive(self.time) { (_) in
+                                                    if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
+                                                        if screen == "Listings"{
+                                                            Task {
+                                                                await firestoreManager.updateListings()
+                                                            }
+                                                        }
+
+                                                        if screen == "Requests" {
+                                                            Task {
+                                                                await firestoreManager.updateRequests()
+                                                            }
+                                                        }
+
+                                                        if screen == "Saved" {
+                                                            Task {
+                                                                await firestoreManager.updateSaved()
+                                                            }
+                                                        }
+
+                                                        if screen == "User" {
+                                                            Task {
+                                                                await firestoreManager.updateUserPosts()
+                                                            }
+                                                        }
+                                                        
+                                                        if screen == "Search"{
+                                                            Task {
+                                                                await firestoreManager.updateSearch(query: query, type: type, category: category)
+                                                            }
+                                                        }
+                                                        
+                                                        print("Updating data")
+                                                        
+                                                        self.time.upstream.connect().cancel()
+                                                    } //UPDATE FUNCTIONS
+                                                    
+                                                } //ONRECEIVE
+//                                          }  //GEOMETRY READER
+//                                        .frame(height: 65)
+                                    } else {
+                                        PostView(post: post, owner: true)
+                                            .padding(.bottom, 10)
+                                    } //NOT LAST
+                                  
+                                } /*USER POST*/else {
+                                    if post.id == posts.last!.id  {
+//                                        GeometryReader{ g in
+                                            PostView(post: post, owner: false)
+                                                .padding(.bottom, 10)
+                                                .onAppear{
+                                                    self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
+                                                }
+                                                .onReceive(self.time) { (_) in
+                                                    if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
+                                                        if screen == "Listings"{
+                                                            Task {
+                                                                await firestoreManager.updateListings()
+                                                            }
+                                                        }
+
+                                                        if screen == "Requests" {
+                                                            Task {
+                                                                await firestoreManager.updateRequests()
+                                                            }
+                                                        }
+
+                                                        if screen == "Saved" {
+                                                            Task {
+                                                                await firestoreManager.updateSaved()
+                                                            }
+                                                        }
+
+                                                        if screen == "User" {
+                                                            Task {
+                                                                await firestoreManager.updateUserPosts()
+                                                            }
+                                                        }
+                                                        
+                                                        if screen == "Search"{
+                                                            Task {
+                                                                await firestoreManager.updateSearch(query: query, type: type, category: category)
+                                                            }
+                                                        }
+                                                        
+                                                        print("Updating data")
+                                                        
+                                                        self.time.upstream.connect().cancel()
+                                                    } //UPDATE FUNCTIONS
+                                                    
+                                                } //ONRECEIVE
+//                                          } //GEOMETRY READER
+//                                        .frame(height: 65)
+                                    } else {
+                                        PostView(post: post, owner: false)
+                                            .padding(.bottom, 10)
+                                    }
+                                    
+                                 
+                                } //NOT USER POST
+                                
+                            } //ZSTACK
+
+                       
+                        } //FOREACHLOOP
+                        
+    //                    ProgressView()
+    //                        .padding(.top, 7)
+                    } //POSTS NOT EMPTY
+                    
+                } /*SCROLLVIEW*/
+    //            .refreshable {
+    //                if screen == "Listings"{
+    //                    Task {
+    //                        await firestoreManager.getListings()
+    //                    }
+    //                }
+    //
+    //                if screen == "Requests" {
+    //                    Task {
+    //                        await firestoreManager.getRequests()
+    //                    }
+    //                }
+    //
+    //                if screen == "Saved" {
+    //                    Task {
+    //                        await firestoreManager.getSaved()
+    //                    }
+    //                }
+    //
+    //                if screen == "User" {
+    //                    Task {
+    //                        await firestoreManager.userPosts()
+    //                    }
+    //                }
+    //
+    //                if screen == "Search" {
+    //                    Task {
+    //                        await firestoreManager.searchPosts(query: query, type: type, category: category)
+    //                    }
+    //                }
+    //            }
+                .onAppear{
+                    if screen == "Listings"{
+                        Task {
+                            await firestoreManager.getListings()
                         }
                     }
-                    
-//                    ProgressView()
-//                        .padding(.top, 7)
-                }
-                
+
+                    if screen == "Requests" {
+                        Task {
+                            await firestoreManager.getRequests()
+                        }
+                    }
+
+                    if screen == "Saved" {
+                        Task {
+                            await firestoreManager.getSaved()
+                        }
+                    }
+
+                    if screen == "User" {
+                        Task {
+                            await firestoreManager.userPosts()
+                        }
+                    }
+                    withAnimation{
+                        screenOpacity = 1
+                    }
             }
-            .refreshable {
-                if screen == "Listings"{
-                    Task {
-                        await firestoreManager.getListings()
-                    }
-                }
-                
-                if screen == "Requests" {
-                    Task {
-                        await firestoreManager.getRequests()
-                    }
-                }
-                
-                if screen == "Saved" {
-                    Task {
-                        await firestoreManager.getSaved()
-                    }
-                }
-                
-                if screen == "User" {
-                    Task {
-                        await firestoreManager.userPosts()
-                    }
-                }
-                
-                if screen == "Search" {
-                    Task {
-                        await firestoreManager.searchPosts(query: query, type: type, category: category)
-                    }
-                }
-            }
-            .onAppear{
-                if screen == "Listings"{
-                    Task {
-                        await firestoreManager.getListings()
-                    }
-                }
-
-                if screen == "Requests" {
-                    Task {
-                        await firestoreManager.getRequests()
-                    }
-                }
-
-                if screen == "Saved" {
-                    Task {
-                        await firestoreManager.getSaved()
-                    }
-                }
-
-                if screen == "User" {
-                    Task {
-                        await firestoreManager.userPosts()
-                    }
-                }
-                withAnimation{
-                    screenOpacity = 1
-                }
             }
         }
     }

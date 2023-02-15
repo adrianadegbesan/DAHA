@@ -25,18 +25,23 @@ class FirestoreManager: ObservableObject {
     
     
     @Published var listings: [PostModel] = []
+    @Published var listing_last : QueryDocumentSnapshot? = nil
     @Published var listings_loading: Bool = false
     
     @Published var requests: [PostModel] = []
+    @Published var requests_last : QueryDocumentSnapshot? = nil
     @Published var requests_loading: Bool = false
     
     @Published var saved_posts: [PostModel] = []
+    @Published var saved_last: QueryDocumentSnapshot? = nil
     @Published var saved_loading: Bool = false
     
     @Published var my_posts: [PostModel] = []
+    @Published var user_last: QueryDocumentSnapshot? = nil
     @Published var my_posts_loading: Bool = false
     
     @Published var search_results: [PostModel] = []
+    @Published var search_last: QueryDocumentSnapshot? = nil
     @Published var search_results_loading: Bool = false
     
     
@@ -332,12 +337,15 @@ class FirestoreManager: ObservableObject {
             var temp: [PostModel] = []
             let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Listing").order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
             let documents = snapshot.documents
+            if !documents.isEmpty{
+                listing_last = documents.last!
+            }
             for document in documents{
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
             
-            self.listings = temp
+            listings = temp
             listings_loading = false
         }
         catch {
@@ -346,12 +354,42 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    func updateListings() async {
+        do {
+            var temp: [PostModel] = []
+            if listing_last == nil{
+                return
+            }
+            let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Listing").order(by: "postedAt", descending: true).start(afterDocument: listing_last!).limit(to: 10).getDocuments()
+            
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                listing_last = documents.last!
+            } else {
+                return
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            listings.append(contentsOf: temp)
+        }
+        
+        catch {
+            print("error updating listings")
+        }
+        
+    }
+    
     func getRequests() async {
         do {
             requests_loading = true
             var temp: [PostModel] = []
             let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Request").order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
             let documents = snapshot.documents
+            if !documents.isEmpty{
+                requests_last = documents.last!
+            }
             for document in documents{
                 let post = convertToPost(doc: document)
                 temp.append(post)
@@ -364,6 +402,33 @@ class FirestoreManager: ObservableObject {
             requests_loading = false
             print("error")
         }
+    }
+    
+    func updateRequests() async {
+        do {
+            var temp: [PostModel] = []
+            if requests_last == nil{
+                return
+            }
+            let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Request").order(by: "postedAt", descending: true).start(afterDocument: requests_last!).limit(to: 10).getDocuments()
+            
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                listing_last = documents.last!
+            } else {
+                return
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            requests.append(contentsOf: temp)
+        }
+        
+        catch {
+            print("error updating requests")
+        }
+        
     }
     
     func getSaved() async {
@@ -380,17 +445,53 @@ class FirestoreManager: ObservableObject {
             
             let snapshot = try await db.collection("\(university)_Posts").whereField("savers", arrayContains: userId!).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
             let documents = snapshot.documents
+            if !documents.isEmpty{
+                saved_last = documents.last!
+            }
             for document in documents{
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            self.saved_posts = temp
+            saved_posts = temp
             saved_loading = false
             
         }
         catch {
             saved_loading = false
             print("error")
+        }
+    }
+    
+    func updateSaved() async {
+        let userId = Auth.auth().currentUser?.uid
+        
+        do {
+            var temp: [PostModel] = []
+            
+            if userId == nil{
+                return
+            }
+            
+            if saved_last == nil{
+                return
+            }
+            
+            let snapshot = try await db.collection("\(university)_Posts").whereField("savers", arrayContains: userId!).order(by: "postedAt", descending: true).start(afterDocument: saved_last!).limit(to: 10).getDocuments()
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                saved_last = documents.last!
+            } else {
+                return
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            saved_posts.append(contentsOf: temp)
+            
+        }
+        catch {
+            print("error updating saved")
         }
     }
     
@@ -407,13 +508,17 @@ class FirestoreManager: ObservableObject {
                 return
             }
             
+            
             let snapshot = try await db.collection("\(university)_Posts").whereField("userID", isEqualTo:userId!).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
             let documents = snapshot.documents
+            if !documents.isEmpty{
+               user_last = documents.last!
+            }
             for document in documents{
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            self.my_posts = temp
+            my_posts = temp
             my_posts_loading = false
             
         }
@@ -423,7 +528,43 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    func updateUserPosts() async {
+        let userId = Auth.auth().currentUser?.uid
+        
+        do {
+            var temp: [PostModel] = []
+            
+            
+            if userId == nil{
+                return
+            }
+            
+            if user_last == nil{
+                return
+            }
+            
+            let snapshot = try await db.collection("\(university)_Posts").whereField("userID", isEqualTo:userId!).order(by: "postedAt", descending: true).start(afterDocument: user_last!).limit(to: 10).getDocuments()
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+               user_last = documents.last!
+            } else {
+                return
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            my_posts.append(contentsOf:temp)
+            
+        }
+        catch {
+            print("error updating user posts")
+        }
+    }
+    
     func searchPosts(query : String, type: String, category: String) async {
+        
+       
         do {
             search_results_loading = true
             var temp: [PostModel] = []
@@ -431,6 +572,9 @@ class FirestoreManager: ObservableObject {
             if type != "" && category != "" && query == ""{
                 let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
                 let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                }
                 for document in documents{
                     let post = convertToPost(doc: document)
                     temp.append(post)
@@ -440,6 +584,9 @@ class FirestoreManager: ObservableObject {
             else if type == "" && category != "" && query == ""{
                 let snapshot = try await db.collection("\(university)_Posts").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
                 let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                }
                 for document in documents{
                     let post = convertToPost(doc: document)
                     temp.append(post)
@@ -449,6 +596,9 @@ class FirestoreManager: ObservableObject {
             else if type != "" && category == "" && query == ""{
                 let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
                 let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                }
                 for document in documents{
                     let post = convertToPost(doc: document)
                     temp.append(post)
@@ -458,6 +608,9 @@ class FirestoreManager: ObservableObject {
             else if type != "" && category == ""{
                 let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
                 let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                }
                 for document in documents{
                     let post = convertToPost(doc: document)
                     temp.append(post)
@@ -467,6 +620,9 @@ class FirestoreManager: ObservableObject {
             else if type == "" && category != ""{
                 let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
                 let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                }
                 for document in documents{
                     let post = convertToPost(doc: document)
                     temp.append(post)
@@ -476,6 +632,9 @@ class FirestoreManager: ObservableObject {
             else if type != "" && category != ""{
                 let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
                 let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                }
                 for document in documents{
                     let post = convertToPost(doc: document)
                     temp.append(post)
@@ -486,6 +645,9 @@ class FirestoreManager: ObservableObject {
             else {
                 let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).order(by: "postedAt", descending: true).limit(to: 10).getDocuments()
                 let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                }
                 for document in documents{
                     let post = convertToPost(doc: document)
                     temp.append(post)
@@ -501,6 +663,125 @@ class FirestoreManager: ObservableObject {
             print("error")
         }
 
+    }
+    
+    func updateSearch(query : String, type: String, category: String) async {
+        
+        if search_last == nil {
+            return
+        }
+        
+        do {
+            search_results_loading = true
+            var temp: [PostModel] = []
+            
+            if type != "" && category != "" && query == ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                } else {
+                    return
+                }
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            else if type == "" && category != "" && query == ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                } else {
+                    return
+                }
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            else if type != "" && category == "" && query == ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                } else {
+                    return
+                }
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            else if type != "" && category == ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                } else {
+                    return
+                }
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            else if type == "" && category != ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                } else {
+                    return
+                }
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            else if type != "" && category != ""{
+                let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                } else {
+                    return
+                }
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            
+            else {
+                let snapshot = try await db.collection("\(university)_Posts").whereField("keywordsForLookup", arrayContains: query).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 10).getDocuments()
+                let documents = snapshot.documents
+                if !documents.isEmpty{
+                    search_last = documents.last!
+                } else {
+                    return
+                }
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+            }
+            
+            search_results.append(contentsOf: temp)
+            
+        }
+        catch {
+            print("error updating search results")
+        }
+
+        
     }
     
     
