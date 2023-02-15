@@ -16,16 +16,9 @@ struct RefreshButton: View {
     var body: some View {
         Button(action: {
             SoftFeedback()
-            if screen == "Home"{
-                if tabIndex?.wrappedValue == 0{
-                    Task{
-                        await firestoreManager.getListings()
-                    }
-                } else if tabIndex?.wrappedValue == 1{
-                    Task{
-                        await firestoreManager.getRequests()
-                    }
-                }
+            Task{
+                await firestoreManager.getListings()
+                await firestoreManager.getRequests()
             }
         }){
             Image(systemName: "arrow.clockwise")
