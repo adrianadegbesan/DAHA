@@ -218,12 +218,16 @@ struct PostScrollView: View {
                     if screen == "Saved" {
                         Task {
                             await firestoreManager.getSaved()
+                            await firestoreManager.getListings()
+                            await firestoreManager.getRequests()
                         }
                     }
 
                     if screen == "User" {
                         Task {
                             await firestoreManager.userPosts()
+                            await firestoreManager.getListings()
+                            await firestoreManager.getRequests()
                         }
                     }
                     withAnimation{
