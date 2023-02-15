@@ -18,8 +18,6 @@ struct PostScrollView: View {
     @Binding var category: String
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
-    @AppStorage("username") var username_system: String = ""
-    @AppStorage("id") var user_id = ""
     @State var screenOpacity = 0.1
     @State var time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
     
@@ -28,18 +26,9 @@ struct PostScrollView: View {
           
             GeometryReader { g in
                 ScrollView{
-    //                GeometryReader { geo in
                         ProgressView()
                             .offset(y: -40)
-                            .scaleEffect(1.5)
-    //                .onAppear{
-    //                    self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
-    //                }
-    //                .onReceive(self.time) { (_) in
-    //                    if geo.frame(.global).maxY
-    //                    //                        .frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
-    //                }
-    //            }
+                            .scaleEffect(1.2)
                     
 
                   if posts.isEmpty{
@@ -74,37 +63,38 @@ struct PostScrollView: View {
                                                 }
                                                 .onReceive(self.time) { (_) in
                                                     if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
-                                                        if screen == "Listings"{
+                                                        if screen == "Search" {
+                                                            print("updating")
+                                                            Task {
+                                                                await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
+                                                            }
+                                                        }
+                                                        else if screen == "Listings"{
                                                             Task {
                                                                 await firestoreManager.updateListings()
                                                             }
                                                         }
 
-                                                        if screen == "Requests" {
+                                                        else if screen == "Requests" {
                                                             Task {
                                                                 await firestoreManager.updateRequests()
                                                             }
                                                         }
 
-                                                        if screen == "Saved" {
+                                                        else if screen == "Saved" {
                                                             Task {
                                                                 await firestoreManager.updateSaved()
                                                             }
                                                         }
 
-                                                        if screen == "User" {
+                                                        else if screen == "User" {
                                                             Task {
                                                                 await firestoreManager.updateUserPosts()
                                                             }
                                                         }
                                                         
-                                                        if screen == "Search"{
-                                                            Task {
-                                                                await firestoreManager.updateSearch(query: query, type: type, category: category)
-                                                            }
-                                                        }
                                                         
-                                                        print("Updating data")
+//                                                        print("Updating data")
                                                         
                                                         self.time.upstream.connect().cancel()
                                                     } //UPDATE FUNCTIONS
@@ -153,7 +143,7 @@ struct PostScrollView: View {
                                                         
                                                         if screen == "Search"{
                                                             Task {
-                                                                await firestoreManager.updateSearch(query: query, type: type, category: category)
+                                                                await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
                                                             }
                                                         }
                                                         
@@ -178,8 +168,6 @@ struct PostScrollView: View {
                        
                         } //FOREACHLOOP
                         
-    //                    ProgressView()
-    //                        .padding(.top, 7)
                     } //POSTS NOT EMPTY
                     
                 } /*SCROLLVIEW*/

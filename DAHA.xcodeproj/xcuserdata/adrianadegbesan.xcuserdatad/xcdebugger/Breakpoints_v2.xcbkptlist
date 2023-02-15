@@ -228,5 +228,788 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C539D509-265F-45A3-886E-674AE6951A71"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "762"
+            endingLineNumber = "762"
+            landmarkName = "updateSearch(query:type:category:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C539D509-265F-45A3-886E-674AE6951A71 - 62467ac388e59c93"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "763"
+                  endingLineNumber = "763"
+                  offsetFromSymbolStart = "11792">
+               </Location>
+               <Location
+                  uuid = "C539D509-265F-45A3-886E-674AE6951A71 - 4d950269ffdfbec7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(14) await resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "763"
+                  endingLineNumber = "763"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "C539D509-265F-45A3-886E-674AE6951A71 - be5cb1a1b5d2d0d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(15) suspend resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "763"
+                  endingLineNumber = "763"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "C539D509-265F-45A3-886E-674AE6951A71 - 63f7cea9ece289d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(22) suspend resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "763"
+                  endingLineNumber = "763"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D143FAA0-1C3F-49A7-A0DF-C12DDA301B84"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "766"
+            endingLineNumber = "766"
+            landmarkName = "updateSearch(query:type:category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43CE459B-3A76-4BF5-866C-1DDD21530DAD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "770"
+            endingLineNumber = "770"
+            landmarkName = "updateSearch(query:type:category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C2B7DF0C-80E7-44C0-BCA4-ABF88371C451"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "776"
+            endingLineNumber = "776"
+            landmarkName = "updateSearch(query:type:category:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C2B7DF0C-80E7-44C0-BCA4-ABF88371C451 - a84c4a4c77cce2ce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "776"
+                  endingLineNumber = "776"
+                  offsetFromSymbolStart = "1172">
+               </Location>
+               <Location
+                  uuid = "C2B7DF0C-80E7-44C0-BCA4-ABF88371C451 - eeba59ced32a26c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "776"
+                  endingLineNumber = "776"
+                  offsetFromSymbolStart = "1192">
+               </Location>
+               <Location
+                  uuid = "C2B7DF0C-80E7-44C0-BCA4-ABF88371C451 - 34a3a94fbe716aca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "776"
+                  endingLineNumber = "776"
+                  offsetFromSymbolStart = "1212">
+               </Location>
+               <Location
+                  uuid = "C2B7DF0C-80E7-44C0-BCA4-ABF88371C451 - 7aa9b8c86558aef4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(9) suspend resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "776"
+                  endingLineNumber = "776"
+                  offsetFromSymbolStart = "1232">
+               </Location>
+               <Location
+                  uuid = "C2B7DF0C-80E7-44C0-BCA4-ABF88371C451 - f77d14414b384682"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(11) suspend resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "776"
+                  endingLineNumber = "776"
+                  offsetFromSymbolStart = "1252">
+               </Location>
+               <Location
+                  uuid = "C2B7DF0C-80E7-44C0-BCA4-ABF88371C451 - 9bed46b15a4d8c8c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(13) suspend resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "776"
+                  endingLineNumber = "776"
+                  offsetFromSymbolStart = "1272">
+               </Location>
+               <Location
+                  uuid = "C2B7DF0C-80E7-44C0-BCA4-ABF88371C451 - be5cb1a1b5d2d28e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(15) suspend resume partial function for DAHA.FirestoreManager.updateSearch(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "776"
+                  endingLineNumber = "776"
+                  offsetFromSymbolStart = "1272">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED7529D4-7046-47A3-8894-D3EE90994641"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "668"
+            endingLineNumber = "668"
+            landmarkName = "updateSearch(query:type:category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91EF14B8-F8B1-4568-BD3B-889B14599783"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Screens/Main Screens/PostScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1463E102-9D62-4A96-9AA6-B3D204C7349D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Screens/Main Screens/SearchScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "1463E102-9D62-4A96-9AA6-B3D204C7349D - e4bd27654d9f73c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, SwiftUI.NavigationLink&lt;SwiftUI.EmptyView, DAHA.SearchBarScreen&gt;, DAHA.PageBottomDivider)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in DAHA.SearchScreen.body.getter : some"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Screens/Main%20Screens/SearchScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "2836">
+               </Location>
+               <Location
+                  uuid = "1463E102-9D62-4A96-9AA6-B3D204C7349D - 6d38747a13618735"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.ignoresSafeArea(_: SwiftUI.SafeAreaRegions, edges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, SwiftUI.NavigationLink&lt;SwiftUI.EmptyView, DAHA.SearchBarScreen&gt;, DAHA.PageBottomDivider)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in DAHA.SearchScreen.body.getter : some"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Screens/Main%20Screens/SearchScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "280">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA0FEC29-F8DD-45A6-8C21-C73AA8875475"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Screens/Main Screens/SearchScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3B94AAB1-2163-417C-A8CA-CB3E905A6883"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Screens/Main Screens/PostScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D4F4DF36-B79C-435A-A399-568996ED9A4E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
+            landmarkName = "updateListings()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC77A68F-915C-4771-866F-A499C639C6CD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Screens/Main Screens/PostScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B49E89FA-581F-42D9-86C8-F3632D737054"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Screens/Main Screens/PostScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "900D6DD9-7D3D-4AD9-8621-55AF95EF8926"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Screens/Main Screens/PostScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F5F3053B-CBCF-4134-A8F3-D9ED3D58473B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Screens/Main Screens/PostScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "F5F3053B-CBCF-4134-A8F3-D9ED3D58473B - 9d13a3de8c3d2704"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Foundation.Date) -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt; in closure #2 (DAHA.PostModel) -&gt; SwiftUI.ZStack&lt;SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: CoreGraphics.CGFloat, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.ForEach&lt;Swift.Array&lt;DAHA.PostModel&gt;, Swift.String, SwiftUI.ZStack&lt;SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;&gt;&gt;)&gt;&gt;)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onAppear(perform: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.GeometryReader&lt;&lt;&lt;opaque return type of SwiftUI.View.onAppear(perform: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; some&gt;&gt;.0&gt; in DAHA.PostScrollView.body.getter : some"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Screens/Main%20Screens/PostScrollView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "996">
+               </Location>
+               <Location
+                  uuid = "F5F3053B-CBCF-4134-A8F3-D9ED3D58473B - f59cef1ec0933abb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable () async -&gt; () in closure #2 (Foundation.Date) -&gt; () in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt; in closure #2 (DAHA.PostModel) -&gt; SwiftUI.ZStack&lt;SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.scaleEffect(_: CoreGraphics.CGFloat, anchor: SwiftUI.UnitPoint) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.ForEach&lt;Swift.Array&lt;DAHA.PostModel&gt;, Swift.String, SwiftUI.ZStack&lt;SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.onReceive&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.Publisher, &#x3c4;_1_0.Failure == Swift.Never&gt;(_: &#x3c4;_1_0, perform: (&#x3c4;_1_0.Output) -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;&gt;&gt;&gt;)&gt;&gt;)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onAppear(perform: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.GeometryReader&lt;&lt;&lt;opaque return type of SwiftUI.View.onAppear(perform: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; some&gt;&gt;.0&gt; in DAHA.PostScrollView.body.getter : some"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Screens/Main%20Screens/PostScrollView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F79C6922-F2B6-4385-BDB5-CEBFF0DCF9DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Screens/Main Screens/PostScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D1D8324-B846-4400-8DF8-0AB726B31A78"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "565"
+            endingLineNumber = "565"
+            landmarkName = "searchPosts(query:type:category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "48E1EC97-5135-4B07-BE1A-E1EEFD3AB202"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "searchPosts(query:type:category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEDA0649-882C-40C8-A3CB-154A57964071"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "649"
+            endingLineNumber = "649"
+            landmarkName = "searchPosts(query:type:category:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1A9736C5-E68A-4478-B861-65630B72AE06"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "657"
+            endingLineNumber = "657"
+            landmarkName = "searchPosts(query:type:category:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1A9736C5-E68A-4478-B861-65630B72AE06 - 85d614338fde0905"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1176">
+               </Location>
+               <Location
+                  uuid = "1A9736C5-E68A-4478-B861-65630B72AE06 - d2f6920d6aa54d07"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1196">
+               </Location>
+               <Location
+                  uuid = "1A9736C5-E68A-4478-B861-65630B72AE06 - 23976858d10cf101"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1216">
+               </Location>
+               <Location
+                  uuid = "1A9736C5-E68A-4478-B861-65630B72AE06 - 70b7e5aabfea3503"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(9) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1236">
+               </Location>
+               <Location
+                  uuid = "1A9736C5-E68A-4478-B861-65630B72AE06 - 378e71d3fd73144f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(11) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1256">
+               </Location>
+               <Location
+                  uuid = "1A9736C5-E68A-4478-B861-65630B72AE06 - f770f66ecf805a49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(13) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1276">
+               </Location>
+               <Location
+                  uuid = "1A9736C5-E68A-4478-B861-65630B72AE06 - b4fb7af9de15804b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(15) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1276">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "656"
+            endingLineNumber = "656"
+            landmarkName = "searchPosts(query:type:category:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F - 85d614338fde0905"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1176">
+               </Location>
+               <Location
+                  uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F - d2f6920d6aa54d07"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1196">
+               </Location>
+               <Location
+                  uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F - 23976858d10cf101"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1216">
+               </Location>
+               <Location
+                  uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F - 70b7e5aabfea3503"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(9) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1236">
+               </Location>
+               <Location
+                  uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F - 378e71d3fd73144f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(11) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1256">
+               </Location>
+               <Location
+                  uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F - f770f66ecf805a49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(13) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1276">
+               </Location>
+               <Location
+                  uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F - b4fb7af9de15804b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(15) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "657"
+                  endingLineNumber = "657"
+                  offsetFromSymbolStart = "1276">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1992574-0605-4821-B7B1-8C74D9564752"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Screens/Secondary Screens/Search/SearchBarScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

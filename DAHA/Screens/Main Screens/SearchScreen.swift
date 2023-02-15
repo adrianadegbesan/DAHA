@@ -21,7 +21,7 @@ struct SearchScreen: View {
     var body: some View {
         GeometryReader { _ in
             VStack(spacing: 0) {
-                HeaderView(title: "Search", showMessages: false, showSettings: false, showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil)
+                HeaderView(title: "Search", showMessages: false, showSettings: false, showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil, screen: "Search")
                     .frame(alignment: .top)
              
                 TextField("Does Anyone Have A...?", text: $query)

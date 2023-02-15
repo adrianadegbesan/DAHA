@@ -24,6 +24,7 @@
 		82218C1C299CB3510092BA94 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C1B299CB3510092BA94 /* ScrollView.swift */; };
 		82218C1F299CB8DC0092BA94 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 82218C1E299CB8DC0092BA94 /* SwiftUIPullToRefresh */; };
 		82218C22299CD0180092BA94 /* RefreshableScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 82218C21299CD0180092BA94 /* RefreshableScrollView */; };
+		82218C24299CE7920092BA94 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C23299CE7920092BA94 /* RefreshButton.swift */; };
 		823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823601FC2981F3AC002E7AEC /* SignInButton.swift */; };
 		823602012981F81D002E7AEC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602002981F81D002E7AEC /* LoginScreen.swift */; };
 		823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602022981F84E002E7AEC /* ForgotPasswordButton.swift */; };
@@ -151,6 +152,7 @@
 		82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsSettingsScreen.swift; sourceTree = "<group>"; };
 		82218C17299C97820092BA94 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		82218C1B299CB3510092BA94 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
+		82218C23299CE7920092BA94 /* RefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshButton.swift; sourceTree = "<group>"; };
 		823601FC2981F3AC002E7AEC /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		823602002981F81D002E7AEC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		823602022981F84E002E7AEC /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 			children = (
 				82CEFC822969CFF400C55F67 /* DMButton.swift */,
 				82CEFC842969D00D00C55F67 /* SettingsButton.swift */,
+				82218C23299CE7920092BA94 /* RefreshButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				82218C01299C66BA0092BA94 /* Email.swift in Sources */,
 				82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */,
 				82ACC6992996B2FA00589E1E /* SearchCategories.swift in Sources */,
+				82218C24299CE7920092BA94 /* RefreshButton.swift in Sources */,
 				82B6B2EE298C3FFB00027E5A /* ImageSelectorView.swift in Sources */,
 				82CEFC7A2969CF7100C55F67 /* BackgroundColor.swift in Sources */,
 				82CEFC762969CF3E00C55F67 /* HeaderView.swift in Sources */,

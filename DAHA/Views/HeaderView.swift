@@ -18,6 +18,7 @@ struct HeaderView: View {
     let slidingBar : Bool
     var tabIndex : Binding<Int>?
     var tabs : [String]?
+    var screen: String
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -46,6 +47,11 @@ struct HeaderView: View {
                 // Specific offset to get tounded rectangle attached to DAHA logo
                 Spacer()
                 
+                if screen == "Home"{
+                    RefreshButton(screen: screen)
+                }
+                
+                Spacer()
                 //If statement that determines which button is shown on the right hand side of the header
                 if (showMessages == true){
                     DMButton()
@@ -73,7 +79,7 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(title: "Stanford", showMessages: true, showSettings: false, showSearchBar: false, slidingBar: true, tabIndex: .constant(0), tabs: ["LISTINGS", "REQUESTS"])
+        HeaderView(title: "Stanford", showMessages: true, showSettings: false, showSearchBar: false, slidingBar: true, tabIndex: .constant(0), tabs: ["LISTINGS", "REQUESTS"], screen: "Home")
             .previewLayout(.sizeThatFits)
     }
 }

@@ -18,7 +18,7 @@ struct ProfileScreen: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0){
-                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false, slidingBar: true, tabIndex: $tabIndex, tabs: tabs)
+                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false, slidingBar: true, tabIndex: $tabIndex, tabs: tabs, screen: "Profile")
                 .frame(alignment: .top)
                 if tabIndex == 0{
                     PostScrollView(posts: $firestoreManager.my_posts, loading: $firestoreManager.my_posts_loading, screen: "User", query: .constant(""), type: .constant(""), category: .constant(""))
