@@ -9,9 +9,12 @@ import SwiftUI
 
 struct TermsSettingsView: View {
     @Environment(\.colorScheme) var colorScheme
+    @Binding var shouldNavigate : Bool
     
     var body: some View {
-        NavigationLink(destination: TermsSettingsScreen()){
+        Button(action:{
+            shouldNavigate = true
+        }){
             VStack(alignment: .leading){
                 HStack{
                     HStack{
@@ -32,6 +35,6 @@ struct TermsSettingsView: View {
 
 struct TermsSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        TermsSettingsView()
+        TermsSettingsView(shouldNavigate: .constant(false))
     }
 }

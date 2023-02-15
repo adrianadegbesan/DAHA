@@ -17,7 +17,7 @@ struct PostDescriptionView: View {
                 Text(post.title)
                 
                     .lineLimit(1)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 18.5, weight: .bold))
             }
             .padding(.bottom, 1)
             

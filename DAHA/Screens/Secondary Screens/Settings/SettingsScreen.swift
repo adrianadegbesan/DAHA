@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsScreen: View {
     
     @AppStorage("isDarkMode") private var isDarkMode = "System"
+    @State var shouldNavigateTerms = false
     
     var body: some View {
         
@@ -19,7 +20,7 @@ struct SettingsScreen: View {
                     .listRowSeparator(.hidden)
                 NotificationsView()
                     .listRowSeparator(.hidden)
-                TermsSettingsView()
+                TermsSettingsView(shouldNavigate: $shouldNavigateTerms)
                     .listRowSeparator(.hidden)
                 EmailSettingsView()
                     .listRowSeparator(.hidden)
@@ -29,6 +30,10 @@ struct SettingsScreen: View {
                     .listRowSeparator(.hidden)
                 VersionView()
                     .listRowSeparator(.hidden)
+            }
+            
+            NavigationLink(destination: TermsSettingsScreen(), isActive: $shouldNavigateTerms){
+                EmptyView()
             }
            
            

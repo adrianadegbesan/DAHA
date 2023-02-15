@@ -36,7 +36,7 @@ struct PosterInfoView: View {
             Text(post.type == "Listing" ? Image(systemName: "cart.circle") : Image(systemName: "figure.stand.line.dotted.figure.stand"))
                 .lineLimit(1)
                 .minimumScaleFactor(0.001)
-                .font(.system(size: post.type == "Request" ? 13.5 : 17, weight: .heavy))
+                .font(.system(size: post.type == "Request" ? 15.5 : 16.5, weight: .heavy))
                 
                 .foregroundColor(Color(hex: deepBlue))
         }

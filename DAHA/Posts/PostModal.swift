@@ -14,9 +14,7 @@ struct PostModal: View {
     @Binding var saved: Bool
     @Binding var reported: Bool
     @Environment(\.dismiss) private var dismiss
-    var images = ["GreenBike", "GreenBike2", "GreenBike3"]
     @State var owner : Bool
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading){
