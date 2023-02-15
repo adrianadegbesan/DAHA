@@ -19,6 +19,12 @@ struct SavedScreen: View {
                 PostScrollView(posts: $firestoreManager.saved_posts, loading: $firestoreManager.saved_loading, screen: "Saved", query: .constant(""), type: .constant(""), category: .constant(""))
                 PageBottomDivider()
             } //: VStack
+            
+            VStack{
+                PostButton()
+                .offset(x: screenWidth * 0.35, y: screenHeight * 0.325)
+            }
+            
         } //: ZStack
     }
 }

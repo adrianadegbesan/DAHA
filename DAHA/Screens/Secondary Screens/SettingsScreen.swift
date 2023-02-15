@@ -25,11 +25,17 @@ struct SettingsScreen: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
+                EmailSettingsView()
+                HStack{
+                    Spacer()
+                    Text("Version \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0")")
+                        .font(.system(size: 15, weight: .black))
+                        .foregroundColor(Color(hex: deepBlue))
+                    Spacer()
+                    
+                }
             }
-            HStack{
-                Text("Version \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0")")
-                
-            }
+           
         }
         .navigationTitle("Settings")
     }

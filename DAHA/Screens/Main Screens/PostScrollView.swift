@@ -47,6 +47,9 @@ struct PostScrollView: View {
                                 .padding(.bottom, 10)
                         }
                     }
+                    
+//                    ProgressView()
+//                        .padding(.top, 7)
                 }
                 
             }
