@@ -242,6 +242,31 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    func retrieveSaved(post: PostModel)  -> Bool {
+        let docRef = db.collection("\(university)_Posts").document(post.id)
+        var result = false
+        var list : [String] = []
+        let id = Auth.auth().currentUser?.uid
+        
+        if id == nil {
+            return false
+        }
+        
+        docRef.getDocument{ (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data()
+                list = dataDescription?["savers"] as? [String] ?? []
+                if list.contains(id!){
+                    result = true
+                }
+             } else {
+                 print("Document does not exist")
+             }
+        }
+        return result
+        
+    }
+    
     func savePost(post: PostModel) async -> Bool {
         
         let postRef = db.collection("\(university)_Posts").document(post.id)

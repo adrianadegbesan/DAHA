@@ -23,38 +23,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1B02A2A4-569E-4CAE-8322-4D58F73B5275"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DAHA/Firebase/FirestoreManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "makePost(post:images:post_created:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B15B366A-6FE5-4AFA-877A-0521F1797BA5"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DAHA/Firebase/FirestoreManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "makePost(post:images:post_created:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D872538B-60C4-412E-B036-B5C63F0B5514"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -103,17 +71,161 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "501A2269-89F1-472E-B171-64FBBC25055E"
-            shouldBeEnabled = "Yes"
+            uuid = "EEB08662-7915-4BF9-8DE4-AA6EA5B2E153"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "deletePost(post:deleted:error_alert:)"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "retrieveSaved(post:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "079506AE-BA99-4FFD-AA3B-2A1A580BC984"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "retrieveSaved(post:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B37E5EEC-8404-4377-B17A-D9FC3F90474B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "retrieveSaved(post:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B84A66C9-191E-4C67-BC81-56DF3E9B58AE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "retrieveSaved(post:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B84A66C9-191E-4C67-BC81-56DF3E9B58AE - 4dd8b82cb46caa73"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DAHA.FirestoreManager.retrieveSaved(post: DAHA.PostModel) -&gt; Swift.Bool"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "256"
+                  endingLineNumber = "256"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  uuid = "B84A66C9-191E-4C67-BC81-56DF3E9B58AE - 4dd8b82cb46caa73"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRDocumentSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DAHA.FirestoreManager.retrieveSaved(post: DAHA.PostModel) -&gt; Swift.Bool"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "256"
+                  endingLineNumber = "256"
+                  offsetFromSymbolStart = "200">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0BA7C75-4AB9-4F72-BE61-27BCBC8B6F25"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "retrieveSaved(post:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2AAD5723-EC03-4BB8-92D2-9CAE397DB871"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/FirestoreManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "retrieveSaved(post:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2AAD5723-EC03-4BB8-92D2-9CAE397DB871 - debc559dbcae3b2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DAHA.FirestoreManager.retrieveSaved(post: DAHA.PostModel) -&gt; Swift.Bool"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "249"
+                  endingLineNumber = "249"
+                  offsetFromSymbolStart = "704">
+               </Location>
+               <Location
+                  uuid = "2AAD5723-EC03-4BB8-92D2-9CAE397DB871 - debc559dbcae3b2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DAHA.FirestoreManager.retrieveSaved(post: DAHA.PostModel) -&gt; Swift.Bool"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/FirestoreManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "249"
+                  endingLineNumber = "249"
+                  offsetFromSymbolStart = "808">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

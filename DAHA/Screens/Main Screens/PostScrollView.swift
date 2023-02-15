@@ -20,7 +20,6 @@ struct PostScrollView: View {
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("username") var username_system: String = ""
     @AppStorage("id") var user_id = ""
-    @State var refresh: Bool = false
     @State var screenOpacity = 0.1
     
     var body: some View {
@@ -60,7 +59,6 @@ struct PostScrollView: View {
                 
             }
             .refreshable {
-                refresh.toggle()
                 if screen == "Listings"{
                     Task {
                         await firestoreManager.getListings()

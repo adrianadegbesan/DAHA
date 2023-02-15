@@ -81,8 +81,13 @@ struct BookmarkButton: View {
                     .foregroundColor(colorScheme == .dark ? .white : .black)
             }
         }
-        .onAppear{
-            print("Saved is \(saved)")
+        .onAppear {
+//            var result = firestoreManager.retrieveSaved(post: post)
+//            if result {
+//                saved = true
+//            } else {
+//                saved = false
+//            }
             let cur_id = Auth.auth().currentUser?.uid
             if cur_id != nil{
                 if post.savers.contains(cur_id!){
