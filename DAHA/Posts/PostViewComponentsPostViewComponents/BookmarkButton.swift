@@ -25,9 +25,6 @@ struct BookmarkButton: View {
                 Task{
                     let result = await firestoreManager.unsavePost(post: post)
                     if result {
-                        withAnimation{
-                            saved.toggle()
-                        }
                         await firestoreManager.getSaved()
                         if post.type == "Listing"{
                             await firestoreManager.getListings()
@@ -38,14 +35,19 @@ struct BookmarkButton: View {
                         unsave_alert = true
                     }
                 }
-               
+                withAnimation{
+                    let id = Auth.auth().currentUser?.uid
+                    if id != nil{
+                        if let index = post.savers.firstIndex(of: id!){
+                            post.savers.remove(at: index)
+                        }
+                    }
+                    saved.toggle()
+                }
             } else {
                 Task{
                     let result = await firestoreManager.savePost(post: post)
                     if result {
-                        withAnimation{
-                            saved.toggle()
-                        }
                         await firestoreManager.getSaved()
                         if post.type == "Listing"{
                             await firestoreManager.getListings()
@@ -56,6 +58,14 @@ struct BookmarkButton: View {
                         save_alert = true
                     }
                 }
+                withAnimation{
+                    let id = Auth.auth().currentUser?.uid
+                    if id != nil && !post.savers.contains(id!){
+                        post.savers.append(id!)
+                    }
+                    saved.toggle()
+                }
+
             }
             
         }){
@@ -72,11 +82,14 @@ struct BookmarkButton: View {
             }
         }
         .onAppear{
+            print("Saved is \(saved)")
             let cur_id = Auth.auth().currentUser?.uid
             if cur_id != nil{
                 if post.savers.contains(cur_id!){
                     saved = true
                 }
+            } else {
+                saved = false
             }
         }
         .alert("Error Saving Post", isPresented: $save_alert, actions: {}, message: {Text("Please check your network connection and try again later")})

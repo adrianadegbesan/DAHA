@@ -46,7 +46,7 @@ struct PostScrollView: View {
                     ForEach(posts) { post in
 
                         if post.userID == Auth.auth().currentUser?.uid {
-                            PostView(post: post, owner: true)
+                            PostView(post: post, owner: false)
                                 .padding(.bottom, 10)
                         } else {
                             PostView(post: post, owner: false)
