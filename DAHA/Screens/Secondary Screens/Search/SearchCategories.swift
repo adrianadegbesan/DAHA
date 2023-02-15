@@ -38,7 +38,7 @@ struct SearchCategories: View {
             }
             .padding(.bottom, 12)
             HStack{
-                SearchCategoryIcon(category: "Games", selected: $selected)
+                SearchCategoryIcon(category: "Outdoor", selected: $selected)
                     .padding(.trailing, screenWidth * 0.08)
                 SearchCategoryIcon(category: "Tickets", selected: $selected)
             }

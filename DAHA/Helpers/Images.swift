@@ -37,7 +37,7 @@ let category_images = [
     "Art": "pencil.and.outline",
     "Furniture": "sofa.fill",
     "Books": "text.book.closed.fill",
-    "Games":  "gamecontroller.fill",
+    "Outdoor":  "soccerball",
     "Tickets": "ticket.fill",
     "General": "bag.fill"
 ]
