@@ -20,11 +20,19 @@ struct EmailSettingsView: View {
         Button(action: {
             showMailView.toggle()
         }){
-            HStack(){
-                Text(Image(systemName: "envelope.fill"))
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                Text("Contact Us")
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
+            VStack(alignment: .leading){
+                HStack{
+                    HStack{
+                        Text(Image(systemName: "envelope.fill"))
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                        Spacer()
+                    }
+                    .frame(width: screenWidth * 0.1)
+                   
+                    Text("Contact Us")
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                }
+                Divider()
             }
         }.disabled(!MailView.canSendMail)
             .sheet(isPresented: $showMailView) {

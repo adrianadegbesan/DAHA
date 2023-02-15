@@ -31,7 +31,7 @@ struct BuyButton: View {
                     .font(.system(size: 13, weight: .bold))
                 
                 
-                NavigationLink(destination: Test(), isActive: $shouldNavigate){
+                NavigationLink(destination: DMScreen(), isActive: $shouldNavigate){
                     EmptyView()
                 }
                 

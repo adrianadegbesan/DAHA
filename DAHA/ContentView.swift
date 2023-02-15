@@ -14,6 +14,7 @@ struct ContentView: View {
   @AppStorage("university") var university: String = ""
   @AppStorage("username") var username_system: String = ""
   @AppStorage("email") var email_system: String = ""
+  @AppStorage("id") var user_id = ""
     
   @EnvironmentObject var authentication: AuthManager
   @EnvironmentObject var network: Network

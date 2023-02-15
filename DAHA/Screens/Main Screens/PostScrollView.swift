@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct PostScrollView: View {
     
@@ -27,11 +28,16 @@ struct PostScrollView: View {
             ScrollView{
                
               if posts.isEmpty{
-                    VStack{
-                        Image("Logo")
-                            .opacity(0.8)
-                            .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
-                            .padding(.top, screenHeight * 0.15)
+                  VStack{
+                      Image("Logo")
+                          .opacity(0.8)
+                          .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
+                          .padding(.top, screenHeight * 0.15)
+                      if screen == "Saved" {
+                          Text("No Saved Posts")
+                              .font(.system(size: 20, weight: .black))
+                              .padding(.top, 10)
+                      }
                     }
                 } else {
                     
@@ -39,7 +45,7 @@ struct PostScrollView: View {
                     
                     ForEach(posts) { post in
 
-                        if post.userID == user_id {
+                        if post.userID == Auth.auth().currentUser?.uid {
                             PostView(post: post, owner: true)
                                 .padding(.bottom, 10)
                         } else {

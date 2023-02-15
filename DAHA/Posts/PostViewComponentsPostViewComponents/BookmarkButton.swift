@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct BookmarkButton: View {
     
@@ -71,7 +72,7 @@ struct BookmarkButton: View {
             }
         }
         .onAppear{
-            let cur_id = firestoreManager.userId
+            let cur_id = Auth.auth().currentUser?.uid
             if cur_id != nil{
                 if post.savers.contains(cur_id!){
                     saved = true

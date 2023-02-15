@@ -21,6 +21,7 @@ struct SecondContinueButton: View {
     @Binding var error_message: String
     @State private var usernameInUse: Bool = false
     @State private var account_created: Bool = false
+    @State private var account_error_message: String = ""
     @State private var errorCreatingAccountAlert: Bool = false
     @State private var shouldNavigate: Bool = false
     @Binding var uploading: Bool
@@ -76,7 +77,7 @@ struct SecondContinueButton: View {
                             let current = UserModel(id: nil, username: username_temp, email: cur_email, firstname: firstname_temp, lastname: lastname_temp, channels: [], university: university, terms: false)
                             Task {
                                 print(password_temp)
-                                await authentication.createAccount(email: cur_email, password: password_temp, user: current, cannot_create: $errorCreatingAccountAlert, creation_complete: $account_created)
+                                await authentication.createAccount(email: cur_email, password: password_temp, user: current, cannot_create: $errorCreatingAccountAlert, creation_complete: $account_created, error_message: $account_error_message)
                                 
                                 print(account_created)
                                 if account_created {
@@ -116,7 +117,7 @@ struct SecondContinueButton: View {
                 EmptyView()
             }
         } //:Button
-        .alert("Error Creating Account", isPresented: $errorCreatingAccountAlert, actions: {}, message: {Text("There was an error creating your account, please check your network connection and try again later")})
+        .alert("Error Creating Account", isPresented: $errorCreatingAccountAlert, actions: {}, message: {Text(account_error_message)})
     }
 }
 

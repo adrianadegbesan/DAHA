@@ -14,6 +14,13 @@
 		82218C01299C66BA0092BA94 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C00299C66BA0092BA94 /* Email.swift */; };
 		82218C03299C67110092BA94 /* EmailClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C02299C67110092BA94 /* EmailClass.swift */; };
 		82218C05299C67410092BA94 /* EmailSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C04299C67410092BA94 /* EmailSettingsView.swift */; };
+		82218C0A299C87900092BA94 /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C09299C87900092BA94 /* LogOutView.swift */; };
+		82218C0C299C8BF90092BA94 /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C0B299C8BF90092BA94 /* DeleteUserView.swift */; };
+		82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C0D299C91F20092BA94 /* DarkModeSetting.swift */; };
+		82218C10299C92560092BA94 /* VersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C0F299C92560092BA94 /* VersionView.swift */; };
+		82218C12299C96580092BA94 /* TermsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C11299C96580092BA94 /* TermsSettingsView.swift */; };
+		82218C16299C970C0092BA94 /* TermsSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */; };
+		82218C18299C97820092BA94 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C17299C97820092BA94 /* NotificationsView.swift */; };
 		823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823601FC2981F3AC002E7AEC /* SignInButton.swift */; };
 		823602012981F81D002E7AEC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602002981F81D002E7AEC /* LoginScreen.swift */; };
 		823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602022981F84E002E7AEC /* ForgotPasswordButton.swift */; };
@@ -133,6 +140,13 @@
 		82218C00299C66BA0092BA94 /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		82218C02299C67110092BA94 /* EmailClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailClass.swift; sourceTree = "<group>"; };
 		82218C04299C67410092BA94 /* EmailSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSettingsView.swift; sourceTree = "<group>"; };
+		82218C09299C87900092BA94 /* LogOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
+		82218C0B299C8BF90092BA94 /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
+		82218C0D299C91F20092BA94 /* DarkModeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeSetting.swift; sourceTree = "<group>"; };
+		82218C0F299C92560092BA94 /* VersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionView.swift; sourceTree = "<group>"; };
+		82218C11299C96580092BA94 /* TermsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsSettingsView.swift; sourceTree = "<group>"; };
+		82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsSettingsScreen.swift; sourceTree = "<group>"; };
+		82218C17299C97820092BA94 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		823601FC2981F3AC002E7AEC /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		823602002981F81D002E7AEC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		823602022981F84E002E7AEC /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
@@ -263,6 +277,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82218C06299C864C0092BA94 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				82CEFC652969CE5F00C55F67 /* SearchBarScreen.swift */,
+				82ACC6982996B2FA00589E1E /* SearchCategories.swift */,
+				82ACC69A2996BF9800589E1E /* SearchCategoryIcon.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		82218C07299C86750092BA94 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				82CEFC672969CE7E00C55F67 /* SettingsScreen.swift */,
+				82218C0F299C92560092BA94 /* VersionView.swift */,
+				82218C0D299C91F20092BA94 /* DarkModeSetting.swift */,
+				82218C04299C67410092BA94 /* EmailSettingsView.swift */,
+				82218C09299C87900092BA94 /* LogOutView.swift */,
+				82218C0B299C8BF90092BA94 /* DeleteUserView.swift */,
+				82218C11299C96580092BA94 /* TermsSettingsView.swift */,
+				82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */,
+				82218C17299C97820092BA94 /* NotificationsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		82218C08299C870B0092BA94 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				82CEFC632969CE5200C55F67 /* DMScreen.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
 		823602062985ADD5002E7AEC /* Posts */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,12 +562,9 @@
 		82CEFC602969CE1B00C55F67 /* Secondary Screens */ = {
 			isa = PBXGroup;
 			children = (
-				82CEFC632969CE5200C55F67 /* DMScreen.swift */,
-				82CEFC652969CE5F00C55F67 /* SearchBarScreen.swift */,
-				82CEFC672969CE7E00C55F67 /* SettingsScreen.swift */,
-				82ACC6982996B2FA00589E1E /* SearchCategories.swift */,
-				82ACC69A2996BF9800589E1E /* SearchCategoryIcon.swift */,
-				82218C04299C67410092BA94 /* EmailSettingsView.swift */,
+				82218C08299C870B0092BA94 /* Messages */,
+				82218C06299C864C0092BA94 /* Search */,
+				82218C07299C86750092BA94 /* Settings */,
 			);
 			path = "Secondary Screens";
 			sourceTree = "<group>";
@@ -665,6 +710,7 @@
 				82CEFC342969CB2C00C55F67 /* ContentView.swift in Sources */,
 				82CEFC572969CD5A00C55F67 /* MainScreen.swift in Sources */,
 				823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */,
+				82218C10299C92560092BA94 /* VersionView.swift in Sources */,
 				82ACC6902995CBED00589E1E /* ChooseTypeButton.swift in Sources */,
 				82CEFC542969CC9B00C55F67 /* LaunchScreen.swift in Sources */,
 				82B6B2D7298AD29300027E5A /* CategoryViewPrev.swift in Sources */,
@@ -684,9 +730,11 @@
 				82360208298748CC002E7AEC /* CategoryView.swift in Sources */,
 				82B6B2DF298B270300027E5A /* TermsConditionsScreen.swift in Sources */,
 				82218BF829988DF90092BA94 /* PostScrollView.swift in Sources */,
+				82218C18299C97820092BA94 /* NotificationsView.swift in Sources */,
 				823602052985ABF0002E7AEC /* PostView.swift in Sources */,
 				82E75AC3297E321600742F18 /* Email API.swift in Sources */,
 				82B6B2FC298F3C8300027E5A /* CustomCameraView.swift in Sources */,
+				82218C16299C970C0092BA94 /* TermsSettingsScreen.swift in Sources */,
 				82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */,
 				82B6B2EC298C3BD300027E5A /* Network.swift in Sources */,
 				82B6B2F4298C514400027E5A /* ImagePreview.swift in Sources */,
@@ -724,6 +772,7 @@
 				82B6B2F8298F27A100027E5A /* Camera.swift in Sources */,
 				82CBC2AE2989BB21001966E3 /* PostModalDescription.swift in Sources */,
 				82CEFC4C2969CC3300C55F67 /* TextField.swift in Sources */,
+				82218C0A299C87900092BA94 /* LogOutView.swift in Sources */,
 				82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */,
 				82218C03299C67110092BA94 /* EmailClass.swift in Sources */,
 				82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */,
@@ -732,6 +781,7 @@
 				82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */,
 				82B6B2D9298ADAE700027E5A /* ForgotPasswordScreen.swift in Sources */,
 				82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */,
+				82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */,
 				82D2D0DF296BD41200CB4B9A /* EmailVerificationScreen.swift in Sources */,
 				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,
 				82CEFC442969CBDB00C55F67 /* Colors.swift in Sources */,
@@ -741,12 +791,14 @@
 				82CEFC742969CF0100C55F67 /* SchoolEmailScreen.swift in Sources */,
 				82218BF629986BCB0092BA94 /* MessageManager.swift in Sources */,
 				8236021029879425002E7AEC /* PostDescriptionView.swift in Sources */,
+				82218C0C299C8BF90092BA94 /* DeleteUserView.swift in Sources */,
 				82ACC6922995CC1E00589E1E /* TypeIcon.swift in Sources */,
 				82B6B2F6298E018B00027E5A /* Haptics.swift in Sources */,
 				82CEFC872969D02400C55F67 /* LoginButton.swift in Sources */,
 				82B6B2E6298B75D800027E5A /* CategoryIconView.swift in Sources */,
 				8236020E298791BE002E7AEC /* BookmarkButton.swift in Sources */,
 				82CEFC782969CF5A00C55F67 /* TabBarView.swift in Sources */,
+				82218C12299C96580092BA94 /* TermsSettingsView.swift in Sources */,
 				82CEFC6E2969CEBA00C55F67 /* Test.swift in Sources */,
 				82CEFC662969CE5F00C55F67 /* SearchBarScreen.swift in Sources */,
 				8294FAE9296BCB76004001AE /* CreateAccountScreen.swift in Sources */,

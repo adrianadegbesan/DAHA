@@ -39,7 +39,6 @@ class FirestoreManager: ObservableObject {
     @Published var search_results: [PostModel] = []
     @Published var search_results_loading: Bool = false
     
-    @Published var userId = Auth.auth().currentUser?.uid
     
     
     private var db = Firestore.firestore()
@@ -247,6 +246,8 @@ class FirestoreManager: ObservableObject {
         
         let postRef = db.collection("\(university)_Posts").document(post.id)
         
+        let userId = Auth.auth().currentUser?.uid
+        
         if userId == nil{
             return false
         }
@@ -263,6 +264,8 @@ class FirestoreManager: ObservableObject {
     
     func unsavePost(post: PostModel) async -> Bool {
         let postRef = db.collection("\(university)_Posts").document(post.id)
+        
+        let userId = Auth.auth().currentUser?.uid
         
         if userId == nil{
             return false
@@ -339,6 +342,9 @@ class FirestoreManager: ObservableObject {
     }
     
     func getSaved() async {
+        
+        let userId = Auth.auth().currentUser?.uid
+        
         do {
             saved_loading = true
             var temp: [PostModel] = []
@@ -364,9 +370,13 @@ class FirestoreManager: ObservableObject {
     }
     
     func userPosts() async {
+        
+        let userId = Auth.auth().currentUser?.uid
+        
         do {
             my_posts_loading = true
             var temp: [PostModel] = []
+            
             
             if userId == nil{
                 return

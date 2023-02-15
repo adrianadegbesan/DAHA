@@ -34,7 +34,7 @@ class AuthManager: ObservableObject {
         }
     }
     
-    func createAccount(email: String, password: String, user: UserModel, cannot_create: Binding<Bool>, creation_complete: Binding<Bool>) async {
+    func createAccount(email: String, password: String, user: UserModel, cannot_create: Binding<Bool>, creation_complete: Binding<Bool>, error_message: Binding<String>) async {
         do {
             try await Auth.auth().createUser(withEmail: email, password: password)
             let cur_id = Auth.auth().currentUser?.uid
@@ -48,23 +48,16 @@ class AuthManager: ObservableObject {
             catch {
                 print("error uploading")
                 print(error.localizedDescription)
+                error_message.wrappedValue = "There was an error creating your account, please check your network connection and try again later."
                 cannot_create.wrappedValue = true
             }
         }
         catch AuthErrorCode.emailAlreadyInUse{
-            let cur_id = Auth.auth().currentUser?.uid
-            var user_temp = user
-            user_temp.id = cur_id
-            do {
-                try db.collection("Users").document(user_temp.id!).setData(from: user_temp)
-                creation_complete.wrappedValue = true
-            }
-            catch {
-                print("error_uploading")
-                cannot_create.wrappedValue = true
-            }
+            error_message.wrappedValue = "This email is already in use"
+            cannot_create.wrappedValue = true
         }
         catch {
+            error_message.wrappedValue = "There was an error creating your account, please check your network connection and try again later."
             cannot_create.wrappedValue = true
         }
     }
@@ -113,13 +106,28 @@ class AuthManager: ObservableObject {
         return false
     }
     
-    func signOut(error_alert: Binding<Bool>, success: Binding<Bool>){
+    func signOut() -> Bool{
         do {
             try Auth.auth().signOut()
-            success.wrappedValue = true
+            return true
+            
         } catch {
-            error_alert.wrappedValue = true
+            print(error.localizedDescription)
+            return false
         }
+    }
+    
+    func deleteUser() -> Bool{
+        var success = false
+        let user = Auth.auth().currentUser
+        user?.delete { error in
+            if let error = error{
+                print(error.localizedDescription)
+            } else {
+                success = true
+            }
+        }
+        return success
     }
     
     func sendPasswordReset(email: String, error_alert: Binding<Bool>, success_alert: Binding<Bool>){

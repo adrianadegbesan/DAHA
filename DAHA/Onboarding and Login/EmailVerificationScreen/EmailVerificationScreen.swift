@@ -67,7 +67,7 @@ struct EmailVerificationScreen: View {
         }
         .alert("Error Verifying Email", isPresented: $error_alert, actions: {}, message: { Text("Error Verifying email, please check your network connection and try again later")})
         
-        NavigationLink(destination: CreateAccountScreen().navigationBarHidden(true), isActive: $should_navigate){
+        NavigationLink(destination: CreateAccountScreen().navigationBarBackButtonHidden(true), isActive: $should_navigate){
             EmptyView()
         }
         
