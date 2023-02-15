@@ -35,7 +35,7 @@ struct SearchScreen: View {
                     
                     if searched {
                         Image(systemName: "chevron.left")
-                            .font(.system(size: 25, weight: .heavy))
+                            .font(.system(size: 22, weight: .heavy))
                             .padding(.bottom, 25)
                             .padding(.leading, 15)
                             .onTapGesture {
@@ -46,6 +46,7 @@ struct SearchScreen: View {
                                     searched = false
                                 }
                             }
+                            .foregroundColor(Color(hex: deepBlue))
                             
                     }
                     
@@ -65,8 +66,8 @@ struct SearchScreen: View {
                         }
                         .focused($keyboardFocused)
 //                        .background(Color.primary.opacity(0.05))
-                        .padding(.horizontal, screenWidth * 0.058)
-                        .padding(.bottom, 25)
+                        .padding(.horizontal, !searched ? screenWidth * 0.058 : screenWidth * 0.03)
+                        .padding(.bottom, 18)
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                 }
                 .padding(.top, searched ? 24 : 10)
@@ -142,7 +143,7 @@ struct SearchScreen: View {
                         Spacer().frame(height: 10)
                         
                         Divider()
-                            .frame(maxHeight : 0.1)
+                            .frame(maxHeight : 0.05)
                             .overlay(Color(hex: darkGrey))
                             .padding(.top, 10)
                         

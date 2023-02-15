@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import RefreshableScrollView
 
 struct PostScrollView: View {
     
@@ -25,11 +26,12 @@ struct PostScrollView: View {
         ZStack {
           
             GeometryReader { g in
-                ScrollView{
-                        ProgressView()
-                            .offset(y: -40)
-                            .scaleEffect(1.2)
-                    
+                
+                RefreshableScrollView{
+//                        ProgressView()
+//                            .offset(y: -40)
+//                            .scaleEffect(1.2)
+//
 
                   if posts.isEmpty{
                       VStack{
@@ -47,7 +49,7 @@ struct PostScrollView: View {
                         }
                     } else {
                         
-                        Spacer().frame(height: 10)
+                        Spacer().frame(height: 3)
                         
                         ForEach(posts) { post in
                             
@@ -62,7 +64,7 @@ struct PostScrollView: View {
                                                     self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
                                                 }
                                                 .onReceive(self.time) { (_) in
-                                                    if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 70{
+                                                    if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
                                                         if screen == "Search" {
                                                             print("updating")
                                                             Task {
@@ -171,37 +173,68 @@ struct PostScrollView: View {
                     } //POSTS NOT EMPTY
                     
                 } /*SCROLLVIEW*/
-    //            .refreshable {
-    //                if screen == "Listings"{
-    //                    Task {
-    //                        await firestoreManager.getListings()
-    //                    }
-    //                }
-    //
-    //                if screen == "Requests" {
-    //                    Task {
-    //                        await firestoreManager.getRequests()
-    //                    }
-    //                }
-    //
-    //                if screen == "Saved" {
-    //                    Task {
-    //                        await firestoreManager.getSaved()
-    //                    }
-    //                }
-    //
-    //                if screen == "User" {
-    //                    Task {
-    //                        await firestoreManager.userPosts()
-    //                    }
-    //                }
-    //
-    //                if screen == "Search" {
-    //                    Task {
-    //                        await firestoreManager.searchPosts(query: query, type: type, category: category)
-    //                    }
-    //                }
-    //            }
+                .refreshable(action: {
+                    if screen == "Listings"{
+                        Task {
+                            await firestoreManager.getListings()
+                        }
+                    }
+                    
+                    if screen == "Requests" {
+                        Task {
+                            await firestoreManager.getRequests()
+                        }
+                    }
+                    
+                    if screen == "Saved" {
+                        Task {
+                            await firestoreManager.getSaved()
+                        }
+                    }
+                    
+                    if screen == "User" {
+                        Task {
+                            await firestoreManager.userPosts()
+                        }
+                    }
+                    
+                    if screen == "Search" {
+                        Task {
+                            await firestoreManager.searchPosts(query: query, type: type, category: category)
+                        }
+                    }
+                })
+//                .refreshable {
+//                    if screen == "Listings"{
+//                        Task {
+//                            await firestoreManager.getListings()
+//                        }
+//                    }
+//
+//                    if screen == "Requests" {
+//                        Task {
+//                            await firestoreManager.getRequests()
+//                        }
+//                    }
+//
+//                    if screen == "Saved" {
+//                        Task {
+//                            await firestoreManager.getSaved()
+//                        }
+//                    }
+//
+//                    if screen == "User" {
+//                        Task {
+//                            await firestoreManager.userPosts()
+//                        }
+//                    }
+//
+//                    if screen == "Search" {
+//                        Task {
+//                            await firestoreManager.searchPosts(query: query, type: type, category: category)
+//                        }
+//                    }
+//                }
                 .onAppear{
                     if screen == "Listings"{
                         Task {

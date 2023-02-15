@@ -30,7 +30,7 @@ struct PostView: View {
                 PosterInfoView(post: post)
                 Spacer().frame(height: 10)
                 
-                CategoryView(post: post, reported: $reported)
+                CategoryView(post: post, reported: $reported, owner: owner)
                 
                 PostDescriptionView(post: post)
                 
@@ -53,11 +53,11 @@ struct PostView: View {
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(lineWidth: colorScheme == .dark ? 1.5 : 3)
+                .strokeBorder(colorScheme == .dark ? .gray : .black.opacity(0.7), lineWidth: colorScheme == .dark ? 1.5 : 2)
 
-                .shadow(color: colorScheme == .dark ? .white : .black, radius: 2, y: 0)
+                .shadow(color: colorScheme == .dark ? .white : .black, radius: 1, y: 0)
         )
-        .background(colorScheme == .dark ? .black.opacity(0.95) : .white)
+        .background(colorScheme == .dark ? .black.opacity(0.7) : Color(hex: "FAF9F6"))
         .cornerRadius(20)
         .padding(.horizontal, colorScheme == .light ? 3 : 0)
         .onTapGesture {

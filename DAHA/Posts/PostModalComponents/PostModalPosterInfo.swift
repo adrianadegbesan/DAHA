@@ -24,16 +24,17 @@ struct PostModalPosterInfo: View {
                 .foregroundColor(.gray)
             Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
                 .minimumScaleFactor(0.5)
-                .font(.system(size: 13, weight: .bold))
+                .font(.system(size: 13, weight: .heavy))
                 .foregroundColor(.gray)
             Spacer()
             
             (Text(Image(systemName: type_images[post.type] ?? "")) + Text(" ") + Text(post.type.uppercased()))
                 .lineLimit(1)
                 .minimumScaleFactor(0.3)
-                .font(.system(size: 13, weight: .bold))
+                .font(.system(size: 15, weight: .bold))
                 .layoutPriority(1)
                 .padding(.trailing, 10)
+                .foregroundColor(Color(hex: deepBlue))
 
             }
         .padding(.leading, 12)
