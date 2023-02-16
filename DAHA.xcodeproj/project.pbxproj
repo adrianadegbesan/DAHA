@@ -21,7 +21,6 @@
 		82218C12299C96580092BA94 /* TermsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C11299C96580092BA94 /* TermsSettingsView.swift */; };
 		82218C16299C970C0092BA94 /* TermsSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */; };
 		82218C18299C97820092BA94 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C17299C97820092BA94 /* NotificationsView.swift */; };
-		82218C1C299CB3510092BA94 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C1B299CB3510092BA94 /* ScrollView.swift */; };
 		82218C1F299CB8DC0092BA94 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 82218C1E299CB8DC0092BA94 /* SwiftUIPullToRefresh */; };
 		82218C22299CD0180092BA94 /* RefreshableScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 82218C21299CD0180092BA94 /* RefreshableScrollView */; };
 		82218C24299CE7920092BA94 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C23299CE7920092BA94 /* RefreshButton.swift */; };
@@ -153,7 +152,6 @@
 		82218C11299C96580092BA94 /* TermsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsSettingsView.swift; sourceTree = "<group>"; };
 		82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsSettingsScreen.swift; sourceTree = "<group>"; };
 		82218C17299C97820092BA94 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
-		82218C1B299CB3510092BA94 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		82218C23299CE7920092BA94 /* RefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshButton.swift; sourceTree = "<group>"; };
 		82218C25299D4AA00092BA94 /* SearchButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtons.swift; sourceTree = "<group>"; };
 		82218C27299D4C9E0092BA94 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
@@ -522,7 +520,6 @@
 				82ACC67E2991738300589E1E /* Shapes.swift */,
 				82218C00299C66BA0092BA94 /* Email.swift */,
 				82218C02299C67110092BA94 /* EmailClass.swift */,
-				82218C1B299CB3510092BA94 /* ScrollView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -809,7 +806,6 @@
 				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,
 				82CEFC442969CBDB00C55F67 /* Colors.swift in Sources */,
 				82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */,
-				82218C1C299CB3510092BA94 /* ScrollView.swift in Sources */,
 				82CEFC7F2969CFB700C55F67 /* SignUpButton.swift in Sources */,
 				82CEFC7C2969CF8D00C55F67 /* UniversityNotFoundView.swift in Sources */,
 				82CEFC742969CF0100C55F67 /* SchoolEmailScreen.swift in Sources */,

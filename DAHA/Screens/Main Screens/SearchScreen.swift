@@ -71,7 +71,6 @@ struct SearchScreen: View {
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                 }
                 .padding(.top, searched ? 24 : 10)
-              
              
                 if !searched {
                     VStack {
