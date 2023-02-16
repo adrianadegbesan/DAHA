@@ -26,11 +26,11 @@ struct BookmarkButton: View {
                     let result = await firestoreManager.unsavePost(post: post)
                     if result {
                         await firestoreManager.getSaved()
-                        if post.type == "Listing"{
-                            await firestoreManager.getListings()
-                        } else {
-                            await firestoreManager.getSaved()
-                        }
+//                        if post.type == "Listing"{
+//                            await firestoreManager.getListings()
+//                        } else {
+//                            await firestoreManager.getSaved()
+//                        }
                     } else {
                         unsave_alert = true
                     }
@@ -49,11 +49,11 @@ struct BookmarkButton: View {
                     let result = await firestoreManager.savePost(post: post)
                     if result {
                         await firestoreManager.getSaved()
-                        if post.type == "Listing"{
-                            await firestoreManager.getListings()
-                        } else {
-                            await firestoreManager.getSaved()
-                        }
+//                        if post.type == "Listing"{
+//                            await firestoreManager.getListings()
+//                        } else {
+//                            await firestoreManager.getSaved()
+//                        }
                     } else {
                         save_alert = true
                     }

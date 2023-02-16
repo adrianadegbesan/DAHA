@@ -72,8 +72,7 @@ struct HeaderView: View {
                     .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
             }
         } //: VStack
-
-        
+        .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
     }
 }
 

@@ -27,19 +27,19 @@ struct PostScrollView: View {
           
             GeometryReader { g in
                 
-                RefreshableScrollView{
-//                        ProgressView()
-//                            .offset(y: -40)
-//                            .scaleEffect(1.2)
-//
+                RefreshableScrollView {
+                    
+                    if posts.isEmpty && screen == "Search" && loading {
+                        ProgressView()
+                            .scaleEffect(1.2)
+                    }
 
                   if posts.isEmpty{
-                      VStack{
+                      ZStack{
                           Image("Logo")
-                              .opacity(0.8)
-                              .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
+                              .opacity(0.75)
+                              .overlay(Rectangle().stroke(.white, lineWidth: 2))
                               .padding(.top, screenHeight * 0.15)
-                              .padding(.leading, screenWidth * 0.35)
 //                          if screen == "Saved" {
 //                              Text("No Saved Posts")
 //                                  .font(.system(size: 16, weight: .heavy))
@@ -47,6 +47,7 @@ struct PostScrollView: View {
 //                                  .padding(.leading, screenWidth * 0.35)
 //                          }
                         }
+                      .frame(width: screenWidth)
                     } else {
                         
                         Spacer().frame(height: 3)
@@ -172,7 +173,8 @@ struct PostScrollView: View {
                         
                     } //POSTS NOT EMPTY
                     
-                } /*SCROLLVIEW*/
+                }/*SCROLLVIEW*/
+                .background(colorScheme == .dark ? Color(hex: "151517") : Color(hex: "d9d9d9"))
                 .refreshable(action: {
                     if screen == "Listings"{
                         Task {
@@ -197,23 +199,17 @@ struct PostScrollView: View {
                             await firestoreManager.userPosts()
                         }
                     }
-                    
-                    if screen == "Search" {
-                        Task {
-                            await firestoreManager.searchPosts(query: query, type: type, category: category)
-                        }
-                    }
                 })
-//                .refreshable {
+                .onAppear{
 //                    if screen == "Listings"{
 //                        Task {
-//                            await firestoreManager.getListings()
+//                            await firestoreManager.getRequests()
 //                        }
 //                    }
 //
 //                    if screen == "Requests" {
 //                        Task {
-//                            await firestoreManager.getRequests()
+//                            await firestoreManager.getListings()
 //                        }
 //                    }
 //
@@ -228,41 +224,6 @@ struct PostScrollView: View {
 //                            await firestoreManager.userPosts()
 //                        }
 //                    }
-//
-//                    if screen == "Search" {
-//                        Task {
-//                            await firestoreManager.searchPosts(query: query, type: type, category: category)
-//                        }
-//                    }
-//                }
-                .onAppear{
-                    if screen == "Listings"{
-                        Task {
-                            await firestoreManager.getRequests()
-                        }
-                    }
-
-                    if screen == "Requests" {
-                        Task {
-                            await firestoreManager.getListings()
-                        }
-                    }
-
-                    if screen == "Saved" {
-                        Task {
-                            await firestoreManager.getSaved()
-//                            await firestoreManager.getListings()
-//                            await firestoreManager.getRequests()
-                        }
-                    }
-
-                    if screen == "User" {
-                        Task {
-                            await firestoreManager.userPosts()
-//                            await firestoreManager.getListings()
-//                            await firestoreManager.getRequests()
-                        }
-                    }
                     withAnimation{
                         screenOpacity = 1
                     }

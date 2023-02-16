@@ -73,7 +73,7 @@ struct PostImageView: View {
                 .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                 .overlay (
                     RoundedRectangle(cornerRadius: 15)
-                        .strokeBorder(lineWidth: 1.5)
+                        .strokeBorder(lineWidth: colorScheme == .dark ? 1.5 : 2.7)
                 )
 //                .overlay (
 //                    RoundedRectangle(cornerRadius: 15)

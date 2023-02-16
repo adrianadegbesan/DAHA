@@ -38,7 +38,7 @@ struct CategoryView: View {
                 .minimumScaleFactor(0.001)
                 .font(.system(size: 9, weight: .bold))
                 .padding(10)
-                .background(Capsule().stroke(lineWidth: 2))
+                .background(Capsule().stroke(lineWidth: colorScheme == .dark ? 2 : 3))
                 .padding(.trailing, 10)
             
             Spacer()
