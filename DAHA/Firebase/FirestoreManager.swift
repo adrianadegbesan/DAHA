@@ -27,10 +27,12 @@ class FirestoreManager: ObservableObject {
     @Published var listings: [PostModel] = []
     @Published var listing_last : QueryDocumentSnapshot? = nil
     @Published var listings_loading: Bool = false
+    @Published var listings_refresh: Bool = false
     
     @Published var requests: [PostModel] = []
     @Published var requests_last : QueryDocumentSnapshot? = nil
     @Published var requests_loading: Bool = false
+    @Published var requests_refresh: Bool = false
     
     @Published var saved_posts: [PostModel] = []
     @Published var saved_last: QueryDocumentSnapshot? = nil
@@ -204,7 +206,7 @@ class FirestoreManager: ObservableObject {
     
         do {
                  
-                 try db.collection("\(university)_Posts").document(post.id).setData(from: post_temp){ err in
+            try db.collection("\(university)_Posts").document(post.id).setData(from: post_temp){ [self] err in
                      if let err = err{
                          completion(uploadError(err.localizedDescription))
                      } else {
@@ -214,11 +216,7 @@ class FirestoreManager: ObservableObject {
                         
                      }
                  }
-//            if post.type == "Listing"{
-//                await getListings()
-//            } else if post.type == "Request"{
-//                await getRequests()
-//            }
+
 
          }
            catch {

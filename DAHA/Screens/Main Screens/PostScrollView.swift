@@ -201,29 +201,39 @@ struct PostScrollView: View {
                     }
                 })
                 .onAppear{
-//                    if screen == "Listings"{
-//                        Task {
-//                            await firestoreManager.getRequests()
-//                        }
-//                    }
-//
-//                    if screen == "Requests" {
-//                        Task {
-//                            await firestoreManager.getListings()
-//                        }
-//                    }
-//
-//                    if screen == "Saved" {
-//                        Task {
-//                            await firestoreManager.getSaved()
-//                        }
-//                    }
-//
-//                    if screen == "User" {
-//                        Task {
-//                            await firestoreManager.userPosts()
-//                        }
-//                    }
+                    if screen == "Listings"{
+                        Task {
+                            if firestoreManager.listings_refresh{
+                                firestoreManager.listings_refresh = false
+                                await firestoreManager.getListings()
+                            } else {
+                                await firestoreManager.getRequests()
+                            }
+                        }
+                    }
+
+                    if screen == "Requests" {
+                        Task {
+                            if firestoreManager.requests_refresh{
+                                firestoreManager.requests_refresh = false
+                                await firestoreManager.getRequests()
+                            } else {
+                                await firestoreManager.getListings()
+                            }
+                        }
+                    }
+
+                    if screen == "Saved" {
+                        Task {
+                            await firestoreManager.getSaved()
+                        }
+                    }
+
+                    if screen == "User" {
+                        Task {
+                            await firestoreManager.userPosts()
+                        }
+                    }
                     withAnimation{
                         screenOpacity = 1
                     }

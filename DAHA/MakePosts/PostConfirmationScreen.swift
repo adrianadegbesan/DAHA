@@ -15,6 +15,7 @@ struct PostConfirmationScreen: View {
     @State private var uploading : Bool = false
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var firestoreManager : FirestoreManager
     
     @State private var progressOpacity : Double = 0
     @State private var screenOpacity : Double = 1
@@ -51,7 +52,11 @@ struct PostConfirmationScreen: View {
                 
                 MakePostButton(post: $post, images: $images, post_created: $post_created, uploading: $uploading).onChange(of: post_created){ value in
                     if post_created {
-                        print("DONE")
+                        if post.type == "Listing"{
+                            firestoreManager.listings_refresh = true
+                        } else if post.type == "Request"{
+                            firestoreManager.requests_refresh = true
+                        }
                         dismiss()
                     }
                 }

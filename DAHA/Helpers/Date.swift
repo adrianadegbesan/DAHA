@@ -20,8 +20,8 @@ extension Date {
 
         if secondsAgo < minute {
             
-            if secondsAgo == 1 {
-                return "\(secondsAgo) second ago"
+            if secondsAgo == 1 || secondsAgo < 10{
+                return "Just now"
             }
             
             return "\(secondsAgo) seconds ago"

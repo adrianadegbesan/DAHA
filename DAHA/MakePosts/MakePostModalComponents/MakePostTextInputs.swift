@@ -14,6 +14,7 @@ struct MakePostTextInputs: View {
     @State var description: String = ""
     @Binding var post: PostModel
     @Binding var type : String
+    @FocusState var description_input : Bool
     
     var body: some View {
         VStack{
@@ -48,6 +49,7 @@ struct MakePostTextInputs: View {
             
             ZStack {
                 TextEditor(text: $description)
+                    .focused($description_input)
                     .onChange(of: description){ value in
                         if description.count > 200{
                             description = String(description.prefix(200))
@@ -73,6 +75,9 @@ struct MakePostTextInputs: View {
                      Text(" Description")
                         .foregroundColor(Color(UIColor.systemGray4))
                         .offset(x: -screenWidth * 0.305, y: -screenHeight * 0.0535)
+                        .onTapGesture {
+                            description_input = true
+                        }
                 }
             }
             .padding(.leading, 16)
