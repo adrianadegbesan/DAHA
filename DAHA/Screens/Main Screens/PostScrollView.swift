@@ -58,7 +58,7 @@ struct PostScrollView: View {
                                     
                                     if post.id == posts.last!.id {
 //                                        GeometryReader{ g in
-                                            PostView(post: post, owner: true)
+                                        PostView(post: post, owner: true)
                                                 .padding(.bottom, 10)
                                                 .onAppear{
                                                     self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
@@ -112,7 +112,7 @@ struct PostScrollView: View {
                                 } /*USER POST*/else {
                                     if post.id == posts.last!.id  {
 //                                        GeometryReader{ g in
-                                            PostView(post: post, owner: false)
+                                        PostView(post: post, owner: false)
                                                 .padding(.bottom, 10)
                                                 .onAppear{
                                                     self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()

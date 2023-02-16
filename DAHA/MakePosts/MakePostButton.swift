@@ -11,6 +11,7 @@ struct MakePostButton: View {
     @Binding var post : PostModel
     @Binding var images: [UIImage]
     @Binding var post_created: Bool
+//    @State var post_temp: Bool = false
     @Binding var uploading: Bool
     @State private var error_alert: Bool = false
     @Environment(\.dismiss) var dismiss
@@ -23,13 +24,25 @@ struct MakePostButton: View {
                 MediumFeedback()
                 uploading = true
                 Task {
+                    try await Task.sleep(nanoseconds: 1_000_000_000)
                     await firestoreManager.makePost(post: post, images: images, post_created: $post_created) { error in
                         if error != nil{
                             error_alert = true
                             print(error!.localizedDescription)
                         }
                     }
+                   
+//                    if post.type == "Listing"{
+//                        await firestoreManager.getListings()
+//                    } else if post.type == "Request"{
+//                        await firestoreManager.getRequests()
+//                    }
+                    
                     uploading = false
+                    
+//                    if post_temp {
+//                        post_created = true
+//                    }
                 }
             }
             

@@ -12,6 +12,7 @@ struct DeleteButton: View {
     @State var isPresented: Bool = false
     @State var deleted: Bool = false
     @State var error_alert : Bool = false
+    @State var delete_alert : Bool = false
     @EnvironmentObject var firestoreManager : FirestoreManager
     
     var body: some View {
@@ -28,9 +29,11 @@ struct DeleteButton: View {
                     await firestoreManager.deletePost(post: post, deleted: $deleted, error_alert: $error_alert)
                     
                     if deleted {
+//
                         if post.type == "Listing"{
                             await firestoreManager.getListings()
                             await firestoreManager.userPosts()
+                            
                             
                         } else if post.type == "Request"{
                             await firestoreManager.getRequests()
@@ -43,6 +46,7 @@ struct DeleteButton: View {
             Text("Are you sure you want to delete this post?")
         })
         .alert("Unable to Delete Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later ")})
+        .alert("Post Successfully Deleted", isPresented: $delete_alert, actions: {}, message: {Text("Your post has been deleted")})
     }
 }
 

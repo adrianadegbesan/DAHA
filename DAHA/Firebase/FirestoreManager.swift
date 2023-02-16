@@ -211,8 +211,14 @@ class FirestoreManager: ObservableObject {
                          print("Post completed")
                          post_created.wrappedValue = true
                          print(post_created.wrappedValue)
+                        
                      }
                  }
+//            if post.type == "Listing"{
+//                await getListings()
+//            } else if post.type == "Request"{
+//                await getRequests()
+//            }
 
          }
            catch {
