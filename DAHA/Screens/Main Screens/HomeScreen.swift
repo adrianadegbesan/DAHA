@@ -31,7 +31,7 @@ struct HomeScreen: View {
                     
                     HStack {
                         Spacer()
-                        VStack {
+                        VStack(spacing: 10){
                            (Text(Image(systemName: "cart.circle")) + Text(" LISTINGS"))
                                 .font(.headline.weight(.black))
                                 .foregroundColor(first ? Color(hex: deepBlue) : .primary)
@@ -41,12 +41,13 @@ struct HomeScreen: View {
                                 .opacity(opacity1)
                                 
                         }
+                        .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                         .onTapGesture {
                             tabIndex = 0
                         }
                        
                         Spacer()
-                        VStack {
+                        VStack(spacing: 10){
                             (Text(Image(systemName: "figure.stand.line.dotted.figure.stand")) +  Text(" REQUESTS"))
                                 .font(.headline.weight(.black))
                             .foregroundColor(second ? Color(hex: deepBlue) : .primary)
@@ -55,6 +56,7 @@ struct HomeScreen: View {
                                 .overlay(Color(hex: deepBlue))
                                 .opacity(opacity2)
                         }
+                        .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                         .onTapGesture {
                             tabIndex = 1
                         }
@@ -67,11 +69,12 @@ struct HomeScreen: View {
                         RequestsView().tag(1)
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
+                    .animation(.easeIn(duration: 0.2), value: tabIndex)
  
                 } //: VStack
                 .onChange(of: tabIndex){ value in
                     if tabIndex == 0 {
-                        withAnimation {
+                        withAnimation{
                             first = true
                             second = false
                             opacity1 = 1
@@ -88,12 +91,12 @@ struct HomeScreen: View {
                 }
                 VStack{
                     PostButton()
-                    .offset(x: screenWidth * 0.35, y: screenHeight * 0.325)
+                    .offset(x: screenWidth * 0.35, y: screenHeight * 0.31)
                 }
                 
-                NavigationLink(destination: MakePostScreen(), isActive: $shouldNavigate){
-                    EmptyView()
-                }
+//                NavigationLink(destination: MakePostScreen(), isActive: $shouldNavigate){
+//                    EmptyView()
+//                }
                 
             } //: ZStack
             .keyboardControl()
@@ -104,5 +107,6 @@ struct HomeScreen: View {
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
             HomeScreen()
+            .environmentObject(FirestoreManager())
     }
 }

@@ -12,7 +12,7 @@ struct ImageSelectorView: View {
     @Binding var images: [UIImage]
     @State var image: UIImage?
     @Environment(\.colorScheme) var colorScheme
-    @State var tabIndex = 0
+    @State private var tabIndex = 0
     
     var body: some View {
         VStack{
@@ -47,7 +47,7 @@ struct ImageSelectorView: View {
                                     .padding(.trailing, 3)
                             }
                         }
-                        .padding(3)
+                        .padding(4)
                         .overlay(Capsule().stroke(lineWidth: 2))
                         Spacer()
                     }

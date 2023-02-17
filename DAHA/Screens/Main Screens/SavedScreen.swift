@@ -21,7 +21,7 @@ struct SavedScreen: View {
             
             VStack{
                 PostButton()
-                .offset(x: screenWidth * 0.35, y: screenHeight * 0.325)
+                .offset(x: screenWidth * 0.35, y: screenHeight * 0.31)
             }
             
         } //: ZStack

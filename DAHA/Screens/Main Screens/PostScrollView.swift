@@ -77,6 +77,7 @@ struct PostScrollView: View {
 //                                        GeometryReader{ g in
                                         PostView(post: post, owner: true)
                                                 .padding(.bottom, 10)
+                                                .padding(.leading, 5)
                                                 .onAppear{
                                                     self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
                                                 }
@@ -123,6 +124,7 @@ struct PostScrollView: View {
 //                                        .frame(height: 65)
                                     } else {
                                         PostView(post: post, owner: true)
+                                            .padding(.leading, 5)
                                             .padding(.bottom, 10)
                                     } //NOT LAST
                                   
@@ -130,6 +132,7 @@ struct PostScrollView: View {
                                     if post.id == posts.last!.id  {
 //                                        GeometryReader{ g in
                                         PostView(post: post, owner: false)
+                                                .padding(.leading, 5)
                                                 .padding(.bottom, 10)
                                                 .onAppear{
                                                     self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
@@ -176,6 +179,7 @@ struct PostScrollView: View {
 //                                        .frame(height: 65)
                                     } else {
                                         PostView(post: post, owner: false)
+                                            .padding(.leading, 5)
                                             .padding(.bottom, 10)
                                     }
                                     

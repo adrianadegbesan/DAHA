@@ -40,6 +40,10 @@ struct MakePostScreen: View {
                                 withAnimation{
                                     value.scrollTo(1, anchor: .top)
                                 }
+                            } else {
+                                withAnimation{
+                                    value.scrollTo(1, anchor: .bottom)
+                                }
                             }
                         }
                     Spacer()

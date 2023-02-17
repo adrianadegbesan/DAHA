@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BottomSheet
 
 // Profile Screen
 struct ProfileScreen: View {
@@ -19,7 +20,9 @@ struct ProfileScreen: View {
     @State var opacity2 = 0.0
     @State var first = true
     @State var second = false
-    
+    @State private var bottomSheetPosition: BottomSheetPosition = .relative(0.15)
+    @State private var expanded : Bool = false
+    @State private var retracted : Bool = true
 
     var body: some View {
         ZStack {
@@ -30,8 +33,9 @@ struct ProfileScreen: View {
                 
                 HStack {
                     Spacer()
-                    VStack {
+                    VStack(spacing: 10){
                        (Text(Image(systemName: "person.circle")) + Text(" POSTS"))
+//                        (Text(Image(systemName: "cart.circle")) + Text(" LISTINGS"))
                             .font(.headline.weight(.black))
                             .foregroundColor(first ? Color(hex: deepBlue) : .primary)
                         Divider()
@@ -40,13 +44,15 @@ struct ProfileScreen: View {
                             .opacity(opacity1)
                             
                     }
+                    .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                     .onTapGesture {
                         tabIndex = 0
                     }
                    
                     Spacer()
-                    VStack {
+                    VStack(spacing: 10){
                         (Text(Image(systemName: "bookmark.fill")) +  Text(" SAVED"))
+//                        (Text(Image(systemName: "figure.stand.line.dotted.figure.stand")) +  Text(" REQUESTS"))
                             .font(.headline.weight(.black))
                         .foregroundColor(second ? Color(hex: deepBlue) : .primary)
                         Divider()
@@ -54,6 +60,7 @@ struct ProfileScreen: View {
                             .overlay(Color(hex: deepBlue))
                             .opacity(opacity2)
                     }
+                    .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                     .onTapGesture {
                         tabIndex = 1
                     }
@@ -61,11 +68,13 @@ struct ProfileScreen: View {
                 }
                 .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
                 
+                
                 TabView(selection: $tabIndex){
                     UserPostsView().tag(0)
                     SavedPostsView().tag(1)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
+                .animation(.easeIn(duration: 0.2), value: tabIndex)
                 
             } //: VStack
             .onChange(of: tabIndex){ value in
@@ -89,9 +98,46 @@ struct ProfileScreen: View {
             
             VStack{
                 PostButton()
-                .offset(x: screenWidth * 0.35, y: screenHeight * 0.325)
+                .offset(x: screenWidth * 0.35, y: screenHeight * 0.31)
             }
         } //: ZStack
+        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, switchablePositions: [  .relativeBottom(0.125), .relative(0.15), .relativeTop(0.75)], headerContent: {
+                    VStack(alignment: .leading){
+                        HStack{
+                            Spacer().frame(width: screenWidth * 0.02)
+                            Text(Image(systemName: "paperplane"))
+                                .font(
+                                    .system(size:21, weight: .heavy)
+                                )
+                            Text("Direct Messages")
+                                .font(
+                                    .system(size:20, weight: .heavy)
+                                )
+                            Spacer()
+                        }
+                        .frame(width: screenWidth)
+                        .onTapGesture {
+                            if retracted {
+                                retracted = false
+                                expanded = true
+                                self.bottomSheetPosition = .relativeTop(0.75)
+                            } else {
+                                retracted = true
+                                expanded = false
+                                self.bottomSheetPosition = .relativeTop(0.15)
+                            }
+                            
+                        }
+                    }
+                    .padding([.top, .leading, .bottom])
+                }){
+                    DMScreen()
+                }
+                .showDragIndicator(false)
+                .enableContentDrag()
+                .backgroundBlurMaterial(.system)
+                .enableAppleScrollBehavior()
+                .showDragIndicator(true)
 
     }
 }
@@ -99,5 +145,6 @@ struct ProfileScreen: View {
 struct ProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
         ProfileScreen()
+            .environmentObject(FirestoreManager())
     }
 }

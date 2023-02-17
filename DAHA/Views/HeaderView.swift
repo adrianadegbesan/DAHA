@@ -24,12 +24,12 @@ struct HeaderView: View {
     var body: some View {
         VStack(spacing: 0){
             HStack{
-                // Left half of black block (DAHA logo)
+          
                 Image("Logo")
                     .scaleEffect(0.6)
                     .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2).scaleEffect(0.6))
                 ZStack {
-                    // Right half of black block (Page title)
+                    
                     Rectangle()
                         // Specific dimensions of rounded rectangle
                         .frame(width: 170, height: colorScheme == .dark ? 66.4 : 65.5)
@@ -52,7 +52,6 @@ struct HeaderView: View {
 //                }
                 
                 Spacer()
-                //If statement that determines which button is shown on the right hand side of the header
                 if (showMessages == true){
                     DMButton()
                 } else if (showSettings == true){
@@ -60,12 +59,7 @@ struct HeaderView: View {
                 }
                 
             } //: HStack
-//            if slidingBar == true {
-//                SlidingTabView(selection: tabIndex ?? .constant(0), tabs: tabs ?? [""], font: .headline.weight(.black), activeAccentColor: Color(hex: deepBlue), inactiveAccentColor: colorScheme == .dark ? .white : .black, selectionBarHeight: colorScheme == .dark ? 5.5 : 9.5, selectionBarBackgroundHeight: colorScheme == .dark ? 5.5 : 9.5)
-////                    .padding(.bottom, 0)
-////                    .clipped()
-////                    .overlay( RoundedRectangle(cornerRadius: 15).stroke(colorScheme == .dark ? .white : .black, lineWidth: 2).padding(.horizontal, 5) )
-//                    
+                
             if screen == "Saved" {
                 Divider()
                     .frame(height: 0.5)

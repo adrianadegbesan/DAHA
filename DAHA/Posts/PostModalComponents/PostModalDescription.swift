@@ -85,7 +85,7 @@ struct PostModalDescription: View {
                                     .padding(.trailing, 3)
                             }
                         }
-                        .padding(3)
+                        .padding(4)
                         .overlay(Capsule().stroke(lineWidth: 2))
                         Spacer()
                     }
