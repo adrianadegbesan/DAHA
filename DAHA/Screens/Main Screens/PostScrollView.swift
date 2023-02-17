@@ -29,28 +29,44 @@ struct PostScrollView: View {
                 
                 RefreshableScrollView {
                     
-                    if posts.isEmpty && screen == "Search" && loading {
-                        ProgressView()
-                            .scaleEffect(1.2)
+                    if posts.isEmpty && screen == "Search" {
+                        if loading {
+                            ZStack {
+                                ProgressView()
+                                    .scaleEffect(1.2)
+                                    .padding(.top, 10)
+                            }
+                            .frame(width: screenWidth)
+                            
+                        }
+                        if !loading {
+                            ZStack {
+                                VStack {
+                                    Image("Logo")
+                                        .opacity(0.75)
+                                        .overlay(Rectangle().stroke(.white, lineWidth: 2))
+                                        .padding(.top, screenHeight * 0.15)
+                                    Text("No results were found")
+                                        .font(.system(size: 18, weight: .bold))
+                                        .padding(.top, 5)
+                                }
+//                                    .foregroundColor(Color(hex: deepBlue))
+                            }
+                            .frame(width: screenWidth)
+                        }
                     }
 
-                  if posts.isEmpty{
-                      ZStack{
+                  if posts.isEmpty && screen != "Search" {
+                      ZStack {
                           Image("Logo")
                               .opacity(0.75)
                               .overlay(Rectangle().stroke(.white, lineWidth: 2))
                               .padding(.top, screenHeight * 0.15)
-//                          if screen == "Saved" {
-//                              Text("No Saved Posts")
-//                                  .font(.system(size: 16, weight: .heavy))
-//                                  .padding(.top, 10)
-//                                  .padding(.leading, screenWidth * 0.35)
-//                          }
                         }
                       .frame(width: screenWidth)
                     } else {
                         
-                        Spacer().frame(height: 3)
+                        Spacer().frame(height: 8)
                         
                         ForEach(posts) { post in
                             
@@ -202,37 +218,22 @@ struct PostScrollView: View {
                 })
                 .onAppear{
                     if screen == "Listings"{
-                        Task {
-                            if firestoreManager.listings_refresh{
-                                firestoreManager.listings_refresh = false
-                                await firestoreManager.getListings()
-                            } else {
-                                await firestoreManager.getRequests()
+                        if firestoreManager.listings_refresh {
+                            firestoreManager.listings_refresh = false
+                            Task {
+                              await firestoreManager.getListings()
+                                }
                             }
-                        }
                     }
+                        
 
                     if screen == "Requests" {
-                        Task {
-                            if firestoreManager.requests_refresh{
-                                firestoreManager.requests_refresh = false
-                                await firestoreManager.getRequests()
-                            } else {
-                                await firestoreManager.getListings()
+                        if firestoreManager.requests_refresh {
+                            firestoreManager.requests_refresh = false
+                            Task {
+                              await firestoreManager.getListings()
+                                }
                             }
-                        }
-                    }
-
-                    if screen == "Saved" {
-                        Task {
-                            await firestoreManager.getSaved()
-                        }
-                    }
-
-                    if screen == "User" {
-                        Task {
-                            await firestoreManager.userPosts()
-                        }
                     }
                     withAnimation{
                         screenOpacity = 1

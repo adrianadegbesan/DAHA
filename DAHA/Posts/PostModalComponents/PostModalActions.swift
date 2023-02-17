@@ -21,7 +21,7 @@ struct PostModalActions: View {
                     .font(.system(size: 28, weight: .heavy))
                     .padding(.bottom, 10)
                     .onTapGesture {
-                        SoftFeedback()
+//                        SoftFeedback()
                         dismiss()
                     }
                 Spacer()

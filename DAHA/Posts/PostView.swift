@@ -53,13 +53,13 @@ struct PostView: View {
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(colorScheme == .dark ? .gray : .black.opacity(0.7), lineWidth: colorScheme == .dark ? 1.5 : 2.5)
+                .strokeBorder(colorScheme == .dark ? .gray : .black.opacity(0.7), lineWidth: colorScheme == .dark ? 2.5 : 2.5)
 
                 .shadow(color: colorScheme == .dark ? .white : .black, radius: 1, y: 0)
         )
         .background(colorScheme == .dark ? .black.opacity(0.7) : .white)
         .cornerRadius(20)
-        .padding(.horizontal, colorScheme == .light ? 3 : 0)
+        .padding(.horizontal, 3)
         .onTapGesture {
             LightFeedback()
 //            selected = true

@@ -11,6 +11,7 @@ import SwiftUI
 struct CustomCameraView: View {
     
     let cameraService = CameraService()
+    @State var flashMode = false
     @Binding var capturedImage: UIImage?
     @Binding var images: [UIImage]
     
@@ -42,6 +43,23 @@ struct CustomCameraView: View {
                     print(err.localizedDescription)
                 }
             }
+            
+            Button(action: {
+                flashMode.toggle()
+                cameraService.toggleFlashMode()
+            }){
+                if flashMode{
+                    Image(systemName: "bolt.fill")
+                        .font(.system(size: 30))
+                        .foregroundColor(.white)
+                } else {
+                    Image(systemName: "bolt")
+                        .font(.system(size: 30))
+                        .foregroundColor(.white)
+                }
+            }
+            .padding(.leading, screenWidth * 0.87)
+            .padding(.bottom, screenHeight * 0.78)
             
             Button(action: {
                 presentationMode.wrappedValue.dismiss()

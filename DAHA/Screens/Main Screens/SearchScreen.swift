@@ -42,6 +42,7 @@ struct SearchScreen: View {
                                 SoftFeedback()
                                 withAnimation(.easeIn(duration: 0.3)){
                                     opacity = 1
+                                    firestoreManager.search_results.removeAll()
                                     keyboardFocused = false
                                     searched = false
                                 }
@@ -142,8 +143,8 @@ struct SearchScreen: View {
                         Spacer().frame(height: 10)
                         
                         Divider()
-                            .frame(maxHeight : 0.05)
-                            .overlay(Color(hex: darkGrey))
+                            .frame(maxHeight : 4 )
+                            .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
                             .padding(.top, 10)
                         
                         PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)

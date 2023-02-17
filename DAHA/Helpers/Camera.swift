@@ -17,6 +17,8 @@ class CameraService {
     let output = AVCapturePhotoOutput()
     let previewLayer = AVCaptureVideoPreviewLayer()
     
+    var flashMode: AVCaptureDevice.FlashMode = .off
+    
     func start(delegate: AVCapturePhotoCaptureDelegate, completion: @escaping (Error?) -> ()) {
         self.delegate = delegate
         checkPermissions(completion: completion)
@@ -72,8 +74,23 @@ class CameraService {
     }
     
     func capturePhoto(with settings: AVCapturePhotoSettings = AVCapturePhotoSettings()){
+        
+        settings.flashMode = flashMode
         output.capturePhoto(with: settings, delegate: delegate!)
     }
+    
+    func toggleFlashMode() {
+        if flashMode == .off {
+            flashMode = .on
+        } else {
+            flashMode = .off
+        }
+    }
+    
+    
+    
+    
+    
     
 
 }

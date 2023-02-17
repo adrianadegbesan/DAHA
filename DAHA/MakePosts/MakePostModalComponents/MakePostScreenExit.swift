@@ -15,10 +15,12 @@ struct MakePostScreenExit: View {
         VStack{
             HStack{
                 Button(action: {
+//                    SoftFeedback()
                     dismiss()
                 }){
                     Image(systemName: "multiply")
-                        .scaleEffect(1.5)
+                        .font(.system(size: 20, weight: .heavy))
+//                        .padding(.bottom, 10)
                 }
                 .foregroundColor(colorScheme == .dark ? .white : .black)
             } //:HStack
