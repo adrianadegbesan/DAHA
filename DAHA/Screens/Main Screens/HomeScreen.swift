@@ -17,6 +17,10 @@ struct HomeScreen: View {
     @State private var tabs : [String] = ["LISTINGS", "REQUESTS"]
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
+    @State var opacity1 = 1.0
+    @State var opacity2 = 0.0
+    @State var first = true
+    @State var second = false
 
     
     var body: some View {
@@ -30,11 +34,11 @@ struct HomeScreen: View {
                         VStack {
                            (Text(Image(systemName: "cart.circle")) + Text(" LISTINGS"))
                                 .font(.headline.weight(.black))
-                                .foregroundColor(tabIndex == 0 ? Color(hex: deepBlue) : .primary)
+                                .foregroundColor(first ? Color(hex: deepBlue) : .primary)
                             Divider()
                                 .frame(width: screenWidth * 0.35, height: 3.5)
                                 .overlay(Color(hex: deepBlue))
-                                .opacity(tabIndex == 0 ? 1 : 0)
+                                .opacity(opacity1)
                                 
                         }
                         .onTapGesture {
@@ -45,11 +49,11 @@ struct HomeScreen: View {
                         VStack {
                             (Text(Image(systemName: "figure.stand.line.dotted.figure.stand")) +  Text(" REQUESTS"))
                                 .font(.headline.weight(.black))
-                            .foregroundColor(tabIndex == 1 ? Color(hex: deepBlue) : .primary)
+                            .foregroundColor(second ? Color(hex: deepBlue) : .primary)
                             Divider()
                                 .frame(width: screenWidth * 0.35, height: 3.5)
                                 .overlay(Color(hex: deepBlue))
-                                .opacity(tabIndex == 1 ? 1 : 0)
+                                .opacity(opacity2)
                         }
                         .onTapGesture {
                             tabIndex = 1
@@ -75,6 +79,23 @@ struct HomeScreen: View {
                     
 //                    PageBottomDivider()
                 } //: VStack
+                .onChange(of: tabIndex){ value in
+                    if tabIndex == 0 {
+                        withAnimation {
+                            first = true
+                            second = false
+                            opacity1 = 1
+                            opacity2 = 0
+                        }
+                    } else {
+                        withAnimation {
+                            first = false
+                            second = true
+                            opacity1 = 0
+                            opacity2 = 1
+                        }
+                    }
+                }
 //
                 VStack{
                     PostButton()

@@ -15,6 +15,10 @@ struct ProfileScreen: View {
     @State private var tabs : [String] = ["MY POSTS", "SAVED"]
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
+    @State var opacity1 = 1.0
+    @State var opacity2 = 0.0
+    @State var first = true
+    @State var second = false
     
 
     var body: some View {
@@ -29,11 +33,11 @@ struct ProfileScreen: View {
                     VStack {
                        (Text(Image(systemName: "person.circle")) + Text(" MY POSTS"))
                             .font(.headline.weight(.black))
-                            .foregroundColor(tabIndex == 0 ? Color(hex: deepBlue) : .primary)
+                            .foregroundColor(first ? Color(hex: deepBlue) : .primary)
                         Divider()
                             .frame(width: screenWidth * 0.35, height: 3.5)
                             .overlay(Color(hex: deepBlue))
-                            .opacity(tabIndex == 0 ? 1 : 0)
+                            .opacity(opacity1)
                             
                     }
                     .onTapGesture {
@@ -44,11 +48,11 @@ struct ProfileScreen: View {
                     VStack {
                         (Text(Image(systemName: "bookmark.fill")) +  Text(" SAVED"))
                             .font(.headline.weight(.black))
-                        .foregroundColor(tabIndex == 1 ? Color(hex: deepBlue) : .primary)
+                        .foregroundColor(second ? Color(hex: deepBlue) : .primary)
                         Divider()
                             .frame(width: screenWidth * 0.35, height: 3.5)
                             .overlay(Color(hex: deepBlue))
-                            .opacity(tabIndex == 1 ? 1 : 0)
+                            .opacity(opacity2)
                     }
                     .onTapGesture {
                         tabIndex = 1
@@ -71,6 +75,24 @@ struct ProfileScreen: View {
 //                }
 //                PageBottomDivider()
             } //: VStack
+            .onChange(of: tabIndex){ value in
+                if tabIndex == 0 {
+                    withAnimation {
+                        first = true
+                        second = false
+                        opacity1 = 1
+                        opacity2 = 0
+                    }
+                } else {
+                    withAnimation {
+                        first = false
+                        second = true
+                        opacity1 = 0
+                        opacity2 = 1
+                    }
+                }
+            }
+
             
             VStack{
                 PostButton()

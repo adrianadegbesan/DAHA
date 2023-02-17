@@ -66,11 +66,11 @@ struct HeaderView: View {
 ////                    .clipped()
 ////                    .overlay( RoundedRectangle(cornerRadius: 15).stroke(colorScheme == .dark ? .white : .black, lineWidth: 2).padding(.horizontal, 5) )
 //                    
-//            } else if !showSearchBar {
-//                Divider()
-//                    .frame(height: 0.5)
-//                    .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
-//            }
+            if screen == "Saved" {
+                Divider()
+                    .frame(height: 0.5)
+                    .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
+            }
         } //: VStack
         .background(colorScheme == .dark || screen == "Search" ? .clear : Color(hex: greyBackground))
     }

@@ -16,6 +16,7 @@ struct PostModalDescription: View {
     @State var owner: Bool
     @Environment(\.colorScheme) var colorScheme
     
+    
     var body: some View {
         VStack(alignment: .leading){
             HStack{
