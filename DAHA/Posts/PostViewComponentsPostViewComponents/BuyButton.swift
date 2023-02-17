@@ -15,11 +15,11 @@ struct BuyButton: View {
     var body: some View {
         Button(action: {
             //MessagingAction
-            LightFeedback()
+            SoftFeedback()
             shouldNavigate = true
         }){
             HStack(spacing: 0){
-                Text(post.type == "Request" ? "PROVIDE " : "BUY ")
+                Text(post.type == "Request" ? "GIVE " : "BUY ")
                     .minimumScaleFactor(0.05)
                     .fixedSize(horizontal: true, vertical: false)
                     .font(.system(size: 13, weight: .bold))

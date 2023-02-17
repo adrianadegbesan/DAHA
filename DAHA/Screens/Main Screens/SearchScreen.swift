@@ -66,7 +66,6 @@ struct SearchScreen: View {
                             }
                         }
                         .focused($keyboardFocused)
-//                        .background(Color.primary.opacity(0.05))
                         .padding(.horizontal, !searched ? screenWidth * 0.058 : screenWidth * 0.03)
                         .padding(.bottom, 18)
                         .ignoresSafeArea(.keyboard, edges: .bottom)

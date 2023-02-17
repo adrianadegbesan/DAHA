@@ -31,7 +31,7 @@ struct ProfileScreen: View {
                 HStack {
                     Spacer()
                     VStack {
-                       (Text(Image(systemName: "person.circle")) + Text(" MY POSTS"))
+                       (Text(Image(systemName: "person.circle")) + Text(" POSTS"))
                             .font(.headline.weight(.black))
                             .foregroundColor(first ? Color(hex: deepBlue) : .primary)
                         Divider()
@@ -67,13 +67,6 @@ struct ProfileScreen: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 
-                
-//                if tabIndex == 0{
-//                    PostScrollView(posts: $firestoreManager.my_posts, loading: $firestoreManager.my_posts_loading, screen: "User", query: .constant(""), type: .constant(""), category: .constant(""))
-//                } else if tabIndex == 1 {
-//                    PostScrollView(posts: $firestoreManager.saved_posts, loading: $firestoreManager.saved_loading, screen: "Saved", query: .constant(""), type: .constant(""), category: .constant(""))
-//                }
-//                PageBottomDivider()
             } //: VStack
             .onChange(of: tabIndex){ value in
                 if tabIndex == 0 {

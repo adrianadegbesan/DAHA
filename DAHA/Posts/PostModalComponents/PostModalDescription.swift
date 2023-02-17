@@ -10,12 +10,12 @@ import SDWebImageSwiftUI
 
 struct PostModalDescription: View {
     @State var post: PostModel
-    @State var opacity = 0.1
-    @State var descriptionScroll : Bool = false
+    @State private var opacity = 0.1
+    @State private var descriptionScroll : Bool = false
+    @State private var tabIndex = 0
     @Binding var saved: Bool
     @State var owner: Bool
     @Environment(\.colorScheme) var colorScheme
-    
     
     var body: some View {
         VStack(alignment: .leading){
@@ -39,11 +39,11 @@ struct PostModalDescription: View {
             .padding(.trailing, 12)
 
             if !post.imageURLs.isEmpty {
-                TabView {
+                TabView(selection: $tabIndex){
                     
-                    ForEach(post.imageURLs, id: \.self) { item in
+                    ForEach(post.imageURLs.indices, id: \.self) { i in
                         GeometryReader { proxy in
-                            WebImage(url: URL(string: item))
+                            WebImage(url: URL(string: post.imageURLs[i]))
                                 .resizable()
                                 .placeholder{
                                     ProgressView()
@@ -63,18 +63,35 @@ struct PostModalDescription: View {
                                     }
                                 }
                                 .modifier(ImageModifier(contentSize: CGSize(width: proxy.size.width, height: proxy.size.height)))
+                                .tag(i)
                         } //: GeometryReader
                       } //: LOOP
                     
                     
                 } //: TAB
-                .tabViewStyle(PageTabViewStyle())
+                .tabViewStyle(.page(indexDisplayMode: .never))
     //            .cornerRadius(15)
-                .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .padding(2.3)
                 .frame(width: screenWidth, height: screenHeight * 0.4)
     //            .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
                 .clipped()
+                
+                if post.imageURLs.count > 1{
+                    HStack{
+                        Spacer()
+                        HStack{
+                            ForEach(post.imageURLs.indices, id: \.self){ i in
+                                ImageIndicator(index: $tabIndex, my_index: i)
+                                    .padding(.trailing, 3)
+                            }
+                        }
+                        .padding(3)
+                        .overlay(Capsule().stroke(lineWidth: 2))
+                        Spacer()
+                    }
+                    .padding(.top, 5)
+                    .padding(.bottom, 5)
+                }
 
             } else {
                 Image(systemName: category_images[post.category] ?? "bag.fill")

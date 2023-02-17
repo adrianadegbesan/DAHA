@@ -44,7 +44,7 @@ let deepBlue = "0076FF"
 let red_color = "FF0000"
 
 let dark_scroll_background = "151517"
-let light_scroll_background = "d9d9d9"
+let light_scroll_background = "eeeeee"
 
  // Category Colors
 

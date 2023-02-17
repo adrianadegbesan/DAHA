@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import BottomSheet
 
 struct ChooseTypeButton: View {
 //    @Binding var post: PostModel
     @Binding var selected: String
     @State var isPresented: Bool = false
     @Environment(\.colorScheme) var colorScheme
+//    @State var bottomSheetPosition: BottomSheetPosition = .relative(0.4)
     
     let types = ["Listing", "Request"]
     
@@ -57,6 +59,22 @@ struct ChooseTypeButton: View {
             }
             
         }
+//        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, switchablePositions: [.relative(0.4)], headerContent: {
+//            VStack(alignment: .leading){
+//                Text("Types")
+//                    .font(
+//                        .system(size:30, weight: .heavy)
+//                    )
+//            }
+//            .padding([.top, .leading])
+//        }){
+//            TypeModal(selected: $selected)
+//        }
+//        .showDragIndicator(false)
+//        .enableContentDrag()
+//        .showCloseButton()
+//        .enableSwipeToDismiss()
+//        .enableTapToDismiss()
         .sheet(isPresented: $isPresented){
                 TypeModal(selected: $selected)
         }

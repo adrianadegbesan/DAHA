@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		82218BF42998031F0092BA94 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 82218BF32998031F0092BA94 /* BottomSheet */; };
 		82218BF629986BCB0092BA94 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218BF529986BCB0092BA94 /* MessageManager.swift */; };
 		82218BF829988DF90092BA94 /* PostScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218BF729988DF90092BA94 /* PostScrollView.swift */; };
 		82218BFD299ACC110092BA94 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 82218BFC299ACC110092BA94 /* SDWebImageSwiftUI */; };
@@ -21,7 +20,6 @@
 		82218C12299C96580092BA94 /* TermsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C11299C96580092BA94 /* TermsSettingsView.swift */; };
 		82218C16299C970C0092BA94 /* TermsSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */; };
 		82218C18299C97820092BA94 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C17299C97820092BA94 /* NotificationsView.swift */; };
-		82218C1F299CB8DC0092BA94 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 82218C1E299CB8DC0092BA94 /* SwiftUIPullToRefresh */; };
 		82218C22299CD0180092BA94 /* RefreshableScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 82218C21299CD0180092BA94 /* RefreshableScrollView */; };
 		82218C24299CE7920092BA94 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C23299CE7920092BA94 /* RefreshButton.swift */; };
 		82218C26299D4AA00092BA94 /* SearchButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C25299D4AA00092BA94 /* SearchButtons.swift */; };
@@ -30,6 +28,7 @@
 		82218C2D299F4E990092BA94 /* RequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C2C299F4E990092BA94 /* RequestsView.swift */; };
 		82218C30299F568D0092BA94 /* UserPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C2F299F568D0092BA94 /* UserPostsView.swift */; };
 		82218C32299F569A0092BA94 /* SavedPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C31299F569A0092BA94 /* SavedPostsView.swift */; };
+		82218C34299FC7E90092BA94 /* ImageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C33299FC7E90092BA94 /* ImageIndicator.swift */; };
 		823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823601FC2981F3AC002E7AEC /* SignInButton.swift */; };
 		823602012981F81D002E7AEC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602002981F81D002E7AEC /* LoginScreen.swift */; };
 		823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602022981F84E002E7AEC /* ForgotPasswordButton.swift */; };
@@ -59,6 +58,7 @@
 		8294FAAE296B9F64004001AE /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAAD296B9F64004001AE /* PostModel.swift */; };
 		8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE6296BB945004001AE /* CustomInputField.swift */; };
 		8294FAE9296BCB76004001AE /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */; };
+		82A21A4E299FD7490040BAA1 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 82A21A4D299FD7490040BAA1 /* BottomSheet */; };
 		82ACC67F2991738300589E1E /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC67E2991738300589E1E /* Shapes.swift */; };
 		82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6822992E20200589E1E /* ModalCapsule.swift */; };
 		82ACC68729936E3100589E1E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68629936E3100589E1E /* NextButton.swift */; };
@@ -66,7 +66,6 @@
 		82ACC6902995CBED00589E1E /* ChooseTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68F2995CBED00589E1E /* ChooseTypeButton.swift */; };
 		82ACC6922995CC1E00589E1E /* TypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6912995CC1E00589E1E /* TypeIcon.swift */; };
 		82ACC6942995EEED00589E1E /* TypeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6932995EEED00589E1E /* TypeModal.swift */; };
-		82ACC6972995F60F00589E1E /* SlidingTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 82ACC6962995F60F00589E1E /* SlidingTabView */; };
 		82ACC6992996B2FA00589E1E /* SearchCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6982996B2FA00589E1E /* SearchCategories.swift */; };
 		82ACC69B2996BF9800589E1E /* SearchCategoryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC69A2996BF9800589E1E /* SearchCategoryIcon.swift */; };
 		82B6B2BB2989EC0E00027E5A /* MakePostScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */; };
@@ -163,6 +162,7 @@
 		82218C2C299F4E990092BA94 /* RequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsView.swift; sourceTree = "<group>"; };
 		82218C2F299F568D0092BA94 /* UserPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsView.swift; sourceTree = "<group>"; };
 		82218C31299F569A0092BA94 /* SavedPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsView.swift; sourceTree = "<group>"; };
+		82218C33299FC7E90092BA94 /* ImageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageIndicator.swift; sourceTree = "<group>"; };
 		823601FC2981F3AC002E7AEC /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		823602002981F81D002E7AEC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		823602022981F84E002E7AEC /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
@@ -269,12 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8236CFF9296D34210086AB15 /* FirebasePerformance in Frameworks */,
-				82218BF42998031F0092BA94 /* BottomSheet in Frameworks */,
-				82218C1F299CB8DC0092BA94 /* SwiftUIPullToRefresh in Frameworks */,
 				8236CFE3296D34210086AB15 /* FirebaseAnalyticsSwift in Frameworks */,
 				8236CFE7296D34210086AB15 /* FirebaseAuth in Frameworks */,
 				8236CFDF296D34210086AB15 /* FirebaseAnalytics in Frameworks */,
-				82ACC6972995F60F00589E1E /* SlidingTabView in Frameworks */,
 				8236CFE9296D34210086AB15 /* FirebaseCrashlytics in Frameworks */,
 				8236CFE1296D34210086AB15 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				8236CFED296D34210086AB15 /* FirebaseFirestore in Frameworks */,
@@ -288,6 +285,7 @@
 				8236CFF1296D34210086AB15 /* FirebaseFunctions in Frameworks */,
 				8236CFE5296D34210086AB15 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				8236CFF5296D34210086AB15 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
+				82A21A4E299FD7490040BAA1 /* BottomSheet in Frameworks */,
 				8236CFEF296D34210086AB15 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,6 +577,7 @@
 				82CBC2A82988D1A2001966E3 /* PageBottomDivider.swift */,
 				82ACC6822992E20200589E1E /* ModalCapsule.swift */,
 				82CEFC7D2969CFA100C55F67 /* Buttons */,
+				82218C33299FC7E90092BA94 /* ImageIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -675,11 +674,9 @@
 				8236CFF8296D34210086AB15 /* FirebasePerformance */,
 				8236CFFA296D34210086AB15 /* FirebaseStorage */,
 				82E75AC5297E35F600742F18 /* PostmarkSwift */,
-				82ACC6962995F60F00589E1E /* SlidingTabView */,
-				82218BF32998031F0092BA94 /* BottomSheet */,
 				82218BFC299ACC110092BA94 /* SDWebImageSwiftUI */,
-				82218C1E299CB8DC0092BA94 /* SwiftUIPullToRefresh */,
 				82218C21299CD0180092BA94 /* RefreshableScrollView */,
+				82A21A4D299FD7490040BAA1 /* BottomSheet */,
 			);
 			productName = DAHA;
 			productReference = 82CEFC2E2969CB2C00C55F67 /* DAHA.app */;
@@ -712,12 +709,9 @@
 			packageReferences = (
 				8236CFDD296D34210086AB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				82E75AC4297E35F600742F18 /* XCRemoteSwiftPackageReference "postmark-swift" */,
-				82ACC68A2994157600589E1E /* XCRemoteSwiftPackageReference "KeyboardAvoider" */,
-				82ACC6952995F60E00589E1E /* XCRemoteSwiftPackageReference "SlidingTabView" */,
-				82218BF22998031F0092BA94 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				82218BFB299ACC110092BA94 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
-				82218C1D299CB8DC0092BA94 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */,
 				82218C20299CD0180092BA94 /* XCRemoteSwiftPackageReference "RefreshableScrollView" */,
+				82A21A4C299FD7490040BAA1 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = 82CEFC2F2969CB2C00C55F67 /* Products */;
 			projectDirPath = "";
@@ -832,6 +826,7 @@
 				82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */,
 				82B6B2D9298ADAE700027E5A /* ForgotPasswordScreen.swift in Sources */,
 				82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */,
+				82218C34299FC7E90092BA94 /* ImageIndicator.swift in Sources */,
 				82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */,
 				82D2D0DF296BD41200CB4B9A /* EmailVerificationScreen.swift in Sources */,
 				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,
@@ -1074,28 +1069,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		82218BF22998031F0092BA94 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/adamfootdev/BottomSheet";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.4;
-			};
-		};
 		82218BFB299ACC110092BA94 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
-			};
-		};
-		82218C1D299CB8DC0092BA94 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/globulus/swiftui-pull-to-refresh";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
 			};
 		};
 		82218C20299CD0180092BA94 /* XCRemoteSwiftPackageReference "RefreshableScrollView" */ = {
@@ -1114,20 +1093,12 @@
 				kind = branch;
 			};
 		};
-		82ACC68A2994157600589E1E /* XCRemoteSwiftPackageReference "KeyboardAvoider" */ = {
+		82A21A4C299FD7490040BAA1 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/michaelhenry/KeyboardAvoider.git";
+			repositoryURL = "https://github.com/lucaszischka/BottomSheet";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		82ACC6952995F60E00589E1E /* XCRemoteSwiftPackageReference "SlidingTabView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/QuynhNguyen/SlidingTabView#readme";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 3.0.0;
 			};
 		};
 		82E75AC4297E35F600742F18 /* XCRemoteSwiftPackageReference "postmark-swift" */ = {
@@ -1141,20 +1112,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		82218BF32998031F0092BA94 /* BottomSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 82218BF22998031F0092BA94 /* XCRemoteSwiftPackageReference "BottomSheet" */;
-			productName = BottomSheet;
-		};
 		82218BFC299ACC110092BA94 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 82218BFB299ACC110092BA94 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
-		};
-		82218C1E299CB8DC0092BA94 /* SwiftUIPullToRefresh */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 82218C1D299CB8DC0092BA94 /* XCRemoteSwiftPackageReference "swiftui-pull-to-refresh" */;
-			productName = SwiftUIPullToRefresh;
 		};
 		82218C21299CD0180092BA94 /* RefreshableScrollView */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1236,10 +1197,10 @@
 			package = 8236CFDD296D34210086AB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
-		82ACC6962995F60F00589E1E /* SlidingTabView */ = {
+		82A21A4D299FD7490040BAA1 /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 82ACC6952995F60E00589E1E /* XCRemoteSwiftPackageReference "SlidingTabView" */;
-			productName = SlidingTabView;
+			package = 82A21A4C299FD7490040BAA1 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
 		};
 		82E75AC5297E35F600742F18 /* PostmarkSwift */ = {
 			isa = XCSwiftPackageProductDependency;

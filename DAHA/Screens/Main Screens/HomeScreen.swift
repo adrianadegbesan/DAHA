@@ -67,17 +67,7 @@ struct HomeScreen: View {
                         RequestsView().tag(1)
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
-//                    Spacer()
-//                    if tabIndex == 0{
-//                        PostScrollView(posts: $firestoreManager.listings, loading: $firestoreManager.listings_loading, screen: "Listings", query: .constant(""), type: .constant(""), category: .constant(""))
-//                    } else if tabIndex == 1 {
-//                        PostScrollView(posts: $firestoreManager.requests, loading: $firestoreManager.requests_loading, screen: "Requests", query: .constant(""), type: .constant(""), category: .constant(""))
-//                    }
-                     
-//                    Spacer()
-//    
-                    
-//                    PageBottomDivider()
+ 
                 } //: VStack
                 .onChange(of: tabIndex){ value in
                     if tabIndex == 0 {
@@ -96,7 +86,6 @@ struct HomeScreen: View {
                         }
                     }
                 }
-//
                 VStack{
                     PostButton()
                     .offset(x: screenWidth * 0.35, y: screenHeight * 0.325)
