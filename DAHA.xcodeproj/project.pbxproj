@@ -26,6 +26,10 @@
 		82218C24299CE7920092BA94 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C23299CE7920092BA94 /* RefreshButton.swift */; };
 		82218C26299D4AA00092BA94 /* SearchButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C25299D4AA00092BA94 /* SearchButtons.swift */; };
 		82218C28299D4C9E0092BA94 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C27299D4C9E0092BA94 /* SearchScreen.swift */; };
+		82218C2B299F4E8B0092BA94 /* ListingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C2A299F4E8A0092BA94 /* ListingsView.swift */; };
+		82218C2D299F4E990092BA94 /* RequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C2C299F4E990092BA94 /* RequestsView.swift */; };
+		82218C30299F568D0092BA94 /* UserPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C2F299F568D0092BA94 /* UserPostsView.swift */; };
+		82218C32299F569A0092BA94 /* SavedPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C31299F569A0092BA94 /* SavedPostsView.swift */; };
 		823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823601FC2981F3AC002E7AEC /* SignInButton.swift */; };
 		823602012981F81D002E7AEC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602002981F81D002E7AEC /* LoginScreen.swift */; };
 		823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602022981F84E002E7AEC /* ForgotPasswordButton.swift */; };
@@ -155,6 +159,10 @@
 		82218C23299CE7920092BA94 /* RefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshButton.swift; sourceTree = "<group>"; };
 		82218C25299D4AA00092BA94 /* SearchButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtons.swift; sourceTree = "<group>"; };
 		82218C27299D4C9E0092BA94 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
+		82218C2A299F4E8A0092BA94 /* ListingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsView.swift; sourceTree = "<group>"; };
+		82218C2C299F4E990092BA94 /* RequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsView.swift; sourceTree = "<group>"; };
+		82218C2F299F568D0092BA94 /* UserPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsView.swift; sourceTree = "<group>"; };
+		82218C31299F569A0092BA94 /* SavedPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsView.swift; sourceTree = "<group>"; };
 		823601FC2981F3AC002E7AEC /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		823602002981F81D002E7AEC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		823602022981F84E002E7AEC /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
@@ -321,6 +329,24 @@
 				82CEFC632969CE5200C55F67 /* DMScreen.swift */,
 			);
 			path = Messages;
+			sourceTree = "<group>";
+		};
+		82218C29299F4E670092BA94 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				82218C2A299F4E8A0092BA94 /* ListingsView.swift */,
+				82218C2C299F4E990092BA94 /* RequestsView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		82218C2E299F54A90092BA94 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				82218C2F299F568D0092BA94 /* UserPostsView.swift */,
+				82218C31299F569A0092BA94 /* SavedPostsView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		823602062985ADD5002E7AEC /* Posts */ = {
@@ -562,9 +588,11 @@
 			children = (
 				82CEFC562969CD5A00C55F67 /* MainScreen.swift */,
 				82CEFC582969CD7400C55F67 /* HomeScreen.swift */,
+				82218C29299F4E670092BA94 /* Home */,
 				82218C27299D4C9E0092BA94 /* SearchScreen.swift */,
 				82CEFC5C2969CDEB00C55F67 /* SavedScreen.swift */,
 				82CEFC5E2969CE0700C55F67 /* ProfileScreen.swift */,
+				82218C2E299F54A90092BA94 /* Profile */,
 				82CEFC802969CFCA00C55F67 /* PostButton.swift */,
 				82218BF729988DF90092BA94 /* PostScrollView.swift */,
 			);
@@ -728,12 +756,14 @@
 				82CEFC572969CD5A00C55F67 /* MainScreen.swift in Sources */,
 				823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */,
 				82218C10299C92560092BA94 /* VersionView.swift in Sources */,
+				82218C30299F568D0092BA94 /* UserPostsView.swift in Sources */,
 				82ACC6902995CBED00589E1E /* ChooseTypeButton.swift in Sources */,
 				82CEFC542969CC9B00C55F67 /* LaunchScreen.swift in Sources */,
 				82B6B2D7298AD29300027E5A /* CategoryViewPrev.swift in Sources */,
 				82CEFC832969CFF400C55F67 /* DMButton.swift in Sources */,
 				82B6B2E9298B787E00027E5A /* CategoryModal.swift in Sources */,
 				82B6B2CF298A16BD00027E5A /* MakePostTextInputs.swift in Sources */,
+				82218C2D299F4E990092BA94 /* RequestsView.swift in Sources */,
 				82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */,
 				82B6B2FA298F394300027E5A /* CameraView.swift in Sources */,
 				82CEFC592969CD7400C55F67 /* HomeScreen.swift in Sources */,
@@ -791,6 +821,7 @@
 				82ACC68929936E4300589E1E /* PostConfirmationScreen.swift in Sources */,
 				82B6B2F8298F27A100027E5A /* Camera.swift in Sources */,
 				82CBC2AE2989BB21001966E3 /* PostModalDescription.swift in Sources */,
+				82218C2B299F4E8B0092BA94 /* ListingsView.swift in Sources */,
 				82CEFC4C2969CC3300C55F67 /* TextField.swift in Sources */,
 				82218C0A299C87900092BA94 /* LogOutView.swift in Sources */,
 				82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */,
@@ -823,6 +854,7 @@
 				82CEFC662969CE5F00C55F67 /* SearchBarScreen.swift in Sources */,
 				8294FAE9296BCB76004001AE /* CreateAccountScreen.swift in Sources */,
 				82CEFC5B2969CDD300C55F67 /* OriginalSearchScreen.swift in Sources */,
+				82218C32299F569A0092BA94 /* SavedPostsView.swift in Sources */,
 				8294FAAC296B9F5B004001AE /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

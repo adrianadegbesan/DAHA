@@ -16,6 +16,7 @@ struct HomeScreen: View {
     @State private var tabIndex : Int = 0
     @State private var tabs : [String] = ["LISTINGS", "REQUESTS"]
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @Environment(\.colorScheme) var colorScheme
 
     
     var body: some View {
@@ -23,12 +24,51 @@ struct HomeScreen: View {
                 VStack(spacing: 0) {
                     HeaderView(title: university, showMessages: true, showSettings: false, showSearchBar: true, slidingBar: true, tabIndex: $tabIndex, tabs: tabs, screen: "Home")
                         .frame(alignment: .top)
-//                    Spacer()
-                    if tabIndex == 0{
-                        PostScrollView(posts: $firestoreManager.listings, loading: $firestoreManager.listings_loading, screen: "Listings", query: .constant(""), type: .constant(""), category: .constant(""))
-                    } else if tabIndex == 1 {
-                        PostScrollView(posts: $firestoreManager.requests, loading: $firestoreManager.requests_loading, screen: "Requests", query: .constant(""), type: .constant(""), category: .constant(""))
+                    
+                    HStack {
+                        Spacer()
+                        VStack {
+                           (Text(Image(systemName: "cart.circle")) + Text(" LISTINGS"))
+                                .font(.headline.weight(.black))
+                                .foregroundColor(tabIndex == 0 ? Color(hex: deepBlue) : .primary)
+                            Divider()
+                                .frame(width: screenWidth * 0.35, height: 3.5)
+                                .overlay(Color(hex: deepBlue))
+                                .opacity(tabIndex == 0 ? 1 : 0)
+                                
+                        }
+                        .onTapGesture {
+                            tabIndex = 0
+                        }
+                       
+                        Spacer()
+                        VStack {
+                            (Text(Image(systemName: "figure.stand.line.dotted.figure.stand")) +  Text(" REQUESTS"))
+                                .font(.headline.weight(.black))
+                            .foregroundColor(tabIndex == 1 ? Color(hex: deepBlue) : .primary)
+                            Divider()
+                                .frame(width: screenWidth * 0.35, height: 3.5)
+                                .overlay(Color(hex: deepBlue))
+                                .opacity(tabIndex == 1 ? 1 : 0)
+                        }
+                        .onTapGesture {
+                            tabIndex = 1
+                        }
+                        Spacer()
                     }
+                    .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
+                    
+                    TabView(selection: $tabIndex){
+                        ListingsView().tag(0)
+                        RequestsView().tag(1)
+                    }
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+//                    Spacer()
+//                    if tabIndex == 0{
+//                        PostScrollView(posts: $firestoreManager.listings, loading: $firestoreManager.listings_loading, screen: "Listings", query: .constant(""), type: .constant(""), category: .constant(""))
+//                    } else if tabIndex == 1 {
+//                        PostScrollView(posts: $firestoreManager.requests, loading: $firestoreManager.requests_loading, screen: "Requests", query: .constant(""), type: .constant(""), category: .constant(""))
+//                    }
                      
 //                    Spacer()
 //    

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SlidingTabView
+//import SlidingTabView
 
 // Header View utilised throughout this app
 struct HeaderView: View {
@@ -60,17 +60,17 @@ struct HeaderView: View {
                 }
                 
             } //: HStack
-            if slidingBar == true {
-                SlidingTabView(selection: tabIndex ?? .constant(0), tabs: tabs ?? [""], font: .headline.weight(.black), activeAccentColor: Color(hex: deepBlue), inactiveAccentColor: colorScheme == .dark ? .white : .black, selectionBarHeight: colorScheme == .dark ? 5.5 : 9.5, selectionBarBackgroundHeight: colorScheme == .dark ? 5.5 : 9.5)
-//                    .padding(.bottom, 0)
-//                    .clipped()
-//                    .overlay( RoundedRectangle(cornerRadius: 15).stroke(colorScheme == .dark ? .white : .black, lineWidth: 2).padding(.horizontal, 5) )
-                    
-            } else if !showSearchBar {
-                Divider()
-                    .frame(height: 0.5)
-                    .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
-            }
+//            if slidingBar == true {
+//                SlidingTabView(selection: tabIndex ?? .constant(0), tabs: tabs ?? [""], font: .headline.weight(.black), activeAccentColor: Color(hex: deepBlue), inactiveAccentColor: colorScheme == .dark ? .white : .black, selectionBarHeight: colorScheme == .dark ? 5.5 : 9.5, selectionBarBackgroundHeight: colorScheme == .dark ? 5.5 : 9.5)
+////                    .padding(.bottom, 0)
+////                    .clipped()
+////                    .overlay( RoundedRectangle(cornerRadius: 15).stroke(colorScheme == .dark ? .white : .black, lineWidth: 2).padding(.horizontal, 5) )
+//                    
+//            } else if !showSearchBar {
+//                Divider()
+//                    .frame(height: 0.5)
+//                    .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
+//            }
         } //: VStack
         .background(colorScheme == .dark || screen == "Search" ? .clear : Color(hex: greyBackground))
     }

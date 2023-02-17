@@ -66,7 +66,7 @@ struct PostScrollView: View {
                       .frame(width: screenWidth)
                     } else {
                         
-                        Spacer().frame(height: 8)
+                        Spacer().frame(height: 12)
                         
                         ForEach(posts) { post in
                             
