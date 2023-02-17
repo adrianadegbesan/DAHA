@@ -206,7 +206,7 @@ class FirestoreManager: ObservableObject {
     
         do {
                  
-            try db.collection("\(university)_Posts").document(post.id).setData(from: post_temp){ [self] err in
+            try db.collection("\(university)_Posts").document(post.id).setData(from: post_temp){ err in
                      if let err = err{
                          completion(uploadError(err.localizedDescription))
                      } else {

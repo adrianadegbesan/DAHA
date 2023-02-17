@@ -40,7 +40,9 @@ class CameraService {
         case .denied:
             break
         case .authorized:
-            setupCamera(completion: completion)
+            DispatchQueue.main.async {
+                self.setupCamera(completion: completion)
+            }
         @unknown default:
             break
         }
@@ -62,9 +64,10 @@ class CameraService {
                 previewLayer.videoGravity = .resizeAspectFill
                 previewLayer.session = session
                 
-                session.startRunning()
-                self.session = session
-                
+                Task {
+                    session.startRunning()
+                    self.session = session
+                }
             } catch {
                 completion(error)
             }
