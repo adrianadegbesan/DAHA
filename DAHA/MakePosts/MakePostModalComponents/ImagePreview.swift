@@ -11,7 +11,7 @@ struct ImagePreview: View {
     
     @State var image: UIImage?
     @Binding var images: [UIImage]
-    @State var index: Int
+//    @State var index: Int
     
     var body: some View {
         if image != nil{
@@ -33,10 +33,16 @@ struct ImagePreview: View {
                     .font(.system(size: 20))
                     .background(Circle().fill(.white))
                     .onTapGesture {
-//                        let index = images.firstIndex(of: image!)
-//                        if index != nil{
-                                images.remove(at: index)
+                        let index = images.firstIndex(of: image!)
+                        print(image!)
+                        if index != nil{
+                        print(index!)
+//                        if index != 0{
+//                            index -= index % 3
 //                        }
+//                            print(images)
+                        images.remove(at: index!)
+                        }
                     }
                     .offset(x: 0.5, y: 1.35)
             }
@@ -47,6 +53,6 @@ struct ImagePreview: View {
 struct ImagePreview_Previews: PreviewProvider {
     static var previews: some View {
         let images: [UIImage] = []
-        ImagePreview(image: nil, images: .constant(images), index: 0)
+        ImagePreview(image: nil, images: .constant(images))
     }
 }
