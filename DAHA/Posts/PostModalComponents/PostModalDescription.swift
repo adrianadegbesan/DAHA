@@ -32,7 +32,7 @@ struct PostModalDescription: View {
                 (Text(post.price == "Free" ? "" : "$") + Text(post.price))
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 17.5, weight: .bold))
                  
             } //:HStack
             .padding(.leading, 12)
@@ -85,8 +85,8 @@ struct PostModalDescription: View {
                                     .padding(.trailing, 3)
                             }
                         }
-                        .padding(4)
-                        .overlay(Capsule().stroke(lineWidth: 2))
+//                        .padding(4)
+//                        .overlay(Capsule().stroke(lineWidth: 2))
                         Spacer()
                     }
                     .padding(.top, 5)

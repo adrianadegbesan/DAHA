@@ -18,6 +18,7 @@ struct PostView: View {
     @State private var selected : Bool = false
     @State private var shouldNavigate : Bool = false
     @State var owner : Bool
+    @State var preview : Bool
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -30,11 +31,11 @@ struct PostView: View {
                 PosterInfoView(post: post)
                 Spacer().frame(height: 10)
                 
-                CategoryView(post: post, reported: $reported, owner: owner)
+                CategoryView(post: post, reported: $reported, owner: owner, preview: preview)
                 
                 PostDescriptionView(post: post)
                 
-                PostActionView(post: post, saved: $saved, owner: owner)
+                PostActionView(post: post, saved: $saved, owner: owner, preview: preview)
                     .layoutPriority(1)
             }
             
@@ -61,9 +62,10 @@ struct PostView: View {
         .cornerRadius(20)
         .padding(.horizontal, 3)
         .onTapGesture {
-            LightFeedback()
-//            selected = true
-            shouldNavigate = true
+            if !preview {
+                LightFeedback()
+                shouldNavigate = true
+            }
         }
 //        .sheet(isPresented: $selected){
 //            PostModal(post: post, saved: $saved, reported: $reported, owner: owner)
@@ -77,9 +79,9 @@ struct PostView_Previews: PreviewProvider {
         let startTime = calendar.date(byAdding: .day, value: -2, to: Date())
         let startTimestamp: Timestamp = Timestamp(date: startTime!)
         
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [])
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "Listing", keywordsForLookup: [])
         NavigationView{
-            PostView(post: post, owner: false)
+            PostView(post: post, owner: false, preview: true)
                 .environmentObject(FirestoreManager())
         }
     }

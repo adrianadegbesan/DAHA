@@ -17,19 +17,14 @@ struct SettingsScreen: View {
         VStack {
             List{
                 DarkModeSetting()
-                    .listRowSeparator(.hidden)
+                EditUsernameView()
+                ChangePasswordView()
                 NotificationsView()
-                    .listRowSeparator(.hidden)
                 TermsSettingsView(shouldNavigate: $shouldNavigateTerms)
-                    .listRowSeparator(.hidden)
                 EmailSettingsView()
-                    .listRowSeparator(.hidden)
                 LogOutView()
-                    .listRowSeparator(.hidden)
                 DeleteUserView()
-                    .listRowSeparator(.hidden)
                 VersionView()
-                    .listRowSeparator(.hidden)
             }
             
             NavigationLink(destination: TermsSettingsScreen(), isActive: $shouldNavigateTerms){

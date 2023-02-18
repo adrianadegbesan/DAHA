@@ -38,7 +38,7 @@ struct LogOutView: View {
                     Text("Log Out")
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                 }
-                Divider()
+//                Divider()
             }
         }
         .alert("Log Out", isPresented: $isPresented, actions: {

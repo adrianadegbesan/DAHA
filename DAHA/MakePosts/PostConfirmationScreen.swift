@@ -57,6 +57,7 @@ struct PostConfirmationScreen: View {
                         } else if post.type == "Request"{
                             firestoreManager.requests_refresh = true
                         }
+                        firestoreManager.user_refresh = true
                         dismiss()
                     }
                 }

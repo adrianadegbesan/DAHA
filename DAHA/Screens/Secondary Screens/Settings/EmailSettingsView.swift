@@ -32,7 +32,7 @@ struct EmailSettingsView: View {
                     Text("Contact Us")
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                 }
-                Divider()
+//                Divider()
             }
         }.disabled(!MailView.canSendMail)
             .sheet(isPresented: $showMailView) {

@@ -53,6 +53,7 @@ struct SearchScreen: View {
                     
                     
                     TextField("Does Anyone Have A...?", text: $query)
+//                        .foregroundColor(Color(hex: deepBlue))
                         .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
                         .submitLabel(.search)
                         .onSubmit {

@@ -27,7 +27,7 @@ struct TermsSettingsView: View {
                     Text("Terms & Conditions")
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                 }
-                Divider()
+//                Divider()
             }
         }
     }

@@ -59,22 +59,12 @@ struct ChooseTypeButton: View {
             }
             
         }
-//        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, switchablePositions: [.relative(0.4)], headerContent: {
-//            VStack(alignment: .leading){
-//                Text("Types")
-//                    .font(
-//                        .system(size:30, weight: .heavy)
-//                    )
-//            }
-//            .padding([.top, .leading])
-//        }){
+//        .halfSheet(showSheet: $isPresented){
 //            TypeModal(selected: $selected)
+//        } onEnd: {
+//            print("ended")
 //        }
-//        .showDragIndicator(false)
-//        .enableContentDrag()
-//        .showCloseButton()
-//        .enableSwipeToDismiss()
-//        .enableTapToDismiss()
+
         .sheet(isPresented: $isPresented){
                 TypeModal(selected: $selected)
         }

@@ -25,7 +25,7 @@ struct NotificationsView: View {
                 Toggle("Notifications", isOn: $toggle)
                     .tint(Color(hex: deepBlue))
             }
-            Divider()
+//            Divider()
         }
     }
 }

@@ -36,10 +36,12 @@ class FirestoreManager: ObservableObject {
     
     @Published var saved_posts: [PostModel] = []
     @Published var saved_last: QueryDocumentSnapshot? = nil
+    @Published var saved_refresh: Bool = false
     @Published var saved_loading: Bool = false
     
     @Published var my_posts: [PostModel] = []
     @Published var user_last: QueryDocumentSnapshot? = nil
+    @Published var user_refresh: Bool = false
     @Published var my_posts_loading: Bool = false
     
     @Published var search_results: [PostModel] = []
@@ -133,7 +135,7 @@ class FirestoreManager: ObservableObject {
         
         if !images.isEmpty{
             for image in images {
-                let imageData = image.jpegData(compressionQuality: 0.5)
+                let imageData = image.jpegData(compressionQuality: 0.3)
                 guard imageData != nil else {
                     return ["error"]
                 }
@@ -226,22 +228,22 @@ class FirestoreManager: ObservableObject {
     }
     
     func deletePost(post: PostModel, deleted : Binding<Bool>, error_alert: Binding<Bool>) async {
-        for url in post.imageURLs{
-            let true_url = URL(string: url)
-            if true_url != nil{
-                do {
-                    let storageRef = try storage.reference(for: true_url!)
-                    storageRef.delete() { error in
-                        if error != nil {
-                            print("error deleting post")
-                        }
-                    }
-                }
-                catch {
-                    print("error deleting post")
-                }
-            }
-        }
+//        for url in post.imageURLs{
+//            let true_url = URL(string: url)
+//            if true_url != nil{
+//                do {
+//                    let storageRef = try storage.reference(for: true_url!)
+//                    storageRef.delete() { error in
+//                        if error != nil {
+//                            print("error deleting post")
+//                        }
+//                    }
+//                }
+//                catch {
+//                    print("error deleting post")
+//                }
+//            }
+//        }
         do {
             try await db.collection("\(university)_Posts").document(post.id).delete()
             deleted.wrappedValue = true

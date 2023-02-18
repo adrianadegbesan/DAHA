@@ -42,15 +42,14 @@ struct PostScrollView: View {
                         if !loading {
                             ZStack {
                                 VStack {
-                                    Image("Logo")
-                                        .opacity(0.75)
-                                        .overlay(Rectangle().stroke(.white, lineWidth: 2))
-                                        .padding(.top, screenHeight * 0.15)
-                                    Text("No results were found")
-                                        .font(.system(size: 18, weight: .bold))
-                                        .padding(.top, 5)
+                                    Image(systemName: "magnifyingglass")
+                                        .font(.system(size: 95, weight: .bold))
+                                        .foregroundColor(Color(hex: deepBlue))
+                                    .padding(.top, screenHeight * 0.15)
+                                    Text("No results found")
+                                        .font(.system(size: 25, weight: .semibold))
                                 }
-//                                    .foregroundColor(Color(hex: deepBlue))
+
                             }
                             .frame(width: screenWidth)
                         }
@@ -75,7 +74,7 @@ struct PostScrollView: View {
                                     
                                     if post.id == posts.last!.id {
 //                                        GeometryReader{ g in
-                                        PostView(post: post, owner: true)
+                                        PostView(post: post, owner: true, preview: false)
                                                 .padding(.bottom, 10)
                                                 .padding(.leading, 5)
                                                 .onAppear{
@@ -123,7 +122,7 @@ struct PostScrollView: View {
 //                                          }  //GEOMETRY READER
 //                                        .frame(height: 65)
                                     } else {
-                                        PostView(post: post, owner: true)
+                                        PostView(post: post, owner: true, preview: false)
                                             .padding(.leading, 5)
                                             .padding(.bottom, 10)
                                     } //NOT LAST
@@ -131,7 +130,7 @@ struct PostScrollView: View {
                                 } /*USER POST*/else {
                                     if post.id == posts.last!.id  {
 //                                        GeometryReader{ g in
-                                        PostView(post: post, owner: false)
+                                        PostView(post: post, owner: false, preview: false)
                                                 .padding(.leading, 5)
                                                 .padding(.bottom, 10)
                                                 .onAppear{
@@ -178,7 +177,7 @@ struct PostScrollView: View {
 //                                          } //GEOMETRY READER
 //                                        .frame(height: 65)
                                     } else {
-                                        PostView(post: post, owner: false)
+                                        PostView(post: post, owner: false, preview: false)
                                             .padding(.leading, 5)
                                             .padding(.bottom, 10)
                                     }
@@ -238,6 +237,27 @@ struct PostScrollView: View {
                               await firestoreManager.getListings()
                                 }
                             }
+                    }
+                    
+                    if screen == "Saved"{
+                        if firestoreManager.saved_refresh{
+                            firestoreManager.saved_refresh = false
+                            Task {
+                                await firestoreManager.getSaved()
+                            }
+                        }
+                       
+                    }
+                    
+                    if screen == "Profile"{
+                        if firestoreManager.user_refresh{
+                            firestoreManager.user_refresh = false
+                            Task {
+                                await firestoreManager.userPosts()
+                            }
+                            
+                        }
+                        
                     }
                     withAnimation{
                         screenOpacity = 1

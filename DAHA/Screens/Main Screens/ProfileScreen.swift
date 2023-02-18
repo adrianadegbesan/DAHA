@@ -46,6 +46,7 @@ struct ProfileScreen: View {
                     }
                     .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                     .onTapGesture {
+                        bottomSheetPosition = .relative(0.15)
                         tabIndex = 0
                     }
                    
@@ -62,6 +63,7 @@ struct ProfileScreen: View {
                     }
                     .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                     .onTapGesture {
+                        bottomSheetPosition = .relative(0.15)
                         tabIndex = 1
                     }
                     Spacer()
@@ -101,7 +103,10 @@ struct ProfileScreen: View {
                 .offset(x: screenWidth * 0.35, y: screenHeight * 0.31)
             }
         } //: ZStack
-        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, switchablePositions: [  .relativeBottom(0.125), .relative(0.15), .relativeTop(0.75)], headerContent: {
+        .onTapGesture {
+            bottomSheetPosition = .relative(0.15)
+        }
+        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, switchablePositions: [.relative(0.15), .relativeTop(0.75), .relativeTop(0.88)], headerContent: {
                     VStack(alignment: .leading){
                         HStack{
                             Spacer().frame(width: screenWidth * 0.02)
@@ -138,6 +143,17 @@ struct ProfileScreen: View {
                 .backgroundBlurMaterial(.system)
                 .enableAppleScrollBehavior()
                 .showDragIndicator(true)
+                .onDragEnded{_ in 
+                    if bottomSheetPosition == .relativeTop(0.75) || bottomSheetPosition == .relativeTop(0.88){
+                        expanded = true
+                        retracted = false
+                    } else {
+                        expanded = false
+                        retracted = false
+                    }
+                }
+//                .enableTapToDismiss(true)
+//                .showCloseButton(true)
 
     }
 }

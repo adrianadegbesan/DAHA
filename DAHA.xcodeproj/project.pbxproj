@@ -59,6 +59,8 @@
 		8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE6296BB945004001AE /* CustomInputField.swift */; };
 		8294FAE9296BCB76004001AE /* CreateAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */; };
 		82A21A4E299FD7490040BAA1 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 82A21A4D299FD7490040BAA1 /* BottomSheet */; };
+		82A21A5229A169700040BAA1 /* EditUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A5129A169700040BAA1 /* EditUsernameView.swift */; };
+		82A21A5429A17EA10040BAA1 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A5329A17EA10040BAA1 /* ChangePasswordView.swift */; };
 		82ACC67F2991738300589E1E /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC67E2991738300589E1E /* Shapes.swift */; };
 		82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6822992E20200589E1E /* ModalCapsule.swift */; };
 		82ACC68729936E3100589E1E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68629936E3100589E1E /* NextButton.swift */; };
@@ -75,8 +77,6 @@
 		82B6B2CD298A14DC00027E5A /* ConditionIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2CC298A14DC00027E5A /* ConditionIcon.swift */; };
 		82B6B2CF298A16BD00027E5A /* MakePostTextInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2CE298A16BD00027E5A /* MakePostTextInputs.swift */; };
 		82B6B2D3298A531300027E5A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2D2298A531300027E5A /* Date.swift */; };
-		82B6B2D5298AD21800027E5A /* PostViewPrev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2D4298AD21800027E5A /* PostViewPrev.swift */; };
-		82B6B2D7298AD29300027E5A /* CategoryViewPrev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2D6298AD29300027E5A /* CategoryViewPrev.swift */; };
 		82B6B2D9298ADAE700027E5A /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2D8298ADAE700027E5A /* ForgotPasswordScreen.swift */; };
 		82B6B2DB298AE00800027E5A /* PasswordResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2DA298AE00800027E5A /* PasswordResetButton.swift */; };
 		82B6B2DD298AE9BF00027E5A /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2DC298AE9BF00027E5A /* DeleteButton.swift */; };
@@ -177,6 +177,8 @@
 		8294FAAD296B9F64004001AE /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		8294FAE6296BB945004001AE /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
+		82A21A5129A169700040BAA1 /* EditUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUsernameView.swift; sourceTree = "<group>"; };
+		82A21A5329A17EA10040BAA1 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		82ACC67E2991738300589E1E /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		82ACC6822992E20200589E1E /* ModalCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCapsule.swift; sourceTree = "<group>"; };
 		82ACC68629936E3100589E1E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -193,8 +195,6 @@
 		82B6B2CC298A14DC00027E5A /* ConditionIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionIcon.swift; sourceTree = "<group>"; };
 		82B6B2CE298A16BD00027E5A /* MakePostTextInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostTextInputs.swift; sourceTree = "<group>"; };
 		82B6B2D2298A531300027E5A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		82B6B2D4298AD21800027E5A /* PostViewPrev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewPrev.swift; sourceTree = "<group>"; };
-		82B6B2D6298AD29300027E5A /* CategoryViewPrev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewPrev.swift; sourceTree = "<group>"; };
 		82B6B2D8298ADAE700027E5A /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
 		82B6B2DA298AE00800027E5A /* PasswordResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetButton.swift; sourceTree = "<group>"; };
 		82B6B2DC298AE9BF00027E5A /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
@@ -317,6 +317,8 @@
 				82218C11299C96580092BA94 /* TermsSettingsView.swift */,
 				82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */,
 				82218C17299C97820092BA94 /* NotificationsView.swift */,
+				82A21A5129A169700040BAA1 /* EditUsernameView.swift */,
+				82A21A5329A17EA10040BAA1 /* ChangePasswordView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -351,7 +353,6 @@
 			isa = PBXGroup;
 			children = (
 				823602042985ABF0002E7AEC /* PostView.swift */,
-				82B6B2D4298AD21800027E5A /* PostViewPrev.swift */,
 				82CEFC612969CE3700C55F67 /* PostModal.swift */,
 				82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */,
 				82CBC2AA2989BA79001966E3 /* PostModalComponents */,
@@ -404,7 +405,6 @@
 			isa = PBXGroup;
 			children = (
 				82360207298748CC002E7AEC /* CategoryView.swift */,
-				82B6B2D6298AD29300027E5A /* CategoryViewPrev.swift */,
 				82360209298748DF002E7AEC /* ReportButton.swift */,
 				8236020B298748E9002E7AEC /* BuyButton.swift */,
 				8236020D298791BE002E7AEC /* BookmarkButton.swift */,
@@ -741,6 +741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82CEFC502969CC5B00C55F67 /* DeviceDimensions.swift in Sources */,
+				82A21A5429A17EA10040BAA1 /* ChangePasswordView.swift in Sources */,
 				82CEFC812969CFCA00C55F67 /* PostButton.swift in Sources */,
 				82B6B2F2298C4F1500027E5A /* CameraButton.swift in Sources */,
 				8236020A298748DF002E7AEC /* ReportButton.swift in Sources */,
@@ -753,10 +754,10 @@
 				82218C30299F568D0092BA94 /* UserPostsView.swift in Sources */,
 				82ACC6902995CBED00589E1E /* ChooseTypeButton.swift in Sources */,
 				82CEFC542969CC9B00C55F67 /* LaunchScreen.swift in Sources */,
-				82B6B2D7298AD29300027E5A /* CategoryViewPrev.swift in Sources */,
 				82CEFC832969CFF400C55F67 /* DMButton.swift in Sources */,
 				82B6B2E9298B787E00027E5A /* CategoryModal.swift in Sources */,
 				82B6B2CF298A16BD00027E5A /* MakePostTextInputs.swift in Sources */,
+				82A21A5229A169700040BAA1 /* EditUsernameView.swift in Sources */,
 				82218C2D299F4E990092BA94 /* RequestsView.swift in Sources */,
 				82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */,
 				82B6B2FA298F394300027E5A /* CameraView.swift in Sources */,
@@ -810,7 +811,6 @@
 				82B6B2CD298A14DC00027E5A /* ConditionIcon.swift in Sources */,
 				82B6B2E4298B73E000027E5A /* ChooseCategoryButton.swift in Sources */,
 				82CEFC462969CBF000C55F67 /* Images.swift in Sources */,
-				82B6B2D5298AD21800027E5A /* PostViewPrev.swift in Sources */,
 				82ACC69B2996BF9800589E1E /* SearchCategoryIcon.swift in Sources */,
 				82ACC68929936E4300589E1E /* PostConfirmationScreen.swift in Sources */,
 				82B6B2F8298F27A100027E5A /* Camera.swift in Sources */,

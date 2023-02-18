@@ -9,10 +9,18 @@ import SwiftUI
 
 struct DarkModeSetting: View {
     @AppStorage("isDarkMode") private var isDarkMode = "System"
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading){
             HStack{
+                HStack{
+                    Text(Image(systemName: "moon"))
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                    Spacer()
+                }
+                .frame(width: screenWidth * 0.1)
+                
                 Text("Dark Mode")
                 Spacer()
                 Picker("Mode", selection: $isDarkMode){
@@ -22,7 +30,7 @@ struct DarkModeSetting: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
             }
-            Divider()
+//            Divider()
         }
     }
 }

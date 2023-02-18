@@ -17,6 +17,7 @@ struct DeleteUserView: View {
     @AppStorage("id") var user_id = ""
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     
+    @State private var firstPresented = false
     @State private var isPresented = false
     @State private var error_alert = false
     @Environment(\.colorScheme) var colorScheme
@@ -37,10 +38,11 @@ struct DeleteUserView: View {
                     Text("Ctrl-Alt-Delete-Account")
                         .foregroundColor(.red)
                 }
-                Divider()
+//                Divider()
             }
            
         }
+        //firstAlert
         .alert("Delete Account", isPresented: $isPresented, actions: {
             Button("Delete", role: .destructive, action: {
                 Task {

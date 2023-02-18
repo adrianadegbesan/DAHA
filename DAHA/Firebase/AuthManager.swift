@@ -14,6 +14,7 @@ import FirebaseFirestoreSwift
 class AuthManager: ObservableObject {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @AppStorage("university") var university: String = ""
+    @AppStorage("username") var username_system: String = ""
     @AppStorage("accountcreated") var isAccountCreated: Bool = false
     @AppStorage("id") var user_id = ""
     @Published var userSession: FirebaseAuth.User?
@@ -128,6 +129,48 @@ class AuthManager: ObservableObject {
             }
         }
         return success
+    }
+    
+    func editUsername(newUsername : Binding<String>, error_message: Binding<String>) async -> Bool {
+       
+        
+        if newUsername.wrappedValue.replacingOccurrences(of: " ", with: "") == "" {
+            error_message.wrappedValue = "Please enter a new username"
+            return false
+        } else if (newUsername.wrappedValue.replacingOccurrences(of: " ", with: "").count < 5){
+            error_message.wrappedValue = "Username length cannot be less than 5 characters"
+            return false
+        } else if (newUsername.wrappedValue.replacingOccurrences(of: " ", with: "").count > 9){
+            error_message.wrappedValue = "Username length cannot be greater than 9 characters"
+            return false
+        }
+        
+        let cur_id = Auth.auth().currentUser?.uid
+        var not_found = false
+        
+        let newUsername_temp = newUsername.wrappedValue.replacingOccurrences(of: " ", with: "").lowercased()
+        
+        if cur_id != nil {
+            let userRef = db.collection("Users").document(cur_id!)
+            do {
+                let snapshot = try await db.collection("Users").whereField("username", isEqualTo: newUsername_temp).getDocuments()
+                not_found = snapshot.isEmpty
+                if not_found {
+                    try await userRef.updateData(["username" : newUsername_temp])
+                    return true
+                    
+                } else {
+                    error_message.wrappedValue = "Username is already is use"
+                    return false
+                }
+               
+            }
+            catch {
+                error_message.wrappedValue = "Unable to update username, please try again later."
+                return false
+            }
+        }
+        return true
     }
     
     func sendPasswordReset(email: String, error_alert: Binding<Bool>, success_alert: Binding<Bool>){
