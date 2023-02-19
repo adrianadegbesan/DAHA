@@ -24,25 +24,14 @@ struct MakePostButton: View {
                 MediumFeedback()
                 uploading = true
                 Task {
-                    try await Task.sleep(nanoseconds: 0_500_000_000)
+                    try await Task.sleep(nanoseconds: 0_200_000_000)
                     await firestoreManager.makePost(post: post, images: images, post_created: $post_created) { error in
                         if error != nil{
                             error_alert = true
                             print(error!.localizedDescription)
                         }
                     }
-                   
-//                    if post.type == "Listing"{
-//                        await firestoreManager.getListings()
-//                    } else if post.type == "Request"{
-//                        await firestoreManager.getRequests()
-//                    }
-                    
                     uploading = false
-                    
-//                    if post_temp {
-//                        post_created = true
-//                    }
                 }
             }
             

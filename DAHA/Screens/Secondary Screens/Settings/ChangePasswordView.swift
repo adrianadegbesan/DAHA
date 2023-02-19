@@ -16,10 +16,9 @@ struct ChangePasswordView: View {
     @State private var error_message : String = ""
     @State private var error_alert: Bool = false
     @State private var success_alert: Bool = false
+    @EnvironmentObject var authentication : AuthManager
    
     var body: some View {
-        
-        
         
         Button(action: {
             
@@ -41,12 +40,21 @@ struct ChangePasswordView: View {
             }
         }
         .alert("Change Password", isPresented: $isPresented, actions: {
-            TextField("Current Password", text: $password)
+            SecureField("Current Password", text: $password)
                 .foregroundColor(Color(hex: deepBlue))
-            TextField("New Password", text: $newPassword)
+            SecureField("New Password", text: $newPassword)
                 .foregroundColor(Color(hex: deepBlue))
             
             Button("Change", action: {
+                
+                Task {
+                    let success = await authentication.changePassword(password: $password, newPassword: $newPassword, error_message: $error_message)
+                    if success{
+                        success_alert = true
+                    } else {
+                        error_alert = true
+                    }
+                }
                 
             })
             Button("Cancel", role: .cancel, action: {})

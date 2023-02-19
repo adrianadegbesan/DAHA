@@ -15,6 +15,7 @@ class AuthManager: ObservableObject {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
+    @AppStorage("email") var email_system: String = ""
     @AppStorage("accountcreated") var isAccountCreated: Bool = false
     @AppStorage("id") var user_id = ""
     @Published var userSession: FirebaseAuth.User?
@@ -96,10 +97,21 @@ class AuthManager: ObservableObject {
             error_message.wrappedValue = "Account is disabled"
             return false
         }
-        catch {
-            
+        catch AuthErrorCode.wrongPassword {
             error_alert.wrappedValue = true
             error_message.wrappedValue = "Invalid Email or Password"
+            return false
+        }
+        
+        catch AuthErrorCode.invalidEmail{
+            error_alert.wrappedValue = true
+            error_message.wrappedValue = "Invalid Email or Password"
+            return false
+        }
+        
+        catch {
+            error_alert.wrappedValue = true
+            error_message.wrappedValue = "Please check your network connection and try again later"
             print(error.localizedDescription)
             return false
         }
@@ -173,6 +185,29 @@ class AuthManager: ObservableObject {
         return true
     }
     
+    func changePassword(password: Binding<String>, newPassword: Binding<String>, error_message: Binding<String>) async -> Bool{
+        let authenticated = await reauthenticate(password: password, error_message: error_message)
+        if !authenticated{
+            return false
+        } else {
+            let user = Auth.auth().currentUser
+            if user != nil {
+                do {
+                    try await user?.updatePassword(to: newPassword.wrappedValue)
+                    return true
+                }
+                catch {
+                    error_message.wrappedValue = "Please check your network connection and try again later"
+                    return false
+                }
+            } else {
+                error_message.wrappedValue = "Please check your network connection and try again later"
+                return false
+            }
+        }
+        return true
+    }
+    
     func sendPasswordReset(email: String, error_alert: Binding<Bool>, success_alert: Binding<Bool>){
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil{
@@ -195,6 +230,31 @@ class AuthManager: ObservableObject {
         }
         catch {
             print("Unable to send terms agreement to database")
+        }
+    }
+    
+    func reauthenticate(password: Binding<String>, error_message: Binding<String>) async -> Bool {
+        
+        let user = Auth.auth().currentUser
+        let credential: AuthCredential = EmailAuthProvider.credential(withEmail: email_system, password: password.wrappedValue)
+        
+        if user != nil{
+            do {
+                try await user?.reauthenticate(with: credential)
+                return true
+            }
+            catch AuthErrorCode.wrongPassword {
+                error_message.wrappedValue = "Incorrect password, please try again"
+                return false
+            }
+            catch {
+                error_message.wrappedValue = "Please check your network connection and try again later"
+                return false
+            }
+            
+        } else {
+            error_message.wrappedValue = "Please check your network connection and try again later"
+            return false
         }
     }
 }

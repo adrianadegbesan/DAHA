@@ -20,12 +20,15 @@ struct DeleteUserView: View {
     @State private var firstPresented = false
     @State private var isPresented = false
     @State private var error_alert = false
+    @State private var error_message = ""
+    @State private var password = ""
+    
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var authentication : AuthManager
     
     var body: some View {
         Button(action: {
-            isPresented = true
+            firstPresented = true
         }){
             VStack(alignment: .leading){
                 HStack {
@@ -42,7 +45,22 @@ struct DeleteUserView: View {
             }
            
         }
-        //firstAlert
+        .alert("Enter Password", isPresented: $firstPresented, actions: {
+            SecureField("Password", text: $password)
+                .foregroundColor(Color(hex: deepBlue))
+            Button("Continue", action: {
+                Task {
+                    let success = await authentication.reauthenticate(password: $password, error_message: $error_message)
+                    if success {
+                         isPresented = true
+                    } else {
+                        error_alert = true
+                    }
+                }
+            })
+            Button("Cancel", role: .cancel, action: {})
+        }, message: {Text("Please enter your password to continue")})
+        
         .alert("Delete Account", isPresented: $isPresented, actions: {
             Button("Delete", role: .destructive, action: {
                 Task {
@@ -57,12 +75,13 @@ struct DeleteUserView: View {
                         user_id = ""
                         isDarkMode = "System"
                     } else {
+                        error_message = "Please check your network connection and try again later"
                         error_alert = true
                     }
                 }
             })
         }, message: { Text("Are you sure you want to delete your account? This action cannot be reversed.")})
-        .alert("Error Deleting Account", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
+        .alert("Error Deleting Account", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
     }
 }
 

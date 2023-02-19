@@ -41,7 +41,7 @@ struct PostScrollView: View {
                         }
                         if !loading {
                             ZStack {
-                                VStack {
+                                LazyVStack {
                                     Image(systemName: "magnifyingglass")
                                         .font(.system(size: 95, weight: .bold))
                                         .foregroundColor(Color(hex: deepBlue))
@@ -67,128 +67,133 @@ struct PostScrollView: View {
                         
                         Spacer().frame(height: 12)
                         
-                        ForEach(posts) { post in
-                            
-                            ZStack{
-                                if post.userID == Auth.auth().currentUser?.uid {
-                                    
-                                    if post.id == posts.last!.id {
-//                                        GeometryReader{ g in
-                                        PostView(post: post, owner: true, preview: false)
-                                                .padding(.bottom, 10)
-                                                .padding(.leading, 5)
-                                                .onAppear{
-                                                    self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
-                                                }
-                                                .onReceive(self.time) { (_) in
-                                                    if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
-                                                        if screen == "Search" {
-                                                            print("updating")
-                                                            Task {
-                                                                await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
-                                                            }
-                                                        }
-                                                        else if screen == "Listings"{
-                                                            Task {
-                                                                await firestoreManager.updateListings()
-                                                            }
-                                                        }
-
-                                                        else if screen == "Requests" {
-                                                            Task {
-                                                                await firestoreManager.updateRequests()
-                                                            }
-                                                        }
-
-                                                        else if screen == "Saved" {
-                                                            Task {
-                                                                await firestoreManager.updateSaved()
-                                                            }
-                                                        }
-
-                                                        else if screen == "User" {
-                                                            Task {
-                                                                await firestoreManager.updateUserPosts()
-                                                            }
-                                                        }
-                                                        
-                                                        
-//                                                        print("Updating data")
-                                                        
-                                                        self.time.upstream.connect().cancel()
-                                                    } //UPDATE FUNCTIONS
-                                                    
-                                                } //ONRECEIVE
-//                                          }  //GEOMETRY READER
-//                                        .frame(height: 65)
-                                    } else {
-                                        PostView(post: post, owner: true, preview: false)
-                                            .padding(.leading, 5)
-                                            .padding(.bottom, 10)
-                                    } //NOT LAST
-                                  
-                                } /*USER POST*/else {
-                                    if post.id == posts.last!.id  {
-//                                        GeometryReader{ g in
-                                        PostView(post: post, owner: false, preview: false)
-                                                .padding(.leading, 5)
-                                                .padding(.bottom, 10)
-                                                .onAppear{
-                                                    self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
-                                                }
-                                                .onReceive(self.time) { (_) in
-                                                    if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
-                                                        if screen == "Listings"{
-                                                            Task {
-                                                                await firestoreManager.updateListings()
-                                                            }
-                                                        }
-
-                                                        if screen == "Requests" {
-                                                            Task {
-                                                                await firestoreManager.updateRequests()
-                                                            }
-                                                        }
-
-                                                        if screen == "Saved" {
-                                                            Task {
-                                                                await firestoreManager.updateSaved()
-                                                            }
-                                                        }
-
-                                                        if screen == "User" {
-                                                            Task {
-                                                                await firestoreManager.updateUserPosts()
-                                                            }
-                                                        }
-                                                        
-                                                        if screen == "Search"{
-                                                            Task {
-                                                                await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
-                                                            }
-                                                        }
-                                                        
-                                                        print("Updating data")
-                                                        
-                                                        self.time.upstream.connect().cancel()
-                                                    } //UPDATE FUNCTIONS
-                                                    
-                                                } //ONRECEIVE
-//                                          } //GEOMETRY READER
-//                                        .frame(height: 65)
-                                    } else {
-                                        PostView(post: post, owner: false, preview: false)
-                                            .padding(.leading, 5)
-                                            .padding(.bottom, 10)
-                                    }
-                                    
-                                 
-                                } //NOT USER POST
+                        LazyVStack{
+                            ForEach(posts) { post in
                                 
-                            } //ZSTACK
+                                ZStack{
+                                    if post.userID == Auth.auth().currentUser?.uid {
+                                        
+                                        if post.id == posts.last!.id {
+    //                                        GeometryReader{ g in
+                                            PostView(post: post, owner: true, preview: false)
+                                                    .padding(.bottom, 10)
+                                                    .padding(.leading, 5)
+                                                    .onAppear{
+                                                        self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
+                                                    }
+                                                    .onReceive(self.time) { (_) in
+                                                        if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
+                                                            if screen == "Search" {
+                                                                print("updating")
+                                                                Task {
+                                                                    await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
+                                                                }
+                                                            }
+                                                            else if screen == "Listings"{
+                                                                Task {
+                                                                    await firestoreManager.updateListings()
+                                                                }
+                                                            }
 
+                                                            else if screen == "Requests" {
+                                                                Task {
+                                                                    await firestoreManager.updateRequests()
+                                                                }
+                                                            }
+
+                                                            else if screen == "Saved" {
+                                                                Task {
+                                                                    await firestoreManager.updateSaved()
+                                                                }
+                                                            }
+
+                                                            else if screen == "User" {
+                                                                Task {
+                                                                    await firestoreManager.updateUserPosts()
+                                                                }
+                                                            }
+                                                            
+                                                            
+    //                                                        print("Updating data")
+                                                            
+                                                            self.time.upstream.connect().cancel()
+                                                        } //UPDATE FUNCTIONS
+                                                        
+                                                    } //ONRECEIVE
+    //                                          }  //GEOMETRY READER
+    //                                        .frame(height: 65)
+                                        } else {
+                                            PostView(post: post, owner: true, preview: false)
+                                                .padding(.leading, 5)
+                                                .padding(.bottom, 10)
+                                        } //NOT LAST
+                                      
+                                    } /*USER POST*/else {
+                                        if post.id == posts.last!.id  {
+    //                                        GeometryReader{ g in
+                                            PostView(post: post, owner: false, preview: false)
+                                                    .padding(.leading, 5)
+                                                    .padding(.bottom, 10)
+                                                    .onAppear{
+                                                        self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
+                                                    }
+                                                    .onReceive(self.time) { (_) in
+                                                        if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
+                                                            if screen == "Listings"{
+                                                                Task {
+                                                                    await firestoreManager.updateListings()
+                                                                }
+                                                            }
+
+                                                            if screen == "Requests" {
+                                                                Task {
+                                                                    await firestoreManager.updateRequests()
+                                                                }
+                                                            }
+
+                                                            if screen == "Saved" {
+                                                                Task {
+                                                                    await firestoreManager.updateSaved()
+                                                                }
+                                                            }
+
+                                                            if screen == "User" {
+                                                                Task {
+                                                                    await firestoreManager.updateUserPosts()
+                                                                }
+                                                            }
+                                                            
+                                                            if screen == "Search"{
+                                                                Task {
+                                                                    await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
+                                                                }
+                                                            }
+                                                            
+                                                            print("Updating data")
+                                                            
+                                                            self.time.upstream.connect().cancel()
+                                                        } //UPDATE FUNCTIONS
+                                                        
+                                                    } //ONRECEIVE
+    //                                          } //GEOMETRY READER
+    //                                        .frame(height: 65)
+                                        } else {
+                                            PostView(post: post, owner: false, preview: false)
+                                                .padding(.leading, 5)
+                                                .padding(.bottom, 10)
+                                        }
+                                        
+                                     
+                                    } //NOT USER POST
+                                    
+                                } //ZSTACK
+
+                           
+                            } //FOREACHLOOP
+                            
+                        } //: LAZY VSTACK
+                        
                        
-                        } //FOREACHLOOP
                         
                     } //POSTS NOT EMPTY
                     
