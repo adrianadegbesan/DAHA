@@ -197,6 +197,7 @@ class AuthManager: ObservableObject {
                     return true
                 }
                 catch {
+                    print("The error is \(error.localizedDescription)")
                     error_message.wrappedValue = "Please check your network connection and try again later"
                     return false
                 }
@@ -248,6 +249,7 @@ class AuthManager: ObservableObject {
                 return false
             }
             catch {
+                print("The error is \(error.localizedDescription)")
                 error_message.wrappedValue = "Please check your network connection and try again later"
                 return false
             }

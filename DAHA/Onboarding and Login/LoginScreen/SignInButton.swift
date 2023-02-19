@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct SignInButton: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
@@ -24,6 +25,7 @@ struct SignInButton: View {
     @EnvironmentObject var authentication: AuthManager
     @AppStorage("username") var username_system: String = ""
     @AppStorage("university") var university: String = ""
+    @AppStorage("email") var email_system: String = ""
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         Button(action: {
@@ -36,6 +38,9 @@ struct SignInButton: View {
                         username_system = username_temp
                         university = university_temp
                         agreedToTerms = terms_temp
+                        if Auth.auth().currentUser != nil{
+                            email_system = Auth.auth().currentUser!.email!
+                        }
                         uploading = false
                         isOnboardingViewActive = false
                         isSignedIn = true
