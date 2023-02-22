@@ -52,11 +52,12 @@ struct TermsConditionsScreen: View {
             Button(action: {
                 if toggle {
                     LightFeedback()
-                    agreedToTerms = true
+//                    agreedToTerms = true
                     Task{
                         await authentication.hasAgreedToTerms()
                     }
-                    shouldNavigate = true
+                    agreedToTerms = true
+//                    shouldNavigate = true
                 } 
             }){
                 ZStack {
@@ -79,9 +80,9 @@ struct TermsConditionsScreen: View {
                 .padding(.bottom, 60)
             }
             
-            NavigationLink(destination: MainScreen().navigationBarHidden(true), isActive: $shouldNavigate){
-                EmptyView()
-            }
+//            NavigationLink(destination: MainScreen().navigationBarHidden(true), isActive: $shouldNavigate){
+//                EmptyView()
+//            }
         }
     }
 }

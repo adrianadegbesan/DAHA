@@ -61,6 +61,10 @@
 		82A21A4E299FD7490040BAA1 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 82A21A4D299FD7490040BAA1 /* BottomSheet */; };
 		82A21A5229A169700040BAA1 /* EditUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A5129A169700040BAA1 /* EditUsernameView.swift */; };
 		82A21A5429A17EA10040BAA1 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A5329A17EA10040BAA1 /* ChangePasswordView.swift */; };
+		82A21A5729A452BB0040BAA1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 82A21A5629A452BB0040BAA1 /* Lottie */; };
+		82A21A5929A458C70040BAA1 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A5829A458C70040BAA1 /* LottieView.swift */; };
+		82A21A5C29A67A2C0040BAA1 /* yarn-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A5B29A67A2C0040BAA1 /* yarn-loading.json */; };
+		82A21A5E29A67F500040BAA1 /* shopping-cart.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A5D29A67F500040BAA1 /* shopping-cart.json */; };
 		82ACC67F2991738300589E1E /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC67E2991738300589E1E /* Shapes.swift */; };
 		82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6822992E20200589E1E /* ModalCapsule.swift */; };
 		82ACC68729936E3100589E1E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68629936E3100589E1E /* NextButton.swift */; };
@@ -179,6 +183,9 @@
 		8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountScreen.swift; sourceTree = "<group>"; };
 		82A21A5129A169700040BAA1 /* EditUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUsernameView.swift; sourceTree = "<group>"; };
 		82A21A5329A17EA10040BAA1 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		82A21A5829A458C70040BAA1 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		82A21A5B29A67A2C0040BAA1 /* yarn-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "yarn-loading.json"; sourceTree = "<group>"; };
+		82A21A5D29A67F500040BAA1 /* shopping-cart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "shopping-cart.json"; sourceTree = "<group>"; };
 		82ACC67E2991738300589E1E /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		82ACC6822992E20200589E1E /* ModalCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCapsule.swift; sourceTree = "<group>"; };
 		82ACC68629936E3100589E1E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -283,6 +290,7 @@
 				82E75AC6297E35F600742F18 /* PostmarkSwift in Frameworks */,
 				82218C22299CD0180092BA94 /* RefreshableScrollView in Frameworks */,
 				8236CFF1296D34210086AB15 /* FirebaseFunctions in Frameworks */,
+				82A21A5729A452BB0040BAA1 /* Lottie in Frameworks */,
 				8236CFE5296D34210086AB15 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				8236CFF5296D34210086AB15 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				82A21A4E299FD7490040BAA1 /* BottomSheet in Frameworks */,
@@ -358,6 +366,15 @@
 				82CBC2AA2989BA79001966E3 /* PostModalComponents */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		82A21A5A29A677080040BAA1 /* Lottie Files */ = {
+			isa = PBXGroup;
+			children = (
+				82A21A5D29A67F500040BAA1 /* shopping-cart.json */,
+				82A21A5B29A67A2C0040BAA1 /* yarn-loading.json */,
+			);
+			path = "Lottie Files";
 			sourceTree = "<group>";
 		};
 		82B6B2BC2989EC9700027E5A /* MakePostModalComponents */ = {
@@ -504,6 +521,7 @@
 				82CEFC312969CB2C00C55F67 /* DAHAApp.swift */,
 				82CEFC532969CC9B00C55F67 /* LaunchScreen.swift */,
 				82CEFC332969CB2C00C55F67 /* ContentView.swift */,
+				82A21A5A29A677080040BAA1 /* Lottie Files */,
 				82B6B2EA298C3BB300027E5A /* Network */,
 				82D2D0E0296CAD4E00CB4B9A /* Firebase */,
 				82CEFC3F2969CB9500C55F67 /* Helpers */,
@@ -544,6 +562,7 @@
 				82ACC67E2991738300589E1E /* Shapes.swift */,
 				82218C00299C66BA0092BA94 /* Email.swift */,
 				82218C02299C67110092BA94 /* EmailClass.swift */,
+				82A21A5829A458C70040BAA1 /* LottieView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -677,6 +696,7 @@
 				82218BFC299ACC110092BA94 /* SDWebImageSwiftUI */,
 				82218C21299CD0180092BA94 /* RefreshableScrollView */,
 				82A21A4D299FD7490040BAA1 /* BottomSheet */,
+				82A21A5629A452BB0040BAA1 /* Lottie */,
 			);
 			productName = DAHA;
 			productReference = 82CEFC2E2969CB2C00C55F67 /* DAHA.app */;
@@ -712,6 +732,7 @@
 				82218BFB299ACC110092BA94 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				82218C20299CD0180092BA94 /* XCRemoteSwiftPackageReference "RefreshableScrollView" */,
 				82A21A4C299FD7490040BAA1 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				82A21A5529A452BA0040BAA1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 82CEFC2F2969CB2C00C55F67 /* Products */;
 			projectDirPath = "";
@@ -727,8 +748,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A21A5E29A67F500040BAA1 /* shopping-cart.json in Resources */,
 				82CEFC392969CB2D00C55F67 /* Preview Assets.xcassets in Resources */,
 				82CEFC362969CB2D00C55F67 /* Assets.xcassets in Resources */,
+				82A21A5C29A67A2C0040BAA1 /* yarn-loading.json in Resources */,
 				82DF4CB329775B5300A309CF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -779,6 +802,7 @@
 				82E75AC3297E321600742F18 /* Email API.swift in Sources */,
 				82B6B2FC298F3C8300027E5A /* CustomCameraView.swift in Sources */,
 				82218C16299C970C0092BA94 /* TermsSettingsScreen.swift in Sources */,
+				82A21A5929A458C70040BAA1 /* LottieView.swift in Sources */,
 				82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */,
 				82B6B2EC298C3BD300027E5A /* Network.swift in Sources */,
 				82B6B2F4298C514400027E5A /* ImagePreview.swift in Sources */,
@@ -1101,6 +1125,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		82A21A5529A452BA0040BAA1 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		82E75AC4297E35F600742F18 /* XCRemoteSwiftPackageReference "postmark-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aronbudinszky/postmark-swift.git";
@@ -1201,6 +1233,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 82A21A4C299FD7490040BAA1 /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
+		};
+		82A21A5629A452BB0040BAA1 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82A21A5529A452BA0040BAA1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		82E75AC5297E35F600742F18 /* PostmarkSwift */ = {
 			isa = XCSwiftPackageProductDependency;

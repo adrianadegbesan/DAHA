@@ -13,6 +13,8 @@ import FirebaseFirestoreSwift
 
 class AuthManager: ObservableObject {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    @AppStorage("signedin") var isSignedIn: Bool = false
+    @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
@@ -33,6 +35,8 @@ class AuthManager: ObservableObject {
         
         if (self.userSession == nil) {
             isOnboardingViewActive = true
+            isSignedIn = false
+            agreedToTerms = false
         }
     }
     
@@ -206,7 +210,6 @@ class AuthManager: ObservableObject {
                 return false
             }
         }
-        return true
     }
     
     func sendPasswordReset(email: String, error_alert: Binding<Bool>, success_alert: Binding<Bool>){

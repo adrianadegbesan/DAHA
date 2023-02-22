@@ -44,6 +44,8 @@ struct MainScreen: View {
         .onAppear{
             let appearance: UITabBarAppearance = UITabBarAppearance()
             UITabBar.appearance().scrollEdgeAppearance = appearance
+            UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color(hex: deepBlue))
+            UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color(hex: "D1D0CE"))
         }
         .animation(.easeIn(duration: 0.5), value: tabSelection)
         .accentColor(Color(hex: "0703d0"))

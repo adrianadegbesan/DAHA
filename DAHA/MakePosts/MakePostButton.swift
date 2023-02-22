@@ -22,7 +22,9 @@ struct MakePostButton: View {
         Button(action:{
             if !(uploading || post_created){
                 MediumFeedback()
-                uploading = true
+                withAnimation{
+                    uploading = true
+                }
                 Task {
                     try await Task.sleep(nanoseconds: 0_200_000_000)
                     await firestoreManager.makePost(post: post, images: images, post_created: $post_created) { error in
@@ -31,7 +33,9 @@ struct MakePostButton: View {
                             print(error!.localizedDescription)
                         }
                     }
-                    uploading = false
+                    withAnimation{
+                        uploading = false
+                    }
                 }
             }
             

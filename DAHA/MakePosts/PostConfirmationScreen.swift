@@ -22,9 +22,14 @@ struct PostConfirmationScreen: View {
     
     var body: some View {
         ZStack {
-            ProgressView()
-                .opacity(progressOpacity)
-                .scaleEffect(2.5)
+            
+            if uploading{
+                LottieView(name: "yarn-loading")
+                    .zIndex(1)
+            }
+//            ProgressView()
+//                .opacity(progressOpacity)
+//                .scaleEffect(2.5)
             VStack{
                 Spacer()
                 
@@ -40,9 +45,6 @@ struct PostConfirmationScreen: View {
                 
                     .padding()
                 
-                NavigationLink(destination: MainScreen().navigationBarBackButtonHidden(true), isActive: $shouldNavigate){
-                    EmptyView()
-                }
                     Text("Violations of any of these rules may result in a permanent suspension of your account")
                         .font(
                             .system(size:14, weight: .heavy)
@@ -69,11 +71,15 @@ struct PostConfirmationScreen: View {
             .opacity(screenOpacity)
         }.onChange(of: uploading) { value in
             if uploading {
-                screenOpacity = 0.5
-                progressOpacity = 1
+                withAnimation{
+                    screenOpacity = 0.5
+                    progressOpacity = 1
+                }
             } else if !uploading {
-                screenOpacity = 1
-                progressOpacity = 0
+                withAnimation{
+                    screenOpacity = 1
+                    progressOpacity = 0
+                }
             }
         }
     }

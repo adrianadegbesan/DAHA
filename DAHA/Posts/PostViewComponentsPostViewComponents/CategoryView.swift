@@ -44,9 +44,9 @@ struct CategoryView: View {
             
             Spacer()
             
-            if !owner && !preview{
-                ReportButton(post: post, reported: $reported)
-            }
+//            if !owner && !preview{
+//                ReportButton(post: post, reported: $reported)
+//            }
         }
     }
 }

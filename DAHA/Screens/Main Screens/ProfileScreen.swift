@@ -53,7 +53,6 @@ struct ProfileScreen: View {
                     Spacer()
                     VStack(spacing: 10){
                         (Text(Image(systemName: "bookmark.fill")) +  Text(" SAVED"))
-//                        (Text(Image(systemName: "figure.stand.line.dotted.figure.stand")) +  Text(" REQUESTS"))
                             .font(.headline.weight(.black))
                         .foregroundColor(second ? Color(hex: deepBlue) : .primary)
                         Divider()
@@ -73,7 +72,9 @@ struct ProfileScreen: View {
                 
                 TabView(selection: $tabIndex){
                     UserPostsView().tag(0)
+                        .frame(width: screenWidth)
                     SavedPostsView().tag(1)
+                        .frame(width: screenWidth)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .animation(.easeIn(duration: 0.2), value: tabIndex)
@@ -138,11 +139,11 @@ struct ProfileScreen: View {
                 }){
                     DMScreen()
                 }
-                .showDragIndicator(false)
+                .showDragIndicator(true)
                 .enableContentDrag()
                 .backgroundBlurMaterial(.system)
-                .enableAppleScrollBehavior()
-                .showDragIndicator(true)
+//                .enableAppleScrollBehavior()
+//                .showDragIndicator(true)
                 .onDragEnded{_ in 
                     if bottomSheetPosition == .relativeTop(0.75) || bottomSheetPosition == .relativeTop(0.88){
                         expanded = true

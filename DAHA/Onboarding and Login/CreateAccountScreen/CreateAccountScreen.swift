@@ -79,11 +79,15 @@ struct CreateAccountScreen: View {
             }
             .onChange(of: uploading) { value in
                 if uploading {
-                    screenOpacity = 0.5
-                    progressOpacity = 1.0
+                    withAnimation{
+                        screenOpacity = 0.5
+                        progressOpacity = 1.0
+                    }
                 } else if !uploading {
-                    screenOpacity = 1.0
-                    progressOpacity = 0.0
+                    withAnimation{
+                        screenOpacity = 1.0
+                        progressOpacity = 0.0
+                    }
                 }
             }
             .alert("Error Creating Account", isPresented: $error, actions: {}, message: {Text(error_message)} )

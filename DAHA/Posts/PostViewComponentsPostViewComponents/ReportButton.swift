@@ -13,7 +13,7 @@ struct ReportButton: View {
     
     var body: some View {
         Image(systemName: "flag")
-            .font(.system(size: 20, weight: .bold))
+            .font(.system(size: 22, weight: .bold))
             .onTapGesture {
                 //Report Action (2 Alerts)
             }

@@ -77,7 +77,7 @@ struct PostScrollView: View {
     //                                        GeometryReader{ g in
                                             PostView(post: post, owner: true, preview: false)
                                                     .padding(.bottom, 10)
-                                                    .padding(.leading, 5)
+                                                    .padding(.leading, 3)
                                                     .onAppear{
                                                         self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
                                                     }
@@ -124,7 +124,7 @@ struct PostScrollView: View {
     //                                        .frame(height: 65)
                                         } else {
                                             PostView(post: post, owner: true, preview: false)
-                                                .padding(.leading, 5)
+                                                .padding(.leading, 3)
                                                 .padding(.bottom, 10)
                                         } //NOT LAST
                                       
@@ -132,7 +132,7 @@ struct PostScrollView: View {
                                         if post.id == posts.last!.id  {
     //                                        GeometryReader{ g in
                                             PostView(post: post, owner: false, preview: false)
-                                                    .padding(.leading, 5)
+                                                    .padding(.leading, 3)
                                                     .padding(.bottom, 10)
                                                     .onAppear{
                                                         self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
@@ -179,7 +179,7 @@ struct PostScrollView: View {
     //                                        .frame(height: 65)
                                         } else {
                                             PostView(post: post, owner: false, preview: false)
-                                                .padding(.leading, 5)
+                                                .padding(.leading, 3)
                                                 .padding(.bottom, 10)
                                         }
                                         
@@ -239,7 +239,7 @@ struct PostScrollView: View {
                         if firestoreManager.requests_refresh {
                             firestoreManager.requests_refresh = false
                             Task {
-                              await firestoreManager.getListings()
+                              await firestoreManager.getRequests()
                                 }
                             }
                     }
