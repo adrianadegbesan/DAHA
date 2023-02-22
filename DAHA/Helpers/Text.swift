@@ -59,18 +59,36 @@ func isValidEmailAddress(emailAddressString: String) -> Bool {
 }
 
 func getDomain(email: String) -> String{
-    var temp_email = email
+    let temp_email = email
     
     if (temp_email == ""){
         return ""
     }
     let index = temp_email.firstIndex(of: "@")
     
-    let substring = temp_email.suffix(from: index ?? temp_email.startIndex)
-    temp_email = String(substring)
+    let domain = temp_email.suffix(from: index ?? temp_email.startIndex)
     
-    return temp_email
+    let components = domain.split(separator: ".")
+    
+    if components.count >= 2 {
+        let lastComponent = components.last!
+        let secondLastComponent = components[components.count - 2]
+        let tld = secondLastComponent + "." + lastComponent
+        var result = String(tld)
+        if result.first == "@"{
+            result = String(result.dropFirst())
+        }
+        return result
+    } else {
+        return String(components.last ?? "")
+    }
 }
+    
+//    let substring = temp_email.suffix(from: index ?? temp_email.startIndex)
+//    temp_email = String(substring)
+//
+//    return temp_email
+//}
 
 extension String {
     func generateStringSequence() -> [String] {

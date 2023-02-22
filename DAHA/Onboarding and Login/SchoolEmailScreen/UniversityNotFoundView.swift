@@ -23,7 +23,7 @@ struct UniversityNotFoundView: View {
                 .font(.system(size: 21, weight: .bold))
             
             GroupBox {
-                Text("DAHA is not available \(domain). \nIf you think this is a mistake, please check that you have entered your correct .edu email.")
+                Text("DAHA is not available @\(domain). \nIf you think this is a mistake, please check that you have entered your correct .edu email.")
                     .foregroundColor(Color.init(hex: darkGrey))
                     .font(.system(size: 15, weight: .semibold))
             }

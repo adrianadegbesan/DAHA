@@ -11,6 +11,7 @@ struct SettingsScreen: View {
     
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     @State var shouldNavigateTerms = false
+    @State var shouldNavigatePrivacy = false
     
     var body: some View {
         
@@ -21,6 +22,7 @@ struct SettingsScreen: View {
                 ChangePasswordView()
                 NotificationsView()
                 TermsSettingsView(shouldNavigate: $shouldNavigateTerms)
+                PrivacyPolicyView(shouldNavigate: $shouldNavigatePrivacy)
                 EmailSettingsView()
                 LogOutView()
                 DeleteUserView()
@@ -30,6 +32,12 @@ struct SettingsScreen: View {
             NavigationLink(destination: TermsSettingsScreen(), isActive: $shouldNavigateTerms){
                 EmptyView()
             }
+            
+            NavigationLink(destination: PrivacySettingsScreen(), isActive: $shouldNavigatePrivacy){
+                EmptyView()
+            }
+            
+            
            
            
         }
