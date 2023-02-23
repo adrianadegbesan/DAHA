@@ -13,7 +13,8 @@ struct MakePostScreen: View {
     
     @State var images: [UIImage] = []
     @State var post_created: Bool = false
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+//    @Environment(\.dismiss) var dismiss
     @State var category: String = ""
     @State var type: String = ""
 //    @State var post_alert: Bool = false
@@ -54,7 +55,7 @@ struct MakePostScreen: View {
             }
             .onChange(of: post_created) { value in
                 if post_created {
-                    dismiss()
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
             .onAppear{

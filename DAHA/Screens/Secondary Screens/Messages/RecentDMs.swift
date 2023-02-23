@@ -13,6 +13,7 @@ struct RecentDMs: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
+            Spacer().frame(height: screenHeight * 0.02)
             ScrollView{
                 VStack(spacing: 0){
                     ForEach(1..<6, id: \.self){ preview in

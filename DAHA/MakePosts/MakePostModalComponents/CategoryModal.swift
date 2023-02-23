@@ -59,7 +59,7 @@ struct CategoryModal: View {
                 HStack{
                     CategoryIconView(category: "Cars", selected: $selected)
                         .padding(.trailing, 10)
-                    CategoryIconView(category: "Art", selected: $selected)
+                    CategoryIconView(category: "Services", selected: $selected)
                 }
                 .padding(.bottom, 25)
                 HStack{

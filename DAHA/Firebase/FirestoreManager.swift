@@ -161,14 +161,14 @@ class FirestoreManager: ObservableObject {
         }
     }
     
-    func convertPostModelToDictionary(post: PostModel) -> [String : Any] {
-        var result : [String : Any] = [:]
+    func convertPostModelToDictionary(post: PostModel) -> [String : Any?] {
+        var result : [String : Any?] = [:]
         result["id"] = post.id
         result["title"] = post.title
         result["userID"] = post.userID
         result["username"] = post.username
         result["description"] = post.description
-        result["postedAt"] = Timestamp(date: Date.now)
+        result["postedAt"] = post.postedAt
         result["condition"] = post.condition
         result["category"] = post.category
         result["price"] = post.price
@@ -180,6 +180,26 @@ class FirestoreManager: ObservableObject {
         
         return result
     }
+    
+    func convertDictionaryToPostModel(dictionary : [String : Any]) -> PostModel{
+        let result = PostModel(
+            title: dictionary["id"] as? String ?? "",
+            userID: dictionary["userID"] as? String ?? "",
+            username: dictionary["username"] as? String ?? "",
+            description: dictionary["description"] as? String ?? "",
+            condition: dictionary["condition"] as? String ?? "",
+            category: dictionary["category"]  as? String ?? "",
+            price: dictionary["price"] as? String ?? "",
+            imageURLs: dictionary["imageURLs"] as? [String] ?? [],
+            channel: dictionary["channel"] as? String ?? "",
+            savers: dictionary["savers"] as? [String] ?? [],
+            type: dictionary["type"] as? String ?? "",
+            keywordsForLookup: dictionary["keywordsForLookup"] as? [String] ?? [])
+        
+        return result
+    }
+    
+    
     
     func makePost(post: PostModel, images: [UIImage], post_created: Binding<Bool>, completion: @escaping (Error?) -> Void) async {
         

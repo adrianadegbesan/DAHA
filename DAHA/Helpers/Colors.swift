@@ -53,7 +53,7 @@ let category_colors = [
     "Tech": "BB0F0F",
     "Clothing": "0FBB2A",
     "Cars": "00C5D6",
-    "Art": "D89000",
+    "Services": "D89000",
     "Furniture": "5400D3",
     "Books": "03A597",
     "Outdoor":  "C5BF03",

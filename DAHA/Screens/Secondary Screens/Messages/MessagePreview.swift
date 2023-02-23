@@ -18,11 +18,11 @@ struct MessagePreview: View {
             VStack{
 //                Divider()
                 HStack{
-                    Text("Image")
-                    Spacer().frame(width: screenWidth * 0.05)
-                    
                     VStack{
-                        Text("@username")
+                        HStack{
+                            Text("@username")
+                        }
+                       
                         HStack{
                             Text("Title")
                                 .font(.system(size: 20, weight: .bold))
@@ -41,6 +41,7 @@ struct MessagePreview: View {
 //                Divider()
             
             }
+
             .frame(width: screenWidth, height: screenWidth * 0.2)
         }
         .foregroundColor(colorScheme == .dark ? .white : .black)

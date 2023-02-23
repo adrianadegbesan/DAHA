@@ -15,6 +15,7 @@ struct DMScreen: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
             ScrollView{
+                Spacer().frame(height: screenHeight * 0.02)
                 VStack(spacing: 0){
                     ForEach(1..<10, id: \.self){ preview in
                         Divider()

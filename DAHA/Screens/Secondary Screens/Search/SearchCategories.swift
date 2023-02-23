@@ -28,7 +28,7 @@ struct SearchCategories: View {
             HStack{
                 SearchCategoryIcon(category: "Cars", selected: $selected)
                     .padding(.trailing, screenWidth * 0.08)
-                SearchCategoryIcon(category: "Art", selected: $selected)
+                SearchCategoryIcon(category: "Services", selected: $selected)
             }
             .padding(.bottom, 12)
             HStack{

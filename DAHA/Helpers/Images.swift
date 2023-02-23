@@ -34,7 +34,7 @@ let category_images = [
     "Tech": "iphone",
     "Clothing": "tshirt.fill",
     "Cars": "car.fill",
-    "Art": "pencil.and.outline",
+    "Services": "person.2.badge.gearshape",
     "Furniture": "sofa.fill",
     "Books": "text.book.closed.fill",
     "Outdoor":  "soccerball",
@@ -219,3 +219,44 @@ struct PinchToZoom: ViewModifier {
     }
 }
 
+struct ImagePicker: UIViewControllerRepresentable {
+    @Binding var image: UIImage?
+    @Binding var images: [UIImage]
+    @Environment(\.presentationMode) var presentationMode
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.allowsEditing = true // add this line
+        picker.delegate = context.coordinator
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        let parent: ImagePicker
+
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let editedImage = info[.editedImage] as? UIImage {
+                parent.image = editedImage
+                parent.images.append(editedImage)
+            } else if let originalImage = info[.originalImage] as? UIImage {
+                parent.image = originalImage
+                parent.images.append(originalImage)
+            }
+
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+    }
+}
