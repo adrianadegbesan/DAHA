@@ -67,6 +67,9 @@
 		82A21A5E29A67F500040BAA1 /* shopping-cart.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A5D29A67F500040BAA1 /* shopping-cart.json */; };
 		82A21A6029A6A9DA0040BAA1 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A5F29A6A9DA0040BAA1 /* PrivacyPolicyView.swift */; };
 		82A21A6229A6AAD40040BAA1 /* PrivacySettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6129A6AAD40040BAA1 /* PrivacySettingsScreen.swift */; };
+		82A21A6429A6E21B0040BAA1 /* MessagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6329A6E21B0040BAA1 /* MessagePreview.swift */; };
+		82A21A6629A6E34D0040BAA1 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6529A6E34D0040BAA1 /* ChatScreen.swift */; };
+		82A21A6829A6E9450040BAA1 /* RecentDMs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6729A6E9450040BAA1 /* RecentDMs.swift */; };
 		82ACC67F2991738300589E1E /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC67E2991738300589E1E /* Shapes.swift */; };
 		82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6822992E20200589E1E /* ModalCapsule.swift */; };
 		82ACC68729936E3100589E1E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68629936E3100589E1E /* NextButton.swift */; };
@@ -127,7 +130,6 @@
 		82CEFC662969CE5F00C55F67 /* SearchBarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC652969CE5F00C55F67 /* SearchBarScreen.swift */; };
 		82CEFC682969CE7E00C55F67 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC672969CE7E00C55F67 /* SettingsScreen.swift */; };
 		82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC6A2969CEA500C55F67 /* SetUpScreen.swift */; };
-		82CEFC6E2969CEBA00C55F67 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC6D2969CEBA00C55F67 /* Test.swift */; };
 		82CEFC742969CF0100C55F67 /* SchoolEmailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC732969CF0100C55F67 /* SchoolEmailScreen.swift */; };
 		82CEFC762969CF3E00C55F67 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC752969CF3E00C55F67 /* HeaderView.swift */; };
 		82CEFC782969CF5A00C55F67 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC772969CF5A00C55F67 /* TabBarView.swift */; };
@@ -190,6 +192,9 @@
 		82A21A5D29A67F500040BAA1 /* shopping-cart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "shopping-cart.json"; sourceTree = "<group>"; };
 		82A21A5F29A6A9DA0040BAA1 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		82A21A6129A6AAD40040BAA1 /* PrivacySettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsScreen.swift; sourceTree = "<group>"; };
+		82A21A6329A6E21B0040BAA1 /* MessagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePreview.swift; sourceTree = "<group>"; };
+		82A21A6529A6E34D0040BAA1 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
+		82A21A6729A6E9450040BAA1 /* RecentDMs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentDMs.swift; sourceTree = "<group>"; };
 		82ACC67E2991738300589E1E /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		82ACC6822992E20200589E1E /* ModalCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCapsule.swift; sourceTree = "<group>"; };
 		82ACC68629936E3100589E1E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -251,7 +256,6 @@
 		82CEFC652969CE5F00C55F67 /* SearchBarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarScreen.swift; sourceTree = "<group>"; };
 		82CEFC672969CE7E00C55F67 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		82CEFC6A2969CEA500C55F67 /* SetUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpScreen.swift; sourceTree = "<group>"; };
-		82CEFC6D2969CEBA00C55F67 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		82CEFC732969CF0100C55F67 /* SchoolEmailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolEmailScreen.swift; sourceTree = "<group>"; };
 		82CEFC752969CF3E00C55F67 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		82CEFC772969CF5A00C55F67 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -341,6 +345,9 @@
 			isa = PBXGroup;
 			children = (
 				82CEFC632969CE5200C55F67 /* DMScreen.swift */,
+				82A21A6729A6E9450040BAA1 /* RecentDMs.swift */,
+				82A21A6329A6E21B0040BAA1 /* MessagePreview.swift */,
+				82A21A6529A6E34D0040BAA1 /* ChatScreen.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -374,13 +381,13 @@
 			path = Posts;
 			sourceTree = "<group>";
 		};
-		82A21A5A29A677080040BAA1 /* Lottie Files */ = {
+		82A21A5A29A677080040BAA1 /* Lottie Animations */ = {
 			isa = PBXGroup;
 			children = (
 				82A21A5D29A67F500040BAA1 /* shopping-cart.json */,
 				82A21A5B29A67A2C0040BAA1 /* yarn-loading.json */,
 			);
-			path = "Lottie Files";
+			path = "Lottie Animations";
 			sourceTree = "<group>";
 		};
 		82B6B2BC2989EC9700027E5A /* MakePostModalComponents */ = {
@@ -527,7 +534,7 @@
 				82CEFC312969CB2C00C55F67 /* DAHAApp.swift */,
 				82CEFC532969CC9B00C55F67 /* LaunchScreen.swift */,
 				82CEFC332969CB2C00C55F67 /* ContentView.swift */,
-				82A21A5A29A677080040BAA1 /* Lottie Files */,
+				82A21A5A29A677080040BAA1 /* Lottie Animations */,
 				82B6B2EA298C3BB300027E5A /* Network */,
 				82D2D0E0296CAD4E00CB4B9A /* Firebase */,
 				82CEFC3F2969CB9500C55F67 /* Helpers */,
@@ -641,7 +648,6 @@
 				82CED4FD2981EF74009B5507 /* SchoolEmailScreen */,
 				82CED4FC2981EF56009B5507 /* EmailVerificationScreen */,
 				82CED4FE2981EFFE009B5507 /* CreateAccountScreen */,
-				82CEFC6D2969CEBA00C55F67 /* Test.swift */,
 			);
 			path = "Onboarding and Login";
 			sourceTree = "<group>";
@@ -810,6 +816,7 @@
 				82B6B2FC298F3C8300027E5A /* CustomCameraView.swift in Sources */,
 				82218C16299C970C0092BA94 /* TermsSettingsScreen.swift in Sources */,
 				82A21A5929A458C70040BAA1 /* LottieView.swift in Sources */,
+				82A21A6629A6E34D0040BAA1 /* ChatScreen.swift in Sources */,
 				82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */,
 				82B6B2EC298C3BD300027E5A /* Network.swift in Sources */,
 				82B6B2F4298C514400027E5A /* ImagePreview.swift in Sources */,
@@ -827,6 +834,7 @@
 				82B6B2BE2989ECD300027E5A /* MakePostScreenExit.swift in Sources */,
 				82CBC2B22989BC2F001966E3 /* PostModalPostActions.swift in Sources */,
 				82DF4CAC296F5C6B00A309CF /* ResendButton.swift in Sources */,
+				82A21A6829A6E9450040BAA1 /* RecentDMs.swift in Sources */,
 				82CEFC852969D00D00C55F67 /* SettingsButton.swift in Sources */,
 				82CEFC8B2969D06700C55F67 /* FirstContinueButton.swift in Sources */,
 				82B6B2DB298AE00800027E5A /* PasswordResetButton.swift in Sources */,
@@ -845,6 +853,7 @@
 				82ACC69B2996BF9800589E1E /* SearchCategoryIcon.swift in Sources */,
 				82ACC68929936E4300589E1E /* PostConfirmationScreen.swift in Sources */,
 				82B6B2F8298F27A100027E5A /* Camera.swift in Sources */,
+				82A21A6429A6E21B0040BAA1 /* MessagePreview.swift in Sources */,
 				82CBC2AE2989BB21001966E3 /* PostModalDescription.swift in Sources */,
 				82218C2B299F4E8B0092BA94 /* ListingsView.swift in Sources */,
 				82CEFC4C2969CC3300C55F67 /* TextField.swift in Sources */,
@@ -877,7 +886,6 @@
 				8236020E298791BE002E7AEC /* BookmarkButton.swift in Sources */,
 				82CEFC782969CF5A00C55F67 /* TabBarView.swift in Sources */,
 				82218C12299C96580092BA94 /* TermsSettingsView.swift in Sources */,
-				82CEFC6E2969CEBA00C55F67 /* Test.swift in Sources */,
 				82CEFC662969CE5F00C55F67 /* SearchBarScreen.swift in Sources */,
 				8294FAE9296BCB76004001AE /* CreateAccountScreen.swift in Sources */,
 				82CEFC5B2969CDD300C55F67 /* OriginalSearchScreen.swift in Sources */,

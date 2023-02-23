@@ -1,14 +1,13 @@
 //
-//  DMScreen.swift
+//  RecentDMs.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 1/7/23.
+//  Created by Adrian Adegbesan on 2/22/23.
 //
 
 import SwiftUI
 
-struct DMScreen: View {
-    
+struct RecentDMs: View {
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("username") var username_system: String = ""
     
@@ -16,7 +15,7 @@ struct DMScreen: View {
         VStack(alignment: .leading, spacing: 0){
             ScrollView{
                 VStack(spacing: 0){
-                    ForEach(1..<10, id: \.self){ preview in
+                    ForEach(1..<6, id: \.self){ preview in
                         Divider()
                             .frame(maxHeight: 0.5)
                             .overlay(Color(hex: darkGrey))
@@ -30,12 +29,11 @@ struct DMScreen: View {
             }
           
         }
-        .navigationTitle("Direct Messages")
     }
 }
 
-struct DMScreen_Previews: PreviewProvider {
+struct RecentDMs_Previews: PreviewProvider {
     static var previews: some View {
-        DMScreen()
+        RecentDMs()
     }
 }

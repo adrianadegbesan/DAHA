@@ -115,7 +115,7 @@ struct ProfileScreen: View {
                                 .font(
                                     .system(size:21, weight: .heavy)
                                 )
-                            Text("Direct Messages")
+                            Text("Recent Messages")
                                 .font(
                                     .system(size:20, weight: .heavy)
                                 )
@@ -137,7 +137,7 @@ struct ProfileScreen: View {
                     }
                     .padding([.top, .leading, .bottom])
                 }){
-                    DMScreen()
+                    RecentDMs()
                 }
                 .showDragIndicator(true)
                 .enableContentDrag()

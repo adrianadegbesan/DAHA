@@ -135,7 +135,7 @@ class FirestoreManager: ObservableObject {
         
         if !images.isEmpty{
             for image in images {
-                let imageData = image.jpegData(compressionQuality: 0.3)
+                let imageData = image.jpegData(compressionQuality: 0.65)
                 guard imageData != nil else {
                     return ["error"]
                 }
