@@ -44,17 +44,13 @@ struct HeaderView: View {
                             .channelText()
                     }
                 }.offset(x: -30)
-                // Specific offset to get tounded rectangle attached to DAHA logo
-//                Spacer()
-//                
-//                if screen == "Home"{
-//                    RefreshButton(screen: screen)
-//                }
+ 
                 
                 Spacer()
-                if (showMessages == true){
+
+                if showMessages {
                     DMButton()
-                } else if (showSettings == true){
+                } else if showSettings {
                     SettingsButton()
                 }
                 

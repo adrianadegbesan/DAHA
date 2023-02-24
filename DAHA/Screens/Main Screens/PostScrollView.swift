@@ -91,13 +91,13 @@ struct PostScrollView: View {
                                                             }
                                                             else if screen == "Listings"{
                                                                 Task {
-                                                                     firestoreManager.loadMoreListings()
+                                                                   await  firestoreManager.updateListings()
                                                                 }
                                                             }
 
                                                             else if screen == "Requests" {
                                                                 Task {
-                                                                     firestoreManager.loadMoreRequests()
+                                                                    await firestoreManager.updateRequests()
                                                                 }
                                                             }
 
@@ -141,14 +141,14 @@ struct PostScrollView: View {
                                                         if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
                                                             if screen == "Listings"{
                                                                 Task {
-//                                                                    await firestoreManager.updateListings()
-                                                                    firestoreManager.loadMoreListings()
+
+                                                                    await firestoreManager.updateListings()
                                                                 }
                                                             }
 
                                                             if screen == "Requests" {
                                                                 Task {
-                                                                     firestoreManager.loadMoreRequests()
+                                                                    await firestoreManager.updateRequests()
                                                                 }
                                                             }
 
@@ -203,13 +203,13 @@ struct PostScrollView: View {
                 .refreshable(action: {
                     if screen == "Listings"{
                         Task {
-                             firestoreManager.getListings()
+                             await firestoreManager.getListings()
                         }
                     }
                     
                     if screen == "Requests" {
                         Task {
-                             firestoreManager.getRequests()
+                             await firestoreManager.getRequests()
                         }
                     }
                     
@@ -230,7 +230,7 @@ struct PostScrollView: View {
                         if firestoreManager.listings_refresh {
                             firestoreManager.listings_refresh = false
                             Task {
-                               firestoreManager.getListings()
+                               await firestoreManager.getListings()
                                 }
                             }
                     }
@@ -240,7 +240,7 @@ struct PostScrollView: View {
                         if firestoreManager.requests_refresh {
                             firestoreManager.requests_refresh = false
                             Task {
-                               firestoreManager.getRequests()
+                               await firestoreManager.getRequests()
                                 }
                             }
                     }
@@ -255,7 +255,7 @@ struct PostScrollView: View {
                        
                     }
                     
-                    if screen == "Profile"{
+                    if screen == "User"{
                         if firestoreManager.user_refresh{
                             firestoreManager.user_refresh = false
                             Task {

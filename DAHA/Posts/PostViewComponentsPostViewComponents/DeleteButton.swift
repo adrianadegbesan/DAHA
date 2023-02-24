@@ -31,12 +31,12 @@ struct DeleteButton: View {
                     if deleted {
 //
                         if post.type == "Listing"{
-                            firestoreManager.getListings()
+                            await firestoreManager.getListings()
                             await firestoreManager.userPosts()
                             
                             
                         } else if post.type == "Request"{
-                            firestoreManager.getRequests()
+                            await firestoreManager.getRequests()
                             await firestoreManager.userPosts()
                         }
                     }

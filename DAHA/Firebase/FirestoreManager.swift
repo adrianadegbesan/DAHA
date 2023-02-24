@@ -56,8 +56,8 @@ class FirestoreManager: ObservableObject {
     init(){
         Task {
             if isSignedIn && agreedToTerms{
-                getListings()
-                getRequests()
+                await getListings()
+                await getRequests()
                 await getSaved()
                 await userPosts()
             }
@@ -342,92 +342,202 @@ class FirestoreManager: ObservableObject {
         return result
     }
     
-    func getListings(startAfter: DocumentSnapshot? = nil) {
-        listings_loading = true
-        var query = db.collection("\(university)_Posts").whereField("type", isEqualTo: "Listing").order(by: "postedAt", descending: true).limit(to: 15)
+//    func getListings(startAfter: DocumentSnapshot? = nil) {
+//        listings_loading = true
+//        var query = db.collection("\(university)_Posts").whereField("type", isEqualTo: "Listing").order(by: "postedAt", descending: true).limit(to: 15)
+//
+//        if let startAfter = startAfter {
+//            query = query.start(afterDocument: startAfter)
+//        }
+//
+//        query.getDocuments { [self] snapshot, error in
+//            guard let snapshot = snapshot else {
+//                self.listings_loading = false
+//                print("Error fetching listings: \(String(describing: error))")
+//                return
+//            }
+//
+//            var temp: [PostModel] = []
+//            for document in snapshot.documents {
+//                let post = convertToPost(doc: document)
+//                temp.append(post)
+//            }
+//
+//            if let lastDocument = snapshot.documents.last {
+//                self.listing_last = lastDocument
+//            }
+//
+//            if startAfter == nil {
+//                self.listings = temp
+//            } else {
+//                self.listings.append(contentsOf: temp)
+//            }
+//
+//            self.listings_loading = false
+//        }
+//    }
+//
+//    func loadMoreListings() {
+//        if listings_loading {
+//            return
+//        }
+//
+//        getListings(startAfter: listing_last)
+//    }
 
-        if let startAfter = startAfter {
-            query = query.start(afterDocument: startAfter)
-        }
 
-        query.getDocuments { [self] snapshot, error in
-            guard let snapshot = snapshot else {
-                self.listings_loading = false
-                print("Error fetching listings: \(String(describing: error))")
-                return
-            }
+    func getListings() async {
+        do {
+            listings_loading = true
 
             var temp: [PostModel] = []
-            for document in snapshot.documents {
+            let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Listing").order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                listing_last = documents.last!
+            }
+            for document in documents{
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
 
-            if let lastDocument = snapshot.documents.last {
-                self.listing_last = lastDocument
+            withAnimation{
+                listings = temp
+                listings_loading = false
             }
-
-            if startAfter == nil {
-                self.listings = temp
-            } else {
-                self.listings.append(contentsOf: temp)
-            }
-
-            self.listings_loading = false
+        }
+        catch {
+            listings_loading = false
+            print("error")
         }
     }
-
-    func loadMoreListings() {
-        if listings_loading {
-            return
-        }
-
-        getListings(startAfter: listing_last)
-    }
-
 
     
-    func getRequests(startAfter: DocumentSnapshot? = nil) {
-        requests_loading = true
-        var query = db.collection("\(university)_Posts").whereField("type", isEqualTo: "Request").order(by: "postedAt", descending: true).limit(to: 15)
-
-        if let startAfter = startAfter {
-            query = query.start(afterDocument: startAfter)
-        }
-
-        query.getDocuments { [self] snapshot, error in
-            guard let snapshot = snapshot else {
-                self.requests_loading = false
-                print("Error fetching listings: \(String(describing: error))")
+    func updateListings() async {
+        do {
+            var temp: [PostModel] = []
+            if listing_last == nil{
                 return
             }
+            let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Listing").order(by: "postedAt", descending: true).start(afterDocument: listing_last!).limit(to: 15).getDocuments()
 
-            var temp: [PostModel] = []
-            for document in snapshot.documents {
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                listing_last = documents.last!
+            } else {
+                return
+            }
+            for document in documents{
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-
-            if let lastDocument = snapshot.documents.last {
-                self.requests_last = lastDocument
+            withAnimation{
+                listings.append(contentsOf: temp)
             }
+           
+        }
 
-            if startAfter == nil {
+        catch {
+            print("error updating listings")
+        }
+
+    }
+    
+//    func getRequests(startAfter: DocumentSnapshot? = nil) {
+//        requests_loading = true
+//        var query = db.collection("\(university)_Posts").whereField("type", isEqualTo: "Request").order(by: "postedAt", descending: true).limit(to: 15)
+//
+//        if let startAfter = startAfter {
+//            query = query.start(afterDocument: startAfter)
+//        }
+//
+//        query.getDocuments { [self] snapshot, error in
+//            guard let snapshot = snapshot else {
+//                self.requests_loading = false
+//                print("Error fetching listings: \(String(describing: error))")
+//                return
+//            }
+//
+//            var temp: [PostModel] = []
+//            for document in snapshot.documents {
+//                let post = convertToPost(doc: document)
+//                temp.append(post)
+//            }
+//
+//            if let lastDocument = snapshot.documents.last {
+//                self.requests_last = lastDocument
+//            }
+//
+//            if startAfter == nil {
+//                self.requests = temp
+//            } else {
+//                self.listings.append(contentsOf: temp)
+//            }
+//
+//            self.requests_loading = false
+//        }
+//    }
+//
+//    func loadMoreRequests() {
+//        if requests_loading {
+//            return
+//        }
+//
+//        getRequests(startAfter: requests_last)
+//    }
+    func getRequests() async {
+        do {
+            requests_loading = true
+            var temp: [PostModel] = []
+            let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Request").order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                requests_last = documents.last!
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            withAnimation{
                 self.requests = temp
-            } else {
-                self.requests.append(contentsOf: temp)
+                requests_loading = false
             }
+          
 
-            self.requests_loading = false
+        }
+        catch {
+            requests_loading = false
+            print("error")
         }
     }
-
-    func loadMoreRequests() {
-        if requests_loading {
-            return
+    
+    func updateRequests() async {
+        do {
+            var temp: [PostModel] = []
+            if requests_last == nil{
+                return
+            }
+            let snapshot = try await db.collection("\(university)_Posts").whereField("type", isEqualTo: "Request").order(by: "postedAt", descending: true).start(afterDocument: requests_last!).limit(to: 15).getDocuments()
+            
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                listing_last = documents.last!
+            } else {
+                return
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            withAnimation{
+                requests.append(contentsOf: temp)
+            }
         }
-
-        getRequests(startAfter: requests_last)
+        
+        catch {
+            print("error updating requests")
+        }
+        
     }
     
     func getSaved() async {

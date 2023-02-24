@@ -27,7 +27,7 @@ struct ProfileScreen: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0){
-                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false, slidingBar: true, tabIndex: $tabIndex, tabs: tabs, screen: "Profile")
+                HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false, slidingBar: true, tabIndex: $tabIndex, tabs: tabs, screen: "User")
                 .frame(alignment: .top)
                 
                 
