@@ -11,7 +11,7 @@ struct UserPostsView: View {
     @EnvironmentObject var firestoreManager : FirestoreManager
     var body: some View {
         VStack{
-            PostScrollView(posts: $firestoreManager.my_posts, loading: $firestoreManager.my_posts_loading, screen: "User", query: .constant(""), type: .constant(""), category: .constant(""))
+            PostScrollView(posts: $firestoreManager.my_posts, loading: $firestoreManager.my_posts_loading, screen: "Profile", query: .constant(""), type: .constant(""), category: .constant(""))
         }
     }
 }

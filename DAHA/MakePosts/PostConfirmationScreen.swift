@@ -24,7 +24,7 @@ struct PostConfirmationScreen: View {
         ZStack {
             
             if uploading{
-                LottieView(name: "DAHA-Loading")
+                LottieView(name: colorScheme == .dark ? "DAHA-Loading" : "DAHA-Loading2")
                     .scaleEffect(0.5)
                     .opacity(progressOpacity)
                     .padding(.bottom, screenHeight * 0.13)
@@ -63,6 +63,7 @@ struct PostConfirmationScreen: View {
                             firestoreManager.requests_refresh = true
                         }
                         firestoreManager.user_refresh = true
+                        
                         dismiss()
                     }
                 }
@@ -76,7 +77,7 @@ struct PostConfirmationScreen: View {
             if uploading {
                 withAnimation{
                     screenOpacity = 0.2
-                    progressOpacity = (colorScheme == .dark ? 0.65 : 0.85)
+                    progressOpacity = (colorScheme == .dark ? 0.55 : 0.85)
                 }
             } else if !uploading {
                 withAnimation{
