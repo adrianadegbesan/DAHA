@@ -13,7 +13,8 @@ struct PostModal: View {
     @State var post: PostModel
     @Binding var saved: Bool
     @Binding var reported: Bool
-    @Environment(\.dismiss) private var dismiss
+    @State var success_alert: Bool = false
+    @Environment(\.presentationMode) var presentationMode
     @State var owner : Bool
     var body: some View {
         ScrollView {
@@ -23,7 +24,7 @@ struct PostModal: View {
                 PostModalPosterInfo(post: post)
                 
                 
-                CategoryView(post: post, reported: $reported, owner: owner, preview: false)
+                CategoryView(post: post, screen: "Modal", reported: $reported, owner: owner, preview: false)
                     .padding(.leading, 12)
                     .padding(.trailing, 12)
                 
@@ -33,6 +34,7 @@ struct PostModal: View {
             }
             .padding()
         }
+        .alert("Successfully Reported Post", isPresented: $success_alert, actions:{}, message: {Text("This post was successfully reported")})
     }
 }
 

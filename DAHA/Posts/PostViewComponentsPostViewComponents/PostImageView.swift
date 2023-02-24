@@ -24,10 +24,40 @@ struct PostImageView: View {
             if !post.imageURLs.isEmpty{
                 TabView {
                     
+                    if !preview{
+                        ForEach(post.imageURLs, id: \.self) { item in
+                            ZStack(alignment: .topTrailing){
+                                WebImage(url: URL(string: item))
+                                    .resizable()
+                                    .placeholder{
+                                        ProgressView()
+                                    }
+                                    .indicator(.activity)
+                                    .cornerRadius(15, corners: .allCorners)
+                                    .clipped()
+                                    .opacity(opacity)
+                                    .onAppear{
+                                        withAnimation(.easeIn(duration: 0.3)){
+                                            opacity = 1
+                                        }
+                                    }
+                                
+//                                if !preview && !owner{
+//                                    ReportButton(post: post, reported: $reported)
+//                                        .padding(.trailing, 6)
+//                                        .padding(.top, 8)
+//                                }
+                            }
+                        }
                     
-                    ForEach(post.imageURLs, id: \.self) { item in
+                  
+                        
+                    
+                    } //: LOOP (NOT PREVIEW)
+                    
+                    else {
                         ZStack(alignment: .topTrailing){
-                            WebImage(url: URL(string: item))
+                            WebImage(url: URL(string: post.imageURLs[0]))
                                 .resizable()
                                 .placeholder{
                                     ProgressView()
@@ -42,20 +72,9 @@ struct PostImageView: View {
                                     }
                                 }
                             
-                            if !preview && !owner{
-                                ReportButton(post: post, reported: $reported)
-                                    .padding(.trailing, 6)
-                                    .padding(.top, 8)
-                            }
-                        }
+                        } //(PREVIEW WITH JUST FIRST IMAGE)
                         
-                        
-                        
-                        
-                        
-                    } //: LOOP
-                    
-                    
+                    }
                     
                 } //: TAB
                 .tabViewStyle(PageTabViewStyle())

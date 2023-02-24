@@ -91,13 +91,13 @@ struct PostScrollView: View {
                                                             }
                                                             else if screen == "Listings"{
                                                                 Task {
-                                                                    await firestoreManager.updateListings()
+                                                                     firestoreManager.loadMoreListings()
                                                                 }
                                                             }
 
                                                             else if screen == "Requests" {
                                                                 Task {
-                                                                    await firestoreManager.updateRequests()
+                                                                     firestoreManager.loadMoreRequests()
                                                                 }
                                                             }
 
@@ -141,13 +141,14 @@ struct PostScrollView: View {
                                                         if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
                                                             if screen == "Listings"{
                                                                 Task {
-                                                                    await firestoreManager.updateListings()
+//                                                                    await firestoreManager.updateListings()
+                                                                    firestoreManager.loadMoreListings()
                                                                 }
                                                             }
 
                                                             if screen == "Requests" {
                                                                 Task {
-                                                                    await firestoreManager.updateRequests()
+                                                                     firestoreManager.loadMoreRequests()
                                                                 }
                                                             }
 
@@ -202,13 +203,13 @@ struct PostScrollView: View {
                 .refreshable(action: {
                     if screen == "Listings"{
                         Task {
-                            await firestoreManager.getListings()
+                             firestoreManager.getListings()
                         }
                     }
                     
                     if screen == "Requests" {
                         Task {
-                            await firestoreManager.getRequests()
+                             firestoreManager.getRequests()
                         }
                     }
                     
@@ -229,7 +230,7 @@ struct PostScrollView: View {
                         if firestoreManager.listings_refresh {
                             firestoreManager.listings_refresh = false
                             Task {
-                              await firestoreManager.getListings()
+                               firestoreManager.getListings()
                                 }
                             }
                     }
@@ -239,7 +240,7 @@ struct PostScrollView: View {
                         if firestoreManager.requests_refresh {
                             firestoreManager.requests_refresh = false
                             Task {
-                              await firestoreManager.getRequests()
+                               firestoreManager.getRequests()
                                 }
                             }
                     }

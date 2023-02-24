@@ -24,7 +24,10 @@ struct PostConfirmationScreen: View {
         ZStack {
             
             if uploading{
-                LottieView(name: "yarn-loading")
+                LottieView(name: "DAHA-Loading")
+                    .scaleEffect(0.5)
+                    .opacity(progressOpacity)
+                    .padding(.bottom, screenHeight * 0.13)
                     .zIndex(1)
             }
 //            ProgressView()
@@ -72,8 +75,8 @@ struct PostConfirmationScreen: View {
         }.onChange(of: uploading) { value in
             if uploading {
                 withAnimation{
-                    screenOpacity = 0.5
-                    progressOpacity = 1
+                    screenOpacity = 0.2
+                    progressOpacity = (colorScheme == .dark ? 0.65 : 0.85)
                 }
             } else if !uploading {
                 withAnimation{

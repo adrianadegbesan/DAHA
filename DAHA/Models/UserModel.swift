@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 
 struct UserModel: Identifiable, Codable {
@@ -18,4 +20,5 @@ struct UserModel: Identifiable, Codable {
     var channels: [String?]
     var university: String?
     var terms: Bool?
+    @ServerTimestamp var joinedAt: Timestamp?
 }

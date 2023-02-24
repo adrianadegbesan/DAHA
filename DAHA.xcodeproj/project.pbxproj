@@ -21,7 +21,6 @@
 		82218C16299C970C0092BA94 /* TermsSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */; };
 		82218C18299C97820092BA94 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C17299C97820092BA94 /* NotificationsView.swift */; };
 		82218C22299CD0180092BA94 /* RefreshableScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 82218C21299CD0180092BA94 /* RefreshableScrollView */; };
-		82218C24299CE7920092BA94 /* RefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C23299CE7920092BA94 /* RefreshButton.swift */; };
 		82218C26299D4AA00092BA94 /* SearchButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C25299D4AA00092BA94 /* SearchButtons.swift */; };
 		82218C28299D4C9E0092BA94 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C27299D4C9E0092BA94 /* SearchScreen.swift */; };
 		82218C2B299F4E8B0092BA94 /* ListingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C2A299F4E8A0092BA94 /* ListingsView.swift */; };
@@ -70,6 +69,9 @@
 		82A21A6429A6E21B0040BAA1 /* MessagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6329A6E21B0040BAA1 /* MessagePreview.swift */; };
 		82A21A6629A6E34D0040BAA1 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6529A6E34D0040BAA1 /* ChatScreen.swift */; };
 		82A21A6829A6E9450040BAA1 /* RecentDMs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6729A6E9450040BAA1 /* RecentDMs.swift */; };
+		82A21A6A29A82A0F0040BAA1 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6929A82A0F0040BAA1 /* ReportModel.swift */; };
+		82A21A6C29A846680040BAA1 /* ReportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6B29A846680040BAA1 /* ReportModal.swift */; };
+		82A21A6E29A9067E0040BAA1 /* DAHA-Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */; };
 		82ACC67F2991738300589E1E /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC67E2991738300589E1E /* Shapes.swift */; };
 		82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6822992E20200589E1E /* ModalCapsule.swift */; };
 		82ACC68729936E3100589E1E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68629936E3100589E1E /* NextButton.swift */; };
@@ -163,7 +165,6 @@
 		82218C11299C96580092BA94 /* TermsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsSettingsView.swift; sourceTree = "<group>"; };
 		82218C15299C970C0092BA94 /* TermsSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsSettingsScreen.swift; sourceTree = "<group>"; };
 		82218C17299C97820092BA94 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
-		82218C23299CE7920092BA94 /* RefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshButton.swift; sourceTree = "<group>"; };
 		82218C25299D4AA00092BA94 /* SearchButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtons.swift; sourceTree = "<group>"; };
 		82218C27299D4C9E0092BA94 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
 		82218C2A299F4E8A0092BA94 /* ListingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsView.swift; sourceTree = "<group>"; };
@@ -195,6 +196,9 @@
 		82A21A6329A6E21B0040BAA1 /* MessagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePreview.swift; sourceTree = "<group>"; };
 		82A21A6529A6E34D0040BAA1 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
 		82A21A6729A6E9450040BAA1 /* RecentDMs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentDMs.swift; sourceTree = "<group>"; };
+		82A21A6929A82A0F0040BAA1 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
+		82A21A6B29A846680040BAA1 /* ReportModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModal.swift; sourceTree = "<group>"; };
+		82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DAHA-Loading.json"; sourceTree = "<group>"; };
 		82ACC67E2991738300589E1E /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		82ACC6822992E20200589E1E /* ModalCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCapsule.swift; sourceTree = "<group>"; };
 		82ACC68629936E3100589E1E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 		82A21A5A29A677080040BAA1 /* Lottie Animations */ = {
 			isa = PBXGroup;
 			children = (
+				82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */,
 				82A21A5D29A67F500040BAA1 /* shopping-cart.json */,
 				82A21A5B29A67A2C0040BAA1 /* yarn-loading.json */,
 			);
@@ -436,6 +441,7 @@
 			children = (
 				82360207298748CC002E7AEC /* CategoryView.swift */,
 				82360209298748DF002E7AEC /* ReportButton.swift */,
+				82A21A6B29A846680040BAA1 /* ReportModal.swift */,
 				8236020B298748E9002E7AEC /* BuyButton.swift */,
 				8236020D298791BE002E7AEC /* BookmarkButton.swift */,
 				8236020F29879425002E7AEC /* PostDescriptionView.swift */,
@@ -586,6 +592,7 @@
 				82CEFC4F2969CC5B00C55F67 /* DeviceDimensions.swift */,
 				8294FAAB296B9F5B004001AE /* UserModel.swift */,
 				8294FAAD296B9F64004001AE /* PostModel.swift */,
+				82A21A6929A82A0F0040BAA1 /* ReportModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -657,7 +664,6 @@
 			children = (
 				82CEFC822969CFF400C55F67 /* DMButton.swift */,
 				82CEFC842969D00D00C55F67 /* SettingsButton.swift */,
-				82218C23299CE7920092BA94 /* RefreshButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -760,6 +766,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A21A6E29A9067E0040BAA1 /* DAHA-Loading.json in Resources */,
 				82A21A5E29A67F500040BAA1 /* shopping-cart.json in Resources */,
 				82CEFC392969CB2D00C55F67 /* Preview Assets.xcassets in Resources */,
 				82CEFC362969CB2D00C55F67 /* Assets.xcassets in Resources */,
@@ -801,7 +808,6 @@
 				82218C28299D4C9E0092BA94 /* SearchScreen.swift in Sources */,
 				82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */,
 				82ACC6992996B2FA00589E1E /* SearchCategories.swift in Sources */,
-				82218C24299CE7920092BA94 /* RefreshButton.swift in Sources */,
 				82B6B2EE298C3FFB00027E5A /* ImageSelectorView.swift in Sources */,
 				82CEFC7A2969CF7100C55F67 /* BackgroundColor.swift in Sources */,
 				82CEFC762969CF3E00C55F67 /* HeaderView.swift in Sources */,
@@ -864,6 +870,7 @@
 				82CBC2A92988D1A2001966E3 /* PageBottomDivider.swift in Sources */,
 				8294FAAE296B9F64004001AE /* PostModel.swift in Sources */,
 				82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */,
+				82A21A6C29A846680040BAA1 /* ReportModal.swift in Sources */,
 				82B6B2D9298ADAE700027E5A /* ForgotPasswordScreen.swift in Sources */,
 				82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */,
 				82A21A6029A6A9DA0040BAA1 /* PrivacyPolicyView.swift in Sources */,
@@ -871,6 +878,7 @@
 				82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */,
 				82D2D0DF296BD41200CB4B9A /* EmailVerificationScreen.swift in Sources */,
 				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,
+				82A21A6A29A82A0F0040BAA1 /* ReportModel.swift in Sources */,
 				82CEFC442969CBDB00C55F67 /* Colors.swift in Sources */,
 				82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */,
 				82CEFC7F2969CFB700C55F67 /* SignUpButton.swift in Sources */,

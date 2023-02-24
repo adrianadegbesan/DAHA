@@ -26,7 +26,7 @@ struct MakePostButton: View {
                     uploading = true
                 }
                 Task {
-                    try await Task.sleep(nanoseconds: 0_200_000_000)
+                    try await Task.sleep(nanoseconds: 1_000_000_000)
                     await firestoreManager.makePost(post: post, images: images, post_created: $post_created) { error in
                         if error != nil{
                             error_alert = true

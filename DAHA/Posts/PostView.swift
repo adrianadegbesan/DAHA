@@ -31,7 +31,7 @@ struct PostView: View {
                 PosterInfoView(post: post)
                 Spacer().frame(height: 10)
                 
-                CategoryView(post: post, reported: $reported, owner: owner, preview: preview)
+                CategoryView(post: post, screen: "Post", reported: $reported, owner: owner, preview: preview)
                 
                 PostDescriptionView(post: post)
                 
@@ -67,6 +67,7 @@ struct PostView: View {
                 shouldNavigate = true
             }
         }
+        .scaleEffect(preview ? 0.95 : 1)
     }
 }
 

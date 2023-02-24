@@ -46,6 +46,7 @@ class AuthManager: ObservableObject {
             let cur_id = Auth.auth().currentUser?.uid
             var user_temp = user
             user_temp.id = cur_id
+            user_temp.joinedAt = nil
             do {
                 try db.collection("Users").document(user_temp.id!).setData(from: user_temp)
                 creation_complete.wrappedValue = true
