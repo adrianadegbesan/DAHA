@@ -16,9 +16,11 @@ struct PostView: View {
     @State var reported = false
     
     @State private var selected : Bool = false
+    @State private var reported_alert : Bool = false
     @State private var shouldNavigate : Bool = false
     @State var owner : Bool
     @State var preview : Bool
+    
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -71,10 +73,13 @@ struct PostView: View {
                 reported = false
             }
         }
+        .alert("Post Being Reviewed", isPresented: $reported_alert, actions: {}, message: {Text("We are currently reviewing this post that you have reported.")})
         .onTapGesture {
-            if !preview {
+            if !preview && !reported{
                 LightFeedback()
                 shouldNavigate = true
+            } else {
+                reported_alert = true
             }
         }
         .scaleEffect(preview ? 0.95 : 1)

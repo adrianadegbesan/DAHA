@@ -61,17 +61,17 @@ struct ReportModal: View {
                                 let success = await firestoreManager.reportPost(report: report, post: post)
                                 if success {
                                     
-                                    if post.type == "Listing"{
-                                        if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
-                                            firestoreManager.listings.remove(at: index)
-                                        }
-                                        
-                                        
-                                    } else if post.type == "Request"{
-                                        if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
-                                            firestoreManager.requests.remove(at: index)
-                                        }
-                                    }
+//                                    if post.type == "Listing"{
+//                                        if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
+//                                            firestoreManager.listings.remove(at: index)
+//                                        }
+//
+//
+//                                    } else if post.type == "Request"{
+//                                        if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
+//                                            firestoreManager.requests.remove(at: index)
+//                                        }
+//                                    }
                                     
                                     reported = true
                                     dismiss()
