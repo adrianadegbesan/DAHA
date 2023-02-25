@@ -104,9 +104,19 @@ struct ProfileScreen: View {
                 .offset(x: screenWidth * 0.35, y: screenHeight * 0.31)
             }
         } //: ZStack
-        .onTapGesture {
-            bottomSheetPosition = .relative(0.15)
+        .onAppear{
+            if firestoreManager.listings_tab{
+                tabIndex = 0
+                firestoreManager.listings_tab = false
+            } else if firestoreManager.requests_tab {
+                tabIndex = 0
+                firestoreManager.requests_tab = false
+            }
+            
         }
+//        .onTapGesture {
+//            bottomSheetPosition = .relative(0.15)
+//        }
         .bottomSheet(bottomSheetPosition: $bottomSheetPosition, switchablePositions: [.relative(0.15), .relativeTop(0.75)], headerContent: {
                     VStack(alignment: .leading){
                         HStack{

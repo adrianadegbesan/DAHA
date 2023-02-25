@@ -39,6 +39,7 @@ struct PostView: View {
                 
                 PostActionView(post: post, saved: $saved, owner: owner, preview: preview)
                     .layoutPriority(1)
+                    .disabled(reported)
             }
             
             Spacer()

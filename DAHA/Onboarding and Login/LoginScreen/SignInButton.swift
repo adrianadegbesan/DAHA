@@ -41,6 +41,12 @@ struct SignInButton: View {
                         if Auth.auth().currentUser != nil{
                             email_system = Auth.auth().currentUser!.email!
                         }
+                        Task{
+                            await firestoreManager.getListings()
+                            await firestoreManager.getRequests()
+                            await firestoreManager.getSaved()
+                            await firestoreManager.userPosts()
+                        }
                         uploading = false
                         isOnboardingViewActive = false
                         isSignedIn = true

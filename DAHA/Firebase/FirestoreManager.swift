@@ -48,6 +48,9 @@ class FirestoreManager: ObservableObject {
     @Published var search_last: QueryDocumentSnapshot? = nil
     @Published var search_results_loading: Bool = false
     
+    @Published var listings_tab: Bool = false
+    @Published var requests_tab: Bool = false
+    
     
     
     private var db = Firestore.firestore()

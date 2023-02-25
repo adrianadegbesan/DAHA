@@ -94,11 +94,18 @@ struct HomeScreen: View {
                     .offset(x: screenWidth * 0.35, y: screenHeight * 0.31)
                 }
                 
-//                NavigationLink(destination: MakePostScreen(), isActive: $shouldNavigate){
-//                    EmptyView()
-//                }
                 
             } //: ZStack
+            .onAppear{
+                if firestoreManager.listings_tab{
+                    tabIndex = 0
+                    firestoreManager.listings_tab = false
+                } else if firestoreManager.requests_tab {
+                    tabIndex = 1
+                    firestoreManager.requests_tab = false
+                }
+                
+            }
             .keyboardControl()
             .navigationBarBackButtonHidden(true)
     }

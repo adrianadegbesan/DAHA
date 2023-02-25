@@ -59,8 +59,10 @@ struct PostConfirmationScreen: View {
                     if post_created {
                         if post.type == "Listing"{
                             firestoreManager.listings_refresh = true
+                            firestoreManager.listings_tab = true
                         } else if post.type == "Request"{
                             firestoreManager.requests_refresh = true
+                            firestoreManager.requests_tab = true
                         }
                         firestoreManager.user_refresh = true
                         
