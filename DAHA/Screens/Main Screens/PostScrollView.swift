@@ -71,11 +71,9 @@ struct PostScrollView: View {
                             ForEach(posts) { post in
                                 
                                 ZStack{
-                                    if post.userID == Auth.auth().currentUser?.uid {
                                         
                                         if post.id == posts.last!.id {
-    //                                        GeometryReader{ g in
-                                            PostView(post: post, owner: false, preview: false)
+                                            PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
                                                     .padding(.bottom, 10)
                                                     .padding(.leading, 3)
                                                     .onAppear{
@@ -120,72 +118,12 @@ struct PostScrollView: View {
                                                         } //UPDATE FUNCTIONS
                                                         
                                                     } //ONRECEIVE
-    //                                          }  //GEOMETRY READER
-    //                                        .frame(height: 65)
                                         } else {
-                                            PostView(post: post, owner: false, preview: false)
+                                            PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
                                                 .padding(.leading, 3)
                                                 .padding(.bottom, 10)
                                         } //NOT LAST
                                       
-                                    } /*USER POST*/else {
-                                        if post.id == posts.last!.id  {
-    //                                        GeometryReader{ g in
-                                            PostView(post: post, owner: false, preview: false)
-                                                    .padding(.leading, 3)
-                                                    .padding(.bottom, 10)
-                                                    .onAppear{
-                                                        self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
-                                                    }
-                                                    .onReceive(self.time) { (_) in
-                                                        if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
-                                                            if screen == "Listings"{
-                                                                Task {
-
-                                                                    await firestoreManager.updateListings()
-                                                                }
-                                                            }
-
-                                                            if screen == "Requests" {
-                                                                Task {
-                                                                    await firestoreManager.updateRequests()
-                                                                }
-                                                            }
-
-                                                            if screen == "Saved" {
-                                                                Task {
-                                                                    await firestoreManager.updateSaved()
-                                                                }
-                                                            }
-
-                                                            if screen == "User" {
-                                                                Task {
-                                                                    await firestoreManager.updateUserPosts()
-                                                                }
-                                                            }
-                                                            
-                                                            if screen == "Search"{
-                                                                Task {
-                                                                    await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
-                                                                }
-                                                            }
-                                                            
-                                                            print("Updating data")
-                                                            
-                                                            self.time.upstream.connect().cancel()
-                                                        } //UPDATE FUNCTIONS
-                                                        
-                                                    } //ONRECEIVE
-    //                                          } //GEOMETRY READER
-    //                                        .frame(height: 65)
-                                        } else {
-                                            PostView(post: post, owner: false, preview: false)
-                                                .padding(.leading, 3)
-                                                .padding(.bottom, 10)
-                                        }
-                                        
-                                     
-                                    } //NOT USER POST
                                     
                                 } //ZSTACK
 
@@ -193,8 +131,6 @@ struct PostScrollView: View {
                             } //FOREACHLOOP
                             
                         } //: LAZY VSTACK
-                        
-                       
                         
                     } //POSTS NOT EMPTY
                     
