@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MakePostScreen: View {
     
-    @State var post: PostModel = PostModel(title: "", userID: "", username: "", description: "", postedAt: nil, condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "", keywordsForLookup: [])
+    @State var post: PostModel = PostModel(title: "", userID: "", username: "", description: "", postedAt: nil, condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "", keywordsForLookup: [], reporters: [])
     
     @State var images: [UIImage] = []
     @State var post_created: Bool = false
@@ -58,13 +58,7 @@ struct MakePostScreen: View {
                     presentationMode.wrappedValue.dismiss()
                 }
             }
-            .onAppear{
-                print("post_created is \(post_created)! ")
-//                if post_created{
-//                    post_alert = true
-//                }
-            }
-//            .alert("Post Created", isPresented: $post_alert, actions: {}, message: {Text("Your post was successfully created!")})
+
             .navigationBarBackButtonHidden(true)
             
 

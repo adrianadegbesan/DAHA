@@ -54,13 +54,23 @@ struct PostView: View {
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(colorScheme == .dark ? .gray : .black.opacity(0.7), lineWidth: colorScheme == .dark ? 2.5 : 2.5)
+                .strokeBorder(reported ? .red : (colorScheme == .dark ? .gray : .black.opacity(0.7)), lineWidth: colorScheme == .dark ? 2.5 : 2.5)
 
                 .shadow(color: colorScheme == .dark ? .white : .black, radius: 1, y: 0)
         )
         .background(colorScheme == .dark ? .black.opacity(0.7) : .white)
         .cornerRadius(20)
         .padding(.horizontal, 3)
+        .onAppear{
+            let cur_id = Auth.auth().currentUser?.uid
+            if cur_id != nil{
+                if post.reporters.contains(cur_id!){
+                    reported = true
+                }
+            } else {
+                reported = false
+            }
+        }
         .onTapGesture {
             if !preview {
                 LightFeedback()
@@ -77,7 +87,7 @@ struct PostView_Previews: PreviewProvider {
         let startTime = calendar.date(byAdding: .day, value: -2, to: Date())
         let startTimestamp: Timestamp = Timestamp(date: startTime!)
         
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "Listing", keywordsForLookup: [])
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "Listing", keywordsForLookup: [], reporters: [])
         NavigationView{
             PostView(post: post, owner: false, preview: true)
                 .environmentObject(FirestoreManager())

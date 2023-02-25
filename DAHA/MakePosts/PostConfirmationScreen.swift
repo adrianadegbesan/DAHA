@@ -25,7 +25,7 @@ struct PostConfirmationScreen: View {
             
             if uploading{
                 LottieView(name: colorScheme == .dark ? "DAHA-Loading" : "DAHA-Loading2")
-                    .scaleEffect(0.5)
+                    .scaleEffect(0.4)
                     .opacity(progressOpacity)
                     .padding(.bottom, screenHeight * 0.13)
                     .zIndex(1)
@@ -91,7 +91,7 @@ struct PostConfirmationScreen: View {
 
 struct PostConfirmationScreen_Previews: PreviewProvider {
     static var previews: some View {
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: nil, condition: "Good", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [])
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: nil, condition: "Good", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
         let images: [UIImage] = []
         PostConfirmationScreen(post: .constant(post), images: .constant(images), post_created: .constant(false))
     }

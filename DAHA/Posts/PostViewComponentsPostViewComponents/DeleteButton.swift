@@ -29,16 +29,24 @@ struct DeleteButton: View {
                     await firestoreManager.deletePost(post: post, deleted: $deleted, error_alert: $error_alert)
                     
                     if deleted {
-//
-                        if post.type == "Listing"{
-                            await firestoreManager.getListings()
-                            await firestoreManager.userPosts()
-                            
-                            
-                        } else if post.type == "Request"{
-                            await firestoreManager.getRequests()
-                            await firestoreManager.userPosts()
+                         
+                        withAnimation{
+                            if post.type == "Listing"{
+                                if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
+                                    firestoreManager.listings.remove(at: index)
+                                }
+                                
+                                
+                            } else if post.type == "Request"{
+                                if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
+                                    firestoreManager.requests.remove(at: index)
+                                }
+                            }
+                              if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
+                                  firestoreManager.my_posts.remove(at: index)
+                              }
                         }
+                   
                     }
                 }
             })
@@ -52,7 +60,7 @@ struct DeleteButton: View {
 
 struct DeleteButton_Previews: PreviewProvider {
     static var previews: some View {
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [])
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
         DeleteButton(post: post)
     }
 }

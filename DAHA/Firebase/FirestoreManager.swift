@@ -177,6 +177,7 @@ class FirestoreManager: ObservableObject {
         result["savers"] = post.savers
         result["type"] = post.type
         result["keywordsForLookup"] = post.keywordsForLookup
+        result["reporters"] = post.reporters
         
         return result
     }
@@ -194,7 +195,8 @@ class FirestoreManager: ObservableObject {
             channel: dictionary["channel"] as? String ?? "",
             savers: dictionary["savers"] as? [String] ?? [],
             type: dictionary["type"] as? String ?? "",
-            keywordsForLookup: dictionary["keywordsForLookup"] as? [String] ?? [])
+            keywordsForLookup: dictionary["keywordsForLookup"] as? [String] ?? [],
+            reporters: dictionary["reporters"] as? [String] ?? [])
         
         return result
     }
@@ -248,22 +250,22 @@ class FirestoreManager: ObservableObject {
     }
     
     func deletePost(post: PostModel, deleted : Binding<Bool>, error_alert: Binding<Bool>) async {
-//        for url in post.imageURLs{
-//            let true_url = URL(string: url)
-//            if true_url != nil{
-//                do {
-//                    let storageRef = try storage.reference(for: true_url!)
-//                    storageRef.delete() { error in
-//                        if error != nil {
-//                            print("error deleting post")
-//                        }
-//                    }
-//                }
-//                catch {
-//                    print("error deleting post")
-//                }
-//            }
-//        }
+        for url in post.imageURLs{
+            let true_url = URL(string: url)
+            if true_url != nil{
+                do {
+                    let storageRef = try storage.reference(for: true_url!)
+                    storageRef.delete() { error in
+                        if error != nil {
+                            print("error deleting post")
+                        }
+                    }
+                }
+                catch {
+                    print("error deleting post")
+                }
+            }
+        }
         do {
             try await db.collection("\(university)_Posts").document(post.id).delete()
             deleted.wrappedValue = true
@@ -273,9 +275,18 @@ class FirestoreManager: ObservableObject {
         }
     }
     
-    func reportPost(report: ReportModel) -> Bool {
+    func reportPost(report: ReportModel, post: PostModel) async -> Bool {
+        let postRef = db.collection("\(university)_Posts").document(post.id)
+        
+        let userId = Auth.auth().currentUser?.uid
+        
+        if userId == nil{
+            return false
+        }
+        
         do {
-            try  db.collection("\(university)_Reports").document(report.id).setData(from: report)
+            try db.collection("\(university)_Reports").document(report.id).setData(from: report)
+            try await postRef.updateData(["reporters": FieldValue.arrayUnion([userId!])])
             return true
         }
         catch {
@@ -300,6 +311,7 @@ class FirestoreManager: ObservableObject {
             
         }
         catch {
+            print("error saving post")
             return false
         }
     }
@@ -326,19 +338,20 @@ class FirestoreManager: ObservableObject {
     func convertToPost(doc : QueryDocumentSnapshot) -> PostModel {
         let data = doc.data()
         let result = PostModel(id: data["id"] as? String ?? "",
-                  title: data["title"] as! String,
-                  userID: data["userID"] as! String,
-                  username: data["username"] as! String,
-                  description: data["description"] as! String,
+                  title: data["title"] as? String ?? "",
+                  userID: data["userID"] as? String ?? "",
+                  username: data["username"] as? String ?? "",
+                  description: data["description"] as? String ?? "",
                   postedAt: data["postedAt"] as? Timestamp ?? Timestamp(date: Date.now),
-                  condition: data["condition"] as! String,
-                  category: data["category"] as! String,
-                  price: data["price"] as! String,
-                  imageURLs: data["imageURLs"] as! [String],
-                  channel: data["channel"] as! String,
-                  savers: data["savers"] as! [String],
-                  type: data["type"] as! String,
-                  keywordsForLookup: data["keywordsForLookup"] as! [String])
+                  condition: data["condition"] as? String ?? "",
+                  category: data["category"] as? String ?? "",
+                  price: data["price"] as? String ?? "",
+                  imageURLs: data["imageURLs"] as? [String] ?? [],
+                  channel: data["channel"] as? String ?? "",
+                  savers: data["savers"] as? [String] ?? [],
+                  type: data["type"] as? String ?? "",
+                  keywordsForLookup: data["keywordsForLookup"] as? [String] ?? [],
+                  reporters: data["reporters"] as? [String] ?? [])
         return result
     }
     

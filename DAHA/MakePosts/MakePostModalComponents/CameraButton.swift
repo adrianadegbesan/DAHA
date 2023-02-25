@@ -24,7 +24,6 @@ struct CameraButton: View{
                 .frame(width: screenWidth * 0.23, height: screenHeight * 0.08)
         }
         .sheet(isPresented: $isPresented){
-//            CustomCameraView(capturedImage: $image, images: $images)
             ImagePicker(image: $image, images: $images)
                 .ignoresSafeArea()
         }

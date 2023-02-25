@@ -25,10 +25,12 @@ struct SearchScreen: View {
                 
                 
                 if !searched{
-                    
+
                     HeaderView(title: "Search", showMessages: false, showSettings: false, showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil, screen: "Search")
                         .frame(alignment: .top)
                     
+//                    Spacer().frame(height: screenHeight * 0.07)
+
                 }
                 
                 HStack{

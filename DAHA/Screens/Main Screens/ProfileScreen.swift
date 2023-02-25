@@ -107,7 +107,7 @@ struct ProfileScreen: View {
         .onTapGesture {
             bottomSheetPosition = .relative(0.15)
         }
-        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, switchablePositions: [.relative(0.15), .relativeTop(0.75), .relativeTop(0.88)], headerContent: {
+        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, switchablePositions: [.relative(0.15), .relativeTop(0.75)], headerContent: {
                     VStack(alignment: .leading){
                         HStack{
                             Spacer().frame(width: screenWidth * 0.02)
@@ -145,7 +145,7 @@ struct ProfileScreen: View {
 //                .enableAppleScrollBehavior()
 //                .showDragIndicator(true)
                 .onDragEnded{_ in 
-                    if bottomSheetPosition == .relativeTop(0.75) || bottomSheetPosition == .relativeTop(0.88){
+                    if bottomSheetPosition == .relativeTop(0.75){
                         expanded = true
                         retracted = false
                     } else {

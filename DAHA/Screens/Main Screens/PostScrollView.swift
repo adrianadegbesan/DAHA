@@ -75,7 +75,7 @@ struct PostScrollView: View {
                                         
                                         if post.id == posts.last!.id {
     //                                        GeometryReader{ g in
-                                            PostView(post: post, owner: true, preview: false)
+                                            PostView(post: post, owner: false, preview: false)
                                                     .padding(.bottom, 10)
                                                     .padding(.leading, 3)
                                                     .onAppear{
@@ -123,7 +123,7 @@ struct PostScrollView: View {
     //                                          }  //GEOMETRY READER
     //                                        .frame(height: 65)
                                         } else {
-                                            PostView(post: post, owner: true, preview: false)
+                                            PostView(post: post, owner: false, preview: false)
                                                 .padding(.leading, 3)
                                                 .padding(.bottom, 10)
                                         } //NOT LAST
