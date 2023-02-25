@@ -11,6 +11,7 @@ import FirebaseAuth
 struct ReportModal: View {
     @State var post: PostModel
     @State var report_alert: Bool = false
+    @State var dismiss_screen: Bool = false
     @State var success_alert: Bool = false
     @State var error_alert: Bool = false
     @State var description: String = ""
@@ -50,37 +51,25 @@ struct ReportModal: View {
                 
                 Button(action: {
                     if !uploading {
-                        uploading = true
-                        let cur_id = Auth.auth().currentUser?.uid
-                        if cur_id == nil{
-                            return
-                        } else {
-                            let report = ReportModel(id: UUID().uuidString, postID: post.id, posterID: post.userID, reporterID: cur_id ?? "0", description: description, reportedAt: nil)
-                            
-                            Task {
-                                let success = await firestoreManager.reportPost(report: report, post: post)
-                                if success {
-                                    
-//                                    if post.type == "Listing"{
-//                                        if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
-//                                            firestoreManager.listings.remove(at: index)
-//                                        }
+                        report_alert = true
+//                        uploading = true
+//                        let cur_id = Auth.auth().currentUser?.uid
+//                        if cur_id == nil{
+//                            return
+//                        } else {
+//                            let report = ReportModel(id: UUID().uuidString, postID: post.id, posterID: post.userID, reporterID: cur_id ?? "0", description: description, reportedAt: nil)
 //
-//
-//                                    } else if post.type == "Request"{
-//                                        if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
-//                                            firestoreManager.requests.remove(at: index)
-//                                        }
-//                                    }
-                                    
-                                    reported = true
-                                    dismiss()
-                                } else {
-                                    error_alert = true
-                                }
-                                uploading = false
-                            }
-                        }
+//                            Task {
+//                                let success = await firestoreManager.reportPost(report: report, post: post)
+//                                if success {
+//                                    reported = true
+//                                    dismiss()
+//                                } else {
+//                                    error_alert = true
+//                                }
+//                                uploading = false
+//                            }
+//                        }
                     }
                   
                 }){
@@ -106,10 +95,39 @@ struct ReportModal: View {
                 
                 Spacer()
             }  //: VStack
+            .alert("Report Post", isPresented: $report_alert, actions: {
+                Button("Report", role: .destructive, action: {
+                    uploading = true
+                    let cur_id = Auth.auth().currentUser?.uid
+                    if cur_id == nil{
+                        return
+                    } else {
+                        let report = ReportModel(id: UUID().uuidString, postID: post.id, posterID: post.userID, reporterID: cur_id ?? "0", description: description, reportedAt: nil)
+                        
+                        Task {
+                            let success = await firestoreManager.reportPost(report: report, post: post)
+                            if success {
+                                reported = true
+//                                success_alert = true
+                            } else {
+                                error_alert = true
+                            }
+                            uploading = false
+                        }
+                    }
+                })
+            }, message: {Text("Are you sure you want to report this post?")})
           
             
-            .alert("Error Reporting Post", isPresented: $error_alert, actions:{}, message: {Text("Please check your network connection and try again later")})
-        .alert("Successfully Reported Post", isPresented: $success_alert, actions:{}, message: {Text("This post was successfully reported")})
+        .alert("Error Reporting Post", isPresented: $error_alert, actions:{}, message: {Text("Please check your network connection and try again later")})
+        .alert("Successfully Reported Post", isPresented: $success_alert, actions:{
+//            dismiss_screen = true
+        }, message: {Text("This post was successfully reported")})
+        }
+        .onChange(of: reported){ value in
+            if reported {
+                dismiss()
+            }
         }
         .keyboardControl()
     }
