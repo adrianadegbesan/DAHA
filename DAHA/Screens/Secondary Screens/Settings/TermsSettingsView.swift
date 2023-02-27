@@ -12,9 +12,7 @@ struct TermsSettingsView: View {
     @Binding var shouldNavigate : Bool
     
     var body: some View {
-        Button(action:{
-            shouldNavigate = true
-        }){
+        NavigationLink(destination: TermsSettingsScreen()){
             VStack(alignment: .leading){
                 HStack{
                     HStack{

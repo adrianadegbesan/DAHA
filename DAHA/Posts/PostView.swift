@@ -21,6 +21,15 @@ struct PostView: View {
     @State var owner : Bool
     @State var preview : Bool
     
+    @State private var deletePresented: Bool = false
+    @State private var deleted: Bool = false
+    @State private var error_alert : Bool = false
+    @State private var delete_alert : Bool = false
+    @EnvironmentObject var firestoreManager : FirestoreManager
+    
+    @State private var save_alert: Bool = false
+    @State private var unsave_alert: Bool = false
+    
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -84,6 +93,91 @@ struct PostView: View {
             }
         }
         .scaleEffect(preview ? 0.95 : 1)
+        .contextMenu{
+            if owner{
+                Button{
+                    deletePresented = true
+                } label:{
+                    Label("Delete Post", systemImage: "trash")
+                }
+                .foregroundColor(.red)
+              
+            }
+            if !owner{
+                if !saved{
+                    Button{
+                        Task{
+                            let result = await firestoreManager.savePost(post: post)
+                            if result {
+                                await firestoreManager.getSaved()
+                            } else {
+                                save_alert = true
+                            }
+                        }
+                        firestoreManager.saved_refresh = true
+                        withAnimation{
+                            let id = Auth.auth().currentUser?.uid
+                            if id != nil && !post.savers.contains(id!){
+                                post.savers.append(id!)
+                            }
+                            saved.toggle()
+                        }
+                        
+                    } label:{
+                        Label("Save Post", systemImage: "bookmark")
+                    }
+
+                    
+                }
+                
+                Button{
+                    
+                } label:{
+                    Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane.fill")
+                }
+                
+//                Button{
+//                    
+//                } label:{
+//                    Label("Report Post", systemImage: "flag")
+//                }
+            }
+        }
+        .alert("Delete Post", isPresented: $deletePresented, actions: {
+            Button("Delete", role: .destructive, action: {
+                Task{
+                    await firestoreManager.deletePost(post: post, deleted: $deleted, error_alert: $error_alert)
+                    
+                    if deleted {
+                         
+                        withAnimation{
+                            if post.type == "Listing"{
+                                if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
+                                    firestoreManager.listings.remove(at: index)
+                                }
+                                
+                                
+                            } else if post.type == "Request"{
+                                if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
+                                    firestoreManager.requests.remove(at: index)
+                                }
+                            }
+                              if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
+                                  firestoreManager.my_posts.remove(at: index)
+                              }
+                        }
+                   
+                    }
+                }
+            })
+        }, message: {
+            Text("Are you sure you want to delete this post?")
+        })
+        .alert("Unable to Delete Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later ")})
+        .alert("Post Successfully Deleted", isPresented: $delete_alert, actions: {}, message: {Text("Your post has been deleted")})
+        .alert("Error Saving Post", isPresented: $save_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
+        .alert("Error Unsaving Post", isPresented: $unsave_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
+    
     }
 }
 

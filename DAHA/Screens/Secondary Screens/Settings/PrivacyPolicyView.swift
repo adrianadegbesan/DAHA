@@ -12,9 +12,7 @@ struct PrivacyPolicyView: View {
     @Binding var shouldNavigate : Bool
 
     var body: some View {
-        Button(action:{
-            shouldNavigate = true
-        }){
+        NavigationLink(destination: PrivacySettingsScreen()){
             VStack(alignment: .leading){
                 HStack{
                     HStack{
