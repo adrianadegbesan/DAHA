@@ -61,7 +61,7 @@ struct PostView: View {
 
                 .shadow(color: colorScheme == .dark ? .white : .black, radius: 1, y: 0)
         )
-        .background(colorScheme == .dark ? .black.opacity(0.7) : .white)
+        .background(colorScheme == .dark ? .black.opacity(0.7): .white)
         .cornerRadius(20)
         .padding(.horizontal, 3)
         .onAppear{
@@ -79,7 +79,7 @@ struct PostView: View {
             if !preview && !reported{
                 LightFeedback()
                 shouldNavigate = true
-            } else {
+            } else if reported {
                 reported_alert = true
             }
         }

@@ -30,7 +30,24 @@ struct PostImageView: View {
                                 WebImage(url: URL(string: item))
                                     .resizable()
                                     .placeholder{
-                                        ProgressView()
+//                                        ProgressView()
+                                        ZStack(alignment: .topTrailing){
+                                            Image(systemName: category_images[post.category] ?? "bag.fill")
+                                                .scaleEffect(3)
+                                                .frame(width: screenWidth * 0.385, height: screenHeight * 0.21)
+                                                .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
+                                                .overlay (
+                                                    RoundedRectangle(cornerRadius: 15)
+                                                        .strokeBorder(lineWidth: colorScheme == .dark ? 1.5 : 2.7)
+                                                )
+                                            
+                                            
+                        //                    if !preview && !owner{
+                        //                        ReportButton(post: post, reported: $reported)
+                        //                            .padding(.trailing, 6)
+                        //                            .padding(.top, 8)
+                        //                    }
+                                        }
                                     }
                                     .indicator(.activity)
                                     .cornerRadius(15, corners: .allCorners)

@@ -14,6 +14,7 @@ struct PostModal: View {
     @Binding var saved: Bool
     @Binding var reported: Bool
     @State var success_alert: Bool = false
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
     @State var owner : Bool
     var body: some View {
@@ -34,6 +35,7 @@ struct PostModal: View {
             }
             .padding()
         }
+        .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: light_scroll_background))
         .alert("Successfully Reported Post", isPresented: $success_alert, actions:{}, message: {Text("This post was successfully reported")})
     }
 }

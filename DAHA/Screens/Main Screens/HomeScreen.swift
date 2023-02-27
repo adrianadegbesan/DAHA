@@ -17,10 +17,11 @@ struct HomeScreen: View {
     @State private var tabs : [String] = ["LISTINGS", "REQUESTS"]
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
-    @State var opacity1 = 1.0
-    @State var opacity2 = 0.0
-    @State var first = true
-    @State var second = false
+    @State private var opacity1 = 1.0
+    @State private var opacity2 = 0.0
+    @State private var first = true
+    @State private var second = false
+    @State private var dividerOffset: CGFloat = 0
 
     
     var body: some View {
@@ -38,7 +39,8 @@ struct HomeScreen: View {
                             Divider()
                                 .frame(width: screenWidth * 0.35, height: 3.5)
                                 .overlay(Color(hex: deepBlue))
-                                .opacity(opacity1)
+//                                .opacity(opacity1)
+                                .offset(x: dividerOffset)
                                 
                         }
                         .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
@@ -55,6 +57,7 @@ struct HomeScreen: View {
                                 .frame(width: screenWidth * 0.35, height: 3.5)
                                 .overlay(Color(hex: deepBlue))
                                 .opacity(opacity2)
+                                .offset(x: dividerOffset + (screenWidth * 0.48))
                         }
                         .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                         .onTapGesture {
@@ -70,8 +73,14 @@ struct HomeScreen: View {
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
                     .animation(.easeIn(duration: 0.2), value: tabIndex)
+                   .onChange(of: tabIndex) { value in
+                       withAnimation {
+                           dividerOffset = CGFloat(value) * (screenWidth * 0.499)
+                       }
+                   }
  
                 } //: VStack
+                
                 .onChange(of: tabIndex){ value in
                     if tabIndex == 0 {
                         withAnimation{

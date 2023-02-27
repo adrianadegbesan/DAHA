@@ -135,7 +135,7 @@ struct PostScrollView: View {
                     } //POSTS NOT EMPTY
                     
                 }/*SCROLLVIEW*/
-                .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: light_scroll_background))
+                .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
                 .refreshable(action: {
                     if screen == "Listings"{
                         Task {

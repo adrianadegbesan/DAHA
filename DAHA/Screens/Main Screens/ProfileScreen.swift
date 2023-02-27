@@ -20,6 +20,7 @@ struct ProfileScreen: View {
     @State var opacity2 = 0.0
     @State var first = true
     @State var second = false
+    @State private var dividerOffset: CGFloat = 0
     @State private var bottomSheetPosition: BottomSheetPosition = .relative(0.15)
     @State private var expanded : Bool = false
     @State private var retracted : Bool = true
@@ -41,7 +42,8 @@ struct ProfileScreen: View {
                         Divider()
                             .frame(width: screenWidth * 0.35, height: 3.5)
                             .overlay(Color(hex: deepBlue))
-                            .opacity(opacity1)
+//                            .opacity(opacity1)
+                            .offset(x: dividerOffset)
                             
                     }
                     .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
@@ -59,6 +61,7 @@ struct ProfileScreen: View {
                             .frame(width: screenWidth * 0.35, height: 3.5)
                             .overlay(Color(hex: deepBlue))
                             .opacity(opacity2)
+                            .offset(x: dividerOffset + (screenWidth * 0.48))
                     }
                     .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                     .onTapGesture {
@@ -78,8 +81,14 @@ struct ProfileScreen: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .animation(.easeIn(duration: 0.2), value: tabIndex)
+                .onChange(of: tabIndex) { value in
+                    withAnimation {
+                        dividerOffset = CGFloat(value) * (screenWidth * 0.496)
+                    }
+                }
                 
             } //: VStack
+            
             .onChange(of: tabIndex){ value in
                 if tabIndex == 0 {
                     withAnimation {

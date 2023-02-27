@@ -46,7 +46,16 @@ struct PostModalDescription: View {
                             WebImage(url: URL(string: post.imageURLs[i]))
                                 .resizable()
                                 .placeholder{
-                                    ProgressView()
+//                                    ProgressView()
+                                    Image(systemName: category_images[post.category] ?? "bag.fill")
+                                        .scaleEffect(4)
+                                        .frame(width: screenWidth * 0.96, height: screenHeight * 0.35)
+                                        .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
+                                        .overlay (
+                            //                RoundedRectangle(cornerRadius: 15)
+                                            Rectangle()
+                                                .strokeBorder(lineWidth: 3)
+                                        )
                                 }
                                 .indicator(.activity)
                                 .scaledToFit()
