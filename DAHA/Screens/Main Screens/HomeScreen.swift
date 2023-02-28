@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Firebase
-import SlidingTabView
 
 // Home Screen
 struct HomeScreen: View {

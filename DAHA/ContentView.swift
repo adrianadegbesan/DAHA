@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
   @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
@@ -14,6 +15,7 @@ struct ContentView: View {
   @AppStorage("university") var university: String = ""
   @AppStorage("username") var username_system: String = ""
   @AppStorage("email") var email_system: String = ""
+  @AppStorage("emailverified") var verified: Bool = false
   @AppStorage("id") var user_id = ""
     
   @EnvironmentObject var authentication: AuthManager
@@ -27,10 +29,12 @@ struct ContentView: View {
       
       if isOnboardingViewActive {
         SetUpScreen()
-      } else if isSignedIn && !agreedToTerms{
+      } else if isSignedIn && !verified{
+        EmailScreen()
+      } else if isSignedIn && verified && !agreedToTerms{
         TermsConditionsScreen()
-      } else if isSignedIn && agreedToTerms{
-          MainScreen()
+      } else if isSignedIn && verified && agreedToTerms{
+         MainScreen()
       }
     } //: ZStack
     .opacity(opacity)

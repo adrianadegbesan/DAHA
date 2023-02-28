@@ -56,13 +56,24 @@ struct PostScrollView: View {
                     }
 
                   if posts.isEmpty && screen != "Search" {
-                      ZStack {
-                          Image("Logo")
-                              .opacity(0.75)
-                              .overlay(Rectangle().stroke(.white, lineWidth: 2))
-                              .padding(.top, screenHeight * 0.15)
-                        }
-                      .frame(width: screenWidth)
+                      
+                      if loading{
+                          ZStack {
+                              ProgressView()
+                                  .scaleEffect(1.2)
+                                  .padding(.top, 10)
+                          }
+                          .frame(width: screenWidth)
+                      } else {
+                          ZStack {
+                              Image("Logo")
+                                  .opacity(0.75)
+                                  .overlay(Rectangle().stroke(.white, lineWidth: 2))
+                                  .padding(.top, screenHeight * 0.15)
+                            }
+                          .frame(width: screenWidth)
+                      }
+                    
                     } else {
                         
                         Spacer().frame(height: 12)

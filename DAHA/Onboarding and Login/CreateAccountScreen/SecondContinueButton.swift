@@ -62,9 +62,9 @@ struct SecondContinueButton: View {
                     } else if (username_temp.count < 5){
                         error = true
                         error_message = "Username length cannot be less than 5 characters"
-                    } else if (username_temp.count > 9){
+                    } else if (username_temp.count > 12){
                         error = true
-                        error_message = "Username length cannot be greater than 9 characters"
+                        error_message = "Username length cannot be greater than 12 characters"
                     } else if (username_temp.isEmpty || password_temp.isEmpty || reconfirmpassword_temp.isEmpty || firstname_temp.isEmpty || lastname_temp.isEmpty){
                         error = true
                         error_message = "Please fill all fields"

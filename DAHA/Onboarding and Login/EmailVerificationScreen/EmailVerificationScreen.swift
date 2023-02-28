@@ -58,9 +58,9 @@ struct EmailVerificationScreen: View {
         } //: ZStack
         .keyboardControl()
         .onAppear{
-            Task {
-                code = String(await sendVerificationEmail(email: email, error_alert: $error_alert, error_message: $error_message) )
-            }
+//            Task {
+//                code = String(await sendVerificationEmail(email: email, error_alert: $error_alert, error_message: $error_message) )
+//            }
         }
         .onTapGesture {
             hideKeyboard()

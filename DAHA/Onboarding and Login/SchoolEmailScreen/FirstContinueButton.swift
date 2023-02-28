@@ -20,6 +20,7 @@ struct FirstContinueButton: View {
     @State private var uni_temp : String = ""
     @State var isValid : Bool = false
     @AppStorage("university") var university: String = ""
+    @AppStorage("email") var email_system: String = ""
     @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var authentication: AuthManager
     @Environment(\.colorScheme) var colorScheme
@@ -42,6 +43,7 @@ struct FirstContinueButton: View {
                      await firestoreManager.verifyDomain(domain: domain, schoolFound: $schoolFound, cannot_verify: $cannot_verify, uni_temp: $uni_temp)
                      if schoolFound == true {
                          university = uni_temp
+                         email_system = email
                          print("The university is \(university)")
                          shouldNavigate = true
                      } else {

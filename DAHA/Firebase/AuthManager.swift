@@ -20,6 +20,7 @@ class AuthManager: ObservableObject {
     @AppStorage("email") var email_system: String = ""
     @AppStorage("accountcreated") var isAccountCreated: Bool = false
     @AppStorage("id") var user_id = ""
+    @AppStorage("isDarkMode") private var isDarkMode = "System"
     @Published var userSession: FirebaseAuth.User?
     
     private var db = Firestore.firestore()
@@ -28,7 +29,10 @@ class AuthManager: ObservableObject {
         self.userSession = Auth.auth().currentUser
         if (self.userSession != nil){
             user_id = Auth.auth().currentUser!.uid
+            let verified = Auth.auth().currentUser!.isEmailVerified
             print("DEBUG: The current User Session is \(self.userSession!)")
+            print("Email is \(verified)")
+            
         } else {
             print("DEBUG: The current User Session is nil")
         }
@@ -37,6 +41,11 @@ class AuthManager: ObservableObject {
             isOnboardingViewActive = true
             isSignedIn = false
             agreedToTerms = false
+            university = ""
+            username_system = ""
+            email_system = ""
+            user_id = ""
+            isDarkMode = "System"
         }
     }
     
@@ -67,6 +76,27 @@ class AuthManager: ObservableObject {
             error_message.wrappedValue = "There was an error creating your account, please check your network connection and try again later."
             cannot_create.wrappedValue = true
         }
+    }
+    
+    func sendVerificationEmail() -> Bool{
+        let user = Auth.auth().currentUser
+        var result = false
+        
+        if user != nil{
+            user?.sendEmailVerification(completion: { (error) in
+                if let error = error {
+                    print("Error sending verification email: \(error.localizedDescription)")
+                    result = false
+                } else {
+                    print("Verification email sent successfully")
+                    result = true
+                }
+            })
+        } else {
+            return false
+        }
+           
+        return result
     }
     
     func signIn(email: String, password: String, error_alert: Binding<Bool>, error_message: Binding<String>, username_temp: Binding<String>, university_temp: Binding<String>, terms_temp: Binding<Bool>) async -> Bool {

@@ -51,8 +51,8 @@ struct MakePostTextInputs: View {
                 TextEditor(text: $description)
                     .focused($description_input)
                     .onChange(of: description){ value in
-                        if description.count > 200{
-                            description = String(description.prefix(200))
+                        if description.count > 320{
+                            description = String(description.prefix(320))
                         }
                         post.description = description
                         

@@ -43,45 +43,50 @@ struct PostModalDescription: View {
                 TabView(selection: $tabIndex){
                     
                     ForEach(post.imageURLs.indices, id: \.self) { i in
-                        GeometryReader { proxy in
-                            WebImage(url: URL(string: post.imageURLs[i]))
-                                .resizable()
-                                .placeholder{
-//                                    ProgressView()
-                                    Image(systemName: category_images[post.category] ?? "bag.fill")
-                                        .scaleEffect(4)
-                                        .frame(width: screenWidth * 0.96, height: screenHeight * 0.35)
-                                        .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
-                                        .overlay (
-                            //                RoundedRectangle(cornerRadius: 15)
-                                            Rectangle()
-                                                .strokeBorder(lineWidth: 3)
-                                        )
-                                }
-                                .indicator(.activity)
-                                .scaledToFit()
-                                .clipped()
-                                .opacity(opacity)
-                                .transition(.scale)
-                                .overlay (
-                                    Rectangle()
-                                        .strokeBorder(lineWidth: 3)
-                                )
-                                .onAppear{
-                                    withAnimation(.easeIn(duration: 0.3)){
-                                        opacity = 1
+                        
+                        ZStack{
+                            
+                            GeometryReader { proxy in
+                                WebImage(url: URL(string: post.imageURLs[i]))
+                                    .resizable()
+                                    .placeholder{
+    //                                    ProgressView()
+                                        Image(systemName: category_images[post.category] ?? "bag.fill")
+                                            .scaleEffect(4)
+                                            .frame(width: screenWidth * 0.96, height: screenHeight * 0.35)
+                                            .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
+                                            .overlay (
+                                //                RoundedRectangle(cornerRadius: 15)
+                                                Rectangle()
+                                                    .strokeBorder(lineWidth: 3)
+                                            )
                                     }
-                                }
-                                .modifier(ImageModifier(contentSize: CGSize(width: proxy.size.width, height: proxy.size.height)))
-                                .tag(i)
-                                .contextMenu{
-                                    Button{
-                                        saveImageToPhotoAlbum(url: URL(string: post.imageURLs[i])!, error_alert: $error_alert)
-                                    } label: {
-                                        Label("Save Photo", systemImage: "photo")
+                                    .indicator(.activity)
+                                    .scaledToFit()
+                                    .clipped()
+                                    .opacity(opacity)
+                                    .transition(.scale)
+                                    .overlay (
+                                        Rectangle()
+                                            .strokeBorder(lineWidth: 3)
+                                    )
+                                    .onAppear{
+                                        withAnimation(.easeIn(duration: 0.3)){
+                                            opacity = 1
+                                        }
                                     }
-                                }
-                        } //: GeometryReader
+                                    .modifier(ImageModifier(contentSize: CGSize(width: proxy.size.width, height: proxy.size.height)))
+                                    .tag(i)
+                                    .contextMenu{
+                                        Button{
+                                            saveImageToPhotoAlbum(url: URL(string: post.imageURLs[i])!, error_alert: $error_alert)
+                                        } label: {
+                                            Label("Save Photo", systemImage: "photo")
+                                        }
+                                    }
+                            } //: GeometryReader
+                        }
+                 
                       } //: LOOP
                     
                     
@@ -127,6 +132,7 @@ struct PostModalDescription: View {
                 HStack{
                     Text(post.description)
                         .padding(.leading, 12)
+                        .textSelection(.enabled)
                     Spacer()
                 }
                 .padding(.bottom, 10)

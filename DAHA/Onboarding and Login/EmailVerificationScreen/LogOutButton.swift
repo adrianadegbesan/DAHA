@@ -1,46 +1,36 @@
 //
-//  LogOutView.swift
+//  LogOutButton.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 2/14/23.
+//  Created by Adrian Adegbesan on 2/28/23.
 //
 
 import SwiftUI
 
-struct LogOutView: View {
+struct LogOutButton: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = false
     @AppStorage("signedin") var isSignedIn: Bool = true
     @AppStorage("termsagreed") var agreedToTerms: Bool = true
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
-    @AppStorage("id") var user_id = ""
     @AppStorage("isDarkMode") private var isDarkMode = "System"
-    @AppStorage("emailverified") var verified: Bool = true
     
     @State private var isPresented = false
     @State private var error_alert = false
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var authentication : AuthManager
+    
+    @EnvironmentObject var authentication: AuthManager
     
     var body: some View {
         Button(action: {
             isPresented = true
         }){
-            VStack(alignment: .leading) {
-                HStack {
-                    HStack {
-                        Image(systemName: "door.left.hand.open")
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                        Spacer()
-                    }
-                    .frame(width: screenWidth * 0.1)
-                    
-                    Text("Log Out")
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                }
-//                Divider()
-            }
+            Text("LOG OUT")
+                    .font(
+                        .system(size:25, weight: .bold)
+                    )
+                .foregroundColor(Color.init(hex: darkGrey))
         }
         .alert("Log Out", isPresented: $isPresented, actions: {
             Button("Log Out", role: .destructive, action: {
@@ -53,9 +43,7 @@ struct LogOutView: View {
                         university = ""
                         username_system = ""
                         email_system = ""
-                        user_id = ""
                         isDarkMode = "System"
-                        verified = false
                     } else {
                         error_alert = true
                     }
@@ -66,9 +54,8 @@ struct LogOutView: View {
     }
 }
 
-struct LogOutView_Previews: PreviewProvider {
+struct LogOutButton_Previews: PreviewProvider {
     static var previews: some View {
-        LogOutView()
-            .environmentObject(AuthManager())
+        LogOutButton()
     }
 }

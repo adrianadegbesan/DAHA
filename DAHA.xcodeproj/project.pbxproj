@@ -70,8 +70,11 @@
 		82A21A6A29A82A0F0040BAA1 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6929A82A0F0040BAA1 /* ReportModel.swift */; };
 		82A21A6C29A846680040BAA1 /* ReportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6B29A846680040BAA1 /* ReportModal.swift */; };
 		82A21A6E29A9067E0040BAA1 /* DAHA-Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */; };
-		82A21A7029A91E290040BAA1 /* DAHA-Loading2.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A6F29A91E290040BAA1 /* DAHA-Loading2.json */; };
+		82A21A7029A91E290040BAA1 /* DAHA-Loading_dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A6F29A91E290040BAA1 /* DAHA-Loading_dark.json */; };
 		82A21A7229AD83F90040BAA1 /* SDWebImageHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A7129AD83F90040BAA1 /* SDWebImageHelpers.swift */; };
+		82A21A7629AEA3870040BAA1 /* EmailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A7529AEA3870040BAA1 /* EmailScreen.swift */; };
+		82A21A7829AEB68C0040BAA1 /* EmailResendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A7729AEB68C0040BAA1 /* EmailResendButton.swift */; };
+		82A21A7A29AEB73A0040BAA1 /* LogOutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A7929AEB73A0040BAA1 /* LogOutButton.swift */; };
 		82ACC67F2991738300589E1E /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC67E2991738300589E1E /* Shapes.swift */; };
 		82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6822992E20200589E1E /* ModalCapsule.swift */; };
 		82ACC68729936E3100589E1E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68629936E3100589E1E /* NextButton.swift */; };
@@ -197,8 +200,11 @@
 		82A21A6929A82A0F0040BAA1 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
 		82A21A6B29A846680040BAA1 /* ReportModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModal.swift; sourceTree = "<group>"; };
 		82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DAHA-Loading.json"; sourceTree = "<group>"; };
-		82A21A6F29A91E290040BAA1 /* DAHA-Loading2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DAHA-Loading2.json"; sourceTree = "<group>"; };
+		82A21A6F29A91E290040BAA1 /* DAHA-Loading_dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DAHA-Loading_dark.json"; sourceTree = "<group>"; };
 		82A21A7129AD83F90040BAA1 /* SDWebImageHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageHelpers.swift; sourceTree = "<group>"; };
+		82A21A7529AEA3870040BAA1 /* EmailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScreen.swift; sourceTree = "<group>"; };
+		82A21A7729AEB68C0040BAA1 /* EmailResendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailResendButton.swift; sourceTree = "<group>"; };
+		82A21A7929AEB73A0040BAA1 /* LogOutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutButton.swift; sourceTree = "<group>"; };
 		82ACC67E2991738300589E1E /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		82ACC6822992E20200589E1E /* ModalCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCapsule.swift; sourceTree = "<group>"; };
 		82ACC68629936E3100589E1E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -389,7 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */,
-				82A21A6F29A91E290040BAA1 /* DAHA-Loading2.json */,
+				82A21A6F29A91E290040BAA1 /* DAHA-Loading_dark.json */,
 			);
 			path = "Lottie Animations";
 			sourceTree = "<group>";
@@ -478,6 +484,9 @@
 			children = (
 				82D2D0DE296BD41200CB4B9A /* EmailVerificationScreen.swift */,
 				82DF4CAB296F5C6B00A309CF /* ResendButton.swift */,
+				82A21A7529AEA3870040BAA1 /* EmailScreen.swift */,
+				82A21A7729AEB68C0040BAA1 /* EmailResendButton.swift */,
+				82A21A7929AEB73A0040BAA1 /* LogOutButton.swift */,
 			);
 			path = EmailVerificationScreen;
 			sourceTree = "<group>";
@@ -497,7 +506,6 @@
 			children = (
 				8294FAE8296BCB76004001AE /* CreateAccountScreen.swift */,
 				82DF4CAD296F614500A309CF /* SecondContinueButton.swift */,
-				82B6B2DE298B270300027E5A /* TermsConditionsScreen.swift */,
 			);
 			path = CreateAccountScreen;
 			sourceTree = "<group>";
@@ -545,6 +553,7 @@
 				82CEFC3F2969CB9500C55F67 /* Helpers */,
 				82CEFC402969CB9C00C55F67 /* Models */,
 				82CEFC692969CE8600C55F67 /* Onboarding and Login */,
+				82B6B2DE298B270300027E5A /* TermsConditionsScreen.swift */,
 				82CEFC412969CBB600C55F67 /* Screens */,
 				82B6B2FD298F502400027E5A /* MakePosts */,
 				823602062985ADD5002E7AEC /* Posts */,
@@ -653,8 +662,8 @@
 				82CED4FA2981EE9B009B5507 /* SetUpScreen */,
 				82CED4FF2981F171009B5507 /* LoginScreen */,
 				82CED4FD2981EF74009B5507 /* SchoolEmailScreen */,
-				82CED4FC2981EF56009B5507 /* EmailVerificationScreen */,
 				82CED4FE2981EFFE009B5507 /* CreateAccountScreen */,
+				82CED4FC2981EF56009B5507 /* EmailVerificationScreen */,
 			);
 			path = "Onboarding and Login";
 			sourceTree = "<group>";
@@ -770,7 +779,7 @@
 				82CEFC392969CB2D00C55F67 /* Preview Assets.xcassets in Resources */,
 				82CEFC362969CB2D00C55F67 /* Assets.xcassets in Resources */,
 				82DF4CB329775B5300A309CF /* GoogleService-Info.plist in Resources */,
-				82A21A7029A91E290040BAA1 /* DAHA-Loading2.json in Resources */,
+				82A21A7029A91E290040BAA1 /* DAHA-Loading_dark.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -791,6 +800,7 @@
 				82CEFC342969CB2C00C55F67 /* ContentView.swift in Sources */,
 				82CEFC572969CD5A00C55F67 /* MainScreen.swift in Sources */,
 				823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */,
+				82A21A7A29AEB73A0040BAA1 /* LogOutButton.swift in Sources */,
 				82218C10299C92560092BA94 /* VersionView.swift in Sources */,
 				82218C30299F568D0092BA94 /* UserPostsView.swift in Sources */,
 				82ACC6902995CBED00589E1E /* ChooseTypeButton.swift in Sources */,
@@ -836,6 +846,7 @@
 				82CEFC622969CE3700C55F67 /* PostModal.swift in Sources */,
 				8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */,
 				82B6B2BB2989EC0E00027E5A /* MakePostScreen.swift in Sources */,
+				82A21A7829AEB68C0040BAA1 /* EmailResendButton.swift in Sources */,
 				82B6B2BE2989ECD300027E5A /* MakePostScreenExit.swift in Sources */,
 				82CBC2B22989BC2F001966E3 /* PostModalPostActions.swift in Sources */,
 				82DF4CAC296F5C6B00A309CF /* ResendButton.swift in Sources */,
@@ -875,6 +886,7 @@
 				82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */,
 				82A21A6029A6A9DA0040BAA1 /* PrivacyPolicyView.swift in Sources */,
 				82218C34299FC7E90092BA94 /* ImageIndicator.swift in Sources */,
+				82A21A7629AEA3870040BAA1 /* EmailScreen.swift in Sources */,
 				82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */,
 				82D2D0DF296BD41200CB4B9A /* EmailVerificationScreen.swift in Sources */,
 				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,

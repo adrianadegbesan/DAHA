@@ -12,6 +12,7 @@ struct SignInButton: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
+    @AppStorage("emailverified") var verified: Bool = false
     @Binding var email: String
     @Binding var password: String
     @Binding var uploading: Bool
@@ -40,7 +41,10 @@ struct SignInButton: View {
                         agreedToTerms = terms_temp
                         if Auth.auth().currentUser != nil{
                             email_system = Auth.auth().currentUser!.email!
+                            verified =
+                                Auth.auth().currentUser!.isEmailVerified
                         }
+                    
                         Task{
                             await firestoreManager.getListings()
                             await firestoreManager.getRequests()

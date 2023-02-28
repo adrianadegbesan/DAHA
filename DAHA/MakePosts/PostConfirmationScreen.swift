@@ -24,7 +24,7 @@ struct PostConfirmationScreen: View {
         ZStack {
             
             if uploading{
-                LottieView(name: colorScheme == .dark ? "DAHA-Loading" : "DAHA-Loading2")
+                LottieView(name: colorScheme == .dark ? "DAHA-Loading_dark" : "DAHA-Loading")
                     .scaleEffect(0.4)
                     .opacity(progressOpacity)
                     .padding(.bottom, screenHeight * 0.13)
