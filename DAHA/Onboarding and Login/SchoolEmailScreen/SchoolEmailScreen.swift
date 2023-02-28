@@ -37,7 +37,7 @@ struct SchoolEmailScreen: View {
                     .padding(.bottom, 20)
                 
 
-                NavigationLink(destination: EmailVerificationScreen(email: $email), isActive: $shouldNavigate){
+                NavigationLink(destination: CreateAccountScreen(), isActive: $shouldNavigate){
                     EmptyView()
                 }
             } //: VStack

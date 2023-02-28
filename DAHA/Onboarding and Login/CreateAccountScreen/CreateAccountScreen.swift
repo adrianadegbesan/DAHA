@@ -30,9 +30,10 @@ struct CreateAccountScreen: View {
                     .opacity(progressOpacity)
                     .scaleEffect(2.5)
                 ScrollView {
+                    Spacer().frame(height: 0.045 * screenHeight)
                     Image("Logo")
                         .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
-                    Spacer().frame(height: 0.09 * screenHeight)
+                    Spacer().frame(height: 0.06 * screenHeight)
                     Text(" CREATE ACCOUNT ")
                         .font(.system(size: 26, weight: .black))
                         .padding()
@@ -58,14 +59,10 @@ struct CreateAccountScreen: View {
                         .padding(.bottom, 30)
                     
                     
-                    Spacer().frame(height: screenHeight * 0.18)
+                    Spacer().frame(height: screenHeight * 0.05)
                     
                     SecondContinueButton(firstName: $firstname, lastName: $lastname, username: $username, password: $password, reconfirm_password: $reconfirmPassword, error: $error, error_message: $error_message, uploading: $uploading)
                         .padding(.bottom, 20)
-
-                    NavigationLink(destination: MainScreen(), isActive: $shouldNavigate){
-                        EmptyView()
-                    }
                 } //: ScrollView
                 .opacity(screenOpacity)
                 .disabled(uploading)

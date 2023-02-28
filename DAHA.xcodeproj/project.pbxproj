@@ -400,6 +400,15 @@
 			path = "Lottie Animations";
 			sourceTree = "<group>";
 		};
+		82A21A7B29AEC5A00040BAA1 /* Old Email Verification */ = {
+			isa = PBXGroup;
+			children = (
+				82D2D0DE296BD41200CB4B9A /* EmailVerificationScreen.swift */,
+				82DF4CAB296F5C6B00A309CF /* ResendButton.swift */,
+			);
+			path = "Old Email Verification";
+			sourceTree = "<group>";
+		};
 		82B6B2BC2989EC9700027E5A /* MakePostModalComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,8 +491,6 @@
 		82CED4FC2981EF56009B5507 /* EmailVerificationScreen */ = {
 			isa = PBXGroup;
 			children = (
-				82D2D0DE296BD41200CB4B9A /* EmailVerificationScreen.swift */,
-				82DF4CAB296F5C6B00A309CF /* ResendButton.swift */,
 				82A21A7529AEA3870040BAA1 /* EmailScreen.swift */,
 				82A21A7729AEB68C0040BAA1 /* EmailResendButton.swift */,
 				82A21A7929AEB73A0040BAA1 /* LogOutButton.swift */,
@@ -554,6 +561,7 @@
 				82CEFC402969CB9C00C55F67 /* Models */,
 				82CEFC692969CE8600C55F67 /* Onboarding and Login */,
 				82B6B2DE298B270300027E5A /* TermsConditionsScreen.swift */,
+				82A21A7B29AEC5A00040BAA1 /* Old Email Verification */,
 				82CEFC412969CBB600C55F67 /* Screens */,
 				82B6B2FD298F502400027E5A /* MakePosts */,
 				823602062985ADD5002E7AEC /* Posts */,
