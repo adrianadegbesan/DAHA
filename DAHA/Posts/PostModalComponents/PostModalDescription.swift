@@ -13,8 +13,9 @@ struct PostModalDescription: View {
     @State private var opacity = 0.1
     @State private var descriptionScroll : Bool = false
     @State private var tabIndex = 0
-    @Binding var saved: Bool
-    @State var owner: Bool
+    @Binding  var saved: Bool
+    @State  var owner: Bool
+    @State private var error_alert = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -73,6 +74,13 @@ struct PostModalDescription: View {
                                 }
                                 .modifier(ImageModifier(contentSize: CGSize(width: proxy.size.width, height: proxy.size.height)))
                                 .tag(i)
+                                .contextMenu{
+                                    Button{
+                                        saveImageToPhotoAlbum(url: URL(string: post.imageURLs[i])!, error_alert: $error_alert)
+                                    } label: {
+                                        Label("Save Photo", systemImage: "photo")
+                                    }
+                                }
                         } //: GeometryReader
                       } //: LOOP
                     
@@ -84,6 +92,7 @@ struct PostModalDescription: View {
                 .frame(width: screenWidth, height: screenHeight * 0.4)
     //            .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
                 .clipped()
+                .alert("Error Saving Photo", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
                 
                 if post.imageURLs.count > 1{
                     HStack{

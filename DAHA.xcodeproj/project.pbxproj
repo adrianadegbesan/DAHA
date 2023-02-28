@@ -71,6 +71,7 @@
 		82A21A6C29A846680040BAA1 /* ReportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6B29A846680040BAA1 /* ReportModal.swift */; };
 		82A21A6E29A9067E0040BAA1 /* DAHA-Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */; };
 		82A21A7029A91E290040BAA1 /* DAHA-Loading2.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A6F29A91E290040BAA1 /* DAHA-Loading2.json */; };
+		82A21A7229AD83F90040BAA1 /* SDWebImageHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A7129AD83F90040BAA1 /* SDWebImageHelpers.swift */; };
 		82ACC67F2991738300589E1E /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC67E2991738300589E1E /* Shapes.swift */; };
 		82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6822992E20200589E1E /* ModalCapsule.swift */; };
 		82ACC68729936E3100589E1E /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC68629936E3100589E1E /* NextButton.swift */; };
@@ -197,6 +198,7 @@
 		82A21A6B29A846680040BAA1 /* ReportModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModal.swift; sourceTree = "<group>"; };
 		82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DAHA-Loading.json"; sourceTree = "<group>"; };
 		82A21A6F29A91E290040BAA1 /* DAHA-Loading2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DAHA-Loading2.json"; sourceTree = "<group>"; };
+		82A21A7129AD83F90040BAA1 /* SDWebImageHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageHelpers.swift; sourceTree = "<group>"; };
 		82ACC67E2991738300589E1E /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 		82ACC6822992E20200589E1E /* ModalCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCapsule.swift; sourceTree = "<group>"; };
 		82ACC68629936E3100589E1E /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 				82218C00299C66BA0092BA94 /* Email.swift */,
 				82218C02299C67110092BA94 /* EmailClass.swift */,
 				82A21A5829A458C70040BAA1 /* LottieView.swift */,
+				82A21A7129AD83F90040BAA1 /* SDWebImageHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -861,6 +864,7 @@
 				82CEFC4C2969CC3300C55F67 /* TextField.swift in Sources */,
 				82218C0A299C87900092BA94 /* LogOutView.swift in Sources */,
 				82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */,
+				82A21A7229AD83F90040BAA1 /* SDWebImageHelpers.swift in Sources */,
 				82218C03299C67110092BA94 /* EmailClass.swift in Sources */,
 				82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */,
 				82CBC2A92988D1A2001966E3 /* PageBottomDivider.swift in Sources */,
@@ -1032,6 +1036,8 @@
 				INFOPLIST_FILE = DAHA/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "DAHA needs permission to use your camera";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "DAHA needs permission to record audio";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1068,6 +1074,8 @@
 				INFOPLIST_FILE = DAHA/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "DAHA needs permission to use your camera";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "DAHA needs permission to record audio";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

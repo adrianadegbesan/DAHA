@@ -95,7 +95,7 @@ struct PostView: View {
         .scaleEffect(preview ? 0.95 : 1)
         .contextMenu{
             if owner{
-                Button{
+                Button(role: .destructive){
                     deletePresented = true
                 } label:{
                     Label("Delete Post", systemImage: "trash")
@@ -126,8 +126,6 @@ struct PostView: View {
                     } label:{
                         Label("Save Post", systemImage: "bookmark")
                     }
-
-                    
                 }
                 
                 Button{
