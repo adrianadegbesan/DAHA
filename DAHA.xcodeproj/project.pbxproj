@@ -69,8 +69,8 @@
 		82A21A6829A6E9450040BAA1 /* RecentDMs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6729A6E9450040BAA1 /* RecentDMs.swift */; };
 		82A21A6A29A82A0F0040BAA1 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6929A82A0F0040BAA1 /* ReportModel.swift */; };
 		82A21A6C29A846680040BAA1 /* ReportModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A6B29A846680040BAA1 /* ReportModal.swift */; };
-		82A21A6E29A9067E0040BAA1 /* DAHA-Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */; };
-		82A21A7029A91E290040BAA1 /* DAHA-Loading_dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A6F29A91E290040BAA1 /* DAHA-Loading_dark.json */; };
+		82A21A6E29A9067E0040BAA1 /* DAHA-Loading_dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A6D29A9067E0040BAA1 /* DAHA-Loading_dark.json */; };
+		82A21A7029A91E290040BAA1 /* DAHA-Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 82A21A6F29A91E290040BAA1 /* DAHA-Loading.json */; };
 		82A21A7229AD83F90040BAA1 /* SDWebImageHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A7129AD83F90040BAA1 /* SDWebImageHelpers.swift */; };
 		82A21A7629AEA3870040BAA1 /* EmailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A7529AEA3870040BAA1 /* EmailScreen.swift */; };
 		82A21A7829AEB68C0040BAA1 /* EmailResendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A21A7729AEB68C0040BAA1 /* EmailResendButton.swift */; };
@@ -199,8 +199,8 @@
 		82A21A6729A6E9450040BAA1 /* RecentDMs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentDMs.swift; sourceTree = "<group>"; };
 		82A21A6929A82A0F0040BAA1 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
 		82A21A6B29A846680040BAA1 /* ReportModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModal.swift; sourceTree = "<group>"; };
-		82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DAHA-Loading.json"; sourceTree = "<group>"; };
-		82A21A6F29A91E290040BAA1 /* DAHA-Loading_dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DAHA-Loading_dark.json"; sourceTree = "<group>"; };
+		82A21A6D29A9067E0040BAA1 /* DAHA-Loading_dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DAHA-Loading_dark.json"; sourceTree = "<group>"; };
+		82A21A6F29A91E290040BAA1 /* DAHA-Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DAHA-Loading.json"; sourceTree = "<group>"; };
 		82A21A7129AD83F90040BAA1 /* SDWebImageHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageHelpers.swift; sourceTree = "<group>"; };
 		82A21A7529AEA3870040BAA1 /* EmailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailScreen.swift; sourceTree = "<group>"; };
 		82A21A7729AEB68C0040BAA1 /* EmailResendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailResendButton.swift; sourceTree = "<group>"; };
@@ -394,8 +394,8 @@
 		82A21A5A29A677080040BAA1 /* Lottie Animations */ = {
 			isa = PBXGroup;
 			children = (
-				82A21A6D29A9067E0040BAA1 /* DAHA-Loading.json */,
-				82A21A6F29A91E290040BAA1 /* DAHA-Loading_dark.json */,
+				82A21A6D29A9067E0040BAA1 /* DAHA-Loading_dark.json */,
+				82A21A6F29A91E290040BAA1 /* DAHA-Loading.json */,
 			);
 			path = "Lottie Animations";
 			sourceTree = "<group>";
@@ -783,11 +783,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82A21A6E29A9067E0040BAA1 /* DAHA-Loading.json in Resources */,
+				82A21A6E29A9067E0040BAA1 /* DAHA-Loading_dark.json in Resources */,
 				82CEFC392969CB2D00C55F67 /* Preview Assets.xcassets in Resources */,
 				82CEFC362969CB2D00C55F67 /* Assets.xcassets in Resources */,
 				82DF4CB329775B5300A309CF /* GoogleService-Info.plist in Resources */,
-				82A21A7029A91E290040BAA1 /* DAHA-Loading_dark.json in Resources */,
+				82A21A7029A91E290040BAA1 /* DAHA-Loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

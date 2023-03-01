@@ -17,6 +17,7 @@ struct TermsConditionsScreen: View {
      
     var body: some View {
         VStack{
+            Spacer().frame(height: screenHeight * 0.025)
             Image("Logo")
                 .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                 .padding(.bottom, 20)
@@ -57,7 +58,7 @@ struct TermsConditionsScreen: View {
                         await authentication.hasAgreedToTerms()
                     }
                     agreedToTerms = true
-//                    shouldNavigate = true
+                    shouldNavigate = true
                 } 
             }){
                 ZStack {
@@ -80,9 +81,9 @@ struct TermsConditionsScreen: View {
                 .padding(.bottom, 60)
             }
             
-//            NavigationLink(destination: MainScreen().navigationBarHidden(true), isActive: $shouldNavigate){
-//                EmptyView()
-//            }
+            NavigationLink(destination: MainScreen().navigationBarHidden(true), isActive: $shouldNavigate){
+                EmptyView()
+            }
         }
     }
 }

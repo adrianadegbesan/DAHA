@@ -116,6 +116,7 @@ class AuthManager: ObservableObject {
                     username_temp.wrappedValue = document["username"] as! String
                     university_temp.wrappedValue = document["university"] as! String
                     terms_temp.wrappedValue = document["terms"] as! Bool
+                    let _ = sendVerificationEmail()
                     return true
                 }
             }
@@ -163,6 +164,14 @@ class AuthManager: ObservableObject {
             print(error.localizedDescription)
             return false
         }
+    }
+    
+    func reloadUser() {
+        Auth.auth().currentUser?.reload(completion: { error in
+            if let error = error {
+                print("Error reloading user: \(error.localizedDescription)")
+            }
+        })
     }
     
     func deleteUser() -> Bool{

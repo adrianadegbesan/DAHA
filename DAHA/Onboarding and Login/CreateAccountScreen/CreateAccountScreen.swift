@@ -59,13 +59,19 @@ struct CreateAccountScreen: View {
                         .padding(.bottom, 30)
                     
                     
-                    Spacer().frame(height: screenHeight * 0.05)
+                    Spacer().frame(height: screenHeight * 0.07)
                     
                     SecondContinueButton(firstName: $firstname, lastName: $lastname, username: $username, password: $password, reconfirm_password: $reconfirmPassword, error: $error, error_message: $error_message, uploading: $uploading)
                         .padding(.bottom, 20)
+                    
+                 
                 } //: ScrollView
                 .opacity(screenOpacity)
                 .disabled(uploading)
+                
+                NavigationLink(destination: EmailScreen().navigationBarBackButtonHidden(true), isActive: $shouldNavigate){
+                    EmptyView()
+                }
             }//: ZStack
             .keyboardControl()
             .onAppear{

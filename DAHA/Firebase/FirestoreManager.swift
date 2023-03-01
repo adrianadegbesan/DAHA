@@ -27,21 +27,21 @@ class FirestoreManager: ObservableObject {
     @Published var listings: [PostModel] = []
     @Published var listing_last : QueryDocumentSnapshot? = nil
     @Published var listings_loading: Bool = false
-    @Published var listings_refresh: Bool = false
+    @Published var listings_refresh: Bool = true
     
     @Published var requests: [PostModel] = []
     @Published var requests_last : QueryDocumentSnapshot? = nil
     @Published var requests_loading: Bool = false
-    @Published var requests_refresh: Bool = false
+    @Published var requests_refresh: Bool = true
     
     @Published var saved_posts: [PostModel] = []
     @Published var saved_last: QueryDocumentSnapshot? = nil
-    @Published var saved_refresh: Bool = false
+    @Published var saved_refresh: Bool = true
     @Published var saved_loading: Bool = false
     
     @Published var my_posts: [PostModel] = []
     @Published var user_last: QueryDocumentSnapshot? = nil
-    @Published var user_refresh: Bool = false
+    @Published var user_refresh: Bool = true
     @Published var my_posts_loading: Bool = false
     
     @Published var search_results: [PostModel] = []

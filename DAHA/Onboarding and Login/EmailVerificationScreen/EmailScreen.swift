@@ -19,9 +19,12 @@ struct EmailScreen: View {
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     @AppStorage("emailverified") var verified: Bool = false
     
+    @State private var shouldNavigate = false
+    
     @State var error_alert = false
     @State var error_message = ""
     
+    @State var time = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @EnvironmentObject var authentication: AuthManager
 
     
@@ -32,6 +35,15 @@ struct EmailScreen: View {
             LottieView(name: colorScheme == .dark ? "DAHA-Loading_dark" : "DAHA-Loading")
                 .scaleEffect(0.4)
                 .padding(.bottom, screenHeight * 0.5)
+                .onReceive(time){ value in
+                    if let currentUser = Auth.auth().currentUser {
+                        authentication.reloadUser()
+                        if currentUser.isEmailVerified {
+                            verified = true
+                            shouldNavigate = true
+                        }
+                    }
+                }
             
             VStack{
                 Spacer().frame(height: screenHeight * 0.35)
@@ -59,10 +71,34 @@ struct EmailScreen: View {
                 Spacer()
                 
             }
-        }
-        .onAppear{
             
-            if Auth.auth().currentUser == nil{
+            NavigationLink(destination: TermsConditionsScreen().navigationBarBackButtonHidden(true), isActive: $shouldNavigate){
+                EmptyView()
+            }
+        }
+        .onAppear {
+            
+        // Check if user is already logged in and verified
+            if let currentUser = Auth.auth().currentUser {
+                if currentUser.isEmailVerified {
+                    verified = true
+                    shouldNavigate = true
+                    return
+                } else {
+                    authentication.reloadUser()
+                }
+            }
+            
+            
+            let _ = Auth.auth().addStateDidChangeListener { auth, user in
+            if let currentUser = user {
+                if currentUser.isEmailVerified {
+                    verified = true
+                    shouldNavigate = true
+//                    time.invalidate()
+                }
+            } else {
+                // User has logged out, reset app state
                 isOnboardingViewActive = true
                 isSignedIn = false
                 agreedToTerms = false
@@ -72,15 +108,7 @@ struct EmailScreen: View {
                 user_id = ""
                 isDarkMode = "System"
             }
-            let result = authentication.sendVerificationEmail()
-            if !result{
-                error_alert = true
-            }
-            Auth.auth().addStateDidChangeListener { auth, user in
-                if user?.isEmailVerified == true {
-                    verified = true
-                }
-            }
+          }
         }
         .alert("Error Verifying Email", isPresented: $error_alert, actions: {}, message: { Text("Please check your network connection and try again later")})
     }
@@ -88,6 +116,7 @@ struct EmailScreen: View {
 
 struct EmailScreen_Previews: PreviewProvider {
     static var previews: some View {
+       
         EmailScreen()
             .environmentObject(AuthManager())
     }

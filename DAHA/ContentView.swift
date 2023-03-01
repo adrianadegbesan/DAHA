@@ -29,6 +29,7 @@ struct ContentView: View {
       
       if isOnboardingViewActive {
         SetUpScreen()
+//          EmailScreen()
       } else if isSignedIn && !verified{
         EmailScreen()
       } else if isSignedIn && verified && !agreedToTerms{

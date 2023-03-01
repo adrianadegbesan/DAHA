@@ -42,11 +42,13 @@ struct LoginScreen: View {
                     .padding(.bottom, 50)
                 
                 TextField("Email", text: $email)
+                    .autocapitalization(.none)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "envelope.fill")))
                     .padding(.bottom, 30)
                     .padding(.horizontal, screenWidth * 0.1)
 
                 SecureField("Password", text: $password)
+                    .autocapitalization(.none)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "lock.fill")))
                     .padding(.bottom, 40)
                     .padding(.horizontal, screenWidth * 0.1)

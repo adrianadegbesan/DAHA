@@ -18,10 +18,10 @@ struct EmailResendButton: View {
     var body: some View {
         Button(action: {
             LightFeedback()
-            let result = authentication.sendVerificationEmail()
-            if !result{
-                error_alert = true
-            }
+            let _ = authentication.sendVerificationEmail()
+//            if !result{
+//                error_alert = true
+//            }
         }){
             ZStack {
                 // Blue Button background
