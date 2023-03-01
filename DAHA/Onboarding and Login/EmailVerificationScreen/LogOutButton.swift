@@ -35,22 +35,17 @@ struct LogOutButton: View {
         .alert("Log Out", isPresented: $isPresented, actions: {
             Button("Log Out", role: .destructive, action: {
                 Task {
-                    let success = authentication.signOut()
-                    if success {
-                        isOnboardingViewActive = true
-                        isSignedIn = false
-                        agreedToTerms = false
-                        university = ""
-                        username_system = ""
-                        email_system = ""
-                        isDarkMode = "System"
-                    } else {
-                        error_alert = true
-                    }
+                    let _ = authentication.signOut()
+                    isOnboardingViewActive = true
+                    isSignedIn = false
+                    agreedToTerms = false
+                    university = ""
+                    username_system = ""
+                    email_system = ""
+                    isDarkMode = "System"
                 }
             })
         }, message: { Text("Are you sure you want to log out?")})
-        .alert("Error Logging Out", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
     }
 }
 

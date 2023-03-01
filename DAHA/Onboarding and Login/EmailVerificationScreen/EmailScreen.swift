@@ -40,6 +40,13 @@ struct EmailScreen: View {
                     .padding(.horizontal, 20)
                     .padding(.bottom, 20)
                 
+                Text("If the verification email doesn't appear in your inbox, please check your spam folder.")
+                    .font(.system(size: 14, weight: .black))
+                    .foregroundColor(.gray)
+                    .padding(.horizontal, 10)
+                    .padding(.bottom, 20)
+                
+                
                 Text("Your account will be deleted in 24hrs if not verified")
                     .font(.system(size: 13.5, weight: .black))
                     .foregroundColor(.red)

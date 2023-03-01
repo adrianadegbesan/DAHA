@@ -18,6 +18,7 @@ struct LoginScreen: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var isSecured: Bool = false
     
     @State var progressOpacity = 0.0
     @State var screenOpacity = 1.0
@@ -28,18 +29,28 @@ struct LoginScreen: View {
         ZStack{
             ProgressView()
                 .opacity(progressOpacity)
-                .scaleEffect(2.5)
+                .scaleEffect(2)
             ScrollView{
-                Spacer().frame(height: screenHeight * 0.15)
+                Spacer().frame(height: screenHeight * 0.06)
                 Image("Logo")
                     .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
-                    .padding(.bottom, 60)
-                CustomInputField(imageName: "envelope.fill", placeholderText: "Email", text: $email, secure: false)
+                    .padding(.bottom, 8)
+                Text("DOES ANYONE HAVE A...?")
+                    .font(
+                        .system(size:22, weight: .bold)
+                    )
+                    .padding(.bottom, 50)
+                
+                TextField("Email", text: $email)
+                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "envelope.fill")))
                     .padding(.bottom, 30)
-                    .padding(.horizontal, screenWidth * 0.2)
-                CustomInputField(imageName: "lock.fill", placeholderText: "Password", text: $password, secure: true)
+                    .padding(.horizontal, screenWidth * 0.1)
+
+                SecureField("Password", text: $password)
+                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "lock.fill")))
                     .padding(.bottom, 40)
-                    .padding(.horizontal, screenWidth * 0.2)
+                    .padding(.horizontal, screenWidth * 0.1)
+                
                 SignInButton(email: $email, password: $password, uploading: $uploading)
                 ForgotPasswordButton()
             }

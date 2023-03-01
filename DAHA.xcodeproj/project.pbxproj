@@ -560,8 +560,6 @@
 				82CEFC3F2969CB9500C55F67 /* Helpers */,
 				82CEFC402969CB9C00C55F67 /* Models */,
 				82CEFC692969CE8600C55F67 /* Onboarding and Login */,
-				82B6B2DE298B270300027E5A /* TermsConditionsScreen.swift */,
-				82A21A7B29AEC5A00040BAA1 /* Old Email Verification */,
 				82CEFC412969CBB600C55F67 /* Screens */,
 				82B6B2FD298F502400027E5A /* MakePosts */,
 				823602062985ADD5002E7AEC /* Posts */,
@@ -672,6 +670,8 @@
 				82CED4FD2981EF74009B5507 /* SchoolEmailScreen */,
 				82CED4FE2981EFFE009B5507 /* CreateAccountScreen */,
 				82CED4FC2981EF56009B5507 /* EmailVerificationScreen */,
+				82A21A7B29AEC5A00040BAA1 /* Old Email Verification */,
+				82B6B2DE298B270300027E5A /* TermsConditionsScreen.swift */,
 			);
 			path = "Onboarding and Login";
 			sourceTree = "<group>";
