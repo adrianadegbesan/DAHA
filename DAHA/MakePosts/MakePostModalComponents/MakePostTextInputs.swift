@@ -45,6 +45,10 @@ struct MakePostTextInputs: View {
                 }
                 .padding(.leading, screenWidth * 0.045)
                 .padding(.trailing, screenWidth * 0.25)
+            
+            Text("\(title.count)/23")
+                .foregroundColor(Color(hex: deepBlue))
+                .padding(.leading, screenWidth * 0.39)
                 .padding(.bottom, 10)
             
             ZStack {
@@ -62,7 +66,7 @@ struct MakePostTextInputs: View {
                             hideKeyboard()
                         }
                     }
-                    .frame(width: screenWidth * 0.6, height: screenWidth * 0.3)
+                    .frame(width: screenWidth * 0.6, height: screenHeight * 0.15)
                     .padding()
                     .overlay {
                         RoundedRectangle(cornerRadius: 8, style: .continuous)
@@ -74,11 +78,15 @@ struct MakePostTextInputs: View {
                 if description == ""{
                      Text(" Description")
                         .foregroundColor(Color(UIColor.systemGray4))
-                        .offset(x: -screenWidth * 0.305, y: -screenHeight * 0.0535)
+                        .offset(x: -screenWidth * 0.305, y: -screenHeight * 0.0597)
                         .onTapGesture {
                             description_input = true
                         }
                 }
+                Text("\(description.count)/320")
+                    .offset(x: screenWidth * 0.15, y: screenHeight * 0.110)
+                    .foregroundColor(Color(hex: deepBlue))
+//                    .padding(.top, scre)
             }
             .padding(.leading, 16)
         }

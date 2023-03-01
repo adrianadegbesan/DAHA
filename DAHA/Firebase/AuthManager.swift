@@ -58,6 +58,7 @@ class AuthManager: ObservableObject {
             user_temp.joinedAt = nil
             do {
                 try db.collection("Users").document(user_temp.id!).setData(from: user_temp)
+                let _ = sendVerificationEmail()
                 creation_complete.wrappedValue = true
             }
             
@@ -116,7 +117,6 @@ class AuthManager: ObservableObject {
                     username_temp.wrappedValue = document["username"] as! String
                     university_temp.wrappedValue = document["university"] as! String
                     terms_temp.wrappedValue = document["terms"] as! Bool
-                    let _ = sendVerificationEmail()
                     return true
                 }
             }

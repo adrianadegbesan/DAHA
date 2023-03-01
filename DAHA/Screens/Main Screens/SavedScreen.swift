@@ -14,10 +14,13 @@ struct SavedScreen: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
+                
+                
                 HeaderView(title: "Saved", showMessages: false, showSettings: false, showSearchBar: false, slidingBar: false, tabIndex: nil, tabs: nil, screen: "Saved")
                 .frame(alignment: .top)
                 PostScrollView(posts: $firestoreManager.saved_posts, loading: $firestoreManager.saved_loading, screen: "Saved", query: .constant(""), type: .constant(""), category: .constant(""))
             } //: VStack
+            .frame(width: screenWidth)
             
             VStack{
                 PostButton()

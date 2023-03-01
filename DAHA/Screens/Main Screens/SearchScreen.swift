@@ -156,6 +156,7 @@ struct SearchScreen: View {
                 }
             
             }//: VStack
+            .frame(width: screenWidth)
             .onTapGesture {
                 hideKeyboard()
             }

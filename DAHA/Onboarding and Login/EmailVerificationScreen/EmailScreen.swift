@@ -78,6 +78,7 @@ struct EmailScreen: View {
         }
         .onAppear {
             
+            
         // Check if user is already logged in and verified
             if let currentUser = Auth.auth().currentUser {
                 if currentUser.isEmailVerified {
@@ -85,7 +86,9 @@ struct EmailScreen: View {
                     shouldNavigate = true
                     return
                 } else {
+//                    let _ = authentication.sendVerificationEmail()
                     authentication.reloadUser()
+                    
                 }
             }
             

@@ -41,7 +41,11 @@ struct HeaderView: View {
                         
                     HStack{
                         Text(title)
-                            .channelText()
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.01)
+                            .font(.system(size: screen == "User" ? 17 : 19, weight: .bold))
+                            .foregroundColor(.white)
+                            
                     }
                 }.offset(x: -30)
  

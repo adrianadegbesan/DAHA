@@ -33,7 +33,7 @@ struct MakePostScreen: View {
                     ConditionNavigatorView(post: $post)
                         .padding(.bottom, 25)
                     MakePostTextInputs(post: $post, type: $type)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 25)
                     ImageSelectorView(images: $images)
                         .padding(.leading, 15)
                         .onChange(of: images){ image in
