@@ -60,6 +60,7 @@ struct SearchScreen: View {
                         .submitLabel(.search)
                         .onSubmit {
                             if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
+                                /*Search database*/
                                 Task {
                                     await firestoreManager.searchPosts(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
                                 }
@@ -77,7 +78,7 @@ struct SearchScreen: View {
              
                 if !searched {
                     VStack {
-                        
+                        /*Search Buttons and Categories*/
                         SearchButtons(keyboardFocused: $keyboardFocused, category: $category, type: $type)
                             .ignoresSafeArea(.keyboard, edges: .bottom)
                         
@@ -117,6 +118,7 @@ struct SearchScreen: View {
                     .ignoresSafeArea(.keyboard, edges: .bottom)
                     
                 } else {
+                    //Searched 
                     VStack(spacing: 0){
                         HStack{
                             if category != "" {

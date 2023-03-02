@@ -19,6 +19,7 @@ struct PasswordResetButton: View {
     var body: some View {
         Button(action: {
             LightFeedback()
+            //Send password reset email
             authentication.sendPasswordReset(email: email, error_alert: $error_alert, success_alert: $success_alert)
         }){
             ZStack {
@@ -41,7 +42,7 @@ struct PasswordResetButton: View {
                 } //: HStack
             } //: ZStack
         }
-        .alert("Email Sent!", isPresented: $success_alert, actions: {}, message: { Text("Please check your email address for a password reset link!")})
+        .alert("Email Sent!", isPresented: $success_alert, actions: {}, message: { Text("Please check your inbox for a password reset link!")})
         
         .alert("Error sending Email", isPresented: $error_alert, actions: {}, message: { Text("Please check the email you entered and then try again later")})
     }

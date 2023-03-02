@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+/*
+ Rounded Corner Shape Function
+ */
 struct RoundedCorner: Shape {
 
     var radius: CGFloat = .infinity

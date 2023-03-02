@@ -20,6 +20,7 @@ extension TextField {
     
 }
 
+/*Custom Text Field Style*/
 struct OutlinedTextFieldStyle: TextFieldStyle {
     
     @State var icon: Image?

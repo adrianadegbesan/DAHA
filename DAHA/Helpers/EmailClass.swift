@@ -9,6 +9,9 @@ import SwiftUI
 import UIKit
 import MessageUI
 
+/*
+ Email Struct
+ */
 typealias MailViewCallback = ((Result<MFMailComposeResult, Error>) -> Void)?
 
 struct MailView: UIViewControllerRepresentable {

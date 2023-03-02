@@ -37,7 +37,7 @@ class AuthManager: ObservableObject {
             print("DEBUG: The current User Session is nil")
         }
         
-        if (self.userSession == nil) {
+        if (self.userSession == nil) { //Log out if user.session is nil
             isOnboardingViewActive = true
             isSignedIn = false
             agreedToTerms = false
@@ -49,6 +49,7 @@ class AuthManager: ObservableObject {
         }
     }
     
+    /*Function for creating an account with auth's create user and posting the user data to the database*/
     func createAccount(email: String, password: String, user: UserModel, cannot_create: Binding<Bool>, creation_complete: Binding<Bool>, error_message: Binding<String>) async {
         do {
             try await Auth.auth().createUser(withEmail: email, password: password)
@@ -79,6 +80,9 @@ class AuthManager: ObservableObject {
         }
     }
     
+    /*
+     Function for sending a verification email to a user
+     */
     func sendVerificationEmail() -> Bool{
         let user = Auth.auth().currentUser
         var result = false
@@ -100,6 +104,9 @@ class AuthManager: ObservableObject {
         return result
     }
     
+    /*
+     Function for signing in user
+     */
     func signIn(email: String, password: String, error_alert: Binding<Bool>, error_message: Binding<String>, username_temp: Binding<String>, university_temp: Binding<String>, terms_temp: Binding<Bool>) async -> Bool {
         
        var found: Bool = false
@@ -155,6 +162,9 @@ class AuthManager: ObservableObject {
         return false
     }
     
+    /*
+     Function for signing out user
+     */
     func signOut() -> Bool{
         do {
             try Auth.auth().signOut()
@@ -166,6 +176,9 @@ class AuthManager: ObservableObject {
         }
     }
     
+    /*
+     Function for reloading user for email verification check
+     */
     func reloadUser() {
         Auth.auth().currentUser?.reload(completion: { error in
             if let error = error {
@@ -174,6 +187,9 @@ class AuthManager: ObservableObject {
         })
     }
     
+    /*
+     Function for deleting account
+     */
     func deleteUser() -> Bool{
         var success = false
         let user = Auth.auth().currentUser
@@ -187,6 +203,9 @@ class AuthManager: ObservableObject {
         return success
     }
     
+    /*
+     Function for editing username
+     */
     func editUsername(newUsername : Binding<String>, error_message: Binding<String>) async -> Bool {
        
         
@@ -229,6 +248,9 @@ class AuthManager: ObservableObject {
         return true
     }
     
+    /*
+     Function for changing password
+     */
     func changePassword(password: Binding<String>, newPassword: Binding<String>, error_message: Binding<String>) async -> Bool{
         let authenticated = await reauthenticate(password: password, error_message: error_message)
         if !authenticated{
@@ -236,6 +258,16 @@ class AuthManager: ObservableObject {
         } else {
             let user = Auth.auth().currentUser
             if user != nil {
+                if newPassword.wrappedValue.contains(" "){
+                    error_message.wrappedValue = "New password cannot contain empty spaces"
+                    return false
+                }
+                
+                if (newPassword.wrappedValue.count < 6){
+                    error_message.wrappedValue = "Password length cannot be less than 6 characters"
+                    return false
+                }
+                
                 do {
                     try await user?.updatePassword(to: newPassword.wrappedValue)
                     return true
@@ -252,6 +284,9 @@ class AuthManager: ObservableObject {
         }
     }
     
+    /*
+     Function for sending password reset email
+     */
     func sendPasswordReset(email: String, error_alert: Binding<Bool>, success_alert: Binding<Bool>){
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil{
@@ -262,6 +297,9 @@ class AuthManager: ObservableObject {
         }
     }
     
+    /*
+     Function for updating user terms state
+     */
     func hasAgreedToTerms() async {
         if user_id == ""{
             return
@@ -277,6 +315,9 @@ class AuthManager: ObservableObject {
         }
     }
     
+    /*
+     Function for reauthenticating user
+     */
     func reauthenticate(password: Binding<String>, error_message: Binding<String>) async -> Bool {
         
         let user = Auth.auth().currentUser

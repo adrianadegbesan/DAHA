@@ -29,6 +29,7 @@ struct HomeScreen: View {
                     HeaderView(title: university, showMessages: true, showSettings: false, showSearchBar: true, slidingBar: true, tabIndex: $tabIndex, tabs: tabs, screen: "Home")
                         .frame(alignment: .top)
                     
+                    /*Tab View Section Headers with animation*/
                     HStack {
                         Spacer()
                         VStack(spacing: 10){
@@ -65,13 +66,16 @@ struct HomeScreen: View {
                         Spacer()
                     }
                     .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
-                    
+                    /*
+                     Views for home screen
+                     */
                     TabView(selection: $tabIndex){
                         ListingsView().tag(0)
                         RequestsView().tag(1)
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
                     .animation(.easeIn(duration: 0.2), value: tabIndex)
+                    /*Animation for tab view change*/
                    .onChange(of: tabIndex) { value in
                        withAnimation {
                            dividerOffset = CGFloat(value) * (screenWidth * 0.499)
@@ -105,7 +109,7 @@ struct HomeScreen: View {
                 
             } //: ZStack
             .onAppear{
-                if firestoreManager.listings_tab{
+                if firestoreManager.listings_tab {
                     tabIndex = 0
                     firestoreManager.listings_tab = false
                 } else if firestoreManager.requests_tab {

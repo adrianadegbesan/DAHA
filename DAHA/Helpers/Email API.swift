@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 import PostmarkSwift
 
-
+/*
+ Old function used for emailing API, (DISCONTINUED)
+ */
 
 func sendVerificationEmail(email: String, error_alert: Binding<Bool>, error_message: Binding<String>) async ->  Int  {
 

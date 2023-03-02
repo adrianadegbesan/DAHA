@@ -21,6 +21,7 @@ struct PostScrollView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var screenOpacity = 0.1
     @State var time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
+
     
     var body: some View {
         ZStack {
@@ -90,6 +91,7 @@ struct PostScrollView: View {
                                                     .onAppear{
                                                         self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
                                                     }
+                                                /*Update bottom of feed if at certain location*/
                                                     .onReceive(self.time) { (_) in
                                                         if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
                                                             if screen == "Search" {

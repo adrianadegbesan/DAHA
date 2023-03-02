@@ -10,6 +10,9 @@ import SwiftUI
 
 
 extension Date {
+    /*
+     Time ago display function
+     */
     func timeAgoDisplay() -> String {
         let secondsAgo = Int(Date().timeIntervalSince(self))
 

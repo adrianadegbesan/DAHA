@@ -29,6 +29,7 @@ extension Image {
     }
 }
 
+// SF Symbol names for category images
 let category_images = [
     "Bikes": "bicycle",
     "Tech": "iphone",
@@ -42,12 +43,14 @@ let category_images = [
     "General": "bag.fill"
 ]
 
+//SF Symbol names for type images
 let type_images = [
     "Request" : "figure.stand.line.dotted.figure.stand",
     "Listing" : "cart.circle"
 ]
 
 
+// Struct used for photo picker in making posts
 struct PhotoPicker: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = PHPickerViewController
@@ -112,6 +115,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
     }
 }
 
+// Image Modifier for zoom functionality
 struct ImageModifier: ViewModifier {
     private var contentSize: CGSize
     private var min: CGFloat = 1.0
@@ -219,6 +223,7 @@ struct PinchToZoom: ViewModifier {
     }
 }
 
+//Image Picker used for camera functionality
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     @Binding var images: [UIImage]

@@ -18,6 +18,7 @@ struct EmailResendButton: View {
     var body: some View {
         Button(action: {
             LightFeedback()
+            /*Resend verfication email*/
             let _ = authentication.sendVerificationEmail()
 //            if !result{
 //                error_alert = true

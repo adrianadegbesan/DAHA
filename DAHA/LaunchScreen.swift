@@ -64,11 +64,13 @@ struct LaunchScreen: View {
                 .padding(.bottom, screenWidth * 0.32)
                 .scaleEffect(size)
                 .opacity(opacity)
+                /*Opacity and scale effect of whole image*/
                 .onAppear{
                     withAnimation(.easeIn(duration: 0.65)){
                         self.size = 1
                         self.opacity = 1.0
                     }
+                    /*First Appearance of Images*/
                 }
             }
             .onAppear {
@@ -94,13 +96,8 @@ struct LaunchScreen: View {
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
                     withAnimation {
-//                        Task{
-//                           await firestoreManager.getListings()
-//                           await firestoreManager.getSaved()
-//                           await firestoreManager.getRequests()
-//                           await firestoreManager.userPosts()
-//                        }
                         self.isActive = true
+                        /*Change to ContentView*/
                     }
                 }
             }

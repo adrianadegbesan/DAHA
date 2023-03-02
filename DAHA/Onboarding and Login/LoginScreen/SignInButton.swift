@@ -34,6 +34,8 @@ struct SignInButton: View {
             if !uploading{
                 uploading = true
                 Task{
+                    try await Task.sleep(nanoseconds: 1_000_000_000)
+                    //Sign in function with necessary variables
                     loggedIn = await authentication.signIn(email: email, password: password, error_alert: $error_alert, error_message: $error_message, username_temp: $username_temp, university_temp: $university_temp, terms_temp: $terms_temp)
                     if loggedIn {
                         username_system = username_temp
@@ -46,6 +48,7 @@ struct SignInButton: View {
                         }
                     
                         Task{
+                            //Get Posts on background thread
                             await firestoreManager.getListings()
                             await firestoreManager.getRequests()
                             await firestoreManager.getSaved()

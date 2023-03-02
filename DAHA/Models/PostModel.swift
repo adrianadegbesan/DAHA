@@ -11,6 +11,9 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 
+/*
+ Model for making a post
+ */
 struct PostModel: Identifiable, Codable {
     var id: String
     var title: String

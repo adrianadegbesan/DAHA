@@ -12,6 +12,9 @@ import SDWebImage
 import SDWebImageSwiftUI
 
 
+/*
+ Save Image to Photo album
+ */
 func saveImageToPhotoAlbum(url: URL, error_alert: Binding<Bool>) {
     let imageView = UIImageView()
     imageView.sd_setImage(with: url, completed: { (image, error, cacheType, url) in

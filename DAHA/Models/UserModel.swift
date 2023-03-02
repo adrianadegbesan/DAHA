@@ -11,6 +11,9 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 
+/*
+ Model for saving user data to firebase
+ */
 struct UserModel: Identifiable, Codable {
     var id: String?
     var username: String?

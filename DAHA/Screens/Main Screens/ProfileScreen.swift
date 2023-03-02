@@ -32,6 +32,7 @@ struct ProfileScreen: View {
                 .frame(alignment: .top)
                 
                 
+                /*Tab View Section Headers with animation*/
                 HStack {
                     Spacer()
                     VStack(spacing: 10){

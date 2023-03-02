@@ -15,6 +15,7 @@ struct MainScreen: View {
     
     var body: some View {
         
+        /*Main Screen tab view*/
         TabView(selection: $tabSelection){
             HomeScreen()
                 .tabItem {
@@ -42,6 +43,7 @@ struct MainScreen: View {
             
         } //TabView
         .onAppear{
+            /*Change tab view indicator colour*/
             let appearance: UITabBarAppearance = UITabBarAppearance()
             UITabBar.appearance().scrollEdgeAppearance = appearance
             UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color(hex: deepBlue))

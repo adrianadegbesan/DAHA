@@ -32,14 +32,17 @@ struct FirstContinueButton: View {
             isValid = isValidEmailAddress(emailAddressString: email)
             domain = getDomain(email: email)
             
+            //Empty Email Check
             if (email.trimmingCharacters(in: .whitespaces).isEmpty){
                 showAlert_noemail = true
             }
+            //Valid Email Check
             else if !isValid{
                 showAlert_invalidemail = true
             }
              else {
                  Task {
+                     //Verify domain
                      await firestoreManager.verifyDomain(domain: domain, schoolFound: $schoolFound, cannot_verify: $cannot_verify, uni_temp: $uni_temp)
                      if schoolFound == true {
                          university = uni_temp

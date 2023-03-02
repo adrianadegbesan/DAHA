@@ -33,7 +33,7 @@ struct MakePostTextInputs: View {
             
             TextField("Title", text: $title)
                 .onChange(of: title) { value in
-                    if title.count > 23{
+                    if title.count > 30{
                         title = String(title.prefix(23))
                     }
                     post.title = title
@@ -46,7 +46,7 @@ struct MakePostTextInputs: View {
                 .padding(.leading, screenWidth * 0.045)
                 .padding(.trailing, screenWidth * 0.25)
             
-            Text("\(title.count)/23")
+            Text("\(title.count)/30")
                 .foregroundColor(Color(hex: deepBlue))
                 .padding(.leading, screenWidth * 0.39)
                 .padding(.bottom, 10)
@@ -60,11 +60,11 @@ struct MakePostTextInputs: View {
                         }
                         post.description = description
                         
-                        if description.last == "\n"{
-                            description = String(description.dropLast(1))
-                            post.description = description
-                            hideKeyboard()
-                        }
+//                        if description.last == "\n"{
+//                            description = String(description.dropLast(1))
+//                            post.description = description
+//                            hideKeyboard()
+//                        }
                     }
                     .frame(width: screenWidth * 0.6, height: screenHeight * 0.15)
                     .padding()
@@ -90,7 +90,18 @@ struct MakePostTextInputs: View {
             }
             .padding(.leading, 16)
         }
-        .keyboardControl()
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button(action: {
+                    hideKeyboard()
+                }){
+                        Text(Image(systemName: "multiply"))
+                        .fontWeight(.bold)
+                        .foregroundColor(.gray)
+                }
+            }
+        }
 
     }
     

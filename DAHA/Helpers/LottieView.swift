@@ -8,6 +8,9 @@
 import SwiftUI
 import Lottie
 
+/*
+ View for lottie animations
+ */
 struct LottieView: UIViewRepresentable {
     let name: String
     let loopMode: LottieLoopMode

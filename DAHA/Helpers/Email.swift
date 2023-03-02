@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 import MessageUI
 
+/*
+ Email Structs
+ */
 
 struct ComposeMailData {
   let subject: String

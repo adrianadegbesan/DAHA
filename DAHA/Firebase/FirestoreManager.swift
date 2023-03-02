@@ -67,6 +67,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function for verifying the domain found in email given by user
+     */
     func verifyDomain(domain: String, schoolFound: Binding<Bool>, cannot_verify: Binding<Bool>, uni_temp: Binding<String>) async {
         var found: Bool = false
         var uni: String = ""
@@ -93,6 +96,10 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    
+    /*
+     Function for checking whether user's username is in use or not
+     */
     func verifyUsername(username: String, usernameInUse: Binding<Bool>, cannot_verify: Binding<Bool>) async {
         var not_found: Bool = false
         
@@ -111,6 +118,7 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+
     func checkIfEmailExists(email: String) async -> Bool{
         
         do {
@@ -127,6 +135,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function for uploading images to firebase storage
+     */
     func uploadImages(images: [UIImage]) async -> [String]{
         
 //        var result : [String : [String]]
@@ -138,7 +149,7 @@ class FirestoreManager: ObservableObject {
         
         if !images.isEmpty{
             for image in images {
-                let imageData = image.jpegData(compressionQuality: 0.65)
+                let imageData = image.jpegData(compressionQuality: 0.7)
                 guard imageData != nil else {
                     return ["error"]
                 }
@@ -164,6 +175,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function for converting post model to dictionary
+     */
     func convertPostModelToDictionary(post: PostModel) -> [String : Any?] {
         var result : [String : Any?] = [:]
         result["id"] = post.id
@@ -185,6 +199,9 @@ class FirestoreManager: ObservableObject {
         return result
     }
     
+    /*
+     Function for converting dictionary to PostModel
+     */
     func convertDictionaryToPostModel(dictionary : [String : Any]) -> PostModel{
         let result = PostModel(
             title: dictionary["id"] as? String ?? "",
@@ -205,7 +222,9 @@ class FirestoreManager: ObservableObject {
     }
     
     
-    
+    /*
+     Function for making a post and storing it on firestore database
+     */
     func makePost(post: PostModel, images: [UIImage], post_created: Binding<Bool>, completion: @escaping (Error?) -> Void) async {
         
         var urls : [String] = []
@@ -252,6 +271,9 @@ class FirestoreManager: ObservableObject {
         
     }
     
+    /*
+     Function for deleting post from firebase storage
+     */
     func deletePost(post: PostModel, deleted : Binding<Bool>, error_alert: Binding<Bool>) async {
         for url in post.imageURLs{
             let true_url = URL(string: url)
@@ -278,6 +300,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function for reporting posts
+     */
     func reportPost(report: ReportModel, post: PostModel) async -> Bool {
         let postRef = db.collection("\(university)_Posts").document(post.id)
         
@@ -298,6 +323,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function for saving posts to database
+     */
     func savePost(post: PostModel) async -> Bool {
         
         let postRef = db.collection("\(university)_Posts").document(post.id)
@@ -319,6 +347,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function for unsaving posts from the database
+     */
     func unsavePost(post: PostModel) async -> Bool {
         let postRef = db.collection("\(university)_Posts").document(post.id)
         
@@ -338,6 +369,9 @@ class FirestoreManager: ObservableObject {
     }
     
     
+    /*
+     Function for converting queryDocumentSnapshots to posts
+     */
     func convertToPost(doc : QueryDocumentSnapshot) -> PostModel {
         let data = doc.data()
         let result = PostModel(id: data["id"] as? String ?? "",
@@ -358,50 +392,10 @@ class FirestoreManager: ObservableObject {
         return result
     }
     
-//    func getListings(startAfter: DocumentSnapshot? = nil) {
-//        listings_loading = true
-//        var query = db.collection("\(university)_Posts").whereField("type", isEqualTo: "Listing").order(by: "postedAt", descending: true).limit(to: 15)
-//
-//        if let startAfter = startAfter {
-//            query = query.start(afterDocument: startAfter)
-//        }
-//
-//        query.getDocuments { [self] snapshot, error in
-//            guard let snapshot = snapshot else {
-//                self.listings_loading = false
-//                print("Error fetching listings: \(String(describing: error))")
-//                return
-//            }
-//
-//            var temp: [PostModel] = []
-//            for document in snapshot.documents {
-//                let post = convertToPost(doc: document)
-//                temp.append(post)
-//            }
-//
-//            if let lastDocument = snapshot.documents.last {
-//                self.listing_last = lastDocument
-//            }
-//
-//            if startAfter == nil {
-//                self.listings = temp
-//            } else {
-//                self.listings.append(contentsOf: temp)
-//            }
-//
-//            self.listings_loading = false
-//        }
-//    }
-//
-//    func loadMoreListings() {
-//        if listings_loading {
-//            return
-//        }
-//
-//        getListings(startAfter: listing_last)
-//    }
 
-
+    /*
+     Function to retrieve listings from specific university/channel from database
+     */
     func getListings() async {
         do {
             listings_loading = true
@@ -428,7 +422,9 @@ class FirestoreManager: ObservableObject {
         }
     }
 
-    
+    /*
+     Function to update listings upon scrolling down to end of list
+     */
     func updateListings() async {
         do {
             var temp: [PostModel] = []
@@ -459,48 +455,10 @@ class FirestoreManager: ObservableObject {
 
     }
     
-//    func getRequests(startAfter: DocumentSnapshot? = nil) {
-//        requests_loading = true
-//        var query = db.collection("\(university)_Posts").whereField("type", isEqualTo: "Request").order(by: "postedAt", descending: true).limit(to: 15)
-//
-//        if let startAfter = startAfter {
-//            query = query.start(afterDocument: startAfter)
-//        }
-//
-//        query.getDocuments { [self] snapshot, error in
-//            guard let snapshot = snapshot else {
-//                self.requests_loading = false
-//                print("Error fetching listings: \(String(describing: error))")
-//                return
-//            }
-//
-//            var temp: [PostModel] = []
-//            for document in snapshot.documents {
-//                let post = convertToPost(doc: document)
-//                temp.append(post)
-//            }
-//
-//            if let lastDocument = snapshot.documents.last {
-//                self.requests_last = lastDocument
-//            }
-//
-//            if startAfter == nil {
-//                self.requests = temp
-//            } else {
-//                self.listings.append(contentsOf: temp)
-//            }
-//
-//            self.requests_loading = false
-//        }
-//    }
-//
-//    func loadMoreRequests() {
-//        if requests_loading {
-//            return
-//        }
-//
-//        getRequests(startAfter: requests_last)
-//    }
+
+    /*
+     Function to retrieve requests from specific university/channel from database
+     */
     func getRequests() async {
         do {
             requests_loading = true
@@ -527,6 +485,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function to update requests upon scrolling down to end of list
+     */
     func updateRequests() async {
         do {
             var temp: [PostModel] = []
@@ -556,6 +517,9 @@ class FirestoreManager: ObservableObject {
         
     }
     
+    /*
+     Function to retrieve the user's saved posts from the database
+     */
     func getSaved() async {
         
         let userId = Auth.auth().currentUser?.uid
@@ -587,6 +551,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function to update the user's saved posts upon scrolling to the bottom
+     */
     func updateSaved() async {
         let userId = Auth.auth().currentUser?.uid
         
@@ -620,6 +587,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function to retrieve the user's posts from the database
+     */
     func userPosts() async {
         
         let userId = Auth.auth().currentUser?.uid
@@ -653,6 +623,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function to update the user's posts upon scrolling to the bottom of the feed
+     */
     func updateUserPosts() async {
         let userId = Auth.auth().currentUser?.uid
         
@@ -687,6 +660,9 @@ class FirestoreManager: ObservableObject {
         }
     }
     
+    /*
+     Function to search for posts
+     */
     func searchPosts(query : String, type: String, category: String) async {
         
        
@@ -790,6 +766,9 @@ class FirestoreManager: ObservableObject {
 
     }
     
+    /*
+     Function to update the search results upon scrolling to the bottom of the feed
+     */
     func updateSearch(query : String, type: String, category: String) async {
         
         if search_last == nil {

@@ -34,7 +34,7 @@ extension Text {
     }    
 }
 
-
+//Function used to check if an email is a valid email address
 func isValidEmailAddress(emailAddressString: String) -> Bool {
     
     var returnValue = true
@@ -58,6 +58,7 @@ func isValidEmailAddress(emailAddressString: String) -> Bool {
     return  returnValue
 }
 
+//Function used to splice domain from email
 func getDomain(email: String) -> String{
     let temp_email = email
     
@@ -91,13 +92,9 @@ func getDomain(email: String) -> String{
 //}
 
 extension String {
+    // Function used to generate string sequences for search functionality
     func generateStringSequence() -> [String] {
         guard self.count > 0 else {return [] }
-//        var sequences: [String] = []
-//        for i in 1...self.count {
-//            sequences.append(String(self.prefix(i)).lowercased())
-//        }
-//        return sequences
         var substrings = [String]()
         for i in 0 ..< self.count {
             for j in i+1 ... self.count {
@@ -111,6 +108,7 @@ extension String {
 }
 
 extension View {
+    // Function used to hide keyboard
     func hideKeyboard() {
         let resign = #selector(UIResponder.resignFirstResponder)
         UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
@@ -118,6 +116,7 @@ extension View {
 }
 
 extension View {
+    // Function used for keyboard control with exit button
     func keyboardControl() -> some View {
         self
             .submitLabel(.return)

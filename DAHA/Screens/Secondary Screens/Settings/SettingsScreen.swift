@@ -28,14 +28,12 @@ struct SettingsScreen: View {
                     TermsSettingsView(shouldNavigate: $shouldNavigateTerms)
                     PrivacyPolicyView(shouldNavigate: $shouldNavigatePrivacy)
                     EmailSettingsView()
-                    
                 }
                 
                 Section{
                     LogOutView()
                     DeleteUserView()
                     VersionView()
-                    
                 }
               
                 

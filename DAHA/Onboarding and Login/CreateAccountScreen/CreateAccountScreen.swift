@@ -26,9 +26,13 @@ struct CreateAccountScreen: View {
          
         var body: some View {
             ZStack {
-                ProgressView()
-                    .opacity(progressOpacity)
-                    .scaleEffect(2.5)
+                if uploading{
+                    LottieView(name: colorScheme == .dark ? "DAHA-Loading_dark" : "DAHA-Loading")
+                        .scaleEffect(0.4)
+                        .opacity(progressOpacity)
+                        .padding(.bottom, screenHeight * 0.13)
+                        .zIndex(1)
+                }
                 ScrollView {
                     Spacer().frame(height: 0.045 * screenHeight)
                     Image("Logo")

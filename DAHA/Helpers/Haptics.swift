@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 
+/*
+ Haptic Functions
+ */
 func HeavyFeedback() {
     let generator = UIImpactFeedbackGenerator(style: .heavy)
     generator.impactOccurred()

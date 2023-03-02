@@ -27,14 +27,14 @@ struct ContentView: View {
   var body: some View {
     ZStack {
       
-      if isOnboardingViewActive {
+    
+      if isOnboardingViewActive { /*Not Created Account*/
         SetUpScreen()
-//          EmailScreen()
-      } else if isSignedIn && !verified{
+      } else if isSignedIn && !verified{ /* Email Not Verified */
         EmailScreen()
-      } else if isSignedIn && verified && !agreedToTerms{
+      } else if isSignedIn && verified && !agreedToTerms{ /*Not Agreed To Terms*/
         TermsConditionsScreen()
-      } else if isSignedIn && verified && agreedToTerms{
+      } else if isSignedIn && verified && agreedToTerms{ 
          MainScreen()
       }
     } //: ZStack

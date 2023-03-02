@@ -27,9 +27,13 @@ struct LoginScreen: View {
     
     var body: some View {
         ZStack{
-            ProgressView()
-                .opacity(progressOpacity)
-                .scaleEffect(2)
+            if uploading{
+                LottieView(name: colorScheme == .dark ? "DAHA-Loading_dark" : "DAHA-Loading")
+                    .scaleEffect(0.4)
+                    .opacity(progressOpacity)
+                    .padding(.bottom, screenHeight * 0.13)
+                    .zIndex(1)
+            }
             ScrollView{
                 Spacer().frame(height: screenHeight * 0.06)
                 Image("Logo")
@@ -64,6 +68,7 @@ struct LoginScreen: View {
             hideKeyboard()
         }
         .onChange(of: uploading) { value in
+            //Uploading + Progress View Animation
             if uploading {
                 withAnimation{
                     screenOpacity = 0.5

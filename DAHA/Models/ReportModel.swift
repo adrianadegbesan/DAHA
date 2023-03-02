@@ -10,6 +10,9 @@ import SwiftUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+/*
+ Model for reporting a post
+ */
 struct ReportModel: Identifiable, Codable {
     var id: String
     var postID: String

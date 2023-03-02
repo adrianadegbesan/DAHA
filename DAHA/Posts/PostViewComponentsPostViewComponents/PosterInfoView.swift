@@ -11,6 +11,8 @@ import Firebase
 struct PosterInfoView: View {
     
     @State var post: PostModel
+    @State private var timestampString = ""
+    
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         HStack(spacing: 3){
@@ -22,14 +24,17 @@ struct PosterInfoView: View {
             
             Image(systemName:"circle.fill")
                 .minimumScaleFactor(0.5)
-                .font(.system(size: 3.5, weight: .bold))
+                .font(.system(size: 2.5, weight: .bold))
                 .foregroundColor(.gray)
             
-            Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
+            Text(timestampString)
                 .lineLimit(1)
                 .minimumScaleFactor(0.001)
                 .font(.system(size: 9.5, weight: .semibold))
                 .foregroundColor(.gray)
+                .onAppear{
+                    timestampString = post.postedAt?.dateValue().timeAgoDisplay() ?? ""
+                }
             
             Spacer()
             

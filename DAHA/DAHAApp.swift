@@ -30,6 +30,7 @@ struct DAHAApp: App {
             .environmentObject(firestoreManager)
             .environmentObject(network)
             .preferredColorScheme(isDarkMode == "On" ? .dark : (isDarkMode == "Off" ? .light : nil))
+            /*Dark Mode Ternary Operator*/
         }
     }
 }
