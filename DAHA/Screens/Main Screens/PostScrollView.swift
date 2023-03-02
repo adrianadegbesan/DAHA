@@ -85,7 +85,7 @@ struct PostScrollView: View {
                                 ZStack{
                                         
                                         if post.id == posts.last!.id {
-                                            PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
+                                            PostView(post: post, owner: !(post.userID == Auth.auth().currentUser?.uid), preview: false)
                                                     .padding(.bottom, 10)
                                                     .padding(.leading, 3)
                                                     .onAppear{
@@ -132,7 +132,7 @@ struct PostScrollView: View {
                                                         
                                                     } //ONRECEIVE
                                         } else {
-                                            PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
+                                            PostView(post: post, owner: !(post.userID == Auth.auth().currentUser?.uid), preview: false)
                                                 .padding(.leading, 3)
                                                 .padding(.bottom, 10)
                                         } //NOT LAST
