@@ -30,6 +30,8 @@ struct PostView: View {
     @State private var save_alert: Bool = false
     @State private var unsave_alert: Bool = false
     
+    @State private var report_modal: Bool = false
+    
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -83,6 +85,9 @@ struct PostView: View {
                 reported = false
             }
         }
+        .sheet(isPresented: $report_modal){
+            ReportModal(post: post, reported: $reported)
+        }
         .alert("Post Being Reviewed", isPresented: $reported_alert, actions: {}, message: {Text("We are currently reviewing this post that you have reported.")})
         .onTapGesture {
             if !preview && !reported{
@@ -104,41 +109,43 @@ struct PostView: View {
               
             }
             if !owner{
-                if !saved{
+                if !reported{
+                    if !saved{
+                        Button{
+                            Task{
+                                let result = await firestoreManager.savePost(post: post)
+                                if result {
+                                    await firestoreManager.getSaved()
+                                } else {
+                                    save_alert = true
+                                }
+                            }
+                            firestoreManager.saved_refresh = true
+                            withAnimation{
+                                let id = Auth.auth().currentUser?.uid
+                                if id != nil && !post.savers.contains(id!){
+                                    post.savers.append(id!)
+                                }
+                                saved.toggle()
+                            }
+                            
+                        } label:{
+                            Label("Save Post", systemImage: "bookmark")
+                        }
+                    }
+                    
                     Button{
-                        Task{
-                            let result = await firestoreManager.savePost(post: post)
-                            if result {
-                                await firestoreManager.getSaved()
-                            } else {
-                                save_alert = true
-                            }
-                        }
-                        firestoreManager.saved_refresh = true
-                        withAnimation{
-                            let id = Auth.auth().currentUser?.uid
-                            if id != nil && !post.savers.contains(id!){
-                                post.savers.append(id!)
-                            }
-                            saved.toggle()
-                        }
                         
                     } label:{
-                        Label("Save Post", systemImage: "bookmark")
+                        Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane.fill")
+                    }
+                    
+                    Button{
+                        report_modal = true
+                    } label:{
+                        Label("Report Post", systemImage: "flag")
                     }
                 }
-                
-                Button{
-                    
-                } label:{
-                    Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane.fill")
-                }
-                
-//                Button{
-//                    
-//                } label:{
-//                    Label("Report Post", systemImage: "flag")
-//                }
             }
         }
         .alert("Delete Post", isPresented: $deletePresented, actions: {

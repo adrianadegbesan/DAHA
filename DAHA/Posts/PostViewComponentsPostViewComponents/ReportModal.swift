@@ -24,18 +24,20 @@ struct ReportModal: View {
     
     var body: some View {
         ScrollView {
-            VStack{
+            VStack(spacing: 5){
                 PostModalActions()
                     .padding(.leading, 15)
                     .padding(.top, 20)
                     
-                Spacer().frame(height: screenHeight * 0.14)
+                Spacer().frame(height: screenHeight * 0.08)
                 Image("Logo")
                     .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                 Spacer().frame(height: 0.01 * screenHeight)
                 Text("REPORT POST")
                     .font(.system(size: 26, weight: .black))
-                    .padding(.bottom, screenHeight * 0.02)
+                
+                PostView(post: post, owner: false, preview: true)
+                    .scaleEffect(0.9)
                 
                 
                 TextField("Description", text: $description)
@@ -52,24 +54,6 @@ struct ReportModal: View {
                 Button(action: {
                     if !uploading {
                         report_alert = true
-//                        uploading = true
-//                        let cur_id = Auth.auth().currentUser?.uid
-//                        if cur_id == nil{
-//                            return
-//                        } else {
-//                            let report = ReportModel(id: UUID().uuidString, postID: post.id, posterID: post.userID, reporterID: cur_id ?? "0", description: description, reportedAt: nil)
-//
-//                            Task {
-//                                let success = await firestoreManager.reportPost(report: report, post: post)
-//                                if success {
-//                                    reported = true
-//                                    dismiss()
-//                                } else {
-//                                    error_alert = true
-//                                }
-//                                uploading = false
-//                            }
-//                        }
                     }
                   
                 }){
@@ -135,7 +119,7 @@ struct ReportModal: View {
 
 struct ReportModal_Previews: PreviewProvider {
     static var previews: some View {
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
         
         ReportModal(post: post, reported: .constant(false))
     }

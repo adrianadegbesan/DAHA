@@ -28,7 +28,7 @@ struct CreateAccountScreen: View {
             ZStack {
                 if uploading{
                     LottieView(name: colorScheme == .dark ? "DAHA-Loading_dark" : "DAHA-Loading")
-                        .scaleEffect(0.4)
+                        .scaleEffect(0.35)
                         .opacity(progressOpacity)
                         .padding(.bottom, screenHeight * 0.13)
                         .zIndex(1)
@@ -87,8 +87,8 @@ struct CreateAccountScreen: View {
             .onChange(of: uploading) { value in
                 if uploading {
                     withAnimation{
-                        screenOpacity = 0.5
-                        progressOpacity = 1.0
+                        screenOpacity = 0.3
+                        progressOpacity = 0.7
                     }
                 } else if !uploading {
                     withAnimation{

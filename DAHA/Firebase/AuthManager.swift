@@ -111,7 +111,6 @@ class AuthManager: ObservableObject {
         
        var found: Bool = false
         do {
-            print("password is \(password)")
             try await Auth.auth().signIn(withEmail: email, password: password)
             let cur_id = Auth.auth().currentUser?.uid
             do {

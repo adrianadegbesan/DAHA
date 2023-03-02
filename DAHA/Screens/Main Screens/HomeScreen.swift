@@ -118,7 +118,6 @@ struct HomeScreen: View {
                 }
                 
             }
-            .keyboardControl()
             .navigationBarBackButtonHidden(true)
     }
 }
