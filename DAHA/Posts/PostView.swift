@@ -109,7 +109,7 @@ struct PostView: View {
               
             }
             if !owner{
-                if !reported{
+                if !reported && !preview{
                     if !saved{
                         Button{
                             Task{

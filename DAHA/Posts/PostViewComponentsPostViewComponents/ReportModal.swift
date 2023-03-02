@@ -29,7 +29,7 @@ struct ReportModal: View {
                     .padding(.leading, 15)
                     .padding(.top, 20)
                     
-                Spacer().frame(height: screenHeight * 0.08)
+                Spacer().frame(height: screenHeight * 0.04)
                 Image("Logo")
                     .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                 Spacer().frame(height: 0.01 * screenHeight)

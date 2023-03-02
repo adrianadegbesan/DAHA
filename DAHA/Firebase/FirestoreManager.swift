@@ -317,7 +317,7 @@ class FirestoreManager: ObservableObject {
      Function for reporting posts
      */
     func reportPost(report: ReportModel, post: PostModel) async -> Bool {
-        let postRef = db.collection("\(university)_Posts").document(post.id)
+        let postRef = db.collection("Universities").document("\(university)").collection("Posts").document(post.id)
         
         let userId = Auth.auth().currentUser?.uid
         
@@ -327,7 +327,6 @@ class FirestoreManager: ObservableObject {
         
         do {
             try db.collection("Universities").document("\(university)").collection("Reports").document(report.id).setData(from: report)
-//            try db.collection("\(university)_Reports").document(report.id).setData(from: report)
             try await postRef.updateData(["reporters": FieldValue.arrayUnion([userId!])])
             return true
         }
