@@ -89,8 +89,6 @@ class MessageManager: ObservableObject {
                         catch{
                             print("Error parsing message: \(error.localizedDescription)")
                         }
-//                        let message = self.convertToMessage(doc: document)
-//                        temp[channel.id]?.append(message)
                     }
                     
                     temp[channel.id]?.sort { $0.timestamp < $1.timestamp }
@@ -105,31 +103,6 @@ class MessageManager: ObservableObject {
         }
     }
     
-//    func convertToMessageChannel(doc: QueryDocumentSnapshot) -> MessageChannelModel {
-//        let data = doc.data()
-//        let result = MessageChannelModel(id: data["id"] as? String ?? "",
-//                                         sender: data["sender"] as? String ?? "",
-//                                         receiver: data["receiver"] as? String ?? "",
-//                                         users: data["users"] as? [String] ?? [],
-//                                         post: convertToPost(data["post"]) as? PostModel? ?? nil,
-//                                         timestamp: data["timestamp"] as? Date ?? Date.now,
-//                                         sender_username: data["sender_username"] as? String ?? "",
-//                                         receiver_username: data["receiver_username"] as? String ?? "",
-//                                         channel: data["channel"] as? String ?? "")
-//        return result
-//
-//    }
-    
-//    func convertToMessage(doc : QueryDocumentSnapshot) -> MessageModel {
-//        let data = doc.data()
-//        let result = MessageModel(id: data["id"] as? String ?? "",
-//                                  senderID: data["senderID"] as? String ?? "",
-//                                  receiverID: data["receiverID"] as? String ?? "",
-//                                  message: data["message"] as? String ?? "",
-//                                  timestamp: data["timestamp"] as? Date ?? Date.now,
-//                                  messageChannelID: data["messageChannelID"] as? String ?? "")
-//        return result
-//    }
     
     func createMessageChannel(message: String, post: PostModel) -> String?{
         var success = false
@@ -149,8 +122,11 @@ class MessageManager: ObservableObject {
                     }
                 }
                 if channel_made {
+                    let parentRef = db.collection("Messages").document(channel.id)
                     let message_sent = MessageModel(id: UUID().uuidString, senderID: id, receiverID: post.userID, message: message, timestamp: Date(), messageChannelID: channel.id)
-                    try db.collection("Messages").document(channel.id).collection("messages").document(message_sent.id).setData(from: message_sent){ err in
+                    let subcollectionRef = parentRef.collection("messages").document(message_sent.id)
+                    try
+                        subcollectionRef.setData(from: message_sent){ err in
                         if let err = err{
                             print("\(err)")
                         } else{

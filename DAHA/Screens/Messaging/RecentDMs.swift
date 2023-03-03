@@ -15,19 +15,21 @@ struct RecentDMs: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
             Spacer().frame(height: screenHeight * 0.005)
-            ScrollView{
-                if (messageManager.messageChannels.isEmpty && messageManager.messageChannelsLoading){
-                    ProgressView()
-                        .scaleEffect(1)
-                } else if (messageManager.messageChannels.isEmpty && !messageManager.messageChannelsLoading){
-                    ZStack {
-                        Image("Logo")
-                            .opacity(0.75)
-                            .overlay(Rectangle().stroke(.white, lineWidth: 2))
-                            .padding(.top, screenHeight * 0.15)
-                      }
-                    .frame(width: screenWidth)
-                } else{
+            if (messageManager.messageChannels.isEmpty && messageManager.messageChannelsLoading){
+                ProgressView()
+                    .scaleEffect(1)
+            } else if (messageManager.messageChannels.isEmpty && !messageManager.messageChannelsLoading){
+                ZStack {
+                    Image("Logo")
+                        .opacity(0.75)
+                        .overlay(Rectangle().stroke(.white, lineWidth: 2))
+                        .padding(.top, screenHeight * 0.15)
+                  }
+                .frame(width: screenWidth)
+            } else{
+                
+                ScrollView{
+                    
                     VStack(spacing: 0){
                         
                         if messageManager.messageChannels.count < 5{
@@ -45,12 +47,11 @@ struct RecentDMs: View {
                                     .overlay(Color(hex: darkGrey))
                             }
                         }
-                       
-                    }
+                        
+                    } //VStack
                     
-                }
-               
-            }
+                } //ScrollView
+            } //else
           
         }
     }

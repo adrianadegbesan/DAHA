@@ -21,7 +21,7 @@ struct ChatScreen: View {
             ScrollViewReader{ value in
                 ScrollView{
                     PostView(post: post, owner: false, preview: true)
-                        .scaleEffect(0.85)
+                        .scaleEffect(0.93)
                     if channelID != nil{
                         ForEach(messageManager.messages[channelID!] ?? []){ message in
                             MessageBubble(message: message)
@@ -30,7 +30,10 @@ struct ChatScreen: View {
                         }
                     }
                 }
-                MessageField(post: post, channelID: channelID, sent: $sent)
+                .onTapGesture {
+                    hideKeyboard()
+                }
+                MessageField(post: post, channelID: $channelID, sent: $sent)
                     .onChange(of: sent){ _ in
                         if sent {
                             if let lastMessage = messageManager.messages[channelID!]?.last {

@@ -20,7 +20,6 @@ struct MessagePreview: View {
         
         NavigationLink( destination: ChatScreen(post: channel.post, redirect: false, receiver: channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username, channelID: channel.id) ){
             VStack{
-                Divider()
                 HStack{
                     VStack{
                         HStack{
@@ -39,8 +38,7 @@ struct MessagePreview: View {
                         
                         HStack{
                             Text(channel.post.title)
-                                .font(.system(size: 20, weight: .bold))
-                                .lineLimit(1)
+                                .font(.system(size: 18, weight: .bold))
                             
                             
                             Spacer()
