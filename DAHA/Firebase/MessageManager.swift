@@ -54,7 +54,7 @@ class MessageManager: ObservableObject {
                     }
                 }
                 
-                temp.sort { $0.timestamp < $1.timestamp}
+                temp.sort { $0.timestamp > $1.timestamp}
                 
                 withAnimation{
                     self.messageChannels = temp
@@ -91,7 +91,7 @@ class MessageManager: ObservableObject {
                         }
                     }
                     
-                    temp[channel.id]?.sort { $0.timestamp < $1.timestamp }
+                    temp[channel.id]?.sort { $0.timestamp > $1.timestamp }
                     
                     withAnimation{
                         self.messages = temp
