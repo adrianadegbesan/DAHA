@@ -11,13 +11,26 @@ struct BuyButton: View {
     
     @State var post: PostModel
     @State private var shouldNavigate: Bool = false
+    @State private var redirect: Bool = true
+    @State private var channelID: String = ""
     @EnvironmentObject var messageManager : MessageManager
     
     var body: some View {
         Button(action: {
             //MessagingAction
             SoftFeedback()
+           
+            redirect = !messageManager.messageChannels.contains(where: {$0.post.id == post.id})
+            
+            if !redirect{
+                let channel = messageManager.messageChannels.first(where: {$0.post.id == post.id})
+                
+                if channel != nil{
+                    channelID = channel!.id
+                }
+            }
             shouldNavigate = true
+            
         }){
             HStack(spacing: 0){
                 Text(post.type == "Request" ? "GIVE " : "BUY ")
@@ -31,10 +44,17 @@ struct BuyButton: View {
                     .minimumScaleFactor(0.05)
                     .font(.system(size: 13, weight: .bold))
                 
-                
-                NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username), isActive: $shouldNavigate){
-                    EmptyView()
+                if channelID != ""{
+                    NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username, channelID: channelID), isActive: $shouldNavigate){
+                        EmptyView()
+                    }
+                } else {
+                    NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username), isActive: $shouldNavigate){
+                        EmptyView()
+                    }
                 }
+                
+               
                 
             }
             .padding(.vertical, 6)

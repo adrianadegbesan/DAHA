@@ -29,6 +29,10 @@ struct ChatScreen: View {
                             
                         }
                     }
+                }.onAppear{
+                    if let lastMessage = messageManager.messages[channelID!]?.last {
+                    value.scrollTo(lastMessage.id, anchor: .bottom)
+                    }
                 }
                 .onTapGesture {
                     hideKeyboard()

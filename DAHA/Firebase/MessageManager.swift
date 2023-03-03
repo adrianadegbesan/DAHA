@@ -114,7 +114,7 @@ class MessageManager: ObservableObject {
             
             
             do {
-                try await db.collection("Messages").document(channel.id).setData(from: channel)
+                try db.collection("Messages").document(channel.id).setData(from: channel)
                 let parentRef = db.collection("Messages").document(channel.id)
                 let message_sent = MessageModel(id: UUID().uuidString, senderID: id, receiverID: post.userID, message: message, timestamp: Date(), messageChannelID: channel.id)
                 let subcollectionRef = parentRef.collection("messages").document(message_sent.id)

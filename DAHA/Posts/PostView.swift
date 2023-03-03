@@ -18,7 +18,12 @@ struct PostView: View {
     @State private var selected : Bool = false
     @State private var reported_alert : Bool = false
     @State private var shouldNavigate : Bool = false
+    
     @State private var buyNavigate: Bool = false
+    @State private var redirect: Bool = true
+    @State var channelID : String = ""
+    @EnvironmentObject var messageManager : MessageManager
+    
     @State var owner : Bool
     @State var preview : Bool
     
@@ -64,9 +69,17 @@ struct PostView: View {
                 EmptyView()
             }
             
-            NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username), isActive: $buyNavigate){
-                EmptyView()
+            
+            if channelID != ""{
+                NavigationLink(destination: ChatScreen(post: post, redirect: redirect, receiver: post.username, channelID: channelID), isActive: $buyNavigate){
+                    EmptyView()
+                }
+            } else {
+                NavigationLink(destination: ChatScreen(post: post, redirect: redirect, receiver: post.username), isActive: $buyNavigate){
+                    EmptyView()
+                }
             }
+           
             
         } //HStack
         .frame(width: screenWidth * 0.902, height: screenHeight * 0.2)
@@ -139,7 +152,15 @@ struct PostView: View {
                         }
                     }
                     
-                    Button{
+                    Button {
+                        redirect = !messageManager.messageChannels.contains(where: {$0.post.id == post.id})
+                        if !redirect{
+                            let channel = messageManager.messageChannels.first(where: {$0.post.id == post.id})
+                            
+                            if channel != nil{
+                                channelID = channel!.id
+                            }
+                        }
                         buyNavigate = true
                     } label:{
                         Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane.fill")
@@ -201,6 +222,7 @@ struct PostView_Previews: PreviewProvider {
         NavigationView{
             PostView(post: post, owner: false, preview: true)
                 .environmentObject(FirestoreManager())
+                .environmentObject(MessageManager())
         }
     }
 }

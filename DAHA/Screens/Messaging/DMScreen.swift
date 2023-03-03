@@ -46,6 +46,11 @@ struct DMScreen: View {
             }
           
         }
+        .onAppear{
+            withAnimation{
+                messageManager.messageChannels.sort { $0.timestamp > $1.timestamp}
+            }
+        }
         .navigationTitle("Direct Messages")
     }
 }

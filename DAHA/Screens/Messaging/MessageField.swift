@@ -120,6 +120,7 @@ struct CustomTextField: View {
     @Binding var text: String
     var editingChanged: (Bool)->() = { _ in }
     var commit: ()->() = { }
+    @FocusState var keyboardFocused: Bool
 
     var body: some View {
         ZStack(alignment: .leading) {
@@ -131,6 +132,12 @@ struct CustomTextField: View {
             
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
                 .submitLabel(.send)
+                .focused($keyboardFocused)
+                .onAppear{
+                    keyboardFocused = true
+                }
+                
+            
         }
     }
 }
