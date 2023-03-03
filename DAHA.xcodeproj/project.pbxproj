@@ -53,6 +53,10 @@
 		8236CFF9296D34210086AB15 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 8236CFF8296D34210086AB15 /* FirebasePerformance */; };
 		8236CFFB296D34210086AB15 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8236CFFA296D34210086AB15 /* FirebaseStorage */; };
 		8236CFFD296F2AF00086AB15 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8236CFFC296F2AF00086AB15 /* AuthManager.swift */; };
+		828CAFA029B1868200B489F4 /* MessageChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */; };
+		828CAFA229B188D100B489F4 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA129B188D100B489F4 /* MessageModel.swift */; };
+		828CAFA529B18AFA00B489F4 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA429B18AFA00B489F4 /* MessageBubble.swift */; };
+		828CAFA729B1E64C00B489F4 /* MessageField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA629B1E64C00B489F4 /* MessageField.swift */; };
 		8294FAAC296B9F5B004001AE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAAB296B9F5B004001AE /* UserModel.swift */; };
 		8294FAAE296B9F64004001AE /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAAD296B9F64004001AE /* PostModel.swift */; };
 		8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE6296BB945004001AE /* CustomInputField.swift */; };
@@ -185,6 +189,10 @@
 		8236020D298791BE002E7AEC /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
 		8236020F29879425002E7AEC /* PostDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDescriptionView.swift; sourceTree = "<group>"; };
 		8236CFFC296F2AF00086AB15 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChannelModel.swift; sourceTree = "<group>"; };
+		828CAFA129B188D100B489F4 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		828CAFA429B18AFA00B489F4 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
+		828CAFA629B1E64C00B489F4 /* MessageField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageField.swift; sourceTree = "<group>"; };
 		8294FAAB296B9F5B004001AE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8294FAAD296B9F64004001AE /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		8294FAE6296BB945004001AE /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
@@ -354,10 +362,6 @@
 		82218C08299C870B0092BA94 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				82CEFC632969CE5200C55F67 /* DMScreen.swift */,
-				82A21A6729A6E9450040BAA1 /* RecentDMs.swift */,
-				82A21A6329A6E21B0040BAA1 /* MessagePreview.swift */,
-				82A21A6529A6E34D0040BAA1 /* ChatScreen.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -389,6 +393,20 @@
 				82CBC2AA2989BA79001966E3 /* PostModalComponents */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		828CAFA329B18AC600B489F4 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				82CEFC632969CE5200C55F67 /* DMScreen.swift */,
+				82A21A6729A6E9450040BAA1 /* RecentDMs.swift */,
+				82A21A6329A6E21B0040BAA1 /* MessagePreview.swift */,
+				82A21A6529A6E34D0040BAA1 /* ChatScreen.swift */,
+				828CAFA429B18AFA00B489F4 /* MessageBubble.swift */,
+				828CAFA629B1E64C00B489F4 /* MessageField.swift */,
+			);
+			name = Messaging;
+			path = Screens/Messaging;
 			sourceTree = "<group>";
 		};
 		82A21A5A29A677080040BAA1 /* Lottie Animations */ = {
@@ -561,6 +579,7 @@
 				82CEFC402969CB9C00C55F67 /* Models */,
 				82CEFC692969CE8600C55F67 /* Onboarding and Login */,
 				82CEFC412969CBB600C55F67 /* Screens */,
+				828CAFA329B18AC600B489F4 /* Messaging */,
 				82B6B2FD298F502400027E5A /* MakePosts */,
 				823602062985ADD5002E7AEC /* Posts */,
 				82CEFC422969CBBF00C55F67 /* Views */,
@@ -608,6 +627,8 @@
 				8294FAAB296B9F5B004001AE /* UserModel.swift */,
 				8294FAAD296B9F64004001AE /* PostModel.swift */,
 				82A21A6929A82A0F0040BAA1 /* ReportModel.swift */,
+				828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */,
+				828CAFA129B188D100B489F4 /* MessageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -802,6 +823,7 @@
 				82A21A5429A17EA10040BAA1 /* ChangePasswordView.swift in Sources */,
 				82CEFC812969CFCA00C55F67 /* PostButton.swift in Sources */,
 				82B6B2F2298C4F1500027E5A /* CameraButton.swift in Sources */,
+				828CAFA229B188D100B489F4 /* MessageModel.swift in Sources */,
 				8236020A298748DF002E7AEC /* ReportButton.swift in Sources */,
 				82CEFC5F2969CE0700C55F67 /* ProfileScreen.swift in Sources */,
 				82B6B2CB298A13E100027E5A /* ConditionNavigatorView.swift in Sources */,
@@ -859,6 +881,7 @@
 				82CBC2B22989BC2F001966E3 /* PostModalPostActions.swift in Sources */,
 				82DF4CAC296F5C6B00A309CF /* ResendButton.swift in Sources */,
 				82A21A6829A6E9450040BAA1 /* RecentDMs.swift in Sources */,
+				828CAFA729B1E64C00B489F4 /* MessageField.swift in Sources */,
 				82CEFC852969D00D00C55F67 /* SettingsButton.swift in Sources */,
 				82CEFC8B2969D06700C55F67 /* FirstContinueButton.swift in Sources */,
 				82B6B2DB298AE00800027E5A /* PasswordResetButton.swift in Sources */,
@@ -875,6 +898,7 @@
 				82B6B2E4298B73E000027E5A /* ChooseCategoryButton.swift in Sources */,
 				82CEFC462969CBF000C55F67 /* Images.swift in Sources */,
 				82ACC69B2996BF9800589E1E /* SearchCategoryIcon.swift in Sources */,
+				828CAFA029B1868200B489F4 /* MessageChannelModel.swift in Sources */,
 				82ACC68929936E4300589E1E /* PostConfirmationScreen.swift in Sources */,
 				82B6B2F8298F27A100027E5A /* Camera.swift in Sources */,
 				82A21A6429A6E21B0040BAA1 /* MessagePreview.swift in Sources */,
@@ -883,6 +907,7 @@
 				82CEFC4C2969CC3300C55F67 /* TextField.swift in Sources */,
 				82218C0A299C87900092BA94 /* LogOutView.swift in Sources */,
 				82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */,
+				828CAFA529B18AFA00B489F4 /* MessageBubble.swift in Sources */,
 				82A21A7229AD83F90040BAA1 /* SDWebImageHelpers.swift in Sources */,
 				82218C03299C67110092BA94 /* EmailClass.swift in Sources */,
 				82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */,

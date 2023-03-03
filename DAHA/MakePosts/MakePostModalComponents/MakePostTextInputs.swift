@@ -34,7 +34,7 @@ struct MakePostTextInputs: View {
             TextField("Title", text: $title)
                 .onChange(of: title) { value in
                     if title.count > 30{
-                        title = String(title.prefix(23))
+                        title = String(title.prefix(30))
                     }
                     post.title = title
                 }
@@ -55,16 +55,11 @@ struct MakePostTextInputs: View {
                 TextEditor(text: $description)
                     .focused($description_input)
                     .onChange(of: description){ value in
-                        if description.count > 320{
+                        if description.count > 320 {
                             description = String(description.prefix(320))
                         }
                         post.description = description
                         
-//                        if description.last == "\n"{
-//                            description = String(description.dropLast(1))
-//                            post.description = description
-//                            hideKeyboard()
-//                        }
                     }
                     .frame(width: screenWidth * 0.6, height: screenHeight * 0.15)
                     .padding()

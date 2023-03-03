@@ -18,6 +18,7 @@ struct PostView: View {
     @State private var selected : Bool = false
     @State private var reported_alert : Bool = false
     @State private var shouldNavigate : Bool = false
+    @State private var buyNavigate: Bool = false
     @State var owner : Bool
     @State var preview : Bool
     
@@ -60,6 +61,10 @@ struct PostView: View {
             
             
             NavigationLink(destination: PostModal(post: post, saved: $saved, reported: $reported, owner: owner).navigationBarBackButtonHidden(true), isActive: $shouldNavigate){
+                EmptyView()
+            }
+            
+            NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username), isActive: $buyNavigate){
                 EmptyView()
             }
             
@@ -135,7 +140,7 @@ struct PostView: View {
                     }
                     
                     Button{
-                        
+                        buyNavigate = true
                     } label:{
                         Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane.fill")
                     }

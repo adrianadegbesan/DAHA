@@ -149,7 +149,7 @@ class FirestoreManager: ObservableObject {
         
         if !images.isEmpty{
             for image in images {
-                let imageData = image.jpegData(compressionQuality: 0.7)
+                let imageData = image.jpegData(compressionQuality: 0.6)
                 guard imageData != nil else {
                     return ["error"]
                 }
@@ -231,7 +231,7 @@ class FirestoreManager: ObservableObject {
         if !images.isEmpty{
             urls = await uploadImages(images: images)
         }
-        
+
         if urls == ["error"]{
             completion(uploadError("Couldn't upload images"))
         }
@@ -262,18 +262,6 @@ class FirestoreManager: ObservableObject {
 
                      }
                  }
-
-       
-//            try db.collection("\(university)_Posts").document(post.id).setData(from: post_temp){ err in
-//                     if let err = err{
-//                         completion(uploadError(err.localizedDescription))
-//                     } else {
-//                         print("Post completed")
-//                         post_created.wrappedValue = true
-//                         print(post_created.wrappedValue)
-//
-//                     }
-//                 }
 
 
          }
