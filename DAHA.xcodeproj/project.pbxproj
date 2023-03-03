@@ -57,6 +57,7 @@
 		828CAFA229B188D100B489F4 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA129B188D100B489F4 /* MessageModel.swift */; };
 		828CAFA529B18AFA00B489F4 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA429B18AFA00B489F4 /* MessageBubble.swift */; };
 		828CAFA729B1E64C00B489F4 /* MessageField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA629B1E64C00B489F4 /* MessageField.swift */; };
+		828CAFA929B29CF800B489F4 /* MessageOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA829B29CF800B489F4 /* MessageOptions.swift */; };
 		8294FAAC296B9F5B004001AE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAAB296B9F5B004001AE /* UserModel.swift */; };
 		8294FAAE296B9F64004001AE /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAAD296B9F64004001AE /* PostModel.swift */; };
 		8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE6296BB945004001AE /* CustomInputField.swift */; };
@@ -193,6 +194,7 @@
 		828CAFA129B188D100B489F4 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		828CAFA429B18AFA00B489F4 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		828CAFA629B1E64C00B489F4 /* MessageField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageField.swift; sourceTree = "<group>"; };
+		828CAFA829B29CF800B489F4 /* MessageOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOptions.swift; sourceTree = "<group>"; };
 		8294FAAB296B9F5B004001AE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8294FAAD296B9F64004001AE /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		8294FAE6296BB945004001AE /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 				82A21A6529A6E34D0040BAA1 /* ChatScreen.swift */,
 				828CAFA429B18AFA00B489F4 /* MessageBubble.swift */,
 				828CAFA629B1E64C00B489F4 /* MessageField.swift */,
+				828CAFA829B29CF800B489F4 /* MessageOptions.swift */,
 			);
 			name = Messaging;
 			path = Screens/Messaging;
@@ -911,6 +914,7 @@
 				82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */,
 				82A21A6029A6A9DA0040BAA1 /* PrivacyPolicyView.swift in Sources */,
 				82218C34299FC7E90092BA94 /* ImageIndicator.swift in Sources */,
+				828CAFA929B29CF800B489F4 /* MessageOptions.swift in Sources */,
 				82A21A7629AEA3870040BAA1 /* EmailScreen.swift in Sources */,
 				82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */,
 				82D2D0DF296BD41200CB4B9A /* EmailVerificationScreen.swift in Sources */,

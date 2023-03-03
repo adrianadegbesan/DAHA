@@ -57,7 +57,7 @@ struct ChatScreen: View {
             
         }
         .navigationBarTitle("@\(receiver)")
-        
+        .navigationBarItems(trailing: MessageOptions())
     }
 }
 
