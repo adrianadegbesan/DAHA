@@ -37,14 +37,14 @@ struct PostActionView: View {
                         .minimumScaleFactor(0.3)
                         .font(.system(size: 16, weight: .bold))
                         .layoutPriority(1)
-                        .foregroundColor(Color(hex: category_colors[post.category] ?? "000000"))
+                        .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
                 } else {
                     Text("LISTING")
                         .lineLimit(1)
                         .minimumScaleFactor(0.3)
                         .font(.system(size: 16, weight: .bold))
                         .layoutPriority(1)
-                        .foregroundColor(Color(hex: category_colors[post.category] ?? "000000"))
+                        .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
                 }
                 
             } else {

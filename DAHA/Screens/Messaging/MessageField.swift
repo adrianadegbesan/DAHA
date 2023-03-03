@@ -69,6 +69,7 @@ struct MessageField: View {
                                 message = ""
                             }
                         }
+                
                     } else {
                         Task{
                             await messagesManager.sendMessage(message: message, channelID: channelID!, post: post, sent: $sent)
@@ -78,7 +79,7 @@ struct MessageField: View {
                                 message = ""
                             }
                         }
-                    }
+                    } 
                 }
                 
             } label: {

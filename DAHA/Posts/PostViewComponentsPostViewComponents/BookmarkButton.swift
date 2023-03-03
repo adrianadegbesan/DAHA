@@ -49,7 +49,6 @@ struct BookmarkButton: View {
                         save_alert = true
                     }
                 }
-                firestoreManager.saved_refresh = true
                 withAnimation{
                     let id = Auth.auth().currentUser?.uid
                     if id != nil && !post.savers.contains(id!){
