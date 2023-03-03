@@ -26,3 +26,19 @@ struct MessageChannelModel: Identifiable, Codable{
     var channel: String
 }
 
+extension MessageChannelModel{
+    var dictionaryRepresentation: [String:Any]{
+        return [
+            "id" : self.id,
+            "sender" : self.sender,
+            "receiver" : self.receiver,
+            "users" : self.users,
+            "post" : self.post,
+            "timestamp" : self.timestamp,
+            "sender_username" : self.sender_username,
+            "receiver_username" : self.receiver_username,
+            "channel" : self.channel
+        ]
+    }
+}
+

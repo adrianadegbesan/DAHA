@@ -50,4 +50,26 @@ struct PostModel: Identifiable, Codable {
     }
 }
 
+extension PostModel {
+    var dictionaryRepresentation: [String:Any]{
+        return [
+            "id" : self.id,
+            "title": self.title,
+            "userID" : self.userID,
+            "username" : self.username,
+            "description" : self.description,
+            "postedAt" : self.postedAt != nil ? self.postedAt! : FieldValue.serverTimestamp(),
+            "condition" : self.condition,
+            "category" : self.category,
+            "price" : self.price,
+            "imageURLs" : self.imageURLs,
+            "channel" : self.channel,
+            "savers" : self.savers,
+            "type" : self.type,
+            "keywordsForLookup" : self.keywordsForLookup,
+            "reporters" : self.reporters
+        ]
+    }
+}
+
 

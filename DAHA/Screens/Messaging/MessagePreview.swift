@@ -57,7 +57,7 @@ struct MessagePreview: View {
                         
                         HStack{
                             Spacer()
-                            Text("$\(channel.post.price)")
+                            (Text(channel.post.price == "Free" ? "" : "$") + Text(channel.post.price))
                                 .font(.system(size: 18, weight: .bold))
                                 .lineLimit(1)
                             

@@ -28,6 +28,7 @@ struct MessageBubble: View {
                  withAnimation{
                      showTime.toggle()
                  }
+            
              }
              
              if showTime {

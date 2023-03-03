@@ -646,49 +646,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "85C9ACB3-7CF2-4CA6-A143-396D96979866"
+            uuid = "7633058C-2B31-4DE6-8BF4-607A4F3FC9AA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "createMessageChannel(message:post:)"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "sendMessage(message:channelID:post:sent:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "85C9ACB3-7CF2-4CA6-A143-396D96979866 - e366a5aa885a41fb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DAHA.MessageManager.createMessageChannel(message: Swift.String, post: DAHA.PostModel) -&gt; Swift.Optional&lt;Swift.String&gt;"
-                  moduleName = "DAHA"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "129"
-                  endingLineNumber = "129"
-                  offsetFromSymbolStart = "3792">
-               </Location>
-               <Location
-                  uuid = "85C9ACB3-7CF2-4CA6-A143-396D96979866 - fe98f50f1a2f0cf8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DAHA.MessageManager.createMessageChannel(message: Swift.String, post: DAHA.PostModel) -&gt; Swift.Optional&lt;Swift.String&gt;"
-                  moduleName = "DAHA"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ABCD45F5-C17C-4B40-843A-D253B8145109"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/MessageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "sendMessage(message:channelID:post:sent:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

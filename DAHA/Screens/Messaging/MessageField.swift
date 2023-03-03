@@ -19,59 +19,86 @@ struct MessageField: View {
     @State var error_alert : Bool = false
 
     var body: some View {
+        
         HStack {
-            // Custom text field created below
-            CustomTextField(placeholder: Text(""), text: $message)
-                .frame(height: 30)
-           
-            
-            Spacer()
+            HStack {
+                //             Custom text field created below
+                CustomTextField(placeholder: Text(""), text: $message, commit: {
+                    
+                        if channelID == nil {
+                            Task{
+                                await messagesManager.createMessageChannel(message: message, post: post, channelID: $channelID)
+                                if channelID == nil{
+                                    error_alert = true
+                                } else {
+                                    sent = true
+                                    message = ""
+                                }
+                            }
+                        
+                        } else {
+                            Task{
+                                await messagesManager.sendMessage(message: message, channelID: channelID!, post: post, sent: $sent)
+                                if !sent{
+                                    error_alert = true
+                                } else {
+                                    message = ""
+                                }
+                            }
+                        }
+                })
+                    .frame(height: 40)
+                
+            }
+            .padding(.horizontal, screenWidth * 0.025)
+            .background(RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 0.8))
+            //        .padding(.bottom)
+            .alert("Error Sending Message", isPresented: $error_alert, actions: {}, message:{Text("Please check your network connection")})
             
             Button {
                 if message != ""{
                     SoftFeedback()
                     
                     if channelID == nil {
-                        let id = messagesManager.createMessageChannel(message: message, post: post)
-                        if id == nil{
-                            error_alert = true
-                        } else {
-                            channelID = id
-                            sent = true
-                            message = ""
-                        }
-                        
-                        
-                    } else {
-                            let result =  messagesManager.sendMessage(message: message, channelID: channelID!, post: post)
-                            if !result{
+                        Task{
+                            await messagesManager.createMessageChannel(message: message, post: post, channelID: $channelID)
+                            if channelID == nil{
                                 error_alert = true
                             } else {
                                 sent = true
                                 message = ""
                             }
+                        }
+                    } else {
+                        Task{
+                            await messagesManager.sendMessage(message: message, channelID: channelID!, post: post, sent: $sent)
+                            if !sent{
+                                error_alert = true
+                            } else {
+                                message = ""
+                            }
+                        }
                     }
-                    
                 }
-              
+                
             } label: {
                 Image(systemName: "arrow.up")
-                    .font(.system(size: 20, weight: .heavy))
+                    .font(.system(size: 13.5, weight: .heavy))
                     .foregroundColor(.white)
                     .padding(10)
                     .background(message != "" ? Color(hex: deepBlue) : .gray)
                     .cornerRadius(50)
                     .offset(x: screenWidth * 0.003)
             }
+            
         }
-        .padding(.leading, 15)
-//        .padding(.vertical, 3)
-        .background(RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 0.8))
-        .padding(.horizontal, screenWidth * 0.01)
-//        .padding(.bottom)
-        .alert("Error Sending Message", isPresented: $error_alert, actions: {}, message:{Text("Please check your network connection")})
-        
+        .padding(.horizontal, screenWidth * 0.015)
+        .padding(.bottom)
     }
+        
+        
+        
+        
 }
 
 struct MessageField_Previews: PreviewProvider {
@@ -100,7 +127,9 @@ struct CustomTextField: View {
                 placeholder
                 .opacity(0.5)
             }
+            
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+                .submitLabel(.send)
         }
     }
 }

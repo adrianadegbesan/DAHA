@@ -11,6 +11,7 @@ struct BuyButton: View {
     
     @State var post: PostModel
     @State private var shouldNavigate: Bool = false
+    @EnvironmentObject var messageManager : MessageManager
     
     var body: some View {
         Button(action: {

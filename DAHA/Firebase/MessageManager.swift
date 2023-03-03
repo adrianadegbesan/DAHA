@@ -57,6 +57,7 @@ class MessageManager: ObservableObject {
                 temp.sort { $0.timestamp > $1.timestamp}
                 
                 withAnimation{
+                    self.messageChannels.removeAll()
                     self.messageChannels = temp
                     self.messageChannelsLoading = false
                 }
@@ -91,7 +92,7 @@ class MessageManager: ObservableObject {
                         }
                     }
                     
-                    temp[channel.id]?.sort { $0.timestamp > $1.timestamp }
+                    temp[channel.id]?.sort { $0.timestamp > $1.timestamp}
                     
                     withAnimation{
                         self.messages = temp
@@ -104,77 +105,53 @@ class MessageManager: ObservableObject {
     }
     
     
-    func createMessageChannel(message: String, post: PostModel) -> String?{
-        var success = false
-        var channel_made = false
+    func createMessageChannel(message: String, post: PostModel, channelID : Binding<String?>) async {
         let channel_id = UUID().uuidString
         
         if Auth.auth().currentUser != nil{
             let id = Auth.auth().currentUser!.uid
             let channel = MessageChannelModel(id: channel_id, sender: id, receiver: post.userID, users: [id, post.userID], post: post, timestamp: Date(), sender_username: username_system, receiver_username: post.username, channel: university)
             
+            
             do {
-                try db.collection("Messages").document(channel.id).setData(from: channel){ err in
-                    if let err = err{
-                        print("\(err)")
-                    } else{
-                        channel_made = true
-                    }
-                }
-                if channel_made {
-                    let parentRef = db.collection("Messages").document(channel.id)
-                    let message_sent = MessageModel(id: UUID().uuidString, senderID: id, receiverID: post.userID, message: message, timestamp: Date(), messageChannelID: channel.id)
-                    let subcollectionRef = parentRef.collection("messages").document(message_sent.id)
-                    try
-                        subcollectionRef.setData(from: message_sent){ err in
-                        if let err = err{
-                            print("\(err)")
-                        } else{
-                            success = true
-                        }
-                        
-                    }
-                }
+                try await db.collection("Messages").document(channel.id).setData(from: channel)
+                let parentRef = db.collection("Messages").document(channel.id)
+                let message_sent = MessageModel(id: UUID().uuidString, senderID: id, receiverID: post.userID, message: message, timestamp: Date(), messageChannelID: channel.id)
+                let subcollectionRef = parentRef.collection("messages").document(message_sent.id)
+                try await subcollectionRef.setData(message_sent.dictionaryRepresentation)
+                channelID.wrappedValue = channel_id
+                return
             }
             catch {
                 print(error.localizedDescription)
-                success = false
-                return nil
+                return
             }
             
         }
-        if success{
-            return channel_id
-        } else {
-            return nil
-        }
+        return
     }
     
-    func sendMessage(message: String, channelID: String, post: PostModel) -> Bool{
+    
+    func sendMessage(message: String, channelID: String, post: PostModel, sent: Binding<Bool>) async {
         var success = false
         
         if Auth.auth().currentUser != nil{
             let id = Auth.auth().currentUser!.uid
             let message_sent = MessageModel(id: UUID().uuidString, senderID: id, receiverID: post.userID, message: message, timestamp: Date(), messageChannelID: channelID)
             do {
-                try db.collection("Messages").document(channelID).collection("messages").document(message_sent.id).setData(from: message_sent){ err in
-                    if let err = err{
-                        print("\(err)")
-                    } else{
-                        success = true
-                    }
-                }
+                try await db.collection("Messages").document(channelID).collection("messages").document(message_sent.id).setData(message_sent.dictionaryRepresentation)
+                success = true
+                sent.wrappedValue = success
 //                let channelRef = db.collection("Messages").document(channelID)
 //                try await channelRef.updateData(["timestamp": Date()])
-                
-                
+                return
             }
             catch {
                 print(error.localizedDescription)
-                return success
+                return
             }
         }
-        return success
+        return 
     }
     
     
