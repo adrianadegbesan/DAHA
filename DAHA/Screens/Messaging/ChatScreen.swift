@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import ScrollView
 
 struct ChatScreen: View {
     @State var post: PostModel
@@ -15,6 +16,7 @@ struct ChatScreen: View {
     @State var channelID: String?
     @State var sent: Bool = false
     @EnvironmentObject var messageManager : MessageManager
+    
     
     var body: some View {
         VStack{

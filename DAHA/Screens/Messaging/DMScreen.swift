@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RefreshableScrollView
 
 struct DMScreen: View {
     
@@ -15,7 +16,7 @@ struct DMScreen: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
-            ScrollView{
+            RefreshableScrollView{
                 Spacer().frame(height: screenHeight * 0.01)
                 
                 if (messageManager.messageChannels.isEmpty && messageManager.messageChannelsLoading){
@@ -43,7 +44,9 @@ struct DMScreen: View {
                     }
                 }
               
-            }
+            }.refreshable(action: {
+                messageManager.getMessageChannels()
+            })
           
         }
         .onAppear{

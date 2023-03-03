@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RefreshableScrollView
 
 struct RecentDMs: View {
     @Environment(\.colorScheme) var colorScheme
@@ -28,7 +29,7 @@ struct RecentDMs: View {
                 .frame(width: screenWidth)
             } else{
                 
-                ScrollView{
+                RefreshableScrollView{
                     
                     VStack(spacing: 0){
                         
@@ -50,7 +51,9 @@ struct RecentDMs: View {
                         
                     } //VStack
                     
-                } //ScrollView
+                }.refreshable(action: {
+                    messageManager.getMessageChannels()
+                }) //ScrollView
             } //else
           
         }
