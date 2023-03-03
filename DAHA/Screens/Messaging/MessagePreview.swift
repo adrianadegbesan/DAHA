@@ -14,6 +14,7 @@ struct MessagePreview: View {
     @State var channel : MessageChannelModel
     
     //State var MessageObject
+    @State var timestampString : String = ""
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -50,9 +51,12 @@ struct MessagePreview: View {
                     VStack{
                         HStack{
                             Spacer()
-                            Text(channel.timestamp.timeAgoDisplay())
+                            Text(timestampString)
                                 .font(.system(size: 13, weight: .bold))
                                 .lineLimit(1)
+                                .onAppear{
+                                    timestampString = channel.timestamp.timeAgoDisplay()
+                                }
                         }
                         
                         HStack{

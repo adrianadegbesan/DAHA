@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Firebase
-import ScrollView
 
 struct ChatScreen: View {
     @State var post: PostModel
@@ -32,8 +31,11 @@ struct ChatScreen: View {
                         }
                     }
                 }.onAppear{
-                    if let lastMessage = messageManager.messages[channelID!]?.last {
-                    value.scrollTo(lastMessage.id, anchor: .bottom)
+                    //UPDATE FOR WHEN MESSAGES HAVE LOADED
+                    if !redirect {
+                        if let lastMessage = messageManager.messages[channelID!]?.last {
+                        value.scrollTo(lastMessage.id, anchor: .bottom)
+                        }
                     }
                 }
                 .onTapGesture {
