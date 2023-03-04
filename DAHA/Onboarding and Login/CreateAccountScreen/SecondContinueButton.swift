@@ -30,6 +30,7 @@ struct SecondContinueButton: View {
     @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
+    @AppStorage("joined") var joinedAt = ""
     @Environment(\.colorScheme) var colorScheme
 
     
@@ -95,6 +96,10 @@ struct SecondContinueButton: View {
                                     username_system = username_temp.trimmingCharacters(in: .whitespaces)
                                     isSignedIn = true
                                     isOnboardingViewActive = false
+                                    let formatter = DateFormatter()
+                                           formatter.dateStyle = .long
+                                           formatter.timeStyle = .none
+                                    joinedAt = formatter.string(from: Date.now)
                                 }
                                 shouldNavigate = account_created
                             }

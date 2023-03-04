@@ -18,6 +18,7 @@ struct EmailScreen: View {
     @AppStorage("id") var user_id = ""
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     @AppStorage("emailverified") var verified: Bool = false
+    @AppStorage("joined") var joinedAt = ""
     
     @State private var shouldNavigate = false
     
@@ -109,6 +110,7 @@ struct EmailScreen: View {
                 username_system = ""
                 email_system = ""
                 user_id = ""
+                joinedAt = ""
                 isDarkMode = "System"
             }
           }

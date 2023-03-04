@@ -17,6 +17,7 @@ struct ContentView: View {
   @AppStorage("email") var email_system: String = ""
   @AppStorage("emailverified") var verified: Bool = false
   @AppStorage("id") var user_id = ""
+  @AppStorage("joined") var joinedAt = ""
     
   @EnvironmentObject var authentication: AuthManager
   @EnvironmentObject var network: Network

@@ -14,6 +14,7 @@ struct LogOutButton: View {
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
+    @AppStorage("joined") var joinedAt = ""
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     
     @State private var isPresented = false
@@ -42,6 +43,7 @@ struct LogOutButton: View {
                     university = ""
                     username_system = ""
                     email_system = ""
+                    joinedAt = ""
                     isDarkMode = "System"
                 }
             })

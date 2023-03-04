@@ -66,8 +66,6 @@ struct MessagePreview: View {
                                 .lineLimit(1)
                             
                         }
-                        
-                        
                     }
                     
                     
@@ -80,7 +78,13 @@ struct MessagePreview: View {
             .frame(width: screenWidth, height: screenWidth * 0.2)
         }
         .foregroundColor(colorScheme == .dark ? .white : .black)
-        
+        .contextMenu {
+            Button(role: .destructive){
+                
+            } label:{
+                Label("Delete Chat", systemImage: "trash")
+            }
+        }
     }
 }
 

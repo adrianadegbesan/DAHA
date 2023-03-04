@@ -20,6 +20,7 @@ struct SignInButton: View {
     @State private var username_temp: String = ""
     @State private var university_temp: String = ""
     @State private var terms_temp: Bool = false
+    @State private var joined_temp: String = ""
     @State private var error_alert: Bool = false
     @State private var error_message: String = ""
     @EnvironmentObject var firestoreManager : FirestoreManager
@@ -27,6 +28,7 @@ struct SignInButton: View {
     @AppStorage("username") var username_system: String = ""
     @AppStorage("university") var university: String = ""
     @AppStorage("email") var email_system: String = ""
+    @AppStorage("joined") var joinedAt = ""
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         Button(action: {
@@ -36,10 +38,11 @@ struct SignInButton: View {
                 Task{
                     try await Task.sleep(nanoseconds: 0_800_000_000)
                     //Sign in function with necessary variables
-                    loggedIn = await authentication.signIn(email: email, password: password, error_alert: $error_alert, error_message: $error_message, username_temp: $username_temp, university_temp: $university_temp, terms_temp: $terms_temp)
+                    loggedIn = await authentication.signIn(email: email, password: password, error_alert: $error_alert, error_message: $error_message, username_temp: $username_temp, university_temp: $university_temp, joined_temp: $joined_temp, terms_temp: $terms_temp)
                     if loggedIn {
                         username_system = username_temp
                         university = university_temp
+                        joinedAt = joined_temp
                         agreedToTerms = terms_temp
                         if Auth.auth().currentUser != nil{
                             email_system = Auth.auth().currentUser!.email!

@@ -33,11 +33,12 @@ struct SettingsScreen: View {
                 Section{
                     LogOutView()
                     DeleteUserView()
-                    VersionView()
+                    JoinedAtView()
                 }
               
                 
             }
+            .listStyle(.insetGrouped)
             
             NavigationLink(destination: TermsSettingsScreen(), isActive: $shouldNavigateTerms){
                 EmptyView()

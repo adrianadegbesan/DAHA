@@ -58,6 +58,7 @@
 		828CAFA529B18AFA00B489F4 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA429B18AFA00B489F4 /* MessageBubble.swift */; };
 		828CAFA729B1E64C00B489F4 /* MessageField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA629B1E64C00B489F4 /* MessageField.swift */; };
 		828CAFA929B29CF800B489F4 /* MessageOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA829B29CF800B489F4 /* MessageOptions.swift */; };
+		828CAFAB29B3E34400B489F4 /* JoinedAtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFAA29B3E34400B489F4 /* JoinedAtView.swift */; };
 		8294FAAC296B9F5B004001AE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAAB296B9F5B004001AE /* UserModel.swift */; };
 		8294FAAE296B9F64004001AE /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAAD296B9F64004001AE /* PostModel.swift */; };
 		8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8294FAE6296BB945004001AE /* CustomInputField.swift */; };
@@ -151,9 +152,7 @@
 		82CEFC852969D00D00C55F67 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC842969D00D00C55F67 /* SettingsButton.swift */; };
 		82CEFC872969D02400C55F67 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC862969D02400C55F67 /* LoginButton.swift */; };
 		82CEFC8B2969D06700C55F67 /* FirstContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */; };
-		82D2D0DF296BD41200CB4B9A /* EmailVerificationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2D0DE296BD41200CB4B9A /* EmailVerificationScreen.swift */; };
 		82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */; };
-		82DF4CAC296F5C6B00A309CF /* ResendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF4CAB296F5C6B00A309CF /* ResendButton.swift */; };
 		82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF4CAD296F614500A309CF /* SecondContinueButton.swift */; };
 		82DF4CB329775B5300A309CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82DF4CB229775B5300A309CF /* GoogleService-Info.plist */; };
 		82E75AC3297E321600742F18 /* Email API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E75AC2297E321600742F18 /* Email API.swift */; };
@@ -195,6 +194,7 @@
 		828CAFA429B18AFA00B489F4 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		828CAFA629B1E64C00B489F4 /* MessageField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageField.swift; sourceTree = "<group>"; };
 		828CAFA829B29CF800B489F4 /* MessageOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOptions.swift; sourceTree = "<group>"; };
+		828CAFAA29B3E34400B489F4 /* JoinedAtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedAtView.swift; sourceTree = "<group>"; };
 		8294FAAB296B9F5B004001AE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8294FAAD296B9F64004001AE /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		8294FAE6296BB945004001AE /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
@@ -288,9 +288,7 @@
 		82CEFC862969D02400C55F67 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstContinueButton.swift; sourceTree = "<group>"; };
 		82CEFC8C2969D0DF00C55F67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		82D2D0DE296BD41200CB4B9A /* EmailVerificationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationScreen.swift; sourceTree = "<group>"; };
 		82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
-		82DF4CAB296F5C6B00A309CF /* ResendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendButton.swift; sourceTree = "<group>"; };
 		82DF4CAD296F614500A309CF /* SecondContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondContinueButton.swift; sourceTree = "<group>"; };
 		82DF4CB12973C7FA00A309CF /* DAHA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DAHA.entitlements; sourceTree = "<group>"; };
 		82DF4CB229775B5300A309CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -345,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				82CEFC672969CE7E00C55F67 /* SettingsScreen.swift */,
-				82218C0F299C92560092BA94 /* VersionView.swift */,
 				82218C0D299C91F20092BA94 /* DarkModeSetting.swift */,
 				82218C04299C67410092BA94 /* EmailSettingsView.swift */,
 				82218C09299C87900092BA94 /* LogOutView.swift */,
@@ -357,6 +354,8 @@
 				82218C17299C97820092BA94 /* NotificationsView.swift */,
 				82A21A5129A169700040BAA1 /* EditUsernameView.swift */,
 				82A21A5329A17EA10040BAA1 /* ChangePasswordView.swift */,
+				82218C0F299C92560092BA94 /* VersionView.swift */,
+				828CAFAA29B3E34400B489F4 /* JoinedAtView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -412,15 +411,6 @@
 				82A21A6F29A91E290040BAA1 /* DAHA-Loading.json */,
 			);
 			path = "Lottie Animations";
-			sourceTree = "<group>";
-		};
-		82A21A7B29AEC5A00040BAA1 /* Old Email Verification */ = {
-			isa = PBXGroup;
-			children = (
-				82D2D0DE296BD41200CB4B9A /* EmailVerificationScreen.swift */,
-				82DF4CAB296F5C6B00A309CF /* ResendButton.swift */,
-			);
-			path = "Old Email Verification";
 			sourceTree = "<group>";
 		};
 		82B6B2BC2989EC9700027E5A /* MakePostModalComponents */ = {
@@ -575,6 +565,7 @@
 				82CEFC402969CB9C00C55F67 /* Models */,
 				82CEFC692969CE8600C55F67 /* Onboarding and Login */,
 				82CEFC412969CBB600C55F67 /* Screens */,
+				82218C07299C86750092BA94 /* Settings */,
 				828CAFA329B18AC600B489F4 /* Messaging */,
 				82B6B2FD298F502400027E5A /* MakePosts */,
 				823602062985ADD5002E7AEC /* Posts */,
@@ -633,7 +624,6 @@
 			isa = PBXGroup;
 			children = (
 				82CEFC552969CD4A00C55F67 /* Main Screens */,
-				82CEFC602969CE1B00C55F67 /* Secondary Screens */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -660,6 +650,7 @@
 				82CEFC582969CD7400C55F67 /* HomeScreen.swift */,
 				82218C29299F4E670092BA94 /* Home */,
 				82218C27299D4C9E0092BA94 /* SearchScreen.swift */,
+				82218C06299C864C0092BA94 /* Search */,
 				82CEFC5C2969CDEB00C55F67 /* SavedScreen.swift */,
 				82CEFC5E2969CE0700C55F67 /* ProfileScreen.swift */,
 				82218C2E299F54A90092BA94 /* Profile */,
@@ -667,15 +658,6 @@
 				82218BF729988DF90092BA94 /* PostScrollView.swift */,
 			);
 			path = "Main Screens";
-			sourceTree = "<group>";
-		};
-		82CEFC602969CE1B00C55F67 /* Secondary Screens */ = {
-			isa = PBXGroup;
-			children = (
-				82218C06299C864C0092BA94 /* Search */,
-				82218C07299C86750092BA94 /* Settings */,
-			);
-			path = "Secondary Screens";
 			sourceTree = "<group>";
 		};
 		82CEFC692969CE8600C55F67 /* Onboarding and Login */ = {
@@ -686,7 +668,6 @@
 				82CED4FD2981EF74009B5507 /* SchoolEmailScreen */,
 				82CED4FE2981EFFE009B5507 /* CreateAccountScreen */,
 				82CED4FC2981EF56009B5507 /* EmailVerificationScreen */,
-				82A21A7B29AEC5A00040BAA1 /* Old Email Verification */,
 				82B6B2DE298B270300027E5A /* TermsConditionsScreen.swift */,
 			);
 			path = "Onboarding and Login";
@@ -833,6 +814,7 @@
 				82CEFC832969CFF400C55F67 /* DMButton.swift in Sources */,
 				82B6B2E9298B787E00027E5A /* CategoryModal.swift in Sources */,
 				82B6B2CF298A16BD00027E5A /* MakePostTextInputs.swift in Sources */,
+				828CAFAB29B3E34400B489F4 /* JoinedAtView.swift in Sources */,
 				82A21A5229A169700040BAA1 /* EditUsernameView.swift in Sources */,
 				82218C2D299F4E990092BA94 /* RequestsView.swift in Sources */,
 				82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */,
@@ -874,7 +856,6 @@
 				82A21A7829AEB68C0040BAA1 /* EmailResendButton.swift in Sources */,
 				82B6B2BE2989ECD300027E5A /* MakePostScreenExit.swift in Sources */,
 				82CBC2B22989BC2F001966E3 /* PostModalPostActions.swift in Sources */,
-				82DF4CAC296F5C6B00A309CF /* ResendButton.swift in Sources */,
 				82A21A6829A6E9450040BAA1 /* RecentDMs.swift in Sources */,
 				828CAFA729B1E64C00B489F4 /* MessageField.swift in Sources */,
 				82CEFC852969D00D00C55F67 /* SettingsButton.swift in Sources */,
@@ -917,7 +898,6 @@
 				828CAFA929B29CF800B489F4 /* MessageOptions.swift in Sources */,
 				82A21A7629AEA3870040BAA1 /* EmailScreen.swift in Sources */,
 				82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */,
-				82D2D0DF296BD41200CB4B9A /* EmailVerificationScreen.swift in Sources */,
 				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,
 				82A21A6A29A82A0F0040BAA1 /* ReportModel.swift in Sources */,
 				82CEFC442969CBDB00C55F67 /* Colors.swift in Sources */,

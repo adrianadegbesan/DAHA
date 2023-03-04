@@ -21,7 +21,7 @@ struct PostActionView: View {
 //                .foregroundColor(.black)
                 .lineLimit(1)
                 .minimumScaleFactor(0.3)
-                .font(.system(size: post.price == "Free" ? 18 : 20, weight: .bold))
+                .font(.system(size: 17.5, weight: .bold))
                 .layoutPriority(1)
             
             if owner && !preview{

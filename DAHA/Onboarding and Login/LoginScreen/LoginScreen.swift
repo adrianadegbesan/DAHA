@@ -14,6 +14,7 @@ struct LoginScreen: View {
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
+    @AppStorage("joined") var joinedAt = ""
     @Environment(\.colorScheme) var colorScheme
     
     @State private var email: String = ""

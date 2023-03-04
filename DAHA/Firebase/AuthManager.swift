@@ -107,7 +107,7 @@ class AuthManager: ObservableObject {
     /*
      Function for signing in user
      */
-    func signIn(email: String, password: String, error_alert: Binding<Bool>, error_message: Binding<String>, username_temp: Binding<String>, university_temp: Binding<String>, terms_temp: Binding<Bool>) async -> Bool {
+    func signIn(email: String, password: String, error_alert: Binding<Bool>, error_message: Binding<String>, username_temp: Binding<String>, university_temp: Binding<String>, joined_temp: Binding<String>, terms_temp: Binding<Bool>) async -> Bool {
         
        var found: Bool = false
         do {
@@ -120,9 +120,16 @@ class AuthManager: ObservableObject {
                     let doc = snapshot.documents
                     print(doc[0].data())
                     let document = doc[0].data()
-                    username_temp.wrappedValue = document["username"] as! String
-                    university_temp.wrappedValue = document["university"] as! String
+                    username_temp.wrappedValue = document["username"] as? String ?? ""
+                    university_temp.wrappedValue = document["university"] as? String ?? ""
+                    let date = document["joinedAt"] as? Timestamp ?? Timestamp(date: Date.now)
+                    let formatter = DateFormatter()
+                           formatter.dateStyle = .long
+                           formatter.timeStyle = .none
+                    joined_temp.wrappedValue = formatter.string(from: date.dateValue())
+                    
                     terms_temp.wrappedValue = document["terms"] as! Bool
+                    
                     return true
                 }
             }
@@ -342,4 +349,6 @@ class AuthManager: ObservableObject {
             return false
         }
     }
+    
+
 }
