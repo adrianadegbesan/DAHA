@@ -71,11 +71,11 @@ struct PostView: View {
             
             
             if channelID != ""{
-                NavigationLink(destination: ChatScreen(post: post, redirect: false, receiver: post.username, receiverID: post.userID,  channelID: channelID), isActive: $shouldNavigate){
+                NavigationLink(destination: ChatScreen(post: post, redirect: false, receiver: post.username, receiverID: post.userID,  channelID: channelID), isActive: $buyNavigate){
                     EmptyView()
                 }
             } else {
-                NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username, receiverID: post.userID), isActive: $shouldNavigate){
+                NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username, receiverID: post.userID), isActive: $buyNavigate){
                     EmptyView()
                 }
             }

@@ -14,6 +14,7 @@ struct BuyButton: View {
     @State private var redirect: Bool = true
     @State private var channelID: String = ""
     @EnvironmentObject var messageManager : MessageManager
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         Button(action: {
@@ -63,6 +64,11 @@ struct BuyButton: View {
             //            .font(.system(size: 15, weight: .bold))
             .foregroundColor(.white)
             .background(Capsule().fill(Color(hex: deepBlue)))
+            .overlay{
+                if colorScheme == .light{
+                    Capsule().stroke(.black, lineWidth: 2)
+                }
+            }
             //ALERT
         }
     }

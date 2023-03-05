@@ -21,8 +21,13 @@ struct ChatScreen: View {
     
     
     var body: some View {
-        VStack{
-            Spacer().frame(height: screenHeight * 0.001)
+        VStack(spacing: 0){
+            VStack(spacing: 0){
+                Spacer().frame(height: screenHeight * 0.001)
+                Divider()
+                    .frame(maxHeight: 3)
+            }
+            .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
             ScrollViewReader{ value in
                 ScrollView{
                     PostView(post: post, owner: false, preview: true)
