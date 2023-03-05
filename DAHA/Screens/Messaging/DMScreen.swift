@@ -51,6 +51,7 @@ struct DMScreen: View {
             })
           
         }
+        .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
         .onAppear{
             withAnimation{
                 messageManager.messageChannels.sort { $0.timestamp > $1.timestamp}

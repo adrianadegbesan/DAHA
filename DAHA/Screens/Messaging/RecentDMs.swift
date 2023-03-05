@@ -32,6 +32,9 @@ struct RecentDMs: View {
                 RefreshableScrollView{
                     
                     VStack(spacing: 0){
+                        Divider()
+                            .frame(maxHeight: 0.5)
+                            .overlay(Color(hex: darkGrey))
                         
                         if messageManager.messageChannels.count < 5{
                             ForEach(messageManager.messageChannels){ preview in

@@ -16,6 +16,7 @@ struct ChatScreen: View {
     @State var sent: Bool = false
     @FocusState var keyboardFocused : Bool
     @EnvironmentObject var messageManager : MessageManager
+    @Environment(\.colorScheme) var colorScheme 
     
     
     var body: some View {
@@ -67,6 +68,7 @@ struct ChatScreen: View {
                         }
                     }
             }
+            .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
            
             
            
