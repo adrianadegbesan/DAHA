@@ -26,8 +26,6 @@ class MessageManager: ObservableObject {
     
     init(){
         getMessageChannels()
-        getMessages()
-        
     }
     
     /*Function used to get current message channels, snapshot listener enabled*/
@@ -67,39 +65,38 @@ class MessageManager: ObservableObject {
         
     }
     
-    func getMessages() {
-        messagesLoading = true
+    func getMessages(channelID : String) {
+//        messagesLoading = true
         if Auth.auth().currentUser != nil{
-            var temp: [String: [MessageModel]] = [:]
-            for channel in messageChannels {
-                db.collection("Messages").document(channel.id).collection("messages").addSnapshotListener{ querySnapshot, error in
-                    guard let documents = querySnapshot?.documents else {
-                        print("error fetching documents:  \(String(describing: error))")
-                        self.messagesLoading = false
-                        return
-                    }
-                    
-                    temp[channel.id] = []
-                    
-                    for document in documents {
-                        
-                        do {
-                            let message = try document.data(as: MessageModel.self)
-                            temp[channel.id]?.append(message)
-                        }
-                        catch{
-                            print("Error parsing message: \(error.localizedDescription)")
-                        }
-                    }
-                    
-                    temp[channel.id]?.sort { $0.timestamp > $1.timestamp}
-                    
-                    withAnimation{
-                        self.messages = temp
-                        self.messagesLoading = false
-                    }
-                    
+            
+            
+            db.collection("Messages").document(channelID).collection("messages").addSnapshotListener{ querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("error fetching documents:  \(String(describing: error))")
+                    self.messagesLoading = false
+                    return
                 }
+                
+                for document in documents {
+                    
+                    do {
+                        let message = try document.data(as: MessageModel.self)
+                        withAnimation{
+                            if self.messages.keys.contains(channelID){
+                                if !(self.messages[channelID]!.contains(where: { $0.id == message.id})){
+                                    self.messages[channelID]?.append(message)
+                                }
+                            } else {
+                                self.messages[channelID] = [message]
+                            }
+                            self.messages[channelID]?.sort { $0.timestamp < $1.timestamp}
+                        }
+                    }
+                    catch{
+                        print("Error parsing message: \(error.localizedDescription)")
+                    }
+                }
+                
             }
         }
     }

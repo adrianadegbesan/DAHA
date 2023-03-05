@@ -81,7 +81,7 @@ struct PostModalDescription: View {
                                         Button{
                                             saveImageToPhotoAlbum(url: URL(string: post.imageURLs[i])!, error_alert: $error_alert)
                                         } label: {
-                                            Label("Save Photo", systemImage: "photo")
+                                            Label("Save Photo", systemImage: "square.and.arrow.down")
                                         }
                                     }
                             } //: GeometryReader
@@ -95,7 +95,6 @@ struct PostModalDescription: View {
     //            .cornerRadius(15)
                 .padding(2.3)
                 .frame(width: screenWidth, height: screenHeight * 0.4)
-    //            .frame(width: screenWidth * 0.92, height: screenHeight * 0.35)
                 .clipped()
                 .alert("Error Saving Photo", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
                 

@@ -36,7 +36,9 @@ struct DMScreen: View {
                         .overlay(Color(hex: darkGrey))
                     VStack(spacing: 0){
                         ForEach(messageManager.messageChannels){ preview in
+                            
                             MessagePreview(channel: preview)
+                                
                             Divider()
                                 .frame(maxHeight: 0.5)
                                 .overlay(Color(hex: darkGrey))

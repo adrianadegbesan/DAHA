@@ -14,6 +14,7 @@ struct ChatScreen: View {
     @State var receiver: String
     @State var channelID: String?
     @State var sent: Bool = false
+    @FocusState var keyboardFocused : Bool
     @EnvironmentObject var messageManager : MessageManager
     
     
@@ -41,7 +42,7 @@ struct ChatScreen: View {
                 .onTapGesture {
                     hideKeyboard()
                 }
-                MessageField(post: post, channelID: $channelID, sent: $sent)
+                MessageField(post: post, channelID: $channelID, sent: $sent, keyboardFocused: $keyboardFocused)
                     .onChange(of: sent){ _ in
                         if sent {
                             if let lastMessage = messageManager.messages[channelID!]?.last {
@@ -49,6 +50,21 @@ struct ChatScreen: View {
                             }
                         }
                         sent = false
+                    }
+                    .onChange(of: keyboardFocused){ _ in
+                        if channelID != nil{
+                            if keyboardFocused {
+                                if let lastMessage = messageManager.messages[channelID!]?.last {
+                                value.scrollTo(lastMessage.id, anchor: .bottom)
+                                }
+                            }
+                        }
+                       
+                    }
+                    .onChange(of: channelID){ _ in
+                        if channelID != nil {
+                            messageManager.getMessages(channelID: channelID!)
+                        }
                     }
             }
            

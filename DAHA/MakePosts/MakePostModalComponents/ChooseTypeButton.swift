@@ -59,14 +59,14 @@ struct ChooseTypeButton: View {
             }
             
         }
-//        .halfSheet(showSheet: $isPresented){
-//            TypeModal(selected: $selected)
-//        } onEnd: {
-//            print("ended")
-//        }
-
         .sheet(isPresented: $isPresented){
+            if #available(iOS 16.0, *) {
                 TypeModal(selected: $selected)
+                    .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
+            } else {
+                TypeModal(selected: $selected)
+            }
         }
     }
 }

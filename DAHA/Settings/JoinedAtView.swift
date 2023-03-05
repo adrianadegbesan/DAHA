@@ -16,11 +16,13 @@ struct JoinedAtView: View {
         HStack{
             Spacer()
             VStack{
+                Spacer().frame(height: 1)
                 Text("Joined on \(joinedAt)")
-                    .font(.system(size: 13, weight: .black))
+                    .font(.system(size: 12, weight: .black))
                     .foregroundColor(Color(hex: deepBlue))
+                Spacer().frame(height: 4)
                 Text("Version \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0")")
-                    .font(.system(size: 13, weight: .black))
+                    .font(.system(size: 12, weight: .black))
                     .foregroundColor(Color(hex: deepBlue))
             }
          

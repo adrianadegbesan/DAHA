@@ -64,7 +64,6 @@ struct LoginScreen: View {
             .opacity(screenOpacity)
             .disabled(uploading)
         }
-        .keyboardControl()
         .onTapGesture {
             hideKeyboard()
         }

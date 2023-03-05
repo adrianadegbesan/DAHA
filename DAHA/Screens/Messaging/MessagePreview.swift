@@ -16,6 +16,7 @@ struct MessagePreview: View {
     //State var MessageObject
     @State var timestampString : String = ""
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var messageManager : MessageManager
     
     var body: some View {
         
@@ -26,13 +27,6 @@ struct MessagePreview: View {
                         HStack{
                             Text("@\(channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username)")
                                 .font(.system(size: 18, weight: .bold))
-                            Text(Image(systemName: category_images[channel.post.category] ?? "bag.fill"))
-                                .font(.system(size: 16, weight: .bold))
-                                .foregroundColor(Color(hex: category_colors[channel.post.category] ?? "ffffff") )
-                            Text(Image(systemName: type_images[channel.post.type] ?? ""))
-                                .font(.system(size: 18, weight: .bold))
-                                .foregroundColor(Color(hex: category_colors[channel.post.category] ?? "ffffff") )
-                            
                             Spacer()
                             
                         }
@@ -47,6 +41,16 @@ struct MessagePreview: View {
                         }
                     }
                     Spacer()
+                    
+                    HStack{
+                        Text(Image(systemName: category_images[channel.post.category] ?? "bag.fill"))
+                            .font(.system(size: 23, weight: .bold))
+                            .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
+                        Text(Image(systemName: type_images[channel.post.type] ?? ""))
+                            .font(.system(size: 23, weight: .bold))
+                            .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
+                        
+                    }
                     
                     VStack{
                         HStack{
@@ -76,6 +80,8 @@ struct MessagePreview: View {
             }
             
             .frame(width: screenWidth, height: screenWidth * 0.2)
+          
+            
         }
         .foregroundColor(colorScheme == .dark ? .white : .black)
         .contextMenu {
@@ -85,7 +91,12 @@ struct MessagePreview: View {
                 Label("Delete Chat", systemImage: "trash")
             }
         }
+       
+        .onAppear{
+            messageManager.getMessages(channelID: channel.id)
+        }
     }
+    
 }
 
 struct MessagePreview_Previews: PreviewProvider {

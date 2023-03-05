@@ -17,6 +17,7 @@ struct MessageField: View {
     @State var sending : Bool = false
     @Binding var sent : Bool
     @State var error_alert : Bool = false
+    var keyboardFocused: FocusState<Bool>.Binding
 
     var body: some View {
         
@@ -46,7 +47,7 @@ struct MessageField: View {
                                 }
                             }
                         }
-                })
+                }, keyboardFocused: keyboardFocused)
                     .frame(height: 40)
                 
             }
@@ -94,7 +95,7 @@ struct MessageField: View {
             
         }
         .padding(.horizontal, screenWidth * 0.015)
-        .padding(.bottom)
+//        .padding(.bottom)
     }
         
         
@@ -102,25 +103,27 @@ struct MessageField: View {
         
 }
 
-struct MessageField_Previews: PreviewProvider {
-    static var previews: some View {
-        let calendar = Calendar.current
-        let startTime = calendar.date(byAdding: .day, value: -2, to: Date())
-        let startTimestamp: Timestamp = Timestamp(date: startTime!)
-        
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "Listing", keywordsForLookup: [], reporters: [])
-        
-        MessageField(post: post, channelID: .constant(nil), sent: .constant(false))
-            .environmentObject(MessageManager())
-    }
-}
+//struct MessageField_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let calendar = Calendar.current
+//        let startTime = calendar.date(byAdding: .day, value: -2, to: Date())
+//        let startTimestamp: Timestamp = Timestamp(date: startTime!)
+//
+//        var keyboardFocused: FocusState<Bool>.Binding
+//        
+//        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "Listing", keywordsForLookup: [], reporters: [])
+//
+//        MessageField(post: post, channelID: .constant(nil), sent: .constant(false), keyboardFocused: keyboardFocused)
+//            .environmentObject(MessageManager())
+//    }
+//}
 
 struct CustomTextField: View {
     var placeholder: Text
     @Binding var text: String
     var editingChanged: (Bool)->() = { _ in }
     var commit: ()->() = { }
-    @FocusState var keyboardFocused: Bool
+    var keyboardFocused: FocusState<Bool>.Binding
 
     var body: some View {
         ZStack(alignment: .leading) {
@@ -132,9 +135,9 @@ struct CustomTextField: View {
             
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
                 .submitLabel(.send)
-                .focused($keyboardFocused)
+                .focused(keyboardFocused)
                 .onAppear{
-                    keyboardFocused = true
+                    keyboardFocused.wrappedValue = true
                 }
                 
             

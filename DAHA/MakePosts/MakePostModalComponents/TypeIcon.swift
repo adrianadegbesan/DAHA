@@ -20,12 +20,16 @@ struct TypeIcon: View {
         Button(action: {
             if selected != type {
                 SoftFeedback()
-                selected = type
+                withAnimation{
+                    selected = type
+                }
                 dismiss()
                 
             } else {
                 SoftFeedback()
-                selected = ""
+                withAnimation{
+                    selected = ""
+                }
                 dismiss()
             }
         }) {
