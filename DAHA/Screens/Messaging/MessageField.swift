@@ -26,59 +26,29 @@ struct MessageField: View {
                 //             Custom text field created below
                 CustomTextField(placeholder: Text(""), text: $message, commit: {
                     
-                        if channelID == nil {
-                            Task{
-                                await messagesManager.createMessageChannel(message: message, post: post, channelID: $channelID)
-                                if channelID == nil{
-                                    error_alert = true
-                                } else {
-                                    sent = true
-                                    message = ""
-                                }
-                            }
-                        
-                        } else {
-                            Task{
-                                await messagesManager.sendMessage(message: message, channelID: channelID!, post: post, sent: $sent)
-                                if !sent{
-                                    error_alert = true
-                                } else {
-                                    message = ""
-                                }
-                            }
-                        }
                 }, keyboardFocused: keyboardFocused)
                     .frame(height: 40)
                 
             }
             .padding(.horizontal, screenWidth * 0.025)
             .background(RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 0.8))
+       
             //        .padding(.bottom)
             .alert("Error Sending Message", isPresented: $error_alert, actions: {}, message:{Text("Please check your network connection")})
             
             Button {
-                if message != ""{
+                if message.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
                     SoftFeedback()
+                    
                     
                     if channelID == nil {
                         Task{
-                            await messagesManager.createMessageChannel(message: message, post: post, channelID: $channelID)
-                            if channelID == nil{
-                                error_alert = true
-                            } else {
-                                sent = true
-                                message = ""
-                            }
+                            await messagesManager.createMessageChannel(message: message, post: post, channelID: $channelID, error_alert: $error_alert)
                         }
                 
                     } else {
                         Task{
-                            await messagesManager.sendMessage(message: message, channelID: channelID!, post: post, sent: $sent)
-                            if !sent{
-                                error_alert = true
-                            } else {
-                                message = ""
-                            }
+                            await messagesManager.sendMessage(message: message, channelID: channelID!, post: post, sent: $sent, error_alert: $error_alert)
                         }
                     } 
                 }
@@ -93,6 +63,16 @@ struct MessageField: View {
                     .offset(x: screenWidth * 0.003)
             }
             
+        }
+        .onChange(of: sent){ value in
+            if sent{
+                message = ""
+            }
+        }
+        .onChange(of: channelID){ value in 
+            if channelID != nil{
+                message = ""
+            }
         }
         .padding(.horizontal, screenWidth * 0.015)
 //        .padding(.bottom)
@@ -134,7 +114,6 @@ struct CustomTextField: View {
             }
             
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
-                .submitLabel(.send)
                 .focused(keyboardFocused)
                 .onAppear{
                     keyboardFocused.wrappedValue = true

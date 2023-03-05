@@ -16,6 +16,7 @@ struct BookmarkButton: View {
     @State var unsave_alert: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
+//    @State var time = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         
@@ -24,9 +25,9 @@ struct BookmarkButton: View {
             if saved {
                 Task{
                     let result = await firestoreManager.unsavePost(post: post)
-                    if result {
-                        await firestoreManager.getSaved()
-                    } else {
+//                    if result {
+//                        await firestoreManager.getSaved()
+                    if !result {
                         unsave_alert = true
                     }
                 }
@@ -37,18 +38,32 @@ struct BookmarkButton: View {
                         if let index = post.savers.firstIndex(of: id!){
                             post.savers.remove(at: index)
                         }
+                        if post.type == "Listing"{
+                            if let index_l = firestoreManager.listings.firstIndex(where: {$0.id == post.id}){
+                                if let ind1 = firestoreManager.listings[index_l].savers.firstIndex(of: id!){
+                                    firestoreManager.listings[index_l].savers.remove(at: ind1)
+                                }
+                            }
+                        } else if post.type == "Request"{
+                            if let index_l = firestoreManager.requests.firstIndex(where: {$0.id == post.id}){
+                                if let ind1 = firestoreManager.requests[index_l].savers.firstIndex(of: id!){
+                                    firestoreManager.requests[index_l].savers.remove(at: ind1)
+                                }
+                            }
+                        }
                     }
                     saved.toggle()
                 }
             } else {
                 Task{
                     let result = await firestoreManager.savePost(post: post)
-                    if result {
-                        await firestoreManager.getSaved()
-                    } else {
+//                    if result {
+//                        await firestoreManager.getSaved()
+                    if !result {
                         save_alert = true
                     }
                 }
+                firestoreManager.saved_refresh = true
                 withAnimation{
                     let id = Auth.auth().currentUser?.uid
                     if id != nil && !post.savers.contains(id!){
@@ -72,6 +87,16 @@ struct BookmarkButton: View {
                     .foregroundColor(colorScheme == .dark ? .white : .black)
             }
         }
+//        .onReceive(time){ value in
+//            let cur_id = Auth.auth().currentUser?.uid
+//            if cur_id != nil{
+//                if post.savers.contains(cur_id!){
+//                    saved = true
+//                }
+//            } else {
+//                saved = false
+//            }
+//        }
         .onAppear {
 
             let cur_id = Auth.auth().currentUser?.uid

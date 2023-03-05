@@ -48,7 +48,7 @@ struct DeleteUserView: View {
         .alert("Enter Password", isPresented: $firstPresented, actions: {
             SecureField("Password", text: $password)
                 .foregroundColor(Color(hex: deepBlue))
-            Button("Continue", action: {
+            Button("Continue", role: .destructive, action: {
                 Task {
                     let success = await authentication.reauthenticate(password: $password, error_message: $error_message)
                     if success {
@@ -58,7 +58,6 @@ struct DeleteUserView: View {
                     }
                 }
             })
-            Button("Cancel", role: .cancel, action: {})
         }, message: {Text("Please enter your password to continue")})
         
         .alert("Delete Account", isPresented: $isPresented, actions: {

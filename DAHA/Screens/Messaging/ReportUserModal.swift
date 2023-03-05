@@ -1,26 +1,31 @@
 //
-//  ReportModal.swift
+//  ReportUserModal.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 2/23/23.
+//  Created by Adrian Adegbesan on 3/5/23.
 //
 
 import SwiftUI
 import FirebaseAuth
 
-struct ReportModal: View {
-    @State var post: PostModel
-    @State var report_alert: Bool = false
-    @State var dismiss_screen: Bool = false
+struct ReportUserModal: View {
+    
+    @EnvironmentObject var messageManager : MessageManager
+    @State var channelID: String
     @State var success_alert: Bool = false
     @State var error_alert: Bool = false
+    @State var report_alert: Bool = false
     @State var description: String = ""
     @State var uploading: Bool = false
+    @State var post : PostModel? = nil
     @Binding var reported: Bool
-    @EnvironmentObject var firestoreManager : FirestoreManager
+    @State var username: String
+    @State var receiverID: String
+    
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
-
+    
+    
     
     var body: some View {
         ScrollView {
@@ -28,16 +33,32 @@ struct ReportModal: View {
                 PostModalActions()
                     .padding(.leading, 15)
                     .padding(.top, 20)
-                    
+                
                 Spacer().frame(height: screenHeight * 0.04)
                 Image("Logo")
                     .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                 Spacer().frame(height: 0.01 * screenHeight)
-                Text("REPORT POST")
+                Text("REPORT USER")
                     .font(.system(size: 26, weight: .black))
+                    .padding(.bottom, 7)
+                    .onAppear{
+                        let index = messageManager.messageChannels.firstIndex(where: {$0.id == channelID })
+                        if index != nil{
+                            withAnimation{
+                                post = messageManager.messageChannels[index!].post
+                            }
+                        }
+                    }
+                    
+                if post != nil{
+                    PostView(post: post!, owner: false, preview: true)
+                        .scaleEffect(0.9)
+                }
+               
                 
-                PostView(post: post, owner: false, preview: true)
-                    .scaleEffect(0.9)
+                Text("@\(username)")
+                    .font(.system(size: 22, weight: .bold))
+                    .padding(.bottom, 9)
                 
                 
                 if #available(iOS 16.0, *) {
@@ -64,7 +85,7 @@ struct ReportModal: View {
                     if !uploading {
                         report_alert = true
                     }
-                  
+                    
                 }){
                     ZStack {
                         // Blue Button background
@@ -88,6 +109,7 @@ struct ReportModal: View {
                 
                 Spacer()
             }  //: VStack
+        }
             .alert("Report Post", isPresented: $report_alert, actions: {
                 Button("Report", role: .destructive, action: {
                     uploading = true
@@ -95,41 +117,36 @@ struct ReportModal: View {
                     if cur_id == nil{
                         return
                     } else {
-                        let report = ReportModel(id: UUID().uuidString, postID: post.id, posterID: post.userID, reporterID: cur_id ?? "0", description: description, reportedAt: nil)
+    //                    let report = ReportModel(id: UUID().uuidString, postID: post.id, posterID: post.userID, reporterID: cur_id ?? "0", description: description, reportedAt: nil)
                         
-                        Task {
-                            let success = await firestoreManager.reportPost(report: report, post: post)
-                            if success {
-                                reported = true
-//                                success_alert = true
-                            } else {
-                                error_alert = true
-                            }
-                            uploading = false
-                        }
+    //                    Task {
+    //                        let success = await firestoreManager.reportPost(report: report, post: post)
+    //                        if success {
+    //                            reported = true
+    ////                                success_alert = true
+    //                        } else {
+    //                            error_alert = true
+    //                        }
+    //                        uploading = false
+    //                    }
                     }
                 })
-            }, message: {Text("Are you sure you want to report this post?")})
+            }, message: {Text("Are you sure you want to report this user?")})
           
             
-        .alert("Error Reporting Post", isPresented: $error_alert, actions:{}, message: {Text("Please check your network connection and try again later")})
-        .alert("Successfully Reported Post", isPresented: $success_alert, actions:{
-//            dismiss_screen = true
+        .alert("Error Reporting User", isPresented: $error_alert, actions:{}, message: {Text("Please check your network connection and try again later")})
+        .alert("Successfully Reported User", isPresented: $success_alert, actions:{
         }, message: {Text("This post was successfully reported")})
-        }
-        .onChange(of: reported){ value in
-            if reported {
-                dismiss()
-            }
-        }
         .keyboardControl()
     }
-}
-
-struct ReportModal_Previews: PreviewProvider {
-    static var previews: some View {
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
+    
         
-        ReportModal(post: post, reported: .constant(false))
     }
-}
+    
+    struct ReportUserModal_Previews: PreviewProvider {
+        static var previews: some View {
+            ReportUserModal(channelID: "", reported: .constant(false), username: "Adrian", receiverID: "")
+                .environmentObject(MessageManager())
+        }
+    }
+

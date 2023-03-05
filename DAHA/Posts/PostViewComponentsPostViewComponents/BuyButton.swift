@@ -27,6 +27,7 @@ struct BuyButton: View {
                 
                 if channel != nil{
                     channelID = channel!.id
+                    messageManager.getMessages(channelID: channelID)
                 }
             }
             shouldNavigate = true
@@ -45,11 +46,11 @@ struct BuyButton: View {
                     .font(.system(size: 13, weight: .bold))
                 
                 if channelID != ""{
-                    NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username, channelID: channelID), isActive: $shouldNavigate){
+                    NavigationLink(destination: ChatScreen(post: post, redirect: false, receiver: post.username, receiverID: post.userID,  channelID: channelID), isActive: $shouldNavigate){
                         EmptyView()
                     }
                 } else {
-                    NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username), isActive: $shouldNavigate){
+                    NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username, receiverID: post.userID), isActive: $shouldNavigate){
                         EmptyView()
                     }
                 }

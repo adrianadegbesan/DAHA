@@ -339,6 +339,9 @@ class FirestoreManager: ObservableObject {
         
         do {
             try await postRef.updateData(["savers": FieldValue.arrayUnion([userId!])])
+            withAnimation{
+                saved_posts.insert(post, at: 0)
+            }
             return true
             
         }
@@ -362,6 +365,11 @@ class FirestoreManager: ObservableObject {
         
         do {
             try await postRef.updateData(["savers": FieldValue.arrayRemove([userId!])])
+            if let index = saved_posts.firstIndex(where: { $0.id == post.id}){
+                withAnimation {
+                    _ = saved_posts.remove(at: index)
+                }
+            }
             return true
         }
         catch {

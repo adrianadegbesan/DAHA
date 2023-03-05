@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+@MainActor
 class MessageManager: ObservableObject {
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
@@ -31,34 +32,44 @@ class MessageManager: ObservableObject {
     /*Function used to get current message channels, snapshot listener enabled*/
     
     func getMessageChannels() {
-        messageChannelsLoading = true
+//        messageChannelsLoading = true
         if Auth.auth().currentUser != nil{
-            var temp: [MessageChannelModel] = []
+//            var temp: [MessageChannelModel] = []
             
             let id = Auth.auth().currentUser?.uid
             db.collection("Messages").whereField("users", arrayContains: id!).whereField("channel", isEqualTo: university).addSnapshotListener{ querySnapshot, error in
                 guard let documents =  querySnapshot?.documents else {
                     print("error fetching documents:  \(String(describing: error))")
-                    self.messageChannelsLoading = false
                     return
                 }
                 for document in documents{
                     do {
                         let channel = try document.data(as: MessageChannelModel.self)
-                        temp.append(channel)
+                        withAnimation{
+                            if !(self.messageChannels.contains(where: { $0.id == channel.id })) {
+                                self.messageChannels.append(channel)
+                            } else {
+                                let index = self.messageChannels.firstIndex(where: { $0.id == channel.id })
+                                if index != nil {
+                                    self.messageChannels.remove(at: index!)
+                                    self.messageChannels.append(channel)
+                                }
+                            }
+                            self.messageChannels.sort { $0.timestamp > $1.timestamp}
+                        }
                     }
                     catch {
                         print("Error parsing channel: \(error.localizedDescription)")
                     }
                 }
                 
-                temp.sort { $0.timestamp > $1.timestamp}
-                
-                withAnimation{
-                    self.messageChannels.removeAll()
-                    self.messageChannels = temp
-                    self.messageChannelsLoading = false
-                }
+//                temp.sort { $0.timestamp > $1.timestamp}
+//
+//                withAnimation{
+//                    self.messageChannels.removeAll()
+//                    self.messageChannels = temp
+//                    self.messageChannelsLoading = false
+//                }
             }
             
         }
@@ -73,12 +84,11 @@ class MessageManager: ObservableObject {
             db.collection("Messages").document(channelID).collection("messages").addSnapshotListener{ querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     print("error fetching documents:  \(String(describing: error))")
-                    self.messagesLoading = false
+//                    self.messagesLoading = false
                     return
                 }
                 
                 for document in documents {
-                    
                     do {
                         let message = try document.data(as: MessageModel.self)
                         withAnimation{
@@ -102,7 +112,7 @@ class MessageManager: ObservableObject {
     }
     
     
-    func createMessageChannel(message: String, post: PostModel, channelID : Binding<String?>) async {
+    func createMessageChannel(message: String, post: PostModel, channelID : Binding<String?>, error_alert: Binding<Bool>) async {
         let channel_id = UUID().uuidString
         
         if Auth.auth().currentUser != nil{
@@ -121,35 +131,62 @@ class MessageManager: ObservableObject {
             }
             catch {
                 print(error.localizedDescription)
+                error_alert.wrappedValue = true
                 return
             }
             
         }
+        error_alert.wrappedValue = true
         return
     }
     
     
-    func sendMessage(message: String, channelID: String, post: PostModel, sent: Binding<Bool>) async {
-        var success = false
+    func sendMessage(message: String, channelID: String, post: PostModel, sent: Binding<Bool>, error_alert: Binding<Bool>) async {
+        
         
         if Auth.auth().currentUser != nil{
             let id = Auth.auth().currentUser!.uid
             let message_sent = MessageModel(id: UUID().uuidString, senderID: id, receiverID: post.userID, message: message, timestamp: Date(), messageChannelID: channelID)
             do {
                 try await db.collection("Messages").document(channelID).collection("messages").document(message_sent.id).setData(message_sent.dictionaryRepresentation)
-                success = true
-                sent.wrappedValue = success
-//                let channelRef = db.collection("Messages").document(channelID)
-//                try await channelRef.updateData(["timestamp": Date()])
+                sent.wrappedValue = true
+                let channelRef = db.collection("Messages").document(channelID)
+                try await channelRef.updateData(["timestamp": Date()])
                 return
             }
             catch {
                 print(error.localizedDescription)
+                error_alert.wrappedValue = true
                 return
             }
         }
+        error_alert.wrappedValue = true
         return 
     }
+    
+    func deleteChat(channelID : String) async -> Bool{
+        do {
+            try await db.collection("Messages").document(channelID).delete()
+            
+            withAnimation{
+                let channelIndex = messageChannels.firstIndex(where: {$0.id == channelID})
+                if channelIndex != nil{
+                    messageChannels.remove(at: channelIndex!)
+                }
+                if messages.keys.contains(channelID){
+                    messages.removeValue(forKey: channelID)
+                }
+                getMessageChannels()
+            }
+            return true
+        }
+        catch {
+            return false
+        }
+        
+    }
+    
+    
     
     
     

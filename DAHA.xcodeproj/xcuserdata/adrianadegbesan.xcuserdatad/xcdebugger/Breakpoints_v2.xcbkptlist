@@ -62,10 +62,10 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "867"
-            endingLineNumber = "867"
+            startingLineNumber = "875"
+            endingLineNumber = "875"
             landmarkName = "updateSearch(query:type:category:)"
-            landmarkType = "7">
+            landmarkType = "9">
             <Locations>
                <Location
                   uuid = "C539D509-265F-45A3-886E-674AE6951A71 - 62467ac388e59c93"
@@ -140,10 +140,10 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "871"
-            endingLineNumber = "871"
+            startingLineNumber = "879"
+            endingLineNumber = "879"
             landmarkName = "updateSearch(query:type:category:)"
-            landmarkType = "7">
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -156,10 +156,10 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "875"
-            endingLineNumber = "875"
+            startingLineNumber = "883"
+            endingLineNumber = "883"
             landmarkName = "updateSearch(query:type:category:)"
-            landmarkType = "7">
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -172,10 +172,10 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "881"
-            endingLineNumber = "881"
+            startingLineNumber = "889"
+            endingLineNumber = "889"
             landmarkName = "updateSearch(query:type:category:)"
-            landmarkType = "7">
+            landmarkType = "9">
             <Locations>
                <Location
                   uuid = "C2B7DF0C-80E7-44C0-BCA4-ABF88371C451 - a84c4a4c77cce2ce"
@@ -295,10 +295,10 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "773"
-            endingLineNumber = "773"
+            startingLineNumber = "781"
+            endingLineNumber = "781"
             landmarkName = "updateSearch(query:type:category:)"
-            landmarkType = "7">
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -311,10 +311,10 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "667"
-            endingLineNumber = "667"
+            startingLineNumber = "675"
+            endingLineNumber = "675"
             landmarkName = "searchPosts(query:type:category:)"
-            landmarkType = "7">
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -327,10 +327,10 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "750"
-            endingLineNumber = "750"
+            startingLineNumber = "758"
+            endingLineNumber = "758"
             landmarkName = "searchPosts(query:type:category:)"
-            landmarkType = "7">
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -343,10 +343,10 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "751"
-            endingLineNumber = "751"
+            startingLineNumber = "759"
+            endingLineNumber = "759"
             landmarkName = "searchPosts(query:type:category:)"
-            landmarkType = "7">
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -359,10 +359,10 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "759"
-            endingLineNumber = "759"
+            startingLineNumber = "767"
+            endingLineNumber = "767"
             landmarkName = "searchPosts(query:type:category:)"
-            landmarkType = "7">
+            landmarkType = "9">
             <Locations>
                <Location
                   uuid = "1A9736C5-E68A-4478-B861-65630B72AE06 - 85d614338fde0905"
@@ -482,10 +482,10 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "758"
-            endingLineNumber = "758"
+            startingLineNumber = "766"
+            endingLineNumber = "766"
             landmarkName = "searchPosts(query:type:category:)"
-            landmarkType = "7">
+            landmarkType = "9">
             <Locations>
                <Location
                   uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F - 85d614338fde0905"
@@ -647,32 +647,345 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7633058C-2B31-4DE6-8BF4-607A4F3FC9AA"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "sendMessage(message:channelID:post:sent:)"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7633058C-2B31-4DE6-8BF4-607A4F3FC9AA - 3863ff8ccf5a1d6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "2228">
+               </Location>
+               <Location
+                  uuid = "7633058C-2B31-4DE6-8BF4-607A4F3FC9AA - 8e7649f484aa2ada"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  uuid = "7633058C-2B31-4DE6-8BF4-607A4F3FC9AA - f12a4b49955fc89d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "800">
+               </Location>
+               <Location
+                  uuid = "7633058C-2B31-4DE6-8BF4-607A4F3FC9AA - d3ee4cca9b74ee5c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "816">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "ABCD45F5-C17C-4B40-843A-D253B8145109"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "sendMessage(message:channelID:post:sent:)"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "ABCD45F5-C17C-4B40-843A-D253B8145109 - f12a4b49955fcf82"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "312">
+               </Location>
+               <Location
+                  uuid = "ABCD45F5-C17C-4B40-843A-D253B8145109 - d3ee4cca9b74e943"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "328">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D0E27DF2-57EB-4EC4-9017-22287ECF9D44"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/MessageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F18DBB6A-2596-49FB-8074-5562293CCDC5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/MessageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F18DBB6A-2596-49FB-8074-5562293CCDC5 - 48fe42fea08062ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  uuid = "F18DBB6A-2596-49FB-8074-5562293CCDC5 - 8e7649f484aa2d2e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "F18DBB6A-2596-49FB-8074-5562293CCDC5 - d3ee4cca9b74e9a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD2344E7-F048-417D-802E-D69700B814C3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Firebase/MessageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BD2344E7-F048-417D-802E-D69700B814C3 - 48fe42fea08062c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "604">
+               </Location>
+               <Location
+                  uuid = "BD2344E7-F048-417D-802E-D69700B814C3 - 7eb41d1069dab1fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) await resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "BD2344E7-F048-417D-802E-D69700B814C3 - 8e7649f484aa2d2e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "BD2344E7-F048-417D-802E-D69700B814C3 - 8e7649f484aa2d41"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "136">
+               </Location>
+               <Location
+                  uuid = "BD2344E7-F048-417D-802E-D69700B814C3 - d3ee4cca9b74e9a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "BD2344E7-F048-417D-802E-D69700B814C3 - d3ee4cca9b74e9c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for DAHA.MessageManager.sendMessage(message: Swift.String, channelID: Swift.String, post: DAHA.PostModel, sent: SwiftUI.Binding&lt;Swift.Bool&gt;, error_alert: SwiftUI.Binding&lt;Swift.Bool&gt;) async -&gt; ()"
+                  moduleName = "DAHA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianadegbesan/Desktop/Xcode%20Projects/DAHA/DAHA/Firebase/MessageManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0A0D253-036F-477E-AA2C-220AB2A41CE3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Posts/PostViewComponentsPostViewComponents/BookmarkButton.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F198222-DF9E-45AF-A0BD-D9F6FD268A81"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DAHA/Posts/PostViewComponentsPostViewComponents/BookmarkButton.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

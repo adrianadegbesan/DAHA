@@ -58,7 +58,7 @@ struct PostScrollView: View {
 
                   if posts.isEmpty && screen != "Search" {
                       
-                      if loading{
+                      if loading && screen != "Saved"{
                           ZStack {
                               ProgressView()
                                   .scaleEffect(1.2)

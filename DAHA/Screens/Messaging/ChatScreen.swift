@@ -12,6 +12,7 @@ struct ChatScreen: View {
     @State var post: PostModel
     @State var redirect: Bool
     @State var receiver: String
+    @State var receiverID: String
     @State var channelID: String?
     @State var sent: Bool = false
     @FocusState var keyboardFocused : Bool
@@ -21,6 +22,7 @@ struct ChatScreen: View {
     
     var body: some View {
         VStack{
+            Spacer().frame(height: screenHeight * 0.001)
             ScrollViewReader{ value in
                 ScrollView{
                     PostView(post: post, owner: false, preview: true)
@@ -32,7 +34,8 @@ struct ChatScreen: View {
                             
                         }
                     }
-                }.onAppear{
+                }
+                .onAppear{
                     //UPDATE FOR WHEN MESSAGES HAVE LOADED
                     if !redirect {
                         if let lastMessage = messageManager.messages[channelID!]?.last {
@@ -71,11 +74,10 @@ struct ChatScreen: View {
             .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
            
             
-           
-            
         }
+
         .navigationBarTitle("@\(receiver)")
-        .navigationBarItems(trailing: MessageOptions())
+        .navigationBarItems(trailing: channelID != nil ? MessageOptions(channelID: channelID!, username: receiver, receiverID: receiverID) : nil)
     }
 }
 
@@ -87,7 +89,7 @@ struct ChatScreen_Previews: PreviewProvider {
         
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "Listing", keywordsForLookup: [], reporters: [])
         
-        ChatScreen(post: post, redirect: false, receiver: "Adrian", channelID: nil)
+        ChatScreen(post: post, redirect: false, receiver: "Adrian", receiverID: "", channelID: nil)
             .environmentObject(MessageManager())
     }
 }
