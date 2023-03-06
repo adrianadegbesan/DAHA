@@ -70,16 +70,6 @@ struct MessageField: View {
             }
             
         }
-//        .onChange(of: sent){ value in
-//            if sent{
-//                message = ""
-//            }
-//        }
-//        .onChange(of: channelID){ value in 
-//            if channelID != nil{
-//                message = ""
-//            }
-//        }
         .padding(.horizontal, screenWidth * 0.015)
 //        .padding(.bottom)
     }

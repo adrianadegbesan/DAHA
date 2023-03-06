@@ -64,6 +64,7 @@ struct PostConfirmationScreen: View {
                             firestoreManager.requests_refresh = true
                             firestoreManager.requests_tab = true
                         }
+                        firestoreManager.scroll_up = true
                         firestoreManager.user_refresh = true
                         
                         dismiss()

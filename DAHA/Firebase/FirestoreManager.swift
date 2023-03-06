@@ -23,6 +23,7 @@ class FirestoreManager: ObservableObject {
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @Environment(\.dismiss) var dismiss
     
+    @Published var scroll_up : Bool = false
     
     @Published var listings: [PostModel] = []
     @Published var listing_last : QueryDocumentSnapshot? = nil
@@ -262,6 +263,7 @@ class FirestoreManager: ObservableObject {
 
                      }
                  }
+                
 
 
          }

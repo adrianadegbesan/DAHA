@@ -12,6 +12,8 @@ struct MainScreen: View {
 //    @State var selectedIndex = 0
     @State var shouldNavigate: Bool = false
     @State var tabSelection: Int = 0
+    @EnvironmentObject var firestoreManager : FirestoreManager
+    
     
     var body: some View {
         
@@ -20,8 +22,13 @@ struct MainScreen: View {
             HomeScreen()
                 .tabItem {
                     Label("", systemImage: "house")
+                    .onTapGesture {
+                        firestoreManager.scroll_up = true
+                    }
                 }
                 .tag(0)
+               
+
 
             SearchScreen()
                 .tabItem{

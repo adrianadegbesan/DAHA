@@ -45,7 +45,12 @@ struct HomeScreen: View {
                         }
                         .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                         .onTapGesture {
-                            tabIndex = 0
+                            if tabIndex == 0 {
+                                firestoreManager.scroll_up = true
+                            } else {
+                                tabIndex = 0
+                            }
+                            
                         }
                        
                         Spacer()
@@ -61,7 +66,11 @@ struct HomeScreen: View {
                         }
                         .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                         .onTapGesture {
-                            tabIndex = 1
+                            if tabIndex == 1 {
+                                firestoreManager.scroll_up = true
+                            } else {
+                                tabIndex = 1
+                            }
                         }
                         Spacer()
                     }
