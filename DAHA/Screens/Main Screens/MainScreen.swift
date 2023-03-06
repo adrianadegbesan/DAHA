@@ -12,13 +12,16 @@ struct MainScreen: View {
 //    @State var selectedIndex = 0
     @State var shouldNavigate: Bool = false
     @State var tabSelection: Int = 0
+    @State var current: Int = 0
     @EnvironmentObject var firestoreManager : FirestoreManager
     
     
     var body: some View {
         
         /*Main Screen tab view*/
-        TabView(selection: $tabSelection){
+        TabView(selection: $tabSelection.onUpdate {
+            setNewValue(value: tabSelection)
+        }){
             HomeScreen()
                 .tabItem {
                     Label("", systemImage: "house")
@@ -49,6 +52,8 @@ struct MainScreen: View {
                 .tag(3)
             
         } //TabView
+      
+    
         .onAppear{
             /*Change tab view indicator colour*/
             let appearance: UITabBarAppearance = UITabBarAppearance()
@@ -62,6 +67,14 @@ struct MainScreen: View {
 //
         
     }
+    
+    func setNewValue(value: Int){
+        self.tabSelection = value
+        if self.tabSelection == 0 && self.current == 0{
+            firestoreManager.scroll_up = true
+        }
+        self.current = value
+     }
 }
 
         

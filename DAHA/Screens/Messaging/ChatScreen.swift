@@ -44,7 +44,9 @@ struct ChatScreen: View {
                     //UPDATE FOR WHEN MESSAGES HAVE LOADED
                     if !redirect {
                         if let lastMessage = messageManager.messages[channelID!]?.last {
-                        value.scrollTo(lastMessage.id, anchor: .bottom)
+                            withAnimation{
+                                value.scrollTo(lastMessage.id, anchor: .bottom)
+                            }
                         }
                     }
                 }
@@ -55,7 +57,9 @@ struct ChatScreen: View {
                     .onChange(of: sent){ _ in
                         if sent {
                             if let lastMessage = messageManager.messages[channelID!]?.last {
-                            value.scrollTo(lastMessage.id, anchor: .bottom)
+                                withAnimation{
+                                    value.scrollTo(lastMessage.id, anchor: .bottom)
+                                }
                             }
                         }
                         sent = false
@@ -64,7 +68,9 @@ struct ChatScreen: View {
                         if channelID != nil{
                             if keyboardFocused {
                                 if let lastMessage = messageManager.messages[channelID!]?.last {
-                                value.scrollTo(lastMessage.id, anchor: .bottom)
+                                    withAnimation{
+                                        value.scrollTo(lastMessage.id, anchor: .bottom)
+                                    }
                                 }
                             }
                         }
