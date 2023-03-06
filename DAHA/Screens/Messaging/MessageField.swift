@@ -43,12 +43,18 @@ struct MessageField: View {
                     
                     if channelID == nil {
                         Task{
-                            await messagesManager.createMessageChannel(message: message, post: post, channelID: $channelID, error_alert: $error_alert)
+                           let success =  await messagesManager.createMessageChannel(message: message, post: post, channelID: $channelID, error_alert: $error_alert)
+                            if success {
+                                message = ""
+                            }
                         }
                 
                     } else {
                         Task{
-                            await messagesManager.sendMessage(message: message, channelID: channelID!, post: post, sent: $sent, error_alert: $error_alert)
+                            let success = await messagesManager.sendMessage(message: message, channelID: channelID!, post: post, sent: $sent, error_alert: $error_alert)
+                            if success {
+                                message = ""
+                            }
                         }
                     } 
                 }
@@ -64,16 +70,16 @@ struct MessageField: View {
             }
             
         }
-        .onChange(of: sent){ value in
-            if sent{
-                message = ""
-            }
-        }
-        .onChange(of: channelID){ value in 
-            if channelID != nil{
-                message = ""
-            }
-        }
+//        .onChange(of: sent){ value in
+//            if sent{
+//                message = ""
+//            }
+//        }
+//        .onChange(of: channelID){ value in 
+//            if channelID != nil{
+//                message = ""
+//            }
+//        }
         .padding(.horizontal, screenWidth * 0.015)
 //        .padding(.bottom)
     }

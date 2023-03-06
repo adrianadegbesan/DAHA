@@ -10,6 +10,7 @@ import Firebase
 
 struct PostModalPosterInfo: View {
     @State var post: PostModel
+    @Environment(\.colorScheme) var colorScheme
 
     
     var body: some View {
@@ -17,14 +18,16 @@ struct PostModalPosterInfo: View {
             Text("@\(post.username)")
                 .minimumScaleFactor(0.5)
                 .font(.system(size: 13, weight: .bold))
-                .foregroundColor(.gray)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
+            
             Image(systemName:"circle.fill")
                 .minimumScaleFactor(0.5)
-                .font(.system(size: 4, weight: .bold))
+                .font(.system(size: 3.8, weight: .bold))
                 .foregroundColor(.gray)
+            
             Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
                 .minimumScaleFactor(0.5)
-                .font(.system(size: 13, weight: .bold))
+                .font(.system(size: 10, weight: .bold))
                 .foregroundColor(.gray)
             Spacer()
             

@@ -112,7 +112,7 @@ class MessageManager: ObservableObject {
     }
     
     
-    func createMessageChannel(message: String, post: PostModel, channelID : Binding<String?>, error_alert: Binding<Bool>) async {
+    func createMessageChannel(message: String, post: PostModel, channelID : Binding<String?>, error_alert: Binding<Bool>) async -> Bool{
         let channel_id = UUID().uuidString
         
         if Auth.auth().currentUser != nil{
@@ -127,21 +127,21 @@ class MessageManager: ObservableObject {
                 let subcollectionRef = parentRef.collection("messages").document(message_sent.id)
                 try await subcollectionRef.setData(message_sent.dictionaryRepresentation)
                 channelID.wrappedValue = channel_id
-                return
+                return true
             }
             catch {
                 print(error.localizedDescription)
                 error_alert.wrappedValue = true
-                return
+                return false
             }
             
         }
         error_alert.wrappedValue = true
-        return
+        return false
     }
     
     
-    func sendMessage(message: String, channelID: String, post: PostModel, sent: Binding<Bool>, error_alert: Binding<Bool>) async {
+    func sendMessage(message: String, channelID: String, post: PostModel, sent: Binding<Bool>, error_alert: Binding<Bool>) async -> Bool {
         
         
         if Auth.auth().currentUser != nil{
@@ -152,16 +152,16 @@ class MessageManager: ObservableObject {
                 sent.wrappedValue = true
                 let channelRef = db.collection("Messages").document(channelID)
                 try await channelRef.updateData(["timestamp": Date()])
-                return
+                return true
             }
             catch {
                 print(error.localizedDescription)
                 error_alert.wrappedValue = true
-                return
+                return false
             }
         }
         error_alert.wrappedValue = true
-        return 
+        return false
     }
     
     func deleteChat(channelID : String) async -> Bool{

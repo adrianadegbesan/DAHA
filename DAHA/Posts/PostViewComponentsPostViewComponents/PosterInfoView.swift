@@ -12,15 +12,16 @@ struct PosterInfoView: View {
     
     @State var post: PostModel
     @State private var timestampString = ""
-    
     @Environment(\.colorScheme) var colorScheme
+    
+    
     var body: some View {
         HStack(spacing: 3){
             Text("@\(post.username)")
                 .lineLimit(1)
                 .minimumScaleFactor(0.001)
                 .font(.system(size: 12, weight: .semibold))
-                .foregroundColor(.gray)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
             
             Image(systemName:"circle.fill")
                 .minimumScaleFactor(0.5)

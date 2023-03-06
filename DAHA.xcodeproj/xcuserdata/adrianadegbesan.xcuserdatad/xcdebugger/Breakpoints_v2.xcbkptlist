@@ -65,7 +65,7 @@
             startingLineNumber = "875"
             endingLineNumber = "875"
             landmarkName = "updateSearch(query:type:category:)"
-            landmarkType = "9">
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "C539D509-265F-45A3-886E-674AE6951A71 - 62467ac388e59c93"
@@ -143,7 +143,7 @@
             startingLineNumber = "879"
             endingLineNumber = "879"
             landmarkName = "updateSearch(query:type:category:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -159,7 +159,7 @@
             startingLineNumber = "883"
             endingLineNumber = "883"
             landmarkName = "updateSearch(query:type:category:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -175,7 +175,7 @@
             startingLineNumber = "889"
             endingLineNumber = "889"
             landmarkName = "updateSearch(query:type:category:)"
-            landmarkType = "9">
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "C2B7DF0C-80E7-44C0-BCA4-ABF88371C451 - a84c4a4c77cce2ce"
@@ -298,7 +298,7 @@
             startingLineNumber = "781"
             endingLineNumber = "781"
             landmarkName = "updateSearch(query:type:category:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -314,7 +314,7 @@
             startingLineNumber = "675"
             endingLineNumber = "675"
             landmarkName = "searchPosts(query:type:category:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -330,7 +330,7 @@
             startingLineNumber = "758"
             endingLineNumber = "758"
             landmarkName = "searchPosts(query:type:category:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -346,7 +346,7 @@
             startingLineNumber = "759"
             endingLineNumber = "759"
             landmarkName = "searchPosts(query:type:category:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -362,7 +362,7 @@
             startingLineNumber = "767"
             endingLineNumber = "767"
             landmarkName = "searchPosts(query:type:category:)"
-            landmarkType = "9">
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "1A9736C5-E68A-4478-B861-65630B72AE06 - 85d614338fde0905"
@@ -485,7 +485,7 @@
             startingLineNumber = "766"
             endingLineNumber = "766"
             landmarkName = "searchPosts(query:type:category:)"
-            landmarkType = "9">
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F - 85d614338fde0905"

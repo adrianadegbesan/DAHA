@@ -67,6 +67,8 @@ struct BuyButton: View {
             .overlay{
                 if colorScheme == .light{
                     Capsule().stroke(.black, lineWidth: 2)
+                } else {
+                    Capsule().stroke(.white, lineWidth: 1.5)
                 }
             }
             //ALERT
