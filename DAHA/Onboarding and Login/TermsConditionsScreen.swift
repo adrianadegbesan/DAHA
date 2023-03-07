@@ -56,9 +56,9 @@ struct TermsConditionsScreen: View {
 //                    agreedToTerms = true
                     Task{
                         await authentication.hasAgreedToTerms()
+                        agreedToTerms = true
+                        shouldNavigate = true
                     }
-                    agreedToTerms = true
-                    shouldNavigate = true
                 } 
             }){
                 ZStack {

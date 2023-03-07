@@ -20,7 +20,6 @@ struct PostModal: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading){
-                PostModalActions()
                 
                 PostModalPosterInfo(post: post)
                 
@@ -33,11 +32,20 @@ struct PostModal: View {
                 
                 HStack{
                     if !owner {
+                        Text(post.postedAt?.dateValue().dateString() ?? "")
+                            .minimumScaleFactor(0.5)
+                            .font(.system(size: 15, weight: .bold))
+                            .foregroundColor(.gray)
+                            .padding(.leading, 15)
+                        
+                        Spacer()
+                        
                         BuyButton(post: post)
                             .padding(.leading, 15)
-                            .padding(.trailing, 10)
+                            .padding(.trailing, 15)
                         BookmarkButton(post: post, saved: $saved)
-                        Spacer()
+                            .padding(.trailing, 10)
+                        
                        
                     }
                 }

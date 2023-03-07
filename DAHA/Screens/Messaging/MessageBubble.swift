@@ -21,7 +21,7 @@ struct MessageBubble: View {
         VStack(alignment: message.senderID != Auth.auth().currentUser?.uid ?? "" ? .leading : .trailing) {
              HStack {
                  Text(message.message)
-                     .foregroundColor(colorScheme == .dark ? .white : (message.senderID != Auth.auth().currentUser?.uid ?? "" ? .black : .white))
+                     .foregroundColor(.white)
                      .padding()
                      .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: "5A5A5A") : Color(hex: deepBlue))
                      .cornerRadius(30)
@@ -38,7 +38,7 @@ struct MessageBubble: View {
                  Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
                      .font(.caption2)
                      .foregroundColor(.gray)
-                     .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 25)
+                     .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
              }
          }
          .frame(maxWidth: .infinity, alignment: message.senderID != Auth.auth().currentUser?.uid ? .leading : .trailing)

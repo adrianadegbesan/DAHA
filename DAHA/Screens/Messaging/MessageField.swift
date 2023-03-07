@@ -12,6 +12,7 @@ import Firebase
 struct MessageField: View {
     @EnvironmentObject var messagesManager: MessageManager
     @State private var message = ""
+    @State private var previousMessage = ""
     @State var post: PostModel
     @Binding var channelID : String?
     @State var sending : Bool = false
@@ -41,18 +42,24 @@ struct MessageField: View {
                     
                     
                     if channelID == nil {
+                        previousMessage = message
+                        message = ""
+                        
                         Task{
-                           let success =  await messagesManager.createMessageChannel(message: message, post: post, channelID: $channelID, error_alert: $error_alert)
-                            if success {
-                                message = ""
+                           let success =  await messagesManager.createMessageChannel(message: previousMessage, post: post, channelID: $channelID, error_alert: $error_alert)
+                            if !success {
+                                message = previousMessage
                             }
                         }
                 
                     } else {
+                        previousMessage = message
+                        message = ""
+                        
                         Task{
-                            let success = await messagesManager.sendMessage(message: message, channelID: channelID!, post: post, sent: $sent, error_alert: $error_alert)
-                            if success {
-                                message = ""
+                            let success = await messagesManager.sendMessage(message: previousMessage, channelID: channelID!, post: post, sent: $sent, error_alert: $error_alert)
+                            if !success {
+                                message = previousMessage
                             }
                         }
                     } 

@@ -66,6 +66,14 @@ extension Date {
     func toMillis() -> Int64! {
         return Int64(self.timeIntervalSince1970 * 1000)
     }
+    
+    
+    func dateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a   M/d/yyyy"
+        return formatter.string(from: self)
+    }
 }
+
 
 

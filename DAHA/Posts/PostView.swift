@@ -65,7 +65,7 @@ struct PostView: View {
             
             
             
-            NavigationLink(destination: PostModal(post: post, saved: $saved, reported: $reported, owner: owner).navigationBarBackButtonHidden(true), isActive: $shouldNavigate){
+            NavigationLink(destination: PostModal(post: post, saved: $saved, reported: $reported, owner: owner), isActive: $shouldNavigate){
                 EmptyView()
             }
             
