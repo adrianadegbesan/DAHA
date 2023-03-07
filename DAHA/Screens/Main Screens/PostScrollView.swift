@@ -154,6 +154,7 @@ struct PostScrollView: View {
                     
                     .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
                     .refreshable(action: {
+                        LightFeedback()
                         if screen == "Listings"{
                             Task {
                                  await firestoreManager.getListings()

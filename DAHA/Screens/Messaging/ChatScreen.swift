@@ -41,9 +41,11 @@ struct ChatScreen: View {
                         }
                     }
                 }
+                
+//                .ignoresSafeArea(.keyboard)
                 .onAppear{
                     //UPDATE FOR WHEN MESSAGES HAVE LOADED
-                    if !redirect {
+                    if channelID != nil {
                         if let lastMessage = messageManager.messages[channelID!]?.last {
                             withAnimation{
                                 value.scrollTo(lastMessage.id, anchor: .bottom)
@@ -54,6 +56,7 @@ struct ChatScreen: View {
                 .onTapGesture {
                     hideKeyboard()
                 }
+//                Spacer().frame(height: screenHeight * 0.001)
                 MessageField(post: post, channelID: $channelID, sent: $sent, keyboardFocused: $keyboardFocused)
                     .onChange(of: sent){ _ in
                         if sent {

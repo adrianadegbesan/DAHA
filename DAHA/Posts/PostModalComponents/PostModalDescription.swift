@@ -128,24 +128,12 @@ struct PostModalDescription: View {
             }
             
             HStack {
-                HStack{
-                    Text(post.description)
-                        .padding(.leading, 12)
-                        .textSelection(.enabled)
-                    Spacer()
-                }
+              Text(post.description)
+                .padding(.leading, 9)
+                .textSelection(.enabled)
                 .padding(.bottom, 10)
-                .frame(width: screenWidth * 0.9)
-                
-//                HStack{
-//                    if !owner {
-//                        Spacer()
-//                        BookmarkButton(post: post, saved: $saved)
-//                            .padding(.trailing, 10)
-//                    }
-//                }
-//                .padding(.bottom, 10)
             }
+            .frame(width: screenWidth * 0.9)
         }
     }
 }

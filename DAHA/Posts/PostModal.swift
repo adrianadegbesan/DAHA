@@ -31,15 +31,15 @@ struct PostModal: View {
                 PostModalDescription(post: post, saved: $saved, owner: owner)
                 
                 HStack{
+                    Text(post.postedAt?.dateValue().dateString() ?? "")
+                        .minimumScaleFactor(0.5)
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundColor(.gray)
+                        .padding(.leading, 15)
+                    
+                    Spacer()
+                    
                     if !owner {
-                        Text(post.postedAt?.dateValue().dateString() ?? "")
-                            .minimumScaleFactor(0.5)
-                            .font(.system(size: 15, weight: .bold))
-                            .foregroundColor(.gray)
-                            .padding(.leading, 15)
-                        
-                        Spacer()
-                        
                         BuyButton(post: post)
                             .padding(.leading, 15)
                             .padding(.trailing, 15)

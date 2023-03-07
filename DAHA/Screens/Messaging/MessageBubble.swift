@@ -22,11 +22,11 @@ struct MessageBubble: View {
              HStack {
                  Text(message.message)
                      .foregroundColor(.white)
-                     .padding()
+                     .padding(13)
                      .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: "5A5A5A") : Color(hex: deepBlue))
-                     .cornerRadius(30)
+                     .cornerRadius(25)
              }
-             .frame(maxWidth: 300, alignment: message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
+             .frame(maxWidth: 245, alignment: message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
              .onTapGesture {
                  withAnimation{
                      showTime.toggle()
@@ -45,18 +45,6 @@ struct MessageBubble: View {
          .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
          .padding(.horizontal, 10)
          .padding(.bottom, 3)
-//         .contextMenu {
-//             Button(role: .destructive){
-//                 Task {
-//                     let result = await messageManager.deleteMessage(channelID: ChannelID, messageID: message.id)
-//                     if !result{
-//                         error_alert = true
-//                     }
-//                 }
-//             } label: {
-//                 Label("Delete Message", systemImage: "trash")
-//             }
-//         }
          .alert("Unable to Delete Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection")})
 
      }
