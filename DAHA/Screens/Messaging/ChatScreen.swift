@@ -14,6 +14,7 @@ struct ChatScreen: View {
     @State var receiver: String
     @State var receiverID: String
     @State var channelID: String?
+    @State var listen: Bool?
     @State var sent: Bool = false
     @FocusState var keyboardFocused : Bool
     @EnvironmentObject var messageManager : MessageManager

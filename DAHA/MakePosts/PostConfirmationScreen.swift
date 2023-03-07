@@ -58,14 +58,21 @@ struct PostConfirmationScreen: View {
                 MakePostButton(post: $post, images: $images, post_created: $post_created, uploading: $uploading).onChange(of: post_created){ value in
                     if post_created {
                         if post.type == "Listing"{
-                            firestoreManager.listings_refresh = true
                             firestoreManager.listings_tab = true
+                            Task{
+                                await firestoreManager.getListings()
+                                await firestoreManager.userPosts()
+                            }
+                           
                         } else if post.type == "Request"{
-                            firestoreManager.requests_refresh = true
+                            
                             firestoreManager.requests_tab = true
+                            Task{
+                                await firestoreManager.getRequests()
+                                await firestoreManager.userPosts()
+                            }
                         }
                         firestoreManager.scroll_up = true
-                        firestoreManager.user_refresh = true
                         
                         dismiss()
                     }
