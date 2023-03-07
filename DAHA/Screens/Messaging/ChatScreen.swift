@@ -35,7 +35,7 @@ struct ChatScreen: View {
                         .scaleEffect(0.93)
                     if channelID != nil{
                         ForEach(messageManager.messages[channelID!] ?? []){ message in
-                            MessageBubble(message: message)
+                            MessageBubble(message: message, ChannelID: channelID!)
                                 .id(message.id)
                             
                         }

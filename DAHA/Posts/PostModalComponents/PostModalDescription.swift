@@ -137,14 +137,14 @@ struct PostModalDescription: View {
                 .padding(.bottom, 10)
                 .frame(width: screenWidth * 0.9)
                 
-                HStack{
-                    if !owner {
-                        Spacer()
-                        BookmarkButton(post: post, saved: $saved)
-                            .padding(.trailing, 10)
-                    }
-                }
-                .padding(.bottom, 10)
+//                HStack{
+//                    if !owner {
+//                        Spacer()
+//                        BookmarkButton(post: post, saved: $saved)
+//                            .padding(.trailing, 10)
+//                    }
+//                }
+//                .padding(.bottom, 10)
             }
         }
     }

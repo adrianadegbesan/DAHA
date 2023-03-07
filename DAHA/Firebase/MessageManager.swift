@@ -186,6 +186,26 @@ class MessageManager: ObservableObject {
         
     }
     
+    func deleteMessage(channelID : String, messageID : String) async -> Bool{
+        do {
+            try await db.collection("Messages").document(channelID).collection("messages").document(messageID).delete()
+            
+            withAnimation(.easeIn(duration: 0.3)){
+                if self.messages.keys.contains(channelID){
+                    let message_index = messages[channelID]!.firstIndex(where: {$0.id == messageID})
+                    if message_index != nil{
+                       _ = messages[channelID]!.remove(at: message_index!)
+                    }
+                }
+            }
+            return true
+        }
+            
+        catch {
+            return false
+        }
+    }
+    
     
     
     

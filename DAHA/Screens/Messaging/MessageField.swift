@@ -32,8 +32,7 @@ struct MessageField: View {
             }
             .padding(.horizontal, screenWidth * 0.025)
             .background(RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 0.8))
-       
-            //        .padding(.bottom)
+            .padding(.bottom, 3)
             .alert("Error Sending Message", isPresented: $error_alert, actions: {}, message:{Text("Please check your network connection")})
             
             Button {
@@ -71,7 +70,7 @@ struct MessageField: View {
             
         }
         .padding(.horizontal, screenWidth * 0.015)
-//        .padding(.bottom)
+        .padding(.bottom, 3)
     }
         
         

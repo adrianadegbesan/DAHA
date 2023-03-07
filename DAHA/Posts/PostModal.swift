@@ -30,8 +30,22 @@ struct PostModal: View {
                     .padding(.trailing, 12)
                 
                 PostModalDescription(post: post, saved: $saved, owner: owner)
+                
+                HStack{
+                    if !owner {
+                        BuyButton(post: post)
+                            .padding(.leading, 15)
+                            .padding(.trailing, 10)
+                        BookmarkButton(post: post, saved: $saved)
+                        Spacer()
+                       
+                    }
+                }
+                .padding(.bottom, 10)
                   
                 Spacer()
+                
+                
             }
             .padding()
         }

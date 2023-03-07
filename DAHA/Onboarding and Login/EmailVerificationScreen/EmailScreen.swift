@@ -87,9 +87,8 @@ struct EmailScreen: View {
                     shouldNavigate = true
                     return
                 } else {
-//                    let _ = authentication.sendVerificationEmail()
+                    _ = authentication.sendVerificationEmail()
                     authentication.reloadUser()
-                    
                 }
             }
             
@@ -99,7 +98,6 @@ struct EmailScreen: View {
                 if currentUser.isEmailVerified {
                     verified = true
                     shouldNavigate = true
-//                    time.invalidate()
                 }
             } else {
                 // User has logged out, reset app state
