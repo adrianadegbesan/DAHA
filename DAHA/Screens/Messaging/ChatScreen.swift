@@ -57,7 +57,7 @@ struct ChatScreen: View {
                     hideKeyboard()
                 }
 //                Spacer().frame(height: screenHeight * 0.001)
-                MessageField(post: post, channelID: $channelID, sent: $sent, keyboardFocused: $keyboardFocused)
+                MessageField(post: post, channelID: $channelID, sent: $sent, redirect: redirect, keyboardFocused: $keyboardFocused)
                     .onChange(of: sent){ _ in
                         if sent {
                             if let lastMessage = messageManager.messages[channelID!]?.last {

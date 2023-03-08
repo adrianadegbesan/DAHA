@@ -17,6 +17,7 @@ struct MessageField: View {
     @Binding var channelID : String?
     @State var sending : Bool = false
     @Binding var sent : Bool
+    @State var redirect : Bool
     @State var error_alert : Bool = false
     var keyboardFocused: FocusState<Bool>.Binding
 
@@ -27,7 +28,7 @@ struct MessageField: View {
                 //             Custom text field created below
                 CustomTextField(placeholder: Text(""), text: $message, commit: {
                     
-                }, keyboardFocused: keyboardFocused)
+                }, keyboardFocused: keyboardFocused, redirect: redirect)
                     .frame(height: 40)
                 
             }
@@ -106,6 +107,7 @@ struct CustomTextField: View {
     var editingChanged: (Bool)->() = { _ in }
     var commit: ()->() = { }
     var keyboardFocused: FocusState<Bool>.Binding
+    var redirect: Bool
 
     var body: some View {
         ZStack(alignment: .leading) {
@@ -117,9 +119,11 @@ struct CustomTextField: View {
             
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
                 .focused(keyboardFocused)
-//                .onAppear{
-//                    keyboardFocused.wrappedValue = true
-//                }
+                .onAppear{
+                    if redirect{
+                        keyboardFocused.wrappedValue = true
+                    }
+                }
                 
             
         }

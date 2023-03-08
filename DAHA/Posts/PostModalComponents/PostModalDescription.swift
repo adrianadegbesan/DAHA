@@ -129,11 +129,14 @@ struct PostModalDescription: View {
             
             HStack {
               Text(post.description)
-                .padding(.leading, 9)
+                .padding(.leading, 15)
+                .multilineTextAlignment(.leading)
                 .textSelection(.enabled)
-                .padding(.bottom, 10)
+                .padding(.bottom, 8)
+                
+                Spacer()
             }
-            .frame(width: screenWidth * 0.9)
+//            .frame(width: screenWidth * 0.9)
         }
     }
 }
