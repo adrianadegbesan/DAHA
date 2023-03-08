@@ -41,18 +41,7 @@ struct ChatScreen: View {
                         }
                     }
                 }
-                
-//                .ignoresSafeArea(.keyboard)
-                .onAppear{
-                    //UPDATE FOR WHEN MESSAGES HAVE LOADED
-                    if channelID != nil {
-                        if let lastMessage = messageManager.messages[channelID!]?.last {
-                            withAnimation{
-                                value.scrollTo(lastMessage.id, anchor: .bottom)
-                            }
-                        }
-                    }
-                }
+            
                 .onTapGesture {
                     hideKeyboard()
                 }
