@@ -206,6 +206,24 @@ class MessageManager: ObservableObject {
         }
     }
     
+    func reportUser(report: ReportUserModel) -> Bool{
+        let userId = Auth.auth().currentUser?.uid
+        
+        if userId == nil{
+            return false
+        }
+        
+        do {
+            try db.collection("Universities").document("\(university)").collection("User-Reports").document(report.id).setData(from: report)
+            return true
+        }
+        
+        catch{
+            print("error reporting posts")
+            return false
+        }
+        
+    }
     
     
     

@@ -316,7 +316,7 @@ class FirestoreManager: ObservableObject {
         }
         
         do {
-            try db.collection("Universities").document("\(university)").collection("Reports").document(report.id).setData(from: report)
+            try db.collection("Universities").document("\(university)").collection("Post-Reports").document(report.id).setData(from: report)
             try await postRef.updateData(["reporters": FieldValue.arrayUnion([userId!])])
             return true
         }
