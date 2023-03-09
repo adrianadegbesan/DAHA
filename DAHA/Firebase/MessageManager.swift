@@ -144,6 +144,13 @@ class MessageManager: ObservableObject {
                 sent.wrappedValue = true
                 let channelRef = db.collection("Messages").document(channelID)
                 try await channelRef.updateData(["timestamp": Date()])
+                
+                let index = messageChannels.firstIndex(where: {$0.id == channelID})
+                
+                if index != nil{
+                    messageChannels[index!].timestamp = Date()
+                    messageChannels.sort { $0.timestamp > $1.timestamp}
+                }
                 return true
             }
             catch {

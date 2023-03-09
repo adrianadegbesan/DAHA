@@ -96,6 +96,25 @@ struct PostConfirmationScreen: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
+          .toolbar {
+              ToolbarItem(placement: .navigationBarLeading) {
+                  Group {
+                      if uploading {
+                          ProgressView()
+                      } else {
+                          Button{
+                              dismiss()
+                          } label : {
+                              Image(systemName: "chevron.left")
+                                  .font(.system(size: 18, weight: .bold))
+                                  .foregroundColor(colorScheme == .dark ? .white : .black)
+                          }
+                      }
+                  }
+                  .disabled(uploading)
+              }
+          }
     }
 }
 
