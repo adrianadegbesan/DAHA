@@ -43,22 +43,21 @@ struct DeleteUserView: View {
                 }
 //                Divider()
             }
-           
-        }
-        .alert("Enter Password", isPresented: $firstPresented, actions: {
-            SecureField("Password", text: $password)
-                .foregroundColor(Color(hex: deepBlue))
-            Button("Continue", role: .destructive, action: {
-                Task {
-                    let success = await authentication.reauthenticate(password: $password, error_message: $error_message)
-                    if success {
-                         isPresented = true
-                    } else {
-                        error_alert = true
+            .alert("Enter Password", isPresented: $firstPresented, actions: {
+                SecureField("Password", text: $password)
+                    .foregroundColor(Color(hex: deepBlue))
+                Button("Continue", role: .destructive, action: {
+                    Task {
+                        let success = await authentication.reauthenticate(password: $password, error_message: $error_message)
+                        if success {
+                             isPresented = true
+                        } else {
+                            error_alert = true
+                        }
                     }
-                }
-            })
-        }, message: {Text("Please enter your password to continue")})
+                })
+            }, message: {Text("Please enter your password to continue")})
+        }
         
         .alert("Delete Account", isPresented: $isPresented, actions: {
             Button("Delete", role: .destructive, action: {

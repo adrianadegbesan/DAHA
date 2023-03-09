@@ -17,7 +17,7 @@ struct PostModalPosterInfo: View {
         HStack{
             Text("@\(post.username)")
                 .minimumScaleFactor(0.5)
-                .font(.system(size: 13, weight: .bold))
+                .font(.system(size: 14, weight: .bold))
                 .foregroundColor(colorScheme == .dark ? .white : .black)
             
             Image(systemName:"circle.fill")
@@ -27,7 +27,7 @@ struct PostModalPosterInfo: View {
             
             Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
                 .minimumScaleFactor(0.5)
-                .font(.system(size: 10, weight: .bold))
+                .font(.system(size: 11, weight: .bold))
                 .foregroundColor(.gray)
             Spacer()
             

@@ -167,7 +167,7 @@ struct PostView: View {
                         Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane.fill")
                     }
                     
-                    Button{
+                    Button(role: .destructive){
                         report_modal = true
                     } label:{
                         Label("Report Post", systemImage: "flag")

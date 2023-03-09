@@ -115,6 +115,8 @@
 		82B6B2F8298F27A100027E5A /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F7298F27A100027E5A /* Camera.swift */; };
 		82B6B2FA298F394300027E5A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F9298F394300027E5A /* CameraView.swift */; };
 		82B6B2FC298F3C8300027E5A /* CustomCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2FB298F3C8300027E5A /* CustomCameraView.swift */; };
+		82C4588F29B9124700661703 /* ImagePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C4588E29B9124700661703 /* ImagePopupView.swift */; };
+		82C4589329BA4A1400661703 /* UsernameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C4589229BA4A1400661703 /* UsernameModel.swift */; };
 		82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC29F298795E4001966E3 /* PostActionView.swift */; };
 		82CBC2A2298796E7001966E3 /* PosterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A1298796E7001966E3 /* PosterInfoView.swift */; };
 		82CBC2A429879752001966E3 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2A329879752001966E3 /* PostImageView.swift */; };
@@ -251,6 +253,8 @@
 		82B6B2F7298F27A100027E5A /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		82B6B2F9298F394300027E5A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		82B6B2FB298F3C8300027E5A /* CustomCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCameraView.swift; sourceTree = "<group>"; };
+		82C4588E29B9124700661703 /* ImagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupView.swift; sourceTree = "<group>"; };
+		82C4589229BA4A1400661703 /* UsernameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameModel.swift; sourceTree = "<group>"; };
 		82CBC29F298795E4001966E3 /* PostActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionView.swift; sourceTree = "<group>"; };
 		82CBC2A1298796E7001966E3 /* PosterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterInfoView.swift; sourceTree = "<group>"; };
 		82CBC2A329879752001966E3 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
@@ -471,6 +475,7 @@
 				82CBC2A1298796E7001966E3 /* PosterInfoView.swift */,
 				82CBC2A329879752001966E3 /* PostImageView.swift */,
 				82B6B2DC298AE9BF00027E5A /* DeleteButton.swift */,
+				82C4588E29B9124700661703 /* ImagePopupView.swift */,
 			);
 			path = PostViewComponentsPostViewComponents;
 			sourceTree = "<group>";
@@ -622,6 +627,7 @@
 				828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */,
 				828CAFA129B188D100B489F4 /* MessageModel.swift */,
 				828CAFAE29B5215D00B489F4 /* ReportUserModel.swift */,
+				82C4589229BA4A1400661703 /* UsernameModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -802,6 +808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82CEFC502969CC5B00C55F67 /* DeviceDimensions.swift in Sources */,
+				82C4588F29B9124700661703 /* ImagePopupView.swift in Sources */,
 				82A21A5429A17EA10040BAA1 /* ChangePasswordView.swift in Sources */,
 				82CEFC812969CFCA00C55F67 /* PostButton.swift in Sources */,
 				82B6B2F2298C4F1500027E5A /* CameraButton.swift in Sources */,
@@ -873,6 +880,7 @@
 				8236CFFD296F2AF00086AB15 /* AuthManager.swift in Sources */,
 				82ACC67F2991738300589E1E /* Shapes.swift in Sources */,
 				82B6B2DD298AE9BF00027E5A /* DeleteButton.swift in Sources */,
+				82C4589329BA4A1400661703 /* UsernameModel.swift in Sources */,
 				82CEFC682969CE7E00C55F67 /* SettingsScreen.swift in Sources */,
 				82CEFC642969CE5200C55F67 /* DMScreen.swift in Sources */,
 				82B6B2F0298C438E00027E5A /* CameraRollButton.swift in Sources */,

@@ -15,13 +15,30 @@ import FirebaseFirestoreSwift
  Model for saving user data to firebase
  */
 struct UserModel: Identifiable, Codable {
-    var id: String?
-    var username: String?
-    var email: String?
-    var firstname: String?
-    var lastname: String?
-    var channels: [String?]
-    var university: String?
-    var terms: Bool?
+    var id: String
+    var username: String
+    var email: String
+    var firstname: String
+    var lastname: String
+    var channels: [String]
+    var university: String
+    var terms: Bool
     @ServerTimestamp var joinedAt: Timestamp?
+}
+
+
+extension UserModel {
+    var dictionaryRepresentation: [String:Any]{
+        return [
+                   "id": id,
+                   "username": username,
+                   "email": email,
+                   "firstname": firstname,
+                   "lastname": lastname,
+                   "channels": channels,
+                   "university": university,
+                   "terms": terms,
+                   "joinedAt": self.joinedAt != nil ? self.joinedAt! : FieldValue.serverTimestamp()
+               ]
+        }
 }

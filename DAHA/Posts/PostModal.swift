@@ -33,7 +33,7 @@ struct PostModal: View {
                 HStack{
                     Text(post.postedAt?.dateValue().dateString() ?? "")
                         .minimumScaleFactor(0.5)
-                        .font(.system(size: 15, weight: .bold))
+                        .font(.system(size: 15, weight: .medium))
                         .foregroundColor(.gray)
                         .padding(.leading, 15)
                     

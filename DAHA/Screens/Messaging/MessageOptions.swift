@@ -48,6 +48,7 @@ struct MessageOptions: View {
         
         .onChange(of: reported){ value in
             if reported {
+                dismiss()
                 Task{
                     let success = await messageManager.deleteChat(channelID: channelID)
                     if success {

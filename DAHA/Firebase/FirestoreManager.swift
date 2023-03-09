@@ -105,7 +105,7 @@ class FirestoreManager: ObservableObject {
         var not_found: Bool = false
         
         do {
-            let snapshot = try await db.collection("Users").whereField("username", isEqualTo: username).getDocuments()
+            let snapshot = try await db.collection("Usernames").whereField("username", isEqualTo: username).getDocuments()
             not_found = snapshot.isEmpty
             
             if(!not_found){

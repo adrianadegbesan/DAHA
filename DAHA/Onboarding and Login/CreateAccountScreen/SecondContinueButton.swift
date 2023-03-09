@@ -85,7 +85,7 @@ struct SecondContinueButton: View {
                         let cur_email = email_system
                         if cur_email != ""{
                             /*Create user model to post*/
-                            let current = UserModel(id: nil, username: username_temp, email: cur_email, firstname: firstname_temp, lastname: lastname_temp, channels: [], university: university, terms: false)
+                            let current = UserModel(id: "", username: username_temp, email: cur_email, firstname: firstname_temp, lastname: lastname_temp, channels: [], university: university, terms: false)
                             Task {
                                 try await Task.sleep(nanoseconds: 0_800_000_000)
                                 /*Create account*/

@@ -133,7 +133,15 @@ struct ReportUserModal: View {
                         if cur_id == nil{
                             return
                         } else {
-                            let report = ReportUserModel(id: UUID().uuidString, userID: receiverID, reporterID: Auth.auth().currentUser?.uid ?? "", channelID: channelID, description: description, reportedAt: nil)
+                            var message_dict : [String : [String]] = [:]
+                            for message in messageManager.messages[channelID]!{
+                                if message_dict.keys.contains(message.senderID){
+                                    message_dict[message.senderID]?.append(message.message)
+                                } else {
+                                    message_dict[message.senderID] = [message.message]
+                                }
+                            }
+                            let report = ReportUserModel(id: UUID().uuidString, userID: receiverID, reporterID: Auth.auth().currentUser?.uid ?? "", channelID: channelID, description: description, messages: message_dict, reportedAt: nil)
                             Task{
                                 let success = messageManager.reportUser(report: report)
                                 if success{

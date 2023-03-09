@@ -55,12 +55,27 @@ class AuthManager: ObservableObject {
             try await Auth.auth().createUser(withEmail: email, password: password)
             let cur_id = Auth.auth().currentUser?.uid
             var user_temp = user
-            user_temp.id = cur_id
+            user_temp.id = cur_id ?? ""
             user_temp.joinedAt = nil
+            let usernameModel = UsernameModel(id: UUID().uuidString, username: user.username)
+            
+            let batch = db.batch()
+            
             do {
-                try db.collection("Users").document(user_temp.id!).setData(from: user_temp)
+                
+                let userRef = db.collection("Users").document(user_temp.id)
+                let usernameRef = db.collection("Usernames").document(usernameModel.username)
+                
+                batch.setData(user_temp.dictionaryRepresentation, forDocument: userRef)
+                batch.setData(usernameModel.dictionaryRepresentation, forDocument: usernameRef)
+                
+                try await batch.commit()
+                
+//                try db.collection("Users").document(user_temp.id).setData(from: user_temp)
+//                try db.collection("Usernames").document(usernameModel.username).setData(from: usernameModel)
                 let _ = sendVerificationEmail()
                 creation_complete.wrappedValue = true
+
             }
             
             catch {
@@ -212,7 +227,7 @@ class AuthManager: ObservableObject {
     /*
      Function for editing username
      */
-    func editUsername(newUsername : Binding<String>, error_message: Binding<String>) async -> Bool {
+    func editUsername(oldUsername: String, newUsername : Binding<String>, error_message: Binding<String>) async -> Bool {
        
         
         if newUsername.wrappedValue.replacingOccurrences(of: " ", with: "") == "" {
@@ -233,11 +248,24 @@ class AuthManager: ObservableObject {
         
         if cur_id != nil {
             let userRef = db.collection("Users").document(cur_id!)
+            let usernameRef = db.collection("Usernames").document(oldUsername)
+            let batch = db.batch()
+            
             do {
-                let snapshot = try await db.collection("Users").whereField("username", isEqualTo: newUsername_temp).getDocuments()
+                let snapshot = try await db.collection("Usernames").whereField("username", isEqualTo: newUsername_temp).getDocuments()
                 not_found = snapshot.isEmpty
+                
                 if not_found {
-                    try await userRef.updateData(["username" : newUsername_temp])
+                    
+                    let newUsernameModel = UsernameModel(id: UUID().uuidString, username: newUsername_temp)
+                    let newRef = db.collection("Usernames").document(newUsername_temp)
+                    
+                    batch.updateData(["username": newUsername_temp], forDocument: userRef)
+                    batch.deleteDocument(usernameRef)
+                    batch.setData(newUsernameModel.dictionaryRepresentation, forDocument: newRef)
+                    try await batch.commit()
+                    
+//                    try await userRef.updateData(["username" : newUsername_temp])
                     return true
                     
                 } else {

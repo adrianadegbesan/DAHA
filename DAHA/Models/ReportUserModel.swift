@@ -19,5 +19,6 @@ struct ReportUserModel: Identifiable, Codable {
     var reporterID: String
     var channelID: String
     var description: String
+    var messages: [String: [String]] 
     @ServerTimestamp var reportedAt: Timestamp?
 }

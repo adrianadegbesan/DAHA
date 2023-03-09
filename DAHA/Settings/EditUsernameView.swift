@@ -45,7 +45,7 @@ struct EditUsernameView: View {
                 .foregroundColor(Color(hex: deepBlue))
             Button("Change", action: {
                 Task {
-                    let success = await authentication.editUsername(newUsername: $username, error_message: $error_message)
+                    let success = await authentication.editUsername(oldUsername: username_system, newUsername: $username, error_message: $error_message)
                     if success {
                         username_system = username.replacingOccurrences(of: " ", with: "").lowercased()
                         success_alert = true
