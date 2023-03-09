@@ -157,8 +157,11 @@ class MessageManager: ObservableObject {
     }
     
     func deleteChat(channelID : String) async -> Bool{
+        
+        let subRef = db.collection("Messages").document(channelID).collection("messages")
         do {
             try await db.collection("Messages").document(channelID).delete()
+            deleteCollection(collectionRef: subRef)
            
             
             withAnimation{

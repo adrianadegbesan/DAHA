@@ -47,7 +47,7 @@ struct BuyButton: View {
                     .font(.system(size: 13, weight: .bold))
                 
                 if channelID != ""{
-                    NavigationLink(destination: ChatScreen(post: post, redirect: false, receiver: post.username, receiverID: post.userID,  channelID: channelID), isActive: $shouldNavigate){
+                    NavigationLink(destination: ChatScreen(post: post, redirect: false, receiver: post.username, receiverID: post.userID,  channelID: channelID, listen: true), isActive: $shouldNavigate){
                         EmptyView()
                     }
                 } else {
