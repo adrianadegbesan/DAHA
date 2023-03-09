@@ -229,7 +229,7 @@ struct PostScrollView: View {
                                 if !firestoreManager.listings.isEmpty{
                                     let id = firestoreManager.listings[0].id
                                     withAnimation{
-                                        value.scrollTo(id, anchor: .top)
+                                        value.scrollTo(id, anchor: .bottom)
                                     }
                                 }
                                 firestoreManager.scroll_up = false
@@ -238,7 +238,7 @@ struct PostScrollView: View {
                                 if !firestoreManager.requests.isEmpty{
                                     let id = firestoreManager.requests[0].id
                                     withAnimation{
-                                        value.scrollTo(id, anchor: .top)
+                                        value.scrollTo(id, anchor: .bottom)
                                     }
                                 }
                                 firestoreManager.scroll_up = false

@@ -62,14 +62,6 @@ class MessageManager: ObservableObject {
                         print("Error parsing channel: \(error.localizedDescription)")
                     }
                 }
-                
-//                temp.sort { $0.timestamp > $1.timestamp}
-//
-//                withAnimation{
-//                    self.messageChannels.removeAll()
-//                    self.messageChannels = temp
-//                    self.messageChannelsLoading = false
-//                }
             }
             
         }

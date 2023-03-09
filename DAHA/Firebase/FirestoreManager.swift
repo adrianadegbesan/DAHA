@@ -295,7 +295,6 @@ class FirestoreManager: ObservableObject {
         }
         do {
             try await db.collection("Universities").document("\(university)").collection("Posts").document(post.id).delete()
-//            try await db.collection("\(university)_Posts").document(post.id).delete()
             deleted.wrappedValue = true
         }
         catch {

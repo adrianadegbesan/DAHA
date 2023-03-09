@@ -13,7 +13,9 @@ struct DeleteButton: View {
     @State var deleted: Bool = false
     @State var error_alert : Bool = false
     @State var delete_alert : Bool = false
+    @State var modal : Bool?
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         Button(action: {
@@ -45,6 +47,12 @@ struct DeleteButton: View {
                               if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
                                   firestoreManager.my_posts.remove(at: index)
                               }
+                            
+                            if modal != nil{
+                                if modal! {
+                                    dismiss()
+                                }
+                            }
                         }
                    
                     }

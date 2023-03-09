@@ -47,6 +47,9 @@ struct PostModal: View {
                             .padding(.trailing, 10)
                         
                        
+                    } else {
+                        DeleteButton(post: post, modal: true)
+                            .padding(.trailing, 15)
                     }
                 }
                 .padding(.bottom, 10)

@@ -70,9 +70,6 @@ class AuthManager: ObservableObject {
                 batch.setData(usernameModel.dictionaryRepresentation, forDocument: usernameRef)
                 
                 try await batch.commit()
-                
-//                try db.collection("Users").document(user_temp.id).setData(from: user_temp)
-//                try db.collection("Usernames").document(usernameModel.username).setData(from: usernameModel)
                 let _ = sendVerificationEmail()
                 creation_complete.wrappedValue = true
 
