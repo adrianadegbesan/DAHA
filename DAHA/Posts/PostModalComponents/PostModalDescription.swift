@@ -44,7 +44,6 @@ struct PostModalDescription: View {
                     
                     ForEach(post.imageURLs.indices, id: \.self) { i in
                         
-                        ZStack{
                             
                             GeometryReader { proxy in
                                 WebImage(url: URL(string: post.imageURLs[i]))
@@ -70,6 +69,7 @@ struct PostModalDescription: View {
                                         Rectangle()
                                             .strokeBorder(lineWidth: 3)
                                     )
+                                    .padding(.horizontal)
                                     .onAppear{
                                         withAnimation(.easeIn(duration: 0.3)){
                                             opacity = 1
@@ -85,7 +85,6 @@ struct PostModalDescription: View {
                                         }
                                     }
                             } //: GeometryReader
-                        }
                  
                       } //: LOOP
                     

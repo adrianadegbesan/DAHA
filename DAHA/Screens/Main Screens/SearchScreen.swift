@@ -18,13 +18,14 @@ struct SearchScreen: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
     @State var searched = false
+    @State var navScreen : Bool?
     
     var body: some View {
         GeometryReader { _ in
             VStack(spacing: 0) {
                 
                 
-                if !searched{
+                if !searched && navScreen == nil{
 
                     HeaderView(title: "Search", showMessages: false, showSettings: false, showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil, screen: "Search")
                         .frame(alignment: .top)
@@ -161,6 +162,13 @@ struct SearchScreen: View {
             .frame(width: screenWidth)
             .onTapGesture {
                 hideKeyboard()
+            }
+            .onDisappear{
+                if navScreen != nil{
+                    if navScreen! {
+                        firestoreManager.search_results.removeAll()
+                    }
+                }
             }
         }
             .ignoresSafeArea(.keyboard, edges: .bottom)

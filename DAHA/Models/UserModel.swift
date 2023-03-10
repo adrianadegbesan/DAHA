@@ -23,7 +23,7 @@ struct UserModel: Identifiable, Codable {
     var channels: [String]
     var university: String
     var terms: Bool
-    var fcmtoken : String
+    var fcmToken : String
     @ServerTimestamp var joinedAt: Timestamp?
 }
 

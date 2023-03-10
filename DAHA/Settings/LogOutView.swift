@@ -46,7 +46,7 @@ struct LogOutView: View {
         .alert("Log Out", isPresented: $isPresented, actions: {
             Button("Log Out", role: .destructive, action: {
                 Task {
-                    let success = authentication.signOut()
+                    let success = await authentication.signOut()
                     if success {
                         isOnboardingViewActive = true
                         isSignedIn = false

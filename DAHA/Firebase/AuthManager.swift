@@ -148,10 +148,10 @@ class AuthManager: ObservableObject {
                     
                     terms_temp.wrappedValue = document["terms"] as! Bool
                     
-                    let fcmtoken_temp = document["fcmtoken"] as? String ?? ""
+                    let fcmtoken_temp = document["fcmToken"] as? String ?? ""
                     if  fcmtoken_temp != token {
                         if cur_id != nil{
-                            try await db.collection("Users").document(cur_id!).updateData(["fcmtoken" : token])
+                            try await db.collection("Users").document(cur_id!).updateData(["fcmToken" : token])
                         }
                     }
                     
@@ -196,8 +196,18 @@ class AuthManager: ObservableObject {
     /*
      Function for signing out user
      */
-    func signOut() -> Bool{
+    func signOut() async -> Bool{
         do {
+            let cur_id = Auth.auth().currentUser?.uid
+            if cur_id != nil{
+                do {
+                   let userRef = db.collection("Users").document(cur_id!)
+                   try await userRef.updateData(["fcmToken" : FieldValue.delete()])
+                }
+                catch {
+                    print("could not delete fcm token")
+                }
+            }
             try Auth.auth().signOut()
             return true
             

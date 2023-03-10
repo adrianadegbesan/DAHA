@@ -1,14 +1,13 @@
 //
-//  DMButton.swift
+//  SearchButton.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 1/7/23.
+//  Created by Adrian Adegbesan on 3/9/23.
 //
 
 import SwiftUI
 
-// Button used to go to DM Page
-struct DMButton: View {
+struct SearchButton: View {
     @State var shouldNavigate = false
     @Environment(\.colorScheme) var colorScheme
     
@@ -17,10 +16,10 @@ struct DMButton: View {
             shouldNavigate = true
             
         }) {
-            Image(systemName: "paperplane")
+            Image(systemName: "magnifyingglass")
                     .headerImage()
             
-            NavigationLink(destination: DMScreen(), isActive: $shouldNavigate){
+            NavigationLink(destination: SearchScreen(navScreen: true), isActive: $shouldNavigate){
                 EmptyView()
             }
         }
@@ -28,8 +27,8 @@ struct DMButton: View {
     }
 }
 
-struct DMButton_Previews: PreviewProvider {
+struct SearchButton_Previews: PreviewProvider {
     static var previews: some View {
-        DMButton()
+        SearchButton()
     }
 }

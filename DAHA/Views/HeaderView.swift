@@ -53,7 +53,10 @@ struct HeaderView: View {
                 Spacer()
 
                 if showMessages {
+                    SearchButton()
+//                        .padding(.trailing, 3)
                     DMButton()
+                    
                 } else if showSettings {
                     SettingsButton()
                 }

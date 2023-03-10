@@ -45,6 +45,8 @@ class AppDelegate: NSObject,UIApplicationDelegate{
     
     let gcmMessageIDKey = "gcm.message_id"
     
+    @State var shouldNavigate : Bool = false
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         
@@ -81,6 +83,9 @@ class AppDelegate: NSObject,UIApplicationDelegate{
       if let messageID = userInfo[gcmMessageIDKey] {
         print("Message ID: \(messageID)")
       }
+     
+      
+     
         
       
 
@@ -129,6 +134,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 
     // DO Something With MSG Data...
     
+
     if let messageID = userInfo[gcmMessageIDKey] {
       print("Message ID: \(messageID)")
     }
