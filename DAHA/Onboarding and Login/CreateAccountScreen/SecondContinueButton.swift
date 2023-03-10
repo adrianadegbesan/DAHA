@@ -31,6 +31,7 @@ struct SecondContinueButton: View {
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
     @AppStorage("joined") var joinedAt = ""
+    @AppStorage("fcmtoken") var token = ""
     @Environment(\.colorScheme) var colorScheme
 
     
@@ -85,7 +86,7 @@ struct SecondContinueButton: View {
                         let cur_email = email_system
                         if cur_email != ""{
                             /*Create user model to post*/
-                            let current = UserModel(id: "", username: username_temp, email: cur_email, firstname: firstname_temp, lastname: lastname_temp, channels: [], university: university, terms: false)
+                            let current = UserModel(id: "", username: username_temp, email: cur_email, firstname: firstname_temp, lastname: lastname_temp, channels: [], university: university, terms: false, fcmtoken: token)
                             Task {
                                 try await Task.sleep(nanoseconds: 0_800_000_000)
                                 /*Create account*/

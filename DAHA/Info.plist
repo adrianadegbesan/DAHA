@@ -14,9 +14,23 @@
 				<string>com.daha.DAHA</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1048179569705-3vqlup7hj9s4u30cqjn7m4k3vo3jr799</string>
+			</array>
+		</dict>
 	</array>
 	<key>EMAIL_TOKEN</key>
 	<string>$(EMAIL_TOKEN)</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
 </dict>

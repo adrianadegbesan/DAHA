@@ -21,6 +21,7 @@ class AuthManager: ObservableObject {
     @AppStorage("accountcreated") var isAccountCreated: Bool = false
     @AppStorage("id") var user_id = ""
     @AppStorage("isDarkMode") private var isDarkMode = "System"
+    @AppStorage("fcmtoken") private var token = ""
     @Published var userSession: FirebaseAuth.User?
     
     private var db = Firestore.firestore()
@@ -125,6 +126,11 @@ class AuthManager: ObservableObject {
         do {
             try await Auth.auth().signIn(withEmail: email, password: password)
             let cur_id = Auth.auth().currentUser?.uid
+            if cur_id == nil {
+                error_alert.wrappedValue = true
+                error_message.wrappedValue = "Couldn't find account"
+                return false
+            }
             do {
                 let snapshot = try await db.collection("Users").whereField("id", isEqualTo: cur_id ?? "0").getDocuments()
                 found = !snapshot.isEmpty
@@ -141,6 +147,13 @@ class AuthManager: ObservableObject {
                     joined_temp.wrappedValue = formatter.string(from: date.dateValue())
                     
                     terms_temp.wrappedValue = document["terms"] as! Bool
+                    
+                    let fcmtoken_temp = document["fcmtoken"] as? String ?? ""
+                    if  fcmtoken_temp != token {
+                        if cur_id != nil{
+                            try await db.collection("Users").document(cur_id!).updateData(["fcmtoken" : token])
+                        }
+                    }
                     
                     return true
                 }

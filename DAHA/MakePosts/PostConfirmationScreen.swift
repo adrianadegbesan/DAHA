@@ -30,9 +30,6 @@ struct PostConfirmationScreen: View {
                     .padding(.bottom, screenHeight * 0.13)
                     .zIndex(1)
             }
-//            ProgressView()
-//                .opacity(progressOpacity)
-//                .scaleEffect(2.5)
             VStack{
                 Spacer()
                 
