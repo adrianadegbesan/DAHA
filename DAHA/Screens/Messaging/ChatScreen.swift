@@ -79,13 +79,6 @@ struct ChatScreen: View {
            
             
         }
-        .onAppear{
-            if listen != nil && channelID != nil{
-                if listen! {
-                    messageManager.getMessages(channelID: channelID!)
-                }
-            }
-        }
 
         .navigationBarTitle("@\(receiver)")
         .navigationBarItems(trailing: channelID != nil ? MessageOptions(channelID: channelID!, username: receiver, receiverID: receiverID) : nil)

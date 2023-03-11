@@ -28,6 +28,7 @@ struct SearchScreen: View {
                 if !searched && navScreen == nil{
 
                     HeaderView(title: "Search", showMessages: false, showSettings: false, showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil, screen: "Search")
+//                        .padding(.trailing, 15)
                         .frame(alignment: .top)
                     
 //                    Spacer().frame(height: screenHeight * 0.07)

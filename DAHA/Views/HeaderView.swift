@@ -53,13 +53,13 @@ struct HeaderView: View {
                 Spacer()
 
                 if showMessages {
-                    SearchButton()
+//                    SearchButton()
 //                        .padding(.trailing, 3)
                     DMButton()
                     
                 } else if showSettings {
                     SettingsButton()
-                }
+                } 
                 
             } //: HStack
                 

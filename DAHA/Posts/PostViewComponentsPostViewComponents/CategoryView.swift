@@ -20,18 +20,18 @@ struct CategoryView: View {
         HStack{
             
             
-                (Text(Image(systemName: category_images[post.category] ?? "")) + Text(" ") + Text(post.category.uppercased()))
-                    .lineLimit(1)
-                    .fixedSize(horizontal: true, vertical: false)
-                    .minimumScaleFactor(0.001)
-                    .font(.system(size: 9, weight: .bold))
-                    .layoutPriority(1)
-                    .foregroundColor(.white)
-                    .padding(10)
-                    .background(Capsule().fill(Color(hex: category_colors[post.category] ?? "000000")))
-                    .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 2))
-                    .padding(.trailing, 6)
-//            }
+            (Text(Image(systemName: category_images[post.category] ?? "")) + Text(" ") + Text(post.category.uppercased()))
+                .lineLimit(1)
+                .fixedSize(horizontal: true, vertical: false)
+                .minimumScaleFactor(0.001)
+                .font(.system(size: 9, weight: .bold))
+                .layoutPriority(1)
+                .foregroundColor(.white)
+                .padding(10)
+                .background(Capsule().fill(Color(hex: category_colors[post.category] ?? "000000")))
+                .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 2))
+                .padding(.trailing, 6)
+            //            }
             
             
             Text(post.condition.uppercased())

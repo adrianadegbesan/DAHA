@@ -17,6 +17,7 @@ struct SavedScreen: View {
                 
                 
                 HeaderView(title: "Saved", showMessages: false, showSettings: false, showSearchBar: false, slidingBar: false, tabIndex: nil, tabs: nil, screen: "Saved")
+//                    .padding(.trailing, 15)
                 .frame(alignment: .top)
                 PostScrollView(posts: $firestoreManager.saved_posts, loading: $firestoreManager.saved_loading, screen: "Saved", query: .constant(""), type: .constant(""), category: .constant(""))
             } //: VStack
@@ -34,5 +35,6 @@ struct SavedScreen: View {
 struct SavedScreen_Previews: PreviewProvider {
     static var previews: some View {
         SavedScreen()
+            .environmentObject(FirestoreManager())
     }
 }

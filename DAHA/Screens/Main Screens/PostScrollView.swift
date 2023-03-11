@@ -21,6 +21,8 @@ struct PostScrollView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var screenOpacity = 0.1
     @State var time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
+    
+    @State var categoryFilter = ""
 
     
     var body: some View {
@@ -80,7 +82,12 @@ struct PostScrollView: View {
                             
                             Spacer().frame(height: 12)
                             
+                            
                             LazyVStack{
+                                
+                                CategoryFilterView(selected: $categoryFilter, screen: screen, posts: $posts, loading: $loading)
+                                    .padding(.bottom, 2)
+                                
                                 ForEach(posts) { post in
                                     
                                     ZStack{
@@ -103,15 +110,29 @@ struct PostScrollView: View {
                                                                     }
                                                                 }
                                                                 else if screen == "Listings"{
-                                                                    Task {
-                                                                       await  firestoreManager.updateListings()
+                                                                    if categoryFilter == ""{
+                                                                        Task {
+                                                                           await  firestoreManager.updateListings()
+                                                                        }
+                                                                    } else {
+                                                                        Task {
+                                                                            await firestoreManager.updateListingsFiltered(category: categoryFilter)
+                                                                        }
                                                                     }
+                                                                   
                                                                 }
 
                                                                 else if screen == "Requests" {
-                                                                    Task {
-                                                                        await firestoreManager.updateRequests()
+                                                                    if categoryFilter == "" {
+                                                                        Task {
+                                                                            await firestoreManager.updateRequests()
+                                                                        }
+                                                                    } else {
+                                                                        Task {
+                                                                            await firestoreManager.updateRequestsFiltered(category: categoryFilter)
+                                                                        }
                                                                     }
+                                                                    
                                                                 }
 
                                                                 else if screen == "Saved" {
@@ -156,15 +177,29 @@ struct PostScrollView: View {
                     .refreshable(action: {
                         LightFeedback()
                         if screen == "Listings"{
-                            Task {
-                                 await firestoreManager.getListings()
+                            if categoryFilter == ""{
+                                Task {
+                                     await firestoreManager.getListings()
+                                }
+                            } else {
+                                Task {
+                                    await firestoreManager.getListingsFiltered(category: categoryFilter)
+                                }
                             }
+                            
                         }
                         
                         if screen == "Requests" {
-                            Task {
-                                 await firestoreManager.getRequests()
+                            if categoryFilter == ""{
+                                Task {
+                                     await firestoreManager.getRequests()
+                                }
+                            } else {
+                                Task{
+                                    await firestoreManager.getRequestsFiltered(category: categoryFilter)
+                                }
                             }
+                            
                         }
                         
                         if screen == "Saved" {

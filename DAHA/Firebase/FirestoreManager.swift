@@ -45,6 +45,16 @@ class FirestoreManager: ObservableObject {
     @Published var user_refresh: Bool = false
     @Published var my_posts_loading: Bool = false
     
+    @Published var listings_filtered : [PostModel] = []
+    @Published var listings_filtered_last : QueryDocumentSnapshot? = nil
+    @Published var listings_filtered_loading: Bool = false
+    @Published var listings_filtered_refresh: Bool = true
+    
+    @Published var requests_filtered: [PostModel] = []
+    @Published var requests_filtered_last : QueryDocumentSnapshot? = nil
+    @Published var requests_filtered_loading: Bool = false
+    @Published var requests_filtered_refresh: Bool = true
+    
     @Published var search_results: [PostModel] = []
     @Published var search_last: QueryDocumentSnapshot? = nil
     @Published var search_results_loading: Bool = false
@@ -465,6 +475,56 @@ class FirestoreManager: ObservableObject {
 
     }
     
+    func getListingsFiltered(category: String) async {
+        do {
+            listings_filtered_loading = true
+            var temp: [PostModel] = []
+            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Listing").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                listings_filtered_last = documents.last!
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            listings_filtered = temp
+            listings_filtered_loading = false
+        }
+        
+        catch {
+            listings_filtered_loading = false
+            print("Error getting listings")
+        }
+    }
+    
+    func updateListingsFiltered(category: String) async {
+        if listings_filtered_last == nil {
+            return
+        }
+        
+        do {
+            var temp: [PostModel] = []
+            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Listing").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: listings_filtered_last!).limit(to: 15).getDocuments()
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                listings_filtered_last = documents.last!
+            } else {
+                return
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            
+            listings_filtered.append(contentsOf: temp)
+            
+        }
+        catch {
+            print("error updating listings")
+        }
+    }
+    
 
     /*
      Function to retrieve requests from specific university/channel from database
@@ -508,7 +568,7 @@ class FirestoreManager: ObservableObject {
             
             let documents = snapshot.documents
             if !documents.isEmpty{
-                listing_last = documents.last!
+                requests_last = documents.last!
             } else {
                 return
             }
@@ -525,6 +585,56 @@ class FirestoreManager: ObservableObject {
             print("error updating requests")
         }
         
+    }
+    
+    func  getRequestsFiltered(category: String) async {
+        do {
+            requests_filtered_loading = true
+            var temp: [PostModel] = []
+            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Request").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                requests_filtered_last = documents.last!
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            requests_filtered = temp
+            requests_filtered_loading = false
+        }
+        
+        catch {
+            requests_filtered_loading = false
+            print("Error getting requests")
+        }
+    }
+    
+    func updateRequestsFiltered(category: String) async {
+        if requests_filtered_last == nil {
+            return
+        }
+        
+        do {
+            var temp: [PostModel] = []
+            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Request").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: requests_filtered_last!).limit(to: 15).getDocuments()
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+                requests_filtered_last = documents.last!
+            } else {
+                return
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            
+            requests_filtered.append(contentsOf: temp)
+            
+        }
+        catch {
+            print("error updating requests")
+        }
     }
     
     /*
