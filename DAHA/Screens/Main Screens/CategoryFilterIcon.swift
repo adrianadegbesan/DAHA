@@ -25,12 +25,24 @@ struct CategoryFilterIcon: View {
                 withAnimation{
                     selected = ""
                     if screen == "Listings"{
-                        loading = firestoreManager.listings_loading
-                        posts = firestoreManager.listings
+                        Task {
+                            loading = firestoreManager.listings_loading
+                            await firestoreManager.getListings()
+                            posts = firestoreManager.listings
+                            firestoreManager.listings_filtered.removeAll()
+                        }
+                       
+                        
+                        
+                      
                     }
                     else if screen == "Requests"{
-                        loading = firestoreManager.requests_loading
-                        posts = firestoreManager.requests
+                        Task {
+                            loading = firestoreManager.requests_loading
+                            await firestoreManager.getRequests()
+                            posts = firestoreManager.requests
+                            firestoreManager.requests_filtered.removeAll()
+                        }
                     }
                 }
             } else {
@@ -38,18 +50,20 @@ struct CategoryFilterIcon: View {
                     selected = category
                     if screen == "Listings"{
                         Task{
+                            loading = firestoreManager.listings_filtered_loading
                             await firestoreManager.getListingsFiltered(category: category)
+                            posts = firestoreManager.listings_filtered
                         }
-                        loading = firestoreManager.listings_filtered_loading
-                        posts = firestoreManager.listings_filtered
+                       
                         
                     }
                     else if screen == "Requests" {
                         Task {
+                            loading = firestoreManager.requests_filtered_loading
                             await firestoreManager.getRequestsFiltered(category: category)
+                            posts = firestoreManager.requests_filtered
                         }
-                        loading = firestoreManager.requests_filtered_loading
-                        posts = firestoreManager.requests_filtered
+                    
                     }
                 }
             }

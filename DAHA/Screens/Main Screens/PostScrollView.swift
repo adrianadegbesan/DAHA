@@ -32,6 +32,14 @@ struct PostScrollView: View {
                 
                 ScrollViewReader { value in
                     RefreshableScrollView {
+                    
+                    
+                    if screen != "Saved" && screen != "User" && screen != "Search"{
+                        Spacer().frame(height: 12)
+                        CategoryFilterView(selected: $categoryFilter, screen: screen, posts: $posts, loading: $loading)
+                            .padding(.bottom, 3)
+                    }
+                        
                         
                         if posts.isEmpty && screen == "Search" {
                             if loading {
@@ -62,14 +70,20 @@ struct PostScrollView: View {
                       if posts.isEmpty && screen != "Search" {
                           
                           if loading && screen != "Saved"{
-                              ZStack {
+                              Spacer().frame(height: 12)
+                              
+                              LazyVStack {
                                   ProgressView()
                                       .scaleEffect(1.2)
                                       .padding(.top, 10)
                               }
                               .frame(width: screenWidth)
                           } else {
-                              ZStack {
+                              Spacer().frame(height: 12)
+                              
+                              LazyVStack {
+                                 
+                                
                                   Image("Logo")
                                       .opacity(0.75)
                                       .overlay(Rectangle().stroke(.white, lineWidth: 2))
@@ -80,13 +94,10 @@ struct PostScrollView: View {
                         
                         } else {
                             
-                            Spacer().frame(height: 12)
+                            
                             
                             
                             LazyVStack{
-                                
-                                CategoryFilterView(selected: $categoryFilter, screen: screen, posts: $posts, loading: $loading)
-                                    .padding(.bottom, 2)
                                 
                                 ForEach(posts) { post in
                                     
