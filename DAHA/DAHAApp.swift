@@ -132,22 +132,22 @@ extension AppDelegate: MessagingDelegate{
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
 
-  func userNotificationCenter(_ center: UNUserNotificationCenter,
-                              willPresent notification: UNNotification,
-    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    let userInfo = notification.request.content.userInfo
-
-    // DO Something With MSG Data...
-    
-
-    if let messageID = userInfo[gcmMessageIDKey] {
-      print("Message ID: \(messageID)")
-    }
-
-    print(userInfo)
-
-    completionHandler([[.banner,.badge, .sound]])
-  }
+//  func userNotificationCenter(_ center: UNUserNotificationCenter,
+//                              willPresent notification: UNNotification,
+//    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//    let userInfo = notification.request.content.userInfo
+//
+//    // DO Something With MSG Data...
+//
+//
+//    if let messageID = userInfo[gcmMessageIDKey] {
+//      print("Message ID: \(messageID)")
+//    }
+//
+//    print(userInfo)
+//
+//    completionHandler([[.banner,.badge, .sound]])
+//  }
 
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               didReceive response: UNNotificationResponse,
@@ -155,6 +155,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     let userInfo = response.notification.request.content.userInfo
     if let messageID = userInfo[gcmMessageIDKey] {
       print("Message ID: \(messageID)")
+      shouldNavigate = true
     }
 
     // DO Something With MSG Data...

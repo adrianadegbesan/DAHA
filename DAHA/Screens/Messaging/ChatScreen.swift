@@ -18,7 +18,8 @@ struct ChatScreen: View {
     @State var sent: Bool = false
     @FocusState var keyboardFocused : Bool
     @EnvironmentObject var messageManager : MessageManager
-    @Environment(\.colorScheme) var colorScheme 
+    @Environment(\.colorScheme) var colorScheme
+    @State var listener : ListenerRegistration?
     
     
     var body: some View {
@@ -71,7 +72,19 @@ struct ChatScreen: View {
                     }
                     .onChange(of: channelID){ _ in
                         if channelID != nil {
-                            messageManager.getMessages(channelID: channelID!)
+                            listener = messageManager.getMessages(channelID: channelID!)
+                        }
+                    }
+                    .onAppear{
+                        if listen != nil && channelID != nil{
+                            if listen! {
+                                listener = messageManager.getMessages(channelID: channelID!)
+                            }
+                        }
+                    }
+                    .onDisappear{
+                        if listener != nil{
+                            listener?.remove()
                         }
                     }
             }

@@ -20,10 +20,11 @@ struct MessagePreview: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var messageManager : MessageManager
+    @State var listener : ListenerRegistration?
     
     var body: some View {
         
-        NavigationLink( destination: ChatScreen(post: channel.post, redirect: false, receiver: channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username, receiverID:  channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender : channel.receiver, channelID: channel.id) ){
+        NavigationLink( destination: ChatScreen(post: channel.post, redirect: false, receiver: channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username, receiverID:  channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender : channel.receiver, channelID: channel.id, listen: true) ){
             VStack{
                 HStack{
                     VStack{
@@ -108,7 +109,12 @@ struct MessagePreview: View {
         .alert("Unable to Delete Chat", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later.")})
        
         .onAppear{
-            messageManager.getMessages(channelID: channel.id)
+            listener = messageManager.getMessages(channelID: channel.id)
+        }
+        .onDisappear{
+            if listener != nil{
+                listener?.remove()
+            }
         }
     }
     

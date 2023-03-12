@@ -653,8 +653,8 @@
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
             landmarkType = "7">
             <Locations>
@@ -731,8 +731,8 @@
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
             landmarkType = "7">
             <Locations>
@@ -779,8 +779,8 @@
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -795,8 +795,8 @@
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
             landmarkType = "7">
             <Locations>

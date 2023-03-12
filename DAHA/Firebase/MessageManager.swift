@@ -68,12 +68,13 @@ class MessageManager: ObservableObject {
         
     }
     
-    func getMessages(channelID : String) {
+    func getMessages(channelID : String) -> ListenerRegistration? {
 //        messagesLoading = true
+        var listener : ListenerRegistration? = nil
         if Auth.auth().currentUser != nil{
             
             
-            db.collection("Messages").document(channelID).collection("messages").addSnapshotListener{ querySnapshot, error in
+            listener = db.collection("Messages").document(channelID).collection("messages").addSnapshotListener{ querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     print("error fetching documents:  \(String(describing: error))")
 //                    self.messagesLoading = false
@@ -100,6 +101,10 @@ class MessageManager: ObservableObject {
                 }
                 
             }
+            return listener
+            
+        } else {
+            return nil
         }
     }
     

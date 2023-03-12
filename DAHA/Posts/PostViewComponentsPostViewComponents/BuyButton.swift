@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct BuyButton: View {
     
@@ -15,6 +16,7 @@ struct BuyButton: View {
     @State private var channelID: String = ""
     @EnvironmentObject var messageManager : MessageManager
     @Environment(\.colorScheme) var colorScheme
+    @State var listener : ListenerRegistration?
     
     var body: some View {
         Button(action: {
@@ -28,7 +30,7 @@ struct BuyButton: View {
                 
                 if channel != nil{
                     channelID = channel!.id
-                    messageManager.getMessages(channelID: channelID)
+                    listener = messageManager.getMessages(channelID: channelID)
                 }
             }
             shouldNavigate = true
@@ -71,7 +73,11 @@ struct BuyButton: View {
                     Capsule().stroke(.white, lineWidth: 1.5)
                 }
             }
-            //ALERT
+            .onDisappear{
+                if listener != nil{
+                    listener?.remove()
+                }
+            }
         }
     }
 }

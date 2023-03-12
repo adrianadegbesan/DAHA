@@ -48,7 +48,6 @@ struct ContentView: View {
       }
     } //: ZStack
     .onAppear{
-        print(delegate.shouldNavigate)
         if delegate.shouldNavigate{
             if isSignedIn && verified && agreedToTerms{
                 delegate.shouldNavigate = false
@@ -57,7 +56,6 @@ struct ContentView: View {
         }
     }
     .onChange(of: delegate.shouldNavigate){ value in
-        print(delegate.shouldNavigate)
         if delegate.shouldNavigate {
             if isSignedIn && verified && agreedToTerms{
                 delegate.shouldNavigate = false
