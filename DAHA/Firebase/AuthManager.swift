@@ -231,17 +231,37 @@ class AuthManager: ObservableObject {
     /*
      Function for deleting account
      */
-    func deleteUser() -> Bool{
+    func deleteUser() async -> Bool{
         var success = false
         let user = Auth.auth().currentUser
-        user?.delete { error in
-            if let error = error{
-                print(error.localizedDescription)
-            } else {
-                success = true
-            }
+        let usernameDeleted = await deleteUsername()
+        
+        if !usernameDeleted {
+            print("Could not delete username")
+            return false
         }
+        
+        do {
+            try await user?.delete()
+            success = true
+        }
+        catch {
+            print(error.localizedDescription)
+            return false
+        }
+        
         return success
+    }
+    
+    func deleteUsername() async -> Bool {
+        let usernameRef = db.collection("Usernames").document(username_system)
+        do {
+            try await usernameRef.delete()
+            return true
+        }
+        catch {
+            return false
+        }
     }
     
     /*

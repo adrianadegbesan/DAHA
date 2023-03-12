@@ -34,7 +34,7 @@ struct NotificationsView: View {
                     }
                     .frame(width: screenWidth * 0.1)
                     
-                    Text("Notification Settings")
+                    Text("Notifications")
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                 }
             }

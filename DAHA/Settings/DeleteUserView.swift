@@ -27,9 +27,6 @@ struct DeleteUserView: View {
     @EnvironmentObject var authentication : AuthManager
     
     var body: some View {
-        Button(action: {
-            firstPresented = true
-        }){
             VStack(alignment: .leading){
                 HStack {
                     HStack {
@@ -43,8 +40,11 @@ struct DeleteUserView: View {
                 }
 //                Divider()
             }
+            .onTapGesture {
+                firstPresented = true
+            }
             .alert("Enter Password", isPresented: $firstPresented, actions: {
-                SecureField("Password", text: $password)
+                TextField("Password", text: $password)
                     .foregroundColor(Color(hex: deepBlue))
                 Button("Continue", role: .destructive, action: {
                     Task {
@@ -57,29 +57,27 @@ struct DeleteUserView: View {
                     }
                 })
             }, message: {Text("Please enter your password to continue")})
-        }
-        
-        .alert("Delete Account", isPresented: $isPresented, actions: {
-            Button("Delete", role: .destructive, action: {
-                Task {
-                    let success = authentication.deleteUser()
-                    if success {
-                        isOnboardingViewActive = true
-                        isSignedIn = false
-                        agreedToTerms = false
-                        university = ""
-                        username_system = ""
-                        email_system = ""
-                        user_id = ""
-                        isDarkMode = "System"
-                    } else {
-                        error_message = "Please check your network connection and try again later"
-                        error_alert = true
+            .alert("Delete Account", isPresented: $isPresented, actions: {
+                Button("Delete", role: .destructive, action: {
+                    Task {
+                        let success = await authentication.deleteUser()
+                        if success {
+                            isOnboardingViewActive = true
+                            isSignedIn = false
+                            agreedToTerms = false
+                            university = ""
+                            username_system = ""
+                            email_system = ""
+                            user_id = ""
+                            isDarkMode = "System"
+                        } else {
+                            error_message = "Please check your network connection and try again later"
+                            error_alert = true
+                        }
                     }
-                }
-            })
-        }, message: { Text("Are you sure you want to delete your account? This action cannot be reversed.")})
-        .alert("Error Deleting Account", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
+                })
+            }, message: { Text("Are you sure you want to delete your account? This action cannot be reversed.")})
+            .alert("Error Deleting Account", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
     }
 }
 
