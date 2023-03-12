@@ -58,7 +58,7 @@ class AuthManager: ObservableObject {
             var user_temp = user
             user_temp.id = cur_id ?? ""
             user_temp.joinedAt = nil
-            let usernameModel = UsernameModel(id: UUID().uuidString, username: user.username)
+            let usernameModel = UsernameModel(id: cur_id ?? "", username: user.username)
             
             let batch = db.batch()
             
@@ -277,7 +277,9 @@ class AuthManager: ObservableObject {
                 
                 if not_found {
                     
-                    let newUsernameModel = UsernameModel(id: UUID().uuidString, username: newUsername_temp)
+                    
+                    
+                    let newUsernameModel = UsernameModel(id: cur_id!, username: newUsername_temp)
                     let newRef = db.collection("Usernames").document(newUsername_temp)
                     
                     batch.updateData(["username": newUsername_temp], forDocument: userRef)
@@ -285,7 +287,6 @@ class AuthManager: ObservableObject {
                     batch.setData(newUsernameModel.dictionaryRepresentation, forDocument: newRef)
                     try await batch.commit()
                     
-//                    try await userRef.updateData(["username" : newUsername_temp])
                     return true
                     
                 } else {

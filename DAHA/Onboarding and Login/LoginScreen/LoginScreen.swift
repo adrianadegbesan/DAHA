@@ -26,6 +26,9 @@ struct LoginScreen: View {
     
     @State var uploading = false
     
+    @FocusState var keyboardEmail : Bool
+    @FocusState var keyboardPassword : Bool
+    
     var body: some View {
         ZStack{
             if uploading{
@@ -35,34 +38,51 @@ struct LoginScreen: View {
                     .padding(.bottom, screenHeight * 0.13)
                     .zIndex(1)
             }
-            ScrollView{
-                Spacer().frame(height: screenHeight * 0.06)
-                Image("Logo")
-                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
-                    .padding(.bottom, 8)
-                Text("DOES ANYONE HAVE A...?")
-                    .font(
-                        .system(size:22, weight: .bold)
-                    )
-                    .padding(.bottom, 50)
-                
-                TextField("Email", text: $email)
-                    .autocapitalization(.none)
-                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "envelope.fill")))
-                    .padding(.bottom, 30)
-                    .padding(.horizontal, screenWidth * 0.1)
+            ScrollViewReader{ proxy in
+                ScrollView{
+                    Spacer().frame(height: screenHeight * 0.06)
+                    Image("Logo")
+                        .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
+                        .padding(.bottom, 8)
+                    Text("DOES ANYONE HAVE A...?")
+                        .font(
+                            .system(size:22, weight: .bold)
+                        )
+                        .padding(.bottom, 50)
+                    
+                    TextField("Email", text: $email)
+                        .autocapitalization(.none)
+                        .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "envelope.fill")))
+                        .padding(.bottom, 30)
+                        .padding(.horizontal, screenWidth * 0.1)
+                        .focused($keyboardEmail)
+                        .id(1)
 
-                SecureField("Password", text: $password)
-                    .autocapitalization(.none)
-                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "lock.fill")))
-                    .padding(.bottom, 40)
-                    .padding(.horizontal, screenWidth * 0.1)
-                
-                SignInButton(email: $email, password: $password, uploading: $uploading)
-                ForgotPasswordButton()
+                    SecureField("Password", text: $password)
+                        .autocapitalization(.none)
+                        .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "lock.fill")))
+                        .padding(.bottom, 40)
+                        .padding(.horizontal, screenWidth * 0.1)
+                        .focused($keyboardPassword)
+                        .id(2)
+                    
+                    SignInButton(email: $email, password: $password, uploading: $uploading)
+                    ForgotPasswordButton()
+                }
+                .opacity(screenOpacity)
+                .disabled(uploading)
+                .onChange(of: keyboardEmail){ value in
+                    if keyboardEmail{
+                        proxy.scrollTo(1)
+                    }
+                }
+                .onChange(of: keyboardPassword){ value in
+                    if keyboardPassword{
+                        proxy.scrollTo(2)
+                    }
+                    
+                }
             }
-            .opacity(screenOpacity)
-            .disabled(uploading)
         }
         .onTapGesture {
             hideKeyboard()

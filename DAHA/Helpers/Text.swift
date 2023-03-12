@@ -94,17 +94,19 @@ func getDomain(email: String) -> String{
 extension String {
     // Function used to generate string sequences for search functionality
     func generateStringSequence() -> [String] {
-        guard self.count > 0 else {return [] }
+        guard self.count > 0 else { return [] }
         var substrings = [String]()
-        for i in 0 ..< self.count {
-            for j in i+1 ... self.count {
-                substrings.append(String(self[self.index(self.startIndex, offsetBy: i) ..< self.index(self.startIndex, offsetBy: j)]))
+        for i in 0..<self.count {
+            for j in i+1...self.count {
+                let substring = String(self[self.index(self.startIndex, offsetBy: i)..<self.index(self.startIndex, offsetBy: j)])
+                if substring.count >= 2 {
+                    substrings.append(substring.lowercased())
+                }
             }
         }
-        
-        substrings = substrings.map { $0.lowercased() }
         return substrings
     }
+
 }
 
 extension View {

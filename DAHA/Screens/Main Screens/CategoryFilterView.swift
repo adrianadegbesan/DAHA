@@ -20,10 +20,13 @@ struct CategoryFilterView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack{
+                Spacer().frame(width: 5)
                 ForEach(categories, id: \.self){ category in
                     CategoryFilterIcon(category: category, selected: $selected, screen: screen, posts: $posts, loading: $loading)
-                        .padding(10)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 5)
                 }
+                Spacer().frame(width: 5)
             }
         }
     }

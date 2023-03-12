@@ -23,9 +23,17 @@ struct PostDescriptionView: View {
             
             HStack{
                 if #available(iOS 16.0, *) {
-                    Text(post.description)
-                        .font(.system(size: 11))
-                        .lineLimit(2, reservesSpace: (2 != 0))
+                    if post.description == ""{
+                        Text("DAHA")
+                            .font(.system(size: 11))
+                            .lineLimit(2, reservesSpace: (2 != 0))
+                            .foregroundColor(.clear)
+                    } else {
+                        Text(post.description)
+                            .font(.system(size: 11))
+                            .lineLimit(2, reservesSpace: (2 != 0))
+                    }
+                        
                 } else {
                     Text(post.description)
                         .font(.system(size: 11))

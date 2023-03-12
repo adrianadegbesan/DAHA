@@ -31,9 +31,6 @@ struct CategoryFilterIcon: View {
                             posts = firestoreManager.listings
                             firestoreManager.listings_filtered.removeAll()
                         }
-                       
-                        
-                        
                       
                     }
                     else if screen == "Requests"{
@@ -77,7 +74,6 @@ struct CategoryFilterIcon: View {
                 .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
                 .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.black, lineWidth: (selected == category) ? 4 : 1.5))
                 .overlay((colorScheme == .light && category == "General") ? Capsule().stroke(.gray, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.clear, lineWidth: (selected == category) ? 4 : 1.5))
-                .padding(.trailing, 10)
         }
         
     }

@@ -16,6 +16,7 @@ struct DAHAApp: App {
     @StateObject var firestoreManager = FirestoreManager()
     @StateObject var messagesManager = MessageManager()
     @StateObject var network = Network()
+    @StateObject var notificationManager = NotificationManager()
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     
 
@@ -30,6 +31,7 @@ struct DAHAApp: App {
             .environmentObject(firestoreManager)
             .environmentObject(messagesManager)
             .environmentObject(network)
+            .environmentObject(notificationManager)
             .preferredColorScheme(isDarkMode == "On" ? .dark : (isDarkMode == "Off" ? .light : nil))
             /*Dark Mode Ternary Operator*/
         }

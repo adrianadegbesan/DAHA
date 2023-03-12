@@ -95,9 +95,10 @@ struct PostScrollView: View {
                         } else {
                             
                             
-                            
-                            
                             LazyVStack{
+                                if screen != "Listings" && screen != "Requests"{
+                                    Spacer().frame(height: 12)
+                                }
                                 
                                 ForEach(posts) { post in
                                     
@@ -229,7 +230,9 @@ struct PostScrollView: View {
                         if screen == "Listings"{
                             if firestoreManager.listings_refresh {
                                 firestoreManager.listings_refresh = false
+                               
                                 Task {
+                                   categoryFilter = ""
                                    await firestoreManager.getListings()
                                     }
                                 }
@@ -240,6 +243,7 @@ struct PostScrollView: View {
                             if firestoreManager.requests_refresh {
                                 firestoreManager.requests_refresh = false
                                 Task {
+                                   categoryFilter = ""
                                    await firestoreManager.getRequests()
                                     }
                                 }
