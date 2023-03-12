@@ -262,20 +262,11 @@ class FirestoreManager: ObservableObject {
         post_temp.channel = university
     
         do {
-            
-            try db.collection("Universities").document("\(university)").collection("Posts").document(post.id).setData(from: post_temp){ err in
-                     if let err = err{
-                         completion(uploadError(err.localizedDescription))
-                     } else {
-                         print("Post completed")
-                         post_created.wrappedValue = true
-                         print(post_created.wrappedValue)
-
-                     }
-                 }
+            try db.collection("Universities").document("\(university)").collection("Posts").document(post.id).setData(from: post_temp)
+            print("Post completed")
+            post_created.wrappedValue = true
+            print(post_created.wrappedValue)
                 
-
-
          }
            catch {
                completion(uploadError("Error uploading post"))

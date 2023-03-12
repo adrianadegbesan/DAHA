@@ -18,6 +18,10 @@ struct DAHAApp: App {
     @StateObject var network = Network()
     @StateObject var notificationManager = NotificationManager()
     @AppStorage("isDarkMode") private var isDarkMode = "System"
+    @State private var selection: NavigationSelection? = nil
+    @AppStorage("signedin") var isSignedIn: Bool = false
+    @AppStorage("termsagreed") var agreedToTerms: Bool = false
+    @AppStorage("emailverified") var verified: Bool = false
     
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -31,23 +35,25 @@ struct DAHAApp: App {
             .environmentObject(firestoreManager)
             .environmentObject(messagesManager)
             .environmentObject(network)
-            .environmentObject(notificationManager)
+            .environmentObject(delegate)
             .preferredColorScheme(isDarkMode == "On" ? .dark : (isDarkMode == "Off" ? .light : nil))
             /*Dark Mode Ternary Operator*/
         }
     }
 }
 
-class AppDelegate: NSObject,UIApplicationDelegate{
+class AppDelegate: NSObject,UIApplicationDelegate, ObservableObject{
     @AppStorage("fcmtoken") private var token = ""
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @AppStorage("emailverified") var verified: Bool = false
+        
+    @Published var shouldNavigate = false
     
     let gcmMessageIDKey = "gcm.message_id"
     
-    @State var shouldNavigate : Bool = false
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -84,12 +90,9 @@ class AppDelegate: NSObject,UIApplicationDelegate{
         // DO Something With Message Data Here....
       if let messageID = userInfo[gcmMessageIDKey] {
         print("Message ID: \(messageID)")
+       
       }
      
-      
-     
-        
-      
 
       // Print full message.
       print(userInfo)
@@ -162,3 +165,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 }
 
 
+enum NavigationSelection {
+    case Test
+}

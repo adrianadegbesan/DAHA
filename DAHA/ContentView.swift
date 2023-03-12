@@ -18,11 +18,15 @@ struct ContentView: View {
   @AppStorage("emailverified") var verified: Bool = false
   @AppStorage("id") var user_id = ""
   @AppStorage("joined") var joinedAt = ""
+  @AppStorage("notifications") var notifications : Bool = true
     
   @EnvironmentObject var authentication: AuthManager
   @EnvironmentObject var network: Network
+  @EnvironmentObject var delegate: AppDelegate
 
   @State private var opacity = 0.2
+    
+  @State private var shouldNavigate = false
     
   
   var body: some View {
@@ -37,8 +41,32 @@ struct ContentView: View {
         TermsConditionsScreen()
       } else if isSignedIn && verified && agreedToTerms{ 
          MainScreen()
+          
+          NavigationLink(destination: Test(), isActive: $shouldNavigate){
+              EmptyView()
+          }
       }
     } //: ZStack
+    .onAppear{
+        print(delegate.shouldNavigate)
+        if delegate.shouldNavigate{
+            if isSignedIn && verified && agreedToTerms{
+                delegate.shouldNavigate = false
+                shouldNavigate = true
+            }
+        }
+    }
+    .onChange(of: delegate.shouldNavigate){ value in
+        print(delegate.shouldNavigate)
+        if delegate.shouldNavigate {
+            if isSignedIn && verified && agreedToTerms{
+                delegate.shouldNavigate = false
+                shouldNavigate = true
+            }
+
+        }
+        
+    }
     .opacity(opacity)
     .onAppear{
         withAnimation(.easeIn(duration: 0.15)){
