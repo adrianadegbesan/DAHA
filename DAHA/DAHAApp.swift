@@ -94,10 +94,14 @@ class AppDelegate: NSObject,UIApplicationDelegate, ObservableObject{
         print("Message ID: \(messageID)")
        
       }
+        
+        if let channelID = userInfo["channelID"]{
+            print("Channel ID: \(channelID)")
+        }
      
 
       // Print full message.
-      print(userInfo)
+//      print(userInfo)
 
       completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -158,14 +162,12 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     if let messageID = userInfo[gcmMessageIDKey] {
       print("Message ID: \(messageID)")
     }
-    guard let channelID = userInfo["channelID"] as? String else {
-        completionHandler()
-        return
-    }
       
-   channelID_cur = channelID
-   shouldNavigate = true
-
+      if let channelID = userInfo["channelID"]{
+          print("Channel ID: \(channelID)")
+          channelID_cur = channelID as? String ?? ""
+          shouldNavigate = true
+      }
     // DO Something With MSG Data...
     print(userInfo)
 

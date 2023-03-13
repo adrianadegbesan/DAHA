@@ -47,6 +47,7 @@ class MessageManager: ObservableObject {
                         }
                     }
                     self.messageChannels.sort { $0.timestamp > $1.timestamp}
+                    print("Found Channel!")
                 }
                 return channel
             }
@@ -97,16 +98,51 @@ class MessageManager: ObservableObject {
         
     }
     
+    func getMessagesOneTime(channelID : String ) async -> Bool{
+        if Auth.auth().currentUser?.uid != nil{
+            do {
+                let snapshot = try await db.collection("Messages").document(channelID).collection("messages").getDocuments()
+                let documents = snapshot.documents
+                for document in documents{
+                    do {
+                        let message = try document.data(as: MessageModel.self)
+                        withAnimation{
+                            if self.messages.keys.contains(channelID){
+                                if !(self.messages[channelID]!.contains(where: { $0.id == message.id})){
+                                    self.messages[channelID]?.append(message)
+                                }
+                            } else {
+                                self.messages[channelID] = [message]
+                            }
+                            self.messages[channelID]?.sort { $0.timestamp < $1.timestamp}
+                        }
+                    }
+                    catch {
+                        return false
+                    }
+                }
+                return true
+                
+            }
+            catch {
+                print("Error getting messages")
+                return false
+            }
+            
+        } else {
+            print("Error getting messages")
+            return false
+        }
+    }
+    
     func getMessages(channelID : String) -> ListenerRegistration? {
-//        messagesLoading = true
         var listener : ListenerRegistration? = nil
         if Auth.auth().currentUser != nil{
             
-            
+            print("channel ID is \(channelID) for getting messages")
             listener = db.collection("Messages").document(channelID).collection("messages").addSnapshotListener{ querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     print("error fetching documents:  \(String(describing: error))")
-//                    self.messagesLoading = false
                     return
                 }
                 

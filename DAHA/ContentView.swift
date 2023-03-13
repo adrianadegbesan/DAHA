@@ -55,36 +55,51 @@ struct ContentView: View {
       }
     } //: ZStack
     .onAppear{
-        if delegate.shouldNavigate{
-            if isSignedIn && verified && agreedToTerms{
-                delegate.shouldNavigate = false
+        if delegate.channelID_cur != "" {
+            if isSignedIn && verified && agreedToTerms && delegate.shouldNavigate{
                 Task {
-                    if delegate.channelID_cur != "" {
+                       print("\(delegate.channelID_cur)")
                        channel = await messagingManager.getChannel(channelID: delegate.channelID_cur)
+                        if channel != nil{
+                            print("not nil")
+                        } else {
+                            print("nil")
+                        }
                         if channel != nil {
-                            delegate.channelID_cur = ""
-                            listener = messagingManager.getMessages(channelID: delegate.channelID_cur)
-                            if listener != nil{
-                                 try await Task.sleep(nanoseconds: 0_400_000_000)
-                                 listener?.remove()
+                            let success = await messagingManager.getMessagesOneTime(channelID: channel!.id)
+                            if success{
+                                 delegate.shouldNavigate = false
+                                 delegate.channelID_cur = ""
                                  shouldNavigate = true
                             }
                         }
-                       
-                    }
                 }
             }
         }
     }
-    .onChange(of: delegate.shouldNavigate){ value in
-        if delegate.shouldNavigate {
-            if isSignedIn && verified && agreedToTerms{
-                delegate.shouldNavigate = false
-                shouldNavigate = true
+    .onChange(of: delegate.channelID_cur){ value in
+        if delegate.channelID_cur != "" {
+            if isSignedIn && verified && agreedToTerms && delegate.shouldNavigate{
+                let curId = value
+                Task {
+                       print("\(delegate.channelID_cur)")
+                       channel = await messagingManager.getChannel(channelID: curId)
+                        if channel != nil{
+                            print("not nil")
+                        } else {
+                            print("nil")
+                        }
+                        if channel != nil {
+                            let success = await messagingManager.getMessagesOneTime(channelID: channel!.id)
+                            if success{
+                                 delegate.shouldNavigate = false
+                                 delegate.channelID_cur = ""
+                                 shouldNavigate = true
+                            }
+                        }
+                }
             }
-
         }
-        
     }
     .opacity(opacity)
     .onAppear{
