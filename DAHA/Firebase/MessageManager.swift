@@ -33,7 +33,6 @@ class MessageManager: ObservableObject {
     
     func getChannel(channelID: String) async -> MessageChannelModel? {
         if Auth.auth().currentUser != nil{
-            
             do {
                 let snapshot = try await db.collection("Messages").document(channelID).getDocument()
                 let channel = try snapshot.data(as: MessageChannelModel.self)
