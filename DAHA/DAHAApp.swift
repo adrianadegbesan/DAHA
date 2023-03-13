@@ -50,6 +50,8 @@ class AppDelegate: NSObject,UIApplicationDelegate, ObservableObject{
     @AppStorage("emailverified") var verified: Bool = false
         
     @Published var shouldNavigate = false
+    @Published var message = false
+    @Published var channelID_cur = ""
     
     let gcmMessageIDKey = "gcm.message_id"
     
@@ -155,8 +157,14 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     let userInfo = response.notification.request.content.userInfo
     if let messageID = userInfo[gcmMessageIDKey] {
       print("Message ID: \(messageID)")
-      shouldNavigate = true
     }
+    guard let channelID = userInfo["channelID"] as? String else {
+        completionHandler()
+        return
+    }
+      
+   channelID_cur = channelID
+   shouldNavigate = true
 
     // DO Something With MSG Data...
     print(userInfo)
