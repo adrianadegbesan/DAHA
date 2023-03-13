@@ -58,12 +58,11 @@ struct NextButton: View {
             Text("Next")
                 .font(.system(size: 18, weight: .bold))
                 .scaleEffect(1.1)
-//                .padding(.bottom, 14)
-//                .foregroundColor(colorScheme == .dark ? .white : .black)
             
             NavigationLink(destination: PostConfirmationScreen(post: $post, images: $images, post_created: $post_created), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .isDetailLink(false)
         }
         .alert("Cannot Create Post", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
     }

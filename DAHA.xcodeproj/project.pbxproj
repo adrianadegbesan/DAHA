@@ -119,6 +119,7 @@
 		82C0847B29BD11A400F3627E /* CategoryFilterIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0847A29BD11A400F3627E /* CategoryFilterIcon.swift */; };
 		82C0847D29BD5B5000F3627E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0847C29BD5B5000F3627E /* NotificationManager.swift */; };
 		82C0848129BE4F4B00F3627E /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0848029BE4F4B00F3627E /* Test.swift */; };
+		82C0848329BF8A8900F3627E /* DeleteAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0848229BF8A8900F3627E /* DeleteAccountButton.swift */; };
 		82C4588F29B9124700661703 /* ImagePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C4588E29B9124700661703 /* ImagePopupView.swift */; };
 		82C4589329BA4A1400661703 /* UsernameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C4589229BA4A1400661703 /* UsernameModel.swift */; };
 		82C4589529BA811400661703 /* FirebaseHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C4589429BA811400661703 /* FirebaseHelpers.swift */; };
@@ -263,6 +264,7 @@
 		82C0847A29BD11A400F3627E /* CategoryFilterIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterIcon.swift; sourceTree = "<group>"; };
 		82C0847C29BD5B5000F3627E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		82C0848029BE4F4B00F3627E /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		82C0848229BF8A8900F3627E /* DeleteAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountButton.swift; sourceTree = "<group>"; };
 		82C4588E29B9124700661703 /* ImagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupView.swift; sourceTree = "<group>"; };
 		82C4589229BA4A1400661703 /* UsernameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameModel.swift; sourceTree = "<group>"; };
 		82C4589429BA811400661703 /* FirebaseHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelpers.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				82A21A7529AEA3870040BAA1 /* EmailScreen.swift */,
 				82A21A7729AEB68C0040BAA1 /* EmailResendButton.swift */,
 				82A21A7929AEB73A0040BAA1 /* LogOutButton.swift */,
+				82C0848229BF8A8900F3627E /* DeleteAccountButton.swift */,
 			);
 			path = EmailVerificationScreen;
 			sourceTree = "<group>";
@@ -929,6 +932,7 @@
 				82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */,
 				82A21A6C29A846680040BAA1 /* ReportModal.swift in Sources */,
 				82B6B2D9298ADAE700027E5A /* ForgotPasswordScreen.swift in Sources */,
+				82C0848329BF8A8900F3627E /* DeleteAccountButton.swift in Sources */,
 				82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */,
 				828CAFB329B5230D00B489F4 /* ReportUserModal.swift in Sources */,
 				82A21A6029A6A9DA0040BAA1 /* PrivacyPolicyView.swift in Sources */,

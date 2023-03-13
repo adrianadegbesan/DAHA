@@ -234,14 +234,19 @@ class AuthManager: ObservableObject {
     func deleteUser() async -> Bool{
         var success = false
         let user = Auth.auth().currentUser
-        let usernameDeleted = await deleteUsername()
-        
-        if !usernameDeleted {
-            print("Could not delete username")
+        if user?.uid != nil {
             return false
         }
         
+        let usernameRef = db.collection("Usernames").document(username_system)
+        let userRef = db.collection("Users").document(user!.uid)
+        let batch = db.batch()
+        
+        batch.deleteDocument(usernameRef)
+        batch.deleteDocument(userRef)
+        
         do {
+            try await batch.commit()
             try await user?.delete()
             success = true
         }
@@ -253,16 +258,6 @@ class AuthManager: ObservableObject {
         return success
     }
     
-    func deleteUsername() async -> Bool {
-        let usernameRef = db.collection("Usernames").document(username_system)
-        do {
-            try await usernameRef.delete()
-            return true
-        }
-        catch {
-            return false
-        }
-    }
     
     /*
      Function for editing username
@@ -296,8 +291,6 @@ class AuthManager: ObservableObject {
                 not_found = snapshot.isEmpty
                 
                 if not_found {
-                    
-                    
                     
                     let newUsernameModel = UsernameModel(id: cur_id!, username: newUsername_temp)
                     let newRef = db.collection("Usernames").document(newUsername_temp)

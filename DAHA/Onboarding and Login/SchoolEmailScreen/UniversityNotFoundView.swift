@@ -14,10 +14,13 @@ struct UniversityNotFoundView: View {
     
     var body: some View {
         VStack {
+            ModalCapsule()
+                .padding(.top, 10)
+            Spacer()
             Text("SORRY!")
                 .foregroundColor(Color.init(hex: deepBlue))
-                .font(.system(size: 21, weight: .heavy))
-                .padding()
+                .font(.system(size: 25, weight: .heavy))
+                .padding(.bottom, 3)
                 
             Text("We are not at your school yet.")
                 .font(.system(size: 21, weight: .bold))
@@ -36,6 +39,8 @@ struct UniversityNotFoundView: View {
                 .font(.system(size: 13, weight: .regular))
                 .padding(.horizontal, screenWidth * 0.1)
                 .padding(.vertical)
+            
+            Spacer()
         }
         .onTapGesture {
             isPresented = false

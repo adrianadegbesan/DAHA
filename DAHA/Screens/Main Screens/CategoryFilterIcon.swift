@@ -22,8 +22,8 @@ struct CategoryFilterIcon: View {
         Button(action: {
             SoftFeedback()
             if selected == category {
+                selected = ""
                 withAnimation{
-                    selected = ""
                     if screen == "Listings"{
                         Task {
                             loading = firestoreManager.listings_loading
@@ -43,8 +43,8 @@ struct CategoryFilterIcon: View {
                     }
                 }
             } else {
+                selected = category
                 withAnimation{
-                    selected = category
                     if screen == "Listings"{
                         Task{
                             loading = firestoreManager.listings_filtered_loading

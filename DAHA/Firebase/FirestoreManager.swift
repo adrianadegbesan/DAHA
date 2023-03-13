@@ -277,7 +277,7 @@ class FirestoreManager: ObservableObject {
     /*
      Function for deleting post from firebase storage
      */
-    func deletePost(post: PostModel, deleted : Binding<Bool>, error_alert: Binding<Bool>) async {
+    func deletePost(post: PostModel, deleted : Binding<Bool>, error_alert: Binding<Bool>) async -> Bool {
         for url in post.imageURLs{
             let true_url = URL(string: url)
             if true_url != nil{
@@ -296,10 +296,11 @@ class FirestoreManager: ObservableObject {
         }
         do {
             try await db.collection("Universities").document("\(university)").collection("Posts").document(post.id).delete()
-            deleted.wrappedValue = true
+            return true
         }
         catch {
-            error_alert.wrappedValue = true
+            return false
+//            error_alert.wrappedValue = true
         }
     }
     

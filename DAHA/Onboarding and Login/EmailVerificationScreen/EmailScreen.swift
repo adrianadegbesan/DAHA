@@ -27,6 +27,7 @@ struct EmailScreen: View {
     
     @State var time = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @EnvironmentObject var authentication: AuthManager
+    @EnvironmentObject var firestoreManager: FirestoreManager
 
     
     @Environment(\.colorScheme) var colorScheme
@@ -41,8 +42,30 @@ struct EmailScreen: View {
                         authentication.reloadUser()
                         if currentUser.isEmailVerified {
                             verified = true
+                            Task{
+                                do {
+                                    try await currentUser.getIDTokenResult(forcingRefresh: true)
+                                } catch {
+                                    print("error refreshing")
+                                }
+                                await firestoreManager.getListings()
+                                await firestoreManager.getRequests()
+                                await firestoreManager.getSaved()
+                                await firestoreManager.userPosts()
+                            }
                             shouldNavigate = true
                         }
+                    } else {
+                        // User has logged out, reset app state
+                        isOnboardingViewActive = true
+                        isSignedIn = false
+                        agreedToTerms = false
+                        university = ""
+                        username_system = ""
+                        email_system = ""
+                        user_id = ""
+                        joinedAt = ""
+                        isDarkMode = "System"
                     }
                 }
             
@@ -80,24 +103,26 @@ struct EmailScreen: View {
         .onAppear {
             
             
-        // Check if user is already logged in and verified
+            // Check if user is already logged in and verified
             if let currentUser = Auth.auth().currentUser {
                 if currentUser.isEmailVerified {
                     verified = true
+                    Task{
+                        do {
+                            try await currentUser.getIDTokenResult(forcingRefresh: true)
+                        } catch {
+                            print("error refreshing")
+                        }
+                        await firestoreManager.getListings()
+                        await firestoreManager.getRequests()
+                        await firestoreManager.getSaved()
+                        await firestoreManager.userPosts()
+                    }
                     shouldNavigate = true
                     return
                 } else {
                     _ = authentication.sendVerificationEmail()
                     authentication.reloadUser()
-                }
-            }
-            
-            
-            let _ = Auth.auth().addStateDidChangeListener { auth, user in
-            if let currentUser = user {
-                if currentUser.isEmailVerified {
-                    verified = true
-                    shouldNavigate = true
                 }
             } else {
                 // User has logged out, reset app state
@@ -111,7 +136,6 @@ struct EmailScreen: View {
                 joinedAt = ""
                 isDarkMode = "System"
             }
-          }
         }
         .alert("Error Verifying Email", isPresented: $error_alert, actions: {}, message: { Text("Please check your network connection and try again later")})
     }

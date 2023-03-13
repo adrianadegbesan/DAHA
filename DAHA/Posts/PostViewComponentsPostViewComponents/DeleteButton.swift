@@ -28,9 +28,9 @@ struct DeleteButton: View {
         .alert("Delete Post", isPresented: $isPresented, actions: {
             Button("Delete", role: .destructive, action: {
                 Task{
-                    await firestoreManager.deletePost(post: post, deleted: $deleted, error_alert: $error_alert)
+                    let delete_success = await firestoreManager.deletePost(post: post, deleted: $deleted, error_alert: $error_alert)
                     
-                    if deleted {
+                    if delete_success {
                          
                         withAnimation{
                             if post.type == "Listing"{
@@ -55,6 +55,8 @@ struct DeleteButton: View {
                             }
                         }
                    
+                    } else {
+                        error_alert = true
                     }
                 }
             })

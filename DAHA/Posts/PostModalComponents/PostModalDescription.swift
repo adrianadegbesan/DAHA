@@ -69,12 +69,12 @@ struct PostModalDescription: View {
                                         Rectangle()
                                             .strokeBorder(lineWidth: 3)
                                     )
-                                    .padding(.horizontal)
                                     .onAppear{
                                         withAnimation(.easeIn(duration: 0.3)){
                                             opacity = 1
                                         }
                                     }
+                                    .padding(.horizontal)
                                     .modifier(ImageModifier(contentSize: CGSize(width: proxy.size.width, height: proxy.size.height)))
                                     .tag(i)
                                     .contextMenu{
@@ -84,6 +84,8 @@ struct PostModalDescription: View {
                                             Label("Save Photo", systemImage: "square.and.arrow.down")
                                         }
                                     }
+                                    
+                                   
                             } //: GeometryReader
                  
                       } //: LOOP
