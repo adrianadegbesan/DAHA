@@ -47,8 +47,10 @@ struct ContentView: View {
       } else if isSignedIn && verified && agreedToTerms{ 
          MainScreen()
           
-          NavigationLink( destination: ChatScreen(post: channel!.post, redirect: false, receiver: channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender_username : channel!.receiver_username, receiverID:  channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender : channel!.receiver, channelID: channel!.id, listen: true), isActive: $shouldNavigate){
-              EmptyView()
+          if channel != nil{
+              NavigationLink( destination: ChatScreen(post: channel!.post, redirect: false, receiver: channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender_username : channel!.receiver_username, receiverID:  channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender : channel!.receiver, channelID: channel!.id, listen: true), isActive: $shouldNavigate){
+                  EmptyView()
+              }
           }
       }
     } //: ZStack
@@ -57,30 +59,23 @@ struct ContentView: View {
             if isSignedIn && verified && agreedToTerms{
                 delegate.shouldNavigate = false
                 Task {
-                    if delegate.channelID_cur != ""{
-                       messagingManager.getMessageChannels()
-                       try await Task.sleep(nanoseconds: 0_400_000_000)
-                       listener =  messagingManager.getMessages(channelID: delegate.channelID_cur)
-                        if listener != nil{
-                            try await Task.sleep(nanoseconds: 0_400_000_000)
-                            listener?.remove()
-                            if messagingManager.messageChannels.contains(where: {$0.id == delegate.channelID_cur}){
-                                let index = messagingManager.messageChannels.firstIndex(where: { $0.id == delegate.channelID_cur })
-                                    if index != nil{
-                                        let cur_channel = messagingManager.messageChannels[index!]
-                                        channel = cur_channel
-                                        if channel != nil{
-                                            shouldNavigate = true
-                                        }
-                                    }
-                                
-                                }
+                    if delegate.channelID_cur != "" {
+                       channel = await messagingManager.getChannel(channelID: delegate.channelID_cur)
+                        if channel != nil {
+                            delegate.channelID_cur = ""
+                            listener = messagingManager.getMessages(channelID: delegate.channelID_cur)
+                            if listener != nil{
+                                 try await Task.sleep(nanoseconds: 0_400_000_000)
+                                 listener?.remove()
+                                 shouldNavigate = true
                             }
                         }
+                       
                     }
                 }
             }
         }
+    }
     .onChange(of: delegate.shouldNavigate){ value in
         if delegate.shouldNavigate {
             if isSignedIn && verified && agreedToTerms{

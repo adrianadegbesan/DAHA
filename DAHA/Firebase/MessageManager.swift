@@ -31,6 +31,36 @@ class MessageManager: ObservableObject {
     
     /*Function used to get current message channels, snapshot listener enabled*/
     
+    func getChannel(channelID: String) async -> MessageChannelModel? {
+        if Auth.auth().currentUser != nil{
+            
+            do {
+                let snapshot = try await db.collection("Messages").document(channelID).getDocument()
+                let channel = try snapshot.data(as: MessageChannelModel.self)
+                withAnimation{
+                    if !(self.messageChannels.contains(where: { $0.id == channel.id })) {
+                        self.messageChannels.append(channel)
+                    } else {
+                        let index = self.messageChannels.firstIndex(where: { $0.id == channel.id })
+                        if index != nil {
+                            self.messageChannels.remove(at: index!)
+                            self.messageChannels.append(channel)
+                        }
+                    }
+                    self.messageChannels.sort { $0.timestamp > $1.timestamp}
+                }
+                return channel
+            }
+            catch {
+                print("error retrieving channel")
+                return nil
+            }
+            
+        } else {
+            return nil
+        }
+    }
+    
     func getMessageChannels() {
 //        messageChannelsLoading = true
         if Auth.auth().currentUser != nil{
