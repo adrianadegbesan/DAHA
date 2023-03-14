@@ -24,7 +24,7 @@ struct MessagePreview: View {
     
     var body: some View {
         
-        NavigationLink( destination: ChatScreen(post: channel.post, redirect: false, receiver: channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username, receiverID:  channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender : channel.receiver, channelID: channel.id, listen: true) ){
+        NavigationLink( destination: ChatScreen(post: channel.post, redirect: false, receiver: channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username, receiverID:  channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender : channel.receiver, channelID: channel.id, listen: true, scrollDown: true) ){
             VStack{
                 HStack{
                     VStack{

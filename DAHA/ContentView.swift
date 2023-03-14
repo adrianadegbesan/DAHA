@@ -48,7 +48,7 @@ struct ContentView: View {
          MainScreen()
           
           if channel != nil{
-              NavigationLink( destination: ChatScreen(post: channel!.post, redirect: false, receiver: channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender_username : channel!.receiver_username, receiverID:  channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender : channel!.receiver, channelID: channel!.id, listen: true), isActive: $shouldNavigate){
+              NavigationLink( destination: ChatScreen(post: channel!.post, redirect: false, receiver: channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender_username : channel!.receiver_username, receiverID:  channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender : channel!.receiver, channelID: channel!.id, listen: true, scrollDown: true), isActive: $shouldNavigate){
                   EmptyView()
               }
           }

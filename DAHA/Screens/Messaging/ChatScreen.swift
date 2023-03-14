@@ -20,6 +20,7 @@ struct ChatScreen: View {
     @EnvironmentObject var messageManager : MessageManager
     @Environment(\.colorScheme) var colorScheme
     @State var listener : ListenerRegistration?
+    @State var scrollDown : Bool?
     
     
     var body: some View {
@@ -46,7 +47,7 @@ struct ChatScreen: View {
                 .onTapGesture {
                     hideKeyboard()
                 }
-                .onChange(of: messageManager.messages[channelID!]?.count) { num in
+                .onChange(of: messageManager.messages[channelID ?? ""]?.count) { num in
                     if let lastMessage = messageManager.messages[channelID!]?.last {
                         withAnimation{
                             value.scrollTo(lastMessage.id, anchor: .bottom)
@@ -86,6 +87,15 @@ struct ChatScreen: View {
                         if listen != nil && channelID != nil{
                             if listen! {
                                 listener = messageManager.getMessages(channelID: channelID!)
+                            }
+                        }
+                        if scrollDown != nil{
+                            if scrollDown! {
+                                if let lastMessage = messageManager.messages[channelID!]?.last {
+                                    withAnimation{
+                                        value.scrollTo(lastMessage.id, anchor: .bottom)
+                                    }
+                                }
                             }
                         }
                     }
