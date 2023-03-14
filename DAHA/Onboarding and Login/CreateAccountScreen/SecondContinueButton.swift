@@ -102,14 +102,16 @@ struct SecondContinueButton: View {
                                            formatter.timeStyle = .none
                                     joinedAt = formatter.string(from: Date.now)
                                 }
+                                uploading = false
                                 shouldNavigate = account_created
                             }
                         }
                         else {
                             isOnboardingViewActive = true
+                            uploading = false
                         }
                     }
-                    uploading = false
+                  
                 }
         }
         }){

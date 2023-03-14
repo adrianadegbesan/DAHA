@@ -18,7 +18,6 @@ struct DAHAApp: App {
     @StateObject var network = Network()
     @StateObject var notificationManager = NotificationManager()
     @AppStorage("isDarkMode") private var isDarkMode = "System"
-    @State private var selection: NavigationSelection? = nil
     @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @AppStorage("emailverified") var verified: Bool = false
@@ -95,24 +94,29 @@ class AppDelegate: NSObject,UIApplicationDelegate, ObservableObject{
        
       }
         
-        if let channelID = userInfo["channelID"]{
-            print("Channel ID: \(channelID)")
-        }
+      Messaging.messaging().appDidReceiveMessage(userInfo)
+          
+      if let channelID = userInfo["channelID"]{
+          print("Channel ID: \(channelID)")
+          channelID_cur = channelID as? String ?? ""
+          shouldNavigate = true
+      }
      
-
       // Print full message.
-//      print(userInfo)
+      print(userInfo)
 
       completionHandler(UIBackgroundFetchResult.newData)
     }
     
-    // In order to receive notifications you need implement thsese methods...
+    // In order to receive notifications you need implement these methods...
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        Messaging.messaging().apnsToken = deviceToken
         
     }
 
@@ -125,6 +129,11 @@ extension AppDelegate: MessagingDelegate{
     
         // Store this token to firebase and retrieve when to send message to someone....
         let dataDict:[String: String] = ["token": fcmToken ?? ""]
+        NotificationCenter.default.post(
+            name: Notification.Name("FCMToken"),
+            object: nil,
+            userInfo: dataDict
+        )
         
         // Store token in Firestore For Sending Notifications From Server in Future...
         token = fcmToken ?? ""
@@ -142,7 +151,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 //                              willPresent notification: UNNotification,
 //    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 //    let userInfo = notification.request.content.userInfo
-//
+//    Messaging.messaging().appDidReceiveMessage(userInfo)
 //    // DO Something With MSG Data...
 //
 //
@@ -159,9 +168,12 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                               didReceive response: UNNotificationResponse,
                               withCompletionHandler completionHandler: @escaping () -> Void) {
     let userInfo = response.notification.request.content.userInfo
+      
+    Messaging.messaging().appDidReceiveMessage(userInfo)
     if let messageID = userInfo[gcmMessageIDKey] {
       print("Message ID: \(messageID)")
     }
+    
       
       if let channelID = userInfo["channelID"]{
           print("Channel ID: \(channelID)")
@@ -173,9 +185,4 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 
     completionHandler()
   }
-}
-
-
-enum NavigationSelection {
-    case Test
 }

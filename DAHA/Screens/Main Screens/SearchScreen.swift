@@ -149,7 +149,7 @@ struct SearchScreen: View {
                         Spacer().frame(height: 10)
                         
                         Divider()
-                            .frame(maxHeight : 4 )
+                            .frame(maxHeight : 4)
                             .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
                             .padding(.top, 10)
                         

@@ -52,6 +52,7 @@ class MessageManager: ObservableObject {
                 return channel
             }
             catch {
+                print(error.localizedDescription)
                 print("error retrieving channel")
                 return nil
             }

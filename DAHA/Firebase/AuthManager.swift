@@ -71,7 +71,6 @@ class AuthManager: ObservableObject {
                 batch.setData(usernameModel.dictionaryRepresentation, forDocument: usernameRef)
                 
                 try await batch.commit()
-                let _ = sendVerificationEmail()
                 creation_complete.wrappedValue = true
 
             }
