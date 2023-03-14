@@ -69,6 +69,7 @@ class AuthManager: ObservableObject {
                 
                 batch.setData(user_temp.dictionaryRepresentation, forDocument: userRef)
                 batch.setData(usernameModel.dictionaryRepresentation, forDocument: usernameRef)
+                batch.updateData(["fcmToken": token], forDocument: userRef)
                 
                 try await batch.commit()
                 creation_complete.wrappedValue = true

@@ -46,6 +46,13 @@ struct ChatScreen: View {
                 .onTapGesture {
                     hideKeyboard()
                 }
+                .onChange(of: messageManager.messages[channelID!]?.count) { num in
+                    if let lastMessage = messageManager.messages[channelID!]?.last {
+                        withAnimation{
+                            value.scrollTo(lastMessage.id, anchor: .bottom)
+                        }
+                    }
+                }
 //                Spacer().frame(height: screenHeight * 0.001)
                 MessageField(post: post, channelID: $channelID, sent: $sent, redirect: redirect, keyboardFocused: $keyboardFocused)
                     .onChange(of: sent){ _ in
