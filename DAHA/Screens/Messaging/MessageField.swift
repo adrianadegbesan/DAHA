@@ -58,9 +58,44 @@ struct MessageField: View {
                         message = ""
                         
                         Task{
-                            let success = await messagesManager.sendMessage(message: previousMessage, channelID: channelID!, post: post, sent: $sent, error_alert: $error_alert)
-                            if !success {
-                                message = previousMessage
+                            let cur_id = Auth.auth().currentUser?.uid
+                            if cur_id != nil {
+                                var receiverID = ""
+                                
+                                if !(messagesManager.messageChannels.contains(where: {$0.id == channelID!})){
+                                    let channel = await messagesManager.getChannel(channelID: channelID!)
+                                    if channel != nil{
+                                        if channel!.receiver == cur_id {
+                                            receiverID = channel!.sender
+                                        } else {
+                                            receiverID = channel!.receiver
+                                        }
+                                        let success = await messagesManager.sendMessage(message: previousMessage, channelID: channelID!, post: post, sent: $sent, receiverID: receiverID, error_alert: $error_alert)
+                                        if !success {
+                                            message = previousMessage
+                                        }
+                                    }
+                                    
+                                } else {
+                                    let index = messagesManager.messageChannels.firstIndex(where: {$0.id == channelID! })
+                                    if index != nil{
+                                        let channel = messagesManager.messageChannels[index!]
+                                        if channel.receiver == cur_id {
+                                            receiverID = channel.sender
+                                        } else {
+                                            receiverID = channel.receiver
+                                        }
+                                        let success = await messagesManager.sendMessage(message: previousMessage, channelID: channelID!, post: post, sent: $sent, receiverID: receiverID, error_alert: $error_alert)
+                                        if !success {
+                                            message = previousMessage
+                                        }
+                                    } else {
+                                        return
+                                    }
+                                }
+                                
+                            } else {
+                                return
                             }
                         }
                     } 

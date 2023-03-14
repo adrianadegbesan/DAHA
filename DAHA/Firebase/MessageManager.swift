@@ -204,12 +204,13 @@ class MessageManager: ObservableObject {
     }
     
     
-    func sendMessage(message: String, channelID: String, post: PostModel, sent: Binding<Bool>, error_alert: Binding<Bool>) async -> Bool {
+    func sendMessage(message: String, channelID: String, post: PostModel, sent: Binding<Bool>, receiverID: String, error_alert: Binding<Bool>) async -> Bool {
         
         
         if Auth.auth().currentUser != nil{
+            
             let id = Auth.auth().currentUser!.uid
-            let message_sent = MessageModel(id: UUID().uuidString, senderID: id, receiverID: post.userID, message: message, timestamp: Date(), messageChannelID: channelID)
+            let message_sent = MessageModel(id: UUID().uuidString, senderID: id, receiverID: receiverID, message: message, timestamp: Date(), messageChannelID: channelID)
             do {
                 try await db.collection("Messages").document(channelID).collection("messages").document(message_sent.id).setData(message_sent.dictionaryRepresentation)
                 sent.wrappedValue = true

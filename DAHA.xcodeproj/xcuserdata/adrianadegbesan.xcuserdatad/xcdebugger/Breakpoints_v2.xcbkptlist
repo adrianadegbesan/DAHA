@@ -653,9 +653,9 @@
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "sendMessage(message:channelID:post:sent:receiverID:error_alert:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -731,9 +731,9 @@
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "sendMessage(message:channelID:post:sent:receiverID:error_alert:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -779,9 +779,9 @@
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "sendMessage(message:channelID:post:sent:receiverID:error_alert:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -795,9 +795,9 @@
             filePath = "DAHA/Firebase/MessageManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "sendMessage(message:channelID:post:sent:error_alert:)"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "sendMessage(message:channelID:post:sent:receiverID:error_alert:)"
             landmarkType = "7">
             <Locations>
                <Location
