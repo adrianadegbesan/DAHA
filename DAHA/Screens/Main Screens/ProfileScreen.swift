@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import BottomSheet
 
 // Profile Screen
 struct ProfileScreen: View {
@@ -21,9 +20,6 @@ struct ProfileScreen: View {
     @State var first = true
     @State var second = false
     @State private var dividerOffset: CGFloat = 0
-    @State private var bottomSheetPosition: BottomSheetPosition = .relative(0.15)
-    @State private var expanded : Bool = false
-    @State private var retracted : Bool = true
 
     var body: some View {
         ZStack {
@@ -49,7 +45,6 @@ struct ProfileScreen: View {
                     }
                     .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                     .onTapGesture {
-                        bottomSheetPosition = .relative(0.15)
                         tabIndex = 0
                     }
                    
@@ -66,7 +61,6 @@ struct ProfileScreen: View {
                     }
                     .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                     .onTapGesture {
-                        bottomSheetPosition = .relative(0.15)
                         tabIndex = 1
                     }
                     Spacer()
@@ -124,57 +118,6 @@ struct ProfileScreen: View {
             }
             
         }
-//        .onTapGesture {
-//            bottomSheetPosition = .relative(0.15)
-//        }
-        .bottomSheet(bottomSheetPosition: $bottomSheetPosition, switchablePositions: [.relative(0.15), .relativeTop(0.75)], headerContent: {
-                    VStack(alignment: .leading){
-                        HStack{
-                            Spacer().frame(width: screenWidth * 0.02)
-                            Text(Image(systemName: "paperplane"))
-                                .font(
-                                    .system(size:21, weight: .heavy)
-                                )
-                            Text("Recent Messages")
-                                .font(
-                                    .system(size:20, weight: .heavy)
-                                )
-                            Spacer()
-                        }
-                        .frame(width: screenWidth)
-                        .onTapGesture {
-                            if retracted {
-                                retracted = false
-                                expanded = true
-                                self.bottomSheetPosition = .relativeTop(0.75)
-                            } else {
-                                retracted = true
-                                expanded = false
-                                self.bottomSheetPosition = .relativeTop(0.15)
-                            }
-                            
-                        }
-                    }
-                    .padding([.top, .leading, .bottom])
-                }){
-                    RecentDMs()
-                }
-                .showDragIndicator(true)
-                .enableContentDrag()
-                .backgroundBlurMaterial(.system)
-//                .enableAppleScrollBehavior()
-//                .showDragIndicator(true)
-                .onDragEnded{_ in 
-                    if bottomSheetPosition == .relativeTop(0.75){
-                        expanded = true
-                        retracted = false
-                    } else {
-                        expanded = false
-                        retracted = false
-                    }
-                }
-//                .enableTapToDismiss(true)
-//                .showCloseButton(true)
 
     }
 }
