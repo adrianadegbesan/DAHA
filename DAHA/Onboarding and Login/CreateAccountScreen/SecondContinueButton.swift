@@ -57,31 +57,38 @@ struct SecondContinueButton: View {
                     if (usernameInUse){
                         error = true
                         error_message = "Username already in use"
+                        uploading = false
                         usernameInUse.toggle()
                     /*Password length check*/
                     } else if (password_temp.count < 6){
                         error = true
                         error_message = "Password length cannot be less than 6 characters"
+                        uploading = false
                     /*Password empty space check*/
                     } else if password_temp.contains(" "){
                         error = true
                         error_message = "Password cannot contain empty spaces"
+                        uploading = false
                     /*Passwords equal each other check*/
                     } else if (password_temp != reconfirmpassword_temp){
                         error = true
                         error_message = "Passwords do not match"
+                        uploading = false
                     /*Username lower bound length check*/
                     } else if (username_temp.count < 5){
                         error = true
                         error_message = "Username length cannot be less than 5 characters"
+                        uploading = false
                     /*Username upper bound length check*/
                     } else if (username_temp.count > 12){
                         error = true
                         error_message = "Username length cannot be greater than 12 characters"
+                        uploading = false
                     /*Empty Field Check*/
                     } else if (username_temp.isEmpty || password_temp.isEmpty || reconfirmpassword_temp.isEmpty || firstname_temp.isEmpty || lastname_temp.isEmpty){
                         error = true
                         error_message = "Please fill all fields"
+                        uploading = false
                     } else {
                         let cur_email = email_system
                         if cur_email != ""{
@@ -111,7 +118,7 @@ struct SecondContinueButton: View {
                             uploading = false
                         }
                     }
-                  
+                    
                 }
         }
         }){
