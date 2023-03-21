@@ -35,10 +35,10 @@ let category_images = [
     "Tech": "iphone",
     "Clothing": "tshirt.fill",
     "Cars": "car.fill",
-    "Services": "person.2.badge.gearshape",
-    "Furniture": "sofa.fill",
+    "Services": "person.2.fill",
+    "Furniture": "house.circle",
     "Books": "text.book.closed.fill",
-    "Outdoor":  "soccerball",
+    "Outdoor":  "sun.max.fill",
     "Tickets": "ticket.fill",
     "General": "bag.fill"
 ]

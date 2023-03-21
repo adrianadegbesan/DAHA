@@ -30,12 +30,12 @@ struct DeleteUserView: View {
             VStack(alignment: .leading){
                 HStack {
                     HStack {
-                        Image(systemName: "poweroutlet.type.n.fill")
+                        Image(systemName: "trash.circle")
                             .foregroundColor(.red)
                         Spacer()
                     }
                     .frame(width: screenWidth * 0.1)
-                    Text("Ctrl-Alt-Delete-Account")
+                    Text("Delete Account")
                         .foregroundColor(.red)
                 }
 //                Divider()

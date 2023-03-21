@@ -111,6 +111,7 @@ struct ChatScreen: View {
         }
 
         .navigationBarTitle("@\(receiver)")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: channelID != nil ? MessageOptions(channelID: channelID!, username: receiver, receiverID: receiverID) : nil)
     }
 }

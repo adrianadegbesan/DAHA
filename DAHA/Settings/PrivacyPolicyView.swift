@@ -16,7 +16,7 @@ struct PrivacyPolicyView: View {
             VStack(alignment: .leading){
                 HStack{
                     HStack{
-                        Text(Image(systemName: "person.badge.key.fill"))
+                        Text(Image(systemName: "person.circle"))
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                         Spacer()
                     }

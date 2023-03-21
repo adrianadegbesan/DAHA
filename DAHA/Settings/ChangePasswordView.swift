@@ -27,7 +27,7 @@ struct ChangePasswordView: View {
             VStack(alignment: .leading) {
                 HStack {
                     HStack {
-                        Image(systemName: "dots.and.line.vertical.and.cursorarrow.rectangle")
+                        Image(systemName: "lock.fill")
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                         Spacer()
                     }

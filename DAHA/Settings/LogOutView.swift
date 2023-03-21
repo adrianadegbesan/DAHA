@@ -31,7 +31,7 @@ struct LogOutView: View {
             VStack(alignment: .leading) {
                 HStack {
                     HStack {
-                        Image(systemName: "door.left.hand.open")
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                         Spacer()
                     }

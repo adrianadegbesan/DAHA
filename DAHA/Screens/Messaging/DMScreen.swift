@@ -58,6 +58,7 @@ struct DMScreen: View {
             }
         }
         .navigationTitle("DMs")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

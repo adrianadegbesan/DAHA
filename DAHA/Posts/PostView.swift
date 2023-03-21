@@ -83,7 +83,7 @@ struct PostView: View {
            
             
         } //HStack
-        .frame(width: screenWidth * 0.902, height: screenHeight * 0.2)
+        .frame(width: screenWidth * 0.902, height: 170)
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 20)

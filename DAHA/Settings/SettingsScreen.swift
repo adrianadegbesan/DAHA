@@ -53,6 +53,7 @@ struct SettingsScreen: View {
            
         }
         .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
