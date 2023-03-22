@@ -34,7 +34,6 @@ struct MainScreen: View {
                 .tag(0)
                
 
-
             SearchScreen()
                 .hideNavigationBar(value: $appState.isNavigationBarHidden)
                 .tabItem{

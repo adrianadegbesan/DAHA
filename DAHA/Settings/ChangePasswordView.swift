@@ -17,13 +17,11 @@ struct ChangePasswordView: View {
     @State private var error_alert: Bool = false
     @State private var success_alert: Bool = false
     @EnvironmentObject var authentication : AuthManager
+    @State private var selected : Bool = false
+    @State private var changing : Bool = false
    
     var body: some View {
         
-        Button(action: {
-            
-            isPresented = true
-        }){
             VStack(alignment: .leading) {
                 HStack {
                     HStack {
@@ -38,30 +36,72 @@ struct ChangePasswordView: View {
                 }
 //                Divider()
             }
-        }
-        .alert("Change Password", isPresented: $isPresented, actions: {
-            SecureField("Current Password", text: $password)
-                .foregroundColor(Color(hex: deepBlue))
-            SecureField("New Password", text: $newPassword)
-                .foregroundColor(Color(hex: deepBlue))
-            
-            Button("Change", action: {
+            .onTapGesture {
+                withAnimation{
+                    selected.toggle()
+                }
+            }
+            .alert("Error Changing Password", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
+            .alert("Password Changed", isPresented: $success_alert, actions: {}, message: {Text("Your password was successfully changed!")})
+           
+            if selected{
                 
-                Task {
-                    let success = await authentication.changePassword(password: $password, newPassword: $newPassword, error_message: $error_message)
-                    if success{
-                        success_alert = true
-                    } else {
-                        error_alert = true
+                HStack{
+                    VStack{
+                        SecureField("Current Password", text: $password)
+                            .padding(10)
+                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(colorScheme == .dark ? .white : .black , lineWidth: 2))
+                            .foregroundColor(Color(hex: deepBlue))
+//                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal, 5)
+                            .padding(.bottom, 5)
+                    
+                        SecureField("New Password", text: $newPassword)
+                            .padding(10)
+                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(colorScheme == .dark ? .white : .black , lineWidth: 2))
+                            .foregroundColor(Color(hex: deepBlue))
+//                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal, 5)
                     }
                 }
+                .padding([.top, .bottom], 5)
                 
-            })
-            Button("Cancel", role: .cancel, action: {})
-            
-        })
-        .alert("Error Changing Password", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
-        .alert("Password Changed", isPresented: $success_alert, actions: {}, message: {Text("Your password was successfully changed!")})
+               
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        SoftFeedback()
+                        changing = true
+                        Task {
+                            let success = await authentication.changePassword(password: $password, newPassword: $newPassword, error_message: $error_message)
+                            changing = false
+                            if success{
+                                success_alert = true
+                                password = ""
+                                newPassword = ""
+                            } else {
+                                error_alert = true
+                            }
+                        }
+                    }){
+                        if !changing{
+                            Text("Change")
+                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                                .padding(6.5)
+                                .background(Capsule().fill(Color(hex: deepBlue)))
+                                .overlay(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
+                                .scaleEffect(0.9)
+                                .padding([.top, .bottom], 5)
+                        } else {
+                            ProgressView()
+                        }
+                       
+                    }
+                    .disabled(changing)
+                }
+            }
+     
     }
 }
 

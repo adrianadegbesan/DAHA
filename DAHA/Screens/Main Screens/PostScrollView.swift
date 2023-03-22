@@ -33,13 +33,14 @@ struct PostScrollView: View {
                 ScrollViewReader { value in
                     RefreshableScrollView {
                     
-                        if #available(iOS 16, *){
+//                        if #available(iOS 16, *){
                             if screen != "Saved" && screen != "User" && screen != "Search"{
+                                
                                 Spacer().frame(height: 12)
                                 CategoryFilterView(selected: $categoryFilter, screen: screen, posts: $posts, loading: $loading)
                                     .padding(.bottom, 3)
                             }
-                        }
+//                        }
                  
                         
                         if posts.isEmpty && screen == "Search" {
@@ -105,7 +106,7 @@ struct PostScrollView: View {
                                     EmptyView()
                                 } else {
                                     if screen == "Listings" || screen == "Requests"{
-                                        Spacer().frame(height: 12)
+                                        Spacer().frame(height: 55)
                                     }
                                 }
                                 

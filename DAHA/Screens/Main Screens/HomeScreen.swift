@@ -37,7 +37,7 @@ struct HomeScreen: View {
                                 .font(.headline.weight(.black))
                                 .foregroundColor(first ? Color(hex: deepBlue) : .primary)
                             Divider()
-                                .frame(width: screenWidth * 0.35, height: 3.5)
+                                .frame(width: screenWidth * 0.35, height: 4)
                                 .overlay(Color(hex: deepBlue))
 //                                .opacity(opacity1)
                                 .offset(x: dividerOffset)

@@ -16,15 +16,12 @@ struct EditUsernameView: View {
     @State private var error_alert: Bool = false
     @State private var success_alert: Bool = false
     @AppStorage("username") var username_system: String = ""
+    @State private var selected : Bool = false
+    @State private var changing : Bool = false
     
     var body: some View {
         
-        Button(action: {
-            
-            isPresented = true
-            
-       
-        }){
+
             VStack(alignment: .leading) {
                 HStack {
                     HStack {
@@ -37,29 +34,66 @@ struct EditUsernameView: View {
                     Text("Edit Username")
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                 }
-//                Divider()
+//                .frame(width: screenWidth * 0.85)
             }
-        }
-        .alert("Edit Username", isPresented : $isPresented, actions: {
-            TextField("New Username", text: $username)
-                .foregroundColor(Color(hex: deepBlue))
-            Button("Change", action: {
-                Task {
-                    let success = await authentication.editUsername(oldUsername: username_system, newUsername: $username, error_message: $error_message)
-                    if success {
-                        username_system = username.replacingOccurrences(of: " ", with: "").lowercased()
-                        success_alert = true
-                    } else {
-                        error_alert = true
+                .onTapGesture {
+                    withAnimation{
+                        selected.toggle()
                     }
                 }
-            })
-            Button("Cancel", role: .cancel, action: {})
-            
-        }, message: {Text("Please enter your new username")})
+                .alert("Error Editing Username", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
+                .alert("Username Changed", isPresented: $success_alert, actions: {}, message: {Text("Your username was successfully changed!")})
+                if selected {
+                    HStack {
+                        VStack{
+                            TextField("New Username", text: $username)
+                                .padding(10)
+                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(colorScheme == .dark ? .white : .black , lineWidth: 2))
+                                .foregroundColor(Color(hex: deepBlue))
+//                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal, 5)
+                        }
+                    }
+                    .padding([.top, .bottom], 5)
+                    
+                    HStack{
+                        Spacer()
+                        VStack{
+                            Button(action: {
+                                SoftFeedback()
+                                changing = true
+                                Task {
+                                    let success = await authentication.editUsername(oldUsername: username_system, newUsername: $username, error_message: $error_message)
+                                    changing = false
+                                    if success {
+                                        username_system = username.replacingOccurrences(of: " ", with: "").lowercased()
+                                        username = ""
+                                        success_alert = true
+                                    } else {
+                                        error_alert = true
+                                    }
+                                 
+                                }
+                            }){
+                                if !changing{
+                                    Text("Change")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                        .padding(6.5)
+                                        .background(Capsule().fill(Color(hex: deepBlue)))
+                                        .overlay(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
+                                        .scaleEffect(0.9)
+                                        .padding([.top, .bottom], 5)
+                                } else {
+                                    ProgressView()
+                                }
+                               
+                            }
+                            .disabled(changing)
+                        }
+                    }
+            }
         
-        .alert("Error Editing Username", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
-        .alert("Username Changed", isPresented: $success_alert, actions: {}, message: {Text("Your username was successfully changed!")})
     }
 }
 

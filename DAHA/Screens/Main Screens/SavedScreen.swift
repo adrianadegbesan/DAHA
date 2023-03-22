@@ -56,7 +56,7 @@ struct SavedScreen: View {
                    } //: ZStack
                    .opacity(opacity)
                    .onAppear{
-                           withAnimation(.easeIn(duration: 0.4)){
+                       withAnimation(.easeIn(duration: 0.4)){
                                opacity = 1.0
                            }
                    }
