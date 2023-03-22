@@ -58,7 +58,6 @@ struct MainScreen: View {
             
         } //TabView
       
-    
         .onAppear{
             /*Change tab view indicator colour*/
             let appearance: UITabBarAppearance = UITabBarAppearance()
