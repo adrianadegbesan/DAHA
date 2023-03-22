@@ -14,6 +14,7 @@ struct MainScreen: View {
     @State var tabSelection: Int = 0
     @State var current: Int = 0
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @EnvironmentObject var appState : AppState
     
     
     var body: some View {
@@ -23,6 +24,7 @@ struct MainScreen: View {
             setNewValue(value: tabSelection)
         }){
             HomeScreen()
+                .hideNavigationBar(value: $appState.isNavigationBarHidden)
                 .tabItem {
                     Label("", systemImage: "house")
                     .onTapGesture {
@@ -34,18 +36,21 @@ struct MainScreen: View {
 
 
             SearchScreen()
+                .hideNavigationBar(value: $appState.isNavigationBarHidden)
                 .tabItem{
                     Label("", systemImage: "magnifyingglass")
                 }
                 .tag(1)
 
             SavedScreen()
+                .hideNavigationBar(value: $appState.isNavigationBarHidden)
                 .tabItem{
                     Label("", systemImage: "bookmark")
                 }
                 .tag(2)
 
             ProfileScreen()
+                .hideNavigationBar(value: $appState.isNavigationBarHidden)
                 .tabItem{
                     Label("", systemImage: "person.circle")
                 }
@@ -64,6 +69,9 @@ struct MainScreen: View {
         .animation(.easeIn(duration: 0.5), value: tabSelection)
         .accentColor(Color(hex: "0703d0"))
         .navigationBarBackButtonHidden(true)
+        .navigationBarTitle("")
+        .navigationBarTitleDisplayMode(.inline)
+        
 //
         
     }

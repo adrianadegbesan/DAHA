@@ -25,6 +25,7 @@ struct ContentView: View {
   @EnvironmentObject var network: Network
   @EnvironmentObject var delegate: AppDelegate
   @EnvironmentObject var messagingManager : MessageManager
+  @EnvironmentObject var appState : AppState
 
   @State private var opacity = 0.2
     
@@ -40,10 +41,14 @@ struct ContentView: View {
     
       if isOnboardingViewActive { /*Not Created Account*/
         SetUpScreen()
+              .hideNavigationBar(value: $appState.isNavigationBarHidden)
       } else if isSignedIn && !verified{ /* Email Not Verified */
         EmailScreen()
+              .hideNavigationBar(value: $appState.isNavigationBarHidden)
       } else if isSignedIn && verified && !agreedToTerms{ /*Not Agreed To Terms*/
         TermsConditionsScreen()
+              .hideNavigationBar(value: $appState.isNavigationBarHidden)
+          
       } else if isSignedIn && verified && agreedToTerms{ 
          MainScreen()
           

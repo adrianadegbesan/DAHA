@@ -17,6 +17,7 @@ struct DAHAApp: App {
     @StateObject var messagesManager = MessageManager()
     @StateObject var network = Network()
     @StateObject var notificationManager = NotificationManager()
+    @StateObject var appState = AppState()
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
@@ -27,16 +28,15 @@ struct DAHAApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
                 LaunchScreen()
-            }
-            .environmentObject(authentication)
-            .environmentObject(firestoreManager)
-            .environmentObject(messagesManager)
-            .environmentObject(network)
-            .environmentObject(delegate)
-            .preferredColorScheme(isDarkMode == "On" ? .dark : (isDarkMode == "Off" ? .light : nil))
-            /*Dark Mode Ternary Operator*/
+                    .environmentObject(authentication)
+                    .environmentObject(firestoreManager)
+                    .environmentObject(messagesManager)
+                    .environmentObject(network)
+                    .environmentObject(delegate)
+                    .environmentObject(appState)
+                    .preferredColorScheme(isDarkMode == "On" ? .dark : (isDarkMode == "Off" ? .light : nil))
+                    /*Dark Mode Ternary Operator*/
         }
     }
 }

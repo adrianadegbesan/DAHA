@@ -53,6 +53,10 @@ struct MakePostScreen: View {
                 .id(1)
                 
             }
+//            .onAppear {
+//                UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color(hex: deepBlue))
+//                UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color(hex: "D1D0CE"))
+//            }
             .onChange(of: post_created) { value in
                 if post_created {
                     presentationMode.wrappedValue.dismiss()

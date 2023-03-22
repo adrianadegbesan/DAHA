@@ -33,13 +33,14 @@ struct PostScrollView: View {
                 ScrollViewReader { value in
                     RefreshableScrollView {
                     
-                    
-                    if screen != "Saved" && screen != "User" && screen != "Search"{
-                        Spacer().frame(height: 12)
-                        CategoryFilterView(selected: $categoryFilter, screen: screen, posts: $posts, loading: $loading)
-                            .padding(.bottom, 3)
-                    }
-                        
+                        if #available(iOS 16, *){
+                            if screen != "Saved" && screen != "User" && screen != "Search"{
+                                Spacer().frame(height: 12)
+                                CategoryFilterView(selected: $categoryFilter, screen: screen, posts: $posts, loading: $loading)
+                                    .padding(.bottom, 3)
+                            }
+                        }
+                 
                         
                         if posts.isEmpty && screen == "Search" {
                             if loading {
@@ -98,6 +99,14 @@ struct PostScrollView: View {
                             LazyVStack{
                                 if screen != "Listings" && screen != "Requests"{
                                     Spacer().frame(height: 12)
+                                }
+                                
+                                if #available(iOS 16, *){
+                                    EmptyView()
+                                } else {
+                                    if screen == "Listings" || screen == "Requests"{
+                                        Spacer().frame(height: 12)
+                                    }
                                 }
                                 
                                 ForEach(posts) { post in

@@ -24,7 +24,9 @@ struct LaunchScreen: View {
     
     var body: some View {
         if isActive{
+            NavigationView{
                 ContentView()
+            }
         } else {
             VStack{
                 VStack{

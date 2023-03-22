@@ -100,5 +100,14 @@ extension View {
     func keyboardAdaptive() -> some View {
         ModifiedContent(content: self, modifier: KeyboardAdaptive())
     }
+    
+    func hideNavigationBar(value: Binding<Bool>) -> some View {
+        self
+            .navigationBarTitle("")
+            .navigationBarHidden(value.wrappedValue)
+            .onAppear{
+                value.wrappedValue = true
+            }
+    }
 }
 
