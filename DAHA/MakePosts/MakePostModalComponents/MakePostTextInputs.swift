@@ -34,7 +34,7 @@ struct MakePostTextInputs: View {
                     .padding(.bottom, 10)
                 
                 HStack{
-                    Spacer().frame(width: screenWidth * 0.4)
+                    Spacer().frame(width: screenWidth * 0.35)
                     BorrowButton(post: $post, type: $type)
                         .opacity(opacity)
                         .padding(.bottom, 10)
