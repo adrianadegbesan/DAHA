@@ -28,6 +28,7 @@ struct PostModel: Identifiable, Codable {
     var channel: String
     var savers: [String]
     var type: String
+    var borrow: Bool?
     var keywordsForLookup : [String]
     var reporters : [String]
     

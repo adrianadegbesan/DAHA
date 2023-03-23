@@ -9,8 +9,8 @@ import SwiftUI
 
 struct MakePostScreen: View {
     
-    @State var post: PostModel = PostModel(title: "", userID: "", username: "", description: "", postedAt: nil, condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "", keywordsForLookup: [], reporters: [])
     
+    @State var post: PostModel = PostModel(title: "", userID: "", username: "", description: "", postedAt: nil, condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "", keywordsForLookup: [], reporters: [])
     @State var images: [UIImage] = []
     @State var post_created: Bool = false
     @Environment(\.presentationMode) var presentationMode

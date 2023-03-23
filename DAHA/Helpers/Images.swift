@@ -46,7 +46,8 @@ let category_images = [
 //SF Symbol names for type images
 let type_images = [
     "Request" : "figure.stand.line.dotted.figure.stand",
-    "Listing" : "cart.circle"
+    "Listing" : "cart.circle",
+    "Borrow" : "person.line.dotted.person.fill"
 ]
 
 

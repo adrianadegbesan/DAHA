@@ -16,24 +16,20 @@ struct PostModalPosterInfo: View {
     var body: some View {
         HStack{
             Text("@\(post.username)")
-                .minimumScaleFactor(0.5)
                 .font(.system(size: 14, weight: .bold))
                 .foregroundColor(colorScheme == .dark ? .white : .black)
             
             Image(systemName:"circle.fill")
-                .minimumScaleFactor(0.5)
                 .font(.system(size: 3.8, weight: .bold))
                 .foregroundColor(.gray)
             
             Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
-                .minimumScaleFactor(0.5)
                 .font(.system(size: 11, weight: .bold))
                 .foregroundColor(.gray)
             Spacer()
             
             (Text(Image(systemName: type_images[post.type] ?? "")) + Text(" ") + Text(post.type.uppercased()))
                 .lineLimit(1)
-                .minimumScaleFactor(0.3)
                 .font(.system(size: 15, weight: .heavy))
                 .layoutPriority(1)
                 .padding(.trailing, 10)

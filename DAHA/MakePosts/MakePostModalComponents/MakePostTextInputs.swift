@@ -15,36 +15,64 @@ struct MakePostTextInputs: View {
     @Binding var post: PostModel
     @Binding var type : String
     @FocusState var description_input : Bool
+    @State var opacity: Double = 0.0
     
     var body: some View {
         VStack{
-            TextField(type == "Request" ? "Willing to Pay" : "Price", text: $price)
-                .onChange(of: price) { value in
-                    if price.count > 5{
-                        price = String(price.prefix(5))
+            ZStack{
+                TextField(type == "Request" ? "Willing to Pay" : "Price", text: $price)
+                    .onChange(of: price) { value in
+                        if price.count > 5{
+                            price = String(price.prefix(5))
+                        }
+                        post.price = price
                     }
-                    post.price = price
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "dollarsign")))
+                    .padding(.leading, screenWidth * 0.045)
+                    .padding(.trailing, screenWidth * 0.5)
+                    .padding(.bottom, 10)
+                
+                HStack{
+                    Spacer().frame(width: screenWidth * 0.4)
+                    BorrowButton(post: $post, type: $type)
+                        .opacity(opacity)
+                        .padding(.bottom, 10)
                 }
-                .keyboardType(.numberPad)
-                .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "dollarsign")))
-                .padding(.leading, screenWidth * 0.045)
-                .padding(.trailing, screenWidth * 0.5)
-                .padding(.bottom, 10)
-            
-            TextField("Title", text: $title)
-                .onChange(of: title) { value in
-                    if title.count > 30{
-                        title = String(title.prefix(30))
+            }
+            .onChange(of: type){ value in
+                if value == "Request"{
+                    withAnimation(.easeIn(duration: 0.4)){
+                        opacity = 1
                     }
-                    post.title = title
+                } else {
+                    withAnimation(.easeIn(duration: 0.4)){
+                        opacity = 0
+                        post.borrow = false
+                    }
                 }
-                .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "cart.fill")))
-                .submitLabel(.return)
-                .onSubmit {
-                    hideKeyboard()
-                }
-                .padding(.leading, screenWidth * 0.045)
-                .padding(.trailing, screenWidth * 0.25)
+                
+            }
+          
+                TextField("Title", text: $title)
+                    .onChange(of: title) { value in
+                        if title.count > 30{
+                            title = String(title.prefix(30))
+                        }
+                        post.title = title
+                    }
+                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "cart.fill")))
+                    .submitLabel(.return)
+                    .onSubmit {
+                        hideKeyboard()
+                    }
+                    .padding(.leading, screenWidth * 0.045)
+                    .padding(.trailing, screenWidth * 0.25)
+                    
+                 
+
+          
+          
             
             Text("\(title.count)/30")
                 .foregroundColor(Color(hex: deepBlue))
@@ -105,7 +133,7 @@ struct MakePostTextInputs: View {
 
 struct MakePostTextInputs_Previews: PreviewProvider {
     static var previews: some View {
-        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "", keywordsForLookup: [], reporters: [])
+        let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "Request", keywordsForLookup: [], reporters: [])
         MakePostTextInputs(post: .constant(post), type: .constant(""))
     }
 }

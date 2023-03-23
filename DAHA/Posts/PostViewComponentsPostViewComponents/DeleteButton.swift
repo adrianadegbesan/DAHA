@@ -38,15 +38,30 @@ struct DeleteButton: View {
                                     firestoreManager.listings.remove(at: index)
                                 }
                                 
+                                if let index = firestoreManager.listings_filtered.firstIndex(where: { $0.id == post.id }){
+                                    firestoreManager.listings_filtered.remove(at: index)
+                                }
                                 
                             } else if post.type == "Request"{
                                 if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
                                     firestoreManager.requests.remove(at: index)
                                 }
+                                
+                                if let index = firestoreManager.requests_filtered.firstIndex(where: { $0.id == post.id }){
+                                    firestoreManager.requests_filtered.remove(at: index)
+                                }
                             }
                               if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
                                   firestoreManager.my_posts.remove(at: index)
                               }
+                            
+                            if let index = firestoreManager.search_results.firstIndex(where: { $0.id == post.id }) {
+                                firestoreManager.search_results.remove(at: index)
+                            }
+                            
+                            
+                            
+                            
                             
                             if modal != nil{
                                 if modal! {

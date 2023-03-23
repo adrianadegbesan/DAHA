@@ -214,7 +214,7 @@ class FirestoreManager: ObservableObject {
      Function for converting dictionary to PostModel
      */
     func convertDictionaryToPostModel(dictionary : [String : Any]) -> PostModel{
-        let result = PostModel(
+        var result = PostModel(
             title: dictionary["id"] as? String ?? "",
             userID: dictionary["userID"] as? String ?? "",
             username: dictionary["username"] as? String ?? "",
@@ -228,6 +228,10 @@ class FirestoreManager: ObservableObject {
             type: dictionary["type"] as? String ?? "",
             keywordsForLookup: dictionary["keywordsForLookup"] as? [String] ?? [],
             reporters: dictionary["reporters"] as? [String] ?? [])
+        
+        if dictionary["borrow"] != nil {
+            result.borrow = dictionary["borrow"] as? Bool ?? false
+        }
         
         return result
     }
@@ -386,7 +390,7 @@ class FirestoreManager: ObservableObject {
      */
     func convertToPost(doc : QueryDocumentSnapshot) -> PostModel {
         let data = doc.data()
-        let result = PostModel(id: data["id"] as? String ?? "",
+        var result = PostModel(id: data["id"] as? String ?? "",
                   title: data["title"] as? String ?? "",
                   userID: data["userID"] as? String ?? "",
                   username: data["username"] as? String ?? "",
@@ -401,6 +405,11 @@ class FirestoreManager: ObservableObject {
                   type: data["type"] as? String ?? "",
                   keywordsForLookup: data["keywordsForLookup"] as? [String] ?? [],
                   reporters: data["reporters"] as? [String] ?? [])
+        
+        if data["borrow"] != nil {
+            result.borrow = data["borrow"] as? Bool ?? false
+        }
+        
         return result
     }
     
@@ -559,16 +568,16 @@ class FirestoreManager: ObservableObject {
             let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Request").order(by: "postedAt", descending: true).start(afterDocument: requests_last!).limit(to: 15).getDocuments()
             
             let documents = snapshot.documents
-            if !documents.isEmpty{
+            if !documents.isEmpty {
                 requests_last = documents.last!
             } else {
                 return
             }
-            for document in documents{
+            for document in documents {
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            withAnimation{
+            withAnimation {
                 requests.append(contentsOf: temp)
             }
         }
