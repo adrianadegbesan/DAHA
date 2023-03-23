@@ -35,7 +35,7 @@ struct PostImageView: View {
                                     ZStack(alignment: .topTrailing){
                                         Image(systemName: category_images[post.category] ?? "bag.fill")
                                             .scaleEffect(3)
-                                            .frame(width: screenWidth * 0.385, height: screenHeight * 0.21)
+                                            .frame(width: screenWidth * 0.385, height: 175)
                                             .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                                             .overlay (
                                                 RoundedRectangle(cornerRadius: 15)
@@ -86,7 +86,7 @@ struct PostImageView: View {
             .tabViewStyle(PageTabViewStyle())
             .cornerRadius(15)
             //            .padding(2.7)
-            .frame(width: screenWidth * 0.385, height: screenHeight * 0.21)
+            .frame(width: screenWidth * 0.385, height: 175)
             .overlay (
                 RoundedRectangle(cornerRadius: 15)
                     .strokeBorder(lineWidth: 1.5)
@@ -96,7 +96,7 @@ struct PostImageView: View {
             ZStack(alignment: .topTrailing){
                 Image(systemName: category_images[post.category] ?? "bag.fill")
                     .scaleEffect(3)
-                    .frame(width: screenWidth * 0.385, height: screenHeight * 0.21)
+                    .frame(width: screenWidth * 0.385, height: 175)
                     .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                     .overlay (
                         RoundedRectangle(cornerRadius: 15)

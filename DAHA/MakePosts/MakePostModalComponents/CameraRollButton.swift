@@ -24,7 +24,7 @@ struct CameraRollButton: View {
             Image(systemName: "photo")
                 .resizable()
                 .foregroundColor(images.count == 3 ? .gray : .blue)
-                .frame(width: screenWidth * 0.23, height: screenHeight * 0.08)
+                .frame(width: 89.7, height: 67.52)
                 .padding(.trailing, screenHeight * 0.03)
         }.onChange(of: images_temp){ value in
             for image in images_temp {

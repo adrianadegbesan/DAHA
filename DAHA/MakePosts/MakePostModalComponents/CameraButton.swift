@@ -21,7 +21,7 @@ struct CameraButton: View{
             Image(systemName: "camera")
                 .resizable()
                 .foregroundColor(images.count == 3 ? .gray : .blue)
-                .frame(width: screenWidth * 0.23, height: screenHeight * 0.08)
+                .frame(width: 89.7, height: 67.52)
         }
         .sheet(isPresented: $isPresented){
             ImagePicker(image: $image, images: $images)
