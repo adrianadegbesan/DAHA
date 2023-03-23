@@ -33,7 +33,7 @@ struct ForgotPasswordScreen: View {
                     .padding(.bottom, 25)
                 
                    
-                CustomInputField(imageName: "envelope.fill", placeholderText: "Email", text: $email, secure: false)
+                CustomInputField(imageName: "envelope.fill", placeholderText: "Email", text: $email, secure: false, email: true)
                     .padding(.bottom, 50)
                     .padding(.horizontal, screenWidth * 0.2)
                 

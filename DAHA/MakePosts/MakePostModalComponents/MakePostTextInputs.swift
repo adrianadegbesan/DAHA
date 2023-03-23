@@ -22,12 +22,27 @@ struct MakePostTextInputs: View {
             ZStack{
                 TextField(type == "Request" ? "Willing to Pay" : "Price", text: $price)
                     .onChange(of: price) { value in
-                        if price.count > 5{
-                            price = String(price.prefix(5))
+                        if price.count > 6 {
+                               price = String(price.prefix(6))
                         }
+                        
+                        if price.count == 6 {
+                            if price.last! == "."{
+                                price = String(price.prefix(5))
+                            }
+                        }
+                        
+                        let numberOfDecimalPoints = price.filter { $0 == "." }.count
+
+                        if numberOfDecimalPoints > 1 {
+                           if let lastIndex = price.lastIndex(of: ".") {
+                               price.remove(at: lastIndex)
+                           }
+                        }
+                        
                         post.price = price
                     }
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "dollarsign")))
                     .padding(.leading, screenWidth * 0.045)
                     .padding(.trailing, screenWidth * 0.5)

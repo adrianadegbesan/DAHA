@@ -26,7 +26,7 @@ struct SchoolEmailScreen: View {
 
                 Text("MY SCHOOL EMAIL IS ...")
                     .font(.system(size: 26, weight: .black))
-                CustomInputField(imageName: "envelope", placeholderText: "EMAIL (.edu)", text: $email, secure: false)
+                CustomInputField(imageName: "envelope", placeholderText: "EMAIL (.edu)", text: $email, secure: false, email: true)
                     .padding(.horizontal, 40)
                 Text("Your email is only used to authenticate your school affiliation. DAHA is NOT affiliated with any institution")
                     .font(.system(size: 12, weight: .light))

@@ -54,6 +54,13 @@ struct MessagePreview: View {
                             .font(.system(size: 18, weight: .bold))
                             .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
                         
+                        if channel.post.borrow != nil{
+                            if channel.post.borrow! {
+                                Text(Image(systemName: type_images["Borrow"] ?? ""))
+                                    .font(.system(size: 18, weight: .bold))
+                                    .foregroundColor(Color(hex: "F37A35"))
+                            }
+                        }
                     }
                     
                     VStack{

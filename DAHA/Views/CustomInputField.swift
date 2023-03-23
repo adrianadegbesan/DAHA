@@ -12,6 +12,8 @@ struct CustomInputField: View {
     let placeholderText: String
     @Binding var text: String
     let secure: Bool
+    @State var autocap : Bool?
+    @State var email : Bool? 
     
     var body: some View {
         VStack{
@@ -30,7 +32,8 @@ struct CustomInputField: View {
                         .autocorrectionDisabled(true)
                 } else {
                     TextField(placeholderText, text: $text)
-                        .textInputAutocapitalization(.never)
+                        .textInputAutocapitalization(autocap != nil ?  (autocap! == true ? .words : .never) : .never)
+                        .keyboardType(email != nil ? (email! == true ? .emailAddress : .default) : .default)
                         .autocorrectionDisabled(true)
                 }
                 

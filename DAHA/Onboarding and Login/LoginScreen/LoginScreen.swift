@@ -53,6 +53,7 @@ struct LoginScreen: View {
                     TextField("Email", text: $email)
                         .autocapitalization(.none)
                         .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "envelope.fill")))
+                        .keyboardType(.emailAddress)
                         .padding(.bottom, 30)
                         .padding(.horizontal, screenWidth * 0.1)
                         .focused($keyboardEmail)
@@ -92,7 +93,7 @@ struct LoginScreen: View {
             if uploading {
                 withAnimation{
                     screenOpacity = 0.3
-                    progressOpacity = 0.7
+                    progressOpacity = 0.9
                 }
             } else if !uploading {
                 withAnimation {

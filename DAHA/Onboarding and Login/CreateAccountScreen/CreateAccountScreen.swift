@@ -42,10 +42,10 @@ struct CreateAccountScreen: View {
                         .font(.system(size: 26, weight: .black))
                         .padding()
                     HStack{
-                        CustomInputField(imageName: nil, placeholderText: "FIRST NAME", text: $firstname, secure: false)
+                        CustomInputField(imageName: nil, placeholderText: "FIRST NAME", text: $firstname, secure: false, autocap: true)
                             .padding(.trailing, 20)
                         
-                        CustomInputField(imageName: nil, placeholderText: "LAST NAME", text: $lastname, secure: false)
+                        CustomInputField(imageName: nil, placeholderText: "LAST NAME", text: $lastname, secure: false, autocap: true)
                     }
                     .padding(.horizontal, 30)
                     .padding(.bottom, 30)
