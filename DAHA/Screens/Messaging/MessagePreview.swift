@@ -57,7 +57,9 @@ struct MessagePreview: View {
                         if channel.post.borrow != nil{
                             if channel.post.borrow! {
                                 Text(Image(systemName: type_images["Borrow"] ?? ""))
-                                    .font(.system(size: 18, weight: .bold))
+                                    .font(.system(size: 14, weight: .bold))
+                                    .padding(6)
+                                    .background(Circle().stroke(lineWidth: 2))
                                     .foregroundColor(Color(hex: "F37A35"))
                             }
                         }

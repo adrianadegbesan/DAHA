@@ -11,4 +11,5 @@ import SwiftUI
 class AppState: ObservableObject {
     
     @Published var isNavigationBarHidden : Bool = true
+    @Published var profileStart : Bool = true
 }

@@ -14,22 +14,74 @@ struct ProfileScreen: View {
     @State private var tabIndex : Int = 0
     @State private var tabs : [String] = ["MY POSTS", "SAVED"]
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @EnvironmentObject var appState : AppState
     @Environment(\.colorScheme) var colorScheme
     @State var opacity1 = 1.0
     @State var opacity2 = 0.0
+    @State var opacity3 = 0.0
     @State var first = true
     @State var second = false
+    @State var third = false
     @State private var dividerOffset: CGFloat = 0
+    
 
     var body: some View {
         ZStack {
             VStack(spacing: 0){
                 HeaderView(title: "@\(username_system)", showMessages: false, showSettings: true, showSearchBar: false, slidingBar: true, tabIndex: $tabIndex, tabs: tabs, screen: "User")
-                .frame(alignment: .top)
+//                .frame(alignment: .top)
+                
+                HStack {
+                    Spacer()
+                    
+                    HStack{
+                        VStack{
+                            if firestoreManager.my_posts_loading{
+                                ProgressView()
+                            } else {
+                                Text("\(firestoreManager.my_posts.count)")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(firestoreManager.my_posts.count == 0 ? .secondary : .primary)
+                            }
+                            HStack{
+                                Text("Posts")
+                                    .fontWeight(.semibold)
+                                    .scaleEffect(0.9)
+                            }
+                        }
+                        
+                        Spacer().frame(width: 25)
+                        
+                        VStack{
+                            if firestoreManager.saved_loading{
+                                ProgressView()
+                            } else {
+                                Text("\(firestoreManager.saved_posts.count)")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(firestoreManager.saved_posts.count == 0 ? .secondary : .primary)
+                            }
+                            HStack{
+                                Text("Saved")
+                                    .fontWeight(.semibold)
+                                    .scaleEffect(0.9)
+                            }
+                        }
+                    }
+                    .padding(8)
+                    .background(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 2))
+                   
+                    
+                    Spacer()
+                        
+                }
+                .padding(.bottom, 17)
+                .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
+                
                 
                 
                 /*Tab View Section Headers with animation*/
                 HStack {
+                   
                     Spacer()
                     VStack(spacing: 10){
                        (Text(Image(systemName: "person.circle")) + Text(" POSTS"))
@@ -37,13 +89,12 @@ struct ProfileScreen: View {
                             .font(.headline.weight(.black))
                             .foregroundColor(first ? Color(hex: deepBlue) : .primary)
                         Divider()
-                            .frame(width: screenWidth * 0.35, height: 3.5)
+                            .frame(width: screenWidth * 0.25, height: 3.5)
                             .overlay(Color(hex: deepBlue))
-//                            .opacity(opacity1)
                             .offset(x: dividerOffset)
                             
                     }
-                    .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
+                    .frame(width: screenWidth * 0.25, height: screenHeight * 0.044)
                     .onTapGesture {
                         tabIndex = 0
                     }
@@ -54,31 +105,51 @@ struct ProfileScreen: View {
                             .font(.headline.weight(.black))
                         .foregroundColor(second ? Color(hex: deepBlue) : .primary)
                         Divider()
-                            .frame(width: screenWidth * 0.35, height: 3.5)
+                            .frame(width: screenWidth * 0.25, height: 3.5)
                             .overlay(Color(hex: deepBlue))
                             .opacity(opacity2)
-                            .offset(x: dividerOffset + (screenWidth * 0.48))
+                            .offset(x: dividerOffset + (screenWidth * 0.25))
                     }
-                    .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
+                    .frame(width: screenWidth * 0.25, height: screenHeight * 0.044)
                     .onTapGesture {
                         tabIndex = 1
+                    }
+                    Spacer()
+                    
+                    VStack(spacing: 10){
+                        (Text(Image(systemName: "paperplane")) +  Text(" DMs"))
+                            .font(.headline.weight(.black))
+                        .foregroundColor(third ? Color(hex: deepBlue) : .primary)
+                        .scaleEffect(1.15)
+                        Divider()
+                            .frame(width: screenWidth * 0.25, height: 3.5)
+                            .overlay(Color(hex: deepBlue))
+                            .opacity(opacity3)
+                            .offset(x: dividerOffset + (screenWidth * 0.5))
+                    }
+                    .frame(width: screenWidth * 0.25, height: screenHeight * 0.044)
+                    .onTapGesture {
+                        tabIndex = 2
                     }
                     Spacer()
                 }
                 .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
                 
-                
                 TabView(selection: $tabIndex){
                     UserPostsView().tag(0)
                         .frame(width: screenWidth)
+                    
                     SavedPostsView().tag(1)
+                        .frame(width: screenWidth)
+                    
+                    DMScreen(profile: true).tag(2)
                         .frame(width: screenWidth)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .animation(.easeIn(duration: 0.2), value: tabIndex)
                 .onChange(of: tabIndex) { value in
                     withAnimation {
-                        dividerOffset = CGFloat(value) * (screenWidth * 0.496)
+                        dividerOffset = CGFloat(value) * (screenWidth * 0.318)
                     }
                 }
                 
@@ -89,15 +160,28 @@ struct ProfileScreen: View {
                     withAnimation {
                         first = true
                         second = false
-                        opacity1 = 1
-                        opacity2 = 0
+                        third = false
+//                        opacity1 = 1
+//                        opacity2 = 0
+//                        opacity3 = 0
+                    }
+                } else if tabIndex == 1{
+                    withAnimation {
+                        first = false
+                        second = true
+                        third = false
+//                        opacity1 = 0
+//                        opacity2 = 1
+//                        opacity3 = 0
                     }
                 } else {
                     withAnimation {
                         first = false
-                        second = true
-                        opacity1 = 0
-                        opacity2 = 1
+                        second = false
+                        third = true
+//                        opacity1 = 0
+//                        opacity2 = 0
+//                        opacity3 = 1
                     }
                 }
             }
@@ -109,6 +193,13 @@ struct ProfileScreen: View {
             }
         } //: ZStack
         .onAppear{
+//            Task{
+//                if appState.profileStart {
+//                    appState.profileStart = false
+//                    await firestoreManager.userPosts()
+//                }
+//
+//            }
             if firestoreManager.listings_tab{
                 tabIndex = 0
                 firestoreManager.listings_tab = false
@@ -116,6 +207,7 @@ struct ProfileScreen: View {
                 tabIndex = 0
                 firestoreManager.requests_tab = false
             }
+            
             
         }
 

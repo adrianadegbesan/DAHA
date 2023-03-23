@@ -13,6 +13,7 @@ struct DMScreen: View {
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("username") var username_system: String = ""
     @EnvironmentObject var messageManager : MessageManager
+    @State var profile : Bool?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
@@ -34,6 +35,7 @@ struct DMScreen: View {
                     Divider()
                         .frame(maxHeight: 0.5)
                         .overlay(Color(hex: darkGrey))
+                        .opacity(profile != nil ? (profile! ? 0 : 1) : 1)
                     VStack(spacing: 0){
                         ForEach(messageManager.messageChannels){ preview in
                             
