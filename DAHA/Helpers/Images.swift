@@ -47,7 +47,7 @@ let category_images = [
 let type_images = [
     "Request" : "figure.stand.line.dotted.figure.stand",
     "Listing" : "cart.circle",
-    "Borrow" : "person.line.dotted.person.fill"
+    "Borrow" : "figure.wave"
 ]
 
 

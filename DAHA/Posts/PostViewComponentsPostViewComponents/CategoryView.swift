@@ -57,7 +57,7 @@ struct CategoryView: View {
             if post.borrow != nil && post.type == "Request"{
                 if post.borrow! && screen != "Modal"{
                     Image(systemName: type_images["Borrow"] ?? "")
-                        .font(.system(size: 14, weight: .bold))
+                        .font(.system(size: 17, weight: .bold))
 //                        .foregroundColor((post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? (colorScheme == .dark ? "FFFFFF" : "000000") ))
                         .foregroundColor(Color(hex: "F37A35"))
 
