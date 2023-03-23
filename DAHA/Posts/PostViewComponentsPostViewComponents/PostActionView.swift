@@ -20,8 +20,7 @@ struct PostActionView: View {
             (Text(post.price == "Free" ? "" : "$") + Text(post.price))
 //                .foregroundColor(.black)
                 .lineLimit(1)
-                .minimumScaleFactor(0.3)
-                .font(.system(size: 17.5, weight: .bold))
+                .font(.system(size: 16, weight: .bold))
                 .layoutPriority(1)
             
             if owner && !preview{
@@ -34,14 +33,12 @@ struct PostActionView: View {
                 if (post.type == "Request"){
                     Text("REQUEST")
                         .lineLimit(1)
-                        .minimumScaleFactor(0.3)
                         .font(.system(size: 16, weight: .bold))
                         .layoutPriority(1)
                         .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
                 } else {
                     Text("LISTING")
                         .lineLimit(1)
-                        .minimumScaleFactor(0.3)
                         .font(.system(size: 16, weight: .bold))
                         .layoutPriority(1)
                         .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))

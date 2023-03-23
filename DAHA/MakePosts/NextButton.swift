@@ -41,9 +41,20 @@ struct NextButton: View {
                 error_message = "Please enter a title"
                 error_alert = true
             } else {
+                
+                if post.price == "." {
+                    post.price = "Free"
+                }
+                
                 if post.price.last != nil {
                     if post.price.last! == "." {
                         post.price.removeLast()
+                    }
+                }
+                
+                if post.price.first != nil{
+                    if post.price.first! == "."{
+                        post.price = "0" + post.price
                     }
                 }
                 if post.price.replacingOccurrences(of: " ", with: "") == "" {

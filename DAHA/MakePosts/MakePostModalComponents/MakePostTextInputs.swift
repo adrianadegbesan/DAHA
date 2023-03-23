@@ -22,13 +22,13 @@ struct MakePostTextInputs: View {
             ZStack{
                 TextField(type == "Request" ? "Willing to Pay" : "Price", text: $price)
                     .onChange(of: price) { value in
-                        if price.count > 6 {
-                               price = String(price.prefix(6))
+                        if price.count > 7 {
+                               price = String(price.prefix(7))
                         }
                         
-                        if price.count == 6 {
+                        if price.count == 7 {
                             if price.last! == "."{
-                                price = String(price.prefix(5))
+                                price = String(price.prefix(6))
                             }
                         }
                         

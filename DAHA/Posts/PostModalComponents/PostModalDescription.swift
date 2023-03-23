@@ -33,7 +33,7 @@ struct PostModalDescription: View {
                 (Text(post.price == "Free" ? "" : "$") + Text(post.price))
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
-                    .font(.system(size: 17.5, weight: .bold))
+                    .font(.system(size: 16, weight: .bold))
                  
             } //:HStack
             .padding(.leading, 12)
