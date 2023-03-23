@@ -68,7 +68,7 @@ struct ProfileScreen: View {
                         }
                     }
                     .padding(8)
-                    .background(RoundedRectangle(cornerRadius: 8).stroke(.gray, lineWidth: 2))
+                    .background(RoundedRectangle(cornerRadius: 8).stroke(colorScheme == .dark ? .gray : .black, lineWidth: 2))
                    
                     
                     Spacer()

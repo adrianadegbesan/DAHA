@@ -74,6 +74,7 @@ struct CategoryView: View {
                 ReportButton(post: post, reported: $reported)
             }
         }
+        .scaleEffect((post.condition == "Worn-Out" && post.borrow != nil && screen != "Modal") ? (post.borrow! ? 0.85 : 1) : 1)
     }
 }
 

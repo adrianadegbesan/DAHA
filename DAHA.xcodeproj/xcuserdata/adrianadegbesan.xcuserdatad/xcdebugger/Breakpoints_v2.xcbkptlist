@@ -305,7 +305,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "2D1D8324-B846-4400-8DF8-0AB726B31A78"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DAHA/Firebase/FirestoreManager.swift"
@@ -489,7 +489,7 @@
             <Locations>
                <Location
                   uuid = "3CEE56E1-AA6C-4839-94EF-4F814576B22F - 85d614338fde0905"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "(3) suspend resume partial function for DAHA.FirestoreManager.searchPosts(query: Swift.String, type: Swift.String, category: Swift.String) async -&gt; ()"
@@ -935,8 +935,8 @@
             filePath = "DAHA/Posts/PostView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

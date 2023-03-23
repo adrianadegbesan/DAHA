@@ -39,8 +39,8 @@ struct SearchCategoryIcon: View {
                     )
                     .foregroundColor(.white)
             }
-            .background(RoundedRectangle(cornerRadius: 23).stroke(colorScheme == .dark ? .white : .black, lineWidth: colorScheme == .dark ? 2 : 4.5))
         }
+        .background(RoundedRectangle(cornerRadius: 23).stroke(colorScheme == .dark ? .white : .black, lineWidth: colorScheme == .dark ? 2 : 4.5))
     }
 }
 

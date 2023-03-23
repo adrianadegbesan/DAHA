@@ -51,6 +51,8 @@ struct PostView: View {
                 Spacer().frame(height: 10)
                 
                 CategoryView(post: post, screen: "Post", reported: $reported, owner: owner, preview: preview)
+                    .frame(width: screenWidth * 0.48)
+                   
                 
                 PostDescriptionView(post: post)
                 
@@ -179,16 +181,16 @@ struct PostView: View {
             Button("Delete", role: .destructive, action: {
                 Task{
                     let delete_success = await firestoreManager.deletePost(post: post, deleted: $deleted, error_alert: $error_alert)
-                    
+
                     if delete_success {
-                         
+
                         withAnimation{
                             if post.type == "Listing"{
                                 if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
                                     firestoreManager.listings.remove(at: index)
                                 }
-                                
-                                
+
+
                             } else if post.type == "Request"{
                                 if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
                                     firestoreManager.requests.remove(at: index)
@@ -198,7 +200,7 @@ struct PostView: View {
                                   firestoreManager.my_posts.remove(at: index)
                               }
                         }
-                   
+
                     } else {
                         error_alert = true
                     }

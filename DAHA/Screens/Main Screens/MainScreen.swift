@@ -65,8 +65,8 @@ struct MainScreen: View {
             UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color(hex: "D1D0CE"))
         }
         .animation(.easeIn(duration: 0.5), value: tabSelection)
-        .accentColor(Color(hex: "0703d0"))
-        .navigationBarBackButtonHidden(true)
+        .accentColor(Color(hex: "6ba1c4"))
+//        .navigationBarBackButtonHidden(true)
         .navigationBarTitle("")
         .navigationBarTitleDisplayMode(.inline)
         
