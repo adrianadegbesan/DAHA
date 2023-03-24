@@ -55,6 +55,7 @@ struct ChangePasswordView: View {
 //                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding(.horizontal, 5)
                             .padding(.bottom, 8.5)
+                            .textContentType(.password)
                     
                         SecureField("New Password", text: $newPassword)
                             .padding(10)
@@ -62,6 +63,7 @@ struct ChangePasswordView: View {
                             .foregroundColor(Color(hex: deepBlue))
 //                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding(.horizontal, 5)
+                            .textContentType(.newPassword)
                     }
                 }
                 .padding([.top, .bottom], 5)

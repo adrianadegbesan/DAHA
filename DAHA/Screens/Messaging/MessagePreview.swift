@@ -118,7 +118,7 @@ struct MessagePreview: View {
         .alert("Unable to Delete Chat", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later.")})
        
         .onAppear{
-            listener = messageManager.getMessages(channelID: channel.id)
+                listener = messageManager.getMessages(channelID: channel.id)
         }
         .onDisappear{
             if listener != nil{

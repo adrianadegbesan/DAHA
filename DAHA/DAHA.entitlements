@@ -4,5 +4,10 @@
 <dict>
 	<key>aps-environment</key>
 	<string>production</string>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>webcredentials:joindaha.com</string>
+		<string>applinks:joindaha.com</string>
+	</array>
 </dict>
 </plist>

@@ -51,6 +51,7 @@ struct LoginScreen: View {
                         .padding(.bottom, 50)
                     
                     TextField("Email", text: $email)
+                        .textContentType(.emailAddress)
                         .autocapitalization(.none)
                         .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "envelope.fill")))
                         .keyboardType(.emailAddress)
@@ -60,6 +61,7 @@ struct LoginScreen: View {
                         .id(1)
 
                     SecureField("Password", text: $password)
+                        .textContentType(.password)
                         .autocapitalization(.none)
                         .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "lock.fill")))
                         .padding(.bottom, 40)

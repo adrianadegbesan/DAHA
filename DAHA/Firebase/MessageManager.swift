@@ -26,7 +26,7 @@ class MessageManager: ObservableObject {
     let db = Firestore.firestore()
     
     init(){
-        getMessageChannels()
+        let _ = getMessageChannels()
     }
     
     /*Function used to get current message channels, snapshot listener enabled*/
@@ -62,13 +62,14 @@ class MessageManager: ObservableObject {
         }
     }
     
-    func getMessageChannels() {
+    func getMessageChannels() -> ListenerRegistration?  {
 //        messageChannelsLoading = true
+        var listener : ListenerRegistration? = nil
         if Auth.auth().currentUser != nil{
 //            var temp: [MessageChannelModel] = []
             
             let id = Auth.auth().currentUser?.uid
-            db.collection("Messages").whereField("users", arrayContains: id!).whereField("channel", isEqualTo: university).addSnapshotListener{ querySnapshot, error in
+            listener = db.collection("Messages").whereField("users", arrayContains: id!).whereField("channel", isEqualTo: university).addSnapshotListener{ querySnapshot, error in
                 guard let documents =  querySnapshot?.documents else {
                     print("error fetching documents:  \(String(describing: error))")
                     return
@@ -95,8 +96,10 @@ class MessageManager: ObservableObject {
                 }
             }
             
+        } else {
+            return nil
         }
-        
+        return listener
     }
     
     func getMessagesOneTime(channelID : String ) async -> Bool{
@@ -140,7 +143,6 @@ class MessageManager: ObservableObject {
         var listener : ListenerRegistration? = nil
         if Auth.auth().currentUser != nil{
             
-            print("channel ID is \(channelID) for getting messages")
             listener = db.collection("Messages").document(channelID).collection("messages").addSnapshotListener{ querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     print("error fetching documents:  \(String(describing: error))")
@@ -251,7 +253,7 @@ class MessageManager: ObservableObject {
                 if messages.keys.contains(channelID){
                     messages.removeValue(forKey: channelID)
                 }
-                getMessageChannels()
+                let _ = getMessageChannels()
             }
             return true
         }

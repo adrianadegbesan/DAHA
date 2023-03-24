@@ -35,7 +35,23 @@ struct ChatScreen: View {
                 ScrollView{
                     PostView(post: post, owner: false, preview: true)
                         .scaleEffect(0.93)
+                    
+                    if channelID == nil{
+                        Text("Stay safe: Choose to meet only in open, well-lit, public areas and never share personal or sensitive information in the chat.")
+                            .foregroundColor(.secondary)
+                            .font(.system(size: 11, weight: .semibold))
+                            .padding(.horizontal)
+                    }
+                    
+                        
                     if channelID != nil{
+                        
+                        if (messageManager.messages[channelID!] ?? []).isEmpty {
+                            Text("Stay safe: Choose to meet only in open, well-lit, public areas and never share personal or sensitive information in the chat.")
+                                .foregroundColor(.secondary)
+                                .font(.system(size: 10, weight: .semibold))
+                        }
+                        
                         ForEach(messageManager.messages[channelID!] ?? []){ message in
                             MessageBubble(message: message, ChannelID: channelID!)
                                 .id(message.id)

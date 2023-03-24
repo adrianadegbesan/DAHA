@@ -55,9 +55,15 @@ struct TermsConditionsScreen: View {
                     LightFeedback()
 //                    agreedToTerms = true
                     Task{
-                        await authentication.hasAgreedToTerms()
-                        agreedToTerms = true
-                        shouldNavigate = true
+                        let success = await authentication.hasAgreedToTerms()
+                        if success {
+                            agreedToTerms = true
+                            shouldNavigate = true
+                        } else {
+                            agreedToTerms = true
+                            shouldNavigate = true
+                        }
+                       
                     }
                 } 
             }){

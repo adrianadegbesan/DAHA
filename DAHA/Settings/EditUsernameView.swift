@@ -52,6 +52,7 @@ struct EditUsernameView: View {
                                 .foregroundColor(Color(hex: deepBlue))
 //                                .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal, 5)
+                                .textContentType(.username)
                         }
                     }
                     .padding([.top, .bottom], 5)

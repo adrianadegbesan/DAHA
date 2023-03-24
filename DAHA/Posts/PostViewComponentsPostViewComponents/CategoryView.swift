@@ -23,7 +23,7 @@ struct CategoryView: View {
             (Text(Image(systemName: category_images[post.category] ?? "")) + Text(" ") + Text(post.category.uppercased()))
                 .lineLimit(1)
                 .fixedSize(horizontal: true, vertical: false)
-                .font(.system(size: screen == "Modal" ? 10 : 9, weight: .bold))
+                .font(.system(size: screen == "Modal" ? 9.5 : 9, weight: .bold))
                 .layoutPriority(1)
                 .foregroundColor(.white)
                 .padding(10)
@@ -36,7 +36,7 @@ struct CategoryView: View {
             Text(post.condition.uppercased())
                 .lineLimit(1)
                 .fixedSize(horizontal: true, vertical: false)
-                .font(.system(size: screen == "Modal" ? 10 : 9, weight: .bold))
+                .font(.system(size: screen == "Modal" ? 9.5 : 9, weight: .bold))
                 .padding(10)
                 .background(Capsule().stroke(lineWidth: colorScheme == .dark ? 2 : 2.4))
                 .padding(.trailing, 10)
@@ -57,7 +57,7 @@ struct CategoryView: View {
                     if screen == "Modal"{
                         
                         (Text(Image(systemName: type_images["Borrow"] ?? "")) + Text(" ") + Text("Borrow"))
-                            .font(.system(size: 11, weight: .bold))
+                            .font(.system(size: 10, weight: .bold))
                             .foregroundColor(Color(hex: "F37A35"))
                             .padding(10)
                             .background(Capsule().stroke(Color(hex: "F37A35"), lineWidth: 2))

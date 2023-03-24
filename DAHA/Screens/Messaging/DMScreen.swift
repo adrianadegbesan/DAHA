@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RefreshableScrollView
+import Firebase
 
 struct DMScreen: View {
     
@@ -14,6 +15,7 @@ struct DMScreen: View {
     @AppStorage("username") var username_system: String = ""
     @EnvironmentObject var messageManager : MessageManager
     @State var profile : Bool?
+    @State var listener : ListenerRegistration?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
@@ -59,16 +61,24 @@ struct DMScreen: View {
                 }
               
             }.refreshable(action: {
-                messageManager.getMessageChannels()
+                listener = messageManager.getMessageChannels()
             })
           
         }
         .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
         .onAppear{
+//            if messageManager.messageChannels.isEmpty{
+//                listener = messageManager.getMessageChannels()
+//            }
             withAnimation{
                 messageManager.messageChannels.sort { $0.timestamp > $1.timestamp}
             }
         }
+//        .onDisappear{
+//            if listener != nil {
+//                listener?.remove()
+//            }
+//        }
         .navigationTitle("DMs")
         .navigationBarTitleDisplayMode(.inline)
     }

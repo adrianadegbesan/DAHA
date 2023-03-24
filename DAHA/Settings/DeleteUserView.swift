@@ -77,6 +77,7 @@ struct DeleteUserView: View {
                                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(colorScheme == .dark ? .white : .black , lineWidth: 2))
                                 .foregroundColor(Color(hex: deepBlue))
                                 .padding(.horizontal, 5)
+                                .textContentType(.password)
                         }
                     }
                     .padding([.top, .bottom], 5)

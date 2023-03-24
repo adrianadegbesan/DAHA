@@ -44,6 +44,7 @@ struct HeaderView: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.01)
                             .font(.system(size: screen == "User" ? 17 : 18.5, weight: .bold))
+                            .scaleEffect(screen == "User" && title.count >= 10 ? 0.95 : 1)
                             .foregroundColor(.white)
                             
                     }

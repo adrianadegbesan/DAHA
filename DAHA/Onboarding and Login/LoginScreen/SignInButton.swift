@@ -25,6 +25,7 @@ struct SignInButton: View {
     @State private var error_message: String = ""
     @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var authentication: AuthManager
+    @EnvironmentObject var messageManager: MessageManager
     @AppStorage("username") var username_system: String = ""
     @AppStorage("university") var university: String = ""
     @AppStorage("email") var email_system: String = ""
@@ -56,6 +57,7 @@ struct SignInButton: View {
                             await firestoreManager.getRequests()
                             await firestoreManager.getSaved()
                             await firestoreManager.userPosts()
+                            let _ = messageManager.getMessageChannels()
                         }
                         uploading = false
                         isOnboardingViewActive = false
@@ -69,11 +71,12 @@ struct SignInButton: View {
             
          
         }) {
+            
             ZStack {
                 // Blue Button background
                 RoundedRectangle(cornerRadius: 33)
                     .fill(Color.init(hex: deepBlue))
-                    .frame(width: 202, height: 64)
+                    .frame(width: 170, height: 58)
                     .overlay(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                 
                 // Putting Sign Up and Icon side-by-side
@@ -81,7 +84,7 @@ struct SignInButton: View {
                     // Sign Up Text
                     Text("SIGN IN")
                         .font(
-                            .system(size:30, weight: .bold)
+                            .system(size:26, weight: .bold)
                         )
                         .foregroundColor(.white)
                         .padding(3)

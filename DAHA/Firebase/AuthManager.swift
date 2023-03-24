@@ -268,11 +268,11 @@ class AuthManager: ObservableObject {
         if newUsername.wrappedValue.replacingOccurrences(of: " ", with: "") == "" {
             error_message.wrappedValue = "Please enter a new username"
             return false
-        } else if (newUsername.wrappedValue.replacingOccurrences(of: " ", with: "").count < 5){
-            error_message.wrappedValue = "Username length cannot be less than 5 characters"
+        } else if (newUsername.wrappedValue.replacingOccurrences(of: " ", with: "").count < 4){
+            error_message.wrappedValue = "Username length cannot be less than 4 characters"
             return false
-        } else if (newUsername.wrappedValue.replacingOccurrences(of: " ", with: "").count > 9){
-            error_message.wrappedValue = "Username length cannot be greater than 9 characters"
+        } else if (newUsername.wrappedValue.replacingOccurrences(of: " ", with: "").count > 12){
+            error_message.wrappedValue = "Username length cannot be greater than 12 characters"
             return false
         }
         
@@ -368,18 +368,24 @@ class AuthManager: ObservableObject {
     /*
      Function for updating user terms state
      */
-    func hasAgreedToTerms() async {
-        if user_id == ""{
-            return
+    func hasAgreedToTerms() async -> Bool{
+        
+        let cur_id = Auth.auth().currentUser?.uid
+        
+        if cur_id == nil {
+            return false
         }
+        
         do {
             let userRef = db.collection("Users").document(user_id)
             try await userRef.updateData([
                 "terms" : true
             ])
+            return true
         }
         catch {
             print("Unable to send terms agreement to database")
+            return false
         }
     }
     

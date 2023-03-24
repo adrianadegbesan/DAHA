@@ -75,9 +75,9 @@ struct SecondContinueButton: View {
                         error_message = "Passwords do not match"
                         uploading = false
                     /*Username lower bound length check*/
-                    } else if (username_temp.count < 5){
+                    } else if (username_temp.count < 4){
                         error = true
-                        error_message = "Username length cannot be less than 5 characters"
+                        error_message = "Username length cannot be less than 4 characters"
                         uploading = false
                     /*Username upper bound length check*/
                     } else if (username_temp.count > 12){

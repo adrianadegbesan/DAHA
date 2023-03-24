@@ -27,6 +27,7 @@ struct PostModal: View {
                 CategoryView(post: post, screen: "Modal", reported: $reported, owner: owner, preview: false)
                     .padding(.leading, 12)
                     .padding(.trailing, 12)
+                    
                 
                 PostModalDescription(post: post, saved: $saved, owner: owner)
                 

@@ -74,7 +74,7 @@ struct ProfileScreen: View {
                     Spacer()
                         
                 }
-                .padding(.bottom, 17)
+                .padding(.bottom, 20)
                 .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
                 
                 

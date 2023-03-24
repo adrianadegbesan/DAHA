@@ -151,22 +151,31 @@ extension AppDelegate: MessagingDelegate{
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
 
-//  func userNotificationCenter(_ center: UNUserNotificationCenter,
-//                              willPresent notification: UNNotification,
-//    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//    let userInfo = notification.request.content.userInfo
-//    Messaging.messaging().appDidReceiveMessage(userInfo)
-//    // DO Something With MSG Data...
-//
-//
-//    if let messageID = userInfo[gcmMessageIDKey] {
-//      print("Message ID: \(messageID)")
-//    }
-//
-//    print(userInfo)
-//
-//    completionHandler([[.banner,.badge, .sound]])
-//  }
+  func userNotificationCenter(_ center: UNUserNotificationCenter,
+                              willPresent notification: UNNotification,
+    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    let userInfo = notification.request.content.userInfo
+    Messaging.messaging().appDidReceiveMessage(userInfo)
+    // DO Something With MSG Data...
+
+
+    if let messageID = userInfo[gcmMessageIDKey] {
+      print("Message ID: \(messageID)")
+    }
+
+    print(userInfo)
+      
+      if let aps = userInfo["aps"] as? [String: AnyObject],
+         let alert = aps["alert"] as? [String: AnyObject] {
+          let title = alert["title"] as? String ?? ""
+          let body = alert["body"] as? String ?? ""
+          print("Title: \(title)")
+          print("Body: \(body)")
+      }
+
+    completionHandler([.badge, .sound])
+  }
+    
 
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               didReceive response: UNNotificationResponse,

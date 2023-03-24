@@ -29,11 +29,13 @@ struct CustomInputField: View {
                 if (secure){
                     SecureField(placeholderText, text: $text)
                         .textInputAutocapitalization(.never)
+                        .textContentType(.password)
                         .autocorrectionDisabled(true)
                 } else {
                     TextField(placeholderText, text: $text)
                         .textInputAutocapitalization(autocap != nil ?  (autocap! == true ? .words : .never) : .never)
                         .keyboardType(email != nil ? (email! == true ? .emailAddress : .default) : .default)
+                        .textContentType(email != nil ? (email! == true ? .emailAddress : nil) : nil)
                         .autocorrectionDisabled(true)
                 }
                 
