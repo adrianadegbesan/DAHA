@@ -12,4 +12,5 @@ class AppState: ObservableObject {
     
     @Published var isNavigationBarHidden : Bool = true
     @Published var profileStart : Bool = true
+    @Published var messageScreen : Bool = false
 }

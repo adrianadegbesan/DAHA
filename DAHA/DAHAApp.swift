@@ -22,6 +22,8 @@ struct DAHAApp: App {
     @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @AppStorage("emailverified") var verified: Bool = false
+    @AppStorage("unread") var unread: Bool = false
+    @AppStorage("messageScreen") var messageScreen: Bool = false
     
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -47,10 +49,13 @@ class AppDelegate: NSObject,UIApplicationDelegate, ObservableObject{
     @AppStorage("signedin") var isSignedIn: Bool = false
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @AppStorage("emailverified") var verified: Bool = false
+    @AppStorage("unread") var unread: Bool = false
+    @AppStorage("messageScreen") var messageScreen: Bool = false
         
     @Published var shouldNavigate = false
     @Published var message = false
     @Published var channelID_cur = ""
+    @Published var inAppNotification = false
     
     let gcmMessageIDKey = "gcm.message_id"
     
@@ -172,8 +177,15 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
           print("Title: \(title)")
           print("Body: \(body)")
       }
+      
+      if let _ = userInfo["channelID"]{
+              withAnimation {
+                  inAppNotification = true
+                  unread = true
+              }
+      }
 
-    completionHandler([.badge, .sound])
+    completionHandler([.sound])
   }
     
 
@@ -189,7 +201,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     
       
       if let channelID = userInfo["channelID"]{
-          print("Channel ID: \(channelID)")
+//          print("Channel ID: \(channelID)")
           channelID_cur = channelID as? String ?? ""
           shouldNavigate = true
       }

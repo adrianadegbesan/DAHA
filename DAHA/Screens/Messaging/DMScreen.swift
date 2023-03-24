@@ -13,6 +13,7 @@ struct DMScreen: View {
     
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("username") var username_system: String = ""
+    @AppStorage("unread") var unread: Bool = false
     @EnvironmentObject var messageManager : MessageManager
     @State var profile : Bool?
     @State var listener : ListenerRegistration?
@@ -67,6 +68,9 @@ struct DMScreen: View {
         }
         .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
         .onAppear{
+            if unread {
+                unread = false
+            }
 //            if messageManager.messageChannels.isEmpty{
 //                listener = messageManager.getMessageChannels()
 //            }

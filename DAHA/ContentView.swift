@@ -106,6 +106,12 @@ struct ContentView: View {
             }
         }
     }
+    .onChange(of: delegate.inAppNotification){ value in
+        if isSignedIn && verified && agreedToTerms && delegate.inAppNotification{
+            MediumFeedback()
+            delegate.inAppNotification = false
+        }
+    }
     .opacity(opacity)
     .onAppear{
         withAnimation(.easeIn(duration: 0.15)){

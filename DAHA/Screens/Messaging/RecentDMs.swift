@@ -55,7 +55,7 @@ struct RecentDMs: View {
                     } //VStack
                     
                 }.refreshable(action: {
-                    messageManager.getMessageChannels()
+                   let _ = messageManager.getMessageChannels()
                 }) //ScrollView
             } //else
           

@@ -27,6 +27,7 @@ struct LaunchScreen: View {
             NavigationView{
                 ContentView()
             }
+            .navigationViewStyle(.stack)
         } else {
             VStack{
                 VStack{

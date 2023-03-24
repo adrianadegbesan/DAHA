@@ -11,14 +11,18 @@ import SwiftUI
 struct DMButton: View {
     @State var shouldNavigate = false
     @Environment(\.colorScheme) var colorScheme
+    @AppStorage("unread") var unread: Bool = false
     
     var body: some View {
         Button(action: {
             shouldNavigate = true
             
         }) {
-            Image(systemName: "paperplane")
-                    .headerImage()
+            ZStack {
+                Image(systemName: unread ? "paperplane.fill" : "paperplane")
+                        .headerImage()
+                        .foregroundColor(unread ? Color(hex: deepBlue) : .primary)
+            }
             
             NavigationLink(destination: DMScreen(), isActive: $shouldNavigate){
                 EmptyView()

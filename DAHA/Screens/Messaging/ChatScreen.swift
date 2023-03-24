@@ -18,10 +18,11 @@ struct ChatScreen: View {
     @State var sent: Bool = false
     @FocusState var keyboardFocused : Bool
     @EnvironmentObject var messageManager : MessageManager
+    @EnvironmentObject var appState : AppState
     @Environment(\.colorScheme) var colorScheme
     @State var listener : ListenerRegistration?
     @State var scrollDown : Bool?
-    
+    @AppStorage("messageScreen") var messageScreen: Bool = false
     
     var body: some View {
         VStack(spacing: 0){
@@ -50,6 +51,7 @@ struct ChatScreen: View {
                             Text("Stay safe: Choose to meet only in open, well-lit, public areas and never share personal or sensitive information in the chat.")
                                 .foregroundColor(.secondary)
                                 .font(.system(size: 10, weight: .semibold))
+                                .padding(.horizontal)
                         }
                         
                         ForEach(messageManager.messages[channelID!] ?? []){ message in
@@ -100,6 +102,7 @@ struct ChatScreen: View {
                         }
                     }
                     .onAppear{
+                        appState.messageScreen = true
                         if listen != nil && channelID != nil{
                             if listen! {
                                 listener = messageManager.getMessages(channelID: channelID!)
@@ -115,7 +118,8 @@ struct ChatScreen: View {
                             }
                         }
                     }
-                    .onDisappear{
+                    .onDisappear {
+                        appState.messageScreen = false
                         if listener != nil{
                             listener?.remove()
                         }
