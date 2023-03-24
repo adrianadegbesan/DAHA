@@ -63,6 +63,7 @@ struct ContentView: View {
         if delegate.channelID_cur != "" {
             if isSignedIn && verified && agreedToTerms && delegate.shouldNavigate{
                 Task {
+                       UIApplication.shared.applicationIconBadgeNumber -= 1
                        print("\(delegate.channelID_cur)")
                        channel = await messagingManager.getChannel(channelID: delegate.channelID_cur)
                         if channel != nil{
@@ -87,6 +88,7 @@ struct ContentView: View {
             if isSignedIn && verified && agreedToTerms && delegate.shouldNavigate{
                 let curId = value
                 Task {
+                       UIApplication.shared.applicationIconBadgeNumber -= 1
                        print("\(delegate.channelID_cur)")
                        channel = await messagingManager.getChannel(channelID: curId)
                         if channel != nil{
@@ -97,6 +99,7 @@ struct ContentView: View {
                         if channel != nil {
                             let success = await messagingManager.getMessagesOneTime(channelID: channel!.id)
                             if success{
+                                
                                  delegate.shouldNavigate = false
                                  delegate.channelID_cur = ""
                                  shouldNavigate = true
@@ -107,7 +110,7 @@ struct ContentView: View {
         }
     }
     .onChange(of: delegate.inAppNotification){ value in
-        if isSignedIn && verified && agreedToTerms && delegate.inAppNotification{
+        if isSignedIn && verified && agreedToTerms && delegate.inAppNotification {
             MediumFeedback()
             delegate.inAppNotification = false
         }

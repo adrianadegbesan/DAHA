@@ -167,6 +167,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     if let messageID = userInfo[gcmMessageIDKey] {
       print("Message ID: \(messageID)")
     }
+      
+    
 
     print(userInfo)
       
@@ -180,12 +182,13 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
       
       if let _ = userInfo["channelID"]{
               withAnimation {
+//                  UIApplication.shared.applicationIconBadgeNumber += 1
                   inAppNotification = true
                   unread = true
               }
       }
-
-    completionHandler([.sound])
+      
+      completionHandler([.badge, .sound])
   }
     
 
@@ -204,7 +207,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 //          print("Channel ID: \(channelID)")
           channelID_cur = channelID as? String ?? ""
           shouldNavigate = true
+          unread = true
       }
+      
     // DO Something With MSG Data...
     print(userInfo)
 

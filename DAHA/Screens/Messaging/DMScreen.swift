@@ -71,6 +71,7 @@ struct DMScreen: View {
             if unread {
                 unread = false
             }
+            UIApplication.shared.applicationIconBadgeNumber = 0
 //            if messageManager.messageChannels.isEmpty{
 //                listener = messageManager.getMessageChannels()
 //            }

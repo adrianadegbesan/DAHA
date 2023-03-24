@@ -22,6 +22,7 @@ struct ChatScreen: View {
     @Environment(\.colorScheme) var colorScheme
     @State var listener : ListenerRegistration?
     @State var scrollDown : Bool?
+    @State var empty: Bool = true
     @AppStorage("messageScreen") var messageScreen: Bool = false
     
     var body: some View {
@@ -37,7 +38,7 @@ struct ChatScreen: View {
                     PostView(post: post, owner: false, preview: true)
                         .scaleEffect(0.93)
                     
-                    if channelID == nil{
+                    if channelID == nil && empty {
                         Text("Stay safe: Choose to meet only in open, well-lit, public areas and never share personal or sensitive information in the chat.")
                             .foregroundColor(.secondary)
                             .font(.system(size: 11, weight: .semibold))
@@ -66,6 +67,7 @@ struct ChatScreen: View {
                     hideKeyboard()
                 }
                 .onChange(of: messageManager.messages[channelID ?? ""]?.count) { num in
+                    
                     if let lastMessage = messageManager.messages[channelID!]?.last {
                         withAnimation{
                             value.scrollTo(lastMessage.id, anchor: .bottom)
@@ -98,6 +100,9 @@ struct ChatScreen: View {
                     }
                     .onChange(of: channelID){ _ in
                         if channelID != nil {
+                            withAnimation {
+                                empty = false
+                            }
                             listener = messageManager.getMessages(channelID: channelID!)
                         }
                     }
