@@ -34,7 +34,6 @@ struct PostScrollView: View {
                 targetPostID = nil
                 
                 if screen == "Search" {
-                    print("updating")
                     Task {
                         await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
                     }
@@ -171,11 +170,6 @@ struct PostScrollView: View {
                                      .id(post.id)
                                      .padding(.leading, 3)
                                      .padding(.bottom, 10)
-//                                     .onChange(of: targetPostID) { targetID in
-//                                         if post.id == targetID {
-//                                             value.scrollTo(targetID, anchor: .bottom)
-//                                         }
-//                                     }
                                      .onAppear {
                                          currentPostID = post.id
                                          if index == posts.count - 1 {
@@ -229,12 +223,14 @@ struct PostScrollView: View {
                         if screen == "Saved" {
                             Task {
                                 await firestoreManager.getSaved()
+                                await firestoreManager.getMetrics()
                             }
                         }
                         
                         if screen == "User" {
                             Task {
                                 await firestoreManager.userPosts()
+                                await firestoreManager.getMetrics()
                             }
                         }
                     })

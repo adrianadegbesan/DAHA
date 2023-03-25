@@ -69,11 +69,6 @@ struct ProfileScreen: View {
                     }
                     .padding(8)
                     .background(RoundedRectangle(cornerRadius: 8).stroke(colorScheme == .dark ? .gray : .black, lineWidth: 2))
-                    .onTapGesture {
-                        Task{
-                            await firestoreManager.getMetrics()
-                        }
-                    }
 
 
                     Spacer()
