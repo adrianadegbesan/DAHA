@@ -19,11 +19,66 @@ struct PostScrollView: View {
     @Binding var category: String
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
+    @State private var targetPostID: String? = nil
+    @State private var currentPostID: String = ""
+    
+    
     @State var screenOpacity = 0.1
-    @State var time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
+//    @State var time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
     
     @State var categoryFilter = ""
 
+    private func loadMorePostsIfNeeded(_ currentPostID: String, screen: String) {
+            if currentPostID == targetPostID {
+                // Update the target post ID for the next trigger
+                targetPostID = nil
+                
+                if screen == "Search" {
+                    print("updating")
+                    Task {
+                        await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
+                    }
+                }
+                else if screen == "Listings"{
+                    if categoryFilter == ""{
+                        Task {
+                           await  firestoreManager.updateListings()
+                        }
+                    } else {
+                        Task {
+                            await firestoreManager.updateListingsFiltered(category: categoryFilter)
+                        }
+                    }
+                   
+                }
+
+                else if screen == "Requests" {
+                    if categoryFilter == "" {
+                        Task {
+                            await firestoreManager.updateRequests()
+                        }
+                    } else {
+                        Task {
+                            await firestoreManager.updateRequestsFiltered(category: categoryFilter)
+                        }
+                    }
+                    
+                }
+
+                else if screen == "Saved" {
+                    Task {
+                        await firestoreManager.updateSaved()
+                    }
+                }
+
+                else if screen == "User" {
+                    Task {
+                        await firestoreManager.updateUserPosts()
+                    }
+                }
+                
+            }
+    }
     
     var body: some View {
         ZStack {
@@ -110,86 +165,33 @@ struct PostScrollView: View {
                                     }
                                 }
                                 
-                                ForEach(posts) { post in
-                                    
-                                    ZStack{
-                                            
-                                            if post.id == posts.last!.id {
-                                                PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
-                                                        .padding(.bottom, 10)
-                                                        .padding(.leading, 3)
-                                                        .id(post.id)
-                                                        .onAppear{
-                                                            self.time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
-                                                        }
-                                                    /*Update bottom of feed if at certain location*/
-                                                        .onReceive(self.time) { (_) in
-                                                            if g.frame(in: .global).maxY < UIScreen.main.bounds.height - 80{
-                                                                if screen == "Search" {
-                                                                    print("updating")
-                                                                    Task {
-                                                                        await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
-                                                                    }
-                                                                }
-                                                                else if screen == "Listings"{
-                                                                    if categoryFilter == ""{
-                                                                        Task {
-                                                                           await  firestoreManager.updateListings()
-                                                                        }
-                                                                    } else {
-                                                                        Task {
-                                                                            await firestoreManager.updateListingsFiltered(category: categoryFilter)
-                                                                        }
-                                                                    }
-                                                                   
-                                                                }
-
-                                                                else if screen == "Requests" {
-                                                                    if categoryFilter == "" {
-                                                                        Task {
-                                                                            await firestoreManager.updateRequests()
-                                                                        }
-                                                                    } else {
-                                                                        Task {
-                                                                            await firestoreManager.updateRequestsFiltered(category: categoryFilter)
-                                                                        }
-                                                                    }
-                                                                    
-                                                                }
-
-                                                                else if screen == "Saved" {
-                                                                    Task {
-                                                                        await firestoreManager.updateSaved()
-                                                                    }
-                                                                }
-
-                                                                else if screen == "User" {
-                                                                    Task {
-                                                                        await firestoreManager.updateUserPosts()
-                                                                    }
-                                                                }
-                                                                
-                                                                
-        //                                                        print("Updating data")
-                                                                
-                                                                self.time.upstream.connect().cancel()
-                                                            } //UPDATE FUNCTIONS
-                                                            
-                                                        } //ONRECEIVE
-                                            } else {
-                                                PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
-                                                    .id(post.id)
-                                                    .padding(.leading, 3)
-                                                    .padding(.bottom, 10)
-                                            } //NOT LAST
-                                          
-                                        
-                                    } //ZSTACK
-
+                                ForEach(posts.indices, id: \.self) { index in
+                                 let post = posts[index]
+                                 PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
+                                     .id(post.id)
+                                     .padding(.leading, 3)
+                                     .padding(.bottom, 10)
+//                                     .onChange(of: targetPostID) { targetID in
+//                                         if post.id == targetID {
+//                                             value.scrollTo(targetID, anchor: .bottom)
+//                                         }
+//                                     }
+                                     .onAppear {
+                                         currentPostID = post.id
+                                         if index == posts.count - 1 {
+                                             if targetPostID != post.id{
+                                                 targetPostID = post.id
+                                             }
+                                         }
+                                     }
+                                }
+                             
                                
-                                } //FOREACHLOOP
                                 
                             } //: LAZY VSTACK
+                            .onChange(of: targetPostID){ id in
+                                loadMorePostsIfNeeded(currentPostID, screen: screen)
+                            }
                             
                         } //POSTS NOT EMPTY
                         

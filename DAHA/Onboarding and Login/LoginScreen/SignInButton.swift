@@ -57,6 +57,7 @@ struct SignInButton: View {
                             await firestoreManager.getRequests()
                             await firestoreManager.getSaved()
                             await firestoreManager.userPosts()
+                            await firestoreManager.getMetrics()
                             let _ = messageManager.getMessageChannels()
                         }
                         uploading = false

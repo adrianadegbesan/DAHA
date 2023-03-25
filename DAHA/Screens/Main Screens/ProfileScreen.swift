@@ -33,15 +33,15 @@ struct ProfileScreen: View {
                 
                 HStack {
                     Spacer()
-                    
+
                     HStack{
                         VStack{
-                            if firestoreManager.my_posts_loading{
+                            if firestoreManager.metrics_loading{
                                 ProgressView()
                             } else {
-                                Text("\(firestoreManager.my_posts.count)")
+                                Text("\(firestoreManager.post_count)")
                                     .fontWeight(.bold)
-                                    .foregroundColor(firestoreManager.my_posts.count == 0 ? .secondary : .primary)
+                                    .foregroundColor(firestoreManager.post_count == 0 ? .secondary : .primary)
                             }
                             HStack{
                                 Text("Posts")
@@ -49,16 +49,16 @@ struct ProfileScreen: View {
                                     .scaleEffect(0.9)
                             }
                         }
-                        
+
                         Spacer().frame(width: 25)
-                        
+
                         VStack{
-                            if firestoreManager.saved_loading{
+                            if firestoreManager.metrics_loading{
                                 ProgressView()
                             } else {
-                                Text("\(firestoreManager.saved_posts.count)")
+                                Text("\(firestoreManager.saved_count)")
                                     .fontWeight(.bold)
-                                    .foregroundColor(firestoreManager.saved_posts.count == 0 ? .secondary : .primary)
+                                    .foregroundColor(firestoreManager.saved_count == 0 ? .secondary : .primary)
                             }
                             HStack{
                                 Text("Saved")
@@ -69,10 +69,15 @@ struct ProfileScreen: View {
                     }
                     .padding(8)
                     .background(RoundedRectangle(cornerRadius: 8).stroke(colorScheme == .dark ? .gray : .black, lineWidth: 2))
-                   
-                    
+                    .onTapGesture {
+                        Task{
+                            await firestoreManager.getMetrics()
+                        }
+                    }
+
+
                     Spacer()
-                        
+
                 }
                 .padding(.bottom, 20)
                 .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))

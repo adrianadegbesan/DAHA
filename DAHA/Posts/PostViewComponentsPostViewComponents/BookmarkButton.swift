@@ -98,6 +98,16 @@ struct BookmarkButton: View {
                 saved = false
             }
         }
+        .onChange(of: post.savers){ value in
+            let cur_id = Auth.auth().currentUser?.uid
+            if cur_id != nil{
+                if !post.savers.contains(cur_id!){
+                    saved = false
+                } else {
+                    saved = true
+                }
+            }
+        }
         .alert("Error Saving Post", isPresented: $save_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
         .alert("Error Unsaving Post", isPresented: $unsave_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
         

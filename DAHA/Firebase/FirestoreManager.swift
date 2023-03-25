@@ -62,6 +62,10 @@ class FirestoreManager: ObservableObject {
     @Published var listings_tab: Bool = false
     @Published var requests_tab: Bool = false
     
+    @Published var post_count: Int = 0
+    @Published var saved_count: Int = 0
+    @Published var metrics_loading: Bool = false
+    
     
     
     private var db = Firestore.firestore()
@@ -74,6 +78,7 @@ class FirestoreManager: ObservableObject {
                 await getRequests()
                 await getSaved()
                 await userPosts()
+                await getMetrics()
             }
         }
     }
@@ -236,6 +241,32 @@ class FirestoreManager: ObservableObject {
         return result
     }
     
+    func getMetrics() async {
+        metrics_loading = true
+        let cur_id = Auth.auth().currentUser?.uid
+        
+        if cur_id != nil {
+            let userRef = db.collection("Users").document(cur_id!)
+            
+            do {
+                let doc = try await userRef.getDocument()
+                let data = doc.data()
+                
+                if data != nil{
+                    post_count = data?["post_count"] as? Int ?? 0
+                    saved_count = data?["saved_count"] as? Int ?? 0
+                }
+                metrics_loading = false
+            }
+            catch{
+                print("unable to retrieve metrics")
+                metrics_loading = false
+            }
+            
+        }
+        
+    }
+    
     
     /*
      Function for making a post and storing it on firestore database
@@ -264,17 +295,28 @@ class FirestoreManager: ObservableObject {
         post_temp.userID = cur_id!
         post_temp.username = username_system
         post_temp.channel = university
+        
+        let batch = db.batch()
     
         do {
-            try db.collection("Universities").document("\(university)").collection("Posts").document(post.id).setData(from: post_temp)
+            
+            let postRef =  db.collection("Universities").document("\(university)").collection("Posts").document(post.id)
+            let userRef =  db.collection("Users").document(cur_id!)
+            
+            try batch.setData(from: post_temp, forDocument: postRef)
+            batch.updateData(["post_count": FieldValue.increment(Int64(1))], forDocument: userRef)
+            try await batch.commit()
+            
             print("Post completed")
             post_created.wrappedValue = true
+            await getMetrics()
             print(post_created.wrappedValue)
                 
          }
            catch {
                completion(uploadError("Error uploading post"))
            }
+    
         
     }
     
@@ -298,8 +340,23 @@ class FirestoreManager: ObservableObject {
                 }
             }
         }
+        
+        let batch = db.batch()
+        
+        let cur_id = Auth.auth().currentUser?.uid
+        
+        if cur_id == nil {
+            return false
+        }
+        
         do {
-            try await db.collection("Universities").document("\(university)").collection("Posts").document(post.id).delete()
+            let postRef =  db.collection("Universities").document("\(university)").collection("Posts").document(post.id)
+            let userRef =  db.collection("Users").document(cur_id!)
+            
+            batch.updateData(["post_count": FieldValue.increment(Int64(-1))], forDocument: userRef)
+            batch.deleteDocument(postRef)
+            try await batch.commit()
+            await getMetrics()
             return true
         }
         catch {
@@ -344,11 +401,19 @@ class FirestoreManager: ObservableObject {
             return false
         }
         
+        let userRef =  db.collection("Users").document(userId!)
+        
+        let batch = db.batch()
+        
         do {
-            try await postRef.updateData(["savers": FieldValue.arrayUnion([userId!])])
-            withAnimation{
+            
+            batch.updateData(["saved_count": FieldValue.increment(Int64(1))], forDocument: userRef)
+            batch.updateData(["savers": FieldValue.arrayUnion([userId!])], forDocument: postRef)
+            try await batch.commit()
+            withAnimation {
                 saved_posts.insert(post, at: 0)
             }
+            await getMetrics()
             return true
             
         }
@@ -363,20 +428,29 @@ class FirestoreManager: ObservableObject {
      */
     func unsavePost(post: PostModel) async -> Bool {
         let postRef = db.collection("Universities").document("\(university)").collection("Posts").document(post.id)
-        
+       
         let userId = Auth.auth().currentUser?.uid
         
         if userId == nil{
             return false
         }
         
+        let userRef =  db.collection("Users").document(userId!)
+        
+        let batch = db.batch()
+        
         do {
-            try await postRef.updateData(["savers": FieldValue.arrayRemove([userId!])])
+            
+            batch.updateData(["saved_count": FieldValue.increment(Int64(-1))], forDocument: userRef)
+            batch.updateData(["savers": FieldValue.arrayRemove([userId!])], forDocument: postRef)
+            
+            try await batch.commit()
             if let index = saved_posts.firstIndex(where: { $0.id == post.id}){
                 withAnimation {
                     _ = saved_posts.remove(at: index)
                 }
             }
+            await getMetrics()
             return true
         }
         catch {

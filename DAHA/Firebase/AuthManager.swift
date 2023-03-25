@@ -122,7 +122,6 @@ class AuthManager: ObservableObject {
      */
     func signIn(email: String, password: String, error_alert: Binding<Bool>, error_message: Binding<String>, username_temp: Binding<String>, university_temp: Binding<String>, joined_temp: Binding<String>, terms_temp: Binding<Bool>) async -> Bool {
         
-       var found: Bool = false
         do {
             try await Auth.auth().signIn(withEmail: email, password: password)
             let cur_id = Auth.auth().currentUser?.uid
@@ -132,31 +131,23 @@ class AuthManager: ObservableObject {
                 return false
             }
             do {
-                let snapshot = try await db.collection("Users").whereField("id", isEqualTo: cur_id ?? "0").getDocuments()
-                found = !snapshot.isEmpty
-                if (found){
-                    let doc = snapshot.documents
-                    print(doc[0].data())
-                    let document = doc[0].data()
-                    username_temp.wrappedValue = document["username"] as? String ?? ""
-                    university_temp.wrappedValue = document["university"] as? String ?? ""
-                    let date = document["joinedAt"] as? Timestamp ?? Timestamp(date: Date.now)
-                    let formatter = DateFormatter()
-                           formatter.dateStyle = .long
-                           formatter.timeStyle = .none
-                    joined_temp.wrappedValue = formatter.string(from: date.dateValue())
-                    
-                    terms_temp.wrappedValue = document["terms"] as! Bool
-                    
-                    let fcmtoken_temp = document["fcmToken"] as? String ?? ""
-                    if  fcmtoken_temp != token {
-                        if cur_id != nil{
-                            try await db.collection("Users").document(cur_id!).updateData(["fcmToken" : token])
-                        }
+                let doc = try await db.collection("Users").document(cur_id!).getDocument()
+                let document = doc.data()
+                username_temp.wrappedValue = document?["username"] as? String ?? ""
+                university_temp.wrappedValue = document?["university"] as? String ?? ""
+                let date = document?["joinedAt"] as? Timestamp ?? Timestamp(date: Date.now)
+                let formatter = DateFormatter()
+                formatter.dateStyle = .long
+                formatter.timeStyle = .none
+                joined_temp.wrappedValue = formatter.string(from: date.dateValue())
+                terms_temp.wrappedValue = document?["terms"] as! Bool
+                let fcmtoken_temp = document?["fcmToken"] as? String ?? ""
+                if  fcmtoken_temp != token {
+                    if cur_id != nil{
+                        try await db.collection("Users").document(cur_id!).updateData(["fcmToken" : token])
                     }
-                    
-                    return true
                 }
+                return true
             }
             catch {
                 print("couldn't find")
@@ -189,8 +180,6 @@ class AuthManager: ObservableObject {
             print(error.localizedDescription)
             return false
         }
-        
-        return false
     }
     
     /*
