@@ -39,7 +39,7 @@ struct ChatScreen: View {
                         .scaleEffect(0.93)
                     
                     if channelID == nil && empty {
-                        Text("Stay safe: Choose to meet only in open, well-lit, public areas and never share personal or sensitive information in the chat.")
+                        Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
                             .foregroundColor(.secondary)
                             .font(.system(size: 11, weight: .semibold))
                             .padding(.horizontal)
@@ -49,7 +49,7 @@ struct ChatScreen: View {
                     if channelID != nil{
                         
                         if (messageManager.messages[channelID!] ?? []).isEmpty {
-                            Text("Stay safe: Choose to meet only in open, well-lit, public areas and never share personal or sensitive information in the chat.")
+                            Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
                                 .foregroundColor(.secondary)
                                 .font(.system(size: 10, weight: .semibold))
                                 .padding(.horizontal)

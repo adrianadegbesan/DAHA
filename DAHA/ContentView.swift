@@ -110,7 +110,7 @@ struct ContentView: View {
         }
     }
     .onChange(of: delegate.inAppNotification){ value in
-        if isSignedIn && verified && agreedToTerms && delegate.inAppNotification {
+        if isSignedIn && verified && agreedToTerms && delegate.inAppNotification && !appState.messageScreen {
             MediumFeedback()
             delegate.inAppNotification = false
         }

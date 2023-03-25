@@ -182,7 +182,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
       
       if let _ = userInfo["channelID"]{
               withAnimation {
-//                  UIApplication.shared.applicationIconBadgeNumber += 1
+                  UIApplication.shared.applicationIconBadgeNumber += 1
                   inAppNotification = true
                   unread = true
               }
