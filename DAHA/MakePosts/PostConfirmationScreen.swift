@@ -29,6 +29,10 @@ struct PostConfirmationScreen: View {
                     .opacity(progressOpacity)
                     .padding(.bottom, screenHeight * 0.13)
                     .zIndex(1)
+                    .offset(x: 0, y: !images.isEmpty ? -screenHeight * 0.22 : -screenHeight * 0.08)
+                
+                SFSymbolAnimation(category: post.category, Images: images)
+                    .offset(x: 0, y: !images.isEmpty ? screenHeight * 0.1: screenHeight * 0.13)
             }
             VStack{
                 Spacer()
@@ -83,7 +87,7 @@ struct PostConfirmationScreen: View {
         }.onChange(of: uploading) { value in
             if uploading {
                 withAnimation{
-                    screenOpacity = 0.2
+                    screenOpacity = 0
                     progressOpacity = (colorScheme == .dark ? 0.55 : 0.85)
                 }
             } else if !uploading {
