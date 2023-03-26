@@ -274,7 +274,7 @@ class FirestoreManager: ObservableObject {
     /*
      Function for making a post and storing it on firestore database
      */
-    func makePost(post: PostModel, images: [UIImage], post_created: Binding<Bool>, completion: @escaping (Error?) -> Void) async {
+    func makePost(post: PostModel, images: [UIImage], post_created: Binding<Bool>) async -> Bool {
         
         var urls : [String] = []
         if !images.isEmpty{
@@ -282,7 +282,8 @@ class FirestoreManager: ObservableObject {
         }
 
         if urls == ["error"]{
-            completion(uploadError("Couldn't upload images"))
+//            completion(uploadError("Couldn't upload images"))
+            return false
         }
         
         var post_temp = post
@@ -292,7 +293,8 @@ class FirestoreManager: ObservableObject {
         let cur_id = Auth.auth().currentUser?.uid
         
         if cur_id == nil{
-            completion(uploadError("User Account Error"))
+//            completion(uploadError("User Account Error"))
+            return false
         }
         
         post_temp.userID = cur_id!
@@ -314,10 +316,12 @@ class FirestoreManager: ObservableObject {
             post_created.wrappedValue = true
             await getMetrics()
             print(post_created.wrappedValue)
+            return true
                 
          }
            catch {
-               completion(uploadError("Error uploading post"))
+//               completion(uploadError("Error uploading post"))
+               return false
            }
     
         
@@ -445,6 +449,7 @@ class FirestoreManager: ObservableObject {
             if saved_count != 0{
                 batch.updateData(["saved_count": FieldValue.increment(Int64(-1))], forDocument: userRef)
             }
+    
             batch.updateData(["savers": FieldValue.arrayRemove([userId!])], forDocument: postRef)
             
             try await batch.commit()

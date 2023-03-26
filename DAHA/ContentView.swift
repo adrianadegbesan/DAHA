@@ -32,6 +32,7 @@ struct ContentView: View {
   @State private var shouldNavigate = false
   @State private var channel : MessageChannelModel? = nil
   @State var listener : ListenerRegistration?
+  @State private var connectedAlert = false
   
     
   
@@ -117,10 +118,19 @@ struct ContentView: View {
     }
     .opacity(opacity)
     .onAppear{
+        Task {
+            network.checkConnection()
+        }
         withAnimation(.easeIn(duration: 0.15)){
             self.opacity = 1
         }
     }
+    .onChange(of: network.connected) { value in
+        if !network.connected{
+            connectedAlert = true
+        }
+     }
+    .alert("Network Connection Lost", isPresented: $connectedAlert, actions: {}, message: {Text("It looks like your internet connection was lost! Please check your connection and try again.")})
   }
 
 

@@ -11,11 +11,11 @@ struct MakePostButton: View {
     @Binding var post : PostModel
     @Binding var images: [UIImage]
     @Binding var post_created: Bool
-//    @State var post_temp: Bool = false
     @Binding var uploading: Bool
     @State private var error_alert: Bool = false
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @EnvironmentObject var network: Network
     
     
     var body: some View {
@@ -26,15 +26,20 @@ struct MakePostButton: View {
                     uploading = true
                 }
                 Task {
-                    if images.isEmpty {
-                        try await Task.sleep(nanoseconds: 1_000_000_000)
-                    }
-                    await firestoreManager.makePost(post: post, images: images, post_created: $post_created) { error in
-                        if error != nil{
-                            error_alert = true
-                            print(error!.localizedDescription)
+                    if network.connected {
+                        if images.isEmpty {
+                            try await Task.sleep(nanoseconds: 1_000_000_000)
                         }
+                        
+                        let result = await firestoreManager.makePost(post: post, images: images, post_created: $post_created)
+                        
+                        if !result{
+                            error_alert = true
+                        }
+                    } else {
+                        error_alert = true
                     }
+                   
                     withAnimation{
                         uploading = false
                     }

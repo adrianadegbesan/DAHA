@@ -8,19 +8,20 @@
 import Foundation
 import Network
 
-@MainActor
-class Network: ObservableObject{
+class Network: ObservableObject {
     
     let monitor = NWPathMonitor()
     let queue = DispatchQueue(label: "Monitor")
-    @Published private (set) var connected: Bool = false
+    @Published private(set) var connected: Bool = false
     
-    func checkConnection(){
-        monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied {
-                self.connected = true
-            } else {
-                self.connected = false
+    func checkConnection() {
+        monitor.pathUpdateHandler = { [weak self] path in
+            DispatchQueue.main.async {
+                if path.status == .satisfied {
+                    self?.connected = true
+                } else {
+                    self?.connected = false
+                }
             }
         }
         monitor.start(queue: queue)

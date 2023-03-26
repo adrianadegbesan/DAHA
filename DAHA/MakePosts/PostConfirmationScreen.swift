@@ -29,10 +29,10 @@ struct PostConfirmationScreen: View {
                     .opacity(progressOpacity)
                     .padding(.bottom, screenHeight * 0.13)
                     .zIndex(1)
-                    .offset(x: 0, y: !images.isEmpty ? -screenHeight * 0.24 : -screenHeight * 0.08)
+                    .offset(x: 0, y: !images.isEmpty ? -200 : -80)
                 
                 PostAnimation(category: post.category, Images: images)
-                    .offset(x: 0, y: !images.isEmpty ? screenHeight * 0.12: screenHeight * 0.2)
+                    .offset(x: 0, y: !images.isEmpty ? 100 : 280)
             }
             VStack{
                 Spacer()

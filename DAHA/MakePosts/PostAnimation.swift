@@ -16,22 +16,28 @@ struct PostAnimation: View {
     @State private var size1 = 0.01
     @State private var size2 = 0.01
     @State private var size3 = 0.01
+    @State private var glowScale: CGFloat = 1.0
     
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
             ZStack {
+                if Images.isEmpty{
+                    glowingView(color: category == "General" ? .primary : Color(hex: category_colors[category] ?? "000000"))
+                }
+               
                 Image(systemName: category_images[category] ?? "")
                     .resizable()
                     .scaledToFit()
                     .frame(width: Images.isEmpty ? 240 : 160, height: Images.isEmpty ? 120 : 80)
                     .foregroundColor(category == "General" ? .primary : Color(hex: category_colors[category] ?? "000000")) // Set your desired color here
-                    .offset(y: bounceOffset)
+                   
             }
             .padding(.bottom, 10)
             
-            HStack{
+            
+            HStack(alignment: .top){
                 ForEach(Images, id: \.self){ image in
                     Image(uiImage: image)
                         .resizable()
@@ -41,13 +47,13 @@ struct PostAnimation: View {
                             RoundedRectangle(cornerRadius: 12)
                                 .stroke(.primary, lineWidth: 2)
                         }
-                        .offset(y: bounceOffset)
                         .padding(.horizontal, 10)
                     
                 }
             }
-            .frame(width: screenWidth * 0.95, height: screenHeight * 0.3)
-            .padding(.bottom, 20)
+//            .frame(width: 400)
+            .frame(maxHeight: 350)
+//            .padding(.bottom, 20)
             
             
 //            if !Images.isEmpty{
@@ -73,13 +79,33 @@ struct PostAnimation: View {
 //                }
 //            }
         }
+        .offset(y: bounceOffset)
         .onAppear {
             if !Images.isEmpty{
                 withAnimation(Animation.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
-                    bounceOffset = -50.0
+                    bounceOffset = -40.0
+                }
+               
+            } else {
+                withAnimation(Animation.easeInOut(duration: 1.2).repeatForever(autoreverses: true)) {
+                    glowScale = 1.3
                 }
             }
         }
+    }
+    
+    private func glowingView(color: Color) -> some View {
+        Circle()
+            .fill(
+                RadialGradient(
+                    gradient: Gradient(colors: [color.opacity(0.7), color.opacity(0.0)]),
+                    center: .center,
+                    startRadius: 1,
+                    endRadius: 90
+                )
+            )
+            .frame(width: 180, height: 180)
+            .scaleEffect(glowScale)
     }
     
     private func animateDots() {
