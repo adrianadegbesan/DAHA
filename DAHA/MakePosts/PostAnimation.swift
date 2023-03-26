@@ -7,7 +7,7 @@
 import SwiftUI
 
 
-struct SFSymbolAnimation: View {
+struct PostAnimation: View {
     @State private var bounceOffset: CGFloat = 0.0
     @State private var glowOpacity: Double = 0.0
     @State private var isAnimating: Bool = false
@@ -25,7 +25,7 @@ struct SFSymbolAnimation: View {
                 Image(systemName: category_images[category] ?? "")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 160, height: 80)
+                    .frame(width: Images.isEmpty ? 240 : 160, height: Images.isEmpty ? 120 : 80)
                     .foregroundColor(category == "General" ? .primary : Color(hex: category_colors[category] ?? "000000")) // Set your desired color here
                     .offset(y: bounceOffset)
             }
@@ -46,35 +46,38 @@ struct SFSymbolAnimation: View {
                     
                 }
             }
-            .padding(.bottom, 10)
+            .frame(width: screenWidth * 0.95, height: screenHeight * 0.3)
+            .padding(.bottom, 20)
             
             
-            if !Images.isEmpty{
-                HStack{
-                    Text(".")
-                        .font(
-                            .system(size:50, weight: .bold)
-                        )
-                        .scaleEffect(size1)
-                    Text(".")
-                        .font(
-                            .system(size:50, weight: .bold)
-                        )
-                        .scaleEffect(size2)
-                    Text(".")
-                        .font(
-                            .system(size:50, weight: .bold)
-                        )
-                        .scaleEffect(size3)
-                }
-                .onAppear{
-                    animateDots()
-                }
-            }
+//            if !Images.isEmpty{
+//                HStack{
+//                    Text(".")
+//                        .font(
+//                            .system(size:50, weight: .bold)
+//                        )
+//                        .scaleEffect(size1)
+//                    Text(".")
+//                        .font(
+//                            .system(size:50, weight: .bold)
+//                        )
+//                        .scaleEffect(size2)
+//                    Text(".")
+//                        .font(
+//                            .system(size:50, weight: .bold)
+//                        )
+//                        .scaleEffect(size3)
+//                }
+//                .onAppear{
+//                    animateDots()
+//                }
+//            }
         }
         .onAppear {
-            withAnimation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
-                bounceOffset = -30.0
+            if !Images.isEmpty{
+                withAnimation(Animation.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
+                    bounceOffset = -50.0
+                }
             }
         }
     }
@@ -114,30 +117,12 @@ struct SFSymbolAnimation_Previews: PreviewProvider {
     static var previews: some View {
         let images: [UIImage] = []
         
-        SFSymbolAnimation(category: "Bikes", Images: images)
+        PostAnimation(category: "Bikes", Images: images)
     }
 }
 
 
 
-struct DotShape: Shape {
-    var isAnimating: Bool
-    var index: Int
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        let dotSize = rect.width * 0.4
-        let dotSpacing = rect.width * 0.4
-        
-        let x = rect.minX + dotSpacing * CGFloat(index) + dotSize / 2
-        let y = isAnimating ? rect.midY - dotSize / 2 : rect.maxY
-        
-        path.addArc(center: CGPoint(x: x, y: y), radius: dotSize / 2, startAngle: .degrees(0), endAngle: .degrees(360), clockwise: true)
-        
-        return path
-    }
-}
 
 
 
