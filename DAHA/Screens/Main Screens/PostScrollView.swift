@@ -302,6 +302,16 @@ struct PostScrollView: View {
                                 firestoreManager.scroll_up = false
                             }
                             
+                            if screen == "User"{
+                                if !firestoreManager.my_posts.isEmpty{
+                                    let id = firestoreManager.my_posts[0].id
+                                    withAnimation{
+                                        value.scrollTo(id, anchor: .bottom)
+                                    }
+                                }
+                                firestoreManager.scroll_up = false
+                            }
+                            
                         }
                     }
                 }

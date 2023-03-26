@@ -255,6 +255,9 @@ class FirestoreManager: ObservableObject {
                 if data != nil{
                     post_count = data?["post_count"] as? Int ?? 0
                     saved_count = data?["saved_count"] as? Int ?? 0
+                    if saved_count < 0 {
+                        saved_count = 0
+                    }
                 }
                 metrics_loading = false
             }
@@ -352,7 +355,6 @@ class FirestoreManager: ObservableObject {
         do {
             let postRef =  db.collection("Universities").document("\(university)").collection("Posts").document(post.id)
             let userRef =  db.collection("Users").document(cur_id!)
-            
             batch.updateData(["post_count": FieldValue.increment(Int64(-1))], forDocument: userRef)
             batch.deleteDocument(postRef)
             try await batch.commit()
@@ -440,8 +442,9 @@ class FirestoreManager: ObservableObject {
         let batch = db.batch()
         
         do {
-            
-            batch.updateData(["saved_count": FieldValue.increment(Int64(-1))], forDocument: userRef)
+            if saved_count != 0{
+                batch.updateData(["saved_count": FieldValue.increment(Int64(-1))], forDocument: userRef)
+            }
             batch.updateData(["savers": FieldValue.arrayRemove([userId!])], forDocument: postRef)
             
             try await batch.commit()
