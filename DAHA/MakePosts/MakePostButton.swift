@@ -25,7 +25,9 @@ struct MakePostButton: View {
                 withAnimation{
                     uploading = true
                 }
+                network.checkConnection()
                 Task {
+                    
                     if network.connected {
                         if images.isEmpty {
                             try await Task.sleep(nanoseconds: 1_000_000_000)

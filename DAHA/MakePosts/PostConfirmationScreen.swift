@@ -31,8 +31,8 @@ struct PostConfirmationScreen: View {
                     .zIndex(1)
                     .offset(x: 0, y: !images.isEmpty ? -200 : -80)
                 
-                PostAnimation(category: post.category, Images: images)
-                    .offset(x: 0, y: !images.isEmpty ? 100 : 280)
+                PostAnimation(category: post.category, title: post.title, price: post.price, images: images)
+                    .offset(x: 0, y: !images.isEmpty ? 100 : 60)
             }
             VStack{
                 Spacer()
