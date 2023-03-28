@@ -62,8 +62,8 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1091"
-            endingLineNumber = "1091"
+            startingLineNumber = "1087"
+            endingLineNumber = "1087"
             landmarkName = "updateSearch(query:type:category:)"
             landmarkType = "7">
             <Locations>
@@ -140,8 +140,8 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1095"
-            endingLineNumber = "1095"
+            startingLineNumber = "1091"
+            endingLineNumber = "1091"
             landmarkName = "updateSearch(query:type:category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -156,8 +156,8 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1099"
-            endingLineNumber = "1099"
+            startingLineNumber = "1095"
+            endingLineNumber = "1095"
             landmarkName = "updateSearch(query:type:category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -172,8 +172,8 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1105"
-            endingLineNumber = "1105"
+            startingLineNumber = "1101"
+            endingLineNumber = "1101"
             landmarkName = "updateSearch(query:type:category:)"
             landmarkType = "7">
             <Locations>
@@ -295,8 +295,8 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "997"
-            endingLineNumber = "997"
+            startingLineNumber = "993"
+            endingLineNumber = "993"
             landmarkName = "updateSearch(query:type:category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -311,8 +311,8 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "972"
-            endingLineNumber = "972"
+            startingLineNumber = "968"
+            endingLineNumber = "968"
             landmarkName = "searchPosts(query:type:category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -327,8 +327,8 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "973"
-            endingLineNumber = "973"
+            startingLineNumber = "969"
+            endingLineNumber = "969"
             landmarkName = "searchPosts(query:type:category:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -343,8 +343,8 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "981"
-            endingLineNumber = "981"
+            startingLineNumber = "977"
+            endingLineNumber = "977"
             landmarkName = "searchPosts(query:type:category:)"
             landmarkType = "7">
             <Locations>
@@ -466,8 +466,8 @@
             filePath = "DAHA/Firebase/FirestoreManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "980"
-            endingLineNumber = "980"
+            startingLineNumber = "976"
+            endingLineNumber = "976"
             landmarkName = "searchPosts(query:type:category:)"
             landmarkType = "7">
             <Locations>

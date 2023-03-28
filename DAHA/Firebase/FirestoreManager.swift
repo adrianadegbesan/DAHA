@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseStorage
+import FirebaseFunctions
 
 @MainActor
 class FirestoreManager: ObservableObject {
@@ -254,20 +255,15 @@ class FirestoreManager: ObservableObject {
         let cur_id = Auth.auth().currentUser?.uid
         
         if cur_id != nil {
-            let userRef = db.collection("Users").document(cur_id!)
+           
             
             do {
-                let doc = try await userRef.getDocument()
-                let data = doc.data()
-                
-                if data != nil{
-                    post_count = data?["post_count"] as? Int ?? 0
-                    saved_count = data?["saved_count"] as? Int ?? 0
-                    if saved_count < 0 {
-                        saved_count = 0
-                    }
-                }
+                let result = try await Functions.functions().httpsCallable("getMetrics").call(["cur_id": cur_id!, "university": university])
+                let data = result.data as! [String: Any]
+                post_count = data["post_count"] as? Int ?? 0
+                saved_count = data["saved_count"] as? Int ?? 0
                 metrics_loading = false
+              
             }
             catch{
                 print("unable to retrieve metrics")
