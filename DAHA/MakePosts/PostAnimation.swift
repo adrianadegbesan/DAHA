@@ -19,22 +19,39 @@ struct PostAnimation: View {
     @State private var size2 = 0.01
     @State private var size3 = 0.01
     @State private var glowScale: CGFloat = 1.0
+    @State private var currentColor: String
     
     @Environment(\.colorScheme) var colorScheme
+    
+    let lightColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "000000"]
+      let darkColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "FFFFFF"]
+
+      init(category: String, title: String, price: String, images: [UIImage]) {
+          self._category = State(initialValue: category)
+          self._title = State(initialValue: title)
+          self._price = State(initialValue: price)
+          self._images = State(initialValue: images)
+          self._currentColor = State(initialValue: category_colors[category] ?? "000000")
+      }
     
     var body: some View {
         VStack {
             VStack {
                 ZStack {
                     if images.isEmpty{
-                        glowingView(color: category == "General" ? .primary : Color(hex: category_colors[category] ?? "000000"))
+                        glowingView(color: category == "General" ? .primary : Color(hex: currentColor))
                     }
                    
                     Image(systemName: category_images[category] ?? "")
                         .resizable()
                         .scaledToFit()
                         .frame(width: images.isEmpty ? 240 : 160, height: images.isEmpty ? 120 : 80)
-                        .foregroundColor(category == "General" ? .primary : Color(hex: category_colors[category] ?? "000000")) // Set your desired color here
+                        .foregroundColor(category == "General" ? .primary : Color(hex: currentColor))
+                        .onTapGesture {
+                            withAnimation(.spring()) {
+                                currentColor = randomColor()
+                            }
+                        }
                        
                 }
                 .padding(.bottom, 10)
@@ -178,6 +195,11 @@ struct PostAnimation: View {
              animateDots()
          }
      }
+    
+    private func randomColor() -> String {
+        let colors = colorScheme == .dark ? darkColors : lightColors
+        return colors[Int.random(in: 0..<colors.count)]
+    }
 }
 
 struct SFSymbolAnimation_Previews: PreviewProvider {

@@ -94,6 +94,7 @@ struct PostScrollView: View {
                                 CategoryFilterView(selected: $categoryFilter, screen: screen, posts: $posts, loading: $loading)
                                     .padding(.bottom, 3)
                             }
+                    
 //                        }
                  
                         

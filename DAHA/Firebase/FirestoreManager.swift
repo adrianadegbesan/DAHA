@@ -29,35 +29,43 @@ class FirestoreManager: ObservableObject {
     @Published var listing_last : QueryDocumentSnapshot? = nil
     @Published var listings_loading: Bool = false
     @Published var listings_refresh: Bool = true
+    @Published var listings_error: Bool = false
     
     @Published var requests: [PostModel] = []
     @Published var requests_last : QueryDocumentSnapshot? = nil
     @Published var requests_loading: Bool = false
     @Published var requests_refresh: Bool = true
+    @Published var requests_error: Bool = false
     
     @Published var saved_posts: [PostModel] = []
     @Published var saved_last: QueryDocumentSnapshot? = nil
     @Published var saved_refresh: Bool = false
     @Published var saved_loading: Bool = false
+    @Published var saved_error: Bool = false
     
     @Published var my_posts: [PostModel] = []
     @Published var user_last: QueryDocumentSnapshot? = nil
     @Published var user_refresh: Bool = false
     @Published var my_posts_loading: Bool = false
+    @Published var my_posts_error: Bool = false
     
     @Published var listings_filtered : [PostModel] = []
     @Published var listings_filtered_last : QueryDocumentSnapshot? = nil
     @Published var listings_filtered_loading: Bool = false
     @Published var listings_filtered_refresh: Bool = true
+    @Published var listings_filtered_error: Bool = false
     
     @Published var requests_filtered: [PostModel] = []
     @Published var requests_filtered_last : QueryDocumentSnapshot? = nil
     @Published var requests_filtered_loading: Bool = false
     @Published var requests_filtered_refresh: Bool = true
+    @Published var requests_filtered_error: Bool = false
     
     @Published var search_results: [PostModel] = []
     @Published var search_last: QueryDocumentSnapshot? = nil
     @Published var search_results_loading: Bool = false
+    @Published var search_error: Bool = false
+    
     
     @Published var listings_tab: Bool = false
     @Published var requests_tab: Bool = false
@@ -517,10 +525,12 @@ class FirestoreManager: ObservableObject {
             withAnimation{
                 listings = temp
                 listings_loading = false
+                listings_error = false
             }
         }
         catch {
             listings_loading = false
+            listings_error = true
             print("error")
         }
     }
@@ -573,10 +583,12 @@ class FirestoreManager: ObservableObject {
             }
             listings_filtered = temp
             listings_filtered_loading = false
+            listings_filtered_error = false
         }
         
         catch {
             listings_filtered_loading = false
+            listings_filtered_error = true
             print("Error getting listings")
         }
     }
@@ -628,12 +640,14 @@ class FirestoreManager: ObservableObject {
             withAnimation{
                 self.requests = temp
                 requests_loading = false
+                requests_error = false
             }
           
 
         }
         catch {
             requests_loading = false
+            requests_error = true
             print("error")
         }
     }
@@ -685,10 +699,12 @@ class FirestoreManager: ObservableObject {
             }
             requests_filtered = temp
             requests_filtered_loading = false
+            requests_filtered_error = false
         }
         
         catch {
             requests_filtered_loading = false
+            requests_filtered_error = true
             print("Error getting requests")
         }
     }
@@ -746,10 +762,12 @@ class FirestoreManager: ObservableObject {
             }
             saved_posts = temp
             saved_loading = false
+            saved_error = false
             
         }
         catch {
             saved_loading = false
+            saved_error = true
             print("error")
         }
     }
@@ -818,10 +836,12 @@ class FirestoreManager: ObservableObject {
             }
             my_posts = temp
             my_posts_loading = false
+            my_posts_error = false
             
         }
         catch {
             my_posts_loading = false
+            my_posts_error = true
             print("error")
         }
     }
@@ -960,10 +980,12 @@ class FirestoreManager: ObservableObject {
             
             search_results = temp
             search_results_loading = false
+            search_error = false
             
         }
         catch {
             search_results_loading = false
+            search_error = true
             print("error")
         }
 

@@ -63,7 +63,7 @@ struct PostModal: View {
             .navigationBarTitle("")
             .navigationBarTitleDisplayMode(.inline)
         }
-        .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: light_scroll_background))
+//        .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: light_scroll_background))
         .alert("Successfully Reported Post", isPresented: $success_alert, actions:{}, message: {Text("This post was successfully reported")})
     }
 }
