@@ -35,12 +35,11 @@ struct CategoryView: View {
                     .scaleEffect(isAnimating1 ? 1.2 : 1.0)
                     .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating1)
                     .onLongPressGesture(minimumDuration: 0.5) {
-                        if screen == "Modal"{
+                            SoftFeedback()
                             isAnimating1 = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                                 isAnimating1 = false
                             }
-                        }
                      }
                     .padding(.trailing, 6)
             } else {
@@ -68,12 +67,11 @@ struct CategoryView: View {
                     .scaleEffect(isAnimating2 ? 1.2 : 1.0)
                     .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating2)
                     .onLongPressGesture(minimumDuration: 0.5) {
-                        if screen == "Modal"{
+                            SoftFeedback()
                             isAnimating2 = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                                 isAnimating2 = false
                             }
-                        }
                      }
                     .padding(.trailing, 10)
             } else {
@@ -110,14 +108,12 @@ struct CategoryView: View {
                             .scaleEffect(isAnimating3 ? 1.2 : 1.0)
                             .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating3)
                             .onLongPressGesture(minimumDuration: 0.5) {
-                                if screen == "Modal"{
+                                    SoftFeedback()
                                     isAnimating3 = true
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                                         isAnimating3 = false
                                     }
                                 }
-                             }
-                
                     }
                     
                 }

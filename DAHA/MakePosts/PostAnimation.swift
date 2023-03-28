@@ -52,6 +52,7 @@ struct PostAnimation: View {
                         .animation(.easeInOut(duration: 0.5), value: isAnimating)
                         .onTapGesture {
                             if !images.isEmpty{
+                                LightFeedback()
                                 withAnimation {
                                     isAnimating.toggle()
                                 }
