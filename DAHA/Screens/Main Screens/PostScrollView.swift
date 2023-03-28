@@ -21,7 +21,7 @@ struct PostScrollView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var targetPostID: String? = nil
     @State private var currentPostID: String = ""
-    
+    @State private var isAnimating: Bool = false
     
     @State var screenOpacity = 0.1
 //    @State var time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
@@ -114,6 +114,15 @@ struct PostScrollView: View {
                                         Image(systemName: "magnifyingglass")
                                             .font(.system(size: 95, weight: .bold))
                                             .foregroundColor(Color(hex: deepBlue))
+                                            .scaleEffect(isAnimating ? 1.2 : 1.0)
+                                            .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                                            .onLongPressGesture(minimumDuration: 0.5) {
+                                                 SoftFeedback()
+                                                 isAnimating = true
+                                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                                    isAnimating = false
+                                                 }
+                                             }
                                         .padding(.top, screenHeight * 0.15)
                                         Text("No results found")
                                             .font(.system(size: 25, weight: .semibold))
@@ -144,6 +153,15 @@ struct PostScrollView: View {
                                   Image("Logo")
                                       .opacity(0.75)
                                       .overlay(Rectangle().stroke(.white, lineWidth: 2))
+                                      .scaleEffect(isAnimating ? 1.1 : 1.0)
+                                      .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                                      .onLongPressGesture(minimumDuration: 0.5) {
+                                           SoftFeedback()
+                                           isAnimating = true
+                                           DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                              isAnimating = false
+                                           }
+                                       }
                                       .padding(.top, screenHeight * 0.15)
                                 }
                               .frame(width: screenWidth)

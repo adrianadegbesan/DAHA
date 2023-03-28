@@ -55,10 +55,10 @@ struct HeaderView: View {
                 }
                 .scaleEffect(isAnimating ? 1.1 : 1.0)
                 .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
-                .onLongPressGesture(minimumDuration: 0.8) {
+                .onLongPressGesture(minimumDuration: 0.5) {
                      SoftFeedback()
                      isAnimating = true
-                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                         isAnimating = false
                      }
                  }

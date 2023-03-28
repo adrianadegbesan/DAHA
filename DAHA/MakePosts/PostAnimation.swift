@@ -218,9 +218,11 @@ struct PostAnimation: View {
 
     private func getNewColor() -> String {
         var newColor = randomColor()
-        while newColor == currentColor {
+        let cur = currentColor
+        while newColor == cur {
             newColor = randomColor()
         }
+        currentColor = cur
         return newColor
     }
     
