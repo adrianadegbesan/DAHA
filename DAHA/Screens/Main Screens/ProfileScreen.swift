@@ -75,7 +75,7 @@ struct ProfileScreen: View {
 
                 }
                 .padding(.bottom, 20)
-                .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
+//                .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
                 
                 
                 
@@ -133,7 +133,8 @@ struct ProfileScreen: View {
                     }
                     Spacer()
                 }
-                .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
+                Divider()
+//                .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
                 
                 TabView(selection: $tabIndex){
                     UserPostsView().tag(0)

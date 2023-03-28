@@ -74,7 +74,8 @@ struct HomeScreen: View {
                         }
                         Spacer()
                     }
-                    .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
+                    Divider()
+//                    .background(colorScheme == .dark ? .clear : Color(hex: greyBackground))
                     /*
                      Views for home screen
                      */
