@@ -14,6 +14,7 @@ struct CategoryFilterIcon: View {
     @State var screen : String
     @Binding var posts: [PostModel]
     @Binding var loading: Bool
+    @State var isAnimating: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
     

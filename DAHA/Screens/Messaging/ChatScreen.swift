@@ -23,6 +23,7 @@ struct ChatScreen: View {
     @State var listener : ListenerRegistration?
     @State var scrollDown : Bool?
     @State var empty: Bool = true
+    @State var isAnimating: Bool = false
     @AppStorage("messageScreen") var messageScreen: Bool = false
     
     var body: some View {
@@ -36,7 +37,14 @@ struct ChatScreen: View {
             ScrollViewReader{ value in
                 ScrollView{
                     PostView(post: post, owner: false, preview: true)
-                        .scaleEffect(0.93)
+                        .scaleEffect(isAnimating ? 1.2 : 0.93)
+                        .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                        .onLongPressGesture(minimumDuration: 0.8) {
+                             isAnimating = true
+                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                isAnimating = false
+                             }
+                         }
                     
                     if channelID == nil && empty {
                         Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")

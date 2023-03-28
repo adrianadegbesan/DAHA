@@ -19,36 +19,48 @@ struct HeaderView: View {
     var tabIndex : Binding<Int>?
     var tabs : [String]?
     var screen: String
+    @State var isAnimating: Bool = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(spacing: 0){
             HStack{
           
-                Image("Logo")
-                    .scaleEffect(0.6)
-                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2).scaleEffect(0.6))
-                ZStack {
-                    
-                    Rectangle()
-                        // Specific dimensions of rounded rectangle
-                        .frame(width: 170, height: colorScheme == .dark ? 66.4 : 65.5)
-                        .cornerRadius(18, corners: [.topRight, .bottomRight])
-                        .foregroundColor(.black)
-                        .background((Rectangle().cornerRadius(18, corners: [.topRight, .bottomRight]).foregroundColor(colorScheme == .dark ? .white : .black).scaleEffect(1.018)))
-                      
+                HStack{
+                    Image("Logo")
+                        .scaleEffect(0.6)
+                        .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2).scaleEffect(0.6))
+                    ZStack {
                         
-                        
-                    HStack{
-                        Text(title)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.01)
-                            .font(.system(size: screen == "User" ? 17 : 18.5, weight: .bold))
-                            .scaleEffect(screen == "User" && title.count >= 10 ? 0.95 : 1)
-                            .foregroundColor(.white)
+                        Rectangle()
+                            // Specific dimensions of rounded rectangle
+                            .frame(width: 170, height: colorScheme == .dark ? 66.4 : 65.5)
+                            .cornerRadius(18, corners: [.topRight, .bottomRight])
+                            .foregroundColor(.black)
+                            .background((Rectangle().cornerRadius(18, corners: [.topRight, .bottomRight]).foregroundColor(colorScheme == .dark ? .white : .black).scaleEffect(1.018)))
+                          
                             
+                            
+                        HStack{
+                            Text(title)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.01)
+                                .font(.system(size: screen == "User" ? 17 : 18.5, weight: .bold))
+                                .scaleEffect(screen == "User" && title.count >= 10 ? 0.95 : 1)
+                                .foregroundColor(.white)
+                                
+                        }
                     }
-                }.offset(x: -30)
+                    .offset(x: -30)
+                }
+                .scaleEffect(isAnimating ? 1.1 : 1.0)
+                .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                .onLongPressGesture(minimumDuration: 0.8) {
+                     isAnimating = true
+                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        isAnimating = false
+                     }
+                 }
  
                 
                 Spacer()

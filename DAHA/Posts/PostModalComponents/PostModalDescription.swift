@@ -16,6 +16,9 @@ struct PostModalDescription: View {
     @Binding  var saved: Bool
     @State  var owner: Bool
     @State private var error_alert = false
+    
+    @State var isAnimating : Bool = false
+    @State var isAnimating2 : Bool = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -25,6 +28,14 @@ struct PostModalDescription: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .font(.system(size: 19, weight: .bold))
+                    .scaleEffect(isAnimating ? 1.2 : 1.0)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                    .onLongPressGesture(minimumDuration: 0.8) {
+                         isAnimating = true
+                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            isAnimating = false
+                         }
+                     }
                     
                    
                 
@@ -34,6 +45,14 @@ struct PostModalDescription: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .font(.system(size: 16, weight: .bold))
+                    .scaleEffect(isAnimating2 ? 1.2 : 1.0)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating2)
+                    .onLongPressGesture(minimumDuration: 0.5) {
+                        isAnimating2 = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                            isAnimating2 = false
+                        }
+                     }
                  
             } //:HStack
             .padding(.leading, 12)

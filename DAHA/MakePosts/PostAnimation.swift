@@ -19,37 +19,48 @@ struct PostAnimation: View {
     @State private var size2 = 0.01
     @State private var size3 = 0.01
     @State private var glowScale: CGFloat = 1.0
-    @State private var currentColor: String
+    @State private var currentColor: String = ""
+    @State private var isColorInitialized: Bool = false
     
     @Environment(\.colorScheme) var colorScheme
     
     let lightColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "000000"]
       let darkColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "FFFFFF"]
 
-      init(category: String, title: String, price: String, images: [UIImage]) {
-          self._category = State(initialValue: category)
-          self._title = State(initialValue: title)
-          self._price = State(initialValue: price)
-          self._images = State(initialValue: images)
-          self._currentColor = State(initialValue: category_colors[category] ?? "000000")
-      }
+    init(category: String, title: String, price: String, images: [UIImage]) {
+           self._category = State(initialValue: category)
+           self._title = State(initialValue: title)
+           self._price = State(initialValue: price)
+           self._images = State(initialValue: images)
+           self._currentColor = State(initialValue: category_colors[category] ?? "000000")
+       }
     
     var body: some View {
         VStack {
             VStack {
                 ZStack {
                     if images.isEmpty{
-                        glowingView(color: category == "General" ? .primary : Color(hex: currentColor))
+                        glowingView(color: isColorInitialized ? Color(hex: currentColor) : .primary)
                     }
                    
                     Image(systemName: category_images[category] ?? "")
                         .resizable()
                         .scaledToFit()
                         .frame(width: images.isEmpty ? 240 : 160, height: images.isEmpty ? 120 : 80)
-                        .foregroundColor(category == "General" ? .primary : Color(hex: currentColor))
+                        .foregroundColor(isColorInitialized ? Color(hex: currentColor) : .primary)
+                        .opacity(isAnimating ? 0 : 1)
+                        .animation(.easeInOut(duration: 0.5), value: isAnimating)
                         .onTapGesture {
-                            withAnimation(.spring()) {
-                                currentColor = randomColor()
+                            if !images.isEmpty{
+                                withAnimation {
+                                    isAnimating.toggle()
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    withAnimation {
+                                        currentColor = getNewColor()
+                                        isAnimating.toggle()
+                                    }
+                                }
                             }
                         }
                        
@@ -114,6 +125,9 @@ struct PostAnimation: View {
             }
             .offset(y: !images.isEmpty ? bounceOffset : 0)
             .onAppear {
+                withAnimation(.easeIn(duration: 0.5)){
+                    initializeColor()
+                }
                 if !images.isEmpty{
                     withAnimation(Animation.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
                         bounceOffset = -40.0
@@ -200,6 +214,23 @@ struct PostAnimation: View {
         let colors = colorScheme == .dark ? darkColors : lightColors
         return colors[Int.random(in: 0..<colors.count)]
     }
+
+    private func getNewColor() -> String {
+        var newColor = randomColor()
+        while newColor == currentColor {
+            newColor = randomColor()
+        }
+        return newColor
+    }
+    
+    private func initializeColor() {
+           if category == "General" {
+               currentColor = colorScheme == .dark ? "FFFFFF" : "000000"
+           } else {
+               currentColor = category_colors[category] ?? "000000"
+           }
+           isColorInitialized = true
+       }
 }
 
 struct SFSymbolAnimation_Previews: PreviewProvider {
