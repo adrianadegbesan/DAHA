@@ -18,9 +18,11 @@ struct ConditionIcon: View {
     var body: some View {
         if (selected == condition){
             Button(action: {
-                SoftFeedback()
-                selected = ""
-                post.condition = ""
+                withAnimation{
+                    SoftFeedback()
+                    selected = ""
+                    post.condition = ""
+                }
             }) {
                 Text(condition.uppercased())
                     .lineLimit(1)
@@ -33,9 +35,11 @@ struct ConditionIcon: View {
             
         } else {
             Button(action: {
-                LightFeedback()
-                selected = condition
-                post.condition = condition
+                withAnimation{
+                    LightFeedback()
+                    selected = condition
+                    post.condition = condition
+                }
             }) {
                 Text(condition.uppercased())
                     .lineLimit(1)

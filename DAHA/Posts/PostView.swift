@@ -95,7 +95,6 @@ struct PostView: View {
         )
         .background(colorScheme == .dark ? .black.opacity(0.7): .white)
         .cornerRadius(20)
-        .padding(.horizontal, 3)
         .onAppear{
             let cur_id = Auth.auth().currentUser?.uid
             if cur_id != nil{
@@ -177,6 +176,7 @@ struct PostView: View {
                 }
             }
         }
+        .padding(.horizontal, 3)
         .alert("Delete Post", isPresented: $deletePresented, actions: {
             Button("Delete", role: .destructive, action: {
                 Task{
