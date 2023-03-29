@@ -19,6 +19,8 @@ struct SearchScreen: View {
     @EnvironmentObject var firestoreManager : FirestoreManager
     @State var searched = false
     @State var navScreen : Bool?
+    @State var isAnimating: Bool = false
+    @State var isAnimating2: Bool = false
     
     var body: some View {
         GeometryReader { _ in
@@ -131,6 +133,15 @@ struct SearchScreen: View {
                                     .padding(10)
                                     .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
                                     .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 3))
+                                    .scaleEffect(isAnimating ? 1.15 : 1.0)
+                                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                                    .onLongPressGesture(minimumDuration: 0.5) {
+                                         SoftFeedback()
+                                         isAnimating = true
+                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                            isAnimating = false
+                                         }
+                                     }
                                     .padding(.trailing, 10)
                             }
                             
@@ -142,6 +153,15 @@ struct SearchScreen: View {
                                     .padding(10)
                                     .background(Capsule().fill(.black))
                                     .overlay( colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
+                                    .scaleEffect(isAnimating2 ? 1.15 : 1.0)
+                                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating2)
+                                    .onLongPressGesture(minimumDuration: 0.5) {
+                                         SoftFeedback()
+                                         isAnimating2 = true
+                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                            isAnimating2 = false
+                                         }
+                                     }
                                     .padding(.trailing, 10)
                             }
                                

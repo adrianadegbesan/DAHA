@@ -21,11 +21,11 @@ struct PostModalPosterInfo: View {
             
             Image(systemName:"circle.fill")
                 .font(.system(size: 3.8, weight: .bold))
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
             
             Text(post.postedAt?.dateValue().timeAgoDisplay() ?? "")
                 .font(.system(size: 11, weight: .bold))
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
             Spacer()
             
             (Text(Image(systemName: type_images[post.type] ?? "")) + Text(" ") + Text(post.type.uppercased()))

@@ -22,8 +22,8 @@ struct PrivacySettingsScreen: View {
                     .padding(.horizontal, 15)
                 ScrollView{
                     VStack(alignment: .leading){
-                        Text("Policy")
-                            .frame(alignment: .leading)
+                        Text(privacyPolicyText)
+                            .font(.body)
                     }
                 }
                 .padding(.horizontal, 15)

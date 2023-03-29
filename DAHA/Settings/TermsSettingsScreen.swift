@@ -22,8 +22,8 @@ struct TermsSettingsScreen: View {
                     .padding(.horizontal, 15)
                 ScrollView{
                     VStack(alignment: .leading){
-                        Text("Terms")
-                            .frame(alignment: .leading)
+                        Text(termsAndConditionsText)
+                            .font(.body)
                     }
                 }
                 .padding(.horizontal, 15)

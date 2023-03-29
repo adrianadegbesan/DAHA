@@ -37,24 +37,11 @@ struct PostConfirmationScreen: View {
             VStack{
                 Spacer()
                 
-                Image("Logo")
-                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
-                    .padding(.bottom, 25)
+                ProhibitedPostsView()
+               
+                Spacer()
                 
-                Text("By posting on DAHA you certify that this post is in accordance with all the rules and guidelines stated in the terms and conditions")
-                    .font(
-                        .system(size:17, weight: .heavy)
-                    )
-                    .foregroundColor(.gray)
-                
-                    .padding()
-                
-                    Text("Violations of any of these rules may result in a permanent suspension of your account")
-                        .font(
-                            .system(size:14, weight: .heavy)
-                        )
-                        .foregroundColor(.red.opacity(0.9))
-                Spacer().frame(height: screenHeight * 0.3)
+                Divider()
                 
                 MakePostButton(post: $post, images: $images, post_created: $post_created, uploading: $uploading).onChange(of: post_created){ value in
                     if post_created {

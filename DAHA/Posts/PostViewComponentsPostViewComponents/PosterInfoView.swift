@@ -26,13 +26,13 @@ struct PosterInfoView: View {
             Image(systemName:"circle.fill")
                 .minimumScaleFactor(0.5)
                 .font(.system(size: 2.5, weight: .bold))
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
             
             Text(timestampString)
                 .lineLimit(1)
                 .minimumScaleFactor(0.001)
                 .font(.system(size: 9.5, weight: .semibold))
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
                 .onAppear{
                     timestampString = post.postedAt?.dateValue().timeAgoDisplay() ?? ""
                 }

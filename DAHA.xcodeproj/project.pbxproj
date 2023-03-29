@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820C076D29D413DA00045204 /* ProhibitedPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C076C29D413DA00045204 /* ProhibitedPostsView.swift */; };
 		82218BF629986BCB0092BA94 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218BF529986BCB0092BA94 /* MessageManager.swift */; };
 		82218BF829988DF90092BA94 /* PostScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218BF729988DF90092BA94 /* PostScrollView.swift */; };
 		82218BFD299ACC110092BA94 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 82218BFC299ACC110092BA94 /* SDWebImageSwiftUI */; };
@@ -167,6 +168,7 @@
 		82CEFC872969D02400C55F67 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC862969D02400C55F67 /* LoginButton.swift */; };
 		82CEFC8B2969D06700C55F67 /* FirstContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */; };
 		82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */; };
+		82D3160E29D40FF6001FB5D6 /* TermsConditionsText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3160D29D40FF6001FB5D6 /* TermsConditionsText.swift */; };
 		82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF4CAD296F614500A309CF /* SecondContinueButton.swift */; };
 		82DF4CB329775B5300A309CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82DF4CB229775B5300A309CF /* GoogleService-Info.plist */; };
 		82E75AC3297E321600742F18 /* Email API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E75AC2297E321600742F18 /* Email API.swift */; };
@@ -174,6 +176,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		820C076C29D413DA00045204 /* ProhibitedPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProhibitedPostsView.swift; sourceTree = "<group>"; };
 		82218BF529986BCB0092BA94 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		82218BF729988DF90092BA94 /* PostScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScrollView.swift; sourceTree = "<group>"; };
 		82218C00299C66BA0092BA94 /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
@@ -317,6 +320,7 @@
 		82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstContinueButton.swift; sourceTree = "<group>"; };
 		82CEFC8C2969D0DF00C55F67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		82D3160D29D40FF6001FB5D6 /* TermsConditionsText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionsText.swift; sourceTree = "<group>"; };
 		82DF4CAD296F614500A309CF /* SecondContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondContinueButton.swift; sourceTree = "<group>"; };
 		82DF4CB12973C7FA00A309CF /* DAHA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DAHA.entitlements; sourceTree = "<group>"; };
 		82DF4CB229775B5300A309CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -476,6 +480,7 @@
 			children = (
 				82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */,
 				82ACC68829936E4300589E1E /* PostConfirmationScreen.swift */,
+				820C076C29D413DA00045204 /* ProhibitedPostsView.swift */,
 				82ACC68629936E3100589E1E /* NextButton.swift */,
 				82B6B2C32989EE8800027E5A /* MakePostButton.swift */,
 				82CA14AB29CFFA3C00BF8544 /* PostAnimation.swift */,
@@ -707,6 +712,7 @@
 				82CED4FE2981EFFE009B5507 /* CreateAccountScreen */,
 				82CED4FC2981EF56009B5507 /* EmailVerificationScreen */,
 				82B6B2DE298B270300027E5A /* TermsConditionsScreen.swift */,
+				82D3160D29D40FF6001FB5D6 /* TermsConditionsText.swift */,
 			);
 			path = "Onboarding and Login";
 			sourceTree = "<group>";
@@ -915,6 +921,7 @@
 				82B6B2DD298AE9BF00027E5A /* DeleteButton.swift in Sources */,
 				82C4589329BA4A1400661703 /* UsernameModel.swift in Sources */,
 				82CEFC682969CE7E00C55F67 /* SettingsScreen.swift in Sources */,
+				82D3160E29D40FF6001FB5D6 /* TermsConditionsText.swift in Sources */,
 				82CEFC642969CE5200C55F67 /* DMScreen.swift in Sources */,
 				82B6B2F0298C438E00027E5A /* CameraRollButton.swift in Sources */,
 				82B6B2CD298A14DC00027E5A /* ConditionIcon.swift in Sources */,
@@ -940,6 +947,7 @@
 				82CBC2A92988D1A2001966E3 /* PageBottomDivider.swift in Sources */,
 				8294FAAE296B9F64004001AE /* PostModel.swift in Sources */,
 				82C0847929BD117500F3627E /* CategoryFilterView.swift in Sources */,
+				820C076D29D413DA00045204 /* ProhibitedPostsView.swift in Sources */,
 				82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */,
 				82A21A6C29A846680040BAA1 /* ReportModal.swift in Sources */,
 				82B6B2D9298ADAE700027E5A /* ForgotPasswordScreen.swift in Sources */,

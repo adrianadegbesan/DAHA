@@ -28,8 +28,8 @@ struct TermsConditionsScreen: View {
                     .padding(.horizontal, 15)
                 ScrollView{
                     VStack(alignment: .leading){
-                        Text("Terms")
-                            .frame(alignment: .leading)
+                        Text(termsAndConditionsText)
+                            .font(.body)
                     }
                 }
                 .padding(.horizontal, 15)
@@ -42,7 +42,9 @@ struct TermsConditionsScreen: View {
                     .scaleEffect(1.3)
                     .foregroundColor(toggle ? Color(hex: deepBlue): .secondary)
                     .onTapGesture {
-                        toggle.toggle()
+                        withAnimation{
+                            toggle.toggle()
+                        }
                     }
                 Text("I agree to these terms and conditions")
                     .font(
