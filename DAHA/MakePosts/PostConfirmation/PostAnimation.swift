@@ -104,17 +104,7 @@ struct PostAnimation: View {
                             
                             
                             ForEach(images, id: \.self){ image in
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(12)
-                                    .overlay{
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .stroke(.primary, lineWidth: 2)
-                                    }
-                                    .frame(maxWidth: 180)
-                                    .padding(.horizontal, 10)
-                                
+                                UILoadingImage(uiImage: image)
                             }
                         }
                         .padding()

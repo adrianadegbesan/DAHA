@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		820C076D29D413DA00045204 /* ProhibitedPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C076C29D413DA00045204 /* ProhibitedPostsView.swift */; };
 		820C076F29D4A9BB00045204 /* ScrollViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C076E29D4A9BB00045204 /* ScrollViewWrapper.swift */; };
+		820C077129D4B4A600045204 /* UILoadingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C077029D4B4A600045204 /* UILoadingImage.swift */; };
 		82218BF629986BCB0092BA94 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218BF529986BCB0092BA94 /* MessageManager.swift */; };
 		82218BF829988DF90092BA94 /* PostScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218BF729988DF90092BA94 /* PostScrollView.swift */; };
 		82218BFD299ACC110092BA94 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 82218BFC299ACC110092BA94 /* SDWebImageSwiftUI */; };
@@ -179,6 +180,7 @@
 /* Begin PBXFileReference section */
 		820C076C29D413DA00045204 /* ProhibitedPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProhibitedPostsView.swift; sourceTree = "<group>"; };
 		820C076E29D4A9BB00045204 /* ScrollViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWrapper.swift; sourceTree = "<group>"; };
+		820C077029D4B4A600045204 /* UILoadingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadingImage.swift; sourceTree = "<group>"; };
 		82218BF529986BCB0092BA94 /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		82218BF729988DF90092BA94 /* PostScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScrollView.swift; sourceTree = "<group>"; };
 		82218C00299C66BA0092BA94 /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
@@ -361,6 +363,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		820C077229D4B53B00045204 /* PostConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				82ACC68829936E4300589E1E /* PostConfirmationScreen.swift */,
+				820C076C29D413DA00045204 /* ProhibitedPostsView.swift */,
+				82CA14AB29CFFA3C00BF8544 /* PostAnimation.swift */,
+				820C077029D4B4A600045204 /* UILoadingImage.swift */,
+				82B6B2C32989EE8800027E5A /* MakePostButton.swift */,
+			);
+			path = PostConfirmation;
+			sourceTree = "<group>";
+		};
 		82218C06299C864C0092BA94 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,11 +495,8 @@
 			isa = PBXGroup;
 			children = (
 				82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */,
-				82ACC68829936E4300589E1E /* PostConfirmationScreen.swift */,
-				820C076C29D413DA00045204 /* ProhibitedPostsView.swift */,
 				82ACC68629936E3100589E1E /* NextButton.swift */,
-				82B6B2C32989EE8800027E5A /* MakePostButton.swift */,
-				82CA14AB29CFFA3C00BF8544 /* PostAnimation.swift */,
+				820C077229D4B53B00045204 /* PostConfirmation */,
 				82B6B2BC2989EC9700027E5A /* MakePostModalComponents */,
 			);
 			path = MakePosts;
@@ -934,6 +945,7 @@
 				82CA14AC29CFFA3C00BF8544 /* PostAnimation.swift in Sources */,
 				82ACC69B2996BF9800589E1E /* SearchCategoryIcon.swift in Sources */,
 				828CAFA029B1868200B489F4 /* MessageChannelModel.swift in Sources */,
+				820C077129D4B4A600045204 /* UILoadingImage.swift in Sources */,
 				82ACC68929936E4300589E1E /* PostConfirmationScreen.swift in Sources */,
 				82B6B2F8298F27A100027E5A /* Camera.swift in Sources */,
 				82A21A6429A6E21B0040BAA1 /* MessagePreview.swift in Sources */,
@@ -1117,7 +1129,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
@@ -1157,7 +1169,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
