@@ -41,8 +41,6 @@ struct PostConfirmationScreen: View {
                
                 Spacer()
                 
-                Divider()
-                
                 MakePostButton(post: $post, images: $images, post_created: $post_created, uploading: $uploading).onChange(of: post_created){ value in
                     if post_created {
                         if post.type == "Listing"{
@@ -66,8 +64,8 @@ struct PostConfirmationScreen: View {
                     }
                 }
                 .overlay(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
-                
-                .padding(.bottom, 20)
+                .padding(.top, 10)
+                .padding(.bottom, 10)
                     
             }
             .opacity(screenOpacity)

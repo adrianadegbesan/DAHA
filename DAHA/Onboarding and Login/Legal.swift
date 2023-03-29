@@ -95,7 +95,7 @@ Data Retention
 We retain your personal information for as long as necessary to provide the services you have requested or for other essential purposes, such as complying with our legal obligations, resolving disputes, and enforcing our agreements.
 
 Data Security
-We implement appropriate security measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. However, no method of transmission or storage is 100% secure, and we cannot guarantee the absolute security of your information.
+We implement appropriate security measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction and continue to revise our security measures ensuring they are up to date with industry standards.
 
 Compliance with California Privacy Laws
 DAHA is committed to complying with all applicable privacy laws, including the California Consumer Privacy Act (CCPA) and any future privacy laws enacted in California. If you are a California resident, you have the right to request access to the personal information we have collected about you, request that we delete your personal information, and opt-out of the sale of your personal information, if applicable. To exercise these rights, please contact us at team@joindaha.com.

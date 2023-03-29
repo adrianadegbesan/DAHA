@@ -18,18 +18,16 @@ struct PrivacySettingsScreen: View {
             Text("Privacy Policy")
                 .titleText()
             VStack(spacing: 0){
-                PageBottomDivider()
-                    .padding(.horizontal, 15)
+                Divider()
                 ScrollView{
+                    Spacer().frame(height: 10)
                     VStack(alignment: .leading){
                         Text(privacyPolicyText)
                             .font(.body)
                     }
                 }
                 .padding(.horizontal, 15)
-                PageBottomDivider()
-                    .padding(.horizontal, 15)
-                    .padding(.bottom, 15)
+                Divider()
             }
         }
     }

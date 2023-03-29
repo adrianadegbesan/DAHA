@@ -24,18 +24,16 @@ struct TermsConditionsScreen: View {
             Text("Terms and Conditions")
                 .titleText()
             VStack(spacing: 0){
-                PageBottomDivider()
-                    .padding(.horizontal, 15)
+                Divider()
                 ScrollView{
+                    Spacer().frame(height: 10)
                     VStack(alignment: .leading){
                         Text(termsAndConditionsText)
                             .font(.body)
                     }
                 }
                 .padding(.horizontal, 15)
-                PageBottomDivider()
-                    .padding(.horizontal, 15)
-                    .padding(.bottom, 15)
+                Divider()
             }
             HStack{
                 Image(systemName: toggle ? "checkmark.square.fill" : "square")
