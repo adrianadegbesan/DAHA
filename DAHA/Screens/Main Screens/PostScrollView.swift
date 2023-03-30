@@ -139,6 +139,13 @@ struct PostScrollView: View {
                               Spacer().frame(height: 12)
                               
                               LazyVStack {
+                                  
+                                  if #available(iOS 16, *){
+                                      EmptyView()
+                                  } else {
+                                      Spacer().frame(height: 45)
+                                  }
+                                  
                                   ProgressView()
                                       .scaleEffect(1.2)
                                       .padding(.top, 10)
@@ -155,7 +162,7 @@ struct PostScrollView: View {
                                       .overlay(Rectangle().stroke(.white, lineWidth: 2))
                                       .scaleEffect(isAnimating ? 1.1 : 1.0)
                                       .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
-                                      .onLongPressGesture(minimumDuration: 0.5) {
+                                      .onTapGesture{
                                            SoftFeedback()
                                            isAnimating = true
                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {

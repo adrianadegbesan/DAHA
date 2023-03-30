@@ -44,7 +44,7 @@ struct ProhibitedPostsView: View {
                         
                         Text("By posting on DAHA, you acknowledge that this post is in compliance with our terms and conditions:")
                             .font(
-                                .system(size:14, weight: .bold)
+                                .system(size: 14, weight: .bold)
                             )
                             .foregroundColor(.secondary)
                         
@@ -205,6 +205,7 @@ struct ProhibitedPostsView: View {
                                 )
                                 .foregroundColor(.red.opacity(0.9))
                                 .padding()
+                               
                         
                       }
                 }

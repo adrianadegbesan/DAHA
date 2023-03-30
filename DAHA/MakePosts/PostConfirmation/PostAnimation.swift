@@ -73,16 +73,15 @@ struct PostAnimation: View {
                     HStack{
                         
                         Text(title)
-                            .font(.system(size: 21, weight: .bold))
+                            .font(.system(size: 22, weight: .bold))
                         
                         Image(systemName:"circle.fill")
-                            .font(.system(size: 3.5, weight: .bold))
+                            .font(.system(size: 3.5, weight: .heavy))
                             .foregroundColor(.secondary)
                         
                         Text(price != "Free" ? "$\(price)" : "Free")
-                            .font(.system(size: 16.5, weight: .bold))
+                            .font(.system(size: 18, weight: .bold))
                             .foregroundColor(.secondary)
-                        
                     }
                     .padding(.horizontal)
                 }
@@ -136,14 +135,14 @@ struct PostAnimation: View {
                 HStack{
                     
                     Text(title)
-                        .font(.system(size: 21, weight: .bold))
+                        .font(.system(size: 22, weight: .bold))
                     
                     Image(systemName:"circle.fill")
-                        .font(.system(size: 3.5, weight: .bold))
+                        .font(.system(size: 3.5, weight: .heavy))
                         .foregroundColor(.secondary)
                     
                     Text(price != "Free" ? "$\(price)" : "Free")
-                        .font(.system(size: 16.5, weight: .bold))
+                        .font(.system(size: 18, weight: .bold))
                         .foregroundColor(.secondary)
                     
                     if images.count > 1{
