@@ -111,8 +111,9 @@ struct ChatScreen: View {
                         if channelID != nil {
                             withAnimation {
                                 empty = false
+                                listener = messageManager.getMessages(channelID: channelID!)
                             }
-                            listener = messageManager.getMessages(channelID: channelID!)
+                          
                         }
                     }
                     .onAppear{

@@ -17,6 +17,7 @@ struct DMScreen: View {
     @EnvironmentObject var messageManager : MessageManager
     @State var profile : Bool?
     @State var listener : ListenerRegistration?
+    @State var isAnimating : Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
@@ -37,10 +38,23 @@ struct DMScreen: View {
                     ProgressView()
                         .scaleEffect(1)
                 } else if (messageManager.messageChannels.isEmpty && !messageManager.messageChannelsLoading){
+                    if profile == nil{
+                        Divider()
+                    }
+                    
                     ZStack {
                         Image("Logo")
                             .opacity(0.75)
                             .overlay(Rectangle().stroke(.white, lineWidth: 2))
+                            .scaleEffect(isAnimating ? 1.1 : 1.0)
+                            .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                            .onTapGesture{
+                                 SoftFeedback()
+                                 isAnimating = true
+                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                    isAnimating = false
+                                 }
+                             }
                             .padding(.top, screenHeight * 0.15)
                       }
                     .frame(width: screenWidth)

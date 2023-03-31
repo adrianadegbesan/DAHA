@@ -15,7 +15,7 @@ struct ImageIndicator: View {
         if index == my_index{
             Image(systemName: "circle.fill")
                 .foregroundColor(Color(hex: deepBlue))
-                .font(.system(size: 8, weight: .bold))
+                .font(.system(size: 9, weight: .bold))
         } else {
             Image(systemName: "circle.fill")
                 .foregroundColor(Color(hex: "D1D0CE"))
