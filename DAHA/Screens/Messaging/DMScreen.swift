@@ -40,11 +40,13 @@ struct DMScreen: View {
                 } else if (messageManager.messageChannels.isEmpty && !messageManager.messageChannelsLoading){
                     if profile == nil{
                         Divider()
+                        
                     }
+                    Spacer().frame(height: 12)
                     
                     ZStack {
                         Image("Logo")
-                            .opacity(0.75)
+                            .opacity(colorScheme == .dark ? 0.75 : 0.9)
                             .overlay(Rectangle().stroke(.white, lineWidth: 2))
                             .scaleEffect(isAnimating ? 1.1 : 1.0)
                             .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
