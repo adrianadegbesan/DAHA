@@ -184,6 +184,7 @@ struct SearchScreen: View {
             .onTapGesture {
                 hideKeyboard()
             }
+            
             .onDisappear{
                 if navScreen != nil{
                     if navScreen! {

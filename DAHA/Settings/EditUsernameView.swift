@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditUsernameView: View {
     @EnvironmentObject var authentication : AuthManager
+    @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
     @State private var isPresented : Bool = false
     @State private var username: String = ""
@@ -69,6 +70,18 @@ struct EditUsernameView: View {
                                     if success {
                                         username_system = username.replacingOccurrences(of: " ", with: "").lowercased()
                                         username = ""
+//                                        Task{
+//                                            firestoreManager.my_posts.removeAll()
+//                                            firestoreManager.listings.removeAll()
+//                                            firestoreManager.requests.removeAll()
+//                                            firestoreManager.listings_filtered.removeAll()
+//                                            firestoreManager.requests_filtered.removeAll()
+//
+//                                            await firestoreManager.userPosts()
+//                                            await firestoreManager.getListings()
+//                                            await firestoreManager.getRequests()
+//
+//                                        }
                                         success_alert = true
                                     } else {
                                         error_alert = true

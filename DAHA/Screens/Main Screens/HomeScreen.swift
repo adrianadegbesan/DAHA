@@ -118,6 +118,7 @@ struct HomeScreen: View {
                 
                 
             } //: ZStack
+            .ignoresSafeArea(.keyboard)
             .onAppear{
                 if firestoreManager.listings_tab {
                     tabIndex = 0

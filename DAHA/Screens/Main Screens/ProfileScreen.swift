@@ -193,6 +193,7 @@ struct ProfileScreen: View {
                 .offset(x: screenWidth * 0.35, y: screenHeight * 0.31)
             }
         } //: ZStack
+        .ignoresSafeArea(.keyboard)
         .onAppear{
 //            Task{
 //                if appState.profileStart {

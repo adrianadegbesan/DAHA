@@ -26,6 +26,8 @@ struct ChatScreen: View {
     @State var isAnimating: Bool = false
     @AppStorage("messageScreen") var messageScreen: Bool = false
     
+    @State var shouldNavigate : Bool = false
+    
     var body: some View {
         VStack(spacing: 0){
             VStack(spacing: 0){
@@ -69,6 +71,10 @@ struct ChatScreen: View {
                                 .id(message.id)
                             
                         }
+                    }
+                    
+                    NavigationLink(destination: PostModalPreview(post: post, owner: Auth.auth().currentUser?.uid == post.userID), isActive: $shouldNavigate){
+                        EmptyView()
                     }
                 }
             
@@ -139,6 +145,7 @@ struct ChatScreen: View {
                             listener?.remove()
                         }
                     }
+               
             }
             .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
            

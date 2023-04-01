@@ -53,6 +53,7 @@ struct MakePostScreen: View {
                 .id(1)
                 
             }
+            .dismissKeyboardOnDrag()
 //            .onAppear {
 //                UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color(hex: deepBlue))
 //                UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color(hex: "D1D0CE"))

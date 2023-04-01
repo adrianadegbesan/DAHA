@@ -145,8 +145,8 @@ struct PostView: View {
                                 let id = Auth.auth().currentUser?.uid
                                 if id != nil && !post.savers.contains(id!){
                                     post.savers.append(id!)
+                                    saved.toggle()
                                 }
-                                saved.toggle()
                             }
                             
                         } label:{
@@ -163,6 +163,7 @@ struct PostView: View {
                                 channelID = channel!.id
                             }
                         }
+                        UIApplication.shared.dismissKeyboard()
                         buyNavigate = true
                     } label:{
                         Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane.fill")

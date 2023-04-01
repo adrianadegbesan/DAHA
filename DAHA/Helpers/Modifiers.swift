@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import UIKit
 
 
 extension Bool {
@@ -111,3 +112,62 @@ extension View {
     }
 }
 
+
+//extension UINavigationController: UIGestureRecognizerDelegate {
+//    override open func viewDidLoad() {
+//        super.viewDidLoad()
+//        interactivePopGestureRecognizer?.delegate = self
+//    }
+//
+//    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return viewControllers.count > 1
+//    }
+//}
+
+struct DismissKeyboardOnDrag: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(GestureOverlay())
+    }
+
+    private struct GestureOverlay: UIViewRepresentable {
+        func makeUIView(context: Context) -> UIView {
+            let view = UIView(frame: .zero)
+            view.backgroundColor = UIColor.clear
+
+            let recognizer = UIPanGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleGesture(_:)))
+            view.addGestureRecognizer(recognizer)
+
+            return view
+        }
+
+        func updateUIView(_ uiView: UIView, context: Context) {}
+
+        func makeCoordinator() -> Coordinator {
+            Coordinator()
+        }
+
+        class Coordinator: NSObject {
+            @objc func handleGesture(_ gesture: UIPanGestureRecognizer) {
+                if gesture.state == .began || gesture.state == .changed {
+                    let translation = gesture.translation(in: nil)
+                    if translation.y > 0 {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension View {
+    func dismissKeyboardOnDrag() -> some View {
+        self.modifier(DismissKeyboardOnDrag())
+    }
+}
+
+extension UIApplication: UIGestureRecognizerDelegate {
+    func dismissKeyboard() {
+         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}

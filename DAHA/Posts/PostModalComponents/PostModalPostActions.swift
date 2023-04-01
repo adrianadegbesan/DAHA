@@ -14,16 +14,28 @@ struct PostModalPostActions: View {
     
     var body: some View {
         HStack{
-            if owner {
-                EmptyView()
-            } else {
-                Spacer()
+            Text(post.postedAt?.dateValue().dateString() ?? "")
+                .minimumScaleFactor(0.5)
+                .font(.system(size: 15, weight: .medium))
+                .foregroundColor(.gray)
+                .padding(.leading, 15)
+            
+            Spacer()
+            
+            if !owner {
+                BuyButton(post: post)
+                    .padding(.leading, 15)
+                    .padding(.trailing, 15)
                 BookmarkButton(post: post, saved: $saved)
-                    .scaleEffect(1)
                     .padding(.trailing, 10)
-              
+                
+               
+            } else {
+                DeleteButton(post: post, modal: true)
+                    .padding(.trailing, 15)
             }
         }
+        .padding(.bottom, 10)
     }
 }
 

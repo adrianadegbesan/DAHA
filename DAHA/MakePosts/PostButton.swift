@@ -16,6 +16,7 @@ struct PostButton: View {
         
         Button(action: {
             MediumFeedback()
+            UIApplication.shared.dismissKeyboard()
             shouldNavigate = true
         }){
                 ZStack {

@@ -499,13 +499,53 @@ class FirestoreManager: ObservableObject {
         return result
     }
     
+    func getPost(postID: String) async -> PostModel? {
+        
+        var post : PostModel? = nil
+        
+        do {
+            let postRef = db.collection("Universities").document("\(university)").collection("Posts").document(postID)
+            let document = try await postRef.getDocument()
+            let data = document.data()
+            var post_temp = PostModel(id: data?["id"] as? String ?? "",
+                                  title: data?["title"] as? String ?? "",
+                                  userID: data?["userID"] as? String ?? "",
+                                  username: data?["username"] as? String ?? "",
+                                  description: data?["description"] as? String ?? "",
+                                  postedAt: data?["postedAt"] as? Timestamp ?? Timestamp(date: Date.now),
+                                  condition: data?["condition"] as? String ?? "",
+                                  category: data?["category"] as? String ?? "",
+                                  price: data?["price"] as? String ?? "",
+                                  imageURLs: data?["imageURLs"] as? [String] ?? [],
+                                  channel: data?["channel"] as? String ?? "",
+                                  savers: data?["savers"] as? [String] ?? [],
+                                  type: data?["type"] as? String ?? "",
+                                  keywordsForLookup: data?["keywordsForLookup"] as? [String] ?? [],
+                                  reporters: data?["reporters"] as? [String] ?? [])
+            
+            if data?["borrow"] != nil {
+                post_temp.borrow = data?["borrow"] as? Bool ?? false
+            }
+            post = post_temp
+            return post
+            
+        }
+        catch {
+            return nil
+        }
+    }
+    
 
     /*
      Function to retrieve listings from specific university/channel from database
      */
     func getListings() async {
+        
+        let prior_list = listings
+        
         do {
             listings_loading = true
+//            listings.removeAll()
 
             var temp: [PostModel] = []
             let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Listing").order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
@@ -525,6 +565,7 @@ class FirestoreManager: ObservableObject {
             }
         }
         catch {
+            listings = prior_list
             listings_loading = false
             listings_error = true
             print("error")
@@ -621,8 +662,12 @@ class FirestoreManager: ObservableObject {
      Function to retrieve requests from specific university/channel from database
      */
     func getRequests() async {
+        
+        let prior_list = requests
+        
         do {
             requests_loading = true
+//            requests.removeAll()
             var temp: [PostModel] = []
             let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Request").order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
             let documents = snapshot.documents
@@ -634,7 +679,7 @@ class FirestoreManager: ObservableObject {
                 temp.append(post)
             }
             withAnimation{
-                self.requests = temp
+                requests = temp
                 requests_loading = false
                 requests_error = false
             }
@@ -642,6 +687,7 @@ class FirestoreManager: ObservableObject {
 
         }
         catch {
+            requests = prior_list
             requests_loading = false
             requests_error = true
             print("error")

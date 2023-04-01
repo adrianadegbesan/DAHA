@@ -23,6 +23,7 @@ struct BuyButton: View {
             //MessagingAction
             SoftFeedback()
            
+           
             redirect = !messageManager.messageChannels.contains(where: {$0.post.id == post.id})
             
             if !redirect{
@@ -33,6 +34,7 @@ struct BuyButton: View {
                     listener = messageManager.getMessages(channelID: channelID)
                 }
             }
+            UIApplication.shared.dismissKeyboard()
             shouldNavigate = true
             
         }){

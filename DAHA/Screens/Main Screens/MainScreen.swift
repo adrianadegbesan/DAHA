@@ -16,6 +16,9 @@ struct MainScreen: View {
     @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var appState : AppState
     
+    @State private var dummyText = ""
+    @FocusState private var dummyFocus: Bool
+    
     
     var body: some View {
         
@@ -56,8 +59,9 @@ struct MainScreen: View {
                 .tag(3)
             
         } //TabView
-      
+        
         .onAppear{
+//            hideKeyboard()
             /*Change tab view indicator colour*/
             let appearance: UITabBarAppearance = UITabBarAppearance()
             UITabBar.appearance().scrollEdgeAppearance = appearance
@@ -69,6 +73,7 @@ struct MainScreen: View {
 //        .navigationBarBackButtonHidden(true)
         .navigationBarTitle("")
         .navigationBarTitleDisplayMode(.inline)
+
         
 //
         

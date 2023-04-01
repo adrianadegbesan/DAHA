@@ -96,6 +96,8 @@
 		82ACC6942995EEED00589E1E /* TypeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6932995EEED00589E1E /* TypeModal.swift */; };
 		82ACC6992996B2FA00589E1E /* SearchCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC6982996B2FA00589E1E /* SearchCategories.swift */; };
 		82ACC69B2996BF9800589E1E /* SearchCategoryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ACC69A2996BF9800589E1E /* SearchCategoryIcon.swift */; };
+		82B40B9F29D78E1000BA7504 /* PostModalPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B40B9E29D78E1000BA7504 /* PostModalPreview.swift */; };
+		82B40BA229D78F2600BA7504 /* CategoryPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B40BA129D78F2600BA7504 /* CategoryPreview.swift */; };
 		82B6B2BB2989EC0E00027E5A /* MakePostScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */; };
 		82B6B2BE2989ECD300027E5A /* MakePostScreenExit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */; };
 		82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2C32989EE8800027E5A /* MakePostButton.swift */; };
@@ -248,6 +250,8 @@
 		82ACC6932995EEED00589E1E /* TypeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeModal.swift; sourceTree = "<group>"; };
 		82ACC6982996B2FA00589E1E /* SearchCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategories.swift; sourceTree = "<group>"; };
 		82ACC69A2996BF9800589E1E /* SearchCategoryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryIcon.swift; sourceTree = "<group>"; };
+		82B40B9E29D78E1000BA7504 /* PostModalPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModalPreview.swift; sourceTree = "<group>"; };
+		82B40BA129D78F2600BA7504 /* CategoryPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPreview.swift; sourceTree = "<group>"; };
 		82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreen.swift; sourceTree = "<group>"; };
 		82B6B2BD2989ECD300027E5A /* MakePostScreenExit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostScreenExit.swift; sourceTree = "<group>"; };
 		82B6B2C32989EE8800027E5A /* MakePostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePostButton.swift; sourceTree = "<group>"; };
@@ -430,8 +434,10 @@
 			children = (
 				823602042985ABF0002E7AEC /* PostView.swift */,
 				82CEFC612969CE3700C55F67 /* PostModal.swift */,
+				82B40B9E29D78E1000BA7504 /* PostModalPreview.swift */,
 				82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */,
 				82CBC2AA2989BA79001966E3 /* PostModalComponents */,
+				82B40BA029D78EF900BA7504 /* PostModalPreviewComponents */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -459,6 +465,14 @@
 				82A21A6F29A91E290040BAA1 /* DAHA-Loading.json */,
 			);
 			path = "Lottie Animations";
+			sourceTree = "<group>";
+		};
+		82B40BA029D78EF900BA7504 /* PostModalPreviewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				82B40BA129D78F2600BA7504 /* CategoryPreview.swift */,
+			);
+			path = PostModalPreviewComponents;
 			sourceTree = "<group>";
 		};
 		82B6B2BC2989EC9700027E5A /* MakePostModalComponents */ = {
@@ -494,6 +508,7 @@
 		82B6B2FD298F502400027E5A /* MakePosts */ = {
 			isa = PBXGroup;
 			children = (
+				82CEFC802969CFCA00C55F67 /* PostButton.swift */,
 				82B6B2BA2989EC0E00027E5A /* MakePostScreen.swift */,
 				82ACC68629936E3100589E1E /* NextButton.swift */,
 				820C077229D4B53B00045204 /* PostConfirmation */,
@@ -708,7 +723,6 @@
 				82CEFC5C2969CDEB00C55F67 /* SavedScreen.swift */,
 				82CEFC5E2969CE0700C55F67 /* ProfileScreen.swift */,
 				82218C2E299F54A90092BA94 /* Profile */,
-				82CEFC802969CFCA00C55F67 /* PostButton.swift */,
 				82218BF729988DF90092BA94 /* PostScrollView.swift */,
 				82C0847829BD117500F3627E /* CategoryFilterView.swift */,
 				82C0847A29BD11A400F3627E /* CategoryFilterIcon.swift */,
@@ -863,6 +877,7 @@
 				82CEFC812969CFCA00C55F67 /* PostButton.swift in Sources */,
 				82B6B2F2298C4F1500027E5A /* CameraButton.swift in Sources */,
 				828CAFA229B188D100B489F4 /* MessageModel.swift in Sources */,
+				82B40B9F29D78E1000BA7504 /* PostModalPreview.swift in Sources */,
 				8236020A298748DF002E7AEC /* ReportButton.swift in Sources */,
 				82CEFC5F2969CE0700C55F67 /* ProfileScreen.swift in Sources */,
 				82B6B2CB298A13E100027E5A /* ConditionNavigatorView.swift in Sources */,
@@ -982,6 +997,7 @@
 				8231FB0B29CB7A3D0001F796 /* AppState.swift in Sources */,
 				82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */,
 				82CEFC7F2969CFB700C55F67 /* SignUpButton.swift in Sources */,
+				82B40BA229D78F2600BA7504 /* CategoryPreview.swift in Sources */,
 				82CEFC7C2969CF8D00C55F67 /* UniversityNotFoundView.swift in Sources */,
 				82CEFC742969CF0100C55F67 /* SchoolEmailScreen.swift in Sources */,
 				82218BF629986BCB0092BA94 /* MessageManager.swift in Sources */,
@@ -1129,7 +1145,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
@@ -1169,7 +1185,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
