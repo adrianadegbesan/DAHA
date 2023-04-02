@@ -166,7 +166,7 @@ struct PostView: View {
                         UIApplication.shared.dismissKeyboard()
                         buyNavigate = true
                     } label:{
-                        Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane.fill")
+                        Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane")
                     }
                     
                     Button(role: .destructive){
