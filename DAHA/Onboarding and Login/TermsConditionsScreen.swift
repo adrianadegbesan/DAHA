@@ -14,6 +14,7 @@ struct TermsConditionsScreen: View {
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var authentication : AuthManager
+    @EnvironmentObject var appState : AppState
      
     var body: some View {
         VStack{
@@ -55,7 +56,7 @@ struct TermsConditionsScreen: View {
                     LightFeedback()
 //                    agreedToTerms = true
                     Task{
-                        let success = await authentication.hasAgreedToTerms()
+                        _ = await authentication.hasAgreedToTerms()
 //                        if success {
 //                            agreedToTerms = true
 //                            shouldNavigate = true
@@ -63,9 +64,8 @@ struct TermsConditionsScreen: View {
 //                            agreedToTerms = true
 //                            shouldNavigate = true
 //                        }
+                        appState.firstSignOn = true
                         agreedToTerms = true
-//                        shouldNavigate = true
-                       
                     }
                 } 
             }){

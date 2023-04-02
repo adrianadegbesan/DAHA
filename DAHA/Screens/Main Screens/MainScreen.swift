@@ -14,6 +14,8 @@ struct MainScreen: View {
     @State var tabSelection: Int = 0
     @State var current: Int = 0
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @EnvironmentObject var authManager : AuthManager
+    @EnvironmentObject var messageManager : MessageManager
     @EnvironmentObject var appState : AppState
     
     @State private var dummyText = ""
@@ -62,11 +64,23 @@ struct MainScreen: View {
         
         .onAppear{
 //            hideKeyboard()
+            
+            if appState.firstSignOn{
+                Task {
+                    await firestoreManager.getListings()
+                    await firestoreManager.getRequests()
+                    let _ = messageManager.getMessageChannels()
+                }
+            }
             /*Change tab view indicator colour*/
             let appearance: UITabBarAppearance = UITabBarAppearance()
             UITabBar.appearance().scrollEdgeAppearance = appearance
             UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color(hex: deepBlue))
             UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color(hex: "D1D0CE"))
+            
+//            Task {
+//                let _ = await authManager.hasAgreedToTerms()
+//            }
         }
         .animation(.easeIn(duration: 0.5), value: tabSelection)
         .accentColor(Color(hex: "0000FF"))

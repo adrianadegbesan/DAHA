@@ -16,6 +16,8 @@ import FirebaseFirestoreSwift
 class MessageManager: ObservableObject {
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
+    @AppStorage("signedin") var isSignedIn: Bool = false
+    @AppStorage("termsagreed") var agreedToTerms: Bool = false
      
     @Published var messageChannels : [MessageChannelModel] = []
     @Published var messageChannelsLoading : Bool = false
@@ -26,7 +28,10 @@ class MessageManager: ObservableObject {
     let db = Firestore.firestore()
     
     init(){
-        let _ = getMessageChannels()
+        if isSignedIn && agreedToTerms {
+            let _ = getMessageChannels()
+        }
+        
     }
     
     /*Function used to get current message channels, snapshot listener enabled*/

@@ -29,8 +29,8 @@ class AuthManager: ObservableObject {
     init(){
         self.userSession = Auth.auth().currentUser
         if (self.userSession != nil){
-            user_id = Auth.auth().currentUser!.uid
-            let verified = Auth.auth().currentUser!.isEmailVerified
+            user_id = userSession!.uid
+            let verified =   userSession!.isEmailVerified
             print("DEBUG: The current User Session is \(self.userSession!)")
             print("Email is \(verified)")
             
@@ -227,6 +227,10 @@ class AuthManager: ObservableObject {
             return false
         }
         
+        if user?.uid == "" {
+            return false
+        }
+        
         let usernameRef = db.collection("Usernames").document(username_system)
         let userRef = db.collection("Users").document(user!.uid)
         let batch = db.batch()
@@ -369,7 +373,7 @@ class AuthManager: ObservableObject {
         }
         
         do {
-            let userRef = db.collection("Users").document(user_id)
+            let userRef = db.collection("Users").document(cur_id!)
             try await userRef.updateData([
                 "terms" : true
             ])

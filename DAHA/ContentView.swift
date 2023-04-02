@@ -43,15 +43,19 @@ struct ContentView: View {
       if isOnboardingViewActive { /*Not Created Account*/
         SetUpScreen()
               .hideNavigationBar(value: $appState.isNavigationBarHidden)
+              .transition(.opacity)
       } else if isSignedIn && !verified{ /* Email Not Verified */
         EmailScreen()
               .hideNavigationBar(value: $appState.isNavigationBarHidden)
+              .transition(.opacity)
       } else if isSignedIn && verified && !agreedToTerms{ /*Not Agreed To Terms*/
         TermsConditionsScreen()
               .hideNavigationBar(value: $appState.isNavigationBarHidden)
+              .transition(.opacity)
           
       } else if isSignedIn && verified && agreedToTerms{ 
          MainScreen()
+              .transition(.opacity)
           
           if channel != nil{
               NavigationLink( destination: ChatScreen(post: channel!.post, redirect: false, receiver: channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender_username : channel!.receiver_username, receiverID:  channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender : channel!.receiver, channelID: channel!.id, listen: true, scrollDown: true), isActive: $shouldNavigate){
