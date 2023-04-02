@@ -123,7 +123,11 @@ struct ContentView: View {
     .opacity(opacity)
     .onAppear{
         Task {
-            network.checkConnection()
+            if appState.firstConnectionCheck {
+                network.checkConnection()
+                appState.firstConnectionCheck = false
+            }
+            
         }
         withAnimation(.easeIn(duration: 0.15)){
             self.opacity = 1

@@ -201,7 +201,7 @@
 		82218C2F299F568D0092BA94 /* UserPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsView.swift; sourceTree = "<group>"; };
 		82218C31299F569A0092BA94 /* SavedPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsView.swift; sourceTree = "<group>"; };
 		82218C33299FC7E90092BA94 /* ImageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageIndicator.swift; sourceTree = "<group>"; };
-		8231FB0A29CB7A3D0001F796 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		8231FB0A29CB7A3D0001F796 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = Firebase/AppState.swift; sourceTree = "<group>"; };
 		823601FC2981F3AC002E7AEC /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		823602002981F81D002E7AEC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		823602022981F84E002E7AEC /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
@@ -623,6 +623,7 @@
 				82CEFC312969CB2C00C55F67 /* DAHAApp.swift */,
 				82CEFC532969CC9B00C55F67 /* LaunchScreen.swift */,
 				82CEFC332969CB2C00C55F67 /* ContentView.swift */,
+				8231FB0A29CB7A3D0001F796 /* AppState.swift */,
 				82A21A5A29A677080040BAA1 /* Lottie Animations */,
 				82B6B2EA298C3BB300027E5A /* Network */,
 				82D2D0E0296CAD4E00CB4B9A /* Firebase */,
@@ -763,7 +764,6 @@
 				82218BF529986BCB0092BA94 /* MessageManager.swift */,
 				82C4589429BA811400661703 /* FirebaseHelpers.swift */,
 				82C0847C29BD5B5000F3627E /* NotificationManager.swift */,
-				8231FB0A29CB7A3D0001F796 /* AppState.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";

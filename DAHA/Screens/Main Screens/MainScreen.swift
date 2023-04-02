@@ -18,9 +18,6 @@ struct MainScreen: View {
     @EnvironmentObject var messageManager : MessageManager
     @EnvironmentObject var appState : AppState
     
-    @State private var dummyText = ""
-    @FocusState private var dummyFocus: Bool
-    
     
     var body: some View {
         
@@ -70,6 +67,7 @@ struct MainScreen: View {
                     await firestoreManager.getListings()
                     await firestoreManager.getRequests()
                     let _ = messageManager.getMessageChannels()
+                    appState.firstSignOn = false
                 }
             }
             /*Change tab view indicator colour*/
