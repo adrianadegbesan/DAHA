@@ -34,46 +34,74 @@ struct PostScrollView: View {
                 targetPostID = nil
                 
                 if screen == "Search" {
-                    Task {
-                        await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
+                    if firestoreManager.search_last != nil{
+                        Task {
+                            await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
+                        }
                     }
+                   
                 }
                 else if screen == "Listings"{
-                    if categoryFilter == ""{
-                        Task {
-                           await  firestoreManager.updateListings()
+                    
+                    if firestoreManager.listing_last != nil {
+                        if categoryFilter == ""{
+                            Task {
+                               await  firestoreManager.updateListings()
+                            }
+                        } else {
+                            
+                            if firestoreManager.listings_filtered_last != nil{
+                                Task {
+                                    await firestoreManager.updateListingsFiltered(category: categoryFilter)
+                                }
+                            }
                         }
-                    } else {
+                    }
+                   
+                   
+                }
+
+                else if screen == "Requests" {
+                    
+                    if firestoreManager.requests_last != nil {
+                        if categoryFilter == "" {
+                            Task {
+                                await firestoreManager.updateRequests()
+                            }
+                        } else {
+                            
+                            if firestoreManager.requests_filtered_last != nil{
+                                Task {
+                                    await firestoreManager.updateRequestsFiltered(category: categoryFilter)
+                                }
+                            }
+                           
+                        }
+                        
+                    }
+                    
+                   
+                    
+                }
+
+                else if screen == "Saved" {
+                    
+                    if firestoreManager.saved_last != nil{
                         Task {
-                            await firestoreManager.updateListingsFiltered(category: categoryFilter)
+                            await firestoreManager.updateSaved()
                         }
                     }
                    
                 }
 
-                else if screen == "Requests" {
-                    if categoryFilter == "" {
-                        Task {
-                            await firestoreManager.updateRequests()
-                        }
-                    } else {
-                        Task {
-                            await firestoreManager.updateRequestsFiltered(category: categoryFilter)
-                        }
-                    }
-                    
-                }
-
-                else if screen == "Saved" {
-                    Task {
-                        await firestoreManager.updateSaved()
-                    }
-                }
-
                 else if screen == "User" {
-                    Task {
-                        await firestoreManager.updateUserPosts()
+                    
+                    if firestoreManager.user_last != nil{
+                        Task {
+                            await firestoreManager.updateUserPosts()
+                        }
                     }
+                   
                 }
                 
             }

@@ -16,6 +16,7 @@ struct DeleteUserView: View {
     @AppStorage("email") var email_system: String = ""
     @AppStorage("id") var user_id = ""
     @AppStorage("isDarkMode") private var isDarkMode = "System"
+    @AppStorage("emailverified") var verified: Bool = true
     
     @State private var firstPresented = false
     @State private var isPresented = false
@@ -59,8 +60,10 @@ struct DeleteUserView: View {
                                 email_system = ""
                                 user_id = ""
                                 isDarkMode = "System"
+                                verified = false
                             } else {
                                 error_message = "Please check your network connection and try again later"
+                                print("failed")
                                 error_alert = true
                             }
                         }

@@ -110,7 +110,7 @@ struct SecondContinueButton: View {
                                     joinedAt = formatter.string(from: Date.now)
                                 }
                                 uploading = false
-                                shouldNavigate = account_created
+//                                shouldNavigate = account_created
                             }
                         }
                         else {
@@ -139,7 +139,7 @@ struct SecondContinueButton: View {
                         .padding(3)
                 } //: HStack
             } //: ZStack
-            NavigationLink(destination: TermsConditionsScreen().navigationBarHidden(true), isActive: $shouldNavigate){
+            NavigationLink(destination: EmailScreen().navigationBarHidden(true), isActive: $shouldNavigate){
                 EmptyView()
             }
         } //:Button

@@ -223,7 +223,7 @@ class AuthManager: ObservableObject {
     func deleteUser() async -> Bool{
         var success = false
         let user = Auth.auth().currentUser
-        if user?.uid != nil {
+        if user?.uid == nil {
             return false
         }
         
@@ -234,6 +234,8 @@ class AuthManager: ObservableObject {
         batch.deleteDocument(usernameRef)
         batch.deleteDocument(userRef)
         
+        print("attempting to delete account")
+        
         do {
             try await batch.commit()
             try await user?.delete()
@@ -241,6 +243,7 @@ class AuthManager: ObservableObject {
         }
         catch {
             print(error.localizedDescription)
+            print("failed to delete account")
             return false
         }
         
