@@ -26,17 +26,13 @@ b) Illegal substances and materials, including drugs, weapons, and other related
 c) Personal or sensitive items, including personal information, adult content, and personal location details of yourself or others
 d) Counterfeit items and forgeries, including fake currency, documents, and branded goods
 e) Stolen property, including items obtained through theft or unauthorized access to personal or corporate data
-f) Endangered or protected species, their parts, or products derived from them, as well as live animals without proper documentation or permits
-g) Prescription medications and medical devices without a valid prescription from a licensed healthcare professional
 h) Hazardous or explosive materials, including fireworks, ammunition, and chemicals that can pose a risk to public safety
-i) Human remains, organs, or bodily fluids
-j) Items or services that promote, support, or facilitate illegal activities or encourage violence and discrimination, including hate speech or symbols, or items associated with terrorist organizations
-k) Any items, content, or services that infringe on intellectual property rights, such as unauthorized copies of copyrighted material, pirated software, or counterfeit trademarks
-l) Pesticides or other toxic substances that are restricted, regulated, or banned in the jurisdiction where DAHA operates
-m) Items or services related to gambling, including lottery tickets, casino chips, and betting services
-n) Any form of unsolicited or unauthorized advertising, promotional materials, spam, or pyramid schemes
-o) Government-issued documents or identification, including passports, driver's licenses, and social security cards, unless explicitly allowed by law and DAHA policies
-p) Items or services that violate any applicable local, national, or international laws or regulations.
+i) Items or services that promote, support, or facilitate illegal activities or encourage violence and discrimination, including hate speech or symbols, or items associated with terrorist organizations
+j) Any items, content, or services that infringe on intellectual property rights, such as unauthorized copies of copyrighted material, pirated software, or counterfeit trademarks
+k) Pesticides or other toxic substances that are restricted, regulated, or banned in the jurisdiction where DAHA operates
+l) Any form of unsolicited or unauthorized advertising, promotional materials, spam, or pyramid schemes
+m) Government-issued documents or identification, including passports, driver's licenses, and social security cards, unless explicitly allowed by law and DAHA policies
+n) Items or services that violate any applicable local, national, or international laws or regulations.
 
 User Content
 
@@ -55,7 +51,7 @@ e) Inappropriate Listings and Requests: Listing or requesting items or services 
 f) Sharing Sensitive Information: Distributing personal or sensitive information of yourself or others without consent, including but not limited to contact details, location data, and financial information.
 g) Intellectual Property Infringement: Posting or sharing any content that violates copyrights, trademarks, patents, or any other intellectual property rights of others.
 h) Circumvention of Platform Features: Attempting to bypass or circumvent any features or restrictions implemented by DAHA, such as using automated scripts, bots, or unauthorized third-party applications.
-j) Encouraging or Facilitating Violations: Encouraging, supporting, or assisting others in violating DAHA's terms and conditions, or engaging in any activity that is detrimental to the platform's community and its users.
+i) Encouraging or Facilitating Violations: Encouraging, supporting, or assisting others in violating DAHA's terms and conditions, or engaging in any activity that is detrimental to the platform's community and its users.
 
 User Interactions
 Please be aware that DAHA is not responsible for any incidents that may transpire during in-person meetings organized through the platform. Although user safety and discretion are strongly recommended, it is ultimately the users' responsibility to ensure their own well-being during such encounters.

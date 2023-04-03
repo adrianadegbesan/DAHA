@@ -140,7 +140,7 @@ struct ContentView: View {
      }
     .alert("Network Connection Lost", isPresented: $connectedAlert, actions: {}, message: {Text("It looks like your internet connection was lost! Please check your connection and try again.")})
   }
-
+    
 
 }
 

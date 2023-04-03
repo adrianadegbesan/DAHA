@@ -28,10 +28,11 @@ struct CameraRollButton: View {
                 .padding(.trailing, screenHeight * 0.03)
         }.onChange(of: images_temp){ value in
             for image in images_temp {
-                if !images.contains(image){
+                if !images.contains(image) && images.count < 3{
                     images.append(image)
                 }
             }
+//            if images.c
         }
         .sheet(isPresented: $isPresented){
             PhotoPicker(images: $images_temp, selectionLimit: 3 - images.count , filter: .images)
