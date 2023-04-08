@@ -15,7 +15,6 @@ struct EmailScreen: View {
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
-    @AppStorage("id") var user_id = ""
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     @AppStorage("emailverified") var verified: Bool = false
     @AppStorage("joined") var joinedAt = ""
@@ -62,7 +61,6 @@ struct EmailScreen: View {
                         university = ""
                         username_system = ""
                         email_system = ""
-                        user_id = ""
                         joinedAt = ""
                         isDarkMode = "System"
                     }
@@ -129,7 +127,6 @@ struct EmailScreen: View {
                 university = ""
                 username_system = ""
                 email_system = ""
-                user_id = ""
                 joinedAt = ""
                 isDarkMode = "System"
             }

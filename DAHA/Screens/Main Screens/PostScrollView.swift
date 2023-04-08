@@ -220,18 +220,24 @@ struct PostScrollView: View {
                                 
                                 ForEach(posts.indices, id: \.self) { index in
                                  let post = posts[index]
-                                 PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
-                                     .id(post.id)
-                                     .padding(.leading, 3)
-                                     .padding(.bottom, 10)
-                                     .onAppear {
-                                         currentPostID = post.id
-                                         if index == posts.count - 1 {
-                                             if targetPostID != post.id{
-                                                 targetPostID = post.id
-                                             }
-                                         }
-                                     }
+                                    
+                                    if post.reporters.contains(Auth.auth().currentUser?.uid ?? "") {
+                                        EmptyView()
+                                    } else {
+                                        PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
+                                            .id(post.id)
+                                            .padding(.leading, 3)
+                                            .padding(.bottom, 10)
+                                            .onAppear {
+                                                currentPostID = post.id
+                                                if index == posts.count - 1 {
+                                                    if targetPostID != post.id{
+                                                        targetPostID = post.id
+                                                    }
+                                                }
+                                            }
+                                    }
+                                
                                 }
                              
                                

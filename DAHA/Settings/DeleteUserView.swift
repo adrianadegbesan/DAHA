@@ -14,7 +14,6 @@ struct DeleteUserView: View {
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
-    @AppStorage("id") var user_id = ""
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     @AppStorage("emailverified") var verified: Bool = true
     
@@ -58,7 +57,6 @@ struct DeleteUserView: View {
                                 university = ""
                                 username_system = ""
                                 email_system = ""
-                                user_id = ""
                                 isDarkMode = "System"
                                 verified = false
                             } else {

@@ -108,7 +108,7 @@ struct PostView: View {
         .sheet(isPresented: $report_modal){
             ReportModal(post: post, reported: $reported)
         }
-        .alert("Post Being Reviewed", isPresented: $reported_alert, actions: {}, message: {Text("We are currently reviewing this post that you have reported.")})
+        .alert("Post In Reviewed", isPresented: $reported_alert, actions: {}, message: {Text("We are currently reviewing this post that you have reported.")})
         .onTapGesture {
             if !preview && !reported{
                 LightFeedback()

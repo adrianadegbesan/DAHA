@@ -102,9 +102,10 @@ struct MessageField: View {
                 }
                 
             } label: {
-                Image(systemName: "arrow.up")
-                    .font(.system(size: 13.5, weight: .heavy))
+                Image(systemName: "paperplane.fill")
+                    .font(.system(size: 16, weight: .heavy))
                     .foregroundColor(.white)
+//                    .rotationEffect(.degrees(40.0))
                     .padding(10)
                     .background(message != "" ? Color(hex: deepBlue) : .gray)
                     .cornerRadius(50)

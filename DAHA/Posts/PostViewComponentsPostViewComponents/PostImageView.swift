@@ -103,6 +103,7 @@ struct PostImageView: View {
                             .strokeBorder(lineWidth: colorScheme == .dark ? 1.5 : 2.7)
                     )
             }
+           
             
             
         }

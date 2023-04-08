@@ -19,7 +19,6 @@ class AuthManager: ObservableObject {
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
     @AppStorage("accountcreated") var isAccountCreated: Bool = false
-    @AppStorage("id") var user_id = ""
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     @AppStorage("fcmtoken") private var token = ""
     @Published var userSession: FirebaseAuth.User?
@@ -29,7 +28,6 @@ class AuthManager: ObservableObject {
     init(){
         self.userSession = Auth.auth().currentUser
         if (self.userSession != nil){
-            user_id = userSession!.uid
             let verified =   userSession!.isEmailVerified
             print("DEBUG: The current User Session is \(self.userSession!)")
             print("Email is \(verified)")
@@ -45,7 +43,6 @@ class AuthManager: ObservableObject {
             university = ""
             username_system = ""
             email_system = ""
-            user_id = ""
             isDarkMode = "System"
         }
     }

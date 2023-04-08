@@ -17,7 +17,6 @@ struct ContentView: View {
   @AppStorage("username") var username_system: String = ""
   @AppStorage("email") var email_system: String = ""
   @AppStorage("emailverified") var verified: Bool = false
-  @AppStorage("id") var user_id = ""
   @AppStorage("joined") var joinedAt = ""
   @AppStorage("notifications") var notifications : Bool = true
     

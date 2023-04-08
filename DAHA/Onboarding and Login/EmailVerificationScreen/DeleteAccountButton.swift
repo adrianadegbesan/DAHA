@@ -14,7 +14,6 @@ struct DeleteAccountButton: View {
     @AppStorage("university") var university: String = ""
     @AppStorage("username") var username_system: String = ""
     @AppStorage("email") var email_system: String = ""
-    @AppStorage("id") var user_id = ""
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     
     @State private var firstPresented = false
@@ -61,7 +60,6 @@ struct DeleteAccountButton: View {
                         university = ""
                         username_system = ""
                         email_system = ""
-                        user_id = ""
                         isDarkMode = "System"
                     } else {
                         error_message = "Please check your network connection and try again later"
