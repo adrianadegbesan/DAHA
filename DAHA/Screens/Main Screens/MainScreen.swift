@@ -75,6 +75,7 @@ struct MainScreen: View {
             UITabBar.appearance().scrollEdgeAppearance = appearance
             UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color(hex: deepBlue))
             UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color(hex: "D1D0CE"))
+           
             
 //            Task {
 //                let _ = await authManager.hasAgreedToTerms()

@@ -21,6 +21,7 @@ struct HeaderView: View {
     var screen: String
     @State var isAnimating: Bool = false
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var network : Network
     
     var body: some View {
         VStack(spacing: 0){
@@ -70,6 +71,13 @@ struct HeaderView: View {
                 Spacer()
 
                 if showMessages {
+                    
+                    if network.connected == false {
+                        Image(systemName: "wifi.slash")
+                            .headerImage()
+                            .foregroundColor(.red)
+                            .transition(.opacity)
+                    }
 //                    SearchButton()
 //                        .padding(.trailing, 3)
                     DMButton()

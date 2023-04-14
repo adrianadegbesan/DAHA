@@ -22,13 +22,12 @@ struct MakePostButton: View {
         Button(action:{
             if !(uploading || post_created){
                 MediumFeedback()
-                withAnimation{
-                    uploading = true
-                }
                 network.checkConnection()
                 Task {
-                    
                     if network.connected {
+                        withAnimation {
+                            uploading = true
+                        }
                         if images.isEmpty {
                             try await Task.sleep(nanoseconds: 1_000_000_000)
                         }

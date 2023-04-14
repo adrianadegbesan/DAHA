@@ -11,6 +11,7 @@ import Firebase
 
 struct MessageField: View {
     @EnvironmentObject var messagesManager: MessageManager
+    @EnvironmentObject var network : Network
     @State private var message = ""
     @State private var previousMessage = ""
     @State var post: PostModel
@@ -103,10 +104,11 @@ struct MessageField: View {
                 
             } label: {
                 Image(systemName: "paperplane.fill")
-                    .font(.system(size: 16, weight: .heavy))
+                    .font(.system(size: 20.5, weight: .heavy))
                     .foregroundColor(.white)
-//                    .rotationEffect(.degrees(40.0))
-                    .padding(10)
+                    .rotationEffect(.degrees(40.0))
+                    .offset(x: -1.5)
+                    .padding(9)
                     .background(message != "" ? Color(hex: deepBlue) : .gray)
                     .cornerRadius(50)
                     .offset(x: screenWidth * 0.003)
@@ -152,6 +154,7 @@ struct CustomTextField: View {
                 placeholder
                 .opacity(0.5)
             }
+            
             
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
                 .focused(keyboardFocused)

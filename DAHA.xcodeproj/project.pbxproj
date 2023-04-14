@@ -178,6 +178,7 @@
 		82DF4CB329775B5300A309CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82DF4CB229775B5300A309CF /* GoogleService-Info.plist */; };
 		82E75AC3297E321600742F18 /* Email API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E75AC2297E321600742F18 /* Email API.swift */; };
 		82E75AC6297E35F600742F18 /* PostmarkSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 82E75AC5297E35F600742F18 /* PostmarkSwift */; };
+		82EDE52029E6252500956BC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE51F29E6252500956BC3 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -336,6 +337,7 @@
 		82DF4CB229775B5300A309CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82E75AC2297E321600742F18 /* Email API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Email API.swift"; sourceTree = "<group>"; };
 		82E75AC8297F104200742F18 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		82EDE51F29E6252500956BC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -767,6 +769,7 @@
 				82218BF529986BCB0092BA94 /* MessageManager.swift */,
 				82C4589429BA811400661703 /* FirebaseHelpers.swift */,
 				82C0847C29BD5B5000F3627E /* NotificationManager.swift */,
+				82EDE51F29E6252500956BC3 /* AppDelegate.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -934,6 +937,7 @@
 				82218C05299C67410092BA94 /* EmailSettingsView.swift in Sources */,
 				82218C26299D4AA00092BA94 /* SearchButtons.swift in Sources */,
 				82CEFC5D2969CDEB00C55F67 /* SavedScreen.swift in Sources */,
+				82EDE52029E6252500956BC3 /* AppDelegate.swift in Sources */,
 				82CBC2AC2989BAAC001966E3 /* PostModalActions.swift in Sources */,
 				82CEFC622969CE3700C55F67 /* PostModal.swift in Sources */,
 				8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */,
