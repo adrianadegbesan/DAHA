@@ -19,7 +19,7 @@ struct PosterInfoView: View {
         HStack(spacing: 3){
             Text("@\(post.username)")
                 .lineLimit(1)
-                .minimumScaleFactor(0.001)
+                .minimumScaleFactor(0.4)
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundColor(colorScheme == .dark ? .white : .black)
             
@@ -30,7 +30,7 @@ struct PosterInfoView: View {
             
             Text(timestampString)
                 .lineLimit(1)
-                .minimumScaleFactor(0.001)
+                .minimumScaleFactor(0.4)
                 .font(.system(size: 9.5, weight: .semibold))
                 .foregroundColor(.secondary)
                 .onAppear{
@@ -41,8 +41,9 @@ struct PosterInfoView: View {
             
             Text(post.type == "Listing" ? Image(systemName: "cart.circle") : Image(systemName: "figure.stand.line.dotted.figure.stand"))
                 .lineLimit(1)
-                .minimumScaleFactor(0.001)
+                .minimumScaleFactor(0.4)
                 .font(.system(size: post.type == "Request" ? 15.5 : 17, weight: .heavy))
+                .foregroundColor(Color(hex: deepBlue))
             
 //
 //                .foregroundColor(post.category == "General" && colorScheme == .dark ? .white : Color(hex: category_colors[post.category] ?? deepBlue))

@@ -26,13 +26,13 @@ b) Illegal substances and materials, including drugs, weapons, and other related
 c) Personal or sensitive items, including personal information, adult content, and personal location details of yourself or others
 d) Counterfeit items and forgeries, including fake currency, documents, and branded goods
 e) Stolen property, including items obtained through theft or unauthorized access to personal or corporate data
-h) Hazardous or explosive materials, including fireworks, ammunition, and chemicals that can pose a risk to public safety
-i) Items or services that promote, support, or facilitate illegal activities or encourage violence and discrimination, including hate speech or symbols, or items associated with terrorist organizations
-j) Any items, content, or services that infringe on intellectual property rights, such as unauthorized copies of copyrighted material, pirated software, or counterfeit trademarks
-k) Pesticides or other toxic substances that are restricted, regulated, or banned in the jurisdiction where DAHA operates
-l) Any form of unsolicited or unauthorized advertising, promotional materials, spam, or pyramid schemes
-m) Government-issued documents or identification, including passports, driver's licenses, and social security cards, unless explicitly allowed by law and DAHA policies
-n) Items or services that violate any applicable local, national, or international laws or regulations.
+f) Hazardous or explosive materials, including fireworks, ammunition, and chemicals that can pose a risk to public safety
+g) Items or services that promote, support, or facilitate illegal activities or encourage violence and discrimination, including hate speech or symbols, or items associated with terrorist organizations
+h) Any items, content, or services that infringe on intellectual property rights, such as unauthorized copies of copyrighted material, pirated software, or counterfeit trademarks
+i) Pesticides or other toxic substances that are restricted, regulated, or banned in the jurisdiction where DAHA operates
+j) Any form of unsolicited or unauthorized advertising, promotional materials, spam, or pyramid schemes
+k) Government-issued documents or identification, including passports, driver's licenses, and social security cards, unless explicitly allowed by law and DAHA policies
+l) Items or services that violate any applicable local, national, or international laws or regulations.
 
 User Content
 
