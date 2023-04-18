@@ -9,8 +9,6 @@ import SwiftUI
 
 // Saved Screen
 struct SavedScreen: View {
-    @EnvironmentObject var firestoreManager : FirestoreManager
-    
     var body: some View {
                    VStack {
                        ZStack {
@@ -30,6 +28,7 @@ struct SavedScreen: View {
                                .offset(x: screenWidth * 0.35, y: screenHeight * 0.31)
                            }
                        }
+                       
                    } //: ZStack
                    .ignoresSafeArea(.keyboard)
                }

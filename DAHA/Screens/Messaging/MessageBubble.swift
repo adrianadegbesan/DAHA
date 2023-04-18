@@ -23,7 +23,7 @@ struct MessageBubble: View {
                  Text(message.message)
                      .foregroundColor(.white)
                      .padding(13)
-                     .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: "5A5A5A") : Color(hex: deepBlue))
+                     .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: messageBubbleReceiver) : Color(hex: deepBlue))
                      .cornerRadius(25)
              }
              .frame(maxWidth: 245, alignment: message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
