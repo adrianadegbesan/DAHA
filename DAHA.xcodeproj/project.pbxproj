@@ -56,6 +56,7 @@
 		8236CFF9296D34210086AB15 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 8236CFF8296D34210086AB15 /* FirebasePerformance */; };
 		8236CFFB296D34210086AB15 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8236CFFA296D34210086AB15 /* FirebaseStorage */; };
 		8236CFFD296F2AF00086AB15 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8236CFFC296F2AF00086AB15 /* AuthManager.swift */; };
+		8280FF1229EF11E300F8552E /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1129EF11E300F8552E /* SavedView.swift */; };
 		828CAFA029B1868200B489F4 /* MessageChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */; };
 		828CAFA229B188D100B489F4 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA129B188D100B489F4 /* MessageModel.swift */; };
 		828CAFA529B18AFA00B489F4 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA429B18AFA00B489F4 /* MessageBubble.swift */; };
@@ -214,6 +215,7 @@
 		8236020D298791BE002E7AEC /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
 		8236020F29879425002E7AEC /* PostDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDescriptionView.swift; sourceTree = "<group>"; };
 		8236CFFC296F2AF00086AB15 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		8280FF1129EF11E300F8552E /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 		828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChannelModel.swift; sourceTree = "<group>"; };
 		828CAFA129B188D100B489F4 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		828CAFA429B18AFA00B489F4 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
@@ -444,6 +446,14 @@
 				82B40BA029D78EF900BA7504 /* PostModalPreviewComponents */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		8280FF0E29EF117900F8552E /* Saved */ = {
+			isa = PBXGroup;
+			children = (
+				8280FF1129EF11E300F8552E /* SavedView.swift */,
+			);
+			path = Saved;
 			sourceTree = "<group>";
 		};
 		828CAFA329B18AC600B489F4 /* Messaging */ = {
@@ -727,6 +737,7 @@
 				82218C27299D4C9E0092BA94 /* SearchScreen.swift */,
 				82218C06299C864C0092BA94 /* Search */,
 				82CEFC5C2969CDEB00C55F67 /* SavedScreen.swift */,
+				8280FF0E29EF117900F8552E /* Saved */,
 				82CEFC5E2969CE0700C55F67 /* ProfileScreen.swift */,
 				82218C2E299F54A90092BA94 /* Profile */,
 				82218BF729988DF90092BA94 /* PostScrollView.swift */,
@@ -877,6 +888,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8280FF1229EF11E300F8552E /* SavedView.swift in Sources */,
 				82CEFC502969CC5B00C55F67 /* DeviceDimensions.swift in Sources */,
 				82C4588F29B9124700661703 /* ImagePopupView.swift in Sources */,
 				82A21A5429A17EA10040BAA1 /* ChangePasswordView.swift in Sources */,

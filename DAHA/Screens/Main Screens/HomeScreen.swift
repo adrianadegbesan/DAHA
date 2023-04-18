@@ -91,7 +91,7 @@ struct HomeScreen: View {
                            dividerOffset = CGFloat(value) * (screenWidth * 0.499)
                        }
                    }
- 
+                    Divider()
                 } //: VStack
                 
                 .onChange(of: tabIndex){ value in

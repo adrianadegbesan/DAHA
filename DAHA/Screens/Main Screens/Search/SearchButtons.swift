@@ -52,7 +52,6 @@ struct SearchButtons: View {
            
         }
         .frame(width: screenWidth, height: 25)
-        .padding(.top, 15)
     }
 }
 

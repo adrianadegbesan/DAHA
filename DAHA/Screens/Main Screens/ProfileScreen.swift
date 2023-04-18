@@ -153,7 +153,7 @@ struct ProfileScreen: View {
                         dividerOffset = CGFloat(value) * (screenWidth * 0.318)
                     }
                 }
-                
+                Divider()
             } //: VStack
             
             .onChange(of: tabIndex){ value in

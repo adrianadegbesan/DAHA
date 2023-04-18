@@ -85,8 +85,9 @@ struct SearchScreen: View {
                         /*Search Buttons and Categories*/
                         SearchButtons(keyboardFocused: $keyboardFocused, category: $category, type: $type)
                             .ignoresSafeArea(.keyboard, edges: .bottom)
+                            .padding(.top, 10)
                         
-                        Spacer().frame(height: screenHeight * 0.02)
+                        Spacer().frame(height: 10)
                         
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                         
@@ -178,7 +179,7 @@ struct SearchScreen: View {
                     }
                     
                 }
-            
+                Divider()
             }//: VStack
             .frame(width: screenWidth)
             .onTapGesture {
