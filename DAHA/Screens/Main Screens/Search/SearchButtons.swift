@@ -17,7 +17,6 @@ struct SearchButtons: View {
     var body: some View {
         HStack{
             if category != ""{
-                
                 Text(Image(systemName: "multiply.circle.fill"))
                     .font(.system(size: 13, weight: .bold))
                     .background(Circle().fill(.white).scaleEffect(colorScheme == .dark ? 1 : 0.4))
@@ -52,6 +51,8 @@ struct SearchButtons: View {
                 .disabled(keyboardFocused.wrappedValue)
            
         }
+        .frame(width: screenWidth, height: 25)
+        .padding(.top, 15)
     }
 }
 
