@@ -32,6 +32,7 @@ struct DarkModeSetting: View {
             }
 //            Divider()
         }
+  
     }
 }
 

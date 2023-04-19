@@ -17,6 +17,8 @@ struct MainScreen: View {
     @EnvironmentObject var authManager : AuthManager
     @EnvironmentObject var messageManager : MessageManager
     @EnvironmentObject var appState : AppState
+    @Environment(\.colorScheme) var colorScheme
+    @AppStorage("isDarkMode") private var isDarkMode = "System"
     
     
     var body: some View {
@@ -71,24 +73,27 @@ struct MainScreen: View {
                 }
             }
             /*Change tab view indicator colour*/
-            let appearance: UITabBarAppearance = UITabBarAppearance()
-            UITabBar.appearance().scrollEdgeAppearance = appearance
+//            let appearance: UITabBarAppearance = UITabBarAppearance()
+//            UITabBar.appearance().scrollEdgeAppearance = appearance
+            if colorScheme == .dark {
+                let appearance = UITabBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                appearance.backgroundColor = .black
+                UITabBar.appearance().standardAppearance = appearance
+            } else {
+                let appearance = UITabBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                appearance.backgroundColor = .white
+                UITabBar.appearance().standardAppearance = appearance
+            }
             UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color(hex: deepBlue))
             UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color(hex: "D1D0CE"))
-           
-            
-//            Task {
-//                let _ = await authManager.hasAgreedToTerms()
-//            }
         }
         .animation(.easeIn(duration: 0.5), value: tabSelection)
         .accentColor(Color(hex: "0000FF"))
 //        .navigationBarBackButtonHidden(true)
         .navigationBarTitle("")
         .navigationBarTitleDisplayMode(.inline)
-
-        
-//
         
     }
     
