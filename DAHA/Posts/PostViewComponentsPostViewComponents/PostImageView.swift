@@ -45,6 +45,8 @@ struct PostImageView: View {
                                 }
                                 .indicator(.activity)
                                 .cornerRadius(15, corners: .allCorners)
+//                                .scaledToFill()
+//                                .clipShape(RoundedRectangle(cornerRadius: 15))
                                 .clipped()
                                 .opacity(opacity)
                                 .onAppear{
@@ -66,7 +68,16 @@ struct PostImageView: View {
                         WebImage(url: URL(string: post.imageURLs[0]))
                             .resizable()
                             .placeholder{
-                                ProgressView()
+                                ZStack(alignment: .topTrailing){
+                                    Image(systemName: category_images[post.category] ?? "bag.fill")
+                                        .scaleEffect(3)
+                                        .frame(width: screenWidth * 0.385, height: 175)
+                                        .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
+                                        .overlay (
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .strokeBorder(lineWidth: colorScheme == .dark ? 1.5 : 2.7)
+                                        )
+                                }
                             }
                             .indicator(.activity)
                             .cornerRadius(15, corners: .allCorners)
