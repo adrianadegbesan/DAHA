@@ -23,7 +23,7 @@ struct LoginScreen: View {
     
     @State var progressOpacity = 0.0
     @State var screenOpacity = 1.0
-    
+    @State private var isAnimating : Bool = false
     @State var uploading = false
     
     @FocusState var keyboardEmail : Bool
@@ -43,6 +43,17 @@ struct LoginScreen: View {
                     Spacer().frame(height: screenHeight * 0.06)
                     Image("Logo")
                         .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
+                        .scaleEffect(isAnimating ? 1.075 : 1.0)
+                        .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                        .onTapGesture{
+                            if !isAnimating{
+                                SoftFeedback()
+                                isAnimating = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                   isAnimating = false
+                                }
+                            }
+                         }
                         .padding(.bottom, 8)
                     Text("DOES ANYONE HAVE A...?")
                         .font(

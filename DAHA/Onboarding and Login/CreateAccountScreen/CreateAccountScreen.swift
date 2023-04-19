@@ -21,6 +21,7 @@ struct CreateAccountScreen: View {
         @State var uploading : Bool = false
         @State var progressOpacity = 0.0
         @State var screenOpacity = 1.0
+        @State private var isAnimating : Bool = false
         @EnvironmentObject var firestoreManager : FirestoreManager
         @Environment(\.colorScheme) var colorScheme
          
@@ -37,6 +38,17 @@ struct CreateAccountScreen: View {
                     Spacer().frame(height: 0.045 * screenHeight)
                     Image("Logo")
                         .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
+                        .scaleEffect(isAnimating ? 1.075 : 1.0)
+                        .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                        .onTapGesture{
+                            if !isAnimating{
+                                SoftFeedback()
+                                isAnimating = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                   isAnimating = false
+                                }
+                            }
+                         }
                     Spacer().frame(height: 0.06 * screenHeight)
                     Text(" CREATE ACCOUNT ")
                         .font(.system(size: 26, weight: .black))

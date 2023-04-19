@@ -14,6 +14,7 @@ struct SchoolEmailScreen: View {
     @State private var isPresented : Bool = false
     @State private var shouldNavigate : Bool = false
     @State private var domain: String = ""
+    @State private var isAnimating: Bool = false
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
     
@@ -22,6 +23,17 @@ struct SchoolEmailScreen: View {
             ScrollView {
                 Image("Logo")
                     .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
+                    .scaleEffect(isAnimating ? 1.075 : 1.0)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                    .onTapGesture{
+                        if !isAnimating{
+                            SoftFeedback()
+                            isAnimating = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                               isAnimating = false
+                            }
+                        }
+                     }
                 Spacer().frame(height: screenHeight * 0.2)
 
                 Text("MY SCHOOL EMAIL IS ...")

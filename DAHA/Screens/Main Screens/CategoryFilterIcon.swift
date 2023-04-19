@@ -15,6 +15,7 @@ struct CategoryFilterIcon: View {
     @Binding var posts: [PostModel]
     @Binding var loading: Bool
     @State var isAnimating: Bool = false
+    @State private var scale = 1.0
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
     
@@ -28,8 +29,18 @@ struct CategoryFilterIcon: View {
                 .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
                 .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.black, lineWidth: (selected == category) ? 4 : 1.5))
                 .overlay((colorScheme == .light && category == "General") ? Capsule().stroke(.gray, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.clear, lineWidth: (selected == category) ? 4 : 1.5))
+                .scaleEffect(scale)
                 .onTapGesture {
                     SoftFeedback()
+                    withAnimation(.easeInOut(duration: 0.35)) {
+                        self.scale = 1.08
+                    }
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                        withAnimation(.easeInOut(duration: 0.35)) {
+                            self.scale = 1.0
+                        }
+                    }
                     if selected == category {
                        
                         withAnimation{

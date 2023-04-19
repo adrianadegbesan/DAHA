@@ -57,7 +57,6 @@ struct HeaderView: View {
                 .scaleEffect(isAnimating ? 1.075 : 1.0)
                 .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
                 .onTapGesture{
-                    
                     if !isAnimating{
                         SoftFeedback()
                         isAnimating = true

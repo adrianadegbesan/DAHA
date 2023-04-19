@@ -39,6 +39,7 @@ struct HomeScreen: View {
                             Divider()
                                 .frame(width: screenWidth * 0.35, height: 4)
                                 .overlay(Color(hex: deepBlue))
+                                .cornerRadius(5)
 //                                .opacity(opacity1)
                                 .offset(x: dividerOffset)
                                 
@@ -62,6 +63,7 @@ struct HomeScreen: View {
                                 .frame(width: screenWidth * 0.35, height: 3.5)
                                 .overlay(Color(hex: deepBlue))
                                 .opacity(opacity2)
+                                .cornerRadius(5)
                                 .offset(x: dividerOffset + (screenWidth * 0.48))
                         }
                         .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)

@@ -10,7 +10,7 @@ import SwiftUI
 //View for Sign Up Button
 struct SignUpButton: View {
     
-    @State var shouldNavigate: Bool = false
+    @State private var shouldNavigate: Bool = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {

@@ -11,6 +11,7 @@ struct TermsConditionsScreen: View {
     
     @State var toggle : Bool = false
     @State var shouldNavigate : Bool = false
+    @State private var isAnimating : Bool = false
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var authentication : AuthManager
@@ -21,6 +22,17 @@ struct TermsConditionsScreen: View {
             Spacer().frame(height: screenHeight * 0.025)
             Image("Logo")
                 .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
+                .scaleEffect(isAnimating ? 1.075 : 1.0)
+                .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                .onTapGesture{
+                    if !isAnimating{
+                        SoftFeedback()
+                        isAnimating = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                           isAnimating = false
+                        }
+                    }
+                 }
                 .padding(.bottom, 20)
             Text("Terms and Conditions")
                 .titleText()

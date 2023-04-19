@@ -91,6 +91,7 @@ struct ProfileScreen: View {
                         Divider()
                             .frame(width: screenWidth * 0.25, height: 3.5)
                             .overlay(Color(hex: deepBlue))
+                            .cornerRadius(5)
                             .offset(x: dividerOffset)
                             
                     }
@@ -108,6 +109,7 @@ struct ProfileScreen: View {
                             .frame(width: screenWidth * 0.25, height: 3.5)
                             .overlay(Color(hex: deepBlue))
                             .opacity(opacity2)
+                            .cornerRadius(5)
                             .offset(x: dividerOffset + (screenWidth * 0.25))
                     }
                     .frame(width: screenWidth * 0.25, height: screenHeight * 0.044)
@@ -125,6 +127,7 @@ struct ProfileScreen: View {
                             .frame(width: screenWidth * 0.25, height: 3.5)
                             .overlay(Color(hex: deepBlue))
                             .opacity(opacity3)
+                            .cornerRadius(5)
                             .offset(x: dividerOffset + (screenWidth * 0.5))
                     }
                     .frame(width: screenWidth * 0.25, height: screenHeight * 0.044)
