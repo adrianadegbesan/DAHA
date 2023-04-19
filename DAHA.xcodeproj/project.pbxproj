@@ -57,6 +57,7 @@
 		8236CFFB296D34210086AB15 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8236CFFA296D34210086AB15 /* FirebaseStorage */; };
 		8236CFFD296F2AF00086AB15 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8236CFFC296F2AF00086AB15 /* AuthManager.swift */; };
 		8280FF1229EF11E300F8552E /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1129EF11E300F8552E /* SavedView.swift */; };
+		8280FF1429F062D100F8552E /* NotificationsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1329F062D100F8552E /* NotificationsToggle.swift */; };
 		828CAFA029B1868200B489F4 /* MessageChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */; };
 		828CAFA229B188D100B489F4 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA129B188D100B489F4 /* MessageModel.swift */; };
 		828CAFA529B18AFA00B489F4 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAFA429B18AFA00B489F4 /* MessageBubble.swift */; };
@@ -216,6 +217,7 @@
 		8236020F29879425002E7AEC /* PostDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDescriptionView.swift; sourceTree = "<group>"; };
 		8236CFFC296F2AF00086AB15 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8280FF1129EF11E300F8552E /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
+		8280FF1329F062D100F8552E /* NotificationsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsToggle.swift; sourceTree = "<group>"; };
 		828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChannelModel.swift; sourceTree = "<group>"; };
 		828CAFA129B188D100B489F4 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		828CAFA429B18AFA00B489F4 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				82A21A5F29A6A9DA0040BAA1 /* PrivacyPolicyView.swift */,
 				82A21A6129A6AAD40040BAA1 /* PrivacySettingsScreen.swift */,
 				82218C17299C97820092BA94 /* NotificationsView.swift */,
+				8280FF1329F062D100F8552E /* NotificationsToggle.swift */,
 				82A21A5129A169700040BAA1 /* EditUsernameView.swift */,
 				82A21A5329A17EA10040BAA1 /* ChangePasswordView.swift */,
 				828CAFAA29B3E34400B489F4 /* JoinedAtView.swift */,
@@ -1000,6 +1003,7 @@
 				820C076D29D413DA00045204 /* ProhibitedPostsView.swift in Sources */,
 				82CBC2A0298795E4001966E3 /* PostActionView.swift in Sources */,
 				82A21A6C29A846680040BAA1 /* ReportModal.swift in Sources */,
+				8280FF1429F062D100F8552E /* NotificationsToggle.swift in Sources */,
 				82B6B2D9298ADAE700027E5A /* ForgotPasswordScreen.swift in Sources */,
 				82C0848329BF8A8900F3627E /* DeleteAccountButton.swift in Sources */,
 				82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */,

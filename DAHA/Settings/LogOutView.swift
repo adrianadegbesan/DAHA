@@ -17,6 +17,7 @@ struct LogOutView: View {
     @AppStorage("isDarkMode") private var isDarkMode = "System"
     @AppStorage("joined") var joinedAt = ""
     @AppStorage("emailverified") var verified: Bool = true
+    @AppStorage("notifications") var notificationsEnabled: Bool = true
     
     @State private var isPresented = false
     @State private var error_alert = false
@@ -56,6 +57,7 @@ struct LogOutView: View {
                         joinedAt = ""
                         isDarkMode = "System"
                         verified = false
+                        notificationsEnabled = true
                     } else {
                         error_alert = true
                     }

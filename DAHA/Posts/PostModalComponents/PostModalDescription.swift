@@ -75,7 +75,7 @@ struct PostModalDescription: View {
                                             .overlay (
                                 //                RoundedRectangle(cornerRadius: 15)
                                                 Rectangle()
-                                                    .strokeBorder(lineWidth: 3)
+                                                    .strokeBorder(lineWidth: colorScheme == .dark ? 1 : 2)
                                             )
                                     }
                                     .indicator(.activity)
@@ -85,7 +85,7 @@ struct PostModalDescription: View {
                                     .transition(.scale)
                                     .overlay (
                                         Rectangle()
-                                            .strokeBorder(lineWidth: 3)
+                                            .strokeBorder(lineWidth: colorScheme == .dark ? 1 : 2)
                                     )
                                     .onAppear{
                                         withAnimation(.easeIn(duration: 0.3)){
@@ -142,7 +142,7 @@ struct PostModalDescription: View {
                     .overlay (
         //                RoundedRectangle(cornerRadius: 15)
                         Rectangle()
-                            .strokeBorder(lineWidth: 3)
+                            .strokeBorder(lineWidth: colorScheme == .dark ? 1 : 2)
                     )
             }
             

@@ -24,6 +24,7 @@ struct DAHAApp: App {
     @AppStorage("emailverified") var verified: Bool = false
     @AppStorage("unread") var unread: Bool = false
     @AppStorage("messageScreen") var messageScreen: Bool = false
+    @AppStorage("notifications") var notificationsEnabled: Bool = true
     
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate

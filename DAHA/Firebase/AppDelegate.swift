@@ -17,6 +17,7 @@ class AppDelegate: NSObject,UIApplicationDelegate, ObservableObject{
     @AppStorage("emailverified") var verified: Bool = false
     @AppStorage("unread") var unread: Bool = false
     @AppStorage("messageScreen") var messageScreen: Bool = false
+    @AppStorage("notifications") var notificationsEnabled: Bool = true
     @Published var shouldNavigate = false
     @Published var message = false
     @Published var channelID_cur = ""

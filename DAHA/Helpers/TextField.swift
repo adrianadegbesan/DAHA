@@ -41,6 +41,26 @@ struct OutlinedTextFieldStyle: TextFieldStyle {
     }
 }
 
+struct OvalTextFieldStyle: TextFieldStyle {
+    
+    @State var icon: Image?
+    @Environment(\.colorScheme) var colorScheme
+    
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        HStack {
+            if icon != nil {
+                icon
+                    .foregroundColor(.primary)
+            }
+            configuration
+         }
+            .padding(10)
+            .cornerRadius(20)
+            .overlay{
+                RoundedRectangle(cornerRadius: 20).stroke(lineWidth: colorScheme == .light ? 2 : 1)
+            }
+    }
+}
 
 public extension View {
     func modify<Content>(@ViewBuilder _ transform: (Self) -> Content) -> Content {

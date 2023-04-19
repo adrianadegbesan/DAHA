@@ -11,7 +11,7 @@ import UserNotifications
 struct NotificationsView: View {
     
     @Environment(\.colorScheme) var colorScheme
-    @AppStorage("notifications") var notifications : Bool = true
+    @AppStorage("notifications") var notificationsEnabled: Bool = true
     @State private var toggle : Bool = false
     
     

@@ -59,8 +59,9 @@ struct SearchScreen: View {
                     
                     
                     TextField("Does Anyone Have A...?", text: $query)
-//                        .foregroundColor(Color(hex: deepBlue))
-                        .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
+//                        .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
+                        .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
+                        
                         .submitLabel(.search)
                         .onSubmit {
                             if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
