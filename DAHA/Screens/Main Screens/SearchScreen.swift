@@ -43,6 +43,7 @@ struct SearchScreen: View {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 22, weight: .heavy))
                             .padding(.bottom, 25)
+                            .padding(.top, 3)
                             .padding(.leading, 15)
                             .onTapGesture {
                                 SoftFeedback()

@@ -111,7 +111,6 @@ struct HeaderView: View {
                         }
                     }
                     .focused($keyboardFocused)
-                    .background(Color.primary.opacity(0.05))
                     .padding(.horizontal, screenWidth * 0.06)
                     .padding(.bottom, 25)
                 

@@ -45,7 +45,7 @@ struct SearchBarScreen: View {
                         }
                         .padding(.horizontal, screenWidth * 0.03)
                         .padding(.bottom, 10)
-                        .padding(.top, 10)
+                        .padding(.top, 12.5)
                     
                 }
                
