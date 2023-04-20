@@ -38,128 +38,138 @@ struct ChatScreen: View {
             }
             .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
             ScrollViewReader{ value in
-                ScrollView{
-                    
-                    VStack(spacing: 0){
-                        PostView(post: post, owner: false, preview: true)
-                            .scaleEffect(isAnimating ? 0.98 : 0.93)
-                            .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
-                            .onLongPressGesture(minimumDuration: 0.5) {
-                                 SoftFeedback()
-                                 isAnimating = true
-                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                    isAnimating = false
+                
+                VStack(spacing: 0){
+                    ScrollView{
+                        
+                        VStack(spacing: 0){
+                            PostView(post: post, owner: false, preview: true)
+                                .scaleEffect(isAnimating ? 0.98 : 0.93)
+                                .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                                .onLongPressGesture(minimumDuration: 0.5) {
+                                     SoftFeedback()
+                                     isAnimating = true
+                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                        isAnimating = false
+                                     }
                                  }
-                             }
-                        
-                        if channelID == nil && empty {
-                            Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
-                                .foregroundColor(.secondary)
-                                .font(.system(size: 11, weight: .semibold))
-                                .padding(.horizontal)
-                        }
-                        
                             
-                        if channelID != nil{
-                            
-                            if (messageManager.messages[channelID!] ?? []).isEmpty {
+                            if channelID == nil && empty {
                                 Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
                                     .foregroundColor(.secondary)
-                                    .font(.system(size: 10, weight: .semibold))
+                                    .font(.system(size: 11, weight: .semibold))
                                     .padding(.horizontal)
                             }
                             
-                            ForEach(messageManager.messages[channelID!] ?? []){ message in
-                                MessageBubble(message: message, ChannelID: channelID!)
-                                    .id(message.id)
-                                Spacer().frame(height: 5)
                                 
-                            }
-                        }
-                        
-                        NavigationLink(destination: PostModalPreview(post: post, owner: Auth.auth().currentUser?.uid == post.userID), isActive: $shouldNavigate){
-                            EmptyView()
-                        }
-                    }
-                
-                    .onTapGesture {
-                        hideKeyboard()
-                    }
-                    .onChange(of: messageManager.messages[channelID ?? ""]?.count) { num in
-                        
-                        if let lastMessage = messageManager.messages[channelID!]?.last {
-                            withAnimation{
-                                value.scrollTo(lastMessage.id, anchor: .bottom)
-                            }
-                        }
-                    }
-                   
-                }
-//                Spacer().frame(height: screenHeight * 0.001)
-                HStack{
-                    MessageField(post: post, channelID: $channelID, sent: $sent, redirect: redirect, keyboardFocused: $keyboardFocused)
-                        .onChange(of: sent){ _ in
-                            if sent {
-                                if let lastMessage = messageManager.messages[channelID!]?.last {
-                                    withAnimation{
-                                        value.scrollTo(lastMessage.id, anchor: .bottom)
-                                    }
-                                }
-                            }
-                            sent = false
-                        }
-                        .onChange(of: keyboardFocused){ _ in
                             if channelID != nil{
-                                if keyboardFocused {
-                                    if let lastMessage = messageManager.messages[channelID!]?.last {
-                                        withAnimation{
-                                            value.scrollTo(lastMessage.id, anchor: .bottom)
-                                        }
-                                    }
+                                
+                                if (messageManager.messages[channelID!] ?? []).isEmpty {
+                                    Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
+                                        .foregroundColor(.secondary)
+                                        .font(.system(size: 10, weight: .semibold))
+                                        .padding(.horizontal)
                                 }
+                                
+                                ForEach(messageManager.messages[channelID!] ?? []){ message in
+                                    MessageBubble(message: message, ChannelID: channelID!)
+                                        .id(message.id)
+                                    Spacer().frame(height: 5)
+                                    
+                                }
+                            }
+                            
+                            NavigationLink(destination: PostModalPreview(post: post, owner: Auth.auth().currentUser?.uid == post.userID), isActive: $shouldNavigate){
+                                EmptyView()
                             }
                            
                         }
-                        .onChange(of: channelID){ _ in
-                            if channelID != nil {
-                                withAnimation {
-                                    empty = false
-                                    listener = messageManager.getMessages(channelID: channelID!)
+                    
+                     
+                        .onChange(of: messageManager.messages[channelID ?? ""]?.count) { num in
+                            
+                            if let lastMessage = messageManager.messages[channelID!]?.last {
+                                withAnimation{
+                                    value.scrollTo(lastMessage.id, anchor: .bottom)
                                 }
-                              
                             }
                         }
-                        .onAppear{
-                            appState.messageScreen = true
-                            delegate.chatScreen = true
-                            delegate.currentChat = "\(receiver)"
-                            if listen != nil && channelID != nil{
-                                if listen! {
-                                    listener = messageManager.getMessages(channelID: channelID!)
-                                }
-                            }
-                            if scrollDown != nil{
-                                if scrollDown! {
+                       
+                    }
+                    .onTapGesture {
+                        hideKeyboard()
+                    }
+                    Divider()
+                   
+    //                Spacer().frame(height: screenHeight * 0.001)
+                    HStack{
+                        MessageField(post: post, channelID: $channelID, sent: $sent, redirect: redirect, keyboardFocused: $keyboardFocused)
+                            .padding(.top, 14)
+                            .onChange(of: sent){ _ in
+                                if sent {
                                     if let lastMessage = messageManager.messages[channelID!]?.last {
                                         withAnimation{
                                             value.scrollTo(lastMessage.id, anchor: .bottom)
                                         }
                                     }
                                 }
+                                sent = false
                             }
-                        }
-                        .onDisappear {
-                            appState.messageScreen = false
-                            delegate.chatScreen = false
-                            delegate.currentChat = ""
-                            if listener != nil{
-                                listener?.remove()
+                            .onChange(of: keyboardFocused){ _ in
+                                if channelID != nil{
+                                    if keyboardFocused {
+                                        if let lastMessage = messageManager.messages[channelID!]?.last {
+                                            withAnimation{
+                                                value.scrollTo(lastMessage.id, anchor: .bottom)
+                                            }
+                                        }
+                                    }
+                                }
+                               
                             }
-                        }
+                            .onChange(of: channelID){ _ in
+                                if channelID != nil {
+                                    withAnimation {
+                                        empty = false
+                                        listener = messageManager.getMessages(channelID: channelID!)
+                                    }
+                                  
+                                }
+                            }
+                            .onAppear{
+                                appState.messageScreen = true
+                                delegate.chatScreen = true
+                                delegate.currentChat = "\(receiver)"
+                                if listen != nil && channelID != nil{
+                                    if listen! {
+                                        listener = messageManager.getMessages(channelID: channelID!)
+                                    }
+                                }
+                                if scrollDown != nil{
+                                    if scrollDown! {
+                                        if let lastMessage = messageManager.messages[channelID!]?.last {
+                                            withAnimation{
+                                                value.scrollTo(lastMessage.id, anchor: .bottom)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .onDisappear {
+                                appState.messageScreen = false
+                                delegate.chatScreen = false
+                                delegate.currentChat = ""
+                                if listener != nil{
+                                    listener?.remove()
+                                }
+                            }
+                    }
+//                    .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: light_scroll_background))
+                    
+                    }
+                    
                 }
-//                .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: light_scroll_background))
                 
-            }
 
            
             

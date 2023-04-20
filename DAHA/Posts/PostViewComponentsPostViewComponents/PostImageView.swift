@@ -39,7 +39,7 @@ struct PostImageView: View {
                                             .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                                             .overlay (
                                                 RoundedRectangle(cornerRadius: 15)
-                                                    .strokeBorder(lineWidth: colorScheme == .dark ? 1 : 2)
+                                                    .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
                                                     .foregroundColor(colorScheme == .light ? .black : .gray)
                                             )
                                     }
@@ -76,7 +76,7 @@ struct PostImageView: View {
                                         .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                                         .overlay (
                                             RoundedRectangle(cornerRadius: 15)
-                                                .strokeBorder(lineWidth: colorScheme == .dark ? 1 : 2)
+                                                .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
                                                 .foregroundColor(colorScheme == .light ? .black : .gray)
                                         )
                                 }
@@ -102,7 +102,7 @@ struct PostImageView: View {
             .frame(width: screenWidth * 0.385, height: 175)
             .overlay (
                 RoundedRectangle(cornerRadius: 15)
-                    .strokeBorder(lineWidth: colorScheme == .dark ? 1 : 2)
+                    .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
                     .foregroundColor(colorScheme == .light ? .black : .gray)
             )
             .clipped()
@@ -114,7 +114,7 @@ struct PostImageView: View {
                     .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                     .overlay (
                         RoundedRectangle(cornerRadius: 15)
-                            .strokeBorder(lineWidth: colorScheme == .dark ? 1 : 2)
+                            .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
                             .foregroundColor(colorScheme == .light ? .black : .gray)
                     )
             }

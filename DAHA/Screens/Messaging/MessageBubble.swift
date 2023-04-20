@@ -21,9 +21,9 @@ struct MessageBubble: View {
         VStack(alignment: message.senderID != Auth.auth().currentUser?.uid ?? "" ? .leading : .trailing) {
              HStack {
                  Text(message.message)
-                     .foregroundColor(.white)
+                     .foregroundColor(colorScheme == .dark ? .white : (message.senderID != Auth.auth().currentUser?.uid ? .black : .white))
                      .padding(13)
-                     .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: messageBubbleReceiver) : Color(hex: deepBlue))
+                     .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: colorScheme == .dark ? messageBubbleReceiver_dark : messageBubbleReceiver_light) : Color(hex: deepBlue))
                      .cornerRadius(25)
              }
              .frame(maxWidth: 245, alignment: message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
