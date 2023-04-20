@@ -37,7 +37,7 @@ struct MessageField: View {
             .padding(.horizontal, screenWidth * 0.025)
             .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(50) : Color(hex: light_scroll_background).cornerRadius(50))
             .overlay{
-                RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 0.8)
+                RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 1.5)
             }
 //            .background(RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 0.8))
             .padding(.bottom, 3)
@@ -109,13 +109,14 @@ struct MessageField: View {
                 
             } label: {
                 Image(systemName: "paperplane.fill")
-                    .font(.system(size: 20.5, weight: .heavy))
+                    .font(.system(size: 18, weight: .heavy))
                     .foregroundColor(.white)
                     .rotationEffect(.degrees(40.0))
                     .offset(x: -1.5)
                     .padding(9)
                     .background(message != "" ? Color(hex: deepBlue) : .gray)
                     .cornerRadius(50)
+                    .overlay(Circle().stroke(lineWidth: 1.5).foregroundColor(.primary))
                     .offset(x: screenWidth * 0.003)
             }
             
@@ -161,7 +162,7 @@ struct CustomTextField: View {
             }
             
             
-            TextField("Write a Message", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+            TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
                 .focused(keyboardFocused)
                 .onAppear{
                     if redirect{

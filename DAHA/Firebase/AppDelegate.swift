@@ -23,6 +23,9 @@ class AppDelegate: NSObject,UIApplicationDelegate, ObservableObject{
     @Published var channelID_cur = ""
     @Published var inAppNotification = false
     
+    @Published var chatScreen = false
+    @Published var currentChat = ""
+    @Published var currentNotification = ""
     let gcmMessageIDKey = "gcm.message_id"
     
     
@@ -141,6 +144,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
       if let aps = userInfo["aps"] as? [String: AnyObject],
          let alert = aps["alert"] as? [String: AnyObject] {
           let title = alert["title"] as? String ?? ""
+          currentNotification = title
           let body = alert["body"] as? String ?? ""
           print("Title: \(title)")
           print("Body: \(body)")
@@ -153,7 +157,17 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
               }
       }
       
-      completionHandler([.banner, .list, .sound])
+      if chatScreen {
+          if currentChat == currentNotification {
+              completionHandler([])
+          } else {
+              completionHandler([.list, .sound])
+          }
+      } else {
+          completionHandler([.banner, .list, .sound])
+      }
+      
+     
   }
     
 

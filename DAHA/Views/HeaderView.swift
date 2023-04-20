@@ -102,7 +102,7 @@ struct HeaderView: View {
             
             if screen == "Home"{
                 TextField("Does Anyone Have A...?", text: $query)
-                    .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
+                    .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass"), text: $query))
                     .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(20) : Color(hex: light_scroll_background).cornerRadius(20))
                     .submitLabel(.search)
                     .onSubmit {
@@ -117,8 +117,8 @@ struct HeaderView: View {
                 NavigationLink(destination: SearchBarScreen(query: $query, category: $category, type: $type), isActive: $shouldNavigate){
                     EmptyView()
                 }
-               
             }
+            
         } //: VStack
 //        .background(colorScheme == .dark || screen == "Search" ? .clear : Color(hex: greyBackground))
     }

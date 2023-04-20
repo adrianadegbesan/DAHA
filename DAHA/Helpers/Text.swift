@@ -129,9 +129,7 @@ extension View {
                     Button(action: {
                         hideKeyboard()
                     }){
-                            Text(Image(systemName: "multiply"))
-                            .fontWeight(.bold)
-                            .foregroundColor(.gray)
+                            ExitButton()
                     }
                 }
             }

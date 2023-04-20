@@ -34,7 +34,7 @@ struct SearchBarScreen: View {
                         }
                         .foregroundColor(Color(hex: deepBlue))
                     TextField("Does Anyone Have A...?", text: $query)
-                        .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
+                        .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass"), text: $query))
                         .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(20) : Color(hex: light_scroll_background).cornerRadius(20))
                         .focused($keyboardFocused)
                         .submitLabel(.search)
