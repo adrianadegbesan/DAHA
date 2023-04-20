@@ -89,9 +89,9 @@ struct PostView: View {
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(reported ? .red : (colorScheme == .dark ? .gray : .black.opacity(0.7)), lineWidth: colorScheme == .dark ? 1 : 2)
+                .strokeBorder(reported ? .red : (colorScheme == .dark ? .gray : .black), lineWidth: colorScheme == .dark ? 1 : 2)
 
-                .shadow(color: colorScheme == .dark ? .white : .black, radius: 1, y: 0)
+//                .shadow(color: colorScheme == .dark ? .white : .black, radius: 1, y: 0)
         )
         .background(colorScheme == .dark ? .black.opacity(0.7): .white)
         .cornerRadius(20)
