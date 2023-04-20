@@ -55,7 +55,6 @@ struct ContentView: View {
       } else if isSignedIn && verified && agreedToTerms{ 
          MainScreen()
               .transition(.opacity)
-              .hideNavigationBar(value: $appState.isNavigationBarHidden)
           
           if channel != nil{
               NavigationLink( destination: ChatScreen(post: channel!.post, redirect: false, receiver: channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender_username : channel!.receiver_username, receiverID:  channel!.receiver == Auth.auth().currentUser?.uid ?? "" ? channel!.sender : channel!.receiver, channelID: channel!.id, listen: true, scrollDown: true), isActive: $shouldNavigate){
