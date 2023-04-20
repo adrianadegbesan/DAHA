@@ -13,23 +13,42 @@ struct SearchBarScreen: View {
     @Binding var category : String
     @Binding var type : String
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var firestoreManager : FirestoreManager
     @FocusState private var keyboardFocused: Bool
     
     var body: some View {
         ZStack {
             VStack(spacing: 0){
-                TextField("Does Anyone Have A...?", text: $query)
-                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
-                    .focused($keyboardFocused)
-                    .submitLabel(.search)
-                    .onSubmit {
-                        Task {
-                            await firestoreManager.searchPosts(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
+                
+                HStack{
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 22, weight: .heavy))
+                        .padding(.bottom, 10)
+                        .padding(.top, 10)
+                        .padding(.leading, 15)
+                        .onTapGesture {
+                            SoftFeedback()
+                            firestoreManager.search_results.removeAll()
+                            dismiss()
                         }
-                    }
-                    .padding(.horizontal, screenWidth * 0.03)
-                    .padding(.bottom, 10)
+                        .foregroundColor(Color(hex: deepBlue))
+                    TextField("Does Anyone Have A...?", text: $query)
+                        .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
+                        .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(20) : Color(hex: light_scroll_background).cornerRadius(20))
+                        .focused($keyboardFocused)
+                        .submitLabel(.search)
+                        .onSubmit {
+                            Task {
+                                await firestoreManager.searchPosts(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
+                            }
+                        }
+                        .padding(.horizontal, screenWidth * 0.03)
+                        .padding(.bottom, 10)
+                        .padding(.top, 10)
+                    
+                }
+               
                 
                 HStack{
                     if category != "" {
@@ -58,15 +77,18 @@ struct SearchBarScreen: View {
                 Spacer()
                 
                 Divider()
-                    .frame(maxHeight: 0.5)
-                    .overlay(Color(hex: darkGrey))
+                    .frame(maxHeight : 4)
+                    .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
                     .padding(.top, 10)
                 
                 PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
             } //VSTACK
 
             .keyboardControl()
-        }.onAppear {
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
+        .onAppear {
             Task {
                 await firestoreManager.searchPosts(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
             }

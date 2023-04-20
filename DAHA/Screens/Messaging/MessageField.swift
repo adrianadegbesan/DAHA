@@ -21,6 +21,7 @@ struct MessageField: View {
     @State var redirect : Bool
     @State var error_alert : Bool = false
     var keyboardFocused: FocusState<Bool>.Binding
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         
@@ -34,7 +35,11 @@ struct MessageField: View {
                 
             }
             .padding(.horizontal, screenWidth * 0.025)
-            .background(RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 0.8))
+            .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(50) : Color(hex: light_scroll_background).cornerRadius(50))
+            .overlay{
+                RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 0.8)
+            }
+//            .background(RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 0.8))
             .padding(.bottom, 3)
             .alert("Error Sending Message", isPresented: $error_alert, actions: {}, message:{Text("Please check your network connection")})
             
@@ -156,7 +161,7 @@ struct CustomTextField: View {
             }
             
             
-            TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+            TextField("Write a Message", text: $text, onEditingChanged: editingChanged, onCommit: commit)
                 .focused(keyboardFocused)
                 .onAppear{
                     if redirect{

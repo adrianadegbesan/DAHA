@@ -20,6 +20,13 @@ struct HeaderView: View {
     var tabs : [String]?
     var screen: String
     @State var isAnimating: Bool = false
+    
+    @FocusState private var keyboardFocused: Bool
+    @State var query = ""
+    @State var category = ""
+    @State var type = ""
+    @State var shouldNavigate = false
+    
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var network : Network
     
@@ -91,6 +98,27 @@ struct HeaderView: View {
                 Divider()
                     .frame(height: 0.5)
                     .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
+            }
+            
+            if screen == "Home"{
+                TextField("Does Anyone Have A...?", text: $query)
+                    .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
+                    .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(20) : Color(hex: light_scroll_background).cornerRadius(20))
+                    .submitLabel(.search)
+                    .onSubmit {
+                        if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
+                            shouldNavigate = true
+                        }
+                    }
+                    .focused($keyboardFocused)
+                    .background(Color.primary.opacity(0.05))
+                    .padding(.horizontal, screenWidth * 0.06)
+                    .padding(.bottom, 25)
+                
+                NavigationLink(destination: SearchBarScreen(query: $query, category: $category, type: $type), isActive: $shouldNavigate){
+                    EmptyView()
+                }
+               
             }
         } //: VStack
 //        .background(colorScheme == .dark || screen == "Search" ? .clear : Color(hex: greyBackground))

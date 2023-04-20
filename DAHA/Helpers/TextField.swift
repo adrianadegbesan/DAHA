@@ -56,6 +56,7 @@ struct OvalTextFieldStyle: TextFieldStyle {
          }
             .padding(10)
             .cornerRadius(20)
+            
             .overlay{
                 RoundedRectangle(cornerRadius: 20).stroke(lineWidth: colorScheme == .light ? 2 : 1)
             }

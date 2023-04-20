@@ -49,8 +49,6 @@ let light_scroll_background = "eeeeee"
 
 let messageBubbleReceiver = "26252A"
 
-
-
  // Category Colors
 
 let category_colors = [

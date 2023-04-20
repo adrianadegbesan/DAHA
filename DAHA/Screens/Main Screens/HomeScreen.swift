@@ -120,6 +120,7 @@ struct HomeScreen: View {
                 
                 
             } //: ZStack
+            .keyboardControl()
             .ignoresSafeArea(.keyboard)
             .onAppear{
                 if firestoreManager.listings_tab {
