@@ -159,11 +159,15 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
       
       if chatScreen {
           if currentChat == currentNotification {
-              completionHandler([])
+              currentNotification = ""
+              SoftFeedback()
+              completionHandler([.sound])
           } else {
+              currentNotification = ""
               completionHandler([.list, .sound])
           }
       } else {
+          currentNotification = ""
           completionHandler([.banner, .list, .sound])
       }
       
