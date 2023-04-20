@@ -142,7 +142,7 @@ struct PostModalDescription: View {
                     .overlay (
         //                RoundedRectangle(cornerRadius: 15)
                         Rectangle()
-                            .strokeBorder(lineWidth: 2)
+                            .strokeBorder(lineWidth: 2.5)
                     )
             }
             
