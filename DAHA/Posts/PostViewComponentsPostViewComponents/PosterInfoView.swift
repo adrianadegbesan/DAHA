@@ -39,10 +39,10 @@ struct PosterInfoView: View {
             
             Spacer()
             
-            Text(post.type == "Listing" ? Image(systemName: "cart.circle") : Image(systemName: "figure.stand.line.dotted.figure.stand"))
+            Text(post.type == "Listing" ? Image(systemName: "cart.fill") : Image(systemName: "figure.stand.line.dotted.figure.stand"))
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
-                .font(.system(size: post.type == "Request" ? 15.5 : 17, weight: .heavy))
+                .font(.system(size: 15.5, weight: .heavy))
                 .foregroundColor(Color(hex: deepBlue))
             
 //

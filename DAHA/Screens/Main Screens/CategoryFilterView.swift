@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoryFilterView: View {
     
     var categories : [String] = ["General", "Clothing", "Tech", "Bikes",
-                                 "Cars", "Services", "Furniture", "Books", "Outdoor", "Tickets"]
+                                 "Rides", "Services", "Furniture", "Books", "Outdoor", "Tickets"]
     @Binding var selected : String 
     @State var screen : String
     @Binding var posts: [PostModel]

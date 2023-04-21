@@ -111,7 +111,7 @@ struct HeaderView: View {
                         }
                     }
                     .focused($keyboardFocused)
-                    .padding(.horizontal, screenWidth * 0.06)
+                    .padding(.horizontal, screenWidth * 0.04)
                     .padding(.bottom, 25)
                 
                 NavigationLink(destination: SearchBarScreen(query: $query, category: $category, type: $type), isActive: $shouldNavigate){

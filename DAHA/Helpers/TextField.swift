@@ -51,7 +51,7 @@ struct OvalTextFieldStyle: TextFieldStyle {
         HStack {
             if icon != nil {
                 icon
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color(UIColor.systemGray))
             }
             configuration
             Spacer()
@@ -72,9 +72,9 @@ struct OvalTextFieldStyle: TextFieldStyle {
             .padding(10)
             .cornerRadius(20)
             .frame(height: 40)
-            .overlay{
-                RoundedRectangle(cornerRadius: 20).stroke(lineWidth: 2)
-            }
+//            .overlay{
+//                RoundedRectangle(cornerRadius: 20).stroke(lineWidth: 1)
+//            }
            
     }
 }

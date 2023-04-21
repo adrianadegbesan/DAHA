@@ -76,7 +76,7 @@ struct SearchScreen: View {
                             }
                         }
                         .focused($keyboardFocused)
-                        .padding(.horizontal, !searched ? screenWidth * 0.058 : screenWidth * 0.03)
+                        .padding(.horizontal, !searched ? screenWidth * 0.04 : screenWidth * 0.03)
                         .padding(.bottom, 18)
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                 }
@@ -87,9 +87,9 @@ struct SearchScreen: View {
                         /*Search Buttons and Categories*/
                         SearchButtons(keyboardFocused: $keyboardFocused, category: $category, type: $type)
                             .ignoresSafeArea(.keyboard, edges: .bottom)
-                            .padding(.top, 10)
+                            .padding(.top, 15)
                         
-                        Spacer().frame(height: 10)
+                        Spacer().frame(maxHeight: 15)
                         
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                         
@@ -198,6 +198,7 @@ struct SearchScreen: View {
         }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .keyboardControl()
+            .navigationBarBackButtonHidden(true)
       
     }
 }

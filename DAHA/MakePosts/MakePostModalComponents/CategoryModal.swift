@@ -14,7 +14,7 @@ struct CategoryModal: View {
     @State var modal : Bool
     @Environment(\.dismiss) private var dismiss
     
-    let categories: [String] = ["General", "Clothing", "Tech", "Bikes", "Cars", "Art", "Furniture", "Books", "Games", "Tickets"]
+    let categories: [String] = ["General", "Clothing", "Tech", "Bikes", "Rides", "Art", "Furniture", "Books", "Games", "Tickets"]
     
     var body: some View {
         ZStack {
@@ -57,7 +57,7 @@ struct CategoryModal: View {
                 }
                 .padding(.bottom, 25)
                 HStack{
-                    CategoryIconView(category: "Cars", selected: $selected)
+                    CategoryIconView(category: "Rides", selected: $selected)
                         .padding(.trailing, 10)
                     CategoryIconView(category: "Services", selected: $selected)
                 }

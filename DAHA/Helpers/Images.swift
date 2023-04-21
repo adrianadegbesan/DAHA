@@ -34,7 +34,7 @@ let category_images = [
     "Bikes": "bicycle",
     "Tech": "iphone",
     "Clothing": "tshirt.fill",
-    "Cars": "car.fill",
+    "Rides": "car.fill",
     "Services": "person.2.fill",
     "Furniture": "house.circle",
     "Books": "text.book.closed.fill",
@@ -46,7 +46,7 @@ let category_images = [
 //SF Symbol names for type images
 let type_images = [
     "Request" : "figure.stand.line.dotted.figure.stand",
-    "Listing" : "cart.circle",
+    "Listing" : "cart.fill",
     "Borrow" : "figure.wave"
 ]
 

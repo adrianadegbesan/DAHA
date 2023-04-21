@@ -31,6 +31,7 @@ struct SavedScreen: View {
             
         } //: ZStack
         .ignoresSafeArea(.keyboard)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

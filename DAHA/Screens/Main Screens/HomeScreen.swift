@@ -33,7 +33,7 @@ struct HomeScreen: View {
                     HStack {
                         Spacer()
                         VStack(spacing: 10){
-                           (Text(Image(systemName: "cart.circle")) + Text(" LISTINGS"))
+                           (Text(Image(systemName: "cart.fill")) + Text(" LISTINGS"))
                                 .font(.headline.weight(.black))
                                 .foregroundColor(first ? Color(hex: deepBlue) : .primary)
                             Divider()

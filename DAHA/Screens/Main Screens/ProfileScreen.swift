@@ -84,8 +84,7 @@ struct ProfileScreen: View {
                    
                     Spacer()
                     VStack(spacing: 10){
-                       (Text(Image(systemName: "person.circle")) + Text(" POSTS"))
-//                        (Text(Image(systemName: "cart.circle")) + Text(" LISTINGS"))
+                       (Text(Image(systemName: "squareshape.split.2x2")) + Text(" POSTS"))
                             .font(.headline.weight(.black))
                             .foregroundColor(first ? Color(hex: deepBlue) : .primary)
                         Divider()
@@ -215,6 +214,7 @@ struct ProfileScreen: View {
             
             
         }
+        .navigationBarBackButtonHidden(true)
 
     }
 }
