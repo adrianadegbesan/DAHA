@@ -54,27 +54,26 @@ struct ChatScreen: View {
                                      }
                                  }
                             
-                            if channelID == nil && empty {
                                 Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
                                     .foregroundColor(.secondary)
                                     .font(.system(size: 11, weight: .semibold))
                                     .padding(.horizontal)
-                            }
+                                    .padding(.bottom, 18)
                             
                                 
                             if channelID != nil{
                                 
-                                if (messageManager.messages[channelID!] ?? []).isEmpty {
-                                    Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
-                                        .foregroundColor(.secondary)
-                                        .font(.system(size: 10, weight: .semibold))
-                                        .padding(.horizontal)
-                                }
+//                                if (messageManager.messages[channelID!] ?? []).isEmpty {
+//                                    Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
+//                                        .foregroundColor(.secondary)
+//                                        .font(.system(size: 10, weight: .semibold))
+//                                        .padding(.horizontal)
+//                                }
                                 
                                 ForEach(messageManager.messages[channelID!] ?? []){ message in
                                     MessageBubble(message: message, ChannelID: channelID!)
                                         .id(message.id)
-                                    Spacer().frame(height: 5)
+                                    Spacer().frame(height: 1)
                                     
                                 }
                                 

@@ -18,51 +18,100 @@ struct MessageBubble: View {
     @EnvironmentObject var messageManager : MessageManager
     
     var body: some View {
-        VStack(alignment: message.senderID != Auth.auth().currentUser?.uid ?? "" ? .leading : .trailing) {
-             HStack {
-                 Text(message.message)
-                     .foregroundColor(colorScheme == .dark ? .white : (message.senderID != Auth.auth().currentUser?.uid ? .black : .white))
-                     .padding(13)
-                     .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: colorScheme == .dark ? messageBubbleReceiver_dark : messageBubbleReceiver_light) : Color(hex: messageSender))
-                     .cornerRadius(25)
-             }
-//             .contextMenu {
-//                 Button {
-//                    UIPasteboard.general.string = message.message
-//                 } label:{
-//                     Label("Copy", systemImage: "doc.on.doc")
-//                 }
-//             }
-             .frame(maxWidth: 245, alignment: message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
-             .onTapGesture {
-                 withAnimation{
-                     showTime.toggle()
-                 }
-            
-             }
-             
-            
-             
-            if showTime {
-                if Calendar.current.isDateInToday(message.timestamp) {
-                      Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
-                          .font(.caption2)
-                          .foregroundColor(.gray)
-                          .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
-                  } else {
-                      Text("\(message.timestamp.formatted(.dateTime.hour().minute())) - \(message.timestamp.formatted(.dateTime.month().day().year()))")
-                          .font(.caption2)
-                          .foregroundColor(.gray)
-                          .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
-                  }
+        
+        VStack{
+            ChatBubble(direction: message.senderID != Auth.auth().currentUser?.uid ?? "" ? .left : .right){
+                Text(message.message)
+                    .foregroundColor(colorScheme == .dark ? .white : (message.senderID != Auth.auth().currentUser?.uid ? .black : .white))
+                    .padding(15)
+                    .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: colorScheme == .dark ? messageBubbleReceiver_dark : messageBubbleReceiver_light) : Color(hex: messageSender))
+                    .onTapGesture {
+                        withAnimation{
+                            showTime.toggle()
+                        }
+                    }
+                    
             }
-         }
+            
+            HStack{
+                
+                if message.senderID == Auth.auth().currentUser?.uid{
+                    Spacer()
+                }
+                
+                if showTime {
+                    if Calendar.current.isDateInToday(message.timestamp) {
+                          Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
+                              .font(.caption2)
+                              .foregroundColor(.gray)
+                              .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
+                              .padding(.bottom, 4)
+                      } else {
+                          Text("\(message.timestamp.formatted(.dateTime.hour().minute())) - \(message.timestamp.formatted(.dateTime.month().day().year()))")
+                              .font(.caption2)
+                              .foregroundColor(.gray)
+                              .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
+                              .padding(.bottom, 4)
+                      }
+                }
+                
+                if message.senderID != Auth.auth().currentUser?.uid{
+                    Spacer()
+                }
+                
+            }
+          
 
-         .frame(maxWidth: .infinity, alignment: message.senderID != Auth.auth().currentUser?.uid ? .leading : .trailing)
-         .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
-         .padding(.horizontal, 10)
-         .padding(.bottom, 3)
-         .alert("Unable to Delete Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection")})
+        }
+        .frame(maxWidth: .infinity, alignment: message.senderID != Auth.auth().currentUser?.uid ? .leading : .trailing)
+        .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
+        .alert("Unable to Delete Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection")})
+        
+//        VStack(alignment: message.senderID != Auth.auth().currentUser?.uid ?? "" ? .leading : .trailing) {
+//             HStack {
+//                 Text(message.message)
+//                     .foregroundColor(colorScheme == .dark ? .white : (message.senderID != Auth.auth().currentUser?.uid ? .black : .white))
+//                     .padding(13)
+//                     .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: colorScheme == .dark ? messageBubbleReceiver_dark : messageBubbleReceiver_light) : Color(hex: messageSender))
+//                     .cornerRadius(25)
+////                     .contextMenu {
+////                         Button {
+////                            UIPasteboard.general.string = message.message
+////                         } label:{
+////                             Label("Copy", systemImage: "doc.on.doc")
+////                         }
+////                     }
+//             }
+//             .frame(maxWidth: 245, alignment: message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
+//             .onTapGesture {
+//                 withAnimation{
+//                     showTime.toggle()
+//                 }
+//
+//             }
+//
+//
+//
+//            if showTime {
+//                if Calendar.current.isDateInToday(message.timestamp) {
+//                      Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
+//                          .font(.caption2)
+//                          .foregroundColor(.gray)
+//                          .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
+//                  } else {
+//                      Text("\(message.timestamp.formatted(.dateTime.hour().minute())) - \(message.timestamp.formatted(.dateTime.month().day().year()))")
+//                          .font(.caption2)
+//                          .foregroundColor(.gray)
+//                          .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
+//                  }
+//            }
+//         }
+//
+//         .frame(maxWidth: .infinity, alignment: message.senderID != Auth.auth().currentUser?.uid ? .leading : .trailing)
+//         .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
+//         .padding(.horizontal, 10)
+//         .padding(.bottom, 3)
+//         .alert("Unable to Delete Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection")})
 
      }
    }
