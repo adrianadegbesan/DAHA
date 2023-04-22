@@ -33,6 +33,14 @@ struct MessageBubble: View {
                  }
             
              }
+             .contextMenu {
+                 Button {
+                    UIPasteboard.general.string = message.message
+                 } label:{
+                     Label("Copy", systemImage: "doc.on.doc")
+                 }
+             }
+            
              
              if showTime {
                  Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
