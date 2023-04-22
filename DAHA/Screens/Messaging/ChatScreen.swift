@@ -77,6 +77,7 @@ struct ChatScreen: View {
                                     Spacer().frame(height: 5)
                                     
                                 }
+                                
                             }
                             
                             NavigationLink(destination: PostModalPreview(post: post, owner: Auth.auth().currentUser?.uid == post.userID), isActive: $shouldNavigate){
@@ -104,7 +105,8 @@ struct ChatScreen: View {
     //                Spacer().frame(height: screenHeight * 0.001)
                     HStack{
                         MessageField(post: post, channelID: $channelID, sent: $sent, redirect: redirect, keyboardFocused: $keyboardFocused)
-                            .padding(.top, 14)
+                            .padding(.top, 10)
+                            .padding(.bottom, 4)
                             .onChange(of: sent){ _ in
                                 if sent {
                                     if let lastMessage = messageManager.messages[channelID!]?.last {

@@ -27,19 +27,31 @@ struct MessageField: View {
         
         HStack {
             HStack {
-                //             Custom text field created below
-                CustomTextField(placeholder: Text(""), text: $message, commit: {
-                    
-                }, keyboardFocused: keyboardFocused, redirect: redirect)
-                    .frame(height: 40)
+                
+                if #available(iOS 16, *){
+                    TextField("Write a Message...", text: $message, axis: .vertical)
+                        .lineLimit(3)
+                        .padding(9)
+                        .focused(keyboardFocused)
+                        .onAppear{
+                            if redirect{
+                                keyboardFocused.wrappedValue = true
+                            }
+                        }
+                } else {
+                    TextField("Write a Message...", text: $message)
+                        .padding(10)
+                        .focused(keyboardFocused)
+                        .onAppear{
+                            if redirect{
+                                keyboardFocused.wrappedValue = true
+                            }
+                        }
+                }
                 
             }
             .padding(.horizontal, screenWidth * 0.025)
             .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(50) : Color(hex: light_scroll_background).cornerRadius(50))
-            .overlay{
-                RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 1.5)
-            }
-//            .background(RoundedRectangle(cornerRadius: 50).stroke(lineWidth: 0.8))
             .padding(.bottom, 3)
             .alert("Error Sending Message", isPresented: $error_alert, actions: {}, message:{Text("Please check your network connection")})
             
@@ -113,10 +125,10 @@ struct MessageField: View {
                     .foregroundColor(.white)
                     .rotationEffect(.degrees(40.0))
                     .offset(x: -1.5)
-                    .padding(9)
-                    .background(message != "" ? Color(hex: deepBlue) : .gray)
+                    .padding(8)
+                    .background(message != "" ? Color(hex: messageSender) : .gray)
                     .cornerRadius(50)
-                    .overlay(Circle().stroke(lineWidth: 1.5).foregroundColor(.primary))
+//                    .overlay(Circle().stroke(lineWidth: 1.5).foregroundColor(.primary))
                     .offset(x: screenWidth * 0.003)
             }
             
@@ -144,6 +156,9 @@ struct MessageField: View {
 //            .environmentObject(MessageManager())
 //    }
 //}
+
+
+
 
 struct CustomTextField: View {
     var placeholder: Text

@@ -49,6 +49,9 @@ let light_scroll_background = "eeeeee"
 
 let messageBubbleReceiver_dark = "26252A"
 let messageBubbleReceiver_light = "E8E8EA"
+
+let messageSender = "1E8DFF"
+let search_bar_dark = "262626"
  // Category Colors
 
 let category_colors = [

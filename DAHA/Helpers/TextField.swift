@@ -79,6 +79,41 @@ struct OvalTextFieldStyle: TextFieldStyle {
     }
 }
 
+struct OvalTextFieldChatStyle: TextFieldStyle {
+    
+//    @Binding var text: String
+    @Environment(\.colorScheme) var colorScheme
+    
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        HStack {
+            configuration
+//            Spacer()
+            
+//            if text != "" {
+//                Text(Image(systemName: "multiply.circle.fill"))
+//                    .font(.system(size: 18.5, weight: .bold))
+//                    .foregroundColor(.gray.opacity(colorScheme == .dark ? 0.3 : 0.6))
+//                    .onTapGesture {
+//                        text = ""
+//                    }
+//                    .transition(.opacity)
+//                    .padding(.trailing, 3)
+//            }
+            
+                
+         }
+            .padding(10)
+            .cornerRadius(20)
+//            .frame(height: 40)
+//            .overlay{
+//                RoundedRectangle(cornerRadius: 20).stroke(lineWidth: 1)
+//            }
+           
+    }
+}
+
+
+
 public extension View {
     func modify<Content>(@ViewBuilder _ transform: (Self) -> Content) -> Content {
         transform(self)
