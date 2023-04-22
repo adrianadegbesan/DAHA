@@ -67,10 +67,10 @@ struct SearchScreen: View {
                         .onSubmit {
                             if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
                                 /*Search database*/
+                                if !firestoreManager.search_results.isEmpty{
+                                    firestoreManager.search_results.removeAll()
+                                }
                                 Task {
-                                    if !firestoreManager.search_results.isEmpty{
-                                        firestoreManager.search_results.removeAll()
-                                    }
                                     await firestoreManager.searchPosts(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
                                 }
                                 withAnimation(.easeIn(duration: 0.3)){

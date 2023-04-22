@@ -26,6 +26,13 @@ struct MessageBubble: View {
                      .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: colorScheme == .dark ? messageBubbleReceiver_dark : messageBubbleReceiver_light) : Color(hex: deepBlue))
                      .cornerRadius(25)
              }
+//             .contextMenu {
+//                 Button {
+//                    UIPasteboard.general.string = message.message
+//                 } label:{
+//                     Label("Copy", systemImage: "doc.on.doc")
+//                 }
+//             }
              .frame(maxWidth: 245, alignment: message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
              .onTapGesture {
                  withAnimation{
@@ -33,22 +40,24 @@ struct MessageBubble: View {
                  }
             
              }
-             .contextMenu {
-                 Button {
-                    UIPasteboard.general.string = message.message
-                 } label:{
-                     Label("Copy", systemImage: "doc.on.doc")
-                 }
-             }
+             
             
              
-             if showTime {
-                 Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
-                     .font(.caption2)
-                     .foregroundColor(.gray)
-                     .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
-             }
+            if showTime {
+                if Calendar.current.isDateInToday(message.timestamp) {
+                      Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
+                          .font(.caption2)
+                          .foregroundColor(.gray)
+                          .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
+                  } else {
+                      Text("\(message.timestamp.formatted(.dateTime.hour().minute())) - \(message.timestamp.formatted(.dateTime.month().day().year()))")
+                          .font(.caption2)
+                          .foregroundColor(.gray)
+                          .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
+                  }
+            }
          }
+
          .frame(maxWidth: .infinity, alignment: message.senderID != Auth.auth().currentUser?.uid ? .leading : .trailing)
          .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
          .padding(.horizontal, 10)
