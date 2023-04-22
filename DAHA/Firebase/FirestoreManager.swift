@@ -67,6 +67,8 @@ class FirestoreManager: ObservableObject {
     @Published var search_results_loading: Bool = false
     @Published var search_error: Bool = false
     
+    @Published var search_results_previous: [PostModel] = []
+    @Published var search_last_previous: QueryDocumentSnapshot? = nil
     
     @Published var listings_tab: Bool = false
     @Published var requests_tab: Bool = false

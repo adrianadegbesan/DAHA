@@ -15,6 +15,7 @@ struct HomeScreen: View {
     @State private var tabIndex : Int = 0
     @State private var tabs : [String] = ["LISTINGS", "REQUESTS"]
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @EnvironmentObject var appState : AppState
     @Environment(\.colorScheme) var colorScheme
     @State private var opacity1 = 1.0
     @State private var opacity2 = 0.0
@@ -139,6 +140,16 @@ struct HomeScreen: View {
                 } else if firestoreManager.requests_tab {
                     tabIndex = 1
                     firestoreManager.requests_tab = false
+                }
+                
+                Task {
+                    try await Task.sleep(nanoseconds: 0_500_000_000)
+                    if !firestoreManager.search_results_previous.isEmpty{
+                        firestoreManager.search_results = firestoreManager.search_results_previous
+                        firestoreManager.search_last = firestoreManager.search_last_previous
+                        firestoreManager.search_results_previous = []
+                        firestoreManager.search_last_previous = nil
+                    }
                 }
                 
             }

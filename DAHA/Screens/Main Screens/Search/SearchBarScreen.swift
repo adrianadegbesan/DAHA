@@ -15,6 +15,7 @@ struct SearchBarScreen: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @EnvironmentObject var appState : AppState
     @FocusState private var keyboardFocused: Bool
     
     var body: some View {
@@ -29,7 +30,6 @@ struct SearchBarScreen: View {
                         .padding(.leading, 15)
                         .onTapGesture {
                             SoftFeedback()
-                            firestoreManager.search_results.removeAll()
                             dismiss()
                         }
                         .foregroundColor(Color(hex: deepBlue))

@@ -28,6 +28,7 @@ struct HeaderView: View {
     @State var shouldNavigate = false
     
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var network : Network
     
     var body: some View {
@@ -107,6 +108,11 @@ struct HeaderView: View {
                     .submitLabel(.search)
                     .onSubmit {
                         if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
+                            if !firestoreManager.search_results.isEmpty{
+                                firestoreManager.search_results_previous = firestoreManager.search_results
+                                firestoreManager.search_last_previous = firestoreManager.search_last
+                            }
+                            firestoreManager.search_results.removeAll()
                             shouldNavigate = true
                         }
                     }
