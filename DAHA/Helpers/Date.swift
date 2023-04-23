@@ -20,6 +20,7 @@ extension Date {
         let hour = 60 * minute
         let day = 24 * hour
         let week = 7 * day
+        let year = 365 * day
 
         if secondsAgo < minute {
             
@@ -52,13 +53,21 @@ extension Date {
             }
             
             return "\(secondsAgo / day) days ago"
-        }
-        
-        if secondsAgo / week == 1 {
-            return "\(secondsAgo / week) week ago"
+            
+        } else if secondsAgo < year {
+            
+            if secondsAgo / week == 1 {
+                return "\(secondsAgo / week) week ago"
+            }
+
+            return "\(secondsAgo / week) weeks ago"
         }
 
-        return "\(secondsAgo / week) weeks ago"
+        if secondsAgo / year == 1 {
+            return "\(secondsAgo / year) year ago"
+        }
+
+        return "\(secondsAgo / year) years ago"
     }
 }
 

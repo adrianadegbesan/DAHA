@@ -39,9 +39,9 @@ struct PostAnimation: View {
         VStack {
             VStack {
                 ZStack {
-                    if images.isEmpty{
-                        glowingView(color: isColorInitialized ? Color(hex: currentColor) : .primary)
-                    }
+//                    if images.isEmpty{
+//                        glowingView(color: isColorInitialized ? Color(hex: currentColor) : .primary)
+//                    }
                    
                     Image(systemName: category_images[category] ?? "")
                         .resizable()
@@ -115,7 +115,7 @@ struct PostAnimation: View {
             }
             .offset(y: !images.isEmpty ? bounceOffset : 0)
             .onAppear {
-                withAnimation(.easeIn(duration: 0.5)){
+                withAnimation(.easeIn(duration: images.isEmpty ? 0.6 : 0.85)){
                     initializeColor()
                 }
                 if !images.isEmpty{

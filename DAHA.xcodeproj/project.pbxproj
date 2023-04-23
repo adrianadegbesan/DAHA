@@ -175,6 +175,7 @@
 		82CEFC872969D02400C55F67 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC862969D02400C55F67 /* LoginButton.swift */; };
 		82CEFC8B2969D06700C55F67 /* FirstContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */; };
 		82CF5E8C29F1D90400D93737 /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF5E8B29F1D90400D93737 /* ExitButton.swift */; };
+		82CF5E8E29F4A8C200D93737 /* MessageBubbleTailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF5E8D29F4A8C200D93737 /* MessageBubbleTailed.swift */; };
 		82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */; };
 		82D3160E29D40FF6001FB5D6 /* Legal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3160D29D40FF6001FB5D6 /* Legal.swift */; };
 		82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF4CAD296F614500A309CF /* SecondContinueButton.swift */; };
@@ -336,6 +337,7 @@
 		82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstContinueButton.swift; sourceTree = "<group>"; };
 		82CEFC8C2969D0DF00C55F67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		82CF5E8B29F1D90400D93737 /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
+		82CF5E8D29F4A8C200D93737 /* MessageBubbleTailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleTailed.swift; sourceTree = "<group>"; };
 		82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		82D3160D29D40FF6001FB5D6 /* Legal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Legal.swift; sourceTree = "<group>"; };
 		82DF4CAD296F614500A309CF /* SecondContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondContinueButton.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				828CAFA629B1E64C00B489F4 /* MessageField.swift */,
 				828CAFA829B29CF800B489F4 /* MessageOptions.swift */,
 				828CAFB229B5230D00B489F4 /* ReportUserModal.swift */,
+				82CF5E8D29F4A8C200D93737 /* MessageBubbleTailed.swift */,
 			);
 			name = Messaging;
 			path = Screens/Messaging;
@@ -1012,6 +1015,7 @@
 				82C0848329BF8A8900F3627E /* DeleteAccountButton.swift in Sources */,
 				82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */,
 				828CAFB329B5230D00B489F4 /* ReportUserModal.swift in Sources */,
+				82CF5E8E29F4A8C200D93737 /* MessageBubbleTailed.swift in Sources */,
 				82A21A6029A6A9DA0040BAA1 /* PrivacyPolicyView.swift in Sources */,
 				82218C34299FC7E90092BA94 /* ImageIndicator.swift in Sources */,
 				828CAFA929B29CF800B489F4 /* MessageOptions.swift in Sources */,

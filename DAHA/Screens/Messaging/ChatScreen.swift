@@ -72,8 +72,16 @@ struct ChatScreen: View {
                                 
                                 ForEach(messageManager.messages[channelID!] ?? []){ message in
                                     MessageBubble(message: message, ChannelID: channelID!)
-                                        .id(message.id)
-                                    Spacer().frame(height: 1)
+                                    
+                                    if message.id == messageManager.messages[channelID!]?.last?.id {
+                                        Spacer().frame(height: 8)
+                                        Text("     ")
+                                            .foregroundColor(.clear)
+                                            .id(message.id)
+                                     } else {
+                                         Spacer().frame(height: 5)
+                                             .id(message.id)
+                                     }
                                     
                                 }
                                 
