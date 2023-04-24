@@ -61,20 +61,23 @@ struct DMScreen: View {
                       }
                     .frame(width: screenWidth)
                 } else {
-                    Divider()
-                        .frame(maxHeight: 0.5)
-                        .overlay(Color(hex: darkGrey))
-                        .opacity(profile != nil ? (profile! ? 0 : 1) : 1)
                     VStack(spacing: 0){
-                        ForEach(messageManager.messageChannels){ preview in
-                            
-                            MessagePreview(channel: preview)
+                        Divider()
+                            .frame(maxHeight: 0.5)
+                            .overlay(Color(hex: darkGrey))
+                            .opacity(profile != nil ? (profile! ? 0 : 1) : 1)
+                        VStack(spacing: 0){
+                            ForEach(messageManager.messageChannels){ preview in
                                 
-                            Divider()
-                                .frame(maxHeight: 0.5)
-                                .overlay(Color(hex: darkGrey))
+                                MessagePreview(channel: preview)
+                                    
+                                Divider()
+                                    .frame(maxHeight: 0.5)
+                                    .overlay(Color(hex: darkGrey))
+                            }
                         }
                     }
+                    .background(colorScheme == .dark ? .black : .white)
                 }
               
             }.refreshable(action: {

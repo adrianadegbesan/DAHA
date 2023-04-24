@@ -30,6 +30,9 @@ class MessageManager: ObservableObject {
     init(){
         if isSignedIn && agreedToTerms {
             let _ = getMessageChannels()
+//            Task {
+//                await getAllMessages()
+//            }
         }
         
     }
@@ -105,6 +108,12 @@ class MessageManager: ObservableObject {
             return nil
         }
         return listener
+    }
+    
+    func getAllMessages() async {
+        for channel in messageChannels {
+           let _ = await getMessagesOneTime(channelID: channel.id)
+        }
     }
     
     func getMessagesOneTime(channelID : String ) async -> Bool{

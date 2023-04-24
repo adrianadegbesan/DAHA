@@ -58,8 +58,9 @@ struct OvalTextFieldStyle: TextFieldStyle {
             
             if text != "" {
                 Text(Image(systemName: "multiply.circle.fill"))
-                    .font(.system(size: 18.5, weight: .bold))
-                    .foregroundColor(.gray.opacity(colorScheme == .dark ? 0.3 : 0.6))
+                    .font(.system(size: 17.5, weight: .bold))
+                    .foregroundColor(Color(hex: deepBlue))
+//                    .foregroundColor(.gray.opacity(colorScheme == .dark ? 0.3 : 0.6))
                     .onTapGesture {
                         text = ""
                     }
