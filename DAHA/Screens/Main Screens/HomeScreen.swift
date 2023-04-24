@@ -122,16 +122,6 @@ struct HomeScreen: View {
                 
                 
             } //: ZStack
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button(action: {
-                        hideKeyboard()
-                    }){
-                            ExitButton()
-                    }
-                }
-            }
             .ignoresSafeArea(.keyboard)
             .onAppear{
                 if firestoreManager.listings_tab {

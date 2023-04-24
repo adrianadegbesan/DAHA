@@ -22,6 +22,8 @@ struct SearchScreen: View {
     @State var isAnimating: Bool = false
     @State var isAnimating2: Bool = false
     
+    @State var showExitButton: Bool = false
+    
     var body: some View {
         GeometryReader { _ in
             VStack(spacing: 0) {
@@ -39,24 +41,24 @@ struct SearchScreen: View {
                 
                 HStack{
                     
-                    if searched {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 22, weight: .heavy))
-                            .padding(.bottom, 25)
-                            .padding(.top, 3)
-                            .padding(.leading, 15)
-                            .onTapGesture {
-                                SoftFeedback()
-                                withAnimation(.easeIn(duration: 0.3)){
-                                    opacity = 1
-                                    firestoreManager.search_results.removeAll()
-                                    keyboardFocused = false
-                                    searched = false
-                                }
-                            }
-                            .foregroundColor(Color(hex: deepBlue))
-                            
-                    }
+//                    if searched {
+//                        Image(systemName: "chevron.left")
+//                            .font(.system(size: 22, weight: .heavy))
+//                            .padding(.bottom, 25)
+//                            .padding(.top, 3)
+//                            .padding(.leading, 15)
+//                            .onTapGesture {
+//                                SoftFeedback()
+//                                withAnimation(.easeIn(duration: 0.3)){
+//                                    opacity = 1
+//                                    firestoreManager.search_results.removeAll()
+//                                    keyboardFocused = false
+//                                    searched = false
+//                                }
+//                            }
+//                            .foregroundColor(Color(hex: deepBlue))
+//
+//                    }
                     
                     
                     TextField("Does Anyone Have A...?", text: $query)
@@ -79,11 +81,56 @@ struct SearchScreen: View {
                             }
                         }
                         .focused($keyboardFocused)
-                        .padding(.horizontal, !searched ? screenWidth * 0.04 : screenWidth * 0.03)
+                        .padding(.leading, screenWidth * 0.03)
+                        .padding(.trailing, !searched && !keyboardFocused ? screenWidth * 0.03 : screenWidth * 0.005)
                         .padding(.bottom, 18)
                         .ignoresSafeArea(.keyboard, edges: .bottom)
+                    
+                    
+                    if showExitButton {
+                        Text("Cancel")
+                            .font(.system(size: 17, weight: .semibold))
+                            .padding(.bottom, 18)
+                            .padding(.trailing, 10)
+                            .onTapGesture {
+                                SoftFeedback()
+                                withAnimation(.easeIn(duration: 0.3)){
+                                    opacity = 1
+                                    firestoreManager.search_results.removeAll()
+                                    query = ""
+                                    keyboardFocused = false
+                                    searched = false
+                                    
+                                }
+                            }
+                            .foregroundColor(Color(hex: deepBlue))
+                            
+                    }
                 }
                 .padding(.top, searched ? 24 : 10)
+                .onChange(of: keyboardFocused){ value in
+                    if keyboardFocused{
+                        withAnimation(.easeIn(duration: 0.5)){
+                            showExitButton = true
+                        }
+                    } else if !keyboardFocused && !searched {
+                        withAnimation(.easeIn(duration: 0.5)){
+                            showExitButton = false
+                        }
+                    }
+                }
+                .onChange(of: searched){ value in
+                    if searched{
+                        withAnimation(.easeIn(duration: 0.5)){
+                            showExitButton = true
+                        }
+                    } else if !keyboardFocused && !searched {
+                        withAnimation(.easeIn(duration: 0.5)){
+                            showExitButton = false
+                        }
+                    }
+                    
+                }
              
                 if !searched {
                     VStack {
@@ -200,7 +247,7 @@ struct SearchScreen: View {
             }
         }
             .ignoresSafeArea(.keyboard, edges: .bottom)
-            .keyboardControl()
+//            .keyboardControl()
             .navigationBarBackButtonHidden(true)
       
     }

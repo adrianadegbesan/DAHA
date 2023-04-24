@@ -26,6 +26,7 @@ struct HeaderView: View {
     @State var category = ""
     @State var type = ""
     @State var shouldNavigate = false
+    @State var showExitButton: Bool = false
     
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
@@ -101,29 +102,62 @@ struct HeaderView: View {
                     .overlay(colorScheme == .dark ? Color(hex: darkGrey) : .black)
             }
             
-            if screen == "Home"{
-                TextField("Does Anyone Have A...?", text: $query)
-                    .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass"), text: $query))
-                    .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(20) : Color(hex: light_scroll_background).cornerRadius(20))
-                    .submitLabel(.search)
-                    .onSubmit {
-                        if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
-                            if !firestoreManager.search_results.isEmpty{
-                                firestoreManager.search_results_previous = firestoreManager.search_results
-                                firestoreManager.search_last_previous = firestoreManager.search_last
+            HStack{
+                if screen == "Home"{
+                    TextField("Does Anyone Have A...?", text: $query)
+                        .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass"), text: $query))
+                        .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(20) : Color(hex: light_scroll_background).cornerRadius(20))
+                        .submitLabel(.search)
+                        .onSubmit {
+                            if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
+                                if !firestoreManager.search_results.isEmpty{
+                                    firestoreManager.search_results_previous = firestoreManager.search_results
+                                    firestoreManager.search_last_previous = firestoreManager.search_last
+                                }
+                                firestoreManager.search_results.removeAll()
+                                shouldNavigate = true
                             }
-                            firestoreManager.search_results.removeAll()
-                            shouldNavigate = true
                         }
+                        .focused($keyboardFocused)
+                        .padding(.leading, screenWidth * 0.03)
+                        .padding(.trailing, !keyboardFocused ? screenWidth * 0.03 : screenWidth * 0.005)
+                        .padding(.bottom, 25)
+                    
+                    if showExitButton {
+                        Text("Cancel")
+                            .font(.system(size: 17, weight: .semibold))
+                            .padding(.bottom, 24)
+                            .padding(.trailing, 10)
+                            .onTapGesture {
+                                SoftFeedback()
+                                withAnimation(.easeIn(duration: 0.3)){
+                                    query = ""
+                                    keyboardFocused = false
+                                }
+                            }
+                            .foregroundColor(Color(hex: deepBlue))
+                            
                     }
-                    .focused($keyboardFocused)
-                    .padding(.horizontal, screenWidth * 0.04)
-                    .padding(.bottom, 25)
+                    
+                    NavigationLink(destination: SearchBarScreen(query: $query, category: $category, type: $type), isActive: $shouldNavigate){
+                        EmptyView()
+                    }
+                }
                 
-                NavigationLink(destination: SearchBarScreen(query: $query, category: $category, type: $type), isActive: $shouldNavigate){
-                    EmptyView()
+                
+            }
+            .onChange(of: keyboardFocused){ value in
+                if keyboardFocused{
+                    withAnimation(.easeIn(duration: 0.5)){
+                        showExitButton = true
+                    }
+                } else if !keyboardFocused{
+                    withAnimation(.easeIn(duration: 0.5)){
+                        showExitButton = false
+                    }
                 }
             }
+         
             
         } //: VStack
 //        .background(colorScheme == .dark || screen == "Search" ? .clear : Color(hex: greyBackground))

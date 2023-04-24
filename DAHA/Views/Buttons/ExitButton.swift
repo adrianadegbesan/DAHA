@@ -11,9 +11,11 @@ struct ExitButton: View {
     
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        Text(Image(systemName: "multiply.circle.fill"))
-            .font(.system(size: 15, weight: .bold))
-            .foregroundColor(.gray.opacity(colorScheme == .dark ? 0.3 : 0.6))
+        Text("Cancel")
+//        Text(Image(systemName: "multiply.circle.fill"))
+            .font(.system(size: 17, weight: .bold))
+//            .foregroundColor(.gray.opacity(colorScheme == .dark ? 0.3 : 0.6))
+            .foregroundColor(colorScheme == .dark ? .white : .black)
     }
 }
 
