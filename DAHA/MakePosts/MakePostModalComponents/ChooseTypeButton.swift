@@ -54,7 +54,7 @@ struct ChooseTypeButton: View {
                     .font(.system(size: 13, weight: .bold))
                     .padding(10)
                     .background(Capsule().fill(.black))
-                    .overlay( colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.clear, lineWidth: 3))
+                    .overlay( colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 2))
                     .padding(.trailing, 10)
             }
             

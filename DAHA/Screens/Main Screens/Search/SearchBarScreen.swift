@@ -30,6 +30,7 @@ struct SearchBarScreen: View {
                         .padding(.leading, 15)
                         .onTapGesture {
                             SoftFeedback()
+                            query = ""
                             dismiss()
                         }
                         .foregroundColor(Color(hex: deepBlue))
@@ -58,7 +59,7 @@ struct SearchBarScreen: View {
                             .font(.system(size: 13, weight: .bold))
                             .padding(10)
                             .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
-                            .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 3))
+                            .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: 2) : Capsule().stroke(.black, lineWidth: 2))
                             .padding(.trailing, 10)
                     }
                     
@@ -77,9 +78,9 @@ struct SearchBarScreen: View {
                 Spacer()
                 
                 Divider()
-                    .frame(maxHeight : 4)
-                    .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
-                    .padding(.top, 10)
+//                    .frame(maxHeight : 4)
+//                    .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
+//                    .padding(.top, 10)
                 
                 PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
             } //VSTACK

@@ -148,11 +148,11 @@ struct HeaderView: View {
             }
             .onChange(of: keyboardFocused){ value in
                 if keyboardFocused{
-                    withAnimation(.easeIn(duration: 0.5)){
+                    withAnimation(.easeIn(duration: 0.35)){
                         showExitButton = true
                     }
                 } else if !keyboardFocused{
-                    withAnimation(.easeIn(duration: 0.5)){
+                    withAnimation(.easeIn(duration: 0.35)){
                         showExitButton = false
                     }
                 }

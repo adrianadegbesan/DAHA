@@ -34,7 +34,7 @@ struct SearchScreen: View {
                     HeaderView(title: "Search", showMessages: false, showSettings: false, showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil, screen: "Search")
 //                        .padding(.trailing, 15)
                         .frame(alignment: .top)
-                    
+
 //                    Spacer().frame(height: screenHeight * 0.07)
 
                 }
@@ -107,25 +107,25 @@ struct SearchScreen: View {
                             
                     }
                 }
-                .padding(.top, searched ? 24 : 10)
+                .padding(.top, searched ? 24 : 5)
                 .onChange(of: keyboardFocused){ value in
                     if keyboardFocused{
-                        withAnimation(.easeIn(duration: 0.5)){
+                        withAnimation(.easeIn(duration: 0.35)){
                             showExitButton = true
                         }
                     } else if !keyboardFocused && !searched {
-                        withAnimation(.easeIn(duration: 0.5)){
+                        withAnimation(.easeIn(duration: 0.35)){
                             showExitButton = false
                         }
                     }
                 }
                 .onChange(of: searched){ value in
                     if searched{
-                        withAnimation(.easeIn(duration: 0.5)){
+                        withAnimation(.easeIn(duration: 0.35)){
                             showExitButton = true
                         }
                     } else if !keyboardFocused && !searched {
-                        withAnimation(.easeIn(duration: 0.5)){
+                        withAnimation(.easeIn(duration: 0.35)){
                             showExitButton = false
                         }
                     }
@@ -222,9 +222,9 @@ struct SearchScreen: View {
                         Spacer().frame(height: 10)
                         
                         Divider()
-                            .frame(maxHeight : 4)
-                            .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
-                            .padding(.top, 10)
+//                            .frame(maxHeight : 4)
+//                            .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
+//                            .padding(.top, 10)
                         
                         PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
                         
