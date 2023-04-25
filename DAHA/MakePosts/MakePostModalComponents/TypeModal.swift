@@ -25,7 +25,7 @@ struct TypeModal: View {
                             }
                             .padding(.leading, 15)
                             .padding(.top, 5)
-                        Spacer().frame(width: screenWidth * 0.37)
+                        Spacer().frame(width: screenWidth * 0.34)
                         ModalCapsule()
                         Spacer()
                     }

@@ -34,6 +34,7 @@ struct SearchScreen: View {
                     HeaderView(title: "Search", showMessages: false, showSettings: false, showSearchBar: true, slidingBar: false, tabIndex: nil, tabs: nil, screen: "Search")
 //                        .padding(.trailing, 15)
                         .frame(alignment: .top)
+                        .transition(.opacity)
 
 //                    Spacer().frame(height: screenHeight * 0.07)
 
@@ -136,6 +137,7 @@ struct SearchScreen: View {
                     VStack {
                         /*Search Buttons and Categories*/
                         SearchButtons(keyboardFocused: $keyboardFocused, category: $category, type: $type)
+                            .transition(.opacity)
                             .ignoresSafeArea(.keyboard, edges: .bottom)
                             .padding(.top, 15)
                         
@@ -144,6 +146,7 @@ struct SearchScreen: View {
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                         
                         SearchCategories(selected: $category)
+                            .transition(.opacity)
                             .disabled(keyboardFocused)
                             .ignoresSafeArea(.keyboard, edges: .bottom)
                         
@@ -219,7 +222,7 @@ struct SearchScreen: View {
                             }
                                
                         }
-                        Spacer().frame(height: 10)
+                        Spacer().frame(height: (category == "" && type == "") ? 10 : 20)
                         
                         Divider()
 //                            .frame(maxHeight : 4)
@@ -229,6 +232,7 @@ struct SearchScreen: View {
                         PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
                         
                     }
+                    .transition(.opacity)
                     
                 }
                 Divider()

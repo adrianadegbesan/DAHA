@@ -53,7 +53,7 @@ struct MakePostScreen: View {
                 .id(1)
                 
             }
-            .dismissKeyboardOnDrag()
+//            .dismissKeyboardOnDrag()
 //            .onAppear {
 //                UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color(hex: deepBlue))
 //                UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color(hex: "D1D0CE"))
@@ -68,9 +68,9 @@ struct MakePostScreen: View {
 
             .navigationBarItems(trailing: NextButton(post: $post, images: $images, post_created: $post_created, category: $category, type: $type))
             
-            .onTapGesture {
-                hideKeyboard()
-            }
+//            .onTapGesture {
+//                hideKeyboard()
+//            }
         }
     }
 }

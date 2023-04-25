@@ -154,15 +154,15 @@ struct ChatScreen: View {
                                         listener = messageManager.getMessages(channelID: channelID!)
                                     }
                                 }
-                                if scrollDown != nil{
-                                    if scrollDown! {
-                                        if let lastMessage = messageManager.messages[channelID!]?.last {
-                                            withAnimation{
-                                                value.scrollTo(lastMessage.id, anchor: .bottom)
-                                            }
-                                        }
-                                    }
-                                }
+//                                if scrollDown != nil{
+//                                    if scrollDown! {
+//                                        if let lastMessage = messageManager.messages[channelID!]?.last {
+//                                            withAnimation{
+//                                                value.scrollTo(lastMessage.id, anchor: .bottom)
+//                                            }
+//                                        }
+//                                    }
+//                                }
                             }
                             .onDisappear {
                                 appState.messageScreen = false
