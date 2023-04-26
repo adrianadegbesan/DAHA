@@ -83,7 +83,7 @@ struct SearchScreen: View {
                         }
                         .focused($keyboardFocused)
                         .padding(.leading, screenWidth * 0.03)
-                        .padding(.trailing, !searched && !keyboardFocused ? screenWidth * 0.03 : screenWidth * 0.005)
+                        .padding(.trailing, !searched && !keyboardFocused ? screenWidth * 0.03 : screenWidth * 0.004)
                         .padding(.bottom, 18)
                         .ignoresSafeArea(.keyboard, edges: .bottom)
                     
@@ -92,7 +92,7 @@ struct SearchScreen: View {
                         Text("Cancel")
                             .font(.system(size: 17, weight: .semibold))
                             .padding(.bottom, 18)
-                            .padding(.trailing, 10)
+                            .padding(.trailing, 15)
                             .onTapGesture {
                                 SoftFeedback()
                                 withAnimation(.easeIn(duration: 0.3)){
@@ -225,8 +225,8 @@ struct SearchScreen: View {
                         Spacer().frame(height: (category == "" && type == "") ? 10 : 20)
                         
                         Divider()
-//                            .frame(maxHeight : 4)
-//                            .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
+                            .frame(maxHeight : 4)
+                            .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
 //                            .padding(.top, 10)
                         
                         PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)

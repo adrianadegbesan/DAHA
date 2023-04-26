@@ -76,7 +76,7 @@ struct MakePostTextInputs: View {
                         }
                         post.title = title
                     }
-                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "cart.fill")))
+                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName:"cart.fill")))
                     .submitLabel(.return)
                     .onSubmit {
                         hideKeyboard()

@@ -120,14 +120,14 @@ struct HeaderView: View {
                         }
                         .focused($keyboardFocused)
                         .padding(.leading, screenWidth * 0.03)
-                        .padding(.trailing, !keyboardFocused ? screenWidth * 0.03 : screenWidth * 0.005)
+                        .padding(.trailing, !keyboardFocused ? screenWidth * 0.03 : screenWidth * 0.004)
                         .padding(.bottom, 25)
                     
                     if showExitButton {
                         Text("Cancel")
                             .font(.system(size: 17, weight: .semibold))
                             .padding(.bottom, 24)
-                            .padding(.trailing, 10)
+                            .padding(.trailing, 15)
                             .onTapGesture {
                                 SoftFeedback()
                                 withAnimation(.easeIn(duration: 0.3)){

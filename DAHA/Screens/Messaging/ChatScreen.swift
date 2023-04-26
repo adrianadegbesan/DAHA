@@ -57,8 +57,16 @@ struct ChatScreen: View {
                                 Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
                                     .foregroundColor(.secondary)
                                     .font(.system(size: 11, weight: .semibold))
-                                    .padding(.horizontal)
-                                    .padding(.bottom, 18)
+                                    .padding(.horizontal, 15)
+                                    .padding(.bottom, 15)
+                            
+                                Divider()
+                                .frame(maxHeight : 3)
+                                .overlay(.secondary)
+                                .padding(.horizontal)
+                                .padding(.bottom, 15)
+                                .padding(.horizontal, 20)
+                            
                             
                                 
                             if channelID != nil{

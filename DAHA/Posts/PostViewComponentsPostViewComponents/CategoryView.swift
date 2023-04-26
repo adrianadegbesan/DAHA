@@ -127,6 +127,7 @@ struct CategoryView: View {
             }
         }
         .scaleEffect((post.condition == "Worn-Out" && post.borrow != nil && screen != "Modal") ? (post.borrow! ? 0.85 : 1) : 1)
+        .offset(x: (post.condition == "Worn-Out" && post.borrow != nil && screen != "Modal") ? (post.borrow! && post.category.count <= 5 ? -10 : 0): 0)
     }
 }
 
