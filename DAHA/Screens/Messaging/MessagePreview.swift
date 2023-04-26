@@ -60,7 +60,7 @@ struct MessagePreview: View {
                                     .font(.system(size: 14, weight: .bold))
                                     .padding(6)
                                     .background(Circle().stroke(lineWidth: 2))
-                                    .foregroundColor(Color(hex: "F37A35"))
+                                    .foregroundColor(Color(hex: category_colors["Borrow"] ?? "000000"))
                             }
                         }
                     }

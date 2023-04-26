@@ -92,7 +92,7 @@ struct CategoryPreview: View {
                             .font(.system(size: 15, weight: .bold))
                             .padding(8)
                             .background(Circle().stroke(lineWidth: 2))
-                            .foregroundColor(Color(hex: "F37A35"))
+                            .foregroundColor(Color(hex: category_colors["Borrow"] ?? "000000"))
                     }
                   
                     
@@ -100,9 +100,9 @@ struct CategoryPreview: View {
                         
                         (Text(Image(systemName: type_images["Borrow"] ?? "")) + Text(" ") + Text("Borrow"))
                             .font(.system(size: 10, weight: .bold))
-                            .foregroundColor(Color(hex: "F37A35"))
+                            .foregroundColor(Color(hex: category_colors["Borrow"] ?? "000000"))
                             .padding(10)
-                            .background(Capsule().stroke(Color(hex: "F37A35"), lineWidth: 2))
+                            .background(Capsule().stroke(Color(hex: category_colors["Borrow"] ?? "000000"), lineWidth: 2))
                             .scaleEffect(isAnimating3 ? 1.2 : 1.0)
                             .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating3)
                             .onLongPressGesture(minimumDuration: 0.5) {

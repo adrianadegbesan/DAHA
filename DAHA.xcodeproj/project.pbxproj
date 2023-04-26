@@ -176,6 +176,7 @@
 		82CEFC8B2969D06700C55F67 /* FirstContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC8A2969D06700C55F67 /* FirstContinueButton.swift */; };
 		82CF5E8C29F1D90400D93737 /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF5E8B29F1D90400D93737 /* ExitButton.swift */; };
 		82CF5E8E29F4A8C200D93737 /* MessageBubbleTailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF5E8D29F4A8C200D93737 /* MessageBubbleTailed.swift */; };
+		82CF5E9029F99B4200D93737 /* LendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF5E8F29F99B4200D93737 /* LendButton.swift */; };
 		82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */; };
 		82D3160E29D40FF6001FB5D6 /* Legal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3160D29D40FF6001FB5D6 /* Legal.swift */; };
 		82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF4CAD296F614500A309CF /* SecondContinueButton.swift */; };
@@ -338,6 +339,7 @@
 		82CEFC8C2969D0DF00C55F67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		82CF5E8B29F1D90400D93737 /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
 		82CF5E8D29F4A8C200D93737 /* MessageBubbleTailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleTailed.swift; sourceTree = "<group>"; };
+		82CF5E8F29F99B4200D93737 /* LendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LendButton.swift; sourceTree = "<group>"; };
 		82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		82D3160D29D40FF6001FB5D6 /* Legal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Legal.swift; sourceTree = "<group>"; };
 		82DF4CAD296F614500A309CF /* SecondContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondContinueButton.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				82B6B2CA298A13E100027E5A /* ConditionNavigatorView.swift */,
 				82B6B2CC298A14DC00027E5A /* ConditionIcon.swift */,
 				82BDE70D29CBEB8000A3567F /* BorrowButton.swift */,
+				82CF5E8F29F99B4200D93737 /* LendButton.swift */,
 				82B6B2CE298A16BD00027E5A /* MakePostTextInputs.swift */,
 				82B6B2E3298B73E000027E5A /* ChooseCategoryButton.swift */,
 				82B6B2E5298B75D800027E5A /* CategoryIconView.swift */,
@@ -1003,6 +1006,7 @@
 				82A21A7229AD83F90040BAA1 /* SDWebImageHelpers.swift in Sources */,
 				82218C03299C67110092BA94 /* EmailClass.swift in Sources */,
 				82ACC6832992E20200589E1E /* ModalCapsule.swift in Sources */,
+				82CF5E9029F99B4200D93737 /* LendButton.swift in Sources */,
 				82C0847D29BD5B5000F3627E /* NotificationManager.swift in Sources */,
 				82CBC2A92988D1A2001966E3 /* PageBottomDivider.swift in Sources */,
 				8294FAAE296B9F64004001AE /* PostModel.swift in Sources */,

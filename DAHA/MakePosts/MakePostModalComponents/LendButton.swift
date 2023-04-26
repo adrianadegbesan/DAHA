@@ -1,13 +1,13 @@
 //
-//  BorrowButton.swift
+//  LendButton.swift
 //  DAHA
 //
-//  Created by Adrian Adegbesan on 3/22/23.
+//  Created by Adrian Adegbesan on 4/26/23.
 //
 
 import SwiftUI
 
-struct BorrowButton: View {
+struct LendButton: View {
     @Binding var post: PostModel
     @Binding var type: String
     @State var selected : Bool = false
@@ -15,7 +15,7 @@ struct BorrowButton: View {
     
     var body: some View {
         Button(action: {
-            if type == "Request" {
+            if type != "Request" {
                 SoftFeedback()
                 if post.borrow == nil {
                     post.borrow = true
@@ -27,27 +27,25 @@ struct BorrowButton: View {
                 }
             }
         }) {
-            (Text(Image(systemName: type_images["Borrow"] ?? "")) + Text(" ") + Text("Borrow"))
+            (Text(Image(systemName: type_images["Borrow"] ?? "")) + Text(" ") + Text("Lend"))
                 .lineLimit(1)
-                .foregroundColor(selected ? category_colors["Borrow"] ?? "000000" : colorScheme == .dark ? .white : .black)
+                .foregroundColor(selected ? category_colors["Borrow"] ?? "000000": colorScheme == .dark ? .white : .black)
                 .font(.system(size: 13, weight: .bold))
                 .padding(10)
                 .background(Capsule().stroke(selected ? category_colors["Borrow"] ?? "000000": colorScheme == .dark ? .white : .black, lineWidth: selected ? 5 : 2))
                 .padding(.trailing, 10)
         }
         .onChange(of: type){ value in
-            if value != "Request"{
+            if value != "Listing"{
                 selected = false
             }
-            
         }
     }
 }
 
-struct BorrowButton_Previews: PreviewProvider {
+struct LendButton_Previews: PreviewProvider {
     static var previews: some View {
         let post: PostModel = PostModel(title: "", userID: "", username: "", description: "", condition: "", category: "", price: "", imageURLs: [], channel: "", savers: [], type: "", keywordsForLookup: [], reporters: [])
-        
-        BorrowButton(post: .constant(post), type: .constant("Request"))
+        LendButton(post: .constant(post), type: .constant("Request"))
     }
 }

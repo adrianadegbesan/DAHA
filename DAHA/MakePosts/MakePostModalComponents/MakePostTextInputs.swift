@@ -50,24 +50,32 @@ struct MakePostTextInputs: View {
                 
                 HStack{
                     Spacer().frame(width: screenWidth * 0.35)
-                    BorrowButton(post: $post, type: $type)
-                        .opacity(opacity)
-                        .padding(.bottom, 10)
+                    
+                    if type == "Request"{
+                        BorrowButton(post: $post, type: $type)
+//                            .opacity(opacity)
+                            .padding(.bottom, 10)
+                    } else {
+                        LendButton(post: $post, type: $type)
+                            .padding(.bottom, 10)
+                        
+                    }
+                   
                 }
             }
-            .onChange(of: type){ value in
-                if value == "Request"{
-                    withAnimation(.easeIn(duration: 0.4)){
-                        opacity = 1
-                    }
-                } else {
-                    withAnimation(.easeIn(duration: 0.4)){
-                        opacity = 0
-                        post.borrow = false
-                    }
-                }
-                
-            }
+//            .onChange(of: type){ value in
+//                if value == "Request"{
+//                    withAnimation(.easeIn(duration: 0.4)){
+//                        opacity = 1
+//                    }
+//                } else {
+//                    withAnimation(.easeIn(duration: 0.4)){
+//                        opacity = 0
+//                        post.borrow = false
+//                    }
+//                }
+//                
+//            }
           
                 TextField("Title", text: $title)
                     .onChange(of: title) { value in

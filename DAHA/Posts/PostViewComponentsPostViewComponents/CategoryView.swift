@@ -85,7 +85,7 @@ struct CategoryView: View {
             }
            
             
-            if post.borrow != nil && post.type == "Request" {
+            if post.borrow != nil{
                 
                 if post.borrow! {
                     
@@ -94,17 +94,17 @@ struct CategoryView: View {
                             .font(.system(size: 15, weight: .bold))
                             .padding(8)
                             .background(Circle().stroke(lineWidth: 2))
-                            .foregroundColor(Color(hex: "F37A35"))
+                            .foregroundColor(Color(hex: category_colors["Borrow"] ?? "000000"))
                     }
                   
                     
                     if screen == "Modal"{
                         
-                        (Text(Image(systemName: type_images["Borrow"] ?? "")) + Text(" ") + Text("Borrow"))
+                        (Text(Image(systemName: type_images["Borrow"] ?? "")) + Text(" ") + Text(post.type == "Request" ? "Borrow" : "Lend"))
                             .font(.system(size: 10, weight: .bold))
-                            .foregroundColor(Color(hex: "F37A35"))
+                            .foregroundColor(Color(hex: category_colors["Borrow"] ?? "000000"))
                             .padding(10)
-                            .background(Capsule().stroke(Color(hex: "F37A35"), lineWidth: 2))
+                            .background(Capsule().stroke(Color(hex: category_colors["Borrow"] ?? "000000"), lineWidth: 2))
                             .scaleEffect(isAnimating3 ? 1.2 : 1.0)
                             .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating3)
                             .onLongPressGesture(minimumDuration: 0.5) {
@@ -127,7 +127,7 @@ struct CategoryView: View {
             }
         }
         .scaleEffect((post.condition == "Worn-Out" && post.borrow != nil && screen != "Modal") ? (post.borrow! ? 0.85 : 1) : 1)
-        .offset(x: (post.condition == "Worn-Out" && post.borrow != nil && screen != "Modal") ? (post.borrow! && post.category.count <= 5 ? -10 : 0): 0)
+        .offset(x: (post.condition == "Worn-Out" && post.borrow != nil && screen != "Modal") ? (post.borrow! && post.category.count <= 5 ? -8 : 0): 0)
     }
 }
 
