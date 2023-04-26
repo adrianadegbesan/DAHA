@@ -63,19 +63,11 @@ struct MakePostTextInputs: View {
                    
                 }
             }
-//            .onChange(of: type){ value in
-//                if value == "Request"{
-//                    withAnimation(.easeIn(duration: 0.4)){
-//                        opacity = 1
-//                    }
-//                } else {
-//                    withAnimation(.easeIn(duration: 0.4)){
-//                        opacity = 0
-//                        post.borrow = false
-//                    }
-//                }
-//                
-//            }
+            .onChange(of: type){ value in
+                if post.borrow != nil {
+                    post.borrow = false
+                }
+            }
           
                 TextField("Title", text: $title)
                     .onChange(of: title) { value in

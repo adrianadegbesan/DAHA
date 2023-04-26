@@ -15,7 +15,6 @@ struct BorrowButton: View {
     
     var body: some View {
         Button(action: {
-            if type == "Request" {
                 SoftFeedback()
                 if post.borrow == nil {
                     post.borrow = true
@@ -25,14 +24,13 @@ struct BorrowButton: View {
                 if post.borrow != nil {
                     selected = post.borrow!
                 }
-            }
         }) {
             (Text(Image(systemName: type_images["Borrow"] ?? "")) + Text(" ") + Text("Borrow"))
                 .lineLimit(1)
-                .foregroundColor(selected ? category_colors["Borrow"] ?? "000000" : colorScheme == .dark ? .white : .black)
+                .foregroundColor(selected ? Color(hex: "F37A35") : colorScheme == .dark ? .white : .black)
                 .font(.system(size: 13, weight: .bold))
                 .padding(10)
-                .background(Capsule().stroke(selected ? category_colors["Borrow"] ?? "000000": colorScheme == .dark ? .white : .black, lineWidth: selected ? 5 : 2))
+                .background(Capsule().stroke(selected ? Color(hex: "F37A35"): colorScheme == .dark ? .white : .black, lineWidth: selected ? 5 : 2))
                 .padding(.trailing, 10)
         }
         .onChange(of: type){ value in
