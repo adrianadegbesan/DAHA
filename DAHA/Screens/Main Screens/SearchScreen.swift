@@ -225,8 +225,8 @@ struct SearchScreen: View {
                         Spacer().frame(height: (category == "" && type == "") ? 10 : 20)
                         
                         Divider()
-                            .frame(maxHeight : 4)
-                            .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
+//                            .frame(maxHeight : 4)
+//                            .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
 //                            .padding(.top, 10)
                         
                         PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
