@@ -69,4 +69,7 @@ let category_colors = [
     "Lend": "F37A35"
 ]
 
+let color_new = "228B22"
+let color_good = "cc9900"
+let color_wornout = "D2042D"
 

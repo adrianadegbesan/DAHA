@@ -26,10 +26,12 @@ struct ConditionIcon: View {
             }) {
                 Text(condition.uppercased())
                     .lineLimit(1)
-                    .foregroundColor(.blue)
+//                    .foregroundColor(.blue)
+                    .foregroundColor(condition == "New" ? Color(hex: color_new) : ((condition == "Good") ? Color(hex: color_good) : Color(hex: color_wornout)))
                     .font(.system(size: 10, weight: .bold))
                     .padding(10)
-                    .background(Capsule().stroke(.blue, lineWidth: 5))
+//                    .background(Capsule().stroke(.blue, lineWidth: 5))
+                    .background(Capsule().stroke(condition == "New" ? Color(hex: color_new) : ((condition == "Good") ? Color(hex: color_good) : Color(hex: color_wornout)), lineWidth: 5))
                     .padding(.trailing, 10)
             }
             

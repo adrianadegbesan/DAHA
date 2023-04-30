@@ -33,9 +33,17 @@ struct LendButton: View {
                 .background(Capsule().stroke(selected ? Color(hex: "F37A35"): colorScheme == .dark ? .white : .black, lineWidth: selected ? 5 : 2))
                 .padding(.trailing, 10)
         }
-        .onChange(of: type){ value in
-            if value != "Listing"{
-                selected = false
+//        .onChange(of: type){ value in
+//            if value != "Listing"{
+//                selected = false
+//                post.borrow = false
+//            }
+//        }
+        .onAppear{
+            if post.borrow != nil{
+                if post.borrow!{
+                    selected = true
+                }
             }
         }
     }

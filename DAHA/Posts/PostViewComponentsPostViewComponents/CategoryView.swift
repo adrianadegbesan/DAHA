@@ -62,8 +62,11 @@ struct CategoryView: View {
                     .lineLimit(1)
                     .fixedSize(horizontal: true, vertical: false)
                     .font(.system(size: screen == "Modal" ? 9.5 : 9, weight: .bold))
+//                    .foregroundColor(post.condition == "New" ? Color(hex: color_new) : ((post.condition == "Good") ? Color(hex: color_good) : Color(hex: color_wornout)))
                     .padding(10)
+//                    .background(Capsule().fill(post.condition == "New" ? Color(hex: "556B2F") : ((post.condition == "Good") ? Color(hex: "#DAA520") : Color(hex: "36454F"))))
                     .background(Capsule().stroke(lineWidth: colorScheme == .dark ? 2 : 2.4))
+//                    .background(Capsule().stroke(post.condition == "New" ? Color(hex: color_new) : ((post.condition == "Good") ? Color(hex: color_good) : Color(hex: color_wornout)), lineWidth: colorScheme == .dark ? 2 : 2.4))
                     .scaleEffect(isAnimating2 ? 1.2 : 1.0)
                     .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating2)
                     .onLongPressGesture(minimumDuration: 0.5) {
@@ -79,8 +82,11 @@ struct CategoryView: View {
                     .lineLimit(1)
                     .fixedSize(horizontal: true, vertical: false)
                     .font(.system(size: screen == "Modal" ? 9.5 : 9, weight: .bold))
+//                    .foregroundColor(post.condition == "New" ? Color(hex: color_new) : ((post.condition == "Good") ? Color(hex: color_good) : Color(hex: color_wornout)))
                     .padding(10)
+//                    .background(Capsule().fill(post.condition == "New" ? Color(hex: "556B2F") : ((post.condition == "Good") ? Color(hex: "DAA520") : Color(hex: "36454F"))))
                     .background(Capsule().stroke(lineWidth: colorScheme == .dark ? 2 : 2.4))
+//                    .background(Capsule().stroke(post.condition == "New" ? Color(hex: color_new) : ((post.condition == "Good") ? Color(hex: color_good) : Color(hex: color_wornout)),lineWidth: colorScheme == .dark ? 2 : 2.4))
                     .padding(.trailing, 10)
             }
            
