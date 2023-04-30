@@ -55,7 +55,7 @@ struct MakePostTextInputs: View {
                         BorrowButton(post: $post, type: $type)
 //                            .opacity(opacity)
                             .padding(.bottom, 10)
-                    } else {
+                    } else if type == "Listing"{
                         LendButton(post: $post, type: $type)
                             .padding(.bottom, 10)
                         
@@ -63,11 +63,11 @@ struct MakePostTextInputs: View {
                    
                 }
             }
-//            .onChange(of: type){ value in
-//                if post.borrow != nil {
-//                    post.borrow = false
-//                }
-//            }
+            .onChange(of: type){ value in
+                if post.borrow != nil {
+                    post.borrow = false
+                }
+            }
           
                 TextField("Title", text: $title)
                     .onChange(of: title) { value in
