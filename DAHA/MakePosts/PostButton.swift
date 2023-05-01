@@ -15,7 +15,7 @@ struct PostButton: View {
     var body: some View {
         
         Button(action: {
-            MediumFeedback()
+            SoftFeedbackB()
             UIApplication.shared.dismissKeyboard()
             shouldNavigate = true
         }){

@@ -29,7 +29,7 @@ struct SearchBarScreen: View {
                         .padding(.top, 10)
                         .padding(.leading, 15)
                         .onTapGesture {
-                            SoftFeedback()
+//                            SoftFeedback()
                             query = ""
                             dismiss()
                         }

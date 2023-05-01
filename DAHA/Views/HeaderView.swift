@@ -129,7 +129,7 @@ struct HeaderView: View {
                             .padding(.bottom, 24)
                             .padding(.trailing, 15)
                             .onTapGesture {
-                                SoftFeedback()
+//                                SoftFeedback()
                                 withAnimation(.easeIn(duration: 0.3)){
                                     query = ""
                                     keyboardFocused = false

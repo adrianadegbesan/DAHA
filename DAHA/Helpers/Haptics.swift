@@ -32,3 +32,9 @@ func SoftFeedback() {
     generator.impactOccurred()
 }
 
+func SoftFeedbackB() {
+    let generator = UIImpactFeedbackGenerator(style: .soft)
+    generator.impactOccurred(intensity: 1.8)
+    generator.impactOccurred()
+}
+

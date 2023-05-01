@@ -94,7 +94,7 @@ struct SearchScreen: View {
                             .padding(.bottom, 18)
                             .padding(.trailing, 15)
                             .onTapGesture {
-                                SoftFeedback()
+//                                SoftFeedback()
                                 withAnimation(.easeIn(duration: 0.3)){
                                     opacity = 1
                                     firestoreManager.search_results.removeAll()

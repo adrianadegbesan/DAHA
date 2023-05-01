@@ -53,6 +53,7 @@ struct ChatScreen: View {
                                         isAnimating = false
                                      }
                                  }
+                                
                             
                                 Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
                                     .foregroundColor(.secondary)
@@ -67,6 +68,11 @@ struct ChatScreen: View {
                                 .padding(.bottom, 15)
                                 .padding(.horizontal, 20)
                             
+                            NavigationLink(destination: PostModalPreview(post: post), isActive: $shouldNavigate){
+                                EmptyView()
+                            }
+                            
+                        
                             
                                 
                             if channelID != nil{
@@ -95,9 +101,7 @@ struct ChatScreen: View {
                                 
                             }
                             
-                            NavigationLink(destination: PostModalPreview(post: post, owner: Auth.auth().currentUser?.uid == post.userID), isActive: $shouldNavigate){
-                                EmptyView()
-                            }
+                          
                            
                         }
                     
@@ -194,7 +198,7 @@ struct ChatScreen: View {
 
         .navigationBarTitle("@\(receiver)")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: channelID != nil ? MessageOptions(channelID: channelID!, username: receiver, receiverID: receiverID) : nil)
+        .navigationBarItems(trailing: channelID != nil ? MessageOptions(post: post, channelID: channelID!, username: receiver, receiverID: receiverID, shouldNavigate: $shouldNavigate) : nil)
     }
 }
 

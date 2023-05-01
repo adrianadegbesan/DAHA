@@ -13,7 +13,7 @@ struct PostModalPreview: View {
     @State var post: PostModel
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
-    @State var owner : Bool
+//    @State var owner : Bool
     
     var body: some View {
         ScrollView {
