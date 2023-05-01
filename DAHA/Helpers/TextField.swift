@@ -51,7 +51,7 @@ struct OvalTextFieldStyle: TextFieldStyle {
         HStack {
             if icon != nil {
                 icon
-                    .foregroundColor(Color(UIColor.systemGray))
+                    .foregroundColor(Color(UIColor.systemGray3))
             }
             configuration
             Spacer()

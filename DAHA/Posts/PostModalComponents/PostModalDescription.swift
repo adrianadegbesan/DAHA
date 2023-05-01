@@ -135,15 +135,24 @@ struct PostModalDescription: View {
                 }
 
             } else {
-                Image(systemName: category_images[post.category] ?? "bag.fill")
-                    .scaleEffect(4)
+                
+                AnimatedCategoryIcon(post: post)
                     .frame(width: screenWidth * 0.96, height: screenHeight * 0.35)
-                    .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                     .overlay (
         //                RoundedRectangle(cornerRadius: 15)
                         Rectangle()
                             .strokeBorder(lineWidth: 2.5)
                     )
+                    
+//                Image(systemName: category_images[post.category] ?? "bag.fill")
+//                    .scaleEffect(4)
+//                    .frame(width: screenWidth * 0.96, height: screenHeight * 0.35)
+//                    .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
+//                    .overlay (
+//        //                RoundedRectangle(cornerRadius: 15)
+//                        Rectangle()
+//                            .strokeBorder(lineWidth: 2.5)
+//                    )
             }
             
             HStack {

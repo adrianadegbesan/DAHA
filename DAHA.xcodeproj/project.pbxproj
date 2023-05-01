@@ -56,6 +56,7 @@
 		8236CFF9296D34210086AB15 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 8236CFF8296D34210086AB15 /* FirebasePerformance */; };
 		8236CFFB296D34210086AB15 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8236CFFA296D34210086AB15 /* FirebaseStorage */; };
 		8236CFFD296F2AF00086AB15 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8236CFFC296F2AF00086AB15 /* AuthManager.swift */; };
+		825902E129FF7C6C004EB809 /* AnimatedCategoryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825902E029FF7C6C004EB809 /* AnimatedCategoryIcon.swift */; };
 		8280FF1229EF11E300F8552E /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1129EF11E300F8552E /* SavedView.swift */; };
 		8280FF1429F062D100F8552E /* NotificationsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1329F062D100F8552E /* NotificationsToggle.swift */; };
 		828CAFA029B1868200B489F4 /* MessageChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */; };
@@ -219,6 +220,7 @@
 		8236020D298791BE002E7AEC /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
 		8236020F29879425002E7AEC /* PostDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDescriptionView.swift; sourceTree = "<group>"; };
 		8236CFFC296F2AF00086AB15 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		825902E029FF7C6C004EB809 /* AnimatedCategoryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCategoryIcon.swift; sourceTree = "<group>"; };
 		8280FF1129EF11E300F8552E /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 		8280FF1329F062D100F8552E /* NotificationsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsToggle.swift; sourceTree = "<group>"; };
 		828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChannelModel.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 				82CBC2AD2989BB21001966E3 /* PostModalDescription.swift */,
 				82CBC2AF2989BBD7001966E3 /* PostModalPosterInfo.swift */,
 				82CBC2B12989BC2F001966E3 /* PostModalPostActions.swift */,
+				825902E029FF7C6C004EB809 /* AnimatedCategoryIcon.swift */,
 			);
 			path = PostModalComponents;
 			sourceTree = "<group>";
@@ -1024,6 +1027,7 @@
 				82218C34299FC7E90092BA94 /* ImageIndicator.swift in Sources */,
 				828CAFA929B29CF800B489F4 /* MessageOptions.swift in Sources */,
 				82A21A7629AEA3870040BAA1 /* EmailScreen.swift in Sources */,
+				825902E129FF7C6C004EB809 /* AnimatedCategoryIcon.swift in Sources */,
 				82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */,
 				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,
 				82A21A6A29A82A0F0040BAA1 /* ReportModel.swift in Sources */,

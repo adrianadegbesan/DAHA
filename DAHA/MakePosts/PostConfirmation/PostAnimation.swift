@@ -25,7 +25,7 @@ struct PostAnimation: View {
     @Environment(\.colorScheme) var colorScheme
     
     let lightColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "000000"]
-      let darkColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "FFFFFF"]
+    let darkColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "FFFFFF"]
 
     init(category: String, title: String, price: String, images: [UIImage]) {
            self._category = State(initialValue: category)

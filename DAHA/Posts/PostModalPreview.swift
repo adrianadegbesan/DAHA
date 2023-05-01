@@ -36,6 +36,7 @@ struct PostModalPreview: View {
                         .padding(.leading, 15)
                     
                     Spacer()
+                    
                 }
                 .padding(.bottom, 10)
                   

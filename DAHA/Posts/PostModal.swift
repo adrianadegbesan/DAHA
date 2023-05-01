@@ -32,6 +32,7 @@ struct PostModal: View {
                 PostModalDescription(post: post, owner: owner)
                 
                 PostModalPostActions(post: post, saved: $saved, owner: owner)
+                
                   
                 Spacer()
                 

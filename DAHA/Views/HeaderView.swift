@@ -27,6 +27,7 @@ struct HeaderView: View {
     @State var type = ""
     @State var shouldNavigate = false
     @State var showExitButton: Bool = false
+    @State var connectedAlert: Bool = false
     
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
@@ -85,6 +86,9 @@ struct HeaderView: View {
                             .headerImage()
                             .foregroundColor(.red)
                             .transition(.opacity)
+                            .onTapGesture {
+                                connectedAlert = true
+                            }
                     }
 //                    SearchButton()
 //                        .padding(.trailing, 3)
@@ -160,6 +164,7 @@ struct HeaderView: View {
          
             
         } //: VStack
+        .alert("Network Connection Lost", isPresented: $connectedAlert, actions: {}, message: {Text("It looks like your internet connection was lost! Please check your connection and try again.")})
 //        .background(colorScheme == .dark || screen == "Search" ? .clear : Color(hex: greyBackground))
     }
 }
