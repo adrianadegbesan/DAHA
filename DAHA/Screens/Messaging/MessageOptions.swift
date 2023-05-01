@@ -31,7 +31,7 @@ struct MessageOptions: View {
                     Button {
                         shouldNavigate = true
                     } label: {
-                        Label("Expand Post", systemImage: "arrowshape.right.fill")
+                        Label("Expand Post", systemImage: "arrowshape.right")
                     }
                 } else {
                     Button {
