@@ -38,7 +38,7 @@ struct PostConfirmationScreen: View {
             VStack{
                 Spacer()
                 
-                ProhibitedPostsView()
+                ProhibitedPostsView(post: post, images: images)
                
                 Spacer()
                 

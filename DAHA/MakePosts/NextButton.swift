@@ -21,12 +21,14 @@ struct NextButton: View {
     @Environment(\.colorScheme) var colorScheme
     @State var post_temp : Bool = false
     
+    @AppStorage("username") var username_system: String = ""
     
     var body: some View {
         Button(action:{
             
             post.category = category
             post.type = type
+            post.username = username_system
             
             if post.category.replacingOccurrences(of: " ", with: "") == "" {
                 error_message = "Please choose a category"

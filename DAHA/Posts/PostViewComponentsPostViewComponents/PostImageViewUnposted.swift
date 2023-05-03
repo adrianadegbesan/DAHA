@@ -1,0 +1,55 @@
+//
+//  PostImageViewUnposted.swift
+//  DAHA
+//
+//  Created by Adrian Adegbesan on 5/3/23.
+//
+
+import SwiftUI
+
+struct PostImageViewUnposted: View {
+    @State var post: PostModel
+    @State var owner : Bool
+    @State var preview: Bool
+    @State var reported: Bool
+    @State var opacity: Double = 0.1
+    @Environment(\.colorScheme) var colorScheme
+    @State var showImagePopup : Bool = false
+    @State var unpostedImages : [UIImage]?
+    
+    var body: some View {
+        
+        if unpostedImages != nil && !unpostedImages!.isEmpty{
+            TabView {
+                ZStack(alignment: .topTrailing){
+                    Image(uiImage: unpostedImages![0])
+                        .resizable()
+                        .cornerRadius(15, corners: .allCorners)
+                        .clipped()
+                }
+                
+            } //: TAB
+            .tabViewStyle(PageTabViewStyle())
+            .cornerRadius(15)
+            .frame(width: screenWidth * 0.385, height: 175)
+            .overlay (
+                RoundedRectangle(cornerRadius: 15)
+                    .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
+                    .foregroundColor(colorScheme == .light ? .black : .gray)
+            )
+            .clipped()
+        } else {
+            ZStack(alignment: .topTrailing){
+                Image(systemName: category_images[post.category] ?? "bag.fill")
+                    .scaleEffect(3)
+                    .frame(width: screenWidth * 0.385, height: 175)
+                    .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
+                    .overlay (
+                        RoundedRectangle(cornerRadius: 15)
+                            .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
+                            .foregroundColor(colorScheme == .light ? .black : .gray)
+                    )
+            }
+        }
+    }
+}

@@ -38,6 +38,9 @@ struct PostView: View {
     
     @State private var report_modal: Bool = false
     
+    @State var unpostedPreview: Bool?
+    @State var unpostedImages: [UIImage]?
+    
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -47,7 +50,7 @@ struct PostView: View {
         HStack {
             VStack(alignment: .leading) {
                 
-                PosterInfoView(post: post)
+                PosterInfoView(post: post, unpostedPreview: unpostedPreview)
                 Spacer().frame(height: 10)
                 
                 CategoryView(post: post, screen: "Post", reported: $reported, owner: owner, preview: preview)
@@ -63,8 +66,11 @@ struct PostView: View {
             
             Spacer()
             
-            PostImageView(post: post, owner: owner, preview: preview, reported: reported)
-            
+            if preview && unpostedPreview != nil && unpostedPreview! {
+                PostImageViewUnposted(post: post, owner: owner, preview: preview, reported: reported, unpostedImages: unpostedImages)
+            } else {
+                PostImageView(post: post, owner: owner, preview: preview, reported: reported)
+            }
             
             
             NavigationLink(destination: PostModal(post: post, saved: $saved, reported: $reported, owner: owner), isActive: $shouldNavigate){

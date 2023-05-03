@@ -11,6 +11,8 @@ struct ProhibitedPostsView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @State private var scrolled : Bool = false
+    @State var post: PostModel
+    @State var images: [UIImage]
     
     @State private var isAnimating : Bool = false
     @State private var isAnimating2 : Bool = false
@@ -23,33 +25,35 @@ struct ProhibitedPostsView: View {
         
         VStack(spacing: 0) {
             ScrollViewReader { proxy in
-                ScrollView{
+                ScrollView(showsIndicators: true){
                     
                     VStack{
                     
                     Spacer().frame(height: 8)
                                            
-                               Image("Logo")
-                                   .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
-                                   .scaleEffect(isAnimating ? 1.05 : 1.0)
-                                   .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
-                                   .onLongPressGesture(minimumDuration: 0.5) {
-                                        SoftFeedback()
-                                        isAnimating = true
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                           isAnimating = false
-                                        }
-                                    }
-                                   .padding(.bottom, 10)
-                               
-                               Text("By posting on DAHA, you acknowledge that this post is in compliance with our terms and conditions:")
-                                   .font(
-                                       .system(size: 14, weight: .bold)
-                                   )
-                                   .foregroundColor(.secondary)
-                               
-                                   .padding()
-                   // Your existing code goes here
+                   Image("Logo")
+                       .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
+                       .scaleEffect(isAnimating ? 1.05 : 1.0)
+                       .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                       .onLongPressGesture(minimumDuration: 0.5) {
+                            SoftFeedback()
+                            isAnimating = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                               isAnimating = false
+                            }
+                        }
+                       .padding(.bottom, 10)
+                        
+                        PostView(post: post, owner: false, preview: true, unpostedPreview: true, unpostedImages: images)
+                    
+                   Text("By posting on DAHA, you acknowledge that this post is in compliance with our terms and conditions:")
+                       .font(
+                           .system(size: 14, weight: .bold)
+                       )
+                       .foregroundColor(.secondary)
+                   
+                       .padding()
+                   
                    
                    VStack{
                        HStack{
@@ -250,8 +254,8 @@ struct ProhibitedPostsView: View {
         
 }
 
-struct ProhibitedPostsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProhibitedPostsView()
-    }
-}
+//struct ProhibitedPostsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProhibitedPostsView()
+//    }
+//}

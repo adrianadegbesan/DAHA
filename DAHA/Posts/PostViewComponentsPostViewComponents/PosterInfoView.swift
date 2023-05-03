@@ -11,6 +11,7 @@ import Firebase
 struct PosterInfoView: View {
     
     @State var post: PostModel
+    @State var unpostedPreview: Bool?
     @State private var timestampString = ""
     @Environment(\.colorScheme) var colorScheme
     
@@ -23,10 +24,14 @@ struct PosterInfoView: View {
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundColor(colorScheme == .dark ? .white : .black)
             
-            Image(systemName:"circle.fill")
-                .minimumScaleFactor(0.5)
-                .font(.system(size: 2.5, weight: .bold))
-                .foregroundColor(.secondary)
+            if unpostedPreview != nil && unpostedPreview! == true {
+                EmptyView()
+            } else {
+                Image(systemName:"circle.fill")
+                    .minimumScaleFactor(0.5)
+                    .font(.system(size: 2.5, weight: .bold))
+                    .foregroundColor(.secondary)
+            }
             
             Text(timestampString)
                 .lineLimit(1)
