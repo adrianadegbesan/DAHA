@@ -14,6 +14,7 @@ struct PostAnimation: View {
     @State var category: String
     @State var title: String
     @State var price: String
+    @State var description: String
     @State var images: [UIImage]
     @State private var size1 = 0.01
     @State private var size2 = 0.01
@@ -27,10 +28,11 @@ struct PostAnimation: View {
     let lightColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "000000"]
     let darkColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "FFFFFF"]
 
-    init(category: String, title: String, price: String, images: [UIImage]) {
+    init(category: String, title: String, price: String, description: String, images: [UIImage]) {
            self._category = State(initialValue: category)
            self._title = State(initialValue: title)
            self._price = State(initialValue: price)
+           self._description = State(initialValue: description)
            self._images = State(initialValue: images)
            self._currentColor = State(initialValue: category_colors[category] ?? "000000")
        }
@@ -47,20 +49,27 @@ struct PostAnimation: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: images.isEmpty ? 240 : 160, height: images.isEmpty ? 120 : 80)
-                        .foregroundColor(isColorInitialized ? Color(hex: currentColor) : .primary)
-                        .opacity(isAnimating ? 0 : 1)
-                        .animation(.easeInOut(duration: 0.5), value: isAnimating)
+//                        .foregroundColor(isColorInitialized ? Color(hex: currentColor) : .primary)
+                        .scaleEffect(isAnimating ? 1.1 : 1.0)
+                        .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+//                        .opacity(isAnimating ? 0 : 1)
+//                        .animation(.easeInOut(duration: 0.5), value: isAnimating)
                         .onTapGesture {
                             if !images.isEmpty{
-                                LightFeedback()
-                                withAnimation {
-                                    isAnimating.toggle()
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    withAnimation {
-                                        currentColor = getNewColor()
-                                        isAnimating.toggle()
-                                    }
+//                                LightFeedback()
+//                                withAnimation {
+//                                    isAnimating.toggle()
+//                                }
+//                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                                    withAnimation {
+//                                        currentColor = getNewColor()
+//                                        isAnimating.toggle()
+//                                    }
+//                                }
+                                SoftFeedback()
+                                isAnimating = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                   isAnimating = false
                                 }
                             }
                         }
@@ -84,6 +93,13 @@ struct PostAnimation: View {
                             .foregroundColor(.secondary)
                     }
                     .padding(.horizontal)
+                    
+//                    HStack {
+//                        Text(description)
+//                            .font(.system(size: 19, weight: .bold))
+//                            .lineLimit(4)
+//                    }
+//                    .padding(.horizontal)
                 }
                 
                 if images.count == 1 {
@@ -151,6 +167,15 @@ struct PostAnimation: View {
                     
                 }
                 .padding(.horizontal)
+//                .padding(.bottom, 5)
+                
+//                ScrollView{
+//                    Text(description)
+//                        .font(.system(size: 19, weight: .semibold))
+//                        .padding()
+//                }
+//                .padding(.horizontal)
+                
             }
        
         }
@@ -225,13 +250,13 @@ struct PostAnimation: View {
        }
 }
 
-struct SFSymbolAnimation_Previews: PreviewProvider {
-    static var previews: some View {
-        let images: [UIImage] = []
-        
-        PostAnimation(category: "Bikes", title: "Bike", price: "Free", images: images)
-    }
-}
+//struct SFSymbolAnimation_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let images: [UIImage] = []
+//
+//        PostAnimation(category: "Bikes", title: "Bike", price: "Free", images: images)
+//    }
+//}
 
 
 

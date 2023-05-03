@@ -49,12 +49,12 @@ struct PostImageView: View {
 //                                .scaledToFill()
 //                                .clipShape(RoundedRectangle(cornerRadius: 15))
                                 .clipped()
-                                .opacity(opacity)
-                                .onAppear{
-                                    withAnimation(.easeIn(duration: 0.3)){
-                                        opacity = 1
-                                    }
-                                }
+//                                .opacity(opacity)
+//                                .onAppear{
+//                                    withAnimation(.easeIn(duration: 0.3)){
+//                                        opacity = 1
+//                                    }
+//                                }
                         }
                     
                     }
@@ -84,12 +84,12 @@ struct PostImageView: View {
                             .indicator(.activity)
                             .cornerRadius(15, corners: .allCorners)
                             .clipped()
-                            .opacity(opacity)
-                            .onAppear{
-                                withAnimation(.easeIn(duration: 0.3)){
-                                    opacity = 1
-                                }
-                            }
+//                            .opacity(opacity)
+//                            .onAppear{
+//                                withAnimation(.easeIn(duration: 0.3)){
+//                                    opacity = 1
+//                                }
+//                            }
                         
                     } //(PREVIEW WITH JUST FIRST IMAGE)
                     

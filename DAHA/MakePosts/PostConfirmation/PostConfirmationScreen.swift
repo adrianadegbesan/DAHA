@@ -24,14 +24,15 @@ struct PostConfirmationScreen: View {
         ZStack {
             
             if uploading{
-                LottieView(name: colorScheme == .dark ? "DAHA-Loading_dark" : "DAHA-Loading")
+//                LottieView(name: colorScheme == .dark ? "DAHA-Loading_dark" : "DAHA-Loading")
+                LottieView(name: "DAHA-Loading_dark")
                     .scaleEffect(0.4)
                     .opacity(progressOpacity)
                     .padding(.bottom, screenHeight * 0.13)
                     .zIndex(1)
                     .offset(x: 0, y: !images.isEmpty ? -200 : -80)
                 
-                PostAnimation(category: post.category, title: post.title, price: post.price, images: images)
+                PostAnimation(category: post.category, title: post.title, price: post.price, description: post.description, images: images)
                     .offset(x: 0, y: !images.isEmpty ? 100 : 60)
             }
             VStack{
@@ -69,11 +70,14 @@ struct PostConfirmationScreen: View {
                     
             }
             .opacity(screenOpacity)
-        }.onChange(of: uploading) { value in
+        }
+        .background(uploading ? (post.category == "General" && colorScheme == .light ? nil : Color(hex: category_colors[post.category] ?? "000000").ignoresSafeArea() ) : nil)
+        .onChange(of: uploading) { value in
             if uploading {
                 withAnimation{
                     screenOpacity = 0
-                    progressOpacity = (colorScheme == .dark ? 0.55 : 0.85)
+                    progressOpacity = 1
+//                    progressOpacity = (colorScheme == .dark ? 0.55 : 0.85)
                 }
             } else if !uploading {
                 withAnimation{

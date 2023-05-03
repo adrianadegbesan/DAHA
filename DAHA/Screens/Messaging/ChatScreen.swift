@@ -62,8 +62,9 @@ struct ChatScreen: View {
                                     .padding(.bottom, 15)
                             
                                 Divider()
-                                .frame(maxHeight : 3)
+                                .frame(height: 1.25)
                                 .overlay(.secondary)
+                                .cornerRadius(15)
                                 .padding(.horizontal)
                                 .padding(.bottom, 15)
                                 .padding(.horizontal, 20)

@@ -35,9 +35,13 @@ struct PostDescriptionView: View {
                     }
                         
                 } else {
-                    Text(post.description)
-                        .font(.system(size: 11))
-                        .lineLimit(2)
+                    if post.description == "" {
+                        Spacer().frame(height: 20)
+                    } else {
+                        Text(post.description)
+                            .font(.system(size: 11))
+                            .lineLimit(2)
+                    }
                 }
                     
             }
