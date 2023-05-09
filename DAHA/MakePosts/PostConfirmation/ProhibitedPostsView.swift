@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct ProhibitedPostsView: View {
     
@@ -20,6 +21,8 @@ struct ProhibitedPostsView: View {
     @State private var isAnimating4 : Bool = false
     @State private var isAnimating5 : Bool = false
     @State private var isAnimating6 : Bool = false
+    
+    @State private var shimmer: Bool = true
     
     @State private var showButton = true
     @Binding var uploading : Bool

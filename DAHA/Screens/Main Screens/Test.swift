@@ -9,7 +9,9 @@ import SwiftUI
 
 struct Test: View {
     var body: some View {
-        Text("Notification!")
+        ScrollView{
+            PostShimmerScroll()
+        }
     }
 }
 

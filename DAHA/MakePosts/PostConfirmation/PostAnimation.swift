@@ -5,6 +5,7 @@
 //  Created by Adrian Adegbesan on 3/25/23.
 //
 import SwiftUI
+import Shimmer
 
 
 struct PostAnimation: View {
@@ -54,6 +55,7 @@ struct PostAnimation: View {
                         .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
 //                        .opacity(isAnimating ? 0 : 1)
 //                        .animation(.easeInOut(duration: 0.5), value: isAnimating)
+//                        .shimmering()
                         .onTapGesture {
                             if !images.isEmpty{
 //                                LightFeedback()

@@ -11,6 +11,7 @@ import Shimmer
 struct PostShimmer: View {
     
     @Environment(\.colorScheme) var colorScheme
+    @State var isAnimating = true
     
     var body: some View {
         HStack{
@@ -18,11 +19,11 @@ struct PostShimmer: View {
                 Text("DAHA               ")
                     .font(.system(size: 28, weight: .bold))
                     .redacted(reason: .placeholder)
-                    .shimmering()
+//                    .shimmering()
                 Text("                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ")
                     .font(.system(size: 21))
                     .redacted(reason: .placeholder)
-                    .shimmering()
+//                    .shimmering()
                     
             }
         }
@@ -34,7 +35,16 @@ struct PostShimmer: View {
         )
         .background(colorScheme == .dark ? .black.opacity(0.7): .white)
         .cornerRadius(20)
-        .shimmering()
+        .shimmering (
+            active: isAnimating,
+            animation: .easeIn(duration: 1.3).repeatForever()
+        )
+        .onAppear{
+            isAnimating = true
+        }
+        .onDisappear{
+            isAnimating = false
+        }
     }
 }
 

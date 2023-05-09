@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseAuth
 import RefreshableScrollView
+import Shimmer
 
 struct PostScrollView: View {
     
@@ -237,19 +238,17 @@ struct PostScrollView: View {
                                                     }
                                                 }
                                             }
+                                    
+                                            if index == (posts.count - 1) && (screen == "Listings" || screen == "Requests"){
+                                                PostShimmer()
+                                                    .padding(.leading, 3)
+                                                    .padding(.bottom, 10)
+                                            }
 //                                    }
                                 
                                 }
-                                PostShimmer()
-                                    .padding(.leading, 3)
-                                    .padding(.bottom, 10)
-                                
-//                                if posts.count > 10 && screen == "Listings" || screen == "Requests"){
-//                                    Spacer().frame(height: 12)
-//                                    ProgressView()
-//                                    
-//                                }
                              
+                                
                                
                                 
                             } //: LAZY VSTACK
