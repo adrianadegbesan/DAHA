@@ -24,6 +24,11 @@ struct MakePostScreen: View {
         ScrollViewReader { value in
             ScrollView {
                 VStack{
+                    
+//                    PostView(post: post, owner: false, preview: true, unpostedPreview: true, unpostedImages: images)
+//                        .padding(.bottom, 5)
+//                        .padding(.top, 5)
+                    
                     HStack{
                         ChooseCategoryButton(selected: $category)
                             .padding(.trailing, 4)

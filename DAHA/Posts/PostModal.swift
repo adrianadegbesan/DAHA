@@ -23,7 +23,6 @@ struct PostModal: View {
                 
                 PostModalPosterInfo(post: post)
                 
-                
                 CategoryView(post: post, screen: "Modal", reported: $reported, owner: owner, preview: false)
                     .padding(.leading, 12)
                     .padding(.trailing, 12)

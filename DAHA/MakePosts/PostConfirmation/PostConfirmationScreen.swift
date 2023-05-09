@@ -36,9 +36,9 @@ struct PostConfirmationScreen: View {
                     .offset(x: 0, y: !images.isEmpty ? 100 : 60)
             }
             VStack{
-                Spacer()
+//                Spacer()
                 
-                ProhibitedPostsView(post: post, images: images)
+                ProhibitedPostsView(post: post, images: images, uploading: $uploading)
                
                 Spacer()
                 

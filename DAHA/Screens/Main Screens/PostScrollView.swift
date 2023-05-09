@@ -221,9 +221,9 @@ struct PostScrollView: View {
                                 ForEach(posts.indices, id: \.self) { index in
                                  let post = posts[index]
                                     
-                                    if post.reporters.contains(Auth.auth().currentUser?.uid ?? "") {
-                                        EmptyView()
-                                    } else {
+//                                    if post.reporters.contains(Auth.auth().currentUser?.uid ?? "") {
+//                                        EmptyView()
+//                                    } else {
                                         PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
                                             .id(post.id)
                                             .padding(.leading, 3)
@@ -236,9 +236,15 @@ struct PostScrollView: View {
                                                     }
                                                 }
                                             }
-                                    }
+//                                    }
                                 
                                 }
+                                
+//                                if posts.count > 10 && screen == "Listings" || screen == "Requests"){
+//                                    Spacer().frame(height: 12)
+//                                    ProgressView()
+//                                    
+//                                }
                              
                                
                                 

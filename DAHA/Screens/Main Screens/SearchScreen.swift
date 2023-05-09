@@ -42,24 +42,25 @@ struct SearchScreen: View {
                 
                 HStack{
                     
-//                    if searched {
-//                        Image(systemName: "chevron.left")
-//                            .font(.system(size: 22, weight: .heavy))
-//                            .padding(.bottom, 25)
-//                            .padding(.top, 3)
-//                            .padding(.leading, 15)
-//                            .onTapGesture {
+                    if searched && !showExitButton{
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 22, weight: .heavy))
+                            .padding(.bottom, 25)
+                            .padding(.top, 6.5)
+                            .padding(.leading, 15)
+                            .onTapGesture {
 //                                SoftFeedback()
-//                                withAnimation(.easeIn(duration: 0.3)){
-//                                    opacity = 1
-//                                    firestoreManager.search_results.removeAll()
+                                withAnimation(.easeIn(duration: 0.3)){
+                                    opacity = 1
+                                    firestoreManager.search_results.removeAll()
+                                    query = ""
 //                                    keyboardFocused = false
-//                                    searched = false
-//                                }
-//                            }
-//                            .foregroundColor(Color(hex: deepBlue))
-//
-//                    }
+                                    searched = false
+                                }
+                            }
+                            .foregroundColor(Color(hex: deepBlue))
+
+                    }
                     
                     
                     TextField("Does Anyone Have A...?", text: $query)
@@ -82,7 +83,7 @@ struct SearchScreen: View {
                             }
                         }
                         .focused($keyboardFocused)
-                        .padding(.leading, screenWidth * 0.03)
+                        .padding(.leading, searched && !showExitButton ? screenWidth * 0.01 : screenWidth * 0.03)
                         .padding(.trailing, !searched && !keyboardFocused ? screenWidth * 0.03 : screenWidth * 0.004)
                         .padding(.bottom, 18)
                         .ignoresSafeArea(.keyboard, edges: .bottom)
@@ -114,24 +115,34 @@ struct SearchScreen: View {
                         withAnimation(.easeIn(duration: 0.35)){
                             showExitButton = true
                         }
-                    } else if !keyboardFocused && !searched {
+//                        else if !keyboardFocused{
+//                            withAnimation(.easeIn(duration: 0.35)){
+//                                showExitButton = false
+//                            }
+//                        }
+                    } else if !keyboardFocused{
                         withAnimation(.easeIn(duration: 0.35)){
                             showExitButton = false
                         }
                     }
                 }
-                .onChange(of: searched){ value in
-                    if searched{
-                        withAnimation(.easeIn(duration: 0.35)){
-                            showExitButton = true
-                        }
-                    } else if !keyboardFocused && !searched {
-                        withAnimation(.easeIn(duration: 0.35)){
-                            showExitButton = false
-                        }
-                    }
-                    
-                }
+//                .onChange(of: searched){ value in
+//                    if searched && keyboardFocused{
+//                        withAnimation(.easeIn(duration: 0.35)){
+//                            showExitButton = true
+//                        }
+//                    } else if !keyboardFocused && !searched {
+//                        withAnimation(.easeIn(duration: 0.35)){
+//                            showExitButton = false
+//                        }
+//                    }
+//                    if !keyboardFocused && !searched {
+//                       withAnimation(.easeIn(duration: 0.35)){
+//                           showExitButton = false
+//                       }
+//                   }
+
+//                }
              
                 if !searched {
                     VStack {

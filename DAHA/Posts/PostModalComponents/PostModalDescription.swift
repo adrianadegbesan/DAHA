@@ -81,17 +81,17 @@ struct PostModalDescription: View {
                                     .indicator(.activity)
                                     .scaledToFit()
                                     .clipped()
-                                    .opacity(opacity)
+//                                    .opacity(opacity)
                                     .transition(.scale)
                                     .overlay (
                                         Rectangle()
                                             .strokeBorder(lineWidth: 2)
                                     )
-                                    .onAppear{
-                                        withAnimation(.easeIn(duration: 0.3)){
-                                            opacity = 1
-                                        }
-                                    }
+//                                    .onAppear{
+//                                        withAnimation(.easeIn(duration: 0.3)){
+//                                            opacity = 1
+//                                        }
+//                                    }
                                     .padding(.horizontal)
                                     .modifier(ImageModifier(contentSize: CGSize(width: proxy.size.width, height: proxy.size.height)))
                                     .tag(i)

@@ -26,7 +26,7 @@ struct SearchBarScreen: View {
                     Image(systemName: "chevron.left")
                         .font(.system(size: 22, weight: .heavy))
                         .padding(.bottom, 10)
-                        .padding(.top, 10)
+                        .padding(.top, 11)
                         .padding(.leading, 15)
                         .onTapGesture {
 //                            SoftFeedback()

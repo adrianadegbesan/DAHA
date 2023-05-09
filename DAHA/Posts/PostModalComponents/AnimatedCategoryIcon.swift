@@ -20,7 +20,7 @@ struct AnimatedCategoryIcon: View {
     var body: some View {
             Text(Image(systemName: category_images[post.category] ?? "bag.fill"))
                 .font(
-                    .system(size:65, weight: .bold)
+                    .system(size:65, weight: .regular)
                 )
                 .foregroundColor( tapped ? Color(hex: currentColor) : (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                 .opacity(isAnimating ? 0 : 1)
