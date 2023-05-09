@@ -17,11 +17,13 @@ struct TemplateMessage: View {
         }){
             Text(text)
                 .font(.system(size: 15))
-                .padding(12)
+                .padding(13)
                 .overlay(Capsule().stroke(lineWidth: 1).foregroundColor(.secondary))
                 .padding(.bottom, 5)
+               
         }
         .foregroundColor(.primary)
+        
         
             
     }

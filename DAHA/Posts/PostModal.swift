@@ -34,6 +34,8 @@ struct PostModal: View {
                 
                 Spacer()
                 
+          
+                
                 
             }
             .padding()

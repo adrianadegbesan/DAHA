@@ -18,6 +18,13 @@ struct AnimatedCategoryIcon: View {
     let darkColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "FFFFFF"]
     
     var body: some View {
+        
+        ZStack{
+            
+            glowingView(color: Color(hex: currentColor))
+                .opacity(isAnimating ? 0 : 1)
+                .animation(.easeInOut(duration: 0.5), value: isAnimating)
+            
             Text(Image(systemName: category_images[post.category] ?? "bag.fill"))
                 .font(
                     .system(size:65, weight: .regular)
@@ -47,6 +54,8 @@ struct AnimatedCategoryIcon: View {
                         currentColor = category_colors[post.category] ?? "000000"
                     }
                 }
+        }
+           
                 
     }
     

@@ -38,7 +38,7 @@ struct ChatScreen: View {
                 Divider()
                     .frame(maxHeight: 3)
             }
-            .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
+//            .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
             ScrollViewReader{ value in
                 
                 VStack(spacing: 0){

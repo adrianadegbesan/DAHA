@@ -44,7 +44,7 @@ struct SearchScreen: View {
                     
                     if searched && !showExitButton{
                         Image(systemName: "chevron.left")
-                            .font(.system(size: 22, weight: .heavy))
+                            .font(.system(size: 22, weight: .bold))
                             .padding(.bottom, 25)
                             .padding(.top, 6.5)
                             .padding(.leading, 15)

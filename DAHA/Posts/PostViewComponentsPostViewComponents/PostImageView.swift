@@ -107,7 +107,7 @@ struct PostImageView: View {
             )
             .clipped()
         } else {
-            ZStack(alignment: .topTrailing){
+            ZStack{
                 Image(systemName: category_images[post.category] ?? "bag.fill")
                     .scaleEffect(3)
                     .frame(width: screenWidth * 0.385, height: 175)
@@ -119,8 +119,6 @@ struct PostImageView: View {
                     )
             }
            
-            
-            
         }
     }
     

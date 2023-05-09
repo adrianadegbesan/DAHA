@@ -24,7 +24,7 @@ struct SearchBarScreen: View {
                 
                 HStack{
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 22, weight: .heavy))
+                        .font(.system(size: 22, weight: .bold))
                         .padding(.bottom, 10)
                         .padding(.top, 11)
                         .padding(.leading, 15)

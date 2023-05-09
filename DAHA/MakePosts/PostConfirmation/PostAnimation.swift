@@ -181,20 +181,7 @@ struct PostAnimation: View {
         }
     }
     
-    private func glowingView(color: Color) -> some View {
-        Circle()
-            .fill(
-                RadialGradient(
-                    gradient: Gradient(colors: [color.opacity(0.7), color.opacity(0.0)]),
-                    center: .center,
-                    startRadius: 1,
-                    endRadius: 90
-                )
-            )
-            .frame(width: 180, height: 180)
-            .scaleEffect(glowScale)
-    }
-    
+
     private func animateDots() {
          withAnimation(Animation.easeInOut(duration: 0.5).delay(0.5)) {
              size1 = 1
@@ -257,6 +244,21 @@ struct PostAnimation: View {
 //        PostAnimation(category: "Bikes", title: "Bike", price: "Free", images: images)
 //    }
 //}
+
+func glowingView(color: Color) -> some View {
+    Circle()
+        .fill(
+            RadialGradient(
+                gradient: Gradient(colors: [color.opacity(0.7), color.opacity(0.0)]),
+                center: .center,
+                startRadius: 1,
+                endRadius: 90
+            )
+        )
+        .frame(width: 180, height: 180)
+//        .scaleEffect(glowScale)
+}
+
 
 
 

@@ -8,11 +8,13 @@
 import Foundation
 
 let termsAndConditionsText = """
-Last Updated: 2 April 2023
+Last Updated: 8 May 2023
 
 Welcome to DAHA, A peer to peer, unified marketplace and social platform designed for tightly-knit, specialized communities to connect, collaborate, and sustainably circulate items and services.
 
 Please read these terms and conditions carefully:
+
+DAHA is an independent application that does not have any affiliations with university institutions or its content providers.
 
 Account Registration and Usage
 
@@ -70,7 +72,7 @@ By using DAHA, you agree to these terms and conditions.
 """
 
 let privacyPolicyText = """
-Last Updated: 2 April 2023
+Last Updated: 8 May 2023
 
 Introduction
 At DAHA, we respect your privacy and are committed to protecting it. This Privacy Policy outlines our policies and practices regarding the collection, use, and disclosure of your personal information when you use our services. Please read this Privacy Policy carefully and contact us at team@joindaha.com if you have any questions or concerns.

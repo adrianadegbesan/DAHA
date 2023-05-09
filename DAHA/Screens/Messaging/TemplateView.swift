@@ -21,29 +21,42 @@ struct TemplateView: View {
                     if post.type == "Listing"{
                         if post.borrow != nil{
                             if post.borrow! == true{
-                                TemplateMessage(text: "Hey \(post.username), I'm willing to borrow this from you for ", message: $message)
+                                TemplateMessage(text: "Hey \(post.username), I'd like to borrow this from you ", message: $message)
                             } else {
-                                TemplateMessage(text: "Hey \(post.username), I'd to buy this from you for ", message: $message)
+                                TemplateMessage(text: "Hey \(post.username), I'd like to buy this from you ", message: $message)
                             }
                         } else {
-                            TemplateMessage(text: "Hey \(post.username), I'd like to buy this from you for ", message: $message)
+                            TemplateMessage(text: "Hey \(post.username), I'd like to buy this from you ", message: $message)
                         }
                         TemplateMessage(text:"Would it be possible to get this for ", message: $message)
                     } else {
                         if post.borrow != nil{
                             if post.borrow! == true{
-                                TemplateMessage(text: "Hey \(post.username), I'm willing to lend this to you for ", message: $message)
+                                TemplateMessage(text: "Hey \(post.username), I'm willing to lend this to you ", message: $message)
                             } else {
-                                TemplateMessage(text: "Hey \(post.username), I'm willing to give this to you for ", message: $message)
+                                TemplateMessage(text: "Hey \(post.username), I have what you're looking for ", message: $message)
                             }
                         } else {
-                            TemplateMessage(text: "Hey \(post.username), I'm willing to give this to you for ", message: $message)
+                            TemplateMessage(text: "Hey \(post.username), I have what you're looking for ", message: $message)
                         }
                         TemplateMessage(text:"I have this and would be fine with giving it to you for ", message: $message)
                     }
                    
                 }
             }
+        }
+        .padding(.horizontal, 7)
+        .onChange(of: message){ value in
+            if message == "" {
+                withAnimation(.easeIn(duration: 0.34)){
+                    showTemplate = true
+                }
+            } else {
+                withAnimation(.easeIn(duration: 0.34)){
+                    showTemplate = false
+                }
+            }
+            
         }
 
     }

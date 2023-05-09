@@ -61,7 +61,7 @@ struct CategoryImageScroll: View {
 
         Timer.scheduledTimer(withTimeInterval: animationDuration, repeats: true) { timer in
             withAnimation(.linear(duration: animationDuration)) {
-                autoScrollOffset += 1
+                autoScrollOffset += 3
 
                 if autoScrollOffset >= totalWidth {
                     autoScrollOffset = 0
