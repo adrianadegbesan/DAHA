@@ -129,6 +129,9 @@
 		82BDE70E29CBEB8000A3567F /* BorrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BDE70D29CBEB8000A3567F /* BorrowButton.swift */; };
 		82BFA9E02A0A2953009DA461 /* TemplateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BFA9DF2A0A2953009DA461 /* TemplateMessage.swift */; };
 		82BFA9E22A0A2F07009DA461 /* TemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BFA9E12A0A2F07009DA461 /* TemplateView.swift */; };
+		82BFA9E42A0AF1A6009DA461 /* PostShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BFA9E32A0AF1A6009DA461 /* PostShimmer.swift */; };
+		82BFA9E72A0AF621009DA461 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 82BFA9E62A0AF621009DA461 /* Shimmer */; };
+		82BFA9E92A0AF746009DA461 /* PostShimmerScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BFA9E82A0AF746009DA461 /* PostShimmerScroll.swift */; };
 		82C0847929BD117500F3627E /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0847829BD117500F3627E /* CategoryFilterView.swift */; };
 		82C0847B29BD11A400F3627E /* CategoryFilterIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0847A29BD11A400F3627E /* CategoryFilterIcon.swift */; };
 		82C0847D29BD5B5000F3627E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0847C29BD5B5000F3627E /* NotificationManager.swift */; };
@@ -295,6 +298,8 @@
 		82BDE70D29CBEB8000A3567F /* BorrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowButton.swift; sourceTree = "<group>"; };
 		82BFA9DF2A0A2953009DA461 /* TemplateMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMessage.swift; sourceTree = "<group>"; };
 		82BFA9E12A0A2F07009DA461 /* TemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateView.swift; sourceTree = "<group>"; };
+		82BFA9E32A0AF1A6009DA461 /* PostShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShimmer.swift; sourceTree = "<group>"; };
+		82BFA9E82A0AF746009DA461 /* PostShimmerScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostShimmerScroll.swift; sourceTree = "<group>"; };
 		82C0847829BD117500F3627E /* CategoryFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterView.swift; sourceTree = "<group>"; };
 		82C0847A29BD11A400F3627E /* CategoryFilterIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterIcon.swift; sourceTree = "<group>"; };
 		82C0847C29BD5B5000F3627E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -377,6 +382,7 @@
 				8236CFFB296D34210086AB15 /* FirebaseStorage in Frameworks */,
 				8236CFEB296D34210086AB15 /* FirebaseDynamicLinks in Frameworks */,
 				8236CFF7296D34210086AB15 /* FirebaseMessaging in Frameworks */,
+				82BFA9E72A0AF621009DA461 /* Shimmer in Frameworks */,
 				82E75AC6297E35F600742F18 /* PostmarkSwift in Frameworks */,
 				82218C22299CD0180092BA94 /* RefreshableScrollView in Frameworks */,
 				8236CFF1296D34210086AB15 /* FirebaseFunctions in Frameworks */,
@@ -463,6 +469,8 @@
 				82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */,
 				82CBC2AA2989BA79001966E3 /* PostModalComponents */,
 				82B40BA029D78EF900BA7504 /* PostModalPreviewComponents */,
+				82BFA9E32A0AF1A6009DA461 /* PostShimmer.swift */,
+				82BFA9E82A0AF746009DA461 /* PostShimmerScroll.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -849,6 +857,7 @@
 				82218C21299CD0180092BA94 /* RefreshableScrollView */,
 				82A21A4D299FD7490040BAA1 /* BottomSheet */,
 				82A21A5629A452BB0040BAA1 /* Lottie */,
+				82BFA9E62A0AF621009DA461 /* Shimmer */,
 			);
 			productName = DAHA;
 			productReference = 82CEFC2E2969CB2C00C55F67 /* DAHA.app */;
@@ -885,6 +894,7 @@
 				82218C20299CD0180092BA94 /* XCRemoteSwiftPackageReference "RefreshableScrollView" */,
 				82A21A4C299FD7490040BAA1 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				82A21A5529A452BA0040BAA1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				82BFA9E52A0AF621009DA461 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = 82CEFC2F2969CB2C00C55F67 /* Products */;
 			projectDirPath = "";
@@ -922,6 +932,7 @@
 				82A21A5429A17EA10040BAA1 /* ChangePasswordView.swift in Sources */,
 				82CEFC812969CFCA00C55F67 /* PostButton.swift in Sources */,
 				82B6B2F2298C4F1500027E5A /* CameraButton.swift in Sources */,
+				82BFA9E42A0AF1A6009DA461 /* PostShimmer.swift in Sources */,
 				828CAFA229B188D100B489F4 /* MessageModel.swift in Sources */,
 				82B40B9F29D78E1000BA7504 /* PostModalPreview.swift in Sources */,
 				8236020A298748DF002E7AEC /* ReportButton.swift in Sources */,
@@ -960,6 +971,7 @@
 				82218BF829988DF90092BA94 /* PostScrollView.swift in Sources */,
 				82218C18299C97820092BA94 /* NotificationsView.swift in Sources */,
 				823602052985ABF0002E7AEC /* PostView.swift in Sources */,
+				82BFA9E92A0AF746009DA461 /* PostShimmerScroll.swift in Sources */,
 				82E75AC3297E321600742F18 /* Email API.swift in Sources */,
 				82C4589529BA811400661703 /* FirebaseHelpers.swift in Sources */,
 				82A21A6229A6AAD40040BAA1 /* PrivacySettingsScreen.swift in Sources */,
@@ -1338,6 +1350,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		82BFA9E52A0AF621009DA461 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		82E75AC4297E35F600742F18 /* XCRemoteSwiftPackageReference "postmark-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aronbudinszky/postmark-swift.git";
@@ -1443,6 +1463,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 82A21A5529A452BA0040BAA1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		82BFA9E62A0AF621009DA461 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82BFA9E52A0AF621009DA461 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
 		};
 		82E75AC5297E35F600742F18 /* PostmarkSwift */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -174,9 +174,10 @@ struct PostScrollView: View {
                                       Spacer().frame(height: 45)
                                   }
                                   
-                                  ProgressView()
-                                      .scaleEffect(1.2)
-                                      .padding(.top, 10)
+//                                  ProgressView()
+//                                      .scaleEffect(1.2)
+//                                      .padding(.top, 10)
+                                  PostShimmerScroll()
                               }
                               .frame(width: screenWidth)
                           } else {
@@ -239,6 +240,9 @@ struct PostScrollView: View {
 //                                    }
                                 
                                 }
+                                PostShimmer()
+                                    .padding(.leading, 3)
+                                    .padding(.bottom, 10)
                                 
 //                                if posts.count > 10 && screen == "Listings" || screen == "Requests"){
 //                                    Spacer().frame(height: 12)
