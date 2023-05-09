@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820990372A0A1079009E9DCE /* CategoryImageScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820990362A0A1079009E9DCE /* CategoryImageScroll.swift */; };
 		820C076D29D413DA00045204 /* ProhibitedPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C076C29D413DA00045204 /* ProhibitedPostsView.swift */; };
 		820C076F29D4A9BB00045204 /* ScrollViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C076E29D4A9BB00045204 /* ScrollViewWrapper.swift */; };
 		820C077129D4B4A600045204 /* UILoadingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C077029D4B4A600045204 /* UILoadingImage.swift */; };
@@ -126,6 +127,8 @@
 		82B6B2FA298F394300027E5A /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2F9298F394300027E5A /* CameraView.swift */; };
 		82B6B2FC298F3C8300027E5A /* CustomCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B6B2FB298F3C8300027E5A /* CustomCameraView.swift */; };
 		82BDE70E29CBEB8000A3567F /* BorrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BDE70D29CBEB8000A3567F /* BorrowButton.swift */; };
+		82BFA9E02A0A2953009DA461 /* TemplateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BFA9DF2A0A2953009DA461 /* TemplateMessage.swift */; };
+		82BFA9E22A0A2F07009DA461 /* TemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BFA9E12A0A2F07009DA461 /* TemplateView.swift */; };
 		82C0847929BD117500F3627E /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0847829BD117500F3627E /* CategoryFilterView.swift */; };
 		82C0847B29BD11A400F3627E /* CategoryFilterIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0847A29BD11A400F3627E /* CategoryFilterIcon.swift */; };
 		82C0847D29BD5B5000F3627E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0847C29BD5B5000F3627E /* NotificationManager.swift */; };
@@ -189,6 +192,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		820990362A0A1079009E9DCE /* CategoryImageScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryImageScroll.swift; sourceTree = "<group>"; };
 		820C076C29D413DA00045204 /* ProhibitedPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProhibitedPostsView.swift; sourceTree = "<group>"; };
 		820C076E29D4A9BB00045204 /* ScrollViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWrapper.swift; sourceTree = "<group>"; };
 		820C077029D4B4A600045204 /* UILoadingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadingImage.swift; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 		82B6B2F9298F394300027E5A /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		82B6B2FB298F3C8300027E5A /* CustomCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCameraView.swift; sourceTree = "<group>"; };
 		82BDE70D29CBEB8000A3567F /* BorrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowButton.swift; sourceTree = "<group>"; };
+		82BFA9DF2A0A2953009DA461 /* TemplateMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateMessage.swift; sourceTree = "<group>"; };
+		82BFA9E12A0A2F07009DA461 /* TemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateView.swift; sourceTree = "<group>"; };
 		82C0847829BD117500F3627E /* CategoryFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterView.swift; sourceTree = "<group>"; };
 		82C0847A29BD11A400F3627E /* CategoryFilterIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterIcon.swift; sourceTree = "<group>"; };
 		82C0847C29BD5B5000F3627E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -481,6 +487,8 @@
 				828CAFA829B29CF800B489F4 /* MessageOptions.swift */,
 				828CAFB229B5230D00B489F4 /* ReportUserModal.swift */,
 				82CF5E8D29F4A8C200D93737 /* MessageBubbleTailed.swift */,
+				82BFA9DF2A0A2953009DA461 /* TemplateMessage.swift */,
+				82BFA9E12A0A2F07009DA461 /* TemplateView.swift */,
 			);
 			name = Messaging;
 			path = Screens/Messaging;
@@ -760,6 +768,7 @@
 				82218BF729988DF90092BA94 /* PostScrollView.swift */,
 				82C0847829BD117500F3627E /* CategoryFilterView.swift */,
 				82C0847A29BD11A400F3627E /* CategoryFilterIcon.swift */,
+				820990362A0A1079009E9DCE /* CategoryImageScroll.swift */,
 				82C0848029BE4F4B00F3627E /* Test.swift */,
 			);
 			path = "Main Screens";
@@ -907,6 +916,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8280FF1229EF11E300F8552E /* SavedView.swift in Sources */,
+				82BFA9E02A0A2953009DA461 /* TemplateMessage.swift in Sources */,
 				82CEFC502969CC5B00C55F67 /* DeviceDimensions.swift in Sources */,
 				82C4588F29B9124700661703 /* ImagePopupView.swift in Sources */,
 				82A21A5429A17EA10040BAA1 /* ChangePasswordView.swift in Sources */,
@@ -1038,6 +1048,7 @@
 				82C4589729BAFC2300661703 /* SearchButton.swift in Sources */,
 				82CEFC442969CBDB00C55F67 /* Colors.swift in Sources */,
 				82C0847B29BD11A400F3627E /* CategoryFilterIcon.swift in Sources */,
+				820990372A0A1079009E9DCE /* CategoryImageScroll.swift in Sources */,
 				8231FB0B29CB7A3D0001F796 /* AppState.swift in Sources */,
 				82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */,
 				82CEFC7F2969CFB700C55F67 /* SignUpButton.swift in Sources */,
@@ -1053,6 +1064,7 @@
 				82B6B2E6298B75D800027E5A /* CategoryIconView.swift in Sources */,
 				8236020E298791BE002E7AEC /* BookmarkButton.swift in Sources */,
 				82CEFC782969CF5A00C55F67 /* TabBarView.swift in Sources */,
+				82BFA9E22A0A2F07009DA461 /* TemplateView.swift in Sources */,
 				82218C12299C96580092BA94 /* TermsSettingsView.swift in Sources */,
 				82CEFC662969CE5F00C55F67 /* SearchBarScreen.swift in Sources */,
 				8294FAE9296BCB76004001AE /* CreateAccountScreen.swift in Sources */,
@@ -1189,7 +1201,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
@@ -1229,7 +1241,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;

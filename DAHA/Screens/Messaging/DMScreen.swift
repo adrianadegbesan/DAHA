@@ -85,7 +85,7 @@ struct DMScreen: View {
             })
           
         }
-        .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
+//        .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
         .ignoresSafeArea(.keyboard)
         .onAppear{
             if unread {

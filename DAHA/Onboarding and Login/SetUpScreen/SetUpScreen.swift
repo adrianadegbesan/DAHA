@@ -33,11 +33,14 @@ struct SetUpScreen: View {
                             }
                          }
                         .padding(.bottom, 20)
+//                        .padding(.top, screenHeight * 0.1)
                    
                         SignUpButton()
                             .padding(.bottom, 10)
                            
                         LoginButton()
+                    
+//                    CategoryImageScroll()
                     
                     Spacer()
                 }

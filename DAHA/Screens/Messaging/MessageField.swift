@@ -12,7 +12,7 @@ import Firebase
 struct MessageField: View {
     @EnvironmentObject var messagesManager: MessageManager
     @EnvironmentObject var network : Network
-    @State private var message = ""
+    @Binding var message : String
     @State private var previousMessage = ""
     @State var post: PostModel
     @Binding var channelID : String?

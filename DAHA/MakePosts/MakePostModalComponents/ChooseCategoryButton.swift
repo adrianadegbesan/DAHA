@@ -17,6 +17,7 @@ struct ChooseCategoryButton: View {
             Button(action: {
                 LightFeedback()
                 if selected == "" {
+                    hideKeyboard()
                     categoryPresented = true
                 } else {
                     withAnimation{

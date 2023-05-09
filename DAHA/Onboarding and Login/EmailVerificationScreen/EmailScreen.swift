@@ -90,6 +90,7 @@ struct EmailScreen: View {
                     .padding(.bottom, 15)
                 LogOutButton()
                 Spacer()
+            
                 
             }
             

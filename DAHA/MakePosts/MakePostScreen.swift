@@ -56,6 +56,13 @@ struct MakePostScreen: View {
                 }
                 .padding()
                 .id(1)
+//                .onChange(of: category){ value in
+//                    hideKeyboard()
+//                }
+//                .onChange(of: type){ value in
+//                    hideKeyboard()
+//                }
+                
                 
             }
 //            .dismissKeyboardOnDrag()

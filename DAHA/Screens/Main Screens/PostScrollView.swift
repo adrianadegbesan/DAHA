@@ -257,7 +257,7 @@ struct PostScrollView: View {
                         
                     }/*SCROLLVIEW*/
                     
-                    .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
+//                    .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: greyBackground))
                     .refreshable(action: {
                         LightFeedback()
                         if screen == "Listings"{

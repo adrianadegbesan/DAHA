@@ -24,6 +24,8 @@ struct ChatScreen: View {
     @State var scrollDown : Bool?
     @State var empty: Bool = true
     @State var isAnimating: Bool = false
+    @State var message: String = ""
+    @State var showTemplate: Bool = true
     @AppStorage("messageScreen") var messageScreen: Bool = false
     @EnvironmentObject var delegate: AppDelegate
     
@@ -73,17 +75,10 @@ struct ChatScreen: View {
                                 EmptyView()
                             }
                             
+                            TemplateView(post: post, message: $message, channelID: $channelID, showTemplate: $showTemplate)
                         
-                            
-                                
                             if channelID != nil{
                                 
-//                                if (messageManager.messages[channelID!] ?? []).isEmpty {
-//                                    Text("Stay safe: Choose to meet in only open, well-lit, public areas and never share personal or sensitive information in the chat.")
-//                                        .foregroundColor(.secondary)
-//                                        .font(.system(size: 10, weight: .semibold))
-//                                        .padding(.horizontal)
-//                                }
                                 
                                 ForEach(messageManager.messages[channelID!] ?? []){ message in
                                     MessageBubble(message: message, ChannelID: channelID!)
@@ -124,7 +119,7 @@ struct ChatScreen: View {
                    
     //                Spacer().frame(height: screenHeight * 0.001)
                     HStack{
-                        MessageField(post: post, channelID: $channelID, sent: $sent, redirect: redirect, keyboardFocused: $keyboardFocused)
+                        MessageField(message: $message, post: post, channelID: $channelID, sent: $sent, redirect: redirect, keyboardFocused: $keyboardFocused)
                             .padding(.top, 10)
                             .padding(.bottom, 4)
                             .onChange(of: sent){ _ in

@@ -98,10 +98,10 @@ struct SearchScreen: View {
 //                                SoftFeedback()
                                 withAnimation(.easeIn(duration: 0.3)){
                                     opacity = 1
-                                    firestoreManager.search_results.removeAll()
-                                    query = ""
+//                                    firestoreManager.search_results.removeAll()
+//                                    query = ""
                                     keyboardFocused = false
-                                    searched = false
+//                                    searched = false
                                     
                                 }
                             }
@@ -163,8 +163,6 @@ struct SearchScreen: View {
                         
                         Spacer()
                     }
-                    
-                    
                     .onTapGesture {
                         keyboardFocused = false
                     }

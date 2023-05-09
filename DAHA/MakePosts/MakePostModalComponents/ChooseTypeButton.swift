@@ -22,6 +22,7 @@ struct ChooseTypeButton: View {
             Button(action: {
                 LightFeedback()
                 if selected == "" {
+                    hideKeyboard()
                     isPresented = true
                 } else {
                     withAnimation{
