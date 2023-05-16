@@ -42,7 +42,7 @@ struct HomeScreen: View {
                                 .overlay(Color(hex: deepBlue))
                                 .cornerRadius(5)
 //                                .opacity(opacity1)
-                                .offset(x: dividerOffset)
+                                .offset(x: dividerOffset, y: 1)
                                 
                         }
                         .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
@@ -65,7 +65,7 @@ struct HomeScreen: View {
                                 .overlay(Color(hex: deepBlue))
                                 .opacity(opacity2)
                                 .cornerRadius(5)
-                                .offset(x: dividerOffset + (screenWidth * 0.48))
+                                .offset(x: dividerOffset + (screenWidth * 0.48), y: 1)
                         }
                         .frame(width: screenWidth * 0.48, height: screenHeight * 0.044)
                         .onTapGesture {

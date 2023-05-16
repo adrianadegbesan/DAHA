@@ -21,10 +21,11 @@ struct AnimatedCategoryIcon: View {
         
         ZStack{
             
-            glowingView(color: Color(hex: currentColor))
-                .opacity(isAnimating ? 0 : 1)
-                .animation(.easeInOut(duration: 0.5), value: isAnimating)
-            
+            if colorScheme == .dark {
+                glowingView(color: Color(hex: currentColor))
+                    .opacity(isAnimating ? 0 : 1)
+                    .animation(.easeInOut(duration: 0.5), value: isAnimating)
+            }
             Text(Image(systemName: category_images[post.category] ?? "bag.fill"))
                 .font(
                     .system(size:65, weight: .regular)

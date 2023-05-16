@@ -40,5 +40,6 @@ extension MessageChannelModel{
             "channel" : self.channel
         ]
     }
+
 }
 

@@ -192,6 +192,7 @@
 		82E75AC3297E321600742F18 /* Email API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E75AC2297E321600742F18 /* Email API.swift */; };
 		82E75AC6297E35F600742F18 /* PostmarkSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 82E75AC5297E35F600742F18 /* PostmarkSwift */; };
 		82EDE52029E6252500956BC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EDE51F29E6252500956BC3 /* AppDelegate.swift */; };
+		82F1461F2A1322D8008745B9 /* SoldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F1461E2A1322D8008745B9 /* SoldButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -363,6 +364,7 @@
 		82E75AC2297E321600742F18 /* Email API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Email API.swift"; sourceTree = "<group>"; };
 		82E75AC8297F104200742F18 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		82EDE51F29E6252500956BC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		82F1461E2A1322D8008745B9 /* SoldButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -577,6 +579,7 @@
 				821D57412A02E5B500EAB170 /* PostImageViewUnposted.swift */,
 				82B6B2DC298AE9BF00027E5A /* DeleteButton.swift */,
 				82C4588E29B9124700661703 /* ImagePopupView.swift */,
+				82F1461E2A1322D8008745B9 /* SoldButton.swift */,
 			);
 			path = PostViewComponentsPostViewComponents;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */,
 				82C0848129BE4F4B00F3627E /* Test.swift in Sources */,
 				82B6B2EC298C3BD300027E5A /* Network.swift in Sources */,
+				82F1461F2A1322D8008745B9 /* SoldButton.swift in Sources */,
 				82B6B2F4298C514400027E5A /* ImagePreview.swift in Sources */,
 				82B6B2D3298A531300027E5A /* Date.swift in Sources */,
 				82CBC2B02989BBD7001966E3 /* PostModalPosterInfo.swift in Sources */,
@@ -1213,7 +1217,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
@@ -1234,7 +1238,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1253,7 +1257,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
@@ -1274,7 +1278,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

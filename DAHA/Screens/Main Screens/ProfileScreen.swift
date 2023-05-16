@@ -91,7 +91,7 @@ struct ProfileScreen: View {
                             .frame(width: screenWidth * 0.25, height: 3.5)
                             .overlay(Color(hex: deepBlue))
                             .cornerRadius(5)
-                            .offset(x: dividerOffset)
+                            .offset(x: dividerOffset,y: 1.5)
                             
                     }
                     .frame(width: screenWidth * 0.25, height: screenHeight * 0.044)
@@ -109,7 +109,7 @@ struct ProfileScreen: View {
                             .overlay(Color(hex: deepBlue))
                             .opacity(opacity2)
                             .cornerRadius(5)
-                            .offset(x: dividerOffset + (screenWidth * 0.25))
+                            .offset(x: dividerOffset + (screenWidth * 0.25), y: 1.5)
                     }
                     .frame(width: screenWidth * 0.25, height: screenHeight * 0.044)
                     .onTapGesture {
@@ -127,7 +127,7 @@ struct ProfileScreen: View {
                             .overlay(Color(hex: deepBlue))
                             .opacity(opacity3)
                             .cornerRadius(5)
-                            .offset(x: dividerOffset + (screenWidth * 0.5))
+                            .offset(x: dividerOffset + (screenWidth * 0.5), y: 1.5)
                     }
                     .frame(width: screenWidth * 0.25, height: screenHeight * 0.044)
                     .onTapGesture {

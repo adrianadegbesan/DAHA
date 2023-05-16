@@ -48,11 +48,11 @@ struct TemplateView: View {
         .padding(.horizontal, 7)
         .onChange(of: message){ value in
             if message == "" {
-                withAnimation(.easeIn(duration: 0.34)){
+                withAnimation(.easeIn(duration: 0.27)){
                     showTemplate = true
                 }
             } else {
-                withAnimation(.easeIn(duration: 0.34)){
+                withAnimation(.easeIn(duration: 0.27)){
                     showTemplate = false
                 }
             }

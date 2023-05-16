@@ -37,6 +37,7 @@ struct PostScrollView: View {
                 if screen == "Search" {
                     if firestoreManager.search_last != nil{
                         Task {
+//                            try await Task.sleep(nanoseconds: 0_300_000_000)
                             await firestoreManager.updateSearch(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
                         }
                     }
@@ -47,12 +48,14 @@ struct PostScrollView: View {
                     if firestoreManager.listing_last != nil {
                         if categoryFilter == ""{
                             Task {
+//                                try await Task.sleep(nanoseconds: 0_300_000_000)
                                await  firestoreManager.updateListings()
                             }
                         } else {
                             
                             if firestoreManager.listings_filtered_last != nil{
                                 Task {
+//                                    try await Task.sleep(nanoseconds: 0_300_000_000)
                                     await firestoreManager.updateListingsFiltered(category: categoryFilter)
                                 }
                             }
@@ -67,12 +70,14 @@ struct PostScrollView: View {
                     if firestoreManager.requests_last != nil {
                         if categoryFilter == "" {
                             Task {
+//                                try await Task.sleep(nanoseconds: 0_300_000_000)
                                 await firestoreManager.updateRequests()
                             }
                         } else {
                             
                             if firestoreManager.requests_filtered_last != nil{
                                 Task {
+//                                    try await Task.sleep(nanoseconds: 0_300_000_000)
                                     await firestoreManager.updateRequestsFiltered(category: categoryFilter)
                                 }
                             }
@@ -89,6 +94,7 @@ struct PostScrollView: View {
                     
                     if firestoreManager.saved_last != nil{
                         Task {
+//                            try await Task.sleep(nanoseconds: 0_300_000_000)
                             await firestoreManager.updateSaved()
                         }
                     }
@@ -99,6 +105,7 @@ struct PostScrollView: View {
                     
                     if firestoreManager.user_last != nil{
                         Task {
+//                            try await Task.sleep(nanoseconds: 0_300_000_000)
                             await firestoreManager.updateUserPosts()
                         }
                     }
@@ -239,7 +246,7 @@ struct PostScrollView: View {
                                                 }
                                             }
                                     
-                                            if index == (posts.count - 1) && (screen == "Listings" || screen == "Requests"){
+                                    if  (posts.count >= 10) && (index == (posts.count - 1)) && (screen == "Listings" || screen == "Requests"){
                                                 PostShimmer()
                                                     .padding(.leading, 3)
                                                     .padding(.bottom, 10)
@@ -383,6 +390,7 @@ struct PostScrollView: View {
                             
                         }
                     }
+
                 }
             }
         }

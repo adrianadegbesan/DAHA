@@ -103,7 +103,7 @@ struct PostImageView: View {
             .overlay (
                 RoundedRectangle(cornerRadius: 15)
                     .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
-                    .foregroundColor(colorScheme == .light ? .black : .gray)
+                    .foregroundColor(colorScheme == .light ? .gray : .gray)
             )
             .clipped()
         } else {
@@ -115,7 +115,7 @@ struct PostImageView: View {
                     .overlay (
                         RoundedRectangle(cornerRadius: 15)
                             .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
-                            .foregroundColor(colorScheme == .light ? .black : .gray)
+                            .foregroundColor(colorScheme == .light ? .gray : .gray)
                     )
             }
            

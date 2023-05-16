@@ -25,6 +25,8 @@ struct PostActionView: View {
             
             if owner && !preview{
                 Spacer()
+                SoldButton(post: post)
+                    .padding(.trailing, 1)
                 DeleteButton(post: post)
                 
             } else if preview && !owner {
