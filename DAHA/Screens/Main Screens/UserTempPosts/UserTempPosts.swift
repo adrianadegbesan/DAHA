@@ -14,6 +14,11 @@ struct UserTempPosts: View {
         VStack{
             PostScrollView(posts: $firestoreManager.user_temp_posts, loading: $firestoreManager.user_temp_posts_loading, screen: "UserTemp", query: .constant(""), type: .constant(""), category: .constant(""), userId: userId)
         }
+//        .onAppear{
+//            Task {
+//                await firestoreManager.getUserTempPosts(userId: userId)
+//            }
+//        }
 //        .ignoresSafeArea()
     }
 }

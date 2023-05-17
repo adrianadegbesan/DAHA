@@ -20,7 +20,7 @@ struct ViewPostsButton: View {
             }
             userPostNavigate = true
         } label: {
-            Label("View \(post.username.capitalized)'s Posts", systemImage: "person.fill")
+            Label("View \(post.username.capitalized)'s Posts", systemImage: "person")
         }
     }
 }

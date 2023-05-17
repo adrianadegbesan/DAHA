@@ -12,20 +12,38 @@ struct UserPostsScreen: View {
     @State var username : String
     @State var userId : String
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @State var opacity = 0.0
+    @State var show: Bool = true
     
     var body: some View {
         VStack(spacing: 0) {
             HeaderView(title: "@\(username)", showMessages: false, showSettings: false, showSearchBar: false, slidingBar: false, tabIndex: nil, tabs: nil, screen: "UserTemp")
                 .frame(alignment: .top)
             Divider()
-            TabView(){
-                UserTempPosts(userId: userId)
+            if show {
+                
+                ScrollView{
+                    PostShimmerScroll()
+                        .padding(.top, 15)
+                }
+                
+            } else {
+                TabView() {
+                    UserTempPosts(userId: userId)
+                }
+                .tabViewStyle(.page(indexDisplayMode: .never))
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
             Divider()
         } //: VStack
         .frame(width: screenWidth)
         .navigationTitle("")
+        .onAppear{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.65){
+                withAnimation {
+                    show = false
+                }
+            }
+        }
     }
 }
 
