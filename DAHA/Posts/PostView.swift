@@ -131,19 +131,24 @@ struct PostView: View {
         }
         .scaleEffect(preview ? 0.95 : 1)
         .contextMenu{
-            if #available(iOS 16, *){
-                Button {
-                    shouldNavigate = true
-                } label: {
-                    Label("Expand Post", systemImage: "arrowshape.right")
-                }
-            } else {
-                Button {
-                    shouldNavigate = true
-                } label: {
-                    Label("Expand Post", systemImage: "arrow.right")
+            
+            if !preview {
+                if #available(iOS 16, *){
+                    Button {
+                        shouldNavigate = true
+                    } label: {
+                        Label("Expand Post", systemImage: "arrowshape.right")
+                    }
+                } else {
+                    Button {
+                        shouldNavigate = true
+                    } label: {
+                        Label("Expand Post", systemImage: "arrow.right")
+                    }
                 }
             }
+          
+            
             if owner{
                 Button(role: .destructive){
                     deletePresented = true

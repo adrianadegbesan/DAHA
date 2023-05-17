@@ -119,8 +119,6 @@ struct HomeScreen: View {
                     PostButton()
                     .offset(x: screenWidth * 0.35, y: screenHeight * 0.31)
                 }
-                
-                
             } //: ZStack
             .ignoresSafeArea(.keyboard)
             .onAppear{

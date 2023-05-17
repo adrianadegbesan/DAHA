@@ -195,15 +195,10 @@ struct PostScrollView: View {
                                       Spacer().frame(height: 45)
                                   }
                                   
-                                  if screen != "UserTemp"{
-                                      PostShimmerScroll()
-                                  } else {
-                                      ProgressView()
-                                          .scaleEffect(1.2)
-                                          .padding(.top, 10)
-                                  }
-                                 
-                                  
+//                                  ProgressView()
+//                                      .scaleEffect(1.2)
+//                                      .padding(.top, 10)
+                                  PostShimmerScroll()
                               }
                               .frame(width: screenWidth)
                           } else {
