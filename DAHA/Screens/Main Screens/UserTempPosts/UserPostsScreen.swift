@@ -25,6 +25,7 @@ struct UserPostsScreen: View {
             Divider()
         } //: VStack
         .frame(width: screenWidth)
+        .navigationTitle("")
     }
 }
 

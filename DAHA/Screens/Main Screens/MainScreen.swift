@@ -59,7 +59,6 @@ struct MainScreen: View {
         } //TabView
         .onAppear{
 //            hideKeyboard()
-            
             if appState.firstSignOn{
                 Task {
                     await firestoreManager.getListings()

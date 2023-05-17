@@ -15,7 +15,7 @@ struct PostView: View {
     @State var saved = false
     @State var reported = false
     
-    @State private var selected : Bool = false
+//    @State private var selected : Bool = false
     @State private var reported_alert : Bool = false
     @State private var shouldNavigate : Bool = false
     
@@ -156,15 +156,17 @@ struct PostView: View {
             if !owner{
                 if !reported && !preview{
                     
-                    Button{
-                        firestoreManager.user_temp_posts.removeAll()
-                        Task {
-                            await firestoreManager.getUserTempPosts(userId: post.userID)
-                        }
-                        userPostNavigate = true
-                    } label: {
-                        Label("View \(post.username.capitalized)'s Posts")
-                    }
+                    ViewPostsButton(post: post, userPostNavigate: $userPostNavigate)
+                    
+//                    Button{
+//                        firestoreManager.user_temp_posts.removeAll()
+//                        Task {
+//                            await firestoreManager.getUserTempPosts(userId: post.userID)
+//                        }
+//                        userPostNavigate = true
+//                    } label: {
+//                        Label("View \(post.username.capitalized)'s Posts")
+//                    }
                     if !saved{
                         Button{
                             Task{
@@ -246,7 +248,7 @@ struct PostView: View {
             Text("Are you sure you want to delete this post?")
         })
         .alert("Unable to Delete Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later ")})
-        .alert("Post Successfully Deleted", isPresented: $delete_alert, actions: {}, message: {Text("Your post has been deleted")})
+//        .alert("Post Successfully Deleted", isPresented: $delete_alert, actions: {}, message: {Text("Your post has been deleted")})
         .alert("Error Saving Post", isPresented: $save_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
         .alert("Error Unsaving Post", isPresented: $unsave_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
     
