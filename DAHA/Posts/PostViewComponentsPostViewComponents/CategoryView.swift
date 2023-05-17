@@ -134,6 +134,7 @@ struct CategoryView: View {
         }
         .scaleEffect((post.condition == "Worn-Out" && post.borrow != nil && screen != "Modal") ? (post.borrow! ? 0.85 : 1) : 1)
         .offset(x: (post.condition == "Worn-Out" && post.borrow != nil && screen != "Modal") ? (post.borrow! && post.category.count <= 5 ? -8 : 0): 0)
+        .offset(x: (post.condition == "Good" && post.borrow != nil && screen != "Modal") ? (post.borrow! && post.category.count > 5 ? 6 : 0): 0)
     }
 }
 

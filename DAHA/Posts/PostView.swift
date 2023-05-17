@@ -41,6 +41,8 @@ struct PostView: View {
     @State var unpostedPreview: Bool?
     @State var unpostedImages: [UIImage]?
     
+    @State var userPostNavigate: Bool = false
+    
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -50,7 +52,7 @@ struct PostView: View {
         HStack {
             VStack(alignment: .leading) {
                 
-                PosterInfoView(post: post, unpostedPreview: unpostedPreview)
+                PosterInfoView(post: post, preview: preview, unpostedPreview: unpostedPreview)
                 Spacer().frame(height: 10)
                 
                 CategoryView(post: post, screen: "Post", reported: $reported, owner: owner, preview: preview)
@@ -86,6 +88,10 @@ struct PostView: View {
                 NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username, receiverID: post.userID), isActive: $buyNavigate){
                     EmptyView()
                 }
+            }
+            
+            NavigationLink(destination: UserPostsScreen(username: post.username, userId: post.userID), isActive: $userPostNavigate){
+                EmptyView()
             }
 
            
@@ -125,6 +131,19 @@ struct PostView: View {
         }
         .scaleEffect(preview ? 0.95 : 1)
         .contextMenu{
+            if #available(iOS 16, *){
+                Button {
+                    shouldNavigate = true
+                } label: {
+                    Label("Expand Post", systemImage: "arrowshape.right")
+                }
+            } else {
+                Button {
+                    shouldNavigate = true
+                } label: {
+                    Label("Expand Post", systemImage: "arrow.right")
+                }
+            }
             if owner{
                 Button(role: .destructive){
                     deletePresented = true
@@ -136,6 +155,16 @@ struct PostView: View {
             }
             if !owner{
                 if !reported && !preview{
+                    
+                    Button{
+                        firestoreManager.user_temp_posts.removeAll()
+                        Task {
+                            await firestoreManager.getUserTempPosts(userId: post.userID)
+                        }
+                        userPostNavigate = true
+                    } label: {
+                        Label("View \(post.username.capitalized)'s Posts")
+                    }
                     if !saved{
                         Button{
                             Task{

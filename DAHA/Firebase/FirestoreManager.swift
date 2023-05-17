@@ -50,6 +50,12 @@ class FirestoreManager: ObservableObject {
     @Published var my_posts_loading: Bool = false
     @Published var my_posts_error: Bool = false
     
+    @Published var user_temp_posts: [PostModel] = []
+    @Published var user_temp_last: QueryDocumentSnapshot? = nil
+    @Published var user_temp_refresh: Bool = false
+    @Published var user_temp_posts_loading: Bool = false
+    @Published var user_temp_posts_error: Bool = false
+    
     @Published var listings_filtered : [PostModel] = []
     @Published var listings_filtered_last : QueryDocumentSnapshot? = nil
     @Published var listings_filtered_loading: Bool = false
@@ -921,6 +927,66 @@ class FirestoreManager: ObservableObject {
                 temp.append(post)
             }
             my_posts.append(contentsOf:temp)
+            
+        }
+        catch {
+            print("error updating user posts")
+        }
+    }
+    
+    func getUserTempPosts(userId: String) async {
+        
+        if userId.replacingOccurrences(of: " ", with: "") == ""{
+            return
+        }
+        
+        do {
+            user_temp_posts_loading = true
+            var temp: [PostModel] = []
+            
+            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("userID", isEqualTo:userId).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+               user_temp_last = documents.last!
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            user_temp_posts = temp
+            user_temp_posts_loading = false
+            user_temp_posts_error = false
+            
+        }
+        catch {
+            user_temp_posts_loading = false
+            user_temp_posts_error = true
+            print("error")
+        }
+        
+    }
+    
+    func updateUserTempPosts(userId: String) async {
+        
+        do {
+            var temp: [PostModel] = []
+            
+            if user_temp_last == nil{
+                return
+            }
+            
+            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("userID", isEqualTo:userId).order(by: "postedAt", descending: true).start(afterDocument: user_last!).limit(to: 15).getDocuments()
+            let documents = snapshot.documents
+            if !documents.isEmpty{
+               user_temp_last = documents.last!
+            } else {
+                return
+            }
+            for document in documents{
+                let post = convertToPost(doc: document)
+                temp.append(post)
+            }
+            user_temp_posts.append(contentsOf:temp)
             
         }
         catch {

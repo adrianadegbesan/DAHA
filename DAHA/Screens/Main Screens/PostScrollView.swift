@@ -23,6 +23,7 @@ struct PostScrollView: View {
     @State private var targetPostID: String? = nil
     @State private var currentPostID: String = ""
     @State private var isAnimating: Bool = false
+    @State var userId : String?
     
     @State var screenOpacity = 0.1
 //    @State var time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
@@ -112,6 +113,18 @@ struct PostScrollView: View {
                    
                 }
                 
+                else if screen == "UserTemp" {
+                    
+                    
+                    if userId != nil {
+                        if firestoreManager.user_temp_last != nil {
+                            Task {
+                                await firestoreManager.updateUserTempPosts(userId: userId!)
+                            }
+                        }
+                    }
+                }
+                
             }
     }
     
@@ -124,7 +137,7 @@ struct PostScrollView: View {
                     RefreshableScrollView {
                     
 //                        if #available(iOS 16, *){
-                            if screen != "Saved" && screen != "User" && screen != "Search"{
+                            if screen == "Listings" || screen == "Requests"{
                                 
                                 Spacer().frame(height: 12)
                                 CategoryFilterView(selected: $categoryFilter, screen: screen, posts: $posts, loading: $loading)

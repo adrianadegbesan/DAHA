@@ -11,6 +11,8 @@ import Firebase
 struct PostModalPosterInfo: View {
     @State var post: PostModel
     @Environment(\.colorScheme) var colorScheme
+    @State var shouldNavigate: Bool = false
+    @EnvironmentObject var firestoreManager : FirestoreManager
 
     
     var body: some View {
@@ -18,6 +20,13 @@ struct PostModalPosterInfo: View {
             Text("@\(post.username)")
                 .font(.system(size: 14, weight: .bold))
                 .foregroundColor(colorScheme == .dark ? .white : .black)
+                .onTapGesture {
+                    firestoreManager.user_temp_posts.removeAll()
+                    Task {
+                        await firestoreManager.getUserTempPosts(userId: post.userID)
+                    }
+                    shouldNavigate = true
+                }
             
             Image(systemName:"circle.fill")
                 .font(.system(size: 3.8, weight: .bold))
@@ -34,6 +43,10 @@ struct PostModalPosterInfo: View {
                 .layoutPriority(1)
                 .padding(.trailing, 10)
                 .foregroundColor(Color(hex: deepBlue))
+            
+            NavigationLink(destination: UserPostsScreen(username: post.username, userId: post.userID), isActive: $shouldNavigate){
+                EmptyView()
+            }
 
             }
         .padding(.leading, 12)

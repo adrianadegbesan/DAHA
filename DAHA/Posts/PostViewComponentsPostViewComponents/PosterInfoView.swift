@@ -11,9 +11,12 @@ import Firebase
 struct PosterInfoView: View {
     
     @State var post: PostModel
+    @State var preview: Bool
     @State var unpostedPreview: Bool?
     @State private var timestampString = ""
     @Environment(\.colorScheme) var colorScheme
+    @State var shouldNavigate: Bool = false
+    @EnvironmentObject var firestoreManager : FirestoreManager
     
     
     var body: some View {
@@ -23,6 +26,15 @@ struct PosterInfoView: View {
                 .minimumScaleFactor(0.4)
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundColor(colorScheme == .dark ? .white : .black)
+                .onTapGesture {
+                    if !preview{
+                        firestoreManager.user_temp_posts.removeAll()
+                        Task {
+                            await firestoreManager.getUserTempPosts(userId: post.userID)
+                        }
+                        shouldNavigate = true
+                    }
+                }
             
             if unpostedPreview != nil && unpostedPreview! == true {
                 EmptyView()
@@ -50,6 +62,10 @@ struct PosterInfoView: View {
                 .font(.system(size: 15.5, weight: .heavy))
                 .foregroundColor(Color(hex: deepBlue))
             
+            NavigationLink(destination: UserPostsScreen(username: post.username, userId: post.userID), isActive: $shouldNavigate){
+                EmptyView()
+            }
+            
 //
 //                .foregroundColor(post.category == "General" && colorScheme == .dark ? .white : Color(hex: category_colors[post.category] ?? deepBlue))
         }
@@ -63,6 +79,6 @@ struct PosterInfoView_Previews: PreviewProvider {
         let startTimestamp: Timestamp = Timestamp(date: startTime)
         
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: startTimestamp, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
-        PosterInfoView(post: post)
+        PosterInfoView(post: post, preview: false)
     }
 }

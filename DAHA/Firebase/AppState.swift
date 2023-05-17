@@ -17,5 +17,6 @@ class AppState: ObservableObject {
     @Published var firstConnectionCheck : Bool = true
     @Published var exitedSearch : Bool = true
     
+  
     
 }
