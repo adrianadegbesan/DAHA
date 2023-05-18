@@ -161,7 +161,6 @@ class FirestoreManager: ObservableObject {
             } else {
                 return true
             }
-            
         }
         catch {
             return true
@@ -472,6 +471,21 @@ class FirestoreManager: ObservableObject {
                 }
             }
             await getMetrics()
+            return true
+        }
+        catch {
+            return false
+        }
+    }
+    
+    func confirmPost(post: PostModel) async -> Bool {
+        let postRef =  db.collection("Universities").document("\(university)").collection("Posts").document(post.id)
+        do {
+            if post.type == "Listing"{
+                try await postRef.updateData(["price" : "Sold"])
+            } else {
+                try await postRef.updateData(["price" : "Satisfied"])
+            }
             return true
         }
         catch {
@@ -968,25 +982,31 @@ class FirestoreManager: ObservableObject {
     
     func updateUserTempPosts(userId: String) async {
         
+        if userId.replacingOccurrences(of: " ", with: "") == ""{
+            return
+        }
+        
         do {
             var temp: [PostModel] = []
             
             if user_temp_last == nil{
                 return
-            }
-            
-            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("userID", isEqualTo:userId).order(by: "postedAt", descending: true).start(afterDocument: user_last!).limit(to: 15).getDocuments()
-            let documents = snapshot.documents
-            if !documents.isEmpty{
-               user_temp_last = documents.last!
             } else {
-                return
+                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("userID", isEqualTo:userId).order(by: "postedAt", descending: true).start(afterDocument: user_temp_last!).limit(to: 15).getDocuments()
+                let documents = snapshot.documents
+                if !documents.isEmpty{
+                   user_temp_last = documents.last!
+                } else {
+                    return
+                }
+                for document in documents{
+                    let post = convertToPost(doc: document)
+                    temp.append(post)
+                }
+                user_temp_posts.append(contentsOf:temp)
+                
             }
-            for document in documents{
-                let post = convertToPost(doc: document)
-                temp.append(post)
-            }
-            user_temp_posts.append(contentsOf:temp)
+          
             
         }
         catch {

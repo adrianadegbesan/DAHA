@@ -40,7 +40,7 @@ struct PostModalDescription: View {
                 
                 Spacer()
                 
-                (Text(post.price == "Free" ? "" : "$") + Text(post.price))
+                (Text((post.price == "Free" || post.price == "Sold" || post.price == "Satisfied") ? "" : "$") + Text(post.price))
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .font(.system(size: 16, weight: .bold))

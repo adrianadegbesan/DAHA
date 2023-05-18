@@ -24,7 +24,7 @@ struct UserPostsScreen: View {
                 
                 ScrollView{
                     PostShimmerScroll()
-                        .padding(.top, 15)
+                        .padding(.top, 12)
                 }
                 
             } else {

@@ -28,7 +28,7 @@ class AuthManager: ObservableObject {
     init(){
         self.userSession = Auth.auth().currentUser
         if (self.userSession != nil){
-            let verified =   userSession!.isEmailVerified
+            let verified = userSession!.isEmailVerified
             print("DEBUG: The current User Session is \(self.userSession!)")
             print("Email is \(verified)")
             
@@ -52,6 +52,12 @@ class AuthManager: ObservableObject {
         do {
             try await Auth.auth().createUser(withEmail: email, password: password)
             let cur_id = Auth.auth().currentUser?.uid
+            if cur_id == nil {
+                print("error uploading")
+                error_message.wrappedValue = "There was an error creating your account, please check your network connection and try again later."
+                cannot_create.wrappedValue = true
+                return
+            }
             var user_temp = user
             user_temp.id = cur_id ?? ""
             user_temp.joinedAt = nil
@@ -137,7 +143,7 @@ class AuthManager: ObservableObject {
                 formatter.dateStyle = .long
                 formatter.timeStyle = .none
                 joined_temp.wrappedValue = formatter.string(from: date.dateValue())
-                terms_temp.wrappedValue = document?["terms"] as! Bool
+                terms_temp.wrappedValue = document?["terms"] as? Bool ?? false
                 let fcmtoken_temp = document?["fcmToken"] as? String ?? ""
                 if  fcmtoken_temp != token {
                     if cur_id != nil{
@@ -247,7 +253,6 @@ class AuthManager: ObservableObject {
             print("failed to delete account")
             return false
         }
-        
         return success
     }
     
