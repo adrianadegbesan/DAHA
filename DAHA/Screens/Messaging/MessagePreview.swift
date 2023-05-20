@@ -22,16 +22,42 @@ struct MessagePreview: View {
     @EnvironmentObject var messageManager : MessageManager
     @State var listener : ListenerRegistration?
     
+    @State var isAnimating: Bool = false
+    
     var body: some View {
         
         NavigationLink( destination: ChatScreen(post: channel.post, redirect: false, receiver: channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username, receiverID:  channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender : channel.receiver, channelID: channel.id, listen: true, scrollDown: true) ){
             VStack{
                 HStack{
-                    VStack{
+                    VStack(){
+                        Text(Image(systemName: category_images[channel.post.category] ?? "bag.fill"))
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
+                            .padding(15)
+                            .overlay(
+                                Circle()
+                                    .stroke(lineWidth: 2)
+                                    .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
+                            )
+                            .scaleEffect(isAnimating ? 1.1 : 1.0)
+                            .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                            .onTapGesture{
+                                if !isAnimating{
+                                    SoftFeedback()
+                                    isAnimating = true
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                       isAnimating = false
+                                    }
+                                }
+                             }
+                    }
+                    .frame(width: 60)
+//                    .padding(.trailing, 2.5)
+                   
+                    VStack(alignment: .leading){
                         HStack{
                             Text("@\(channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username)")
-                                .font(.system(size: 15, weight: .bold))
-                            Spacer()
+                                .font(.system(size: 16, weight: .bold))
                             
                         }
                         
@@ -40,36 +66,19 @@ struct MessagePreview: View {
                                 .font(.system(size: 15, weight: .bold))
                             
                             
-                            Spacer()
                             
                         }
                     }
                     Spacer()
                     
-                    HStack{
-                        Text(Image(systemName: category_images[channel.post.category] ?? "bag.fill"))
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
-                        Text(Image(systemName: type_images[channel.post.type] ?? ""))
-                            .font(.system(size: 18, weight: .bold))
-                            .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
-                        
-                        if channel.post.borrow != nil{
-                            if channel.post.borrow! {
-                                Text(Image(systemName: type_images["Borrow"] ?? ""))
-                                    .font(.system(size: 14, weight: .bold))
-                                    .padding(6)
-                                    .background(Circle().stroke(lineWidth: 2))
-                                    .foregroundColor(Color(hex: category_colors["Borrow"] ?? "000000"))
-                            }
-                        }
-                    }
+
                     
-                    VStack{
+                    VStack(alignment: .trailing){
                         HStack{
-                            Spacer()
+//                            Spacer()
                             Text(timestampString)
-                                .font(.system(size: 13, weight: .bold))
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundColor(.secondary)
                                 .lineLimit(1)
                                 .onAppear{
                                     timestampString = channel.timestamp.timeAgoDisplay()
@@ -77,8 +86,10 @@ struct MessagePreview: View {
                         }
                         
                         HStack{
-                            Spacer()
-                            (Text(channel.post.price == "Free" ? "" : "$") + Text(channel.post.price))
+//                            Spacer()
+                            (Text(channel.post.price == "Free" ? "" : "$") + Text(channel.post.price) + Text("  ") + Text(Image(systemName: type_images[channel.post.type] ?? ""))
+                                .foregroundColor(channel.post.borrow != nil ? (channel.post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
+                            )
                                 .font(.system(size: 15, weight: .bold))
                                 .lineLimit(1)
                             
@@ -87,7 +98,8 @@ struct MessagePreview: View {
                     
                     
                 }
-                .padding()
+                .padding(.horizontal, 6)
+                .padding(.vertical)
                 
             }
             
@@ -142,3 +154,24 @@ struct MessagePreview_Previews: PreviewProvider {
         MessagePreview(channel: channel)
     }
 }
+
+
+
+//HStack{
+////                        Text(Image(systemName: category_images[channel.post.category] ?? "bag.fill"))
+////                            .font(.system(size: 18, weight: .bold))
+////                            .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
+//    Text(Image(systemName: type_images[channel.post.type] ?? ""))
+//        .font(.system(size: 18, weight: .bold))
+//        .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
+//
+//    if channel.post.borrow != nil{
+//        if channel.post.borrow! {
+//            Text(Image(systemName: type_images["Borrow"] ?? ""))
+//                .font(.system(size: 14, weight: .bold))
+//                .padding(6)
+//                .background(Circle().stroke(lineWidth: 2))
+//                .foregroundColor(Color(hex: category_colors["Borrow"] ?? "000000"))
+//        }
+//    }
+//}

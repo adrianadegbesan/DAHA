@@ -32,7 +32,7 @@ struct PostModalPostActions: View {
 //                BuyButton(post: post)
 //                    .padding(.leading, 15)
 //                    .padding(.trailing, 15)
-                BookmarkButton(post: $post, saved: $saved)
+                BookmarkButton(post: post, saved: $saved)
                     .padding(.trailing, 10)
                 
                 

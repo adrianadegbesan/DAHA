@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct BookmarkButton: View {
     
-    @Binding var post: PostModel
+    @State var post: PostModel
     @Binding var saved: Bool
     @State var save_alert: Bool = false
     @State var unsave_alert: Bool = false
@@ -25,8 +25,7 @@ struct BookmarkButton: View {
             SoftFeedback()
             updating = true
             if saved {
-                    
-                let postTemp = post
+
                 
 //                if !updating {
                     Task{
@@ -48,31 +47,31 @@ struct BookmarkButton: View {
                                 
                             }
                             
-                            if post.type == "Listing"{
-                                
-                                if let index_l = firestoreManager.listings.firstIndex(where: {$0.id == post.id}){
-                                    
-                                    if firestoreManager.listings[index_l].savers.contains(id){
-                                        if let ind1 = firestoreManager.listings[index_l].savers.firstIndex(of: id){
-                                            if ind1 < firestoreManager.listings[index_l].savers.count{
-                                                firestoreManager.listings[index_l].savers.remove(at: ind1)
-                                            }
-                                        }
-                                    }
-                                }
-                            } else if post.type == "Request"{
-                                if let index_l = firestoreManager.requests.firstIndex(where: {$0.id == post.id}){
-                                    
-                                    if firestoreManager.requests[index_l].savers.contains(id){
-                                        if let ind1 = firestoreManager.requests[index_l].savers.firstIndex(of: id){
-                                            if ind1 < firestoreManager.requests[index_l].savers.count {
-                                                firestoreManager.requests[index_l].savers.remove(at: ind1)
-                                            }
-                                        }
-                                    }
-                                    
-                                }
-                            }
+//                            if post.type == "Listing"{
+//
+//                                if let index_l = firestoreManager.listings.firstIndex(where: {$0.id == post.id}){
+//
+//                                    if firestoreManager.listings[index_l].savers.contains(id){
+//                                        if let ind1 = firestoreManager.listings[index_l].savers.firstIndex(of: id){
+//                                            if ind1 < firestoreManager.listings[index_l].savers.count{
+//                                                firestoreManager.listings[index_l].savers.remove(at: ind1)
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            } else if post.type == "Request"{
+//                                if let index_l = firestoreManager.requests.firstIndex(where: {$0.id == post.id}){
+//
+//                                    if firestoreManager.requests[index_l].savers.contains(id){
+//                                        if let ind1 = firestoreManager.requests[index_l].savers.firstIndex(of: id){
+//                                            if ind1 < firestoreManager.requests[index_l].savers.count {
+//                                                firestoreManager.requests[index_l].savers.remove(at: ind1)
+//                                            }
+//                                        }
+//                                    }
+//
+//                                }
+//                            }
                         }
                         saved.toggle()
                     }
@@ -142,6 +141,6 @@ struct BookmarkButton: View {
 struct BookmarkButton_Previews: PreviewProvider {
     static var previews: some View {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
-        BookmarkButton(post: .constant(post), saved: .constant(false))
+        BookmarkButton(post: post, saved: .constant(false))
     }
 }

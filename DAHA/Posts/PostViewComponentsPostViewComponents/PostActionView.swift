@@ -64,7 +64,7 @@ struct PostActionView: View {
                 }
 
                 Spacer()
-                BookmarkButton(post: $post, saved: $saved)
+                BookmarkButton(post: post, saved: $saved)
             }
         }
 //        .onAppear{

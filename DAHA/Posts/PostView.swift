@@ -209,6 +209,7 @@ struct PostView: View {
 //                        }
                     }
                     
+                    
                     if (post.price != "Sold" && post.price != "Satisfied"){
                         Button {
                             redirect = !messageManager.messageChannels.contains(where: {$0.post.id == post.id})
