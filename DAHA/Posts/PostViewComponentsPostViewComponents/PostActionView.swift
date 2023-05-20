@@ -58,7 +58,7 @@ struct PostActionView: View {
                 }
                 
             } else {
-                if (price != "Sold" && price != "Satisfied") && (post.price != "Sold" && post.price != "Satisfied"){
+                if (post.price != "Sold" && post.price != "Satisfied"){
                     BuyButton(post: post)
                         .layoutPriority(1)
                 }

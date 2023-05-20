@@ -202,20 +202,24 @@ struct PostView: View {
 //                        }
                     }
                     
-                    Button {
-                        redirect = !messageManager.messageChannels.contains(where: {$0.post.id == post.id})
-                        if !redirect{
-                            let channel = messageManager.messageChannels.first(where: {$0.post.id == post.id})
-                            
-                            if channel != nil{
-                                channelID = channel!.id
+                    if (post.price != "Sold" && post.price != "Satisfied"){
+                        Button {
+                            redirect = !messageManager.messageChannels.contains(where: {$0.post.id == post.id})
+                            if !redirect{
+                                let channel = messageManager.messageChannels.first(where: {$0.post.id == post.id})
+                                
+                                if channel != nil{
+                                    channelID = channel!.id
+                                }
                             }
+                            UIApplication.shared.dismissKeyboard()
+                            buyNavigate = true
+                        } label:{
+                            Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane")
                         }
-                        UIApplication.shared.dismissKeyboard()
-                        buyNavigate = true
-                    } label:{
-                        Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane")
+                        
                     }
+                   
                     
                     Button(role: .destructive){
                         report_modal = true
