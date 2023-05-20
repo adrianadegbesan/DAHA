@@ -246,7 +246,7 @@ struct PostScrollView: View {
 //                                    if post.reporters.contains(Auth.auth().currentUser?.uid ?? "") {
 //                                        EmptyView()
 //                                    } else {
-                                        PostView(post: post, owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
+                                        PostView(post: $posts[index], owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
                                             .id(post.id)
                                             .padding(.leading, 3)
                                             .padding(.bottom, 10)

@@ -10,7 +10,8 @@ import Firebase
 
 struct PostModal: View {
     
-    @State var post: PostModel
+    @Binding var post: PostModel
+    @Binding var price: String
     @Binding var saved: Bool
     @Binding var reported: Bool
     @State var success_alert: Bool = false
@@ -28,9 +29,9 @@ struct PostModal: View {
                     .padding(.trailing, 12)
                     
                 
-                PostModalDescription(post: post, owner: owner)
+                PostModalDescription(post: post, price: $price, owner: owner)
                 
-                PostModalPostActions(post: post, saved: $saved, owner: owner)
+                PostModalPostActions(post: $post, saved: $saved, price: $price, owner: owner)
                 
                 Spacer()
                 
@@ -55,7 +56,7 @@ struct PostModal_Previews: PreviewProvider {
         let startTimestamp: Timestamp = Timestamp(date: startTime!)
         
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: startTimestamp, condition: "old", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
-        PostModal(post: post, saved: .constant(false), reported: .constant(false), owner: true)
+        PostModal(post: .constant(post), price: .constant(""), saved: .constant(false), reported: .constant(false), owner: true)
     }
 }
 

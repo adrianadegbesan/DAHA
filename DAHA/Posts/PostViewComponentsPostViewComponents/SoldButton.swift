@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SoldButton: View {
-    @State var post: PostModel
+    @Binding var post: PostModel
+    @Binding var price: String
     @State var isPresented: Bool = false
     @State var deleted: Bool = false
     @State var error_alert : Bool = false
@@ -30,89 +31,51 @@ struct SoldButton: View {
             
             Button("Confirm", action: {
                 Task{
-                    let delete_success = await firestoreManager.deletePost(post: post, deleted: $deleted, error_alert: $error_alert)
+                   
                     
-//                    let confirmSuccess = await firestoreManager.confirmPost(post: post)
-//
-//                    if confirmSuccess {
-//                        withAnimation{
-//                            if post.type == "Listing"{
-//                                if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
-//                                    firestoreManager.listings[index].price = "Sold"
-//                                }
-//
-//                                if let index = firestoreManager.listings_filtered.firstIndex(where: { $0.id == post.id }){
-//                                    firestoreManager.listings_filtered[index].price = "Sold"
-//                                }
-//
-//                                if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
-//                                    firestoreManager.my_posts[index].price = "Sold"
-//                                }
-//
-//                                if let index = firestoreManager.search_results.firstIndex(where: { $0.id == post.id }) {
-//                                    firestoreManager.search_results[index].price = "Sold"
-//                                }
-//
-//                            } else if post.type == "Request"{
-//                                if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
-//                                    firestoreManager.requests[index].price = "Satisfied"
-//                                }
-//
-//                                if let index = firestoreManager.requests_filtered.firstIndex(where: { $0.id == post.id }){
-//                                    firestoreManager.requests_filtered[index].price = "Satisfied"
-//                                }
-//
-//                                if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
-//                                    firestoreManager.my_posts[index].price = "Satisfied"
-//                                }
-//
-//                                if let index = firestoreManager.search_results.firstIndex(where: { $0.id == post.id }) {
-//                                    firestoreManager.search_results[index].price = "Satisfied"
-//                                }
-//                            }
-//
-//                        }
-                    
-                    if delete_success {
+                    let confirmSuccess = await firestoreManager.confirmPost(post: post)
 
+                    if confirmSuccess {
                         withAnimation{
                             if post.type == "Listing"{
+                                post.price = "Sold"
                                 if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
-                                    firestoreManager.listings.remove(at: index)
+                                    firestoreManager.listings[index].price = "Sold"
                                 }
 
                                 if let index = firestoreManager.listings_filtered.firstIndex(where: { $0.id == post.id }){
-                                    firestoreManager.listings_filtered.remove(at: index)
+                                    firestoreManager.listings_filtered[index].price = "Sold"
+                                }
+
+                                if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
+                                    firestoreManager.my_posts[index].price = "Sold"
+                                }
+
+                                if let index = firestoreManager.search_results.firstIndex(where: { $0.id == post.id }) {
+                                    firestoreManager.search_results[index].price = "Sold"
                                 }
 
                             } else if post.type == "Request"{
+                                post.price = "Satisfied"
                                 if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
-                                    firestoreManager.requests.remove(at: index)
+                                    firestoreManager.requests[index].price = "Satisfied"
                                 }
 
                                 if let index = firestoreManager.requests_filtered.firstIndex(where: { $0.id == post.id }){
-                                    firestoreManager.requests_filtered.remove(at: index)
+                                    firestoreManager.requests_filtered[index].price = "Satisfied"
+                                }
+
+                                if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
+                                    firestoreManager.my_posts[index].price = "Satisfied"
+                                }
+
+                                if let index = firestoreManager.search_results.firstIndex(where: { $0.id == post.id }) {
+                                    firestoreManager.search_results[index].price = "Satisfied"
                                 }
                             }
-                            if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
-                                firestoreManager.my_posts.remove(at: index)
-                            }
 
-                            if let index = firestoreManager.search_results.firstIndex(where: { $0.id == post.id }) {
-                                firestoreManager.search_results.remove(at: index)
-                            }
-
-
-
-
-
-                            if modal != nil{
-                                if modal! {
-                                    dismiss()
-                                }
-                            }
                         }
-                        
+                    
                     } else {
                         error_alert = true
                     }
@@ -133,6 +96,6 @@ struct SoldButton: View {
 struct SoldButton_Previews: PreviewProvider {
     static var previews: some View {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "Request", keywordsForLookup: [], reporters: [])
-        SoldButton(post: post)
+        SoldButton(post: .constant(post), price: .constant(""))
     }
 }

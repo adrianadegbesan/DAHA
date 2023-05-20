@@ -45,7 +45,7 @@ struct ChatScreen: View {
                     ScrollView{
                         
                         VStack(spacing: 0){
-                            PostView(post: post, owner: false, preview: true)
+                            PostView(post: .constant(post), owner: false, preview: true)
                                 .scaleEffect(isAnimating ? 0.98 : 0.93)
                                 .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
                                 .onLongPressGesture(minimumDuration: 0.5) {

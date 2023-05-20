@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct BookmarkButton: View {
     
-    @State var post: PostModel
+    @Binding var post: PostModel
     @Binding var saved: Bool
     @State var save_alert: Bool = false
     @State var unsave_alert: Bool = false
@@ -117,6 +117,6 @@ struct BookmarkButton: View {
 struct BookmarkButton_Previews: PreviewProvider {
     static var previews: some View {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
-        BookmarkButton(post: post, saved: .constant(false))
+        BookmarkButton(post: .constant(post), saved: .constant(false))
     }
 }

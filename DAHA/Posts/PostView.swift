@@ -11,8 +11,9 @@ import Firebase
 //Check for if owner in wrapper(list)
 
 struct PostView: View {
-    @State var post: PostModel
+    @Binding var post: PostModel
     @State var saved = false
+    @State var price = ""
     @State var reported = false
     
 //    @State private var selected : Bool = false
@@ -44,6 +45,7 @@ struct PostView: View {
     @State var userPostNavigate: Bool = false
     
     
+    
     @Environment(\.colorScheme) var colorScheme
     
     
@@ -61,7 +63,7 @@ struct PostView: View {
                 
                 PostDescriptionView(post: post)
                 
-                PostActionView(post: post, saved: $saved, owner: owner, preview: preview)
+                PostActionView(post: $post, saved: $saved, price: $price, owner: owner, preview: preview)
                     .layoutPriority(1)
                     .disabled(reported)
             }
@@ -75,7 +77,7 @@ struct PostView: View {
             }
             
             
-            NavigationLink(destination: PostModal(post: post, saved: $saved, reported: $reported, owner: owner), isActive: $shouldNavigate){
+            NavigationLink(destination: PostModal(post: $post, price: $price, saved: $saved, reported: $reported, owner: owner), isActive: $shouldNavigate){
                 EmptyView()
             }
             
@@ -97,16 +99,17 @@ struct PostView: View {
            
             
         } //HStack
-        .frame(width: screenWidth * 0.902, height: 170)
-        .padding()
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(reported ? .red : (colorScheme == .dark ? .gray : .gray), lineWidth: colorScheme == .dark ? 2 : 2)
-
-//                .shadow(color: colorScheme == .dark ? .white : .black, radius: 1, y: 0)
-        )
-        .background(colorScheme == .dark ? .black.opacity(0.7): .white)
-        .cornerRadius(20)
+        .modifier(PostViewModifier(post: post, price: $price, reported: $reported))
+//        .frame(width: screenWidth * 0.902, height: 170)
+//        .padding()
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 20)
+//                .strokeBorder(((post.price == "Sold" || post.price == "Satisfied") || (price == "Sold" || price == "Satisfied")) ? .green : (reported ? .red : (colorScheme == .dark ? .gray : .gray), lineWidth: colorScheme == .dark ? 2 : 2))
+////                .strokeBorder(reported ? .red : (colorScheme == .dark ? .gray : .gray), lineWidth: colorScheme == .dark ? 2 : 2)
+////                .shadow(color: colorScheme == .dark ? .white : .black, radius: 1, y: 0)
+//        )
+//        .background(colorScheme == .dark ? .black.opacity(0.7): .white)
+//        .cornerRadius(20)
         .onAppear{
             let cur_id = Auth.auth().currentUser?.uid
             if cur_id != nil{
@@ -132,30 +135,32 @@ struct PostView: View {
         .scaleEffect(preview ? 0.95 : 1)
         .contextMenu{
             
-            if !preview {
-                if #available(iOS 16, *){
-                    Button {
-                        shouldNavigate = true
-                    } label: {
-                        Label("Expand Post", systemImage: "arrowshape.right")
-                    }
-                } else {
-                    Button {
-                        shouldNavigate = true
-                    } label: {
-                        Label("Expand Post", systemImage: "arrow.right")
-                    }
-                }
-            }
+            ExpandPostsMenuButton(preview: preview, shouldNavigate: $shouldNavigate)
+//            if !preview {
+//                if #available(iOS 16, *){
+//                    Button {
+//                        shouldNavigate = true
+//                    } label: {
+//                        Label("Expand Post", systemImage: "arrowshape.right")
+//                    }
+//                } else {
+//                    Button {
+//                        shouldNavigate = true
+//                    } label: {
+//                        Label("Expand Post", systemImage: "arrow.right")
+//                    }
+//                }
+//            }
           
             
             if owner{
-                Button(role: .destructive){
-                    deletePresented = true
-                } label:{
-                    Label("Delete Post", systemImage: "trash")
-                }
-                .foregroundColor(.red)
+                DeletePostMenuButton(post: post, deletePresented: $deletePresented)
+//                Button(role: .destructive){
+//                    deletePresented = true
+//                } label:{
+//                    Label("Delete Post", systemImage: "trash")
+//                }
+//                .foregroundColor(.red)
               
             }
             if !owner{
@@ -173,27 +178,28 @@ struct PostView: View {
 //                        Label("View \(post.username.capitalized)'s Posts")
 //                    }
                     if !saved{
-                        Button{
-                            Task{
-                                let result = await firestoreManager.savePost(post: post)
-                                if result {
-                                    await firestoreManager.getSaved()
-                                } else {
-                                    save_alert = true
-                                }
-                            }
-                            firestoreManager.saved_refresh = true
-                            withAnimation{
-                                let id = Auth.auth().currentUser?.uid
-                                if id != nil && !post.savers.contains(id!){
-                                    post.savers.append(id!)
-                                    saved.toggle()
-                                }
-                            }
-                            
-                        } label:{
-                            Label("Save Post", systemImage: "bookmark")
-                        }
+                        SavePostMenuButton(post: post, saved: $saved, save_alert: $save_alert)
+//                        Button{
+//                            Task{
+//                                let result = await firestoreManager.savePost(post: post)
+//                                if result {
+//                                    await firestoreManager.getSaved()
+//                                } else {
+//                                    save_alert = true
+//                                }
+//                            }
+//                            firestoreManager.saved_refresh = true
+//                            withAnimation{
+//                                let id = Auth.auth().currentUser?.uid
+//                                if id != nil && !post.savers.contains(id!){
+//                                    post.savers.append(id!)
+//                                    saved.toggle()
+//                                }
+//                            }
+//
+//                        } label:{
+//                            Label("Save Post", systemImage: "bookmark")
+//                        }
                     }
                     
                     Button {
@@ -221,34 +227,35 @@ struct PostView: View {
         }
         .padding(.horizontal, 3)
         .alert("Delete Post", isPresented: $deletePresented, actions: {
-            Button("Delete", role: .destructive, action: {
-                Task{
-                    let delete_success = await firestoreManager.deletePost(post: post, deleted: $deleted, error_alert: $error_alert)
-
-                    if delete_success {
-
-                        withAnimation{
-                            if post.type == "Listing"{
-                                if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
-                                    firestoreManager.listings.remove(at: index)
-                                }
-
-
-                            } else if post.type == "Request"{
-                                if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
-                                    firestoreManager.requests.remove(at: index)
-                                }
-                            }
-                              if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
-                                  firestoreManager.my_posts.remove(at: index)
-                              }
-                        }
-
-                    } else {
-                        error_alert = true
-                    }
-                }
-            })
+            DeletePostsAlertButton(post: post, error_alert: $error_alert, deleted: $deleted)
+//            Button("Delete", role: .destructive, action: {
+//                Task{
+//                    let delete_success = await firestoreManager.deletePost(post: post, deleted: $deleted, error_alert: $error_alert)
+//
+//                    if delete_success {
+//
+//                        withAnimation{
+//                            if post.type == "Listing"{
+//                                if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
+//                                    firestoreManager.listings.remove(at: index)
+//                                }
+//
+//
+//                            } else if post.type == "Request"{
+//                                if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
+//                                    firestoreManager.requests.remove(at: index)
+//                                }
+//                            }
+//                              if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
+//                                  firestoreManager.my_posts.remove(at: index)
+//                              }
+//                        }
+//
+//                    } else {
+//                        error_alert = true
+//                    }
+//                }
+//            })
         }, message: {
             Text("Are you sure you want to delete this post?")
         })
@@ -268,7 +275,7 @@ struct PostView_Previews: PreviewProvider {
         
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: startTimestamp, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "Listing", keywordsForLookup: [], reporters: [])
         NavigationView{
-            PostView(post: post, owner: false, preview: true)
+            PostView(post: .constant(post), owner: false, preview: true)
                 .environmentObject(FirestoreManager())
                 .environmentObject(MessageManager())
         }

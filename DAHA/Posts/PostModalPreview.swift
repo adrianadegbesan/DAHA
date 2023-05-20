@@ -26,8 +26,8 @@ struct PostModalPreview: View {
                     .padding(.trailing, 12)
                     
                 
-                PostModalDescription(post: post, owner: (post.userID == Auth.auth().currentUser?.uid))
-                
+//                PostModalDescription(post: post, owner: (post.userID == Auth.auth().currentUser?.uid))
+//                
                 HStack{
                     Text(post.postedAt?.dateValue().dateString() ?? "")
                         .minimumScaleFactor(0.5)

@@ -9,8 +9,9 @@ import SwiftUI
 
 struct PostActionView: View {
     
-    @State var post: PostModel
+    @Binding var post: PostModel
     @Binding var saved: Bool
+    @Binding var price: String
     @State var owner: Bool
     @State var preview: Bool
     @Environment(\.colorScheme) var colorScheme
@@ -18,15 +19,25 @@ struct PostActionView: View {
     var body: some View {
         HStack{
             (Text((post.price == "Free" || post.price == "Sold" || post.price == "Satisfied") ? "" : "$") + Text(post.price))
-//                .foregroundColor(.black)
+//            (Text((price == "Free" || price == "Sold" || price == "Satisfied") ? "" : "$") + Text(price))
                 .lineLimit(1)
                 .font(.system(size: 16, weight: .bold))
                 .layoutPriority(1)
+                .foregroundColor((post.price == "Sold" || post.price == "Satisfied") ? Color(hex: color_new) : .primary)
+            if post.price == "Sold" || post.price == "Satisfied"{
+                Text(Image(systemName: "checkmark"))
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(Color(hex: color_new))
+            }
             
             if owner && !preview{
                 Spacer()
-                SoldButton(post: post)
-                    .padding(.trailing, 1)
+//                SoldButton(post: post, price: $price)
+//                    .padding(.trailing, 1)
+                if (post.price != "Sold" && post.price != "Satisfied"){
+                    SoldButton(post: $post, price: $price)
+                        .padding(.trailing, 1)
+                }
                 DeleteButton(post: post)
                 
             } else if preview && !owner {
@@ -47,19 +58,25 @@ struct PostActionView: View {
                 }
                 
             } else {
-                BuyButton(post: post)
-                    .layoutPriority(1)
+                if (price != "Sold" && price != "Satisfied") && (post.price != "Sold" && post.price != "Satisfied"){
+                    BuyButton(post: post)
+                        .layoutPriority(1)
+                }
+
                 Spacer()
-                BookmarkButton(post: post, saved: $saved)
+                BookmarkButton(post: $post, saved: $saved)
             }
         }
+//        .onAppear{
+//            price = post.price
+//        }
     }
 }
 
 struct PostActionView_Previews: PreviewProvider {
     static var previews: some View {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "Request", keywordsForLookup: [], reporters: [])
-        PostActionView(post:post , saved: .constant(false), owner: true, preview: false)
+        PostActionView(post:.constant(post) , saved: .constant(false), price: .constant(""), owner: true, preview: false)
             .environmentObject(FirestoreManager())
     }
 }

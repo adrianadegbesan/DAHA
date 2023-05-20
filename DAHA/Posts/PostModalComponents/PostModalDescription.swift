@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct PostModalDescription: View {
     @State var post: PostModel
+    @Binding var price: String
     @State private var opacity = 0.1
     @State private var descriptionScroll : Bool = false
     @State private var tabIndex = 0
@@ -41,9 +42,11 @@ struct PostModalDescription: View {
                 Spacer()
                 
                 (Text((post.price == "Free" || post.price == "Sold" || post.price == "Satisfied") ? "" : "$") + Text(post.price))
+//                (Text((price == "Free" || price == "Sold" || price == "Satisfied") ? "" : "$") + Text(price))
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .font(.system(size: 16, weight: .bold))
+                    .foregroundColor((post.price == "Sold" || post.price == "Satisfied") ? Color(hex: color_new) : .primary)
                     .scaleEffect(isAnimating2 ? 1.2 : 1.0)
                     .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating2)
                     .onLongPressGesture(minimumDuration: 0.5) {
@@ -52,6 +55,12 @@ struct PostModalDescription: View {
                             isAnimating2 = false
                         }
                      }
+                if post.price == "Sold" || post.price == "Satisfied"{
+                    Text(Image(systemName: "checkmark"))
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundColor(Color(hex: color_new))
+                        
+                }
                  
             } //:HStack
             .padding(.leading, 12)
@@ -166,12 +175,15 @@ struct PostModalDescription: View {
             }
 //            .frame(width: screenWidth * 0.9)
         }
+        .onAppear{
+            price = post.price
+        }
     }
 }
 
 struct PostModalDescription_Previews: PreviewProvider {
     static var previews: some View {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
-        PostModalDescription(post: post, owner: false)
+        PostModalDescription(post: post, price: .constant(""), owner: false)
     }
 }

@@ -51,7 +51,7 @@ struct ProhibitedPostsView: View {
                                 .padding(.bottom, 10)
                                 .id(3)
                             
-                            PostView(post: post, owner: false, preview: true, unpostedPreview: true, unpostedImages: images)
+                            PostView(post: .constant(post), owner: false, preview: true, unpostedPreview: true, unpostedImages: images)
                             
                             Text("By posting on DAHA, you acknowledge that this post is in compliance with our terms and conditions:")
                                 .font(

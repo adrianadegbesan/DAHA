@@ -190,6 +190,11 @@
 		82CF5E9029F99B4200D93737 /* LendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF5E8F29F99B4200D93737 /* LendButton.swift */; };
 		82D2D0E2296CAD6700CB4B9A /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */; };
 		82D3160E29D40FF6001FB5D6 /* Legal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3160D29D40FF6001FB5D6 /* Legal.swift */; };
+		82D7E6692A182D7A00068191 /* PostViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D7E6682A182D7A00068191 /* PostViewModifiers.swift */; };
+		82DA51C02A18274100DD804E /* DeletePostMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA51BF2A18274100DD804E /* DeletePostMenuButton.swift */; };
+		82DA51C22A18286100DD804E /* ExpandPostsMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA51C12A18286100DD804E /* ExpandPostsMenuButton.swift */; };
+		82DA51C42A18297C00DD804E /* SavePostMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA51C32A18297C00DD804E /* SavePostMenuButton.swift */; };
+		82DA51C62A182AEB00DD804E /* DeletePostsAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DA51C52A182AEB00DD804E /* DeletePostsAlertButton.swift */; };
 		82DF4CAE296F614500A309CF /* SecondContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF4CAD296F614500A309CF /* SecondContinueButton.swift */; };
 		82DF4CB329775B5300A309CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82DF4CB229775B5300A309CF /* GoogleService-Info.plist */; };
 		82E75AC3297E321600742F18 /* Email API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E75AC2297E321600742F18 /* Email API.swift */; };
@@ -364,6 +369,11 @@
 		82CF5E8F29F99B4200D93737 /* LendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LendButton.swift; sourceTree = "<group>"; };
 		82D2D0E1296CAD6700CB4B9A /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		82D3160D29D40FF6001FB5D6 /* Legal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Legal.swift; sourceTree = "<group>"; };
+		82D7E6682A182D7A00068191 /* PostViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModifiers.swift; sourceTree = "<group>"; };
+		82DA51BF2A18274100DD804E /* DeletePostMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostMenuButton.swift; sourceTree = "<group>"; };
+		82DA51C12A18286100DD804E /* ExpandPostsMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandPostsMenuButton.swift; sourceTree = "<group>"; };
+		82DA51C32A18297C00DD804E /* SavePostMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePostMenuButton.swift; sourceTree = "<group>"; };
+		82DA51C52A182AEB00DD804E /* DeletePostsAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePostsAlertButton.swift; sourceTree = "<group>"; };
 		82DF4CAD296F614500A309CF /* SecondContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondContinueButton.swift; sourceTree = "<group>"; };
 		82DF4CB12973C7FA00A309CF /* DAHA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DAHA.entitlements; sourceTree = "<group>"; };
 		82DF4CB229775B5300A309CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -606,6 +616,11 @@
 				82C4588E29B9124700661703 /* ImagePopupView.swift */,
 				82F1461E2A1322D8008745B9 /* SoldButton.swift */,
 				8298509A2A14592400A56010 /* ViewPostsButton.swift */,
+				82DA51BF2A18274100DD804E /* DeletePostMenuButton.swift */,
+				82DA51C12A18286100DD804E /* ExpandPostsMenuButton.swift */,
+				82DA51C32A18297C00DD804E /* SavePostMenuButton.swift */,
+				82DA51C52A182AEB00DD804E /* DeletePostsAlertButton.swift */,
+				82D7E6682A182D7A00068191 /* PostViewModifiers.swift */,
 			);
 			path = PostViewComponentsPostViewComponents;
 			sourceTree = "<group>";
@@ -966,6 +981,7 @@
 				8236020A298748DF002E7AEC /* ReportButton.swift in Sources */,
 				82CEFC5F2969CE0700C55F67 /* ProfileScreen.swift in Sources */,
 				821D57422A02E5B500EAB170 /* PostImageViewUnposted.swift in Sources */,
+				82D7E6692A182D7A00068191 /* PostViewModifiers.swift in Sources */,
 				82B6B2CB298A13E100027E5A /* ConditionNavigatorView.swift in Sources */,
 				82CEFC342969CB2C00C55F67 /* ContentView.swift in Sources */,
 				82CEFC572969CD5A00C55F67 /* MainScreen.swift in Sources */,
@@ -984,6 +1000,7 @@
 				82A21A5229A169700040BAA1 /* EditUsernameView.swift in Sources */,
 				82218C2D299F4E990092BA94 /* RequestsView.swift in Sources */,
 				82B6B2C42989EE8800027E5A /* MakePostButton.swift in Sources */,
+				82DA51C22A18286100DD804E /* ExpandPostsMenuButton.swift in Sources */,
 				82B6B2FA298F394300027E5A /* CameraView.swift in Sources */,
 				82CEFC592969CD7400C55F67 /* HomeScreen.swift in Sources */,
 				82218C01299C66BA0092BA94 /* Email.swift in Sources */,
@@ -1000,6 +1017,7 @@
 				82218C18299C97820092BA94 /* NotificationsView.swift in Sources */,
 				823602052985ABF0002E7AEC /* PostView.swift in Sources */,
 				829850982A144D3E00A56010 /* UserTempPosts.swift in Sources */,
+				82DA51C02A18274100DD804E /* DeletePostMenuButton.swift in Sources */,
 				82BFA9E92A0AF746009DA461 /* PostShimmerScroll.swift in Sources */,
 				82E75AC3297E321600742F18 /* Email API.swift in Sources */,
 				82C4589529BA811400661703 /* FirebaseHelpers.swift in Sources */,
@@ -1026,6 +1044,7 @@
 				82CEFC622969CE3700C55F67 /* PostModal.swift in Sources */,
 				8294FAE7296BB945004001AE /* CustomInputField.swift in Sources */,
 				82B6B2BB2989EC0E00027E5A /* MakePostScreen.swift in Sources */,
+				82DA51C42A18297C00DD804E /* SavePostMenuButton.swift in Sources */,
 				82A21A7829AEB68C0040BAA1 /* EmailResendButton.swift in Sources */,
 				82B6B2BE2989ECD300027E5A /* MakePostScreenExit.swift in Sources */,
 				82CBC2B22989BC2F001966E3 /* PostModalPostActions.swift in Sources */,
@@ -1089,6 +1108,7 @@
 				82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */,
 				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,
 				82A21A6A29A82A0F0040BAA1 /* ReportModel.swift in Sources */,
+				82DA51C62A182AEB00DD804E /* DeletePostsAlertButton.swift in Sources */,
 				82C4589729BAFC2300661703 /* SearchButton.swift in Sources */,
 				82CEFC442969CBDB00C55F67 /* Colors.swift in Sources */,
 				82C0847B29BD11A400F3627E /* CategoryFilterIcon.swift in Sources */,
@@ -1245,7 +1265,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
@@ -1266,7 +1286,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.13;
+				MARKETING_VERSION = 1.0.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1285,7 +1305,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
@@ -1306,7 +1326,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.13;
+				MARKETING_VERSION = 1.0.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

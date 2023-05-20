@@ -51,7 +51,7 @@ struct ReportUserModal: View {
                         }
                         
                     if post != nil{
-                        PostView(post: post!, owner: false, preview: true)
+                        PostView(post: .constant(post!), owner: false, preview: true)
                             .scaleEffect(0.9)
                     }
                    

@@ -37,7 +37,7 @@ struct ReportModal: View {
                     Text("REPORT POST")
                         .font(.system(size: 26, weight: .black))
                     
-                    PostView(post: post, owner: false, preview: true)
+                    PostView(post: .constant(post), owner: false, preview: true)
                         .scaleEffect(0.9)
                     
                     
