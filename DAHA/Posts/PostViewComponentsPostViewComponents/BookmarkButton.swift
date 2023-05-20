@@ -16,62 +16,87 @@ struct BookmarkButton: View {
     @State var unsave_alert: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @State var updating: Bool = false
 //    @State var time = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         
         Button(action: {
             SoftFeedback()
+            updating = true
             if saved {
-                Task{
-                    let result = await firestoreManager.unsavePost(post: post)
-//                    if result {
-//                        await firestoreManager.getSaved()
-                    if !result {
-                        unsave_alert = true
-                    }
-                }
-                firestoreManager.saved_refresh = true
-                withAnimation{
-                    let id = Auth.auth().currentUser?.uid
-                    if id != nil{
-                        if let index = post.savers.firstIndex(of: id!){
-                            post.savers.remove(at: index)
+                    
+                let postTemp = post
+                
+//                if !updating {
+                    Task{
+                        let result = await firestoreManager.unsavePost(post: post)
+                        if !result {
+                            unsave_alert = true
                         }
-                        if post.type == "Listing"{
-                            if let index_l = firestoreManager.listings.firstIndex(where: {$0.id == post.id}){
-                                if let ind1 = firestoreManager.listings[index_l].savers.firstIndex(of: id!){
-                                    firestoreManager.listings[index_l].savers.remove(at: ind1)
+//                        updating = false
+                        
+                    }
+//                    firestoreManager.saved_refresh = true
+                    withAnimation {
+                        let id = Auth.auth().currentUser?.uid
+                        if let id = id{
+                            if let index = post.savers.firstIndex(of: id){
+                                if index < post.savers.count {
+                                    post.savers.remove(at: index)
+                                }
+                                
+                            }
+                            
+                            if post.type == "Listing"{
+                                
+                                if let index_l = firestoreManager.listings.firstIndex(where: {$0.id == post.id}){
+                                    
+                                    if firestoreManager.listings[index_l].savers.contains(id){
+                                        if let ind1 = firestoreManager.listings[index_l].savers.firstIndex(of: id){
+                                            if ind1 < firestoreManager.listings[index_l].savers.count{
+                                                firestoreManager.listings[index_l].savers.remove(at: ind1)
+                                            }
+                                        }
+                                    }
+                                }
+                            } else if post.type == "Request"{
+                                if let index_l = firestoreManager.requests.firstIndex(where: {$0.id == post.id}){
+                                    
+                                    if firestoreManager.requests[index_l].savers.contains(id){
+                                        if let ind1 = firestoreManager.requests[index_l].savers.firstIndex(of: id){
+                                            if ind1 < firestoreManager.requests[index_l].savers.count {
+                                                firestoreManager.requests[index_l].savers.remove(at: ind1)
+                                            }
+                                        }
+                                    }
+                                    
                                 }
                             }
-                        } else if post.type == "Request"{
-                            if let index_l = firestoreManager.requests.firstIndex(where: {$0.id == post.id}){
-                                if let ind1 = firestoreManager.requests[index_l].savers.firstIndex(of: id!){
-                                    firestoreManager.requests[index_l].savers.remove(at: ind1)
-                                }
-                            }
                         }
+                        saved.toggle()
                     }
-                    saved.toggle()
-                }
+//                }
+               
             } else {
-                Task{
-                    let result = await firestoreManager.savePost(post: post)
-//                    if result {
-//                        await firestoreManager.getSaved()
-                    if !result {
-                        save_alert = true
+                
+//                if !updating{
+                    Task{
+                        let result = await firestoreManager.savePost(post: post)
+                        if !result {
+                            save_alert = true
+                        }
+//                        updating = false
                     }
-                }
-                firestoreManager.saved_refresh = true
-                withAnimation{
-                    let id = Auth.auth().currentUser?.uid
-                    if id != nil && !post.savers.contains(id!){
-                        post.savers.append(id!)
+                    firestoreManager.saved_refresh = true
+                    withAnimation{
+                        let id = Auth.auth().currentUser?.uid
+                        if id != nil && !post.savers.contains(id!){
+                            post.savers.append(id!)
+                        }
+                        saved.toggle()
                     }
-                    saved.toggle()
-                }
-
+//                }
             }
             
         }){

@@ -465,7 +465,7 @@ class FirestoreManager: ObservableObject {
             batch.updateData(["savers": FieldValue.arrayRemove([userId!])], forDocument: postRef)
             
             try await batch.commit()
-            if let index = saved_posts.firstIndex(where: { $0.id == post.id}){
+            if let index = saved_posts.firstIndex(where: { $0.id == post.id }), index < saved_posts.count {
                 withAnimation {
                     _ = saved_posts.remove(at: index)
                 }

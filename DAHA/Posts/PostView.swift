@@ -110,16 +110,23 @@ struct PostView: View {
 //        )
 //        .background(colorScheme == .dark ? .black.opacity(0.7): .white)
 //        .cornerRadius(20)
-        .onAppear{
-            let cur_id = Auth.auth().currentUser?.uid
-            if cur_id != nil{
-                if post.reporters.contains(cur_id!){
-                    reported = true
-                }
-            } else {
-                reported = false
-            }
-        }
+//        .onAppear{
+//            
+//            if post.reporters.isEmpty {
+//                reported = false
+//            } else {
+//                let cur_id = Auth.auth().currentUser?.uid
+//                if cur_id != nil{
+//                    if post.reporters.contains(cur_id!){
+//                        reported = true
+//                    }
+//                } else {
+//                    reported = false
+//                }
+//                
+//            }
+//          
+//        }
         .sheet(isPresented: $report_modal){
             ReportModal(post: post, reported: $reported)
         }

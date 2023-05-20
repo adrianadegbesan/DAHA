@@ -85,7 +85,7 @@ struct SoldButton: View {
         }, message: {
             post.type == "Listing" ? Text("Are you sure you want to mark this listing as sold? This action cannot be undone.") : Text("Are you sure you want to mark this request as satisfied? This action cannot be undone.")
         })
-        .alert("Unable to Complete Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later ")})
+        .alert( post.type == "Listing" ? "Unable to Confirm Listing" : "Unable to Confirm Request", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later ")})
         
         
 //        .alert("Post Successfully Confirmed", isPresented: $delete_alert, actions: {}, message: {post.type == "Listing" ? Text("Your listing has been marked as sold.") : Text("Your request has been marked as satisfied")
