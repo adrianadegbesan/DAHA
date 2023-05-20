@@ -57,36 +57,7 @@ struct ChatScreen: View {
                                  }
                                 
                             
-                                (
-                                 Text("STAY SAFE")
-                                        .foregroundColor(Color(hex: deepBlue)) +
-                                 Text(": Choose to meet in only ")
-                                        .foregroundColor(.secondary)  +
-                                 Text("open ")
-                                    .foregroundColor(Color(hex: color_new)) +
-                                 Text(", ")
-                                    .foregroundColor(.secondary) +
-                                 Text("well-lit")
-                                    .foregroundColor(Color(hex: color_new)) +
-                                 Text(", ")
-                                    .foregroundColor(.secondary) +
-                                 Text("public ")
-                                    .foregroundColor(Color(hex: color_new)) +
-                                 Text("areas and never share ")
-                                    .foregroundColor(.secondary) +
-                                 Text("personal")
-                                    .foregroundColor(.red) +
-                                 Text(" or ")
-                                    .foregroundColor(.secondary) +
-                                 Text("sensitive")
-                                    .foregroundColor(.red) +
-                                 Text(" information in the chat.")
-                                    .foregroundColor(.secondary)
-                                )
-                                    
-                                    .font(.system(size: 11, weight: .bold))
-                                    .padding(.horizontal, 15)
-                                    .padding(.bottom, 15)
+                               SafetyMessageView()
                             
                                 Divider()
                                 .frame(height: 1.25)
@@ -96,7 +67,7 @@ struct ChatScreen: View {
                                 .padding(.bottom, 15)
                                 .padding(.horizontal, 20)
                             
-                            NavigationLink(destination: PostModalPreview(post: post), isActive: $shouldNavigate){
+                            NavigationLink(destination: PostModalPreview(post: post, price: post.price), isActive: $shouldNavigate){
                                 EmptyView()
                             }
                             
@@ -211,9 +182,6 @@ struct ChatScreen: View {
                     }
                     
                 }
-                
-
-           
             
         }
 

@@ -11,6 +11,7 @@ import FirebaseAuth
 
 struct PostModalPreview: View {
     @State var post: PostModel
+    @State var price: String
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
 //    @State var owner : Bool
@@ -26,7 +27,7 @@ struct PostModalPreview: View {
                     .padding(.trailing, 12)
                     
                 
-//                PostModalDescription(post: post, owner: (post.userID == Auth.auth().currentUser?.uid))
+                PostModalDescription(post: post, price: $price, owner: (post.userID == Auth.auth().currentUser?.uid))
 //                
                 HStack{
                     Text(post.postedAt?.dateValue().dateString() ?? "")
