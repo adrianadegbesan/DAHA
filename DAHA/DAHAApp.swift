@@ -26,7 +26,6 @@ struct DAHAApp: App {
     @AppStorage("messageScreen") var messageScreen: Bool = false
     @AppStorage("notifications") var notificationsEnabled: Bool = true
     
-
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {

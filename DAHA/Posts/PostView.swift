@@ -133,7 +133,7 @@ struct PostView: View {
         .alert("Post In Reviewed", isPresented: $reported_alert, actions: {}, message: {Text("We are currently reviewing this post that you have reported.")})
         .onTapGesture {
             if !preview && !reported{
-                LightFeedback()
+                SoftFeedback()
                 shouldNavigate = true
             } else if reported {
                 reported_alert = true

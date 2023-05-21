@@ -69,6 +69,7 @@ extension Date {
 
         return "\(secondsAgo / year) years ago"
     }
+    
 }
 
 extension Date {
@@ -81,6 +82,32 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a   M/d/yyyy"
         return formatter.string(from: self)
+    }
+}
+
+func messagePreviewText(for timestamp: Date) -> String {
+    let currentDate = Date()
+
+    if Calendar.current.isDateInToday(timestamp) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: timestamp)
+    } else if Calendar.current.isDateInYesterday(timestamp) {
+        return "Yesterday"
+    } else {
+        let calendar = Calendar.current
+        let daysAgo = calendar.dateComponents([.day], from: timestamp, to: currentDate).day ?? 0
+
+        if daysAgo <= 7 {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE"
+            let dayOfWeek = dateFormatter.string(from: timestamp)
+            return dayOfWeek.capitalized
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            return dateFormatter.string(from: timestamp)
+        }
     }
 }
 

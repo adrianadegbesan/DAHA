@@ -59,51 +59,57 @@ struct MessagePreview: View {
                             Text("@\(channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username)")
                                 .font(.system(size: 16, weight: .bold))
                             
+                            Spacer()
+                            
+                            HStack(spacing: 4){
+    //                            Spacer()
+                                Text(timestampString)
+                                    .font(.system(size: 14, weight: .bold))
+                                    .foregroundColor(.secondary)
+                                    .lineLimit(1)
+                                    .onAppear{
+                                        timestampString = messagePreviewText(for: channel.timestamp)
+    //                                    timestampString = channel.timestamp.timeAgoDisplay()
+                                    }
+                                
+                                Text(Image(systemName: "chevron.right"))
+                                    .font(.system(size: 12, weight: .bold))
+                                    .foregroundColor(.secondary.opacity(0.8))
+    //                                .padding(.leading, 3)
+                            }
+                            
                         }
                         
                         HStack{
                             Text(channel.post.title)
-                                .font(.system(size: 15, weight: .bold))
+                                .font(.system(size: 14, weight: .bold))
                             
+                            Spacer()
                             
-                            
+                            (Text(channel.post.price == "Free" ? "" : "$") + Text(channel.post.price) + Text("  ") + Text(Image(systemName: type_images[channel.post.type] ?? ""))
+                                .foregroundColor(channel.post.borrow != nil ? (channel.post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
+                            )
+                                .font(.system(size: 14, weight: .bold))
+                                .lineLimit(1)
+                        }
+                        
+                        HStack {
+                            Text(messageManager.messages[channel.id]?.last?.message ?? "")
+                                .font(.system(size: 13, weight: .semibold))
+                                .lineLimit(2)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.leading)
                         }
                     }
                     Spacer()
                     
-
-                    
-                    VStack(alignment: .trailing){
-                        HStack{
-//                            Spacer()
-                            Text(timestampString)
-                                .font(.system(size: 13, weight: .semibold))
-                                .foregroundColor(.secondary)
-                                .lineLimit(1)
-                                .onAppear{
-                                    timestampString = channel.timestamp.timeAgoDisplay()
-                                }
-                        }
-                        
-                        HStack{
-//                            Spacer()
-                            (Text(channel.post.price == "Free" ? "" : "$") + Text(channel.post.price) + Text("  ") + Text(Image(systemName: type_images[channel.post.type] ?? ""))
-                                .foregroundColor(channel.post.borrow != nil ? (channel.post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
-                            )
-                                .font(.system(size: 15, weight: .bold))
-                                .lineLimit(1)
-                            
-                        }
-                    }
-                    
-                    
                 }
                 .padding(.horizontal, 6)
-                .padding(.vertical)
+                .padding(.vertical, 2)
                 
             }
             
-            .frame(width: screenWidth, height: screenWidth * 0.2)
+            .frame(width: screenWidth, height: 90)
           
             
         }
