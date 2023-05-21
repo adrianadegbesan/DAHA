@@ -1001,7 +1001,9 @@ class FirestoreManager: ObservableObject {
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
                 user_temp_posts.append(contentsOf:temp)
                 
@@ -1025,87 +1027,140 @@ class FirestoreManager: ObservableObject {
             var temp: [PostModel] = []
             
             if type != "" && category != "" && query == ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("type", isEqualTo: type)
+                    .whereField("category", isEqualTo: category)
+                    .order(by: "postedAt", descending: true)
+                    .limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             else if type == "" && category != "" && query == ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("category", isEqualTo: category)
+                    .order(by: "postedAt", descending: true)
+                    .limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             else if type != "" && category == "" && query == ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("type", isEqualTo: type)
+                    .order(by: "postedAt", descending: true)
+                    .limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             else if type != "" && category == ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("keywordsForLookup", arrayContains: query)
+                    .whereField("type", isEqualTo: type)
+                    .order(by: "postedAt", descending: true)
+                    .limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             else if type == "" && category != ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("keywordsForLookup", arrayContains: query).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("keywordsForLookup", arrayContains: query)
+                    .whereField("category", isEqualTo: category)
+                    .order(by: "postedAt", descending: true)
+                    .limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             else if type != "" && category != ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("keywordsForLookup", arrayContains: query)
+                    .whereField("type", isEqualTo: type)
+                    .whereField("category", isEqualTo: category)
+                    .order(by: "postedAt", descending: true)
+                    .limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             
             else {
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("keywordsForLookup", arrayContains: query).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("keywordsForLookup", arrayContains: query)
+                    .order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
@@ -1135,7 +1190,14 @@ class FirestoreManager: ObservableObject {
             var temp: [PostModel] = []
             
             if type != "" && category != "" && query == ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("type", isEqualTo: type)
+                    .whereField("category", isEqualTo: category)
+                    .order(by: "postedAt", descending: true)
+                    .start(afterDocument: search_last!).limit(to: 15)
+                    .getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
@@ -1144,12 +1206,20 @@ class FirestoreManager: ObservableObject {
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             else if type == "" && category != "" && query == ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("category", isEqualTo: category)
+                    .order(by: "postedAt", descending: true)
+                    .start(afterDocument: search_last!)
+                    .limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
@@ -1158,12 +1228,19 @@ class FirestoreManager: ObservableObject {
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             else if type != "" && category == "" && query == ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("type", isEqualTo: type)
+                    .order(by: "postedAt", descending: true)
+                    .start(afterDocument: search_last!).limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
@@ -1172,12 +1249,20 @@ class FirestoreManager: ObservableObject {
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             else if type != "" && category == ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("keywordsForLookup", arrayContains: query)
+                    .whereField("type", isEqualTo: type)
+                    .order(by: "postedAt", descending: true)
+                    .start(afterDocument: search_last!).limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
@@ -1186,12 +1271,20 @@ class FirestoreManager: ObservableObject {
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             else if type == "" && category != ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("keywordsForLookup", arrayContains: query).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("keywordsForLookup", arrayContains: query)
+                    .whereField("category", isEqualTo: category)
+                    .order(by: "postedAt", descending: true)
+                    .start(afterDocument: search_last!).limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
@@ -1200,12 +1293,22 @@ class FirestoreManager: ObservableObject {
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             else if type != "" && category != ""{
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("keywordsForLookup", arrayContains: query).whereField("type", isEqualTo: type).whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("keywordsForLookup", arrayContains: query)
+                    .whereField("type", isEqualTo: type)
+                    .whereField("category", isEqualTo: category)
+                    .order(by: "postedAt", descending: true)
+                    .start(afterDocument: search_last!)
+                    .limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
@@ -1214,13 +1317,21 @@ class FirestoreManager: ObservableObject {
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             
             
             else {
-                let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("keywordsForLookup", arrayContains: query).order(by: "postedAt", descending: true).start(afterDocument: search_last!).limit(to: 15).getDocuments()
+                let snapshot = try await db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("keywordsForLookup", arrayContains: query)
+                    .order(by: "postedAt", descending: true)
+                    .start(afterDocument: search_last!)
+                    .limit(to: 15).getDocuments()
                 let documents = snapshot.documents
                 if !documents.isEmpty{
                     search_last = documents.last!
@@ -1229,7 +1340,9 @@ class FirestoreManager: ObservableObject {
                 }
                 for document in documents{
                     let post = convertToPost(doc: document)
-                    temp.append(post)
+                    if post.price != "Sold" && post.price != "Satisfied" {
+                        temp.append(post)
+                    }
                 }
             }
             

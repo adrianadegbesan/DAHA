@@ -17,6 +17,7 @@ struct SearchBarScreen: View {
     @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var appState : AppState
     @FocusState private var keyboardFocused: Bool
+    @State var show: Bool = true
     
     var body: some View {
         ZStack {
@@ -82,8 +83,26 @@ struct SearchBarScreen: View {
 //                    .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
 //                    .padding(.top, 10)
                 
-                PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
+                if show {
+                    
+                    ScrollView{
+                        PostShimmerScroll()
+                            .padding(.top, 12)
+                    }
+                    
+                } else {
+                    PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
+                }
+                
+//                PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
             } //VSTACK
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.65){
+                    withAnimation {
+                        show = false
+                    }
+                }
+            }
 
             .keyboardControl()
         }

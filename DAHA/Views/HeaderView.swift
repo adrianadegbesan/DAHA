@@ -118,7 +118,7 @@ struct HeaderView: View {
                                     firestoreManager.search_results_previous = firestoreManager.search_results
                                     firestoreManager.search_last_previous = firestoreManager.search_last
                                 }
-                                firestoreManager.search_results.removeAll()
+//                                firestoreManager.search_results.removeAll()
                                 shouldNavigate = true
                             }
                         }

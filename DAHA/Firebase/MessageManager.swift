@@ -253,25 +253,31 @@ class MessageManager: ObservableObject {
     
     func deleteChat(channelID : String) async -> Bool{
         
-        let subRef = db.collection("Messages").document(channelID).collection("messages")
-        do {
-            try await db.collection("Messages").document(channelID).delete()
-            deleteCollection(collectionRef: subRef)
-           
+        if let cur_id = Auth.auth().currentUser?.uid {
             
-            withAnimation{
-                let channelIndex = messageChannels.firstIndex(where: {$0.id == channelID})
-                if channelIndex != nil{
-                    messageChannels.remove(at: channelIndex!)
+//            let subRef = db.collection("Messages").document(channelID).collection("messages")
+            do {
+                try await db.collection("Messages").document(channelID).updateData(["users": FieldValue.arrayRemove([cur_id])])
+//                try await db.collection("Messages").document(channelID).delete()
+//                deleteCollection(collectionRef: subRef)
+               
+                
+                withAnimation{
+                    let channelIndex = messageChannels.firstIndex(where: {$0.id == channelID})
+                    if channelIndex != nil{
+                        messageChannels.remove(at: channelIndex!)
+                    }
+                    if messages.keys.contains(channelID){
+                        messages.removeValue(forKey: channelID)
+                    }
+                    let _ = getMessageChannels()
                 }
-                if messages.keys.contains(channelID){
-                    messages.removeValue(forKey: channelID)
-                }
-                let _ = getMessageChannels()
+                return true
             }
-            return true
-        }
-        catch {
+            catch {
+                return false
+            }
+        } else {
             return false
         }
         

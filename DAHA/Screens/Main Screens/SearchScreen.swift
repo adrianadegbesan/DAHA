@@ -23,6 +23,7 @@ struct SearchScreen: View {
     @State var isAnimating2: Bool = false
     
     @State var showExitButton: Bool = false
+    @State var show: Bool = true
     
     var body: some View {
         GeometryReader { _ in
@@ -52,7 +53,7 @@ struct SearchScreen: View {
 //                                SoftFeedback()
                                 withAnimation(.easeIn(duration: 0.3)){
                                     opacity = 1
-                                    firestoreManager.search_results.removeAll()
+//                                    firestoreManager.search_results.removeAll()
                                     query = ""
 //                                    keyboardFocused = false
                                     searched = false
@@ -71,9 +72,9 @@ struct SearchScreen: View {
                         .onSubmit {
                             if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){
                                 /*Search database*/
-                                if !firestoreManager.search_results.isEmpty{
-                                    firestoreManager.search_results.removeAll()
-                                }
+//                                if !firestoreManager.search_results.isEmpty{
+//                                    firestoreManager.search_results.removeAll()
+//                                }
                                 Task {
                                     await firestoreManager.searchPosts(query: query.lowercased().trimmingCharacters(in: .whitespacesAndNewlines), type: type, category: category)
                                 }
@@ -234,14 +235,33 @@ struct SearchScreen: View {
                         Spacer().frame(height: (category == "" && type == "") ? 10 : 20)
                         
                         Divider()
+                            .onAppear{
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.65){
+                                    withAnimation {
+                                        show = false
+                                    }
+                                }
+                            }
 //                            .frame(maxHeight : 4)
 //                            .overlay(colorScheme == .light ? Color(hex: darkGrey) : .white)
 //                            .padding(.top, 10)
+                        if show {
+                            
+                            ScrollView{
+                                PostShimmerScroll()
+                                    .padding(.top, 12)
+                            }
+                            
+                        } else {
+                            PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
+                        }
                         
-                        PostScrollView(posts: $firestoreManager.search_results, loading: $firestoreManager.search_results_loading, screen: "Search", query: $query, type: $type, category: $category)
+                      
                         
                     }
                     .transition(.opacity)
+                  
+
                     
                 }
                 Divider()
@@ -250,11 +270,16 @@ struct SearchScreen: View {
             .onTapGesture {
                 hideKeyboard()
             }
+            .onChange(of: searched){ value in
+                if !value {
+                    show = true
+                }
+            }
             
             .onDisappear{
                 if navScreen != nil{
                     if navScreen! {
-                        firestoreManager.search_results.removeAll()
+//                        firestoreManager.search_results.removeAll()
                     }
                 }
             }
