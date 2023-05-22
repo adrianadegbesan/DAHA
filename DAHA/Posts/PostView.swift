@@ -210,13 +210,13 @@ struct PostView: View {
                     }
                     
                     
-                    if (post.price != "Sold" && post.price != "Satisfied"){
+                    if (post.price != "Sold" && post.price != "Satisfied") {
                         Button {
                             redirect = !messageManager.messageChannels.contains(where: {$0.post.id == post.id})
-                            if !redirect{
+                            if !redirect {
                                 let channel = messageManager.messageChannels.first(where: {$0.post.id == post.id})
                                 
-                                if channel != nil{
+                                if channel != nil {
                                     channelID = channel!.id
                                 }
                             }

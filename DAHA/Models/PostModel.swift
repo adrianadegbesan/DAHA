@@ -29,6 +29,7 @@ struct PostModel: Identifiable, Codable {
     var savers: [String]
     var type: String
     var borrow: Bool?
+    var deadline: Date?
     var keywordsForLookup : [String]
     var reporters : [String]
     

@@ -83,6 +83,9 @@ class FirestoreManager: ObservableObject {
     @Published var saved_count: Int = 0
     @Published var metrics_loading: Bool = false
     
+    @Published var postTemp_count: Int = 0
+    @Published var metricsTemp_loading: Bool = false
+    
     
     
     private var db = Firestore.firestore()
@@ -266,7 +269,7 @@ class FirestoreManager: ObservableObject {
             
             do {
                 let result = try await Functions.functions().httpsCallable("getMetrics").call(["cur_id": cur_id!, "university": university])
-                let data = result.data as! [String: Any]
+                let data = result.data as? [String: Any] ?? [:]
                 post_count = data["post_count"] as? Int ?? 0
                 saved_count = data["saved_count"] as? Int ?? 0
                 metrics_loading = false
@@ -279,6 +282,23 @@ class FirestoreManager: ObservableObject {
             
         }
         
+    }
+    
+    func getUserMetrics(cur_id: String) async {
+        metricsTemp_loading = true
+        if cur_id.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "") != ""{
+            do {
+                let result = try await Functions.functions().httpsCallable("getMetrics").call(["cur_id": cur_id, "university": university])
+                let data = result.data as? [String: Any] ?? [:]
+                postTemp_count = data["post_count"] as? Int ?? 0
+                metricsTemp_loading = false
+            }
+            catch{
+                print("unable to retrieve metrics")
+                metricsTemp_loading = false
+            }
+            
+        }
     }
     
     

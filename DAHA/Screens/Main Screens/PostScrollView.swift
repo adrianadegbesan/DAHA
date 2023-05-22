@@ -150,9 +150,7 @@ struct PostScrollView: View {
                         if posts.isEmpty && screen == "Search" {
                             if loading {
                                 ZStack {
-                                    ProgressView()
-                                        .scaleEffect(1.2)
-                                        .padding(.top, 10)
+                                    PostShimmerScroll()
                                 }
                                 .frame(width: screenWidth)
                                 

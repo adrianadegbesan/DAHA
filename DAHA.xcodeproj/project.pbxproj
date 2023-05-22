@@ -155,6 +155,7 @@
 		82CBC2AE2989BB21001966E3 /* PostModalDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2AD2989BB21001966E3 /* PostModalDescription.swift */; };
 		82CBC2B02989BBD7001966E3 /* PostModalPosterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2AF2989BBD7001966E3 /* PostModalPosterInfo.swift */; };
 		82CBC2B22989BC2F001966E3 /* PostModalPostActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2B12989BC2F001966E3 /* PostModalPostActions.swift */; };
+		82CBC8D82A1B2F61008640E9 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC8D72A1B2F61008640E9 /* DeadlineView.swift */; };
 		82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC312969CB2C00C55F67 /* DAHAApp.swift */; };
 		82CEFC342969CB2C00C55F67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC332969CB2C00C55F67 /* ContentView.swift */; };
 		82CEFC362969CB2D00C55F67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82CEFC352969CB2D00C55F67 /* Assets.xcassets */; };
@@ -333,6 +334,7 @@
 		82CBC2AD2989BB21001966E3 /* PostModalDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModalDescription.swift; sourceTree = "<group>"; };
 		82CBC2AF2989BBD7001966E3 /* PostModalPosterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModalPosterInfo.swift; sourceTree = "<group>"; };
 		82CBC2B12989BC2F001966E3 /* PostModalPostActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModalPostActions.swift; sourceTree = "<group>"; };
+		82CBC8D72A1B2F61008640E9 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
 		82CEFC2E2969CB2C00C55F67 /* DAHA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DAHA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82CEFC312969CB2C00C55F67 /* DAHAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAHAApp.swift; sourceTree = "<group>"; };
 		82CEFC332969CB2C00C55F67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				82ACC68F2995CBED00589E1E /* ChooseTypeButton.swift */,
 				82ACC6932995EEED00589E1E /* TypeModal.swift */,
 				82ACC6912995CC1E00589E1E /* TypeIcon.swift */,
+				82CBC8D72A1B2F61008640E9 /* DeadlineView.swift */,
 			);
 			path = MakePostModalComponents;
 			sourceTree = "<group>";
@@ -1127,6 +1130,7 @@
 				8236021029879425002E7AEC /* PostDescriptionView.swift in Sources */,
 				82218C0C299C8BF90092BA94 /* DeleteUserView.swift in Sources */,
 				82ACC6922995CC1E00589E1E /* TypeIcon.swift in Sources */,
+				82CBC8D82A1B2F61008640E9 /* DeadlineView.swift in Sources */,
 				82B6B2F6298E018B00027E5A /* Haptics.swift in Sources */,
 				82CEFC872969D02400C55F67 /* LoginButton.swift in Sources */,
 				82B6B2E6298B75D800027E5A /* CategoryIconView.swift in Sources */,
@@ -1290,7 +1294,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1330,7 +1334,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

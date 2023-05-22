@@ -52,8 +52,8 @@ struct MessagePreview: View {
                              }
                     }
                     .frame(width: 60)
+
 //                    .padding(.trailing, 2.5)
-                   
                     VStack(alignment: .leading){
                         HStack{
                             Text("@\(channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username)")
@@ -101,11 +101,13 @@ struct MessagePreview: View {
                                 .multilineTextAlignment(.leading)
                         }
                     }
+                
                     Spacer()
                     
                 }
-                .padding(.horizontal, 6)
                 .padding(.vertical, 2)
+                .padding(.horizontal, 6)
+                
                 
             }
             

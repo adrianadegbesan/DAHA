@@ -17,7 +17,7 @@ struct UserPostsScreen: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HeaderView(title: "@\(username)", showMessages: false, showSettings: false, showSearchBar: false, slidingBar: false, tabIndex: nil, tabs: nil, screen: "UserTemp")
+            HeaderView(title: "@\(username)", showMessages: false, showSettings: false, showSearchBar: false, slidingBar: false, tabIndex: nil, tabs: nil, screen: "UserTemp", userID: userId)
                 .frame(alignment: .top)
             Divider()
             if show {
@@ -35,6 +35,7 @@ struct UserPostsScreen: View {
             }
             Divider()
         } //: VStack
+        .ignoresSafeArea(.keyboard)
         .frame(width: screenWidth)
         .navigationTitle("")
         .onAppear{

@@ -28,6 +28,7 @@ struct HeaderView: View {
     @State var shouldNavigate = false
     @State var showExitButton: Bool = false
     @State var connectedAlert: Bool = false
+    @State var userID: String? = ""
     
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
@@ -96,7 +97,31 @@ struct HeaderView: View {
                     
                 } else if showSettings {
                     SettingsButton()
-                } 
+                } else if screen == "UserTemp" {
+                    if userID != nil {
+                        VStack(spacing: 3){
+                            HStack{
+                                if firestoreManager.metricsTemp_loading{
+                                    ProgressView()
+                                } else {
+                                    Text("\(firestoreManager.postTemp_count)")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .foregroundColor(Color(hex: deepBlue))
+//                                        .foregroundColor(firestoreManager.postTemp_count == 0 ? .secondary : .primary)
+                                    
+                                }
+                            }
+                            .padding(15)
+                            .frame(width: 45, height: 45)
+                            .background(Circle().stroke(colorScheme == .dark ? .gray : .black, lineWidth: 2))
+                           
+                        }
+                        .padding(.trailing, 21)
+                        .padding(.top, 3)
+                        
+                        
+                    }
+                }
                 
             } //: HStack
                 
@@ -164,6 +189,14 @@ struct HeaderView: View {
          
             
         } //: VStack
+        .onAppear {
+            if userID != nil && screen == "UserTemp"{
+                Task {
+                    firestoreManager.postTemp_count = 0
+                    await firestoreManager.getUserMetrics(cur_id: userID!)
+                }
+            }
+        }
         .alert("Network Connection Lost", isPresented: $connectedAlert, actions: {}, message: {Text("It looks like your internet connection was lost! Please check your connection and try again.")})
 //        .background(colorScheme == .dark || screen == "Search" ? .clear : Color(hex: greyBackground))
     }

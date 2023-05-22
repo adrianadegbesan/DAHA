@@ -23,7 +23,7 @@ struct PosterInfoView: View {
         HStack(spacing: 3){
             Text("@\(post.username)")
                 .lineLimit(1)
-                .minimumScaleFactor(0.4)
+                .minimumScaleFactor(0.5)
                 .font(.system(size: 12, weight: .semibold))
                 .foregroundColor(colorScheme == .dark ? .white : .black)
                 .onTapGesture {

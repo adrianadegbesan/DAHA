@@ -38,7 +38,7 @@ struct ConditionIcon: View {
         } else {
             Button(action: {
                 withAnimation{
-                    LightFeedback()
+                    SoftFeedback()
                     selected = condition
                     post.condition = condition
                 }
