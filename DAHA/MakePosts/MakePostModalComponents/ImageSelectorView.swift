@@ -17,6 +17,7 @@ struct ImageSelectorView: View {
         VStack{
             HStack{
                 CameraRollButton(images: $images)
+                    .padding(.trailing, screenWidth * 0.025)
                 
                 CameraButton(images: $images)
                 

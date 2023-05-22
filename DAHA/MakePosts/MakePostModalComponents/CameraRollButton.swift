@@ -21,11 +21,18 @@ struct CameraRollButton: View {
                 isPresented = true
             }
         }){
-            Image(systemName: "photo")
-                .resizable()
-                .foregroundColor(images.count == 3 ? .gray : .blue)
-                .frame(width: 89.7, height: 67.52)
-                .padding(.trailing, screenHeight * 0.03)
+//            Image(systemName: "photo")
+//                .resizable()
+//                .foregroundColor(images.count == 3 ? .gray : .blue)
+//                .frame(width: 89.7, height: 67.52)
+//                .padding(.trailing, screenHeight * 0.03)
+            Text(Image(systemName: "photo"))
+                .font(.system(size: 45, weight: .regular))
+                .padding(18)
+                .background(Circle().stroke(images.count == 3 ? .gray : Color(hex: deepBlue), lineWidth: 3))
+                .foregroundColor(images.count == 3 ? .gray : Color(hex: deepBlue))
+                
+            
         }.onChange(of: images_temp){ value in
             for image in images_temp {
                 if !images.contains(image) && images.count < 3{
