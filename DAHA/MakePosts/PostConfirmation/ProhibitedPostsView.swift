@@ -52,7 +52,17 @@ struct ProhibitedPostsView: View {
                                 .id(3)
                             
                             PostView(post: .constant(post), owner: false, preview: true, unpostedPreview: true, unpostedImages: images)
-                            
+                                .shimmering (
+                                    active: shimmer,
+                                    animation: .easeIn(duration: 0.7)
+                                )
+                                .onAppear{
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                                        withAnimation{
+                                            shimmer = false
+                                        }
+                                    }
+                                }
                             Text("By posting on DAHA, you acknowledge that this post is in compliance with our terms and conditions:")
                                 .font(
                                     .system(size: 14, weight: .bold)

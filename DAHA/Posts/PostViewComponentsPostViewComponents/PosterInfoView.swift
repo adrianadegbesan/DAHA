@@ -17,6 +17,7 @@ struct PosterInfoView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var shouldNavigate: Bool = false
     @EnvironmentObject var firestoreManager : FirestoreManager
+    @State var isAnimating: Bool = true
     
     
     var body: some View {
@@ -56,11 +57,33 @@ struct PosterInfoView: View {
             
             Spacer()
             
-            Text(post.type == "Listing" ? Image(systemName: "cart.fill") : Image(systemName: "figure.stand.line.dotted.figure.stand"))
-                .lineLimit(1)
-                .minimumScaleFactor(0.4)
-                .font(.system(size: 15.5, weight: .heavy))
-                .foregroundColor(Color(hex: deepBlue))
+//            if isAnimating{
+                Text(post.type == "Listing" ? Image(systemName: "cart.fill") : Image(systemName: "figure.stand.line.dotted.figure.stand"))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.4)
+                    .font(.system(size: 15.5, weight: .heavy))
+                    .foregroundColor(Color(hex: deepBlue))
+                    .transition(.opacity)
+//                    .shimmering (
+//                        active: isAnimating,
+//                        animation: .easeIn(duration: 0.6)
+//                    )
+//                    .onAppear{
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+//                            withAnimation{
+//                                isAnimating = false
+//                            }
+//                        }
+//                    }
+//            } else {
+//                Text(post.type == "Listing" ? Image(systemName: "cart.fill") : Image(systemName: "figure.stand.line.dotted.figure.stand"))
+//                    .lineLimit(1)
+//                    .minimumScaleFactor(0.4)
+//                    .font(.system(size: 15.5, weight: .heavy))
+//                    .foregroundColor(Color(hex: deepBlue))
+//                    .transition(.opacity)
+//            }
+           
             
             NavigationLink(destination: UserPostsScreen(username: post.username, userId: post.userID), isActive: $shouldNavigate){
                 EmptyView()

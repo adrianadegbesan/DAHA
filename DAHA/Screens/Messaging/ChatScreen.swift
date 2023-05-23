@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import Shimmer
 
 struct ChatScreen: View {
     @State var post: PostModel
@@ -30,6 +31,7 @@ struct ChatScreen: View {
     @EnvironmentObject var delegate: AppDelegate
     
     @State var shouldNavigate : Bool = false
+    @State var shimmer: Bool = true
     
     var body: some View {
         VStack(spacing: 0){
@@ -45,17 +47,46 @@ struct ChatScreen: View {
                     ScrollView{
                         
                         VStack(spacing: 0){
-                            PostView(post: .constant(post), owner: false, preview: true)
-                                .scaleEffect(isAnimating ? 0.98 : 0.93)
-                                .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
-                                .onLongPressGesture(minimumDuration: 0.5) {
-                                     SoftFeedback()
-                                     isAnimating = true
-                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                        isAnimating = false
+                            if redirect {
+                                PostView(post: .constant(post), owner: false, preview: true)
+                                    .scaleEffect(isAnimating ? 0.98 : 0.93)
+                                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                                    .onLongPressGesture(minimumDuration: 0.5) {
+                                         SoftFeedback()
+                                         isAnimating = true
+                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                            isAnimating = false
+                                         }
                                      }
-                                 }
-                                
+                                    .shimmering (
+                                        active: shimmer,
+                                        animation: .easeIn(duration: 1.0)
+                                    )
+                                    .onAppear{
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                                            withAnimation {
+                                                shimmer = false
+                                            }
+                                        }
+                                    }
+//                                    .onChange(of: message){ value in
+//                                        withAnimation{
+//                                            shimmer = false
+//                                        }
+//                                    }
+                            } else {
+                                PostView(post: .constant(post), owner: false, preview: true)
+                                    .scaleEffect(isAnimating ? 0.98 : 0.93)
+                                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                                    .onLongPressGesture(minimumDuration: 0.5) {
+                                         SoftFeedback()
+                                         isAnimating = true
+                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                            isAnimating = false
+                                         }
+                                     }
+
+                            }
                             
                                SafetyMessageView()
                             
