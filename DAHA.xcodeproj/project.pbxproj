@@ -156,6 +156,8 @@
 		82CBC2B02989BBD7001966E3 /* PostModalPosterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2AF2989BBD7001966E3 /* PostModalPosterInfo.swift */; };
 		82CBC2B22989BC2F001966E3 /* PostModalPostActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC2B12989BC2F001966E3 /* PostModalPostActions.swift */; };
 		82CBC8D82A1B2F61008640E9 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC8D72A1B2F61008640E9 /* DeadlineView.swift */; };
+		82CD181E2A1D3516004FC18F /* TimestampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CD181D2A1D3516004FC18F /* TimestampView.swift */; };
+		82CD18202A1D3B49004FC18F /* DeleteChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CD181F2A1D3B49004FC18F /* DeleteChatView.swift */; };
 		82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC312969CB2C00C55F67 /* DAHAApp.swift */; };
 		82CEFC342969CB2C00C55F67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC332969CB2C00C55F67 /* ContentView.swift */; };
 		82CEFC362969CB2D00C55F67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82CEFC352969CB2D00C55F67 /* Assets.xcassets */; };
@@ -335,6 +337,8 @@
 		82CBC2AF2989BBD7001966E3 /* PostModalPosterInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModalPosterInfo.swift; sourceTree = "<group>"; };
 		82CBC2B12989BC2F001966E3 /* PostModalPostActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModalPostActions.swift; sourceTree = "<group>"; };
 		82CBC8D72A1B2F61008640E9 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
+		82CD181D2A1D3516004FC18F /* TimestampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampView.swift; sourceTree = "<group>"; };
+		82CD181F2A1D3B49004FC18F /* DeleteChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChatView.swift; sourceTree = "<group>"; };
 		82CEFC2E2969CB2C00C55F67 /* DAHA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DAHA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82CEFC312969CB2C00C55F67 /* DAHAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAHAApp.swift; sourceTree = "<group>"; };
 		82CEFC332969CB2C00C55F67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -520,6 +524,8 @@
 				82BFA9DF2A0A2953009DA461 /* TemplateMessage.swift */,
 				82BFA9E12A0A2F07009DA461 /* TemplateView.swift */,
 				82CAF0482A19491000EEE1E7 /* SafetyMessageView.swift */,
+				82CD181D2A1D3516004FC18F /* TimestampView.swift */,
+				82CD181F2A1D3B49004FC18F /* DeleteChatView.swift */,
 			);
 			name = Messaging;
 			path = Screens/Messaging;
@@ -1072,6 +1078,7 @@
 				82B6B2F0298C438E00027E5A /* CameraRollButton.swift in Sources */,
 				829850962A144CAA00A56010 /* UserPostsScreen.swift in Sources */,
 				82CF5E8C29F1D90400D93737 /* ExitButton.swift in Sources */,
+				82CD181E2A1D3516004FC18F /* TimestampView.swift in Sources */,
 				82B6B2CD298A14DC00027E5A /* ConditionIcon.swift in Sources */,
 				82B6B2E4298B73E000027E5A /* ChooseCategoryButton.swift in Sources */,
 				82CEFC462969CBF000C55F67 /* Images.swift in Sources */,
@@ -1110,6 +1117,7 @@
 				82A21A6029A6A9DA0040BAA1 /* PrivacyPolicyView.swift in Sources */,
 				82218C34299FC7E90092BA94 /* ImageIndicator.swift in Sources */,
 				828CAFA929B29CF800B489F4 /* MessageOptions.swift in Sources */,
+				82CD18202A1D3B49004FC18F /* DeleteChatView.swift in Sources */,
 				82A21A7629AEA3870040BAA1 /* EmailScreen.swift in Sources */,
 				825902E129FF7C6C004EB809 /* AnimatedCategoryIcon.swift in Sources */,
 				82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */,
@@ -1294,7 +1302,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1334,7 +1342,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

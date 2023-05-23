@@ -106,6 +106,7 @@ struct HeaderView: View {
                                 } else {
                                     Text("\(firestoreManager.postTemp_count)")
                                         .font(.system(size: 20, weight: .bold))
+                                        .minimumScaleFactor(0.5)
                                         .foregroundColor(Color(hex: deepBlue))
 //                                        .foregroundColor(firestoreManager.postTemp_count == 0 ? .secondary : .primary)
                                     

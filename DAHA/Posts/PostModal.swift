@@ -42,6 +42,7 @@ struct PostModal: View {
             .padding()
             .navigationBarTitle("")
             .navigationBarTitleDisplayMode(.inline)
+            .ignoresSafeArea(.keyboard)
 //            .navigationBarItems(leading: PostModalPosterInfo(post: post))
         }
         .alert("Successfully Reported Post", isPresented: $success_alert, actions:{}, message: {Text("This post was successfully reported")})

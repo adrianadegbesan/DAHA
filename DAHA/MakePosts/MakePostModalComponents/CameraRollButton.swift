@@ -26,7 +26,7 @@ struct CameraRollButton: View {
 //                .foregroundColor(images.count == 3 ? .gray : .blue)
 //                .frame(width: 89.7, height: 67.52)
 //                .padding(.trailing, screenHeight * 0.03)
-            Text(Image(systemName: "photo"))
+            Text(Image(systemName: "photo.on.rectangle"))
                 .font(.system(size: 45, weight: .regular))
                 .padding(18)
                 .background(Circle().stroke(images.count == 3 ? .gray : Color(hex: deepBlue), lineWidth: 3))

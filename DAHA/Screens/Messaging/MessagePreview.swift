@@ -23,95 +23,123 @@ struct MessagePreview: View {
     @State var listener : ListenerRegistration?
     
     @State var isAnimating: Bool = false
+    @State private var dragOffset = CGSize.zero
+//    @State var appeared: Bool = false
     
     var body: some View {
         
         NavigationLink( destination: ChatScreen(post: channel.post, redirect: false, receiver: channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username, receiverID:  channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender : channel.receiver, channelID: channel.id, listen: true, scrollDown: true) ){
-            VStack{
-                HStack{
-                    VStack(){
-                        Text(Image(systemName: category_images[channel.post.category] ?? "bag.fill"))
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
-                            .padding(15)
-                            .overlay(
-                                Circle()
-                                    .stroke(lineWidth: 2)
-                                    .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
-                            )
-                            .scaleEffect(isAnimating ? 1.1 : 1.0)
-                            .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
-                            .onTapGesture{
-                                if !isAnimating{
-                                    SoftFeedback()
-                                    isAnimating = true
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                       isAnimating = false
-                                    }
-                                }
-                             }
-                    }
-                    .frame(width: 60)
-
-//                    .padding(.trailing, 2.5)
-                    VStack(alignment: .leading){
-                        HStack{
-                            Text("@\(channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username)")
+            ZStack(alignment: .trailing) {
+//                
+//                DeleteChatView(channel: channel)
+//                    .offset(x: dragOffset.width < 0.0 ? dragOffset.width + 40 : 45)
+                
+                VStack{
+                    HStack{
+                        VStack(){
+                            Text(Image(systemName: category_images[channel.post.category] ?? "bag.fill"))
                                 .font(.system(size: 16, weight: .bold))
-                            
-                            Spacer()
-                            
-                            HStack(spacing: 4){
-    //                            Spacer()
-                                Text(timestampString)
-                                    .font(.system(size: 14, weight: .bold))
-                                    .foregroundColor(.secondary)
-                                    .lineLimit(1)
-                                    .onAppear{
-                                        timestampString = messagePreviewText(for: channel.timestamp)
-    //                                    timestampString = channel.timestamp.timeAgoDisplay()
+                                .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
+                                .padding(15)
+                                .overlay(
+                                    Circle()
+                                        .stroke(lineWidth: 2)
+                                        .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
+                                )
+                                .scaleEffect(isAnimating ? 1.1 : 1.0)
+                                .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
+                                .onTapGesture{
+                                    if !isAnimating{
+                                        SoftFeedback()
+                                        isAnimating = true
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                           isAnimating = false
+                                        }
                                     }
+                                 }
+                        }
+                        .frame(width: 60)
+
+    //                    .padding(.trailing, 2.5)
+                        VStack(alignment: .leading){
+                            HStack{
+                                Text("@\(channel.receiver == Auth.auth().currentUser?.uid ?? "" ? channel.sender_username : channel.receiver_username)")
+                                    .font(.system(size: 16, weight: .bold))
                                 
-                                Text(Image(systemName: "chevron.right"))
-                                    .font(.system(size: 12, weight: .bold))
-                                    .foregroundColor(.secondary.opacity(0.8))
-    //                                .padding(.leading, 3)
+                                Spacer()
+                                
+                                HStack(spacing: 4){
+        //                            Spacer()
+                                    Text(timestampString)
+                                        .font(.system(size: 14, weight: .bold))
+                                        .foregroundColor(.secondary)
+                                        .lineLimit(1)
+                                        .onAppear{
+                                            timestampString = messagePreviewText(for: channel.timestamp)
+        //                                    timestampString = channel.timestamp.timeAgoDisplay()
+                                        }
+                                    
+                                    Text(Image(systemName: "chevron.right"))
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundColor(.secondary.opacity(0.8))
+        //                                .padding(.leading, 3)
+                                }
+                                
                             }
                             
-                        }
-                        
-                        HStack{
-                            Text(channel.post.title)
-                                .font(.system(size: 14, weight: .bold))
+                            HStack{
+                                Text(channel.post.title)
+                                    .font(.system(size: 14, weight: .bold))
+                                
+                                Spacer()
+                                
+                                (Text(channel.post.price == "Free" ? "" : "$") + Text(channel.post.price) + Text("  ") + Text(Image(systemName: type_images[channel.post.type] ?? ""))
+                                    .foregroundColor(channel.post.borrow != nil ? (channel.post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
+                                )
+                                    .font(.system(size: 14, weight: .bold))
+                                    .lineLimit(1)
+                            }
                             
-                            Spacer()
-                            
-                            (Text(channel.post.price == "Free" ? "" : "$") + Text(channel.post.price) + Text("  ") + Text(Image(systemName: type_images[channel.post.type] ?? ""))
-                                .foregroundColor(channel.post.borrow != nil ? (channel.post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
-                            )
-                                .font(.system(size: 14, weight: .bold))
-                                .lineLimit(1)
+                            HStack {
+                                Text(messageManager.messages[channel.id]?.last?.message ?? "")
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .lineLimit(2)
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.leading)
+                            }
                         }
+                    
+                        Spacer()
                         
-                        HStack {
-                            Text(messageManager.messages[channel.id]?.last?.message ?? "")
-                                .font(.system(size: 13, weight: .semibold))
-                                .lineLimit(2)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.leading)
-                        }
                     }
-                
-                    Spacer()
+                    .padding(.vertical, 2)
+                    .padding(.horizontal, 6)
+                    
                     
                 }
-                .padding(.vertical, 2)
-                .padding(.horizontal, 6)
                 
-                
+                .frame(width: screenWidth, height: 90)
+//                .offset(x: dragOffset.width)
+//                .gesture(  // Handle the drag gesture
+//                    DragGesture()
+//                        .onChanged { value in
+//                            // Adjust the offset as the user drags
+//                                // For leading-aligned bubbles, allow dragging to the right
+//                                if value.translation.width < 0 && value.translation.width > -75 {
+//                                    withAnimation{
+//                                        dragOffset = value.translation
+//                                    }
+//
+//                                }
+//                        }
+//                        .onEnded { value in
+//                            // Reset the offset when the user ends the drag
+//                            withAnimation {
+//                                dragOffset = .zero
+//                            }
+//                        }
+//               )
             }
-            
-            .frame(width: screenWidth, height: 90)
           
             
         }
@@ -133,8 +161,8 @@ struct MessagePreview: View {
                     }
                 }
             })
-                
-            
+
+
         }, message: {Text("Are you sure you want to delete this chat?")})
         .alert("Unable to Delete Chat", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later.")})
        
@@ -160,6 +188,7 @@ struct MessagePreview_Previews: PreviewProvider {
         
         let channel = MessageChannelModel(id: "", sender: "1", receiver: "2", users: ["1", "2"], post: post, timestamp: Date(), sender_username: "adrian", receiver_username: "john", channel: "Stanford")
         MessagePreview(channel: channel)
+            .environmentObject(MessageManager())
     }
 }
 
