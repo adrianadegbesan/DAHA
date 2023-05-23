@@ -18,20 +18,28 @@ struct MessageBubble: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var messageManager : MessageManager
     
+    @State private var forceRefresh: Bool = false
+    
     var body: some View {
         
         
         VStack(alignment: message.senderID != Auth.auth().currentUser?.uid ?? "" ? .leading : .trailing) {
             
             ZStack(alignment: message.senderID != Auth.auth().currentUser?.uid ?? "" ? .leading : .trailing){
-                if message.senderID != Auth.auth().currentUser?.uid {
-                     TimestampView(message: message)
-                        .offset(x: dragOffset.width > 0.0 ? dragOffset.width - 145 : -180.0)  // Move it with the bubble
-                 }
-                if message.senderID == Auth.auth().currentUser?.uid {
-                    TimestampView(message: message)
-                        .offset(x: dragOffset.width < 0.0 ? dragOffset.width + 145 : 180.0)  // Move it with the bubble
-                }
+                
+//                if dragOffset != .zero{
+                    if message.senderID != Auth.auth().currentUser?.uid {
+                         TimestampView(message: message)
+                            .offset(x: dragOffset != .zero && dragOffset.width > 0.0 ? dragOffset.width - 142 : -180.0)  // Move it with the bubble
+                            .transition(.opacity)
+                     }
+                    if message.senderID == Auth.auth().currentUser?.uid {
+                        TimestampView(message: message)
+                            .offset(x: dragOffset != .zero && dragOffset.width < 0.0 ? dragOffset.width + 142 : 180.0)  // Move it with the bubble
+                            .transition(.opacity)
+                    }
+//                }
+              
                 
                 HStack {
                     Text(message.message)
@@ -66,6 +74,7 @@ struct MessageBubble: View {
                                 if value.translation.width < 0 && value.translation.width > -150 {
                                     withAnimation{
                                         dragOffset = value.translation
+                                        forceRefresh.toggle()
                                     }
                                 }
                             }
@@ -74,6 +83,7 @@ struct MessageBubble: View {
                             // Reset the offset when the user ends the drag
                             withAnimation {
                                 dragOffset = .zero
+//                                forceRefresh.toggle()
                             }
                         }
                )

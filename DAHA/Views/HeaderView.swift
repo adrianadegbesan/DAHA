@@ -99,26 +99,22 @@ struct HeaderView: View {
                     SettingsButton()
                 } else if screen == "UserTemp" {
                     if userID != nil {
-                        VStack(spacing: 3){
                             HStack{
                                 if firestoreManager.metricsTemp_loading{
                                     ProgressView()
                                 } else {
                                     Text("\(firestoreManager.postTemp_count)")
                                         .font(.system(size: 20, weight: .bold))
-                                        .minimumScaleFactor(0.5)
+                                        .minimumScaleFactor(0.75)
                                         .foregroundColor(Color(hex: deepBlue))
 //                                        .foregroundColor(firestoreManager.postTemp_count == 0 ? .secondary : .primary)
                                     
                                 }
                             }
-                            .padding(15)
-                            .frame(width: 45, height: 45)
+                            .frame(width: 50, height: 50)
                             .background(Circle().stroke(colorScheme == .dark ? .gray : .black, lineWidth: 2))
-                           
-                        }
-                        .padding(.trailing, 21)
-                        .padding(.top, 3)
+                            .padding(.trailing, 21)
+                            .padding(.top, 3)
                         
                         
                     }
