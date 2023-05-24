@@ -98,9 +98,6 @@ struct LoginScreen: View {
                 }
             }
         }
-        .onTapGesture {
-            hideKeyboard()
-        }
         .onChange(of: uploading) { value in
             //Uploading + Progress View Animation
             if uploading {

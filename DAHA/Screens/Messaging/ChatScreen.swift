@@ -108,6 +108,19 @@ struct ChatScreen: View {
                                 
                                 
                                 ForEach(messageManager.messages[channelID!] ?? []){ message in
+                                    
+                                    // if message first in that day( message right before is in day before and not same day, timestamp in middle of hstack above this, in the format Today HH:MM a or Yesterday HH:MM a or if today is wednesday, then Monday HH:MM a, then before that Sunday HH:MM a till a week from today in the format DayOfTheWeek, Month(shortened), day at HH:MM a and beyond
+                                    
+                                    //message timestamp is found in message.timestamp
+                                    
+                                    if isFirstMessageOfDay(message, in: messageManager.messages[channelID!] ?? []) {
+                                           Text(getFormattedDate(message.timestamp))
+                                            .font(.system(size: 12.5, weight: .semibold))
+                                               .foregroundColor(.secondary)
+                                               .padding()
+                                            
+                                   }
+                                    
                                     MessageBubble(message: message, ChannelID: channelID!)
                                     
                                     if message.id == messageManager.messages[channelID!]?.last?.id {
@@ -219,6 +232,30 @@ struct ChatScreen: View {
         .navigationBarTitle("@\(receiver)")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: channelID != nil ? MessageOptions(post: post, channelID: channelID!, username: receiver, receiverID: receiverID, shouldNavigate: $shouldNavigate) : nil)
+    }
+    
+    func isFirstMessageOfDay(_ message: MessageModel, in messages: [MessageModel]) -> Bool {
+           guard let index = messages.firstIndex(where: { $0.id == message.id }),
+                 index > 0 else {
+               return true
+           }
+           return !Calendar.current.isDate(message.timestamp, inSameDayAs: messages[index - 1].timestamp)
+       }
+       
+       // Format date as needed
+    func getFormattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+
+        let calendar = Calendar.current
+        if calendar.component(.year, from: date) == calendar.component(.year, from: Date()) {
+            // If the year is the same, don't include the year in the format
+            formatter.dateFormat = "EEEE, MMM d, h:mm a"
+        } else {
+            // If the year is different, include the year in the format
+            formatter.dateFormat = "EEEE, MMM d, yyyy, h:mm a"
+        }
+
+        return formatter.string(from: date)
     }
 }
 

@@ -13,12 +13,12 @@ struct MessageBubble: View {
     @State var ChannelID : String
     @State private var showTime = false
     @State var error_alert : Bool = false
-    @State private var dragOffset = CGSize.zero
+    @State private var dragOffset : CGFloat = 0.0
     
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var messageManager : MessageManager
     
-    @State private var forceRefresh: Bool = false
+    @State private var show: Bool = false
     
     var body: some View {
         
@@ -27,18 +27,18 @@ struct MessageBubble: View {
             
             ZStack(alignment: message.senderID != Auth.auth().currentUser?.uid ?? "" ? .leading : .trailing){
                 
-//                if dragOffset != .zero{
+                if show {
                     if message.senderID != Auth.auth().currentUser?.uid {
                          TimestampView(message: message)
-                            .offset(x: dragOffset != .zero && dragOffset.width > 0.0 ? dragOffset.width - 142 : -180.0)  // Move it with the bubble
+                            .offset(x: dragOffset != 0 && dragOffset > 0.0 ? dragOffset - 65 : -80)  // Move it with the bubble
                             .transition(.opacity)
                      }
                     if message.senderID == Auth.auth().currentUser?.uid {
                         TimestampView(message: message)
-                            .offset(x: dragOffset != .zero && dragOffset.width < 0.0 ? dragOffset.width + 142 : 180.0)  // Move it with the bubble
+                            .offset(x: dragOffset != 0 && dragOffset < 0.0 ? dragOffset + 65 : 80)  // Move it with the bubble
                             .transition(.opacity)
                     }
-//                }
+                }
               
                 
                 HStack {
@@ -47,6 +47,7 @@ struct MessageBubble: View {
                         .padding(13)
                         .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: colorScheme == .dark ? messageBubbleReceiver_dark : messageBubbleReceiver_light) : Color(hex: messageSender))
                         .cornerRadius(25)
+                    
    //                     .contextMenu {
    //                         Button {
    //                            UIPasteboard.general.string = message.message
@@ -56,30 +57,31 @@ struct MessageBubble: View {
    //                     }
                 }
                 .frame(maxWidth: 245, alignment: message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
-                .offset(x: dragOffset.width)
+                .offset(x: dragOffset)
                 .gesture(  // Handle the drag gesture
                     DragGesture()
                         .onChanged { value in
+                            show = true
                             // Adjust the offset as the user drags
                             if message.senderID != Auth.auth().currentUser?.uid {
                                 // For leading-aligned bubbles, allow dragging to the right
-                                if value.translation.width > 0 && value.translation.width < 150 {
+                                if value.translation.width > 0 && value.translation.width < 85 {
                                     withAnimation{
-                                        dragOffset = value.translation
+                                        dragOffset = value.translation.width
                                     }
                                    
                                 }
                             } else {
                                 // For trailing-aligned bubbles, allow dragging to the left
-                                if value.translation.width < 0 && value.translation.width > -150 {
+                                if value.translation.width < 0 && value.translation.width > -85 {
                                     withAnimation{
-                                        dragOffset = value.translation
-                                        forceRefresh.toggle()
+                                        dragOffset = value.translation.width
                                     }
                                 }
                             }
                         }
                         .onEnded { value in
+                            show = false
                             // Reset the offset when the user ends the drag
                             withAnimation {
                                 dragOffset = .zero

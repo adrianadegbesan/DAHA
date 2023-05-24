@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Shimmer
 
 
 struct SetUpScreen: View {
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
     @State private var isAnimating : Bool = false
+    @State private var shimmer : Bool = false
     
     var body: some View {
             ZStack {

@@ -119,7 +119,7 @@ struct MessagePreview: View {
                 }
                 
                 .frame(width: screenWidth, height: 90)
-//                .offset(x: dragOffset.width)
+                .offset(x: dragOffset.width)
 //                .gesture(  // Handle the drag gesture
 //                    DragGesture()
 //                        .onChanged { value in
@@ -132,12 +132,12 @@ struct MessagePreview: View {
 //
 //                                }
 //                        }
-//                        .onEnded { value in
-//                            // Reset the offset when the user ends the drag
-//                            withAnimation {
-//                                dragOffset = .zero
-//                            }
-//                        }
+////                        .onEnded { value in
+////                            // Reset the offset when the user ends the drag
+////                            withAnimation {
+////                                dragOffset = .zero
+////                            }
+////                        }
 //               )
             }
           

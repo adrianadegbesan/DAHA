@@ -13,17 +13,11 @@ struct TimestampView: View {
     var message: MessageModel
     
     var body: some View {
-        if Calendar.current.isDateInToday(message.timestamp) {
               Text("\(message.timestamp.formatted(.dateTime.hour().minute()))")
+                  .fontWeight(.semibold)
                   .font(.caption2)
                   .foregroundColor(.gray)
                   .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
-          } else {
-              Text("\(message.timestamp.formatted(.dateTime.hour().minute())) - \(message.timestamp.formatted(.dateTime.month().day().year()))")
-                  .font(.caption2)
-                  .foregroundColor(.gray)
-                  .padding(message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing, 5)
-          }
     }
 }
 

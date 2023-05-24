@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct LaunchScreen: View {
     
@@ -20,6 +21,8 @@ struct LaunchScreen: View {
     @State private var size2 = 0.01
     @State private var size3 = 0.01
     @State private var size4 = 0.01
+    
+    @State private var shimmer: Bool = true
 
     
     var body: some View {
@@ -34,6 +37,17 @@ struct LaunchScreen: View {
                     Image("Logo")
                         .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                         .padding(.bottom, 8)
+//                        .shimmering (
+//                            active: shimmer,
+//                            animation: .easeIn(duration: 0.75)
+//                        )
+//                        .onAppear{
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75){
+//                                withAnimation(.easeIn(duration: 0.25)){
+//                                    shimmer = false
+//                                }
+//                            }
+//                        }
                     
                     HStack(spacing: 1.2){
                         Text("DOES ANYONE HAVE A")

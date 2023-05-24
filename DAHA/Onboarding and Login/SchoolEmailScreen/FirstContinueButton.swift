@@ -74,8 +74,8 @@ struct FirstContinueButton: View {
                 } //: HStack
             } //: ZStack
         } //: Button
-        .alert("No Email Provided", isPresented: $showAlert_noemail, actions: {}, message: { Text("Please input an email address")})
-        .alert("Invalid Email Provided", isPresented: $showAlert_invalidemail, actions: {}, message: { Text("Please input a valid email address")})
+        .alert("No Email Provided", isPresented: $showAlert_noemail, actions: {}, message: { Text("Please enter an email address")})
+        .alert("Invalid Email Provided", isPresented: $showAlert_invalidemail, actions: {}, message: { Text("Please enter a valid email address")})
         .alert("Cannot Verify Email Address", isPresented: $cannot_verify, actions: {}, message: {Text("Cannot verify email address, please check your network connection and try again later")})
     }
 }
