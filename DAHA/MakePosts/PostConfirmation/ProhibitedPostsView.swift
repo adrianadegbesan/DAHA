@@ -27,6 +27,8 @@ struct ProhibitedPostsView: View {
     @State private var showButton = true
     @Binding var uploading : Bool
     
+    @State private var isAnimatingA : Bool = false
+    
     var body: some View {
         
         VStack(spacing: 0) {
@@ -39,15 +41,17 @@ struct ProhibitedPostsView: View {
                             
                             Image("Logo")
                                 .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
-                                .scaleEffect(isAnimating ? 1.05 : 1.0)
+                                .scaleEffect(isAnimating ? 1.1 : 1.0)
                                 .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
-                                .onLongPressGesture(minimumDuration: 0.5) {
-                                    SoftFeedback()
-                                    isAnimating = true
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                        isAnimating = false
+                                .onTapGesture{
+                                    if !isAnimating{
+                                        SoftFeedback()
+                                        isAnimating = true
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                           isAnimating = false
+                                        }
                                     }
-                                }
+                                 }
                                 .padding(.bottom, 10)
                                 .id(3)
                             
@@ -63,6 +67,7 @@ struct ProhibitedPostsView: View {
                                         }
                                     }
                                 }
+                                
                             Text("By posting on DAHA, you acknowledge that this post is in compliance with our terms and conditions:")
                                 .font(
                                     .system(size: 14, weight: .bold)
@@ -84,13 +89,15 @@ struct ProhibitedPostsView: View {
                                         })
                                         .scaleEffect(isAnimating2 ? 1.2 : 1.0)
                                         .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating2)
-                                        .onLongPressGesture(minimumDuration: 0.5) {
-                                            SoftFeedback()
-                                            isAnimating2 = true
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                                isAnimating2 = false
+                                        .onTapGesture{
+                                            if !isAnimating2 {
+                                                SoftFeedback()
+                                                isAnimating2 = true
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                                   isAnimating2 = false
+                                                }
                                             }
-                                        }
+                                         }
                                         .padding(.horizontal, 10)
                                     
                                     Text("No Food or Beverages")
@@ -111,13 +118,15 @@ struct ProhibitedPostsView: View {
                                         .font(.system(size: 35, weight: .bold))
                                         .scaleEffect(isAnimating3 ? 1.2 : 1.0)
                                         .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating3)
-                                        .onLongPressGesture(minimumDuration: 0.5) {
-                                            SoftFeedback()
-                                            isAnimating3 = true
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                                isAnimating3 = false
+                                        .onTapGesture{
+                                            if !isAnimating3 {
+                                                SoftFeedback()
+                                                isAnimating3 = true
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                                   isAnimating3 = false
+                                                }
                                             }
-                                        }
+                                         }
                                         .foregroundColor(.red)
                                         .padding(.horizontal, 10)
                                     
@@ -139,13 +148,15 @@ struct ProhibitedPostsView: View {
                                         .foregroundColor(.red)
                                         .scaleEffect(isAnimating4 ? 1.2 : 1.0)
                                         .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating4)
-                                        .onLongPressGesture(minimumDuration: 0.5) {
-                                            SoftFeedback()
-                                            isAnimating4 = true
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                                isAnimating4 = false
+                                        .onTapGesture{
+                                            if !isAnimating4 {
+                                                SoftFeedback()
+                                                isAnimating4 = true
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                                   isAnimating4 = false
+                                                }
                                             }
-                                        }
+                                         }
                                         .padding(.horizontal, 10)
                                     
                                     Text("No Dangerous/Illegal Items or Substances")
@@ -167,13 +178,15 @@ struct ProhibitedPostsView: View {
                                         .foregroundColor(.red)
                                         .scaleEffect(isAnimating5 ? 1.2 : 1.0)
                                         .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating5)
-                                        .onLongPressGesture(minimumDuration: 0.5) {
-                                            SoftFeedback()
-                                            isAnimating5 = true
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                                isAnimating5 = false
+                                        .onTapGesture{
+                                            if !isAnimating5 {
+                                                SoftFeedback()
+                                                isAnimating5 = true
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                                   isAnimating5 = false
+                                                }
                                             }
-                                        }
+                                         }
                                     
                                         .padding(.horizontal, 10)
                                     
@@ -195,13 +208,15 @@ struct ProhibitedPostsView: View {
                                         .foregroundColor(.red)
                                         .scaleEffect(isAnimating6 ? 1.2 : 1.0)
                                         .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating6)
-                                        .onLongPressGesture(minimumDuration: 0.5) {
-                                            SoftFeedback()
-                                            isAnimating6 = true
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                                isAnimating6 = false
+                                        .onTapGesture{
+                                            if !isAnimating6 {
+                                                SoftFeedback()
+                                                isAnimating6 = true
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                                   isAnimating6 = false
+                                                }
                                             }
-                                        }
+                                         }
                                     
                                         .padding(.horizontal, 10)
                                     

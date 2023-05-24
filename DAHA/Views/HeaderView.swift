@@ -29,10 +29,13 @@ struct HeaderView: View {
     @State var showExitButton: Bool = false
     @State var connectedAlert: Bool = false
     @State var userID: String? = ""
-    
+    @State var opacity: CGFloat = 0.0
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var network : Network
+    @EnvironmentObject var appState : AppState
+    
+    
     
     var body: some View {
         VStack(spacing: 0){
@@ -60,6 +63,15 @@ struct HeaderView: View {
                                 .font(.system(size: screen == "User" ? 17 : 18.5, weight: .bold))
                                 .scaleEffect(screen == "User" && title.count >= 10 ? 0.95 : 1)
                                 .foregroundColor(.white)
+//                                .opacity(screen == "Home" ? opacity : 1)
+//                                .onAppear{
+//                                    if screen == "Home" && appState.homeStart {
+//                                        withAnimation(.easeIn(duration: 0.5)){
+//                                            opacity = 1
+//                                            appState.homeStart = false
+//                                        }
+//                                    }
+//                                }
                                 
                         }
                     }

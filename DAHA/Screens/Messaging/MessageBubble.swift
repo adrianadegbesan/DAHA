@@ -30,12 +30,12 @@ struct MessageBubble: View {
                 if show {
                     if message.senderID != Auth.auth().currentUser?.uid {
                          TimestampView(message: message)
-                            .offset(x: dragOffset != 0 && dragOffset > 0.0 ? dragOffset - 65 : -80)  // Move it with the bubble
+                            .offset(x: dragOffset != 0.0 && dragOffset > 0.0 ? dragOffset - 65 : -80)  // Move it with the bubble
                             .transition(.opacity)
                      }
                     if message.senderID == Auth.auth().currentUser?.uid {
                         TimestampView(message: message)
-                            .offset(x: dragOffset != 0 && dragOffset < 0.0 ? dragOffset + 65 : 80)  // Move it with the bubble
+                            .offset(x: dragOffset != 0.0 && dragOffset < 0.0 ? dragOffset + 65 : 80)  // Move it with the bubble
                             .transition(.opacity)
                     }
                 }
@@ -47,6 +47,12 @@ struct MessageBubble: View {
                         .padding(13)
                         .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: colorScheme == .dark ? messageBubbleReceiver_dark : messageBubbleReceiver_light) : Color(hex: messageSender))
                         .cornerRadius(25)
+//                        .onTapGesture {
+//                            withAnimation{
+//                                show = false
+//                                dragOffset = 0.0
+//                            }
+//                        }
                     
    //                     .contextMenu {
    //                         Button {
@@ -81,14 +87,20 @@ struct MessageBubble: View {
                             }
                         }
                         .onEnded { value in
-                            show = false
                             // Reset the offset when the user ends the drag
                             withAnimation {
-                                dragOffset = .zero
+                                show = false
+                                dragOffset = 0.0
 //                                forceRefresh.toggle()
                             }
                         }
                )
+                .onChange(of: show){ value in
+                    if !show {
+                        dragOffset = 0.0
+                    }
+                    
+                }
             }
          }
 

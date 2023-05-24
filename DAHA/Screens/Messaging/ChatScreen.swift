@@ -124,12 +124,12 @@ struct ChatScreen: View {
                                     MessageBubble(message: message, ChannelID: channelID!)
                                     
                                     if message.id == messageManager.messages[channelID!]?.last?.id {
-                                        Spacer().frame(height: 8)
+                                        Spacer().frame(height: 2)
                                         Text("     ")
                                             .foregroundColor(.clear)
                                             .id(message.id)
                                      } else {
-                                         Spacer().frame(height: 5)
+                                         Spacer().frame(height: 7)
                                              .id(message.id)
                                      }
                                     
@@ -146,7 +146,7 @@ struct ChatScreen: View {
                             
                             if let lastMessage = messageManager.messages[channelID!]?.last {
                                 withAnimation{
-                                    value.scrollTo(lastMessage.id, anchor: .bottom)
+                                    value.scrollTo(lastMessage.id, anchor: .top)
                                 }
                             }
                         }
@@ -166,7 +166,7 @@ struct ChatScreen: View {
                                 if sent {
                                     if let lastMessage = messageManager.messages[channelID!]?.last {
                                         withAnimation{
-                                            value.scrollTo(lastMessage.id, anchor: .bottom)
+                                            value.scrollTo(lastMessage.id, anchor: .top)
                                         }
                                     }
                                 }
@@ -177,7 +177,7 @@ struct ChatScreen: View {
                                     if keyboardFocused {
                                         if let lastMessage = messageManager.messages[channelID!]?.last {
                                             withAnimation{
-                                                value.scrollTo(lastMessage.id, anchor: .bottom)
+                                                value.scrollTo(lastMessage.id, anchor: .top)
                                             }
                                         }
                                     }
