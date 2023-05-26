@@ -11,7 +11,7 @@ import PhotosUI
 struct CameraRollButton: View {
     
     @Binding var images: [UIImage]
-    @State var images_temp: [UIImage] = []
+    @State private var images_temp: [UIImage] = []
     @State private var isPresented: Bool = false
     
     var body: some View {

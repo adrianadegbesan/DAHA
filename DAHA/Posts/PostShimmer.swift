@@ -11,7 +11,7 @@ import Shimmer
 struct PostShimmer: View {
     
     @Environment(\.colorScheme) var colorScheme
-    @State var isAnimating = true
+    @State private var isAnimating = true
     
     var body: some View {
         HStack{

@@ -16,10 +16,10 @@ struct MessageField: View {
     @State private var previousMessage = ""
     @State var post: PostModel
     @Binding var channelID : String?
-    @State var sending : Bool = false
+    @State private var sending : Bool = false
     @Binding var sent : Bool
     @State var redirect : Bool
-    @State var error_alert : Bool = false
+    @State private var error_alert : Bool = false
     var keyboardFocused: FocusState<Bool>.Binding
     @Environment(\.colorScheme) var colorScheme
 

@@ -16,22 +16,24 @@ struct ChatScreen: View {
     @State var receiverID: String
     @State var channelID: String?
     @State var listen: Bool?
-    @State var sent: Bool = false
+    @State private var sent: Bool = false
     @FocusState var keyboardFocused : Bool
     @EnvironmentObject var messageManager : MessageManager
     @EnvironmentObject var appState : AppState
     @Environment(\.colorScheme) var colorScheme
     @State var listener : ListenerRegistration?
     @State var scrollDown : Bool?
-    @State var empty: Bool = true
-    @State var isAnimating: Bool = false
-    @State var message: String = ""
-    @State var showTemplate: Bool = true
+    @State private var empty: Bool = true
+    @State private var isAnimating: Bool = false
+    @State private var message: String = ""
+    @State private var showTemplate: Bool = true
     @AppStorage("messageScreen") var messageScreen: Bool = false
     @EnvironmentObject var delegate: AppDelegate
     
-    @State var shouldNavigate : Bool = false
-    @State var shimmer: Bool = true
+    @State private var shouldNavigate : Bool = false
+    @State private var shimmer: Bool = true
+    @State private var shimmer2: Bool = false
+    
     
     var body: some View {
         VStack(spacing: 0){
@@ -60,10 +62,10 @@ struct ChatScreen: View {
                                      }
                                     .shimmering (
                                         active: shimmer,
-                                        animation: .easeIn(duration: 1.0)
+                                        animation: .easeIn(duration: 0.7)
                                     )
                                     .onAppear{
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9){
                                             withAnimation {
                                                 shimmer = false
                                             }
@@ -76,14 +78,27 @@ struct ChatScreen: View {
 //                                    }
                             } else {
                                 PostView(post: .constant(post), owner: false, preview: true)
-                                    .scaleEffect(isAnimating ? 0.98 : 0.93)
-                                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
-                                    .onLongPressGesture(minimumDuration: 0.5) {
-                                         SoftFeedback()
-                                         isAnimating = true
-                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                            isAnimating = false
-                                         }
+                                    .scaleEffect(0.93)
+                                    .shimmering (
+                                        active: shimmer2,
+                                        animation: .easeIn(duration: 0.7)
+                                    )
+                                    .onLongPressGesture(minimumDuration: 0.3) {
+                                        if !isAnimating{
+//                                            SoftFeedback()
+                                            withAnimation{
+                                                isAnimating = true
+                                                shimmer2 = true
+                                            }
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                                                withAnimation{
+                                                    isAnimating = false
+                                                     shimmer2 = false
+                                                }
+                                               
+                                            }
+                                        }
+                                        
                                      }
 
                             }
@@ -122,6 +137,7 @@ struct ChatScreen: View {
                                    }
                                     
                                     MessageBubble(message: message, ChannelID: channelID!)
+                                        .transition(.opacity)
                                     
                                     if message.id == messageManager.messages[channelID!]?.last?.id {
                                         Spacer().frame(height: 2)
@@ -231,6 +247,18 @@ struct ChatScreen: View {
 
         .navigationBarTitle("@\(receiver)")
         .navigationBarTitleDisplayMode(.inline)
+//        .navigationBarItems(trailing: {
+//                  VStack {
+//                      Spacer()
+//                      HStack {
+//                          Spacer()
+//                          ChatTitle(post: post, receiver: receiver)
+//                          Spacer()
+//                      }
+//                      Spacer()
+//                  }
+//              }())
+        
         .navigationBarItems(trailing: channelID != nil ? MessageOptions(post: post, channelID: channelID!, username: receiver, receiverID: receiverID, shouldNavigate: $shouldNavigate) : nil)
     }
     
@@ -242,19 +270,28 @@ struct ChatScreen: View {
            return !Calendar.current.isDate(message.timestamp, inSameDayAs: messages[index - 1].timestamp)
        }
        
-       // Format date as needed
     func getFormattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
-
         let calendar = Calendar.current
-        if calendar.component(.year, from: date) == calendar.component(.year, from: Date()) {
-            // If the year is the same, don't include the year in the format
-            formatter.dateFormat = "EEEE, MMM d, h:mm a"
+        let currentDate = Date()
+        
+        if calendar.isDateInToday(date) {
+            formatter.dateFormat = "'Today at' h:mm a"
+        } else if calendar.isDateInYesterday(date) {
+            formatter.dateFormat = "'Yesterday at' h:mm a"
         } else {
-            // If the year is different, include the year in the format
-            formatter.dateFormat = "EEEE, MMM d, yyyy, h:mm a"
+            let daysAgo = calendar.dateComponents([.day], from: date, to: currentDate).day ?? 0
+            if daysAgo < 7 {
+                // Within a week ago
+                formatter.dateFormat = "EEEE, MMM d 'at' h:mm a"
+            } else if calendar.component(.year, from: date) == calendar.component(.year, from: currentDate) {
+                // If the year is the same, don't include the year in the format
+                formatter.dateFormat = "EEEE, MMM d 'at' h:mm a"
+            } else {
+                // If the year is different, include the year in the format
+                formatter.dateFormat = "EEEE, MMM d, yyyy, 'at' h:mm a"
+            }
         }
-
         return formatter.string(from: date)
     }
 }

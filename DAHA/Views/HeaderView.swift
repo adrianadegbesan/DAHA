@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 //import SlidingTabView
 
 // Header View utilised throughout this app
@@ -19,21 +20,23 @@ struct HeaderView: View {
     var tabIndex : Binding<Int>?
     var tabs : [String]?
     var screen: String
-    @State var isAnimating: Bool = false
+    @State private var isAnimating: Bool = false
     
     @FocusState private var keyboardFocused: Bool
-    @State var query = ""
-    @State var category = ""
-    @State var type = ""
-    @State var shouldNavigate = false
-    @State var showExitButton: Bool = false
-    @State var connectedAlert: Bool = false
-    @State var userID: String? = ""
-    @State var opacity: CGFloat = 0.0
+    @State private var query = ""
+    @State private var category = ""
+    @State private var type = ""
+    @State private var shouldNavigate = false
+    @State private var showExitButton: Bool = false
+    @State private var connectedAlert: Bool = false
+    @State var userID: String? 
+    @State private var opacity: CGFloat = 0.0
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var network : Network
     @EnvironmentObject var appState : AppState
+    
+    @State private var shimmer: Bool = false
     
     
     
@@ -77,6 +80,24 @@ struct HeaderView: View {
                     }
                     .offset(x: -30)
                 }
+                .transition(.opacity)
+//                .shimmering (
+//                    active: shimmer,
+//                    animation: .easeIn(duration: 0.7)
+//                )
+//                .onTapGesture {
+//                    if !isAnimating{
+//                        SoftFeedback()
+//                        isAnimating = true
+//                        shimmer = true
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9){
+//                            withAnimation {
+//                                shimmer = false
+//                                isAnimating = false
+//                            }
+//                        }
+//                    }
+//                }
                 .scaleEffect(isAnimating ? 1.075 : 1.0)
                 .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
                 .onTapGesture{

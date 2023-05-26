@@ -12,9 +12,9 @@ import Firebase
 
 struct PostView: View {
     @Binding var post: PostModel
-    @State var saved = false
-    @State var price = ""
-    @State var reported = false
+    @State private var saved = false
+    @State private var price = ""
+    @State private var reported = false
     
 //    @State private var selected : Bool = false
     @State private var reported_alert : Bool = false
@@ -22,7 +22,7 @@ struct PostView: View {
     
     @State private var buyNavigate: Bool = false
     @State private var redirect: Bool = true
-    @State var channelID : String = ""
+    @State private var channelID : String = ""
     @EnvironmentObject var messageManager : MessageManager
     
     @State var owner : Bool

@@ -15,11 +15,11 @@ struct NextButton: View {
     @Binding var category : String
     @Binding var type: String
     
-    @State var error_alert : Bool = false
-    @State var error_message: String = ""
-    @State var shouldNavigate: Bool = false
+    @State private var error_alert : Bool = false
+    @State private var error_message: String = ""
+    @State private var shouldNavigate: Bool = false
     @Environment(\.colorScheme) var colorScheme
-    @State var post_temp : Bool = false
+    @State private var post_temp : Bool = false
     
     @AppStorage("username") var username_system: String = ""
     

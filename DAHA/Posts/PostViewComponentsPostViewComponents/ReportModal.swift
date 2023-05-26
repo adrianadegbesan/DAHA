@@ -10,12 +10,12 @@ import FirebaseAuth
 
 struct ReportModal: View {
     @State var post: PostModel
-    @State var report_alert: Bool = false
-    @State var dismiss_screen: Bool = false
-    @State var success_alert: Bool = false
-    @State var error_alert: Bool = false
-    @State var description: String = ""
-    @State var uploading: Bool = false
+    @State private var report_alert: Bool = false
+    @State private var dismiss_screen: Bool = false
+    @State private var success_alert: Bool = false
+    @State private var error_alert: Bool = false
+    @State private var description: String = ""
+    @State private var uploading: Bool = false
     @Binding var reported: Bool
     @FocusState var keyboard : Bool
     @EnvironmentObject var firestoreManager : FirestoreManager

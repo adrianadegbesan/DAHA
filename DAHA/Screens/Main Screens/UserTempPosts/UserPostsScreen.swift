@@ -12,8 +12,8 @@ struct UserPostsScreen: View {
     @State var username : String
     @State var userId : String
     @EnvironmentObject var firestoreManager : FirestoreManager
-    @State var opacity = 0.0
-    @State var show: Bool = true
+    @State private var opacity = 0.0
+    @State private var show: Bool = true
     
     var body: some View {
         VStack(spacing: 0) {

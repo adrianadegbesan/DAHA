@@ -9,10 +9,10 @@ import SwiftUI
 
 struct DeleteButton: View {
     @State var post: PostModel
-    @State var isPresented: Bool = false
-    @State var deleted: Bool = false
-    @State var error_alert : Bool = false
-    @State var delete_alert : Bool = false
+    @State private var isPresented: Bool = false
+    @State private var deleted: Bool = false
+    @State private var error_alert : Bool = false
+    @State private var delete_alert : Bool = false
     @State var modal : Bool?
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.dismiss) var dismiss

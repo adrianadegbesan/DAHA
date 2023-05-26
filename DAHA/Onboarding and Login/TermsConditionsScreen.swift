@@ -9,8 +9,8 @@ import SwiftUI
 
 struct TermsConditionsScreen: View {
     
-    @State var toggle : Bool = false
-    @State var shouldNavigate : Bool = false
+    @State private var toggle : Bool = false
+    @State private var shouldNavigate : Bool = false
     @State private var isAnimating : Bool = false
     @AppStorage("termsagreed") var agreedToTerms: Bool = false
     @Environment(\.colorScheme) var colorScheme

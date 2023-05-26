@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import Shimmer
 
 struct PosterInfoView: View {
     
@@ -15,9 +16,10 @@ struct PosterInfoView: View {
     @State var unpostedPreview: Bool?
     @State private var timestampString = ""
     @Environment(\.colorScheme) var colorScheme
-    @State var shouldNavigate: Bool = false
+    @State private var shouldNavigate: Bool = false
     @EnvironmentObject var firestoreManager : FirestoreManager
-    @State var isAnimating: Bool = true
+    @State private var isAnimating: Bool = true
+    @State private var shimmer: Bool = false
     
     
     var body: some View {
@@ -62,19 +64,22 @@ struct PosterInfoView: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.4)
                     .font(.system(size: 15.5, weight: .heavy))
-                    .foregroundColor(Color(hex: deepBlue))
+                    .foregroundColor(post.borrow != nil ? (post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
                     .transition(.opacity)
-//                    .shimmering (
-//                        active: isAnimating,
-//                        animation: .easeIn(duration: 0.6)
-//                    )
-//                    .onAppear{
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-//                            withAnimation{
-//                                isAnimating = false
-//                            }
-//                        }
-//                    }
+                    .shimmering (
+                        active: shimmer,
+                        animation: .easeIn(duration: 0.7)
+                    )
+                    .onTapGesture {
+                        withAnimation{
+                            shimmer = true
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9){
+                            withAnimation {
+                                shimmer = false
+                            }
+                        }
+                    }
 //            } else {
 //                Text(post.type == "Listing" ? Image(systemName: "cart.fill") : Image(systemName: "figure.stand.line.dotted.figure.stand"))
 //                    .lineLimit(1)

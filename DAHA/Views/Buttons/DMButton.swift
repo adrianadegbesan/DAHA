@@ -9,7 +9,7 @@ import SwiftUI
 
 // Button used to go to DM Page
 struct DMButton: View {
-    @State var shouldNavigate = false
+    @State private var shouldNavigate = false
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("unread") var unread: Bool = false
     

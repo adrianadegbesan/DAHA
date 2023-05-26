@@ -166,7 +166,7 @@ class MessageManager: ObservableObject {
                 for document in documents {
                     do {
                         let message = try document.data(as: MessageModel.self)
-                        withAnimation{
+                        withAnimation(.easeIn(duration: 0.3)){
                             if self.messages.keys.contains(channelID){
                                 if !(self.messages[channelID]!.contains(where: { $0.id == message.id})){
                                     self.messages[channelID]?.append(message)

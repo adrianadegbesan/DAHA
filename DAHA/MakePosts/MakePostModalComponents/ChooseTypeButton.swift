@@ -11,7 +11,7 @@ import BottomSheet
 struct ChooseTypeButton: View {
 //    @Binding var post: PostModel
     @Binding var selected: String
-    @State var isPresented: Bool = false
+    @State private var isPresented: Bool = false
     @Environment(\.colorScheme) var colorScheme
 //    @State var bottomSheetPosition: BottomSheetPosition = .relative(0.4)
     

@@ -14,15 +14,15 @@ struct MessagePreview: View {
     @State var channel : MessageChannelModel
     
     //State var MessageObject
-    @State var timestampString : String = ""
-    @State var delete_alert : Bool = false
-    @State var error_alert : Bool = false
+    @State private var timestampString : String = ""
+    @State private var delete_alert : Bool = false
+    @State private var error_alert : Bool = false
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var messageManager : MessageManager
     @State var listener : ListenerRegistration?
     
-    @State var isAnimating: Bool = false
+    @State private var isAnimating: Bool = false
     @State private var dragOffset = CGSize.zero
 //    @State var appeared: Bool = false
     
@@ -41,6 +41,20 @@ struct MessagePreview: View {
                                 .font(.system(size: 16, weight: .bold))
                                 .foregroundColor(colorScheme == .dark && channel.post.category == "General" ? .white : Color(hex: category_colors[channel.post.category] ?? "ffffff") )
                                 .padding(15)
+                                .background(
+                                      Circle()
+                                          .fill(
+                                            colorScheme == .light ?
+                                              LinearGradient(gradient: Gradient(colors: [
+                                                  Color(hex:  category_colors[channel.post.category] ?? "ffffff").opacity(0.3),
+                                                  Color(hex: category_colors[channel.post.category] ?? "ffffff").opacity(0.15)
+                                              ]), startPoint: .top, endPoint: .bottom) :
+                                                LinearGradient(gradient: Gradient(colors: [
+                                                    .black.opacity(0.3), .black.opacity(0.15)
+                                                ]), startPoint: .top, endPoint: .bottom)
+                                          )
+                                  )
+                            
                                 .overlay(
                                     Circle()
                                         .stroke(lineWidth: 2)

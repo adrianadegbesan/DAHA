@@ -158,6 +158,7 @@
 		82CBC8D82A1B2F61008640E9 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CBC8D72A1B2F61008640E9 /* DeadlineView.swift */; };
 		82CD181E2A1D3516004FC18F /* TimestampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CD181D2A1D3516004FC18F /* TimestampView.swift */; };
 		82CD18202A1D3B49004FC18F /* DeleteChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CD181F2A1D3B49004FC18F /* DeleteChatView.swift */; };
+		82CD18222A1E8968004FC18F /* ChatTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CD18212A1E8968004FC18F /* ChatTitle.swift */; };
 		82CEFC322969CB2C00C55F67 /* DAHAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC312969CB2C00C55F67 /* DAHAApp.swift */; };
 		82CEFC342969CB2C00C55F67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CEFC332969CB2C00C55F67 /* ContentView.swift */; };
 		82CEFC362969CB2D00C55F67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82CEFC352969CB2D00C55F67 /* Assets.xcassets */; };
@@ -339,6 +340,7 @@
 		82CBC8D72A1B2F61008640E9 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
 		82CD181D2A1D3516004FC18F /* TimestampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampView.swift; sourceTree = "<group>"; };
 		82CD181F2A1D3B49004FC18F /* DeleteChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChatView.swift; sourceTree = "<group>"; };
+		82CD18212A1E8968004FC18F /* ChatTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTitle.swift; sourceTree = "<group>"; };
 		82CEFC2E2969CB2C00C55F67 /* DAHA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DAHA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82CEFC312969CB2C00C55F67 /* DAHAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAHAApp.swift; sourceTree = "<group>"; };
 		82CEFC332969CB2C00C55F67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				82CAF0482A19491000EEE1E7 /* SafetyMessageView.swift */,
 				82CD181D2A1D3516004FC18F /* TimestampView.swift */,
 				82CD181F2A1D3B49004FC18F /* DeleteChatView.swift */,
+				82CD18212A1E8968004FC18F /* ChatTitle.swift */,
 			);
 			name = Messaging;
 			path = Screens/Messaging;
@@ -1033,6 +1036,7 @@
 				82BFA9E92A0AF746009DA461 /* PostShimmerScroll.swift in Sources */,
 				82E75AC3297E321600742F18 /* Email API.swift in Sources */,
 				82C4589529BA811400661703 /* FirebaseHelpers.swift in Sources */,
+				82CD18222A1E8968004FC18F /* ChatTitle.swift in Sources */,
 				82A21A6229A6AAD40040BAA1 /* PrivacySettingsScreen.swift in Sources */,
 				82B6B2FC298F3C8300027E5A /* CustomCameraView.swift in Sources */,
 				82218C16299C970C0092BA94 /* TermsSettingsScreen.swift in Sources */,
@@ -1281,7 +1285,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
@@ -1302,7 +1306,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.18;
+				MARKETING_VERSION = 1.0.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1321,7 +1325,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DAHA/DAHA.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DAHA/Preview Content\"";
 				DEVELOPMENT_TEAM = 5NJPLM4XY4;
 				ENABLE_PREVIEWS = YES;
@@ -1342,7 +1346,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.18;
+				MARKETING_VERSION = 1.0.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -10,8 +10,8 @@ import SwiftUI
 struct SettingsScreen: View {
     
     @AppStorage("isDarkMode") private var isDarkMode = "System"
-    @State var shouldNavigateTerms = false
-    @State var shouldNavigatePrivacy = false
+    @State private var shouldNavigateTerms = false
+    @State private var shouldNavigatePrivacy = false
     
     var body: some View {
         

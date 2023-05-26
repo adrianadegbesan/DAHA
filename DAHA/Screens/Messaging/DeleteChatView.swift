@@ -10,8 +10,8 @@ import Firebase
 
 struct DeleteChatView: View {
     
-    @State var delete_alert : Bool = false
-    @State var error_alert : Bool = false
+    @State private var delete_alert : Bool = false
+    @State private var error_alert : Bool = false
     @EnvironmentObject var messageManager : MessageManager
     @State var channel : MessageChannelModel
     

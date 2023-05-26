@@ -11,7 +11,7 @@ import Firebase
 // Home Screen
 struct HomeScreen: View {
     @AppStorage("university") var university: String = ""
-    @State var shouldNavigate : Bool = false
+    @State private var shouldNavigate : Bool = false
     @State private var tabIndex : Int = 0
     @State private var tabs : [String] = ["LISTINGS", "REQUESTS"]
     @EnvironmentObject var firestoreManager : FirestoreManager

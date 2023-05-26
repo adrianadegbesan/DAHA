@@ -16,12 +16,12 @@ struct ProfileScreen: View {
     @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var appState : AppState
     @Environment(\.colorScheme) var colorScheme
-    @State var opacity1 = 1.0
-    @State var opacity2 = 0.0
-    @State var opacity3 = 0.0
-    @State var first = true
-    @State var second = false
-    @State var third = false
+    @State private var opacity1 = 1.0
+    @State private var opacity2 = 0.0
+    @State private var opacity3 = 0.0
+    @State private var first = true
+    @State private var second = false
+    @State private var third = false
     @State private var dividerOffset: CGFloat = 0
     
 

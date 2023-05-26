@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CameraButton: View{
     @Binding var images: [UIImage]
-    @State var image: UIImage? = nil
+    @State private var image: UIImage? = nil
     @State private var isPresented: Bool = false
     
     var body: some View {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginButton: View {
-    @State var shouldNavigate = false
+    @State private var shouldNavigate = false
     var body: some View {
         Button(action: {
             LightFeedback()

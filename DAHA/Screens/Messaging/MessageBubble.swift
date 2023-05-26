@@ -12,13 +12,15 @@ struct MessageBubble: View {
     var message: MessageModel
     @State var ChannelID : String
     @State private var showTime = false
-    @State var error_alert : Bool = false
+    @State private var error_alert : Bool = false
     @State private var dragOffset : CGFloat = 0.0
     
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var messageManager : MessageManager
     
     @State private var show: Bool = false
+    @EnvironmentObject var appState : AppState
+    @State private var opacity: CGFloat = 0.0
     
     var body: some View {
         
@@ -43,16 +45,20 @@ struct MessageBubble: View {
                 
                 HStack {
                     Text(message.message)
+                        .font(message.message.containsOnlyEmoji && message.message.count <= 3 ? .largeTitle : .body)
+//                        .scaleEffect(message.message.containsOnlyEmoji && message.message.count <= 3 ? 2 : 1)
                         .foregroundColor(colorScheme == .dark ? .white : (message.senderID != Auth.auth().currentUser?.uid ? .black : .white))
                         .padding(13)
                         .background(message.senderID != Auth.auth().currentUser?.uid ? Color(hex: colorScheme == .dark ? messageBubbleReceiver_dark : messageBubbleReceiver_light) : Color(hex: messageSender))
                         .cornerRadius(25)
-//                        .onTapGesture {
-//                            withAnimation{
-//                                show = false
-//                                dragOffset = 0.0
-//                            }
-//                        }
+                        .onTapGesture {
+                            if dragOffset > 0 || dragOffset < 0{
+                                withAnimation{
+                                    show = false
+                                    dragOffset = 0.0
+                                }
+                            }
+                        }
                     
    //                     .contextMenu {
    //                         Button {
@@ -63,8 +69,8 @@ struct MessageBubble: View {
    //                     }
                 }
                 .frame(maxWidth: 245, alignment: message.senderID != Auth.auth().currentUser?.uid  ? .leading : .trailing)
-                .offset(x: dragOffset)
-                .gesture(  // Handle the drag gesture
+                .offset(x: dragOffset, y: 0)
+                .highPriorityGesture(  // Handle the drag gesture
                     DragGesture()
                         .onChanged { value in
                             show = true

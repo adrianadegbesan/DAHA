@@ -10,8 +10,8 @@ import Firebase
 
 struct AnimatedCategoryIcon: View {
     @State var post: PostModel
-    @State var tapped: Bool = false
-    @State var currentColor: String = ""
+    @State private var tapped: Bool = false
+    @State private var currentColor: String = ""
     @State private var isAnimating: Bool = false
     @Environment(\.colorScheme) var colorScheme
     let lightColors = ["001685", "BB0F0F", "0FBB2A", "00C5D6", "D89000", "5400D3", "03A597", "C5BF03", "D400D8", "000000"]
@@ -21,15 +21,17 @@ struct AnimatedCategoryIcon: View {
         
         ZStack{
             
-            if colorScheme == .dark {
-                glowingView(color: Color(hex: currentColor))
-                    .opacity(isAnimating ? 0 : 1)
-                    .animation(.easeInOut(duration: 0.5), value: isAnimating)
-            }
+//            if colorScheme == .dark {
+//                glowingView(color: Color(hex: currentColor))
+//                    .opacity(isAnimating ? 0 : 1)
+//                    .animation(.easeInOut(duration: 0.5), value: isAnimating)
+//            }
             Text(Image(systemName: category_images[post.category] ?? "bag.fill"))
                 .font(
                     .system(size:65, weight: .regular)
                 )
+//                .padding(45)
+//                .overlay(Circle().stroke(lineWidth: 3))
                 .foregroundColor( tapped ? Color(hex: currentColor) : (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                 .opacity(isAnimating ? 0 : 1)
                 .animation(.easeInOut(duration: 0.5), value: isAnimating)
@@ -48,6 +50,7 @@ struct AnimatedCategoryIcon: View {
                             }
                         }
                 }
+               
                 .onAppear{
                     if post.category == "General" && colorScheme == .dark {
                         currentColor = "FFFFFF"

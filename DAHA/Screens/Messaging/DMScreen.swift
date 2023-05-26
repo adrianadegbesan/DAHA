@@ -17,7 +17,7 @@ struct DMScreen: View {
     @EnvironmentObject var messageManager : MessageManager
     @State var profile : Bool?
     @State var listener : ListenerRegistration?
-    @State var isAnimating : Bool = false
+    @State private var isAnimating : Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){

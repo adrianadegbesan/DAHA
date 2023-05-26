@@ -25,10 +25,10 @@ struct PostScrollView: View {
     @State private var isAnimating: Bool = false
     @State var userId : String?
     
-    @State var screenOpacity = 0.1
+    @State private var screenOpacity = 0.1
 //    @State var time = Timer.publish(every: 0.1, on: .main, in: .tracking).autoconnect()
     
-    @State var categoryFilter = ""
+    @State private var categoryFilter = ""
 
     private func loadMorePostsIfNeeded(_ currentPostID: String, screen: String) {
             if currentPostID == targetPostID {

@@ -30,7 +30,7 @@ struct ContentView: View {
     
   @State private var shouldNavigate = false
   @State private var channel : MessageChannelModel? = nil
-  @State var listener : ListenerRegistration?
+//  @State var listener : ListenerRegistration?
   @State private var connectedAlert = false
   
     

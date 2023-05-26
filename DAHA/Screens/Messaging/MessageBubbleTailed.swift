@@ -12,7 +12,7 @@ struct MessageBubbleTailed: View {
     var message: MessageModel
     @State var ChannelID : String
     @State private var showTime = false
-    @State var error_alert : Bool = false
+    @State private var error_alert : Bool = false
     
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var messageManager : MessageManager

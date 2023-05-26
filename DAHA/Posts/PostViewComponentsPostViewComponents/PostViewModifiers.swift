@@ -12,7 +12,7 @@ struct PostViewModifier: ViewModifier {
     @State var post: PostModel
     @Binding var price: String
     @Binding var reported: Bool
-    @State var Sold: Bool = false
+    @State private var Sold: Bool = false
     @Environment(\.colorScheme) var colorScheme
                   
     func body(content: Content) -> some View {

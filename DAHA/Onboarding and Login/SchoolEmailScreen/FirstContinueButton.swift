@@ -18,7 +18,7 @@ struct FirstContinueButton: View {
     @State private var showAlert_invalidemail : Bool = false
     @State private var cannot_verify : Bool = false
     @State private var uni_temp : String = ""
-    @State var isValid : Bool = false
+    @State private var isValid : Bool = false
     @AppStorage("university") var university: String = ""
     @AppStorage("email") var email_system: String = ""
     @EnvironmentObject var firestoreManager : FirestoreManager

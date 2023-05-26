@@ -15,9 +15,9 @@ struct PostImageView: View {
     @State var owner : Bool
     @State var preview: Bool
     @State var reported: Bool
-    @State var opacity: Double = 0.1
+    @State private var opacity: Double = 0.1
     @Environment(\.colorScheme) var colorScheme
-    @State var showImagePopup : Bool = false
+    @State private var showImagePopup : Bool = false
     
     var body: some View {
         

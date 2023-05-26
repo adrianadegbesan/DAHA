@@ -10,7 +10,7 @@ import SwiftUI
 //Button used to go to Posts Screen
 struct PostButton: View {
     
-    @State var shouldNavigate : Bool = false
+    @State private var shouldNavigate : Bool = false
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         

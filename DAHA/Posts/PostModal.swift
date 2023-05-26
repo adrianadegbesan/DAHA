@@ -14,7 +14,7 @@ struct PostModal: View {
     @Binding var price: String
     @Binding var saved: Bool
     @Binding var reported: Bool
-    @State var success_alert: Bool = false
+    @State private var success_alert: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
     @State var owner : Bool

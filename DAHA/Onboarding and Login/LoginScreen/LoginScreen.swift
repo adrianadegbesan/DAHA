@@ -21,10 +21,10 @@ struct LoginScreen: View {
     @State private var password: String = ""
     @State private var isSecured: Bool = false
     
-    @State var progressOpacity = 0.0
-    @State var screenOpacity = 1.0
+    @State private var progressOpacity = 0.0
+    @State private var screenOpacity = 1.0
     @State private var isAnimating : Bool = false
-    @State var uploading = false
+    @State private var uploading = false
     
     @FocusState var keyboardEmail : Bool
     @FocusState var keyboardPassword : Bool

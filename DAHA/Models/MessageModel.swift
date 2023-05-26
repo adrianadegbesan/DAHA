@@ -18,6 +18,7 @@ struct MessageModel: Identifiable, Codable{
     var message: String
     var timestamp : Date
     var messageChannelID : String
+    var retrieved: Bool?
 }
 
 extension MessageModel {

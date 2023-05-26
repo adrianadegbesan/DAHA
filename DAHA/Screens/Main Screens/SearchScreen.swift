@@ -9,21 +9,21 @@ import SwiftUI
 
 struct SearchScreen: View {
     
-    @State var query = ""
-    @State var category = ""
-    @State var type = ""
-    @State var shouldNavigate = false
-    @State var opacity = 1.0
+    @State private var query = ""
+    @State private var category = ""
+    @State private var type = ""
+    @State private var shouldNavigate = false
+    @State private var opacity = 1.0
     @FocusState private var keyboardFocused: Bool
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
-    @State var searched = false
+    @State private var searched = false
     @State var navScreen : Bool?
-    @State var isAnimating: Bool = false
-    @State var isAnimating2: Bool = false
+    @State private var isAnimating: Bool = false
+    @State private var isAnimating2: Bool = false
     
-    @State var showExitButton: Bool = false
-    @State var show: Bool = true
+    @State private var showExitButton: Bool = false
+    @State private var show: Bool = true
     
     var body: some View {
         GeometryReader { _ in

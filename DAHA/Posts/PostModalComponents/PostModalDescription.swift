@@ -17,8 +17,8 @@ struct PostModalDescription: View {
     @State  var owner: Bool
     @State private var error_alert = false
     
-    @State var isAnimating : Bool = false
-    @State var isAnimating2 : Bool = false
+    @State private var isAnimating : Bool = false
+    @State private var isAnimating2 : Bool = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -94,7 +94,7 @@ struct PostModalDescription: View {
                                     .transition(.scale)
                                     .overlay (
                                         Rectangle()
-                                            .strokeBorder(lineWidth: 2)
+                                            .strokeBorder(lineWidth: 1.5)
                                     )
 //                                    .onAppear{
 //                                        withAnimation(.easeIn(duration: 0.3)){
@@ -150,7 +150,7 @@ struct PostModalDescription: View {
                     .overlay (
         //                RoundedRectangle(cornerRadius: 15)
                         Rectangle()
-                            .strokeBorder(lineWidth: 2.5)
+                            .strokeBorder(lineWidth: 1.5)
                     )
                     
 //                Image(systemName: category_images[post.category] ?? "bag.fill")

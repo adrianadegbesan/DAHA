@@ -10,7 +10,7 @@ import SwiftUI
 struct LendButton: View {
     @Binding var post: PostModel
     @Binding var type: String
-    @State var selected : Bool = false
+    @State private var selected : Bool = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {

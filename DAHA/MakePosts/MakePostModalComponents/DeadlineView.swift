@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DeadlineView: View {
     @Binding var post: PostModel
-    @State var selected: Bool = false
+    @State private var selected: Bool = false
     @State private var showingDatePicker = false
     @State private var selectedDate = Date()
     @Environment(\.colorScheme) var colorScheme

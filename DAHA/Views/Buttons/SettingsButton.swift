@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsButton: View {
-    @State var shouldNavigate = false
+    @State private var shouldNavigate = false
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {

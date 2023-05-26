@@ -12,12 +12,12 @@ struct ReportUserModal: View {
     
     @EnvironmentObject var messageManager : MessageManager
     @State var channelID: String
-    @State var success_alert: Bool = false
-    @State var error_alert: Bool = false
-    @State var report_alert: Bool = false
-    @State var description: String = ""
-    @State var uploading: Bool = false
-    @State var post : PostModel? = nil
+    @State private var success_alert: Bool = false
+    @State private var error_alert: Bool = false
+    @State private var report_alert: Bool = false
+    @State private var description: String = ""
+    @State private var uploading: Bool = false
+    @State private var post : PostModel? = nil
     @Binding var reported: Bool
     @State var username: String
     @State var receiverID: String

@@ -10,7 +10,7 @@ import SwiftUI
 struct ConditionNavigatorView: View {
     
     @Binding var post: PostModel
-    @State var selected: String = ""
+    @State private var selected: String = ""
     
     let conditions = ["New", "Good", "Worn-Out"]
     

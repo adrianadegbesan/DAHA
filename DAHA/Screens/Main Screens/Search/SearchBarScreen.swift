@@ -17,7 +17,7 @@ struct SearchBarScreen: View {
     @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var appState : AppState
     @FocusState private var keyboardFocused: Bool
-    @State var show: Bool = true
+    @State private var show: Bool = true
     
     var body: some View {
         ZStack {

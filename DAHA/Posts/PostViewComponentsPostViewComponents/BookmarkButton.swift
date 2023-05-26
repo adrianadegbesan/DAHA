@@ -12,11 +12,11 @@ struct BookmarkButton: View {
     
     @State var post: PostModel
     @Binding var saved: Bool
-    @State var save_alert: Bool = false
-    @State var unsave_alert: Bool = false
+    @State private var save_alert: Bool = false
+    @State private var unsave_alert: Bool = false
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var firestoreManager : FirestoreManager
-    @State var updating: Bool = false
+    @State private var updating: Bool = false
 //    @State var time = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {

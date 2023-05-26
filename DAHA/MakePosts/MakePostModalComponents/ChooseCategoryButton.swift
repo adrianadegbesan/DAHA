@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChooseCategoryButton: View {
-    @State var categoryPresented: Bool = false
+    @State private var categoryPresented: Bool = false
     @Binding var selected: String
     @Environment(\.colorScheme) var colorScheme
     

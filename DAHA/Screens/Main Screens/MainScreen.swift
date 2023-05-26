@@ -10,9 +10,9 @@ import SwiftUI
 struct MainScreen: View {
     
 //    @State var selectedIndex = 0
-    @State var shouldNavigate: Bool = false
-    @State var tabSelection: Int = 0
-    @State var current: Int = 0
+    @State private var shouldNavigate: Bool = false
+    @State private var tabSelection: Int = 0
+    @State private var current: Int = 0
     @EnvironmentObject var firestoreManager : FirestoreManager
     @EnvironmentObject var authManager : AuthManager
     @EnvironmentObject var messageManager : MessageManager

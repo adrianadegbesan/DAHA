@@ -14,10 +14,10 @@ struct MessageOptions: View {
     @State var channelID : String
     @State var username : String
     @State var receiverID: String
-    @State var delete_alert : Bool = false
+    @State private var delete_alert : Bool = false
     @State private var error_alert : Bool = false
-    @State var report_modal : Bool = false
-    @State var reported : Bool = false
+    @State private var report_modal : Bool = false
+    @State private var reported : Bool = false
     @Binding var shouldNavigate: Bool
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var messageManager : MessageManager

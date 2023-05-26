@@ -10,11 +10,11 @@ import SwiftUI
 // Search Screen
 struct OriginalSearchScreen: View {
     
-    @State var query = ""
-    @State var category = ""
-    @State var type = ""
-    @State var shouldNavigate = false
-    @State var opacity = 1.0
+    @State private var query = ""
+    @State private var category = ""
+    @State private var type = ""
+    @State private var shouldNavigate = false
+    @State private var opacity = 1.0
     @FocusState private var keyboardFocused: Bool
     @Environment(\.colorScheme) var colorScheme
     

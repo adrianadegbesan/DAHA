@@ -9,13 +9,13 @@ import SwiftUI
 
 struct MakePostTextInputs: View {
     
-    @State var price: String = ""
-    @State var title: String = ""
-    @State var description: String = ""
+    @State private var price: String = ""
+    @State private var title: String = ""
+    @State private var description: String = ""
     @Binding var post: PostModel
     @Binding var type : String
     @FocusState var description_input : Bool
-    @State var opacity: Double = 0.0
+    @State private var opacity: Double = 0.0
     
     var body: some View {
         VStack{

@@ -11,10 +11,10 @@ import FirebaseAuth
 struct ReportButton: View {
     @State var post: PostModel
     @Binding var reported: Bool
-    @State var report_modal: Bool = false
-    @State var success_alert: Bool = false
-    @State var error_alert: Bool = false
-    @State var description: String = ""
+    @State private var report_modal: Bool = false
+    @State private var success_alert: Bool = false
+    @State private var error_alert: Bool = false
+    @State private var description: String = ""
     @EnvironmentObject var firestoreManager : FirestoreManager
     @Environment(\.colorScheme) var colorScheme
     

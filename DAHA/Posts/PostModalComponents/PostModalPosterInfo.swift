@@ -7,11 +7,13 @@
 
 import SwiftUI
 import Firebase
+import Shimmer
 
 struct PostModalPosterInfo: View {
     @State var post: PostModel
     @Environment(\.colorScheme) var colorScheme
-    @State var shouldNavigate: Bool = false
+    @State private var shouldNavigate: Bool = false
+    @State private var shimmer: Bool = false
     @EnvironmentObject var firestoreManager : FirestoreManager
 
     
@@ -42,7 +44,21 @@ struct PostModalPosterInfo: View {
                 .font(.system(size: 15, weight: .heavy))
                 .layoutPriority(1)
                 .padding(.trailing, 10)
-                .foregroundColor(Color(hex: deepBlue))
+                .foregroundColor(post.borrow != nil ? (post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
+                .shimmering (
+                    active: shimmer,
+                    animation: .easeIn(duration: 0.7)
+                )
+                .onTapGesture {
+                    withAnimation{
+                        shimmer = true
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.9){
+                        withAnimation {
+                            shimmer = false
+                        }
+                    }
+                }
             
             NavigationLink(destination: UserPostsScreen(username: post.username, userId: post.userID), isActive: $shouldNavigate){
                 EmptyView()

@@ -18,9 +18,9 @@ struct CreateAccountScreen: View {
         @State private var shouldNavigate : Bool = false
         @State private var error : Bool = false
         @State private var error_message : String = ""
-        @State var uploading : Bool = false
-        @State var progressOpacity = 0.0
-        @State var screenOpacity = 1.0
+        @State private var uploading : Bool = false
+        @State private var progressOpacity = 0.0
+        @State private var screenOpacity = 1.0
         @State private var isAnimating : Bool = false
         @EnvironmentObject var firestoreManager : FirestoreManager
         @Environment(\.colorScheme) var colorScheme
