@@ -117,7 +117,9 @@ struct ChatScreen: View {
                                 EmptyView()
                             }
                             
-                            TemplateView(post: post, message: $message, channelID: $channelID, showTemplate: $showTemplate)
+//                            TemplateView(post: post, message: $message, channelID: $channelID, showTemplate: $showTemplate)
+                            
+                            
                         
                             if channelID != nil{
                                 
@@ -176,6 +178,10 @@ struct ChatScreen: View {
                     }
                     .onTapGesture {
                         hideKeyboard()
+                    }
+                    if channelID == nil {
+                        TemplateView(post: post, message: $message, channelID: $channelID, showTemplate: $showTemplate)
+                            .padding(.bottom, 3)
                     }
                     Divider()
                    

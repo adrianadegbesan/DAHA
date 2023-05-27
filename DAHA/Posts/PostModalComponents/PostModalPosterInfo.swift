@@ -43,7 +43,7 @@ struct PostModalPosterInfo: View {
                 .font(.system(size: 15, weight: .heavy))
                 .layoutPriority(1)
                 .padding(.trailing, 10)
-                .foregroundColor(post.borrow != nil ? (post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
+                .foregroundColor(post.price == "Sold" || post.price == "Satisfied" ? Color(hex: color_new) : post.borrow != nil ? (post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
                 .modifier(shimmerOnTap())
             
             NavigationLink(destination: UserPostsScreen(username: post.username, userId: post.userID), isActive: $shouldNavigate){

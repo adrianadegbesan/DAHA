@@ -63,7 +63,7 @@ struct PosterInfoView: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.4)
                     .font(.system(size: 15.5, weight: .heavy))
-                    .foregroundColor(post.borrow != nil ? (post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
+                    .foregroundColor(post.price == "Sold" || post.price == "Satisfied" ? Color(hex: color_new) : post.borrow != nil ? (post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
                     .transition(.opacity)
                     .modifier(shimmerOnTap())
 //            } else {
