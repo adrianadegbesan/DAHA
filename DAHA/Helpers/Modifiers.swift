@@ -199,3 +199,25 @@ extension View {
         }))
     }
 }
+
+struct shimmerOnTap: ViewModifier {
+    @State private var shimmer: Bool = false
+
+    func body(content: Content) -> some View {
+        content
+            .shimmering(
+                active: shimmer,
+                animation: .easeIn(duration: 0.7)
+            )
+            .onTapGesture {
+                withAnimation{
+                    shimmer = true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.9){
+                    withAnimation {
+                        shimmer = false
+                    }
+                }
+            }
+    }
+}

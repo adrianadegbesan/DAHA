@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct CategoryView: View {
     
@@ -101,6 +102,7 @@ struct CategoryView: View {
                             .padding(8)
                             .background(Circle().stroke(lineWidth: 2))
                             .foregroundColor(Color(hex: category_colors["Borrow"] ?? "000000"))
+                            .modifier(shimmerOnTap())
                     }
                   
                     

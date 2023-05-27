@@ -81,23 +81,6 @@ struct HeaderView: View {
                     .offset(x: -30)
                 }
                 .transition(.opacity)
-//                .shimmering (
-//                    active: shimmer,
-//                    animation: .easeIn(duration: 0.7)
-//                )
-//                .onTapGesture {
-//                    if !isAnimating{
-//                        SoftFeedback()
-//                        isAnimating = true
-//                        shimmer = true
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9){
-//                            withAnimation {
-//                                shimmer = false
-//                                isAnimating = false
-//                            }
-//                        }
-//                    }
-//                }
                 .scaleEffect(isAnimating ? 1.075 : 1.0)
                 .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
                 .onTapGesture{
@@ -146,6 +129,7 @@ struct HeaderView: View {
                             }
                             .frame(width: 50, height: 50)
                             .background(Circle().stroke(colorScheme == .dark ? .gray : .black, lineWidth: 2))
+                            .modifier(shimmerOnTap())
                             .padding(.trailing, 21)
                             .padding(.top, 3)
                         

@@ -19,7 +19,6 @@ struct PosterInfoView: View {
     @State private var shouldNavigate: Bool = false
     @EnvironmentObject var firestoreManager : FirestoreManager
     @State private var isAnimating: Bool = true
-    @State private var shimmer: Bool = false
     
     
     var body: some View {
@@ -66,20 +65,7 @@ struct PosterInfoView: View {
                     .font(.system(size: 15.5, weight: .heavy))
                     .foregroundColor(post.borrow != nil ? (post.borrow! ? Color(hex: category_colors["Borrow"] ?? "000000") : Color(hex: deepBlue) ) : Color(hex: deepBlue))
                     .transition(.opacity)
-                    .shimmering (
-                        active: shimmer,
-                        animation: .easeIn(duration: 0.7)
-                    )
-                    .onTapGesture {
-                        withAnimation{
-                            shimmer = true
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9){
-                            withAnimation {
-                                shimmer = false
-                            }
-                        }
-                    }
+                    .modifier(shimmerOnTap())
 //            } else {
 //                Text(post.type == "Listing" ? Image(systemName: "cart.fill") : Image(systemName: "figure.stand.line.dotted.figure.stand"))
 //                    .lineLimit(1)
