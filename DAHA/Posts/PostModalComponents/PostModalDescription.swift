@@ -41,26 +41,29 @@ struct PostModalDescription: View {
                 
                 Spacer()
                 
-                (Text((post.price == "Free" || post.price == "Sold" || post.price == "Satisfied") ? "" : "$") + Text(post.price))
-//                (Text((price == "Free" || price == "Sold" || price == "Satisfied") ? "" : "$") + Text(price))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundColor((post.price == "Sold" || post.price == "Satisfied") ? Color(hex: color_new) : .primary)
-                    .scaleEffect(isAnimating2 ? 1.2 : 1.0)
-                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating2)
-                    .onLongPressGesture(minimumDuration: 0.5) {
-                        isAnimating2 = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                            isAnimating2 = false
-                        }
-                     }
-                if post.price == "Sold" || post.price == "Satisfied"{
-                    Text(Image(systemName: "checkmark"))
+                HStack(spacing: 2){
+                    (Text((post.price == "Free" || post.price == "Sold" || post.price == "Satisfied") ? "" : "$") + Text(post.price))
+    //                (Text((price == "Free" || price == "Sold" || price == "Satisfied") ? "" : "$") + Text(price))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
                         .font(.system(size: 16, weight: .bold))
-                        .foregroundColor(Color(hex: color_new))
-                        
+                        .foregroundColor((post.price == "Sold" || post.price == "Satisfied") ? Color(hex: color_new) : .primary)
+                        .scaleEffect(isAnimating2 ? 1.2 : 1.0)
+                        .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating2)
+                        .onLongPressGesture(minimumDuration: 0.5) {
+                            isAnimating2 = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                isAnimating2 = false
+                            }
+                         }
+                    if post.price == "Sold" || post.price == "Satisfied"{
+                        Text(Image(systemName: "checkmark"))
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(Color(hex: color_new))
+                            
+                    }
                 }
+            
                  
             } //:HStack
             .padding(.leading, 12)

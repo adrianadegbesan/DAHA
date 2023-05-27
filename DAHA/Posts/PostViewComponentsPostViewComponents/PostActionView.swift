@@ -18,17 +18,20 @@ struct PostActionView: View {
     
     var body: some View {
         HStack{
-            (Text((post.price == "Free" || post.price == "Sold" || post.price == "Satisfied") ? "" : "$") + Text(post.price))
-//            (Text((price == "Free" || price == "Sold" || price == "Satisfied") ? "" : "$") + Text(price))
-                .lineLimit(1)
-                .font(.system(size: 16, weight: .bold))
-                .layoutPriority(1)
-                .foregroundColor((post.price == "Sold" || post.price == "Satisfied") ? Color(hex: color_new) : .primary)
-            if post.price == "Sold" || post.price == "Satisfied"{
-                Text(Image(systemName: "checkmark"))
+            HStack(spacing: 2){
+                (Text((post.price == "Free" || post.price == "Sold" || post.price == "Satisfied") ? "" : "$") + Text(post.price))
+    //            (Text((price == "Free" || price == "Sold" || price == "Satisfied") ? "" : "$") + Text(price))
+                    .lineLimit(1)
                     .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(Color(hex: color_new))
+                    .layoutPriority(1)
+                    .foregroundColor((post.price == "Sold" || post.price == "Satisfied") ? Color(hex: color_new) : .primary)
+                if post.price == "Sold" || post.price == "Satisfied"{
+                    Text(Image(systemName: "checkmark"))
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundColor(Color(hex: color_new))
+                }
             }
+            
             
             if owner && !preview{
                 Spacer()

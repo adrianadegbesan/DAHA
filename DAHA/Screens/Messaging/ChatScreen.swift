@@ -135,6 +135,12 @@ struct ChatScreen: View {
                                                .padding()
                                             
                                    }
+//                                    if isFirstMessageOfDay(message, in: messageManager.messages[channelID!] ?? []) || isFirstMessageInPeriod(message, in: messageManager.messages[channelID!] ?? [], period: 3 * 60 * 60) {
+//                                        Text(getFormattedDate(message.timestamp))
+//                                            .font(.system(size: 12.5, weight: .semibold))
+//                                            .foregroundColor(.secondary)
+//                                            .padding()
+//                                    }
                                     
                                     MessageBubble(message: message, ChannelID: channelID!)
                                         .transition(.opacity)
@@ -269,6 +275,21 @@ struct ChatScreen: View {
            }
            return !Calendar.current.isDate(message.timestamp, inSameDayAs: messages[index - 1].timestamp)
        }
+    
+    func isFirstMessageInPeriod(_ message: MessageModel, in messages: [MessageModel], period: TimeInterval = 3 * 60 * 60) -> Bool {
+        guard let index = messages.firstIndex(where: { $0.id == message.id }) else {
+            return false
+        }
+        
+        guard index > 0 else {
+            return true
+        }
+        
+        let previousMessage = messages[index - 1]
+        let timeDifference = message.timestamp.timeIntervalSince(previousMessage.timestamp)
+        
+        return timeDifference >= period
+    }
        
     func getFormattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
@@ -294,6 +315,8 @@ struct ChatScreen: View {
         }
         return formatter.string(from: date)
     }
+    
+    
 }
 
 struct ChatScreen_Previews: PreviewProvider {
