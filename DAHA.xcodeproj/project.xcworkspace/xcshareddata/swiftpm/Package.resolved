@@ -163,6 +163,15 @@
       }
     },
     {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect",
+      "state" : {
+        "branch" : "master",
+        "revision" : "5b3f3996c7a2a84d5f4ba0e03cd7d584154778f2"
+      }
+    },
+    {
       "identity" : "swiftui-shimmer",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/markiv/SwiftUI-Shimmer",

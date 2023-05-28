@@ -85,19 +85,23 @@ struct PostModalDescription: View {
                                             .frame(width: screenWidth * 0.96, height: screenHeight * 0.35)
                                             .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                                             .overlay (
-                                //                RoundedRectangle(cornerRadius: 15)
-                                                Rectangle()
-                                                    .strokeBorder(lineWidth: 2)
+                                                RoundedRectangle(cornerRadius: 15)
+//                                                Rectangle()
+                                                    .strokeBorder(lineWidth: 2.5)
+                                                  
                                             )
                                     }
                                     .indicator(.activity)
                                     .scaledToFit()
                                     .clipped()
+                                    .cornerRadius(15)
 //                                    .opacity(opacity)
                                     .transition(.scale)
                                     .overlay (
-                                        Rectangle()
-                                            .strokeBorder(lineWidth: 1.5)
+                                        RoundedRectangle(cornerRadius: 15)
+//                                        Rectangle()
+                                            .strokeBorder(lineWidth: 2.5)
+                                            .foregroundColor(post.price == "Sold" || post.price == "Satisfied" ? Color(hex: color_new) : colorScheme == .dark ? .white : .black )
                                     )
 //                                    .onAppear{
 //                                        withAnimation(.easeIn(duration: 0.3)){
@@ -151,9 +155,11 @@ struct PostModalDescription: View {
                 AnimatedCategoryIcon(post: post)
                     .frame(width: screenWidth * 0.96, height: screenHeight * 0.35)
                     .overlay (
-        //                RoundedRectangle(cornerRadius: 15)
-                        Rectangle()
-                            .strokeBorder(lineWidth: 1.5)
+                        RoundedRectangle(cornerRadius: 15)
+//                        Rectangle()
+                            .strokeBorder(lineWidth: 2.5)
+                            .foregroundColor(post.price == "Sold" || post.price == "Satisfied" ? Color(hex: color_new) : colorScheme == .dark ? .white : .black )
+                        
                     )
                     
 //                Image(systemName: category_images[post.category] ?? "bag.fill")

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import Introspect
 
 
 struct MessageField: View {
@@ -176,14 +177,27 @@ struct CustomTextField: View {
                 .opacity(0.5)
             }
             
-            
-            TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
-                .focused(keyboardFocused)
-                .onAppear{
-                    if redirect{
-                        keyboardFocused.wrappedValue = true
+            if redirect{
+                TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+                    .focused(keyboardFocused)
+                    .introspectTextField { textField in
+                        textField.becomeFirstResponder()
                     }
-                }
+            } else {
+                TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+                    .focused(keyboardFocused)
+            }
+            
+//            TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+//                .focused(keyboardFocused)
+//                .onAppear{
+//                    if redirect{
+//                        withAnimation {
+//                            keyboardFocused.wrappedValue = true
+//                        }
+//                       
+//                    }
+//                }
                 
             
         }

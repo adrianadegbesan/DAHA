@@ -22,6 +22,8 @@ struct PostModal: View {
         ScrollView {
             VStack(alignment: .leading){
                 
+//                PostModalImageView(post: post)
+//                
                 PostModalPosterInfo(post: post)
                 
                 CategoryView(post: post, screen: "Modal", reported: $reported, owner: owner, preview: false)
@@ -39,7 +41,7 @@ struct PostModal: View {
                 
                 
             }
-            .padding()
+            .padding(10)
             .navigationBarTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .ignoresSafeArea(.keyboard)

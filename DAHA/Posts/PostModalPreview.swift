@@ -20,6 +20,8 @@ struct PostModalPreview: View {
         ScrollView {
             VStack(alignment: .leading){
                 
+//                PostModalImageView(post: post)
+                
                 PostModalPosterInfo(post: post)
                 
                 CategoryPreview(post: post, screen: "Modal", owner: (post.userID == Auth.auth().currentUser?.uid))
@@ -44,7 +46,7 @@ struct PostModalPreview: View {
                 Spacer()
                 
             }
-            .padding()
+            .padding(10)
             .navigationBarTitle("")
             .navigationBarTitleDisplayMode(.inline)
         }

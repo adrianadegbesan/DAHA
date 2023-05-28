@@ -31,9 +31,8 @@ struct ChatScreen: View {
     @EnvironmentObject var delegate: AppDelegate
     
     @State private var shouldNavigate : Bool = false
-    @State private var shimmer: Bool = true
-    @State private var shimmer2: Bool = false
-    
+    @State private var shimmer: Bool = false
+    @State private var showTemplateMain: Bool = false
     
     var body: some View {
         VStack(spacing: 0){
@@ -49,38 +48,10 @@ struct ChatScreen: View {
                     ScrollView{
                         
                         VStack(spacing: 0){
-                            if redirect {
-                                PostView(post: .constant(post), owner: false, preview: true)
-                                    .scaleEffect(isAnimating ? 0.98 : 0.93)
-                                    .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
-                                    .onLongPressGesture(minimumDuration: 0.5) {
-                                         SoftFeedback()
-                                         isAnimating = true
-                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                            isAnimating = false
-                                         }
-                                     }
-                                    .shimmering (
-                                        active: shimmer,
-                                        animation: .easeIn(duration: 0.7)
-                                    )
-                                    .onAppear{
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9){
-                                            withAnimation {
-                                                shimmer = false
-                                            }
-                                        }
-                                    }
-//                                    .onChange(of: message){ value in
-//                                        withAnimation{
-//                                            shimmer = false
-//                                        }
-//                                    }
-                            } else {
                                 PostView(post: .constant(post), owner: false, preview: true)
                                     .scaleEffect(0.93)
                                     .shimmering (
-                                        active: shimmer2,
+                                        active: shimmer,
                                         animation: .easeIn(duration: 0.7)
                                     )
                                     .onLongPressGesture(minimumDuration: 0.3) {
@@ -88,12 +59,12 @@ struct ChatScreen: View {
 //                                            SoftFeedback()
                                             withAnimation{
                                                 isAnimating = true
-                                                shimmer2 = true
+                                                shimmer = true
                                             }
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                                                 withAnimation{
                                                     isAnimating = false
-                                                     shimmer2 = false
+                                                     shimmer = false
                                                 }
                                                
                                             }
@@ -101,7 +72,6 @@ struct ChatScreen: View {
                                         
                                      }
 
-                            }
                             
                                SafetyMessageView()
                             
@@ -112,6 +82,15 @@ struct ChatScreen: View {
                                 .padding(.horizontal)
                                 .padding(.bottom, 15)
                                 .padding(.horizontal, 20)
+                            
+//                            if channelID == nil {
+//                                
+//                                Spacer().frame(height: 50)
+//                                
+//                                Image("Logo")
+//                                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
+//                                    .opacity(0.4)
+//                            }
                             
                             NavigationLink(destination: PostModalPreview(post: post, price: post.price), isActive: $shouldNavigate){
                                 EmptyView()
@@ -180,8 +159,10 @@ struct ChatScreen: View {
                         hideKeyboard()
                     }
                     if channelID == nil {
+                        
                         TemplateView(post: post, message: $message, channelID: $channelID, showTemplate: $showTemplate)
                             .padding(.bottom, 3)
+                            .transition(.opacity)
                     }
                     Divider()
                    

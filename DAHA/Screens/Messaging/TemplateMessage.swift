@@ -10,6 +10,7 @@ import SwiftUI
 struct TemplateMessage: View {
     @State var text: String
     @Binding var message : String
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         Button(action: {
@@ -19,7 +20,7 @@ struct TemplateMessage: View {
                 .font(.system(size: 15))
                 .padding(13)
                 .overlay(Capsule().stroke(lineWidth: 1).foregroundColor(.secondary))
-                .padding(.bottom, 5)
+//                .padding(.bottom, 5)
                
         }
         .foregroundColor(.primary)

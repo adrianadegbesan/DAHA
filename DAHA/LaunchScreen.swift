@@ -22,7 +22,7 @@ struct LaunchScreen: View {
     @State private var size3 = 0.01
     @State private var size4 = 0.01
     
-    @State private var shimmer: Bool = true
+    @State private var shimmer: Bool = false
 
     
     var body: some View {
@@ -37,17 +37,7 @@ struct LaunchScreen: View {
                     Image("Logo")
                         .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
                         .padding(.bottom, 8)
-//                        .shimmering (
-//                            active: shimmer,
-//                            animation: .easeIn(duration: 0.75)
-//                        )
-//                        .onAppear{
-//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75){
-//                                withAnimation(.easeIn(duration: 0.25)){
-//                                    shimmer = false
-//                                }
-//                            }
-//                        }
+                     
                     
                     HStack(spacing: 1.2){
                         Text("DOES ANYONE HAVE A")
@@ -81,6 +71,10 @@ struct LaunchScreen: View {
                 .padding(.bottom, screenWidth * 0.32)
                 .scaleEffect(size)
                 .opacity(opacity)
+                .shimmering (
+                    active: shimmer,
+                    animation: .easeIn(duration: 0.75)
+                )
                 /*Opacity and scale effect of whole image*/
                 .onAppear{
                     withAnimation(.easeIn(duration: 0.65)){
@@ -111,6 +105,7 @@ struct LaunchScreen: View {
                         self.size4 = 1
                     }
                 }
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
                     withAnimation {
                         self.isActive = true

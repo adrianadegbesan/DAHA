@@ -246,7 +246,7 @@ struct PostScrollView: View {
 //                                    } else {
                                         PostView(post: $posts[index], owner: (post.userID == Auth.auth().currentUser?.uid), preview: false)
                                             .id(post.id)
-                                            .padding(.leading, 3)
+                                            .padding(.horizontal, 5)
                                             .padding(.bottom, 10)
                                             .onAppear {
                                                 currentPostID = post.id

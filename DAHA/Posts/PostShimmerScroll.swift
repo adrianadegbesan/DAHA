@@ -12,7 +12,7 @@ struct PostShimmerScroll: View {
         VStack{
             ForEach(1..<10) { i in
                 PostShimmer()
-                    .padding(.leading, 3)
+                    .padding(.horizontal, 5)
                     .padding(.bottom, 10)
             }
         }

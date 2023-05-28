@@ -122,4 +122,5 @@ func centerSquareCrop(image: UIImage) -> UIImage {
     let croppedImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
     
     return croppedImage
+    
 }
