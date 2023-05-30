@@ -44,16 +44,26 @@ struct MessagePreview: View {
                                 .background(
                                       Circle()
                                           .fill(
-                                            colorScheme == .light ?
                                               LinearGradient(gradient: Gradient(colors: [
                                                   Color(hex:  category_colors[channel.post.category] ?? "ffffff").opacity(0.3),
                                                   Color(hex: category_colors[channel.post.category] ?? "ffffff").opacity(0.15)
-                                              ]), startPoint: .top, endPoint: .bottom) :
-                                                LinearGradient(gradient: Gradient(colors: [
-                                                    .black.opacity(0.3), .black.opacity(0.15)
-                                                ]), startPoint: .top, endPoint: .bottom)
+                                              ]), startPoint: .top, endPoint: .bottom)
                                           )
                                   )
+//                                .background(
+//                                      Circle()
+//                                          .fill(
+//                                            colorScheme == .light ?
+//                                              LinearGradient(gradient: Gradient(colors: [
+//                                                  Color(hex:  category_colors[channel.post.category] ?? "ffffff").opacity(0.3),
+//                                                  Color(hex: category_colors[channel.post.category] ?? "ffffff").opacity(0.15)
+//                                              ]), startPoint: .top, endPoint: .bottom) :
+//                                                LinearGradient(gradient: Gradient(colors: [
+//                                                    Color(hex:  category_colors[channel.post.category] ?? "ffffff").opacity(0.4),
+//                                                    Color(hex: category_colors[channel.post.category] ?? "ffffff").opacity(0.2)
+//                                                ]), startPoint: .top, endPoint: .bottom)
+//                                          )
+//                                  )
                             
                                 .overlay(
                                     Circle()

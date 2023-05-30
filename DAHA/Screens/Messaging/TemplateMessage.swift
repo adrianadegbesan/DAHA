@@ -19,7 +19,7 @@ struct TemplateMessage: View {
             Text(text)
                 .font(.system(size: 15))
                 .padding(13)
-                .overlay(Capsule().stroke(lineWidth: 1).foregroundColor(.secondary))
+                .overlay(Capsule().stroke(lineWidth: 1.5).foregroundColor(.secondary))
 //                .padding(.bottom, 5)
                
         }

@@ -24,7 +24,7 @@ struct PostConfirmationScreen: View {
         ZStack {
             
             if uploading{
-//                LottieView(name: colorScheme == .dark ? "DAHA-Loading_dark" : "DAHA-Loading")
+                //                LottieView(name: colorScheme == .dark ? "DAHA-Loading_dark" : "DAHA-Loading")
                 LottieView(name: "DAHA-Loading_dark")
                     .scaleEffect(0.4)
                     .opacity(progressOpacity)
@@ -71,7 +71,9 @@ struct PostConfirmationScreen: View {
             }
             .opacity(screenOpacity)
         }
-        .background(uploading ? (post.category == "General" && colorScheme == .light ? nil : Color(hex: category_colors[post.category] ?? "000000").ignoresSafeArea() ) : nil)
+        .background(uploading ?
+                    (post.category == "General" && colorScheme == .light ? nil
+                     : Color(hex: category_colors[post.category] ?? "000000").ignoresSafeArea() ) : nil)
         .onChange(of: uploading) { value in
             if uploading {
                 withAnimation{
@@ -110,7 +112,7 @@ struct PostConfirmationScreen: View {
 
 struct PostConfirmationScreen_Previews: PreviewProvider {
     static var previews: some View {
-        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: nil, condition: "Good", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
+        let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted, gave me alot of miles but kinda creaky sometimes", postedAt: nil, condition: "Good", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "Listing", keywordsForLookup: [], reporters: [])
         let images: [UIImage] = []
         PostConfirmationScreen(post: .constant(post), images: .constant(images), post_created: .constant(false))
     }

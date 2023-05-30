@@ -24,10 +24,11 @@ struct PostDescriptionView: View {
             HStack{
                 if #available(iOS 16.0, *) {
                     if post.description == ""{
-                        Text("DAHA")
-                            .font(.system(size: 11))
+//                        Text("DAHA")
+                        Text(Image(systemName: category_images[post.category] ?? ""))
+                            .font(.system(size: 14))
                             .lineLimit(2, reservesSpace: (2 != 0))
-                            .foregroundColor(.clear)
+//                            .foregroundColor(.clear)
                     } else {
                         Text(post.description)
                             .font(.system(size: 11))
@@ -36,7 +37,9 @@ struct PostDescriptionView: View {
                         
                 } else {
                     if post.description == "" {
-                        Spacer().frame(height: 20)
+                        Text(Image(systemName: category_images[post.category] ?? ""))
+                            .font(.system(size: 14))
+                        Spacer().frame(height: 3)
                     } else {
                         Text(post.description)
                             .font(.system(size: 11))
