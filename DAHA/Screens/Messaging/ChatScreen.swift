@@ -83,14 +83,7 @@ struct ChatScreen: View {
                                 .padding(.bottom, 15)
                                 .padding(.horizontal, 20)
                             
-//                            if channelID == nil {
-//                                
-//                                Spacer().frame(height: 50)
-//                                
-//                                Image("Logo")
-//                                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
-//                                    .opacity(0.4)
-//                            }
+                            SendMessageView(post: post, receiver: receiver, channelID: $channelID)
                             
                             NavigationLink(destination: PostModalPreview(post: post, price: post.price), isActive: $shouldNavigate){
                                 EmptyView()

@@ -33,6 +33,7 @@
 		82218C32299F569A0092BA94 /* SavedPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C31299F569A0092BA94 /* SavedPostsView.swift */; };
 		82218C34299FC7E90092BA94 /* ImageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82218C33299FC7E90092BA94 /* ImageIndicator.swift */; };
 		8231FB0B29CB7A3D0001F796 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8231FB0A29CB7A3D0001F796 /* AppState.swift */; };
+		8233F4422A2671A400E1E1F9 /* SendMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8233F4412A2671A400E1E1F9 /* SendMessageView.swift */; };
 		823601FD2981F3AC002E7AEC /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823601FC2981F3AC002E7AEC /* SignInButton.swift */; };
 		823602012981F81D002E7AEC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602002981F81D002E7AEC /* LoginScreen.swift */; };
 		823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823602022981F84E002E7AEC /* ForgotPasswordButton.swift */; };
@@ -235,6 +236,7 @@
 		82218C31299F569A0092BA94 /* SavedPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsView.swift; sourceTree = "<group>"; };
 		82218C33299FC7E90092BA94 /* ImageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageIndicator.swift; sourceTree = "<group>"; };
 		8231FB0A29CB7A3D0001F796 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = Firebase/AppState.swift; sourceTree = "<group>"; };
+		8233F4412A2671A400E1E1F9 /* SendMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageView.swift; sourceTree = "<group>"; };
 		823601FC2981F3AC002E7AEC /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 		823602002981F81D002E7AEC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		823602022981F84E002E7AEC /* ForgotPasswordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordButton.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				82BFA9DF2A0A2953009DA461 /* TemplateMessage.swift */,
 				82BFA9E12A0A2F07009DA461 /* TemplateView.swift */,
 				82CAF0482A19491000EEE1E7 /* SafetyMessageView.swift */,
+				8233F4412A2671A400E1E1F9 /* SendMessageView.swift */,
 				82CD181D2A1D3516004FC18F /* TimestampView.swift */,
 				82CD181F2A1D3B49004FC18F /* DeleteChatView.swift */,
 				82CD18212A1E8968004FC18F /* ChatTitle.swift */,
@@ -1080,6 +1083,7 @@
 				82ACC6942995EEED00589E1E /* TypeModal.swift in Sources */,
 				82CBC2A429879752001966E3 /* PostImageView.swift in Sources */,
 				82ACC68729936E3100589E1E /* NextButton.swift in Sources */,
+				8233F4422A2671A400E1E1F9 /* SendMessageView.swift in Sources */,
 				8236CFFD296F2AF00086AB15 /* AuthManager.swift in Sources */,
 				82ACC67F2991738300589E1E /* Shapes.swift in Sources */,
 				82B6B2DD298AE9BF00027E5A /* DeleteButton.swift in Sources */,
