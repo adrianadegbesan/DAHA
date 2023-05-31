@@ -23,8 +23,10 @@ struct SettingsButton: View {
             NavigationLink(destination: SettingsScreen(), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
         }
         .foregroundColor(colorScheme == .dark ? .white : .black)
+        .buttonStyle(.plain)
     }
 }
 

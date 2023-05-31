@@ -43,6 +43,7 @@ struct CategoryIconView: View {
                     .foregroundColor(.white)
             }
         }
+        .buttonStyle(.plain)
     }
 }
 

@@ -75,6 +75,7 @@ struct OriginalSearchScreen: View {
                 NavigationLink(destination: SearchBarScreen(query: $query, category: $category, type: $type), isActive: $shouldNavigate){
                     EmptyView()
                 }
+                .buttonStyle(.plain)
                 PageBottomDivider()
 //                Spacer()
             }//: VStack

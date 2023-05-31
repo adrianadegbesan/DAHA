@@ -22,8 +22,10 @@ struct SearchButton: View {
             NavigationLink(destination: SearchScreen(navScreen: true), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
         }
         .foregroundColor(colorScheme == .dark ? .white : .black)
+        .buttonStyle(.plain)
     }
 }
 

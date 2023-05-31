@@ -102,6 +102,7 @@ struct DeadlineView: View {
                           .background(Capsule().stroke(Color(hex: deepBlue), lineWidth: 2))
                   }
                   .foregroundColor(.primary)
+                  .buttonStyle(.plain)
                   .padding()
                   
                   Button{
@@ -115,6 +116,7 @@ struct DeadlineView: View {
                           .background(Capsule().stroke(.red, lineWidth: 2))
                   }
                   .foregroundColor(.primary)
+                  .buttonStyle(.plain)
                   .padding()
                   
               }

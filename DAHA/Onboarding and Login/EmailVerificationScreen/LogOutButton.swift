@@ -33,6 +33,7 @@ struct LogOutButton: View {
                     )
                 .foregroundColor(Color.init(hex: darkGrey))
         }
+        .buttonStyle(.plain)
         .alert("Log Out", isPresented: $isPresented, actions: {
             Button("Log Out", role: .destructive, action: {
                 Task {

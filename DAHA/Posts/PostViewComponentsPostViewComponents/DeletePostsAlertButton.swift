@@ -44,6 +44,7 @@ struct DeletePostsAlertButton: View {
                 }
             }
         })
+        .buttonStyle(.plain)
     }
 }
 

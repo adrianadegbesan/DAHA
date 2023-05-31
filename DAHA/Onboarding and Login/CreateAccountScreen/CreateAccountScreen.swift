@@ -88,6 +88,7 @@ struct CreateAccountScreen: View {
                 NavigationLink(destination: EmailScreen().navigationBarBackButtonHidden(true), isActive: $shouldNavigate){
                     EmptyView()
                 }
+                .buttonStyle(.plain)
             }//: ZStack
             .keyboardControl()
             .onAppear{

@@ -41,6 +41,7 @@ struct SearchCategoryIcon: View {
                     .foregroundColor(.white)
             }
         }
+        .buttonStyle(.plain)
         .background(RoundedRectangle(cornerRadius: 23).stroke(colorScheme == .dark ? .white : .black, lineWidth: colorScheme == .dark ? 2 : 0))
     }
 }

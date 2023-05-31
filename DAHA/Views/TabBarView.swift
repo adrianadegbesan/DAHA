@@ -32,6 +32,7 @@ struct TabBarView: View {
                         .tabItemIcon(selectedIndex: selectedIndex, num: num)
                     Spacer()
                 })
+                .buttonStyle(.plain)
             }
         }
         // Brings the icons closer together

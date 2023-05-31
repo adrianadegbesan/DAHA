@@ -34,6 +34,7 @@ struct ConditionIcon: View {
                     .background(Capsule().stroke(condition == "New" ? Color(hex: color_new) : ((condition == "Good") ? Color(hex: color_good) : Color(hex: color_wornout)), lineWidth: 5))
                     .padding(.trailing, 10)
             }
+            .buttonStyle(.plain)
             
         } else {
             Button(action: {
@@ -51,6 +52,7 @@ struct ConditionIcon: View {
                     .background(Capsule().stroke(colorScheme == .dark ? .white : .black, lineWidth: 2))
                     .padding(.trailing, 10)
             }
+            .buttonStyle(.plain)
             
         }
 

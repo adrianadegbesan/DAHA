@@ -49,6 +49,7 @@ struct PostModalPosterInfo: View {
             NavigationLink(destination: UserPostsScreen(username: post.username, userId: post.userID), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
 
             }
         .padding(.leading, 12)

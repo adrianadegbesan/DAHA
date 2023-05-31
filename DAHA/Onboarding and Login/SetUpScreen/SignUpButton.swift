@@ -48,9 +48,11 @@ struct SignUpButton: View {
                 NavigationLink(destination: SchoolEmailScreen(), isActive: $shouldNavigate){
                     EmptyView()
                 }
+                .buttonStyle(.plain)
                     
             }
         } //: ZStack
+        .buttonStyle(.plain)
 //        } //: Navigation
     }
 }

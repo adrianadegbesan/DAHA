@@ -114,6 +114,7 @@ struct DeleteUserView: View {
                                 }
                             
                             }
+                            .buttonStyle(.plain)
                             .disabled(changing)
                         }
                     }

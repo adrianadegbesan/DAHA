@@ -27,8 +27,10 @@ struct DMButton: View {
             NavigationLink(destination: DMScreen(), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
         }
         .foregroundColor(colorScheme == .dark ? .white : .black)
+        .buttonStyle(.plain)
     }
 }
 

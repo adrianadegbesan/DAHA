@@ -100,9 +100,11 @@ struct TermsConditionsScreen: View {
                 } //: ZStack
                 .padding(.bottom, 60)
             }
+            .buttonStyle(.plain)
             NavigationLink(destination: MainScreen().navigationBarHidden(true), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
         }
     }
 }

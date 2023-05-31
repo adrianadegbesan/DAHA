@@ -33,7 +33,9 @@ struct CameraRollButton: View {
                 .foregroundColor(images.count == 3 ? .gray : Color(hex: deepBlue))
                 
             
-        }.onChange(of: images_temp){ value in
+        }
+        .buttonStyle(.plain)
+        .onChange(of: images_temp){ value in
             for image in images_temp {
                 if !images.contains(image) && images.count < 3{
                     images.append(image)

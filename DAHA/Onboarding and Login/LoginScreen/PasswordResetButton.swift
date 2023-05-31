@@ -42,6 +42,7 @@ struct PasswordResetButton: View {
                 } //: HStack
             } //: ZStack
         }
+        .buttonStyle(.plain)
         .alert("Email Sent!", isPresented: $success_alert, actions: {}, message: { Text("Please check your inbox for a password reset link!")})
         
         .alert("Error sending Email", isPresented: $error_alert, actions: {}, message: { Text("Please check the email you entered and then try again later")})

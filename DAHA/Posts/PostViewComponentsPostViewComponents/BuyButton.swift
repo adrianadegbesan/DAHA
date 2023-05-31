@@ -54,10 +54,12 @@ struct BuyButton: View {
                     NavigationLink(destination: ChatScreen(post: post, redirect: false, receiver: post.username, receiverID: post.userID,  channelID: channelID, listen: true), isActive: $shouldNavigate){
                         EmptyView()
                     }
+                    .buttonStyle(.plain)
                 } else {
                     NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username, receiverID: post.userID), isActive: $shouldNavigate){
                         EmptyView()
                     }
+                    .buttonStyle(.plain)
                 }
                 
                
@@ -81,6 +83,7 @@ struct BuyButton: View {
                 }
             }
         }
+        .buttonStyle(.plain)
     }
 }
 

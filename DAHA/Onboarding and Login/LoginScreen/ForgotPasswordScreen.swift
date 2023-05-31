@@ -50,6 +50,7 @@ struct ForgotPasswordScreen: View {
                             .fontWeight(.bold)
                             .foregroundColor(.gray)
                 }
+                .buttonStyle(.plain)
             }
         }
     }

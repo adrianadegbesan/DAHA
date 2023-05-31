@@ -20,12 +20,14 @@ struct ExpandPostsMenuButton: View {
                 } label: {
                     Label("Expand Post", systemImage: "arrowshape.right")
                 }
+                .buttonStyle(.plain)
             } else {
                 Button {
                     shouldNavigate = true
                 } label: {
                     Label("Expand Post", systemImage: "arrow.right")
                 }
+                .buttonStyle(.plain)
             }
         }
     }

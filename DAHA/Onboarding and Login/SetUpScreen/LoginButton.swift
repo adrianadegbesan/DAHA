@@ -23,7 +23,9 @@ struct LoginButton: View {
             NavigationLink(destination: LoginScreen(), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
         }
+        .buttonStyle(.plain)
     }
 }
 

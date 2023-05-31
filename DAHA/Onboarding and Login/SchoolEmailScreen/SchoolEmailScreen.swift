@@ -52,6 +52,7 @@ struct SchoolEmailScreen: View {
                 NavigationLink(destination: CreateAccountScreen(), isActive: $shouldNavigate){
                     EmptyView()
                 }
+                .buttonStyle(.plain)
             } //: VStack
             .ignoresSafeArea(.keyboard)
         }//: ZStack

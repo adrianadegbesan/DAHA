@@ -44,12 +44,12 @@ struct FirstContinueButton: View {
                  Task {
                      //Verify domain
                      await firestoreManager.verifyDomain(domain: domain, schoolFound: $schoolFound, cannot_verify: $cannot_verify, uni_temp: $uni_temp)
-                     if schoolFound == true {
+                     if schoolFound == true && !cannot_verify {
                          university = uni_temp
                          email_system = email
                          print("The university is \(university)")
                          shouldNavigate = true
-                     } else {
+                     } else if !cannot_verify && !schoolFound {
                          isPresented = true
                      }
                  }
@@ -74,6 +74,7 @@ struct FirstContinueButton: View {
                 } //: HStack
             } //: ZStack
         } //: Button
+        .buttonStyle(.plain)
         .alert("No Email Provided", isPresented: $showAlert_noemail, actions: {}, message: { Text("Please enter an email address")})
         .alert("Invalid Email Provided", isPresented: $showAlert_invalidemail, actions: {}, message: { Text("Please enter a valid email address")})
         .alert("Cannot Verify Email Address", isPresented: $cannot_verify, actions: {}, message: {Text("Cannot verify email address, please check your network connection and try again later")})

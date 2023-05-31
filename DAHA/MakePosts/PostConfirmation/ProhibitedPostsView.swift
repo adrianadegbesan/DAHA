@@ -286,6 +286,7 @@ struct ProhibitedPostsView: View {
                                 .padding(.bottom, 5)
                         }
                         .zIndex(1)
+                        .buttonStyle(.plain)
                     }
                 }
                 Divider()

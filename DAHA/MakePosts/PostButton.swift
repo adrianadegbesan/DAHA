@@ -26,10 +26,12 @@ struct PostButton: View {
                     NavigationLink(destination: MakePostScreen(), isActive: $shouldNavigate){
                         EmptyView()
                     }
+                    .buttonStyle(.plain)
                 }
                 .foregroundColor(.black)
                 .background(Circle().fill(.white).scaleEffect(0.9))
             }
+            .buttonStyle(.plain)
         }
     }
 

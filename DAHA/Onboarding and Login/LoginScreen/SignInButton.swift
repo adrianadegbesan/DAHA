@@ -92,6 +92,7 @@ struct SignInButton: View {
                 } //: HStack
             } //: ZStack
         } //: Button
+        .buttonStyle(.plain)
         .alert("Error Signing In", isPresented: $error_alert, actions: {}, message: {Text(error_message)} )
     }
 }

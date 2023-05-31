@@ -88,6 +88,7 @@ struct ChatScreen: View {
                             NavigationLink(destination: PostModalPreview(post: post, price: post.price), isActive: $shouldNavigate){
                                 EmptyView()
                             }
+                            .buttonStyle(.plain)
                             
 //                            TemplateView(post: post, message: $message, channelID: $channelID, showTemplate: $showTemplate)
                             

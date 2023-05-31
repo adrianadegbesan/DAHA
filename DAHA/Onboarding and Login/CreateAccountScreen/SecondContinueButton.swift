@@ -142,7 +142,9 @@ struct SecondContinueButton: View {
             NavigationLink(destination: EmailScreen().navigationBarHidden(true), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
         } //:Button
+        .buttonStyle(.plain)
         .alert("Error Creating Account", isPresented: $errorCreatingAccountAlert, actions: {}, message: {Text(account_error_message)})
     }
 }

@@ -102,6 +102,7 @@ struct PostConfirmationScreen: View {
                                   .font(.system(size: 18, weight: .bold))
                                   .foregroundColor(colorScheme == .dark ? .white : .black)
                           }
+                          .buttonStyle(.plain)
                       }
                   }
                   .disabled(uploading)

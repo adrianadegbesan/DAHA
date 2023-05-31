@@ -136,6 +136,7 @@ struct MakePostTextInputs: View {
                 }){
                        ExitButton()
                 }
+                .buttonStyle(.plain)
             }
         }
 

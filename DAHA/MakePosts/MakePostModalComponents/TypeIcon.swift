@@ -46,6 +46,7 @@ struct TypeIcon: View {
                     .foregroundColor(.white)
             }
         }
+        .buttonStyle(.plain)
 
     }
 }

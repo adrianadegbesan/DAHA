@@ -19,6 +19,7 @@ struct DeletePostMenuButton: View {
             Label("Delete Post", systemImage: "trash")
         }
         .foregroundColor(.red)
+        .buttonStyle(.plain)
     }
 }
 

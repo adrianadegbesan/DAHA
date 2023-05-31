@@ -111,6 +111,7 @@ struct BookmarkButton: View {
                     .foregroundColor(colorScheme == .dark ? .white : .black)
             }
         }
+        .buttonStyle(.plain)
         .onAppear {
 
             let cur_id = Auth.auth().currentUser?.uid

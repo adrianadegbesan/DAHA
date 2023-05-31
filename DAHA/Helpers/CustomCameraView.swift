@@ -58,6 +58,7 @@ struct CustomCameraView: View {
                         .foregroundColor(.white)
                 }
             }
+            .buttonStyle(.plain)
             .padding(.leading, screenWidth * 0.87)
             .padding(.bottom, screenHeight * 0.78)
             
@@ -68,6 +69,7 @@ struct CustomCameraView: View {
                     .font(.system(size: 35, weight: .bold))
                     .foregroundColor(.white)
             }
+            .buttonStyle(.plain)
             .padding(.trailing, screenWidth * 0.87)
             .padding(.bottom, screenHeight * 0.78)
             
@@ -81,6 +83,7 @@ struct CustomCameraView: View {
                         .font(.system(size: 72))
                         .foregroundColor(.white)
                 }
+                .buttonStyle(.plain)
                 .padding(.bottom, 45)
             }
             .alert("Error Capturing Photo", isPresented: $error_alert, actions: {}, message: {Text("Cannot capture photo, please try again later")})

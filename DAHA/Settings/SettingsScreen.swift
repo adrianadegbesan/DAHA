@@ -43,10 +43,12 @@ struct SettingsScreen: View {
             NavigationLink(destination: TermsSettingsScreen(), isActive: $shouldNavigateTerms){
                 EmptyView()
             }
+            .buttonStyle(.plain)
             
             NavigationLink(destination: PrivacySettingsScreen(), isActive: $shouldNavigatePrivacy){
                 EmptyView()
             }
+            .buttonStyle(.plain)
             
             
            

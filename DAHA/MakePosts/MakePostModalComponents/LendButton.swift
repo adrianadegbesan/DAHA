@@ -33,6 +33,7 @@ struct LendButton: View {
                 .background(Capsule().stroke(selected ? Color(hex: "F37A35"): colorScheme == .dark ? .white : .black, lineWidth: selected ? 5 : 2))
                 .padding(.trailing, 10)
         }
+        .buttonStyle(.plain)
 //        .onChange(of: type){ value in
 //            if value != "Listing"{
 //                selected = false

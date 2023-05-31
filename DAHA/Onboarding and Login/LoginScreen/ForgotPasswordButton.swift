@@ -23,6 +23,7 @@ struct ForgotPasswordButton: View {
             }
             
         }
+        .buttonStyle(.plain)
 }
     
     struct ForgotPasswordButton_Previews: PreviewProvider {

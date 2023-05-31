@@ -25,6 +25,7 @@ struct DeleteButton: View {
                 .font(.system(size: 23, weight: .bold))
                 .foregroundColor(.red)
         }
+        .buttonStyle(.plain)
         .alert("Delete Post", isPresented: $isPresented, actions: {
             Button("Delete", role: .destructive, action: {
                 Task{

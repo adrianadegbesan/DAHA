@@ -39,6 +39,7 @@ struct NotificationsView: View {
                 }
             }
         }
+        .buttonStyle(.plain)
     }
     
     

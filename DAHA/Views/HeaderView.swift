@@ -185,6 +185,7 @@ struct HeaderView: View {
                     NavigationLink(destination: SearchBarScreen(query: $query, category: $category, type: $type), isActive: $shouldNavigate){
                         EmptyView()
                     }
+                    .buttonStyle(.plain)
                 }
                 
                 

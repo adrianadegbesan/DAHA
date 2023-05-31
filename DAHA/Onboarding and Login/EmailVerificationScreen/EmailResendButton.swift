@@ -42,6 +42,7 @@ struct EmailResendButton: View {
                 } //: HStack
             } //: ZStack
         }
+        .buttonStyle(.plain)
     }
 }
 

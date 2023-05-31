@@ -56,6 +56,7 @@ struct MakePostButton: View {
                     .background(Capsule().fill(Color(hex: deepBlue)))
             }
         }
+        .buttonStyle(.plain)
         .alert("Error Uploading Post", isPresented: $error_alert, actions: {}, message: {Text("Please check your network connection and try again later")})
     }
 }

@@ -132,6 +132,7 @@ struct MessageField: View {
 //                    .overlay(Circle().stroke(lineWidth: 1.5).foregroundColor(.primary))
                     .offset(x: screenWidth * 0.003)
             }
+            .buttonStyle(.plain)
             
         }
         .padding(.horizontal, screenWidth * 0.015)
@@ -177,27 +178,27 @@ struct CustomTextField: View {
                 .opacity(0.5)
             }
             
-            if redirect{
-                TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
-                    .focused(keyboardFocused)
-                    .introspectTextField { textField in
-                        textField.becomeFirstResponder()
-                    }
-            } else {
-                TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
-                    .focused(keyboardFocused)
-            }
-            
-//            TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
-//                .focused(keyboardFocused)
-//                .onAppear{
-//                    if redirect{
-//                        withAnimation {
-//                            keyboardFocused.wrappedValue = true
-//                        }
-//                       
+//            if redirect{
+//                TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+//                    .focused(keyboardFocused)
+//                    .introspectTextField { textField in
+//                        textField.becomeFirstResponder()
 //                    }
-//                }
+//            } else {
+//                TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+//                    .focused(keyboardFocused)
+//            }
+            
+            TextField("Write a Message...", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+                .focused(keyboardFocused)
+                .onAppear{
+                    if redirect{
+                        withAnimation {
+                            keyboardFocused.wrappedValue = true
+                        }
+                       
+                    }
+                }
                 
             
         }

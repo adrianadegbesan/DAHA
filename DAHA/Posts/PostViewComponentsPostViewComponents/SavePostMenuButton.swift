@@ -37,6 +37,7 @@ struct SavePostMenuButton: View {
         } label:{
             Label("Save Post", systemImage: "bookmark")
         }
+        .buttonStyle(.plain)
     }
 }
 

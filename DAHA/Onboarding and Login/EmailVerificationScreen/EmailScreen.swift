@@ -97,6 +97,7 @@ struct EmailScreen: View {
             NavigationLink(destination: TermsConditionsScreen().navigationBarBackButtonHidden(true), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
         }
         .onAppear {
             

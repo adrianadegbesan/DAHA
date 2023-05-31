@@ -80,21 +80,25 @@ struct PostView: View {
             NavigationLink(destination: PostModal(post: $post, price: $price, saved: $saved, reported: $reported, owner: owner), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
             
             
             if channelID != "" {
                 NavigationLink(destination: ChatScreen(post: post, redirect: false, receiver: post.username, receiverID: post.userID,  channelID: channelID, listen: true, scrollDown: true), isActive: $buyNavigate){
                     EmptyView()
                 }
+                .buttonStyle(.plain)
             } else {
                 NavigationLink(destination: ChatScreen(post: post, redirect: true, receiver: post.username, receiverID: post.userID), isActive: $buyNavigate){
                     EmptyView()
                 }
+                .buttonStyle(.plain)
             }
             
             NavigationLink(destination: UserPostsScreen(username: post.username, userId: post.userID), isActive: $userPostNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
 
            
             

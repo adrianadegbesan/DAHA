@@ -23,6 +23,7 @@ struct MakePostScreenExit: View {
 //                        .padding(.bottom, 10)
                 }
                 .foregroundColor(colorScheme == .dark ? .white : .black)
+                .buttonStyle(.plain)
             } //:HStack
         }
  

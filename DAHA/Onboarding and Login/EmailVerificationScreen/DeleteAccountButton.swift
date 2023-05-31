@@ -35,6 +35,7 @@ struct DeleteAccountButton: View {
                     )
                     .foregroundColor(.red)
         }
+        .buttonStyle(.plain)
         .alert("Enter Password", isPresented: $firstPresented, actions: {
             TextField("Password", text: $password)
                 .foregroundColor(Color(hex: deepBlue))

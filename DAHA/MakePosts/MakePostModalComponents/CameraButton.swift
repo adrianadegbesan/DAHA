@@ -29,6 +29,7 @@ struct CameraButton: View{
                 .foregroundColor(images.count == 3 ? .gray : Color(hex: deepBlue))
                 
         }
+        .buttonStyle(.plain)
         .sheet(isPresented: $isPresented){
             ImagePicker(image: $image, images: $images)
                 .ignoresSafeArea()

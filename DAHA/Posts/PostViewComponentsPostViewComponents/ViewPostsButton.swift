@@ -22,6 +22,7 @@ struct ViewPostsButton: View {
         } label: {
             Label("View \(post.username.capitalized)'s Posts", systemImage: "person")
         }
+        .buttonStyle(.plain)
     }
 }
 

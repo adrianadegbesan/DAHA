@@ -81,7 +81,9 @@ struct NextButton: View {
                 EmptyView()
             }
             .isDetailLink(false)
+            .buttonStyle(.plain)
         }
+        .buttonStyle(.plain)
         .alert("Cannot Create Post", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
     }
 }

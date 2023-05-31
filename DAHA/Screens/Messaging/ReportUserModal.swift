@@ -111,6 +111,7 @@ struct ReportUserModal: View {
                             } //: HStack
                         } //: ZStack
                     }
+                    .buttonStyle(.plain)
                     
                     Spacer()
                 }//: VStack

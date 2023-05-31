@@ -79,6 +79,7 @@ struct PosterInfoView: View {
             NavigationLink(destination: UserPostsScreen(username: post.username, userId: post.userID), isActive: $shouldNavigate){
                 EmptyView()
             }
+            .buttonStyle(.plain)
             
 //
 //                .foregroundColor(post.category == "General" && colorScheme == .dark ? .white : Color(hex: category_colors[post.category] ?? deepBlue))

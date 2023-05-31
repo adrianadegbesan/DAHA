@@ -47,6 +47,7 @@ struct ChooseTypeButton: View {
                 }
             
             }
+            .buttonStyle(.plain)
             
             if (selected != ""){
                 Label(selected.uppercased(), systemImage: type_images[selected] ?? "")

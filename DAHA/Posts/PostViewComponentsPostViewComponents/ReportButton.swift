@@ -27,6 +27,7 @@ struct ReportButton: View {
                 .font(.system(size: 22, weight: .bold))
         }
         .foregroundColor(reported ? .red : (colorScheme == .dark) ? .white : .black)
+        .buttonStyle(.plain)
         .sheet(isPresented: $report_modal){
             ReportModal(post: post, reported: $reported)
         }

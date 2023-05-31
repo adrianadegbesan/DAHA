@@ -100,6 +100,7 @@ struct ChangePasswordView: View {
                         }
                        
                     }
+                    .buttonStyle(.plain)
                     .disabled(changing)
                 }
             }

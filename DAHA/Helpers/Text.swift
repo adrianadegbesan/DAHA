@@ -131,6 +131,7 @@ extension View {
                     }){
                             ExitButton()
                     }
+                    .buttonStyle(.plain)
                 }
             }
     }

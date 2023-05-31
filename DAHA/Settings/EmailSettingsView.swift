@@ -34,7 +34,8 @@ struct EmailSettingsView: View {
                 }
 //                Divider()
             }
-        }.disabled(!MailView.canSendMail)
+        }.buttonStyle(.plain)
+            .disabled(!MailView.canSendMail)
             .sheet(isPresented: $showMailView) {
               MailView(data: $mailData) { result in
                 print(result)

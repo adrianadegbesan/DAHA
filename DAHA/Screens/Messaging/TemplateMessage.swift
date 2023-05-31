@@ -23,6 +23,7 @@ struct TemplateMessage: View {
 //                .padding(.bottom, 5)
                
         }
+        .buttonStyle(.plain)
         .foregroundColor(.primary)
         
         

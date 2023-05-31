@@ -103,6 +103,7 @@ struct EditUsernameView: View {
                                 }
                                
                             }
+                            .buttonStyle(.plain)
                             .disabled(changing)
                         }
                     }

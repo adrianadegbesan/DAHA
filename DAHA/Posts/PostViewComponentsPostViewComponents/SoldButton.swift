@@ -26,6 +26,7 @@ struct SoldButton: View {
                 .font(.system(size: 25, weight: .bold))
                 .foregroundColor(.green)
         }
+        .buttonStyle(.plain)
         .alert(post.type == "Listing" ?  "Mark Listing as Sold": "Mark Request as Satisfied", isPresented: $isPresented, actions: {
             Button("Cancel", action: {})
             
