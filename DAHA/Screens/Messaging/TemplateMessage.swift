@@ -18,8 +18,11 @@ struct TemplateMessage: View {
         }){
             Text(text)
                 .font(.system(size: 15, weight: .semibold))
-                .padding(13)
-                .overlay(Capsule().stroke(lineWidth: 1.5))
+//                .foregroundColor(.secondary)
+                .padding(11)
+                .overlay(Capsule().stroke(lineWidth: 1.5)
+//                    .foregroundColor(.secondary)
+                )
 //                .padding(.bottom, 5)
                
         }

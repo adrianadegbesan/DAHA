@@ -44,22 +44,17 @@ struct PostActionView: View {
                 DeleteButton(post: post)
                 
             } else if preview && !owner {
-                
                 Spacer()
-                if (post.type == "Request"){
-                    Text("REQUEST")
-                        .lineLimit(1)
-                        .font(.system(size: 16, weight: .bold))
-                        .layoutPriority(1)
-                        .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
-                } else {
-                    Text("LISTING")
-                        .lineLimit(1)
-                        .font(.system(size: 16, weight: .bold))
-                        .layoutPriority(1)
-                        .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
-                }
                 
+                Text(post.type.uppercased())
+                    .lineLimit(1)
+                    .font(.system(size: 17, weight: .bold))
+                    .layoutPriority(1)
+                    .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
+                    .padding(.trailing, 2)
+                    .modifier(shimmerOnTap())
+                    
+                                    
             } else {
                 if (post.price != "Sold" && post.price != "Satisfied"){
                     BuyButton(post: post)

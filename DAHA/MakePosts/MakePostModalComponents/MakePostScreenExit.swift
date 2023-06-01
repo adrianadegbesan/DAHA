@@ -26,7 +26,6 @@ struct MakePostScreenExit: View {
                 .buttonStyle(.plain)
             } //:HStack
         }
- 
     }
 }
 

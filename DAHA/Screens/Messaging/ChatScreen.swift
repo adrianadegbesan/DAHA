@@ -83,7 +83,7 @@ struct ChatScreen: View {
                                 .padding(.bottom, 15)
                                 .padding(.horizontal, 20)
                             
-                            SendMessageView(post: post, receiver: receiver, channelID: $channelID)
+                            SendMessageView(post: post, receiver: receiver, channelID: $channelID, keyboardFocused: $keyboardFocused)
                             
                             NavigationLink(destination: PostModalPreview(post: post, price: post.price), isActive: $shouldNavigate){
                                 EmptyView()

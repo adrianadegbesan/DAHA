@@ -168,7 +168,7 @@ struct MessagePreview: View {
             
         }
         .foregroundColor(colorScheme == .dark ? .white : .black)
-        .buttonStyle(.plain)
+//        .buttonStyle(.plain)
 //        .background(colorScheme == .dark ? Color(hex: dark_scroll_background) : Color(hex: light_scroll_background))
         .contextMenu {
             Button(role: .destructive){

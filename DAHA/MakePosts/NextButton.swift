@@ -74,8 +74,9 @@ struct NextButton: View {
             
         }){
             Text("Next")
-                .font(.system(size: 18, weight: .bold))
-                .scaleEffect(1.1)
+                .font(.system(size: 19, weight: .bold))
+                .foregroundColor(Color(hex: deepBlue))
+//                .scaleEffect(1.1)
             
             NavigationLink(destination: PostConfirmationScreen(post: $post, images: $images, post_created: $post_created), isActive: $shouldNavigate){
                 EmptyView()

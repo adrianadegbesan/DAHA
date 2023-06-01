@@ -155,7 +155,7 @@ class AuthManager: ObservableObject {
             catch {
                 print("couldn't find")
                 error_alert.wrappedValue = true
-                error_message.wrappedValue = "Couldn't find account"
+                error_message.wrappedValue = "Couldn't find account, please check your network connection and try again later"
                 return false
                 
             }
