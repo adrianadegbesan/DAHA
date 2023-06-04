@@ -32,20 +32,21 @@ struct CategoryFilterIcon: View {
         Text(Image(systemName: category_images[category] ?? ""))
             .font(.system(size: 23, weight: .bold))
             .padding(13)
-            .overlay(Circle().stroke(lineWidth: 2))
+            .overlay(Circle()
+                .stroke(lineWidth: 2))
             .foregroundColor(selected == category ?  (category == "General" ? Color(hex: deepBlue) : Color(hex: category_colors[category] ?? "000000")) : .primary)
                 .scaleEffect(scale)
                 .onTapGesture {
                     SoftFeedback()
-                    withAnimation(.easeInOut(duration: 0.35)) {
-                        self.scale = 1.2
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                        withAnimation(.easeInOut(duration: 0.35)) {
-                            self.scale = 1.0
-                        }
-                    }
+//                    withAnimation(.easeInOut(duration: 0.35)) {
+//                        self.scale = 1.2
+//                    }
+//
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+//                        withAnimation(.easeInOut(duration: 0.35)) {
+//                            self.scale = 1.0
+//                        }
+//                    }
                     if selected == category {
                        
                         withAnimation{
@@ -69,6 +70,17 @@ struct CategoryFilterIcon: View {
                             }
                         }
                     } else {
+                        
+                        withAnimation(.easeInOut(duration: 0.35)) {
+                            self.scale = 1.2
+                        }
+
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                            withAnimation(.easeInOut(duration: 0.35)) {
+                                self.scale = 1.0
+                            }
+                        }
+                        
                         withAnimation{
                             selected = category
                             if screen == "Listings"{

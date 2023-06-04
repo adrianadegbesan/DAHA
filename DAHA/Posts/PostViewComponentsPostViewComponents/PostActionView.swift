@@ -50,7 +50,7 @@ struct PostActionView: View {
                 
                 Text(post.type.uppercased())
                     .lineLimit(1)
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.system(size: 17, weight: .bold))
                     .padding(.trailing, 5)
                     .layoutPriority(1)
                     .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
