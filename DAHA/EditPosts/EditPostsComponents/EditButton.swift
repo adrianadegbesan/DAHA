@@ -19,7 +19,7 @@ struct EditButton: View {
     @State private var error_message: String = ""
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
-    
+    @EnvironmentObject var firestoreManager : FirestoreManager
     @State private var isPresented : Bool = false
     
     @AppStorage("username") var username_system: String = ""
@@ -85,10 +85,63 @@ struct EditButton: View {
             Button("Cancel", action: {})
             
             Button("Edit", action: {
-                
+                uploading = true
+                Task {
+                    try await Task.sleep(nanoseconds: 0_800_000_000)
+                    let result = await firestoreManager.editPost(post: post, images: images)
+                    if result {
+                        withAnimation {
+                            uploading = false
+                            originalPost = post
+                            withAnimation{
+                                if post.type == "Listing"{
+                                    if let index = firestoreManager.listings.firstIndex(where: { $0.id == post.id }) {
+                                        firestoreManager.listings[index] = post
+                                    }
+
+                                    if let index = firestoreManager.listings_filtered.firstIndex(where: { $0.id == post.id }){
+                                        firestoreManager.listings_filtered[index] = post
+                                    }
+
+                                    if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
+                                        firestoreManager.my_posts[index] = post
+                                    }
+
+                                    if let index = firestoreManager.search_results.firstIndex(where: { $0.id == post.id }) {
+                                        firestoreManager.search_results[index] = post
+                                    }
+
+                                } else if post.type == "Request"{
+                                    if let index = firestoreManager.requests.firstIndex(where: { $0.id == post.id }) {
+                                        firestoreManager.requests[index] = post
+                                    }
+
+                                    if let index = firestoreManager.requests_filtered.firstIndex(where: { $0.id == post.id }){
+                                        firestoreManager.requests_filtered[index] = post
+                                    }
+
+                                    if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
+                                        firestoreManager.my_posts[index] = post
+                                    }
+
+                                    if let index = firestoreManager.search_results.firstIndex(where: { $0.id == post.id }) {
+                                        firestoreManager.search_results[index] = post
+                                    }
+                                }
+
+                            }
+                        }
+                        dismiss()
+                    } else {
+                        withAnimation {
+                            uploading = false
+                        }
+                        error_alert = true
+                    }
+                }
             })
         }, message: {Text("Are you sure you want to edit this post?")})
-        .alert("Cannot Edit Post", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
+        .alert("Cannot Edit Post", isPresented: $error_alert, actions: {}, message: {Text("Unable to edit post, please check your network connection adn try again later")})
     }
 }
 

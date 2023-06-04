@@ -38,7 +38,7 @@ struct ImageSelectorEditsView: View {
                 CameraRollEditsButton(post: $post, images: $images)
                     .padding(.trailing, screenWidth * 0.025)
                 
-                CameraButton(images: $images)
+                CameraEditsButton(post: $post, images: $images)
                 
                 Spacer()
                 

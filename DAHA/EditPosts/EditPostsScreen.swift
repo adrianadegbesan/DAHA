@@ -79,6 +79,22 @@ struct EditPostsScreen: View {
             }
             .opacity(screenOpacity)
         }
+        .onChange(of: uploading) { value in
+            //Uploading + Progress View Animation
+            if uploading {
+                withAnimation{
+                    screenOpacity = 0.3
+                    progressOpacity = 0.9
+                }
+            } else if !uploading {
+                withAnimation {
+                    screenOpacity = 1.0
+                    progressOpacity = 0.0
+                    
+                }
+            }
+            
+        }
     }
     
     struct EditPostsScreen_Previews: PreviewProvider {

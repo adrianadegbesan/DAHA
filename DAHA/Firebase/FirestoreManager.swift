@@ -313,7 +313,6 @@ class FirestoreManager: ObservableObject {
         }
 
         if urls == ["error"]{
-//            completion(uploadError("Couldn't upload images"))
             return false
         }
         
@@ -354,9 +353,42 @@ class FirestoreManager: ObservableObject {
 //               completion(uploadError("Error uploading post"))
                return false
            }
+        
+        
     
         
     }
+    
+    func editPost(post: PostModel, images: [UIImage]) async -> Bool {
+        var urls : [String] = []
+        if !images.isEmpty{
+            urls = await uploadImages(images: images)
+        }
+
+        if urls == ["error"]{
+            return false
+        }
+        
+        var post_temp = post
+        
+        post_temp.imageURLs.append(contentsOf: urls)
+        
+        let postRef = db.collection("Universities").document("\(university)").collection("Posts").document(post.id)
+        
+        let batch = db.batch()
+        
+        do {
+           try batch.setData(from: post_temp, forDocument: postRef)
+           try await batch.commit()
+           return true
+        }
+        
+        catch {
+            return false
+        }
+        
+    }
+    
     
     
     /*
