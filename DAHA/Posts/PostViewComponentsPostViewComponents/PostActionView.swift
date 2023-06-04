@@ -44,7 +44,6 @@ struct PostActionView: View {
                 DeleteButton(post: post)
                 
             } else if preview && !owner {
-                
                 Spacer()
                 
                 Text(post.type.uppercased())
@@ -55,6 +54,15 @@ struct PostActionView: View {
                     .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
                     .modifier(shimmerOnTap())
                 
+                Text(post.type.uppercased())
+                    .lineLimit(1)
+                    .font(.system(size: 17, weight: .bold))
+                    .layoutPriority(1)
+                    .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
+                    .padding(.trailing, 2)
+                    .modifier(shimmerOnTap())
+                    
+                                    
             } else {
                 if (post.price != "Sold" && post.price != "Satisfied"){
                     BuyButton(post: post)

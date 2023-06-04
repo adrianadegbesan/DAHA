@@ -11,6 +11,7 @@ struct SendMessageView: View {
     @State var post: PostModel
     @State var receiver: String
     @Binding var channelID: String?
+    var keyboardFocused: FocusState<Bool>.Binding
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
