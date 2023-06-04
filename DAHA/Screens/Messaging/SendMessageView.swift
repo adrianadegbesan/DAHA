@@ -15,13 +15,18 @@ struct SendMessageView: View {
     
     var body: some View {
         if channelID == nil {
-            HStack{
+            HStack(spacing: 3){
                 
-                (Text("Send \(receiver) a message! ").foregroundColor(.secondary) + Text(Image(systemName: "paperplane"))
-                    .foregroundColor(colorScheme == .dark && post.category == "General" ? .white : Color(hex: category_colors[post.category] ?? "000000")))
+                Text("Send \(receiver) a message! ")
+                    .foregroundColor(.secondary)
+                
+                Text(Image(systemName: "paperplane"))
+                    .foregroundColor(colorScheme == .dark && post.category == "General" ? .white : Color(hex: category_colors[post.category] ?? "000000"))
+                    .modifier(shimmerOnTap())
                     
-                    .font(.system(size: 18, weight: .bold))
+                    
             }
+            .font(.system(size: 18, weight: .bold))
         }
     }
 }

@@ -26,7 +26,7 @@ struct PostDescriptionView: View {
                     if post.description == ""{
 //                        Text("DAHA")
                         Text(Image(systemName: category_images[post.category] ?? ""))
-                            .font(.system(size: 14))
+                            .font(.system(size: 13))
                             .lineLimit(2, reservesSpace: (2 != 0))
 //                            .foregroundColor(.clear)
                     } else {
@@ -38,7 +38,7 @@ struct PostDescriptionView: View {
                 } else {
                     if post.description == "" {
                         Text(Image(systemName: category_images[post.category] ?? ""))
-                            .font(.system(size: 14))
+                            .font(.system(size: 13))
                         Spacer().frame(height: 3)
                     } else {
                         Text(post.description)

@@ -21,19 +21,22 @@ struct CategoryFilterIcon: View {
     
     var body: some View {
         
-            Label(category.uppercased(), systemImage: category_images[category] ?? "")
-                .lineLimit(1)
-                .foregroundColor(.white)
-                .font(.system(size: 12, weight: .bold))
-                .padding(9)
-                .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
-                .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.black, lineWidth: (selected == category) ? 4 : 1.5))
-                .overlay((colorScheme == .light && category == "General") ? Capsule().stroke(.gray, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.clear, lineWidth: (selected == category) ? 4 : 1.5))
+//            Label(category.uppercased(), systemImage: category_images[category] ?? "")
+//                .lineLimit(1)
+//                .foregroundColor(.white)
+//                .font(.system(size: 12, weight: .bold))
+//                .padding(9)
+//                .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
+//                .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.black, lineWidth: (selected == category) ? 4 : 1.5))
+//                .overlay((colorScheme == .light && category == "General") ? Capsule().stroke(.gray, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.clear, lineWidth: (selected == category) ? 4 : 1.5))
+        Text(Image(systemName: category_images[category] ?? ""))
+            .font(.system(size: 27, weight: .bold))
+            .foregroundColor(selected == category ?  (category == "General" ? .gray : Color(hex: category_colors[category] ?? "000000")) : .primary)
                 .scaleEffect(scale)
                 .onTapGesture {
                     SoftFeedback()
                     withAnimation(.easeInOut(duration: 0.35)) {
-                        self.scale = 1.08
+                        self.scale = 1.2
                     }
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {

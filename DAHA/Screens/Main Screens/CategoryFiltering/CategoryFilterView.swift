@@ -24,7 +24,7 @@ struct CategoryFilterView: View {
                 ForEach(categories, id: \.self){ category in
                     CategoryFilterIcon(category: category, selected: $selected, screen: screen, posts: $posts, loading: $loading)
                         .padding(.vertical, 8)
-                        .padding(.horizontal, 5)
+                        .padding(.horizontal, 8)
                 }
                 Spacer().frame(width: 5)
             }

@@ -46,19 +46,14 @@ struct PostActionView: View {
             } else if preview && !owner {
                 
                 Spacer()
-                if (post.type == "Request"){
-                    Text("REQUEST")
-                        .lineLimit(1)
-                        .font(.system(size: 16, weight: .bold))
-                        .layoutPriority(1)
-                        .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
-                } else {
-                    Text("LISTING")
-                        .lineLimit(1)
-                        .font(.system(size: 16, weight: .bold))
-                        .layoutPriority(1)
-                        .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
-                }
+                
+                Text(post.type.uppercased())
+                    .lineLimit(1)
+                    .font(.system(size: 18, weight: .bold))
+                    .padding(.trailing, 5)
+                    .layoutPriority(1)
+                    .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
+                    .modifier(shimmerOnTap())
                 
             } else {
                 if (post.price != "Sold" && post.price != "Satisfied"){
