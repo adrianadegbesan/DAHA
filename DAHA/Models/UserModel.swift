@@ -24,6 +24,7 @@ struct UserModel: Identifiable, Codable {
     var university: String
     var terms: Bool
     var fcmToken : String
+//    var emailNotifications : Bool
     @ServerTimestamp var joinedAt: Timestamp?
 }
 

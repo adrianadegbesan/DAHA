@@ -40,6 +40,8 @@ struct PostModalPostActions: View {
 //                SoldButton(post: $post, price: $price)
 //                    .padding(.trailing, 1)
                 if(post.price != "Sold" && post.price != "Satisfied"){
+                    EditPostButton(post: $post)
+                        .padding(.trailing, 1)
                     SoldButton(post: $post, price: $price)
                         .padding(.trailing, 1)
                 }

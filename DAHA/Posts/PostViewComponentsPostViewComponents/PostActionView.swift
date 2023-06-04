@@ -38,6 +38,8 @@ struct PostActionView: View {
 //                SoldButton(post: post, price: $price)
 //                    .padding(.trailing, 1)
                 if (post.price != "Sold" && post.price != "Satisfied"){
+                    EditPostButton(post: $post)
+                        .padding(.trailing, 1)
                     SoldButton(post: $post, price: $price)
                         .padding(.trailing, 1)
                 }
@@ -52,14 +54,6 @@ struct PostActionView: View {
                     .padding(.trailing, 5)
                     .layoutPriority(1)
                     .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
-                    .modifier(shimmerOnTap())
-                
-                Text(post.type.uppercased())
-                    .lineLimit(1)
-                    .font(.system(size: 17, weight: .bold))
-                    .layoutPriority(1)
-                    .foregroundColor((colorScheme == .dark && post.category == "General") ? .white : Color(hex: category_colors[post.category] ?? "000000"))
-                    .padding(.trailing, 2)
                     .modifier(shimmerOnTap())
                     
                                     

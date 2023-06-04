@@ -16,7 +16,7 @@ struct SendMessageView: View {
     
     var body: some View {
         if channelID == nil {
-            HStack(spacing: 3){
+            HStack(spacing: 1.5){
                 
                 Text("Send \(receiver) a message! ")
                     .foregroundColor(.secondary)

@@ -64,7 +64,7 @@ struct MakePostTextInputs: View {
                 }
             }
             .onChange(of: type){ value in
-                if post.borrow != nil {
+                if type == "" {
                     post.borrow = false
                 }
             }
@@ -127,6 +127,14 @@ struct MakePostTextInputs: View {
 //                    .padding(.top, scre)
             }
             .padding(.leading, 16)
+        }
+        .onAppear{
+            
+            if post.price != "Free" {
+                price = post.price
+            }
+            title = post.title
+            description = post.description
         }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {

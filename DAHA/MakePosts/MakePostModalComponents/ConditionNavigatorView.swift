@@ -21,6 +21,9 @@ struct ConditionNavigatorView: View {
                     .padding(.horizontal)
             }
         }
+        .onAppear {
+            selected = post.condition
+        }
     }
 }
 
