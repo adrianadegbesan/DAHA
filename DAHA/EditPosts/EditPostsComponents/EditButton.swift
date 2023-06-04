@@ -11,13 +11,16 @@ struct EditButton: View {
     @Binding var post: PostModel
     @Binding var originalPost: PostModel
     @Binding var images: [UIImage]
-    @Binding var post_edited: Bool
+    @Binding var uploading: Bool
     @Binding var category : String
     @Binding var type: String
     
     @State private var error_alert : Bool = false
     @State private var error_message: String = ""
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var isPresented : Bool = false
     
     @AppStorage("username") var username_system: String = ""
     
@@ -67,7 +70,7 @@ struct EditButton: View {
                 post.title = post.title.trimmingCharacters(in: .whitespacesAndNewlines)
                 post.keywordsForLookup = post.title.generateStringSequence()
                 
-                
+                isPresented = true
             }
             
         }){
@@ -78,6 +81,13 @@ struct EditButton: View {
             
         }
         .buttonStyle(.plain)
+        .alert("Confirm Post Edit", isPresented: $isPresented, actions: {
+            Button("Cancel", action: {})
+            
+            Button("Edit", action: {
+                
+            })
+        }, message: {Text("Are you sure you want to edit this post?")})
         .alert("Cannot Edit Post", isPresented: $error_alert, actions: {}, message: {Text(error_message)})
     }
 }

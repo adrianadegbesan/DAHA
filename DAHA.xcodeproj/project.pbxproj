@@ -65,6 +65,8 @@
 		82685DB72A2CF66100D0D1E7 /* ImageSelectorEditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82685DB62A2CF66100D0D1E7 /* ImageSelectorEditsView.swift */; };
 		82685DB92A2CF76500D0D1E7 /* EditPostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82685DB82A2CF76500D0D1E7 /* EditPostButton.swift */; };
 		82685DBB2A2D35DF00D0D1E7 /* DownloadedImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82685DBA2A2D35DF00D0D1E7 /* DownloadedImagePreview.swift */; };
+		82685DBE2A2D411C00D0D1E7 /* CameraRollEditsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82685DBD2A2D411C00D0D1E7 /* CameraRollEditsButton.swift */; };
+		82685DC02A2D424100D0D1E7 /* CameraEditsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82685DBF2A2D424100D0D1E7 /* CameraEditsButton.swift */; };
 		8280FF1229EF11E300F8552E /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1129EF11E300F8552E /* SavedView.swift */; };
 		8280FF1429F062D100F8552E /* NotificationsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1329F062D100F8552E /* NotificationsToggle.swift */; };
 		828CAFA029B1868200B489F4 /* MessageChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */; };
@@ -258,6 +260,8 @@
 		82685DB62A2CF66100D0D1E7 /* ImageSelectorEditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorEditsView.swift; sourceTree = "<group>"; };
 		82685DB82A2CF76500D0D1E7 /* EditPostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostButton.swift; sourceTree = "<group>"; };
 		82685DBA2A2D35DF00D0D1E7 /* DownloadedImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedImagePreview.swift; sourceTree = "<group>"; };
+		82685DBD2A2D411C00D0D1E7 /* CameraRollEditsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRollEditsButton.swift; sourceTree = "<group>"; };
+		82685DBF2A2D424100D0D1E7 /* CameraEditsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEditsButton.swift; sourceTree = "<group>"; };
 		8280FF1129EF11E300F8552E /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 		8280FF1329F062D100F8552E /* NotificationsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsToggle.swift; sourceTree = "<group>"; };
 		828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChannelModel.swift; sourceTree = "<group>"; };
@@ -510,7 +514,7 @@
 				823602042985ABF0002E7AEC /* PostView.swift */,
 				82CEFC612969CE3700C55F67 /* PostModal.swift */,
 				82B40B9E29D78E1000BA7504 /* PostModalPreview.swift */,
-				82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */,
+				82CBC2A72987A7F9001966E3 /* PostViewComponents */,
 				82CBC2AA2989BA79001966E3 /* PostModalComponents */,
 				82B40BA029D78EF900BA7504 /* PostModalPreviewComponents */,
 				82BFA9E32A0AF1A6009DA461 /* PostShimmer.swift */,
@@ -534,6 +538,8 @@
 				82685DB42A2CF1EB00D0D1E7 /* EditButton.swift */,
 				82685DB62A2CF66100D0D1E7 /* ImageSelectorEditsView.swift */,
 				82685DBA2A2D35DF00D0D1E7 /* DownloadedImagePreview.swift */,
+				82685DBD2A2D411C00D0D1E7 /* CameraRollEditsButton.swift */,
+				82685DBF2A2D424100D0D1E7 /* CameraEditsButton.swift */,
 			);
 			path = EditPostsComponents;
 			sourceTree = "<group>";
@@ -650,7 +656,7 @@
 			path = MakePosts;
 			sourceTree = "<group>";
 		};
-		82CBC2A72987A7F9001966E3 /* PostViewComponentsPostViewComponents */ = {
+		82CBC2A72987A7F9001966E3 /* PostViewComponents */ = {
 			isa = PBXGroup;
 			children = (
 				82360207298748CC002E7AEC /* CategoryView.swift */,
@@ -674,7 +680,7 @@
 				82DA51C52A182AEB00DD804E /* DeletePostsAlertButton.swift */,
 				82D7E6682A182D7A00068191 /* PostViewModifiers.swift */,
 			);
-			path = PostViewComponentsPostViewComponents;
+			path = PostViewComponents;
 			sourceTree = "<group>";
 		};
 		82CBC2AA2989BA79001966E3 /* PostModalComponents */ = {
@@ -1052,6 +1058,7 @@
 				82B6B2E9298B787E00027E5A /* CategoryModal.swift in Sources */,
 				82B6B2CF298A16BD00027E5A /* MakePostTextInputs.swift in Sources */,
 				82BDE70E29CBEB8000A3567F /* BorrowButton.swift in Sources */,
+				82685DC02A2D424100D0D1E7 /* CameraEditsButton.swift in Sources */,
 				828CAFAB29B3E34400B489F4 /* JoinedAtView.swift in Sources */,
 				82A21A5229A169700040BAA1 /* EditUsernameView.swift in Sources */,
 				82218C2D299F4E990092BA94 /* RequestsView.swift in Sources */,
@@ -1174,6 +1181,7 @@
 				82218C0E299C91F20092BA94 /* DarkModeSetting.swift in Sources */,
 				823602032981F84E002E7AEC /* ForgotPasswordButton.swift in Sources */,
 				82A21A6A29A82A0F0040BAA1 /* ReportModel.swift in Sources */,
+				82685DBE2A2D411C00D0D1E7 /* CameraRollEditsButton.swift in Sources */,
 				82DA51C62A182AEB00DD804E /* DeletePostsAlertButton.swift in Sources */,
 				82C4589729BAFC2300661703 /* SearchButton.swift in Sources */,
 				82CEFC442969CBDB00C55F67 /* Colors.swift in Sources */,

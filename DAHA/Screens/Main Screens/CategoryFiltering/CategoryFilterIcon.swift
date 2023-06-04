@@ -38,15 +38,15 @@ struct CategoryFilterIcon: View {
                 .scaleEffect(scale)
                 .onTapGesture {
                     SoftFeedback()
-//                    withAnimation(.easeInOut(duration: 0.35)) {
-//                        self.scale = 1.2
-//                    }
-//
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-//                        withAnimation(.easeInOut(duration: 0.35)) {
-//                            self.scale = 1.0
-//                        }
-//                    }
+                    withAnimation(.easeInOut(duration: 0.35)) {
+                        self.scale = 1.2
+                    }
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                        withAnimation(.easeInOut(duration: 0.35)) {
+                            self.scale = 1.0
+                        }
+                    }
                     if selected == category {
                        
                         withAnimation{
@@ -71,15 +71,15 @@ struct CategoryFilterIcon: View {
                         }
                     } else {
                         
-                        withAnimation(.easeInOut(duration: 0.35)) {
-                            self.scale = 1.2
-                        }
-
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                            withAnimation(.easeInOut(duration: 0.35)) {
-                                self.scale = 1.0
-                            }
-                        }
+//                        withAnimation(.easeInOut(duration: 0.35)) {
+//                            self.scale = 1.2
+//                        }
+//
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+//                            withAnimation(.easeInOut(duration: 0.35)) {
+//                                self.scale = 1.0
+//                            }
+//                        }
                         
                         withAnimation{
                             selected = category

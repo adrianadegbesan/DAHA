@@ -35,7 +35,7 @@ struct ImageSelectorEditsView: View {
                        
             
             HStack{
-                CameraRollButton(images: $images)
+                CameraRollEditsButton(post: $post, images: $images)
                     .padding(.trailing, screenWidth * 0.025)
                 
                 CameraButton(images: $images)

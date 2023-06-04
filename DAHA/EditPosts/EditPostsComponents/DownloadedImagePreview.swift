@@ -25,7 +25,7 @@ struct DownloadedImagePreview: View {
                             .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
                             .overlay (
                                 RoundedRectangle(cornerRadius: 15)
-                                    .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
+                                    .strokeBorder(lineWidth: 2)
                             )
                     }
                 }
