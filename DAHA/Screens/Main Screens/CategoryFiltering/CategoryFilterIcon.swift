@@ -30,17 +30,19 @@ struct CategoryFilterIcon: View {
 //                .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.black, lineWidth: (selected == category) ? 4 : 1.5))
 //                .overlay((colorScheme == .light && category == "General") ? Capsule().stroke(.gray, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.clear, lineWidth: (selected == category) ? 4 : 1.5))
         Text(Image(systemName: category_images[category] ?? ""))
-            .font(.system(size: 29, weight: .bold))
+            .font(.system(size: 23, weight: .bold))
+            .padding(13)
+            .overlay(Circle().stroke(lineWidth: 2))
             .foregroundColor(selected == category ?  (category == "General" ? Color(hex: deepBlue) : Color(hex: category_colors[category] ?? "000000")) : .primary)
                 .scaleEffect(scale)
                 .onTapGesture {
                     SoftFeedback()
-                    withAnimation(.easeInOut(duration: 0.37)) {
+                    withAnimation(.easeInOut(duration: 0.35)) {
                         self.scale = 1.2
                     }
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.37) {
-                        withAnimation(.easeInOut(duration: 0.37)) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                        withAnimation(.easeInOut(duration: 0.35)) {
                             self.scale = 1.0
                         }
                     }

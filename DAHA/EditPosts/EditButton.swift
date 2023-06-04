@@ -46,6 +46,7 @@ struct EditButton: View {
                     post.price = "Free"
                 }
                 
+                
                 if post.price.last != nil {
                     if post.price.last! == "." {
                         post.price.removeLast()
