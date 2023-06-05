@@ -10,7 +10,7 @@ import Firebase
 import Shimmer
 
 struct PostModalPosterInfo: View {
-    @State var post: PostModel
+    @Binding var post: PostModel
     @Environment(\.colorScheme) var colorScheme
     @State private var shouldNavigate: Bool = false
     @EnvironmentObject var firestoreManager : FirestoreManager
@@ -63,6 +63,6 @@ struct PostModalPosterInfo_Previews: PreviewProvider {
         let startTimestamp: Timestamp = Timestamp(date: startTime)
         
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: startTimestamp, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "Request", keywordsForLookup: [], reporters: [])
-        PostModalPosterInfo(post: post)
+        PostModalPosterInfo(post: .constant(post))
     }
 }

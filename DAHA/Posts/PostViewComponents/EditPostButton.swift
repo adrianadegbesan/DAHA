@@ -22,8 +22,8 @@ struct EditPostButton: View {
             NavigationLink(destination: EditPostsScreen(post: post, originalPost: $post), isActive: $shouldNavigate){
                 EmptyView()
             }
-            .buttonStyle(.plain)
         }
+        .buttonStyle(.plain)
     }
 }
 

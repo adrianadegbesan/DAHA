@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 
 
 struct PostImageView: View {
-    @State var post: PostModel
+    @Binding var post: PostModel
     @State var owner : Bool
     @State var preview: Bool
     @State var reported: Bool
@@ -125,7 +125,7 @@ struct PostImageView: View {
     struct PostImageView_Previews: PreviewProvider {
         static var previews: some View {
             let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
-            PostImageView(post: post, owner: false, preview: false, reported: false)
+            PostImageView(post: .constant(post), owner: false, preview: false, reported: false)
         }
     }
 }

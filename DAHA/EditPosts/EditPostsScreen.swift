@@ -33,6 +33,7 @@ struct EditPostsScreen: View {
                     .opacity(progressOpacity)
                     .padding(.bottom, screenHeight * 0.13)
                     .zIndex(1)
+                    .ignoresSafeArea(.keyboard)
             }
             
             ScrollViewReader { value in

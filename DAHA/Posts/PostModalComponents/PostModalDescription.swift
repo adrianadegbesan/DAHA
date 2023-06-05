@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct PostModalDescription: View {
-    @State var post: PostModel
+    @Binding var post: PostModel
     @Binding var price: String
     @State private var opacity = 0.1
     @State private var descriptionScroll : Bool = false
@@ -193,6 +193,6 @@ struct PostModalDescription: View {
 struct PostModalDescription_Previews: PreviewProvider {
     static var previews: some View {
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: nil, condition: "old", category: "Bikes", price: "100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
-        PostModalDescription(post: post, price: .constant(""), owner: false)
+        PostModalDescription(post: .constant(post), price: .constant(""), owner: false)
     }
 }

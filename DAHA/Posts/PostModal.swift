@@ -24,14 +24,14 @@ struct PostModal: View {
                 
 //                PostModalImageView(post: post)
 //                
-                PostModalPosterInfo(post: post)
+                PostModalPosterInfo(post: $post)
                 
-                CategoryView(post: post, screen: "Modal", reported: $reported, owner: owner, preview: false)
+                CategoryView(post: $post, screen: "Modal", reported: $reported, owner: owner, preview: false)
                     .padding(.leading, 12)
                     .padding(.trailing, 12)
                     
                 
-                PostModalDescription(post: post, price: $price, owner: owner)
+                PostModalDescription(post: $post, price: $price, owner: owner)
                 
                 PostModalPostActions(post: $post, saved: $saved, price: $price, owner: owner)
                 

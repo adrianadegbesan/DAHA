@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PostImageViewUnposted: View {
-    @State var post: PostModel
+    @Binding var post: PostModel
     @State var owner : Bool
     @State var preview: Bool
     @State var reported: Bool

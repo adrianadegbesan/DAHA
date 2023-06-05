@@ -11,7 +11,7 @@ import Shimmer
 
 struct PosterInfoView: View {
     
-    @State var post: PostModel
+    @Binding var post: PostModel
     @State var preview: Bool
     @State var unpostedPreview: Bool?
     @State private var timestampString = ""
@@ -94,6 +94,6 @@ struct PosterInfoView_Previews: PreviewProvider {
         let startTimestamp: Timestamp = Timestamp(date: startTime)
         
         let post = PostModel(title: "2019 Giant Bike", userID: "0", username: "adrian", description: "Old Bike for sale, very very very old but tried and trusted", postedAt: startTimestamp, condition: "old", category: "Bikes", price: "$100", imageURLs: [], channel: "Stanford", savers: [], type: "", keywordsForLookup: [], reporters: [])
-        PosterInfoView(post: post, preview: false)
+        PosterInfoView(post: .constant(post), preview: false)
     }
 }

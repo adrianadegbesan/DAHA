@@ -54,14 +54,14 @@ struct PostView: View {
         HStack {
             VStack(alignment: .leading) {
                 
-                PosterInfoView(post: post, preview: preview, unpostedPreview: unpostedPreview)
+                PosterInfoView(post: $post, preview: preview, unpostedPreview: unpostedPreview)
                 Spacer().frame(height: 10)
                 
-                CategoryView(post: post, screen: "Post", reported: $reported, owner: owner, preview: preview)
+                CategoryView(post: $post, screen: "Post", reported: $reported, owner: owner, preview: preview)
                     .frame(width: screenWidth * 0.48)
                    
                 
-                PostDescriptionView(post: post)
+                PostDescriptionView(post: $post)
                 
                 PostActionView(post: $post, saved: $saved, price: $price, owner: owner, preview: preview)
                     .layoutPriority(1)
@@ -71,9 +71,9 @@ struct PostView: View {
             Spacer()
             
             if preview && unpostedPreview != nil && unpostedPreview! {
-                PostImageViewUnposted(post: post, owner: owner, preview: preview, reported: reported, unpostedImages: unpostedImages)
+                PostImageViewUnposted(post: $post, owner: owner, preview: preview, reported: reported, unpostedImages: unpostedImages)
             } else {
-                PostImageView(post: post, owner: owner, preview: preview, reported: reported)
+                PostImageView(post: $post, owner: owner, preview: preview, reported: reported)
             }
             
             

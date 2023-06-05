@@ -22,14 +22,14 @@ struct PostModalPreview: View {
                 
 //                PostModalImageView(post: post)
                 
-                PostModalPosterInfo(post: post)
+                PostModalPosterInfo(post: $post)
                 
                 CategoryPreview(post: post, screen: "Modal", owner: (post.userID == Auth.auth().currentUser?.uid))
                     .padding(.leading, 12)
                     .padding(.trailing, 12)
                     
                 
-                PostModalDescription(post: post, price: $price, owner: (post.userID == Auth.auth().currentUser?.uid))
+                PostModalDescription(post: $post, price: $price, owner: (post.userID == Auth.auth().currentUser?.uid))
 //                
                 HStack{
                     Text(post.postedAt?.dateValue().dateString() ?? "")

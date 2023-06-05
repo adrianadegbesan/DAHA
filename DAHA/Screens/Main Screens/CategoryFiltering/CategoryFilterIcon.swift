@@ -21,20 +21,20 @@ struct CategoryFilterIcon: View {
     
     var body: some View {
         
-//            Label(category.uppercased(), systemImage: category_images[category] ?? "")
-//                .lineLimit(1)
-//                .foregroundColor(.white)
-//                .font(.system(size: 12, weight: .bold))
-//                .padding(9)
-//                .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
-//                .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.black, lineWidth: (selected == category) ? 4 : 1.5))
-//                .overlay((colorScheme == .light && category == "General") ? Capsule().stroke(.gray, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.clear, lineWidth: (selected == category) ? 4 : 1.5))
-        Text(Image(systemName: category_images[category] ?? ""))
-            .font(.system(size: 23, weight: .bold))
-            .padding(13)
-            .overlay(Circle()
-                .stroke(lineWidth: 2))
-            .foregroundColor(selected == category ?  (category == "General" ? Color(hex: deepBlue) : Color(hex: category_colors[category] ?? "000000")) : .primary)
+            Label(category.uppercased(), systemImage: category_images[category] ?? "")
+                .lineLimit(1)
+                .foregroundColor(.white)
+                .font(.system(size: 12, weight: .bold))
+                .padding(9)
+                .background(Capsule().fill(Color(hex: category_colors[category] ?? "000000")))
+                .overlay(colorScheme == .dark ? Capsule().stroke(.white, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.black, lineWidth: (selected == category) ? 4 : 1.5))
+                .overlay((colorScheme == .light && category == "General") ? Capsule().stroke(.gray, lineWidth: (selected == category) ? 4 : 1.5) : Capsule().stroke(.clear, lineWidth: (selected == category) ? 4 : 1.5))
+//        Text(Image(systemName: category_images[category] ?? ""))
+//            .font(.system(size: 23, weight: .bold))
+//            .padding(13)
+//            .overlay(Circle()
+//                .stroke(lineWidth: 2))
+//            .foregroundColor(selected == category ?  (category == "General" ? Color(hex: deepBlue) : Color(hex: category_colors[category] ?? "000000")) : .primary)
                 .scaleEffect(scale)
                 .onTapGesture {
                     SoftFeedback()
@@ -49,7 +49,7 @@ struct CategoryFilterIcon: View {
 //                    }
                     if selected == category {
                        
-                        withAnimation{
+                        withAnimation {
                             selected = ""
                             if screen == "Listings"{
                                 Task {

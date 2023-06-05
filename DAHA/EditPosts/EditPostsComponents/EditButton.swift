@@ -85,6 +85,7 @@ struct EditButton: View {
             Button("Cancel", action: {})
             
             Button("Edit", action: {
+                hideKeyboard()
                 uploading = true
                 Task {
                     try await Task.sleep(nanoseconds: 0_800_000_000)

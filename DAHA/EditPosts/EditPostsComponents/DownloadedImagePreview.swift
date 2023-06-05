@@ -51,7 +51,7 @@ struct DownloadedImagePreview: View {
                         }
                     }
                 }
-                .offset(x: -3.5, y: -4.8)
+                .offset(x: -4, y: -6.0)
         }
 
     }
