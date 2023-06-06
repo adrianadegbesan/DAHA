@@ -15,9 +15,16 @@ struct EditPostButton: View {
         Button(action: {
             shouldNavigate = true
         }){
-            Image(systemName: "pencil.line")
-                .font(.system(size: 23, weight: .heavy))
-                .foregroundColor(Color(hex: deepBlue))
+            if #available(iOS 16, *){
+                Image(systemName: "pencil.line")
+                    .font(.system(size: 23, weight: .heavy))
+                    .foregroundColor(Color(hex: deepBlue))
+            } else {
+                Image(systemName: "pencil")
+                    .font(.system(size: 23, weight: .heavy))
+                    .foregroundColor(Color(hex: deepBlue))
+            }
+            
             
             NavigationLink(destination: EditPostsScreen(post: post, originalPost: $post), isActive: $shouldNavigate){
                 EmptyView()

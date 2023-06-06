@@ -22,8 +22,6 @@ struct BuyButton: View {
         Button(action: {
             //MessagingAction
             SoftFeedback()
-           
-           
             redirect = !messageManager.messageChannels.contains(where: {$0.post.id == post.id})
             
             if !redirect{

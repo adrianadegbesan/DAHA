@@ -64,6 +64,7 @@ struct EditPostsScreen: View {
                             }
                         Spacer()
                     }
+                    
                     .padding()
                     .id(1)
 //                    .onChange(of: post_edited) { value in
@@ -84,7 +85,7 @@ struct EditPostsScreen: View {
             //Uploading + Progress View Animation
             if uploading {
                 withAnimation{
-                    screenOpacity = 0.3
+                    screenOpacity = 0.2
                     progressOpacity = 0.9
                 }
             } else if !uploading {
@@ -97,7 +98,6 @@ struct EditPostsScreen: View {
             
         }
     }
-    
     struct EditPostsScreen_Previews: PreviewProvider {
         static var previews: some View {
             let calendar = Calendar.current

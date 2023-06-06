@@ -89,7 +89,7 @@ struct EditButton: View {
                 uploading = true
                 Task {
                     try await Task.sleep(nanoseconds: 0_800_000_000)
-                    let result = await firestoreManager.editPost(post: post, images: images)
+                    let result = await firestoreManager.editPost(post: $post, images: images)
                     if result {
                         withAnimation {
                             uploading = false

@@ -59,7 +59,7 @@ struct PostView: View {
                 
                 CategoryView(post: $post, screen: "Post", reported: $reported, owner: owner, preview: preview)
                     .frame(width: screenWidth * 0.48)
-                   
+                
                 
                 PostDescriptionView(post: $post)
                 
@@ -67,7 +67,6 @@ struct PostView: View {
                     .layoutPriority(1)
                     .disabled(reported)
             }
-            
             Spacer()
             
             if preview && unpostedPreview != nil && unpostedPreview! {

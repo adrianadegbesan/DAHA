@@ -323,7 +323,6 @@ class FirestoreManager: ObservableObject {
         let cur_id = Auth.auth().currentUser?.uid
         
         if cur_id == nil{
-//            completion(uploadError("User Account Error"))
             return false
         }
         
@@ -359,7 +358,7 @@ class FirestoreManager: ObservableObject {
         
     }
     
-    func editPost(post: PostModel, images: [UIImage]) async -> Bool {
+    func editPost(post: Binding<PostModel>, images: [UIImage]) async -> Bool {
         var urls : [String] = []
         if !images.isEmpty{
             urls = await uploadImages(images: images)
@@ -369,7 +368,7 @@ class FirestoreManager: ObservableObject {
             return false
         }
         
-        var post_temp = post
+        var post_temp = post.wrappedValue
         
         post_temp.imageURLs.append(contentsOf: urls)
         
@@ -380,6 +379,7 @@ class FirestoreManager: ObservableObject {
         do {
            try batch.setData(from: post_temp, forDocument: postRef)
            try await batch.commit()
+            post.wrappedValue = post_temp
            return true
         }
         
@@ -517,11 +517,6 @@ class FirestoreManager: ObservableObject {
             batch.updateData(["savers": FieldValue.arrayRemove([userId!])], forDocument: postRef)
             
             try await batch.commit()
-            if let index = saved_posts.firstIndex(where: { $0.id == post.id }), index < saved_posts.count {
-                withAnimation {
-                    _ = saved_posts.remove(at: index)
-                }
-            }
             await getMetrics()
             return true
         }

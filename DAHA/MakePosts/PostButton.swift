@@ -19,6 +19,7 @@ struct PostButton: View {
             UIApplication.shared.dismissKeyboard()
             shouldNavigate = true
         }){
+            
                 ZStack {
                     Image(systemName: "plus.circle.fill")
                         .font(.system(size: 65, weight: .bold))
