@@ -21,10 +21,13 @@ struct PostViewModifier: ViewModifier {
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
+                    
                     .strokeBorder(Sold ? Color(hex: color_new) : (reported ? .red : (colorScheme == .dark ? .gray : .gray)), lineWidth: colorScheme == .dark ? 2 : 2)
+                    .shadow(color: colorScheme == .light ? .black.opacity(0.2) : .white.opacity(0.25), radius: 5, x: 0, y: 5)
             )
             .background(colorScheme == .dark ? Color.black.opacity(0.7): Color.white)
             .cornerRadius(20)
+            .shadow(color: colorScheme == .light ? .black.opacity(0.2) : .white.opacity(0.25), radius: 5, x: 0, y: 5)
             .onAppear{
                 if (post.price == "Sold" || post.price == "Satisfied") {
                     Sold = true
