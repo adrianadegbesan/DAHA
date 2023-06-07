@@ -150,6 +150,7 @@ struct HeaderView: View {
                     TextField("Does Anyone Have A...?", text: $query)
                         .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass"), text: $query))
                         .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(20) : Color(hex: light_scroll_background).cornerRadius(20))
+                        .shadow(color: .black.opacity(0.2), radius: 2.5, x: 0, y: 2.5)
                         .submitLabel(.search)
                         .onSubmit {
                             if !(query.trimmingCharacters(in: .whitespacesAndNewlines) == "" && category == "" && type == ""){

@@ -143,103 +143,103 @@ struct PostView: View {
             }
         }
         .scaleEffect(preview ? 0.95 : 1)
-        .contextMenu{
-            
-            ExpandPostsMenuButton(preview: preview, shouldNavigate: $shouldNavigate)
-//            if !preview {
-//                if #available(iOS 16, *){
-//                    Button {
-//                        shouldNavigate = true
-//                    } label: {
-//                        Label("Expand Post", systemImage: "arrowshape.right")
+//        .contextMenu{
+//
+//            ExpandPostsMenuButton(preview: preview, shouldNavigate: $shouldNavigate)
+////            if !preview {
+////                if #available(iOS 16, *){
+////                    Button {
+////                        shouldNavigate = true
+////                    } label: {
+////                        Label("Expand Post", systemImage: "arrowshape.right")
+////                    }
+////                } else {
+////                    Button {
+////                        shouldNavigate = true
+////                    } label: {
+////                        Label("Expand Post", systemImage: "arrow.right")
+////                    }
+////                }
+////            }
+//
+//
+//            if owner{
+//                DeletePostMenuButton(post: post, deletePresented: $deletePresented)
+////                Button(role: .destructive){
+////                    deletePresented = true
+////                } label:{
+////                    Label("Delete Post", systemImage: "trash")
+////                }
+////                .foregroundColor(.red)
+//
+//            }
+//            if !owner{
+//                if !reported && !preview{
+//
+//                    ViewPostsButton(post: post, userPostNavigate: $userPostNavigate)
+//
+////                    Button{
+////                        firestoreManager.user_temp_posts.removeAll()
+////                        Task {
+////                            await firestoreManager.getUserTempPosts(userId: post.userID)
+////                        }
+////                        userPostNavigate = true
+////                    } label: {
+////                        Label("View \(post.username.capitalized)'s Posts")
+////                    }
+//                    if !saved{
+//                        SavePostMenuButton(post: post, saved: $saved, save_alert: $save_alert)
+////                        Button{
+////                            Task{
+////                                let result = await firestoreManager.savePost(post: post)
+////                                if result {
+////                                    await firestoreManager.getSaved()
+////                                } else {
+////                                    save_alert = true
+////                                }
+////                            }
+////                            firestoreManager.saved_refresh = true
+////                            withAnimation{
+////                                let id = Auth.auth().currentUser?.uid
+////                                if id != nil && !post.savers.contains(id!){
+////                                    post.savers.append(id!)
+////                                    saved.toggle()
+////                                }
+////                            }
+////
+////                        } label:{
+////                            Label("Save Post", systemImage: "bookmark")
+////                        }
 //                    }
-//                } else {
-//                    Button {
-//                        shouldNavigate = true
-//                    } label: {
-//                        Label("Expand Post", systemImage: "arrow.right")
+//
+//
+//                    if (post.price != "Sold" && post.price != "Satisfied") {
+//                        Button {
+//                            redirect = !messageManager.messageChannels.contains(where: {$0.post.id == post.id})
+//                            if !redirect {
+//                                let channel = messageManager.messageChannels.first(where: {$0.post.id == post.id})
+//
+//                                if channel != nil {
+//                                    channelID = channel!.id
+//                                }
+//                            }
+//                            UIApplication.shared.dismissKeyboard()
+//                            buyNavigate = true
+//                        } label:{
+//                            Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane")
+//                        }
+//
+//                    }
+//
+//
+//                    Button(role: .destructive){
+//                        report_modal = true
+//                    } label:{
+//                        Label("Report Post", systemImage: "flag")
 //                    }
 //                }
 //            }
-          
-            
-            if owner{
-                DeletePostMenuButton(post: post, deletePresented: $deletePresented)
-//                Button(role: .destructive){
-//                    deletePresented = true
-//                } label:{
-//                    Label("Delete Post", systemImage: "trash")
-//                }
-//                .foregroundColor(.red)
-              
-            }
-            if !owner{
-                if !reported && !preview{
-                    
-                    ViewPostsButton(post: post, userPostNavigate: $userPostNavigate)
-                    
-//                    Button{
-//                        firestoreManager.user_temp_posts.removeAll()
-//                        Task {
-//                            await firestoreManager.getUserTempPosts(userId: post.userID)
-//                        }
-//                        userPostNavigate = true
-//                    } label: {
-//                        Label("View \(post.username.capitalized)'s Posts")
-//                    }
-                    if !saved{
-                        SavePostMenuButton(post: post, saved: $saved, save_alert: $save_alert)
-//                        Button{
-//                            Task{
-//                                let result = await firestoreManager.savePost(post: post)
-//                                if result {
-//                                    await firestoreManager.getSaved()
-//                                } else {
-//                                    save_alert = true
-//                                }
-//                            }
-//                            firestoreManager.saved_refresh = true
-//                            withAnimation{
-//                                let id = Auth.auth().currentUser?.uid
-//                                if id != nil && !post.savers.contains(id!){
-//                                    post.savers.append(id!)
-//                                    saved.toggle()
-//                                }
-//                            }
-//
-//                        } label:{
-//                            Label("Save Post", systemImage: "bookmark")
-//                        }
-                    }
-                    
-                    
-                    if (post.price != "Sold" && post.price != "Satisfied") {
-                        Button {
-                            redirect = !messageManager.messageChannels.contains(where: {$0.post.id == post.id})
-                            if !redirect {
-                                let channel = messageManager.messageChannels.first(where: {$0.post.id == post.id})
-                                
-                                if channel != nil {
-                                    channelID = channel!.id
-                                }
-                            }
-                            UIApplication.shared.dismissKeyboard()
-                            buyNavigate = true
-                        } label:{
-                            Label(post.type == "Listing" ? "Buy" : "Give", systemImage: "paperplane")
-                        }
-                        
-                    }
-                   
-                    
-                    Button(role: .destructive){
-                        report_modal = true
-                    } label:{
-                        Label("Report Post", systemImage: "flag")
-                    }
-                }
-            }
-        }
+//        }
         .padding(.horizontal, 3)
         .alert("Delete Post", isPresented: $deletePresented, actions: {
             DeletePostsAlertButton(post: post, error_alert: $error_alert, deleted: $deleted)
