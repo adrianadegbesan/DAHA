@@ -167,7 +167,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
           }
       } else {
           currentNotification = ""
-          completionHandler([.banner, .list, .sound])
+          completionHandler([.banner, .list, .sound,])
       }
       
      

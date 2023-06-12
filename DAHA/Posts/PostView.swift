@@ -44,6 +44,7 @@ struct PostView: View {
     
     @State var userPostNavigate: Bool = false
     
+    @State private var isAnimating: Bool = false
     
     
     @Environment(\.colorScheme) var colorScheme
@@ -103,6 +104,8 @@ struct PostView: View {
             
         } //HStack
         .modifier(PostViewModifier(post: post, price: $price, reported: $reported))
+        .scaleEffect(isAnimating ? 1.075 : 1.0)
+        .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1), value: isAnimating)
 //        .frame(width: screenWidth * 0.902, height: 170)
 //        .padding()
 //        .overlay(
@@ -138,6 +141,12 @@ struct PostView: View {
             if !preview && !reported{
                 SoftFeedback()
                 shouldNavigate = true
+            } else if preview {
+                SoftFeedback()
+                isAnimating = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                   isAnimating = false
+                }
             } else if reported {
                 reported_alert = true
             }

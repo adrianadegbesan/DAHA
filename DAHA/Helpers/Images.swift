@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import UIKit
 import PhotosUI
-
+import TOCropViewController
 
 
 
@@ -273,35 +273,35 @@ struct PhotoPicker: UIViewControllerRepresentable {
         }
     }
     
-    //Image Picker used for camera functionality
+//    Image Picker used for camera functionality
     struct ImagePicker: UIViewControllerRepresentable {
         @Binding var image: UIImage?
         @Binding var images: [UIImage]
         @Environment(\.presentationMode) var presentationMode
-        
+
         func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
             let picker = UIImagePickerController()
             picker.sourceType = .camera
-            picker.allowsEditing = true // add this line
+
             picker.delegate = context.coordinator
             return picker
         }
-        
+
         func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
-            
+
         }
-        
+
         func makeCoordinator() -> Coordinator {
             Coordinator(self)
         }
-        
+
         class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
             let parent: ImagePicker
-            
+
             init(_ parent: ImagePicker) {
                 self.parent = parent
             }
-            
+
             func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
                 if let editedImage = info[.editedImage] as? UIImage {
                     parent.image = editedImage
@@ -310,8 +310,58 @@ struct PhotoPicker: UIViewControllerRepresentable {
                     parent.image = originalImage
                     parent.images.append(originalImage)
                 }
-                
+
                 parent.presentationMode.wrappedValue.dismiss()
             }
         }
     }
+
+
+
+//struct ImagePicker: UIViewControllerRepresentable {
+//    @Binding var image: UIImage?
+//    @Binding var images: [UIImage]
+//    @Environment(\.presentationMode) private var presentationMode
+//
+//    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+//        let picker = UIImagePickerController()
+//        picker.sourceType = .camera
+//        picker.delegate = context.coordinator
+//        return picker
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+//    }
+//
+//    func makeCoordinator() -> Coordinator {
+//        Coordinator(self)
+//    }
+//
+//    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate, TOCropViewControllerDelegate {
+//        var parent: ImagePicker
+//
+//        init(_ parent: ImagePicker) {
+//            self.parent = parent
+//        }
+//
+//        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//            guard let image = info[.originalImage] as? UIImage else { return }
+//            let cropViewController = TOCropViewController(croppingStyle: .default, image: image)
+//            cropViewController.delegate = self
+//            picker.present(cropViewController, animated: true, completion: nil)
+//        }
+//
+//        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//            parent.presentationMode.wrappedValue.dismiss()
+//        }
+//
+//        func cropViewController(_ cropViewController: TOCropViewController, didCropTo image: UIImage, with cropRect: CGRect, angle: Int) {
+//            cropViewController.dismiss(animated: true) {
+//                    self.parent.image = image
+//                    self.parent.images.append(image)
+//                    self.parent.presentationMode.wrappedValue.dismiss()
+//            }
+//        }
+//    }
+//}
+

@@ -44,9 +44,9 @@ struct SoldButton: View {
                                     firestoreManager.listings[index].price = "Sold"
                                 }
 
-                                if let index = firestoreManager.listings_filtered.firstIndex(where: { $0.id == post.id }){
-                                    firestoreManager.listings_filtered[index].price = "Sold"
-                                }
+//                                if let index = firestoreManager.listings_filtered.firstIndex(where: { $0.id == post.id }){
+//                                    firestoreManager.listings_filtered[index].price = "Sold"
+//                                }
 
                                 if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
                                     firestoreManager.my_posts[index].price = "Sold"
@@ -62,9 +62,9 @@ struct SoldButton: View {
                                     firestoreManager.requests[index].price = "Satisfied"
                                 }
 
-                                if let index = firestoreManager.requests_filtered.firstIndex(where: { $0.id == post.id }){
-                                    firestoreManager.requests_filtered[index].price = "Satisfied"
-                                }
+//                                if let index = firestoreManager.requests_filtered.firstIndex(where: { $0.id == post.id }){
+//                                    firestoreManager.requests_filtered[index].price = "Satisfied"
+//                                }
 
                                 if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
                                     firestoreManager.my_posts[index].price = "Satisfied"

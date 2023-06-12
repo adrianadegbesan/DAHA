@@ -100,9 +100,9 @@ struct EditButton: View {
                                         firestoreManager.listings[index] = post
                                     }
 
-                                    if let index = firestoreManager.listings_filtered.firstIndex(where: { $0.id == post.id }){
-                                        firestoreManager.listings_filtered[index] = post
-                                    }
+//                                    if let index = firestoreManager.listings_filtered.firstIndex(where: { $0.id == post.id }){
+//                                        firestoreManager.listings_filtered[index] = post
+//                                    }
 
                                     if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
                                         firestoreManager.my_posts[index] = post
@@ -117,9 +117,9 @@ struct EditButton: View {
                                         firestoreManager.requests[index] = post
                                     }
 
-                                    if let index = firestoreManager.requests_filtered.firstIndex(where: { $0.id == post.id }){
-                                        firestoreManager.requests_filtered[index] = post
-                                    }
+//                                    if let index = firestoreManager.requests_filtered.firstIndex(where: { $0.id == post.id }){
+//                                        firestoreManager.requests_filtered[index] = post
+//                                    }
 
                                     if let index = firestoreManager.my_posts.firstIndex(where: { $0.id == post.id }) {
                                         firestoreManager.my_posts[index] = post

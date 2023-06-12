@@ -56,18 +56,19 @@ class FirestoreManager: ObservableObject {
     @Published var user_temp_posts_loading: Bool = false
     @Published var user_temp_posts_error: Bool = false
     
-    @Published var listings_filtered : [PostModel] = []
-    @Published var listings_filtered_last : QueryDocumentSnapshot? = nil
+//    @Published var listings_filtered : [PostModel] = []
+//    @Published var listings_filtered_last : QueryDocumentSnapshot? = nil
     @Published var listings_filtered_loading: Bool = false
     @Published var listings_filtered_refresh: Bool = true
     @Published var listings_filtered_error: Bool = false
+//
+//    @Published var requests_filtered: [PostModel] = []
+//    @Published var requests_filtered_last : QueryDocumentSnapshot? = nil
     
-    @Published var requests_filtered: [PostModel] = []
-    @Published var requests_filtered_last : QueryDocumentSnapshot? = nil
     @Published var requests_filtered_loading: Bool = false
     @Published var requests_filtered_refresh: Bool = true
     @Published var requests_filtered_error: Bool = false
-    
+//
     @Published var search_results: [PostModel] = []
     @Published var search_last: QueryDocumentSnapshot? = nil
     @Published var search_results_loading: Bool = false
@@ -682,15 +683,20 @@ class FirestoreManager: ObservableObject {
             let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Listing").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
             let documents = snapshot.documents
             if !documents.isEmpty{
-                listings_filtered_last = documents.last!
+                listing_last = documents.last!
+//                listings_filtered_last = documents.last!
             }
             for document in documents{
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            listings_filtered = temp
-            listings_filtered_loading = false
-            listings_filtered_error = false
+            withAnimation{
+                listings = temp
+//                listings_filtered = temp
+                listings_filtered_loading = false
+                listings_filtered_error = false
+            }
+          
         }
         
         catch {
@@ -701,16 +707,29 @@ class FirestoreManager: ObservableObject {
     }
     
     func updateListingsFiltered(category: String) async {
-        if listings_filtered_last == nil {
+        if listing_last == nil {
             return
         }
+//        if listings_filtered_last == nil {
+//            return
+//        }
         
         do {
             var temp: [PostModel] = []
-            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Listing").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: listings_filtered_last!).limit(to: 15).getDocuments()
+//            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Listing").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: listings_filtered_last!).limit(to: 15).getDocuments()
+                let snapshot = try await
+                    db.collection("Universities")
+                    .document("\(university)")
+                    .collection("Posts")
+                    .whereField("type", isEqualTo: "Listing")
+                    .whereField("category", isEqualTo: category)
+                    .order(by: "postedAt", descending: true)
+                    .start(afterDocument: listing_last!)
+                    .limit(to: 15).getDocuments()
             let documents = snapshot.documents
             if !documents.isEmpty{
-                listings_filtered_last = documents.last!
+                listing_last = documents.last!
+//                listings_filtered_last = documents.last!
             } else {
                 return
             }
@@ -718,8 +737,13 @@ class FirestoreManager: ObservableObject {
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
+            print(temp.count)
             
-            listings_filtered.append(contentsOf: temp)
+            withAnimation{
+                listings.append(contentsOf: temp)
+//                listings_filtered.append(contentsOf: temp)
+            }
+            
             
         }
         catch {
@@ -803,15 +827,21 @@ class FirestoreManager: ObservableObject {
             let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Request").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).limit(to: 15).getDocuments()
             let documents = snapshot.documents
             if !documents.isEmpty{
-                requests_filtered_last = documents.last!
+                requests_last = documents.last!
+//                requests_filtered_last = documents.last!
             }
             for document in documents{
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            requests_filtered = temp
-            requests_filtered_loading = false
-            requests_filtered_error = false
+            
+            withAnimation{
+                requests = temp
+//                requests_filtered = temp
+                requests_filtered_loading = false
+                requests_filtered_error = false
+            }
+           
         }
         
         catch {
@@ -822,16 +852,29 @@ class FirestoreManager: ObservableObject {
     }
     
     func updateRequestsFiltered(category: String) async {
-        if requests_filtered_last == nil {
+//        if requests_filtered_last == nil {
+//            return
+//        }
+        if requests_last == nil {
             return
         }
         
         do {
             var temp: [PostModel] = []
-            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Request").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: requests_filtered_last!).limit(to: 15).getDocuments()
+//            let snapshot = try await db.collection("Universities").document("\(university)").collection("Posts").whereField("type", isEqualTo: "Request").whereField("category", isEqualTo: category).order(by: "postedAt", descending: true).start(afterDocument: requests_filtered_last!).limit(to: 15).getDocuments()
+            let snapshot = try await
+                db.collection("Universities")
+                .document("\(university)")
+                .collection("Posts")
+                .whereField("type", isEqualTo: "Request")
+                .whereField("category", isEqualTo: category)
+                .order(by: "postedAt", descending: true)
+                .start(afterDocument: requests_last!)
+                .limit(to: 15).getDocuments()
             let documents = snapshot.documents
             if !documents.isEmpty{
-                requests_filtered_last = documents.last!
+//                requests_filtered_last = documents.last!
+                requests_last = documents.last!
             } else {
                 return
             }
@@ -839,9 +882,10 @@ class FirestoreManager: ObservableObject {
                 let post = convertToPost(doc: document)
                 temp.append(post)
             }
-            
-            requests_filtered.append(contentsOf: temp)
-            
+            withAnimation{
+                requests.append(contentsOf: temp)
+//                requests_filtered.append(contentsOf: temp)
+            }
         }
         catch {
             print("error updating requests")

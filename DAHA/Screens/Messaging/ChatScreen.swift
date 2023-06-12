@@ -85,6 +85,15 @@ struct ChatScreen: View {
                             
                             SendMessageView(post: post, receiver: receiver, channelID: $channelID, keyboardFocused: $keyboardFocused)
                             
+//                            if channelID == nil {
+//                                Image("Logo")
+//                                    .overlay(Rectangle().stroke(colorScheme == .dark ? .white : .clear, lineWidth: 2))
+////                                    .scaleEffect(0.8)
+//                                    .opacity(0.8)
+//                                    .padding(.top, 25)
+//                                    
+//                            }
+                            
                             NavigationLink(destination: PostModalPreview(post: post, price: post.price), isActive: $shouldNavigate){
                                 EmptyView()
                             }
@@ -152,7 +161,7 @@ struct ChatScreen: View {
                     .onTapGesture {
                         hideKeyboard()
                     }
-                    if channelID == nil {
+                    if channelID == nil{
                         
                         TemplateView(post: post, message: $message, channelID: $channelID, showTemplate: $showTemplate)
                             .padding(.bottom, 3)

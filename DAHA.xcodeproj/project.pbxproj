@@ -67,6 +67,8 @@
 		82685DBB2A2D35DF00D0D1E7 /* DownloadedImagePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82685DBA2A2D35DF00D0D1E7 /* DownloadedImagePreview.swift */; };
 		82685DBE2A2D411C00D0D1E7 /* CameraRollEditsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82685DBD2A2D411C00D0D1E7 /* CameraRollEditsButton.swift */; };
 		82685DC02A2D424100D0D1E7 /* CameraEditsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82685DBF2A2D424100D0D1E7 /* CameraEditsButton.swift */; };
+		82685DC32A36864F00D0D1E7 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 82685DC22A36864F00D0D1E7 /* CropViewController */; };
+		82685DC52A36864F00D0D1E7 /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 82685DC42A36864F00D0D1E7 /* TOCropViewController */; };
 		8280FF1229EF11E300F8552E /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1129EF11E300F8552E /* SavedView.swift */; };
 		8280FF1429F062D100F8552E /* NotificationsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1329F062D100F8552E /* NotificationsToggle.swift */; };
 		828CAFA029B1868200B489F4 /* MessageChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */; };
@@ -427,6 +429,8 @@
 				82218BFD299ACC110092BA94 /* SDWebImageSwiftUI in Frameworks */,
 				8236CFF3296D34210086AB15 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				8236CFFB296D34210086AB15 /* FirebaseStorage in Frameworks */,
+				82685DC52A36864F00D0D1E7 /* TOCropViewController in Frameworks */,
+				82685DC32A36864F00D0D1E7 /* CropViewController in Frameworks */,
 				8236CFEB296D34210086AB15 /* FirebaseDynamicLinks in Frameworks */,
 				8236CFF7296D34210086AB15 /* FirebaseMessaging in Frameworks */,
 				82BFA9E72A0AF621009DA461 /* Shimmer in Frameworks */,
@@ -962,6 +966,8 @@
 				82A21A5629A452BB0040BAA1 /* Lottie */,
 				82BFA9E62A0AF621009DA461 /* Shimmer */,
 				82EC5B1F2A22DEE900E2AA8B /* Introspect */,
+				82685DC22A36864F00D0D1E7 /* CropViewController */,
+				82685DC42A36864F00D0D1E7 /* TOCropViewController */,
 			);
 			productName = DAHA;
 			productReference = 82CEFC2E2969CB2C00C55F67 /* DAHA.app */;
@@ -1000,6 +1006,7 @@
 				82A21A5529A452BA0040BAA1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				82BFA9E52A0AF621009DA461 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 				82EC5B1E2A22DEE900E2AA8B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				82685DC12A36864F00D0D1E7 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 			);
 			productRefGroup = 82CEFC2F2969CB2C00C55F67 /* Products */;
 			projectDirPath = "";
@@ -1362,7 +1369,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.23;
+				MARKETING_VERSION = 1.0.25;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1402,7 +1409,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.23;
+				MARKETING_VERSION = 1.0.25;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daha.DAHA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1460,6 +1467,14 @@
 			requirement = {
 				branch = master;
 				kind = branch;
+			};
+		};
+		82685DC12A36864F00D0D1E7 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 		82A21A4C299FD7490040BAA1 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
@@ -1589,6 +1604,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8236CFDD296D34210086AB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		82685DC22A36864F00D0D1E7 /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82685DC12A36864F00D0D1E7 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		82685DC42A36864F00D0D1E7 /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82685DC12A36864F00D0D1E7 /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = TOCropViewController;
 		};
 		82A21A4D299FD7490040BAA1 /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;

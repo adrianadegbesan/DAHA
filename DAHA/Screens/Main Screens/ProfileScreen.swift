@@ -24,6 +24,7 @@ struct ProfileScreen: View {
     @State private var third = false
     @State private var dividerOffset: CGFloat = 0
     
+    @AppStorage("unread") var unread: Bool = false
 
     var body: some View {
         ZStack {
@@ -118,9 +119,9 @@ struct ProfileScreen: View {
                     Spacer()
                     
                     VStack(spacing: 10){
-                        (Text(Image(systemName: "paperplane")) +  Text(" DMs"))
+                        (Text(Image(systemName: unread ? "paperplane.fill" : "paperplane")) +  Text(" DMs"))
                             .font(.headline.weight(.black))
-                        .foregroundColor(third ? Color(hex: deepBlue) : .primary)
+                        .foregroundColor(third || unread ? Color(hex: deepBlue) : .primary)
                         .scaleEffect(1.15)
                         Divider()
                             .frame(width: screenWidth * 0.25, height: 3.5)

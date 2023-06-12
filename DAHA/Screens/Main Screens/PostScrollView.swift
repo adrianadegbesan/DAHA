@@ -54,12 +54,14 @@ struct PostScrollView: View {
                             }
                         } else {
                             
-                            if firestoreManager.listings_filtered_last != nil{
+//                            if firestoreManager.listings_filtered_last != nil{
+//                            if firestoreManager.listing_last != nil{
                                 Task {
+                                    print("updating filtered")
 //                                    try await Task.sleep(nanoseconds: 0_300_000_000)
                                     await firestoreManager.updateListingsFiltered(category: categoryFilter)
                                 }
-                            }
+//                            }
                         }
                     }
                    
@@ -76,12 +78,14 @@ struct PostScrollView: View {
                             }
                         } else {
                             
-                            if firestoreManager.requests_filtered_last != nil{
+//                            if firestoreManager.requests_filtered_last != nil{
+//                            if firestoreManager.requests_last != nil{
                                 Task {
+                                    print("updating filtered")
 //                                    try await Task.sleep(nanoseconds: 0_300_000_000)
                                     await firestoreManager.updateRequestsFiltered(category: categoryFilter)
                                 }
-                            }
+//                            }
                            
                         }
                         

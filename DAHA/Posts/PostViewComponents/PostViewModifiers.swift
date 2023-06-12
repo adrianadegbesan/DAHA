@@ -27,7 +27,7 @@ struct PostViewModifier: ViewModifier {
             )
             .background(colorScheme == .dark ? Color.black.opacity(0.7): Color.white)
             .cornerRadius(20)
-            .shadow(color: colorScheme == .light ? .black.opacity(0.2) : .white.opacity(0.25), radius: 5, x: 0, y: 5)
+            .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 5)
             .onAppear{
                 if (post.price == "Sold" || post.price == "Satisfied") {
                     Sold = true
