@@ -147,7 +147,7 @@ struct HeaderView: View {
             
             HStack{
                 if screen == "Home"{
-                    TextField("", text: $query, prompt: Text("Does Anyone Have A...?").font(.system(size: 15, weight: .bold)))
+                    TextField("", text: $query, prompt: Text("Does Anyone Have A...?").font(.system(size: 15.5, weight: .bold)))
                         .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass"), text: $query))
                         .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(20) : Color(hex: light_scroll_background).cornerRadius(20))
                         .shadow(color: .black.opacity(0.2), radius: 2.5, x: 0, y: 2.5)

@@ -68,7 +68,11 @@ struct ImagePreview: View {
                 
             }
             .sheet(isPresented: $showingCropView){
-                CropView(oldImage: $image, newImage: $newImage, images: $images, isPresented: $showingCropView)
+                VStack{
+                    CropView(oldImage: $image, newImage: $newImage, images: $images, isPresented: $showingCropView)
+                }
+                .ignoresSafeArea()
+                
             }
         }
     }

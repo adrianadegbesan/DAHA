@@ -64,7 +64,7 @@ struct SearchScreen: View {
                     }
                     
                     
-                    TextField("", text: $query, prompt: Text("Does Anyone Have A...?").font(.system(size: 15, weight: .bold)))
+                    TextField("", text: $query, prompt: Text("Does Anyone Have A...?").font(.system(size: 15.5, weight: .bold)))
 //                        .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "magnifyingglass")))
                         .textFieldStyle(OvalTextFieldStyle(icon: Image(systemName: "magnifyingglass"), text: $query))
                         .background(colorScheme == .dark ? Color(hex: dark_scroll_background).cornerRadius(20) : Color(hex: light_scroll_background).cornerRadius(20))
