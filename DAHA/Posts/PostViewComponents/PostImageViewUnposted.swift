@@ -21,12 +21,22 @@ struct PostImageViewUnposted: View {
         
         if unpostedImages != nil && !unpostedImages!.isEmpty{
             TabView {
-                ZStack(alignment: .topTrailing){
-                    Image(uiImage: unpostedImages![0])
-                        .resizable()
-                        .cornerRadius(15, corners: .allCorners)
-                        .clipped()
+                
+                Group {
+                    if getValidAspectRatio(image: unpostedImages![0]) {
+                        Image(uiImage: unpostedImages![0])
+                            .resizable()
+                            .cornerRadius(15)
+                            .clipped()
+                    } else {
+                        Image(uiImage: unpostedImages![0])
+                            .resizable()
+                            .aspectRatio(contentMode:.fit)
+                            .clipped()
+                    }
                 }
+                
+                    
                 
             } //: TAB
             .tabViewStyle(PageTabViewStyle())

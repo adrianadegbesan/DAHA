@@ -69,6 +69,7 @@
 		82685DC02A2D424100D0D1E7 /* CameraEditsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82685DBF2A2D424100D0D1E7 /* CameraEditsButton.swift */; };
 		82685DC32A36864F00D0D1E7 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 82685DC22A36864F00D0D1E7 /* CropViewController */; };
 		82685DC52A36864F00D0D1E7 /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 82685DC42A36864F00D0D1E7 /* TOCropViewController */; };
+		82685DC72A3ABA4200D0D1E7 /* PostImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82685DC62A3ABA4200D0D1E7 /* PostImage.swift */; };
 		8280FF1229EF11E300F8552E /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1129EF11E300F8552E /* SavedView.swift */; };
 		8280FF1429F062D100F8552E /* NotificationsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280FF1329F062D100F8552E /* NotificationsToggle.swift */; };
 		828CAFA029B1868200B489F4 /* MessageChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */; };
@@ -264,6 +265,7 @@
 		82685DBA2A2D35DF00D0D1E7 /* DownloadedImagePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedImagePreview.swift; sourceTree = "<group>"; };
 		82685DBD2A2D411C00D0D1E7 /* CameraRollEditsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraRollEditsButton.swift; sourceTree = "<group>"; };
 		82685DBF2A2D424100D0D1E7 /* CameraEditsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEditsButton.swift; sourceTree = "<group>"; };
+		82685DC62A3ABA4200D0D1E7 /* PostImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImage.swift; sourceTree = "<group>"; };
 		8280FF1129EF11E300F8552E /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 		8280FF1329F062D100F8552E /* NotificationsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsToggle.swift; sourceTree = "<group>"; };
 		828CAF9F29B1868200B489F4 /* MessageChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChannelModel.swift; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 				82CBC29F298795E4001966E3 /* PostActionView.swift */,
 				82CBC2A1298796E7001966E3 /* PosterInfoView.swift */,
 				82CBC2A329879752001966E3 /* PostImageView.swift */,
+				82685DC62A3ABA4200D0D1E7 /* PostImage.swift */,
 				821D57412A02E5B500EAB170 /* PostImageViewUnposted.swift */,
 				82B6B2DC298AE9BF00027E5A /* DeleteButton.swift */,
 				82C4588E29B9124700661703 /* ImagePopupView.swift */,
@@ -1177,6 +1180,7 @@
 				82C0848329BF8A8900F3627E /* DeleteAccountButton.swift in Sources */,
 				82CEFC6B2969CEA500C55F67 /* SetUpScreen.swift in Sources */,
 				82CAF0492A19491000EEE1E7 /* SafetyMessageView.swift in Sources */,
+				82685DC72A3ABA4200D0D1E7 /* PostImage.swift in Sources */,
 				828CAFB329B5230D00B489F4 /* ReportUserModal.swift in Sources */,
 				82CF5E8E29F4A8C200D93737 /* MessageBubbleTailed.swift in Sources */,
 				82A21A6029A6A9DA0040BAA1 /* PrivacyPolicyView.swift in Sources */,

@@ -19,106 +19,52 @@ struct PostImageView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var showImagePopup : Bool = false
     
+    
     var body: some View {
         
-        
-        if !post.imageURLs.isEmpty{
-            TabView {
-                
-                if !preview{
-                    ForEach(post.imageURLs, id: \.self) { item in
-                        ZStack(alignment: .topTrailing){
-                            WebImage(url: URL(string: item))
-                                .resizable()
-                                .placeholder{
-                                    //                                        ProgressView()
-                                    ZStack(alignment: .topTrailing){
-                                        Image(systemName: category_images[post.category] ?? "bag.fill")
-                                            .scaleEffect(3)
-                                            .frame(width: screenWidth * 0.385, height: 175)
-                                            .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
-                                            .overlay (
-                                                RoundedRectangle(cornerRadius: 15)
-                                                    .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
-                                                    .foregroundColor(post.price == "Sold" || post.price == "Satisfied" ? Color(hex: color_new) : colorScheme == .light ? .gray : .gray)
-                                            )
-                                    }
-                                }
-                                .indicator(.activity)
-                                .cornerRadius(15, corners: .allCorners)
-//                                .scaledToFill()
-//                                .clipShape(RoundedRectangle(cornerRadius: 15))
-                                .clipped()
-//                                .opacity(opacity)
-//                                .onAppear{
-//                                    withAnimation(.easeIn(duration: 0.3)){
-//                                        opacity = 1
-//                                    }
-//                                }
-                        }
+        VStack {
+            if !post.imageURLs.isEmpty{
+                TabView {
                     
+                    if !preview{
+                        ForEach(post.imageURLs, id: \.self) { item in
+                            PostImage(post: $post, url: item)
+                        }
+                        
+                        
+        
+                    } //: LOOP (NOT PREVIEW)
+                    
+                    else {
+                        PostImage(post: $post, url: post.imageURLs[0])
                     }
                     
-                    
-                    
-                    
-                } //: LOOP (NOT PREVIEW)
-                
-                else {
-                    ZStack(alignment: .topTrailing){
-                        WebImage(url: URL(string: post.imageURLs[0]))
-                            .resizable()
-                            .placeholder{
-                                ZStack(alignment: .topTrailing){
-                                    Image(systemName: category_images[post.category] ?? "bag.fill")
-                                        .scaleEffect(3)
-                                        .frame(width: screenWidth * 0.385, height: 175)
-                                        .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
-                                        .overlay (
-                                            RoundedRectangle(cornerRadius: 15)
-                                                .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
-                                                .foregroundColor(post.price == "Sold" || post.price == "Satisfied" ? Color(hex: color_new) : colorScheme == .light ? .gray : .gray)
-                                        )
-                                }
-                            }
-                            .indicator(.activity)
-                            .cornerRadius(15, corners: .allCorners)
-                            .clipped()
-//                            .opacity(opacity)
-//                            .onAppear{
-//                                withAnimation(.easeIn(duration: 0.3)){
-//                                    opacity = 1
-//                                }
-//                            }
-                        
-                    } //(PREVIEW WITH JUST FIRST IMAGE)
-                    
+                } //: TAB
+                .tabViewStyle(PageTabViewStyle())
+                .cornerRadius(15)
+                //            .padding(2.7)
+                .frame(width: screenWidth * 0.385, height: 175)
+                .overlay (
+                    RoundedRectangle(cornerRadius: 15)
+                        .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
+                        .foregroundColor(post.price == "Sold" || post.price == "Satisfied" ? Color(hex: color_new) : colorScheme == .light ? .gray : .gray)
+                )
+                .clipped()
+            } else {
+                ZStack{
+                    Image(systemName: category_images[post.category] ?? "bag.fill")
+                        .scaleEffect(3)
+                        .frame(width: screenWidth * 0.385, height: 175)
+                        .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
+                        .overlay (
+                            RoundedRectangle(cornerRadius: 15)
+                                .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
+                                .foregroundColor(post.price == "Sold" || post.price == "Satisfied" ? Color(hex: color_new) : colorScheme == .light ? .gray : .gray)
+                        )
                 }
-                
-            } //: TAB
-            .tabViewStyle(PageTabViewStyle())
-            .cornerRadius(15)
-            //            .padding(2.7)
-            .frame(width: screenWidth * 0.385, height: 175)
-            .overlay (
-                RoundedRectangle(cornerRadius: 15)
-                    .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
-                    .foregroundColor(post.price == "Sold" || post.price == "Satisfied" ? Color(hex: color_new) : colorScheme == .light ? .gray : .gray)
-            )
-            .clipped()
-        } else {
-            ZStack{
-                Image(systemName: category_images[post.category] ?? "bag.fill")
-                    .scaleEffect(3)
-                    .frame(width: screenWidth * 0.385, height: 175)
-                    .foregroundColor( (post.category == "General" && colorScheme == .dark) ? .white : Color(hex: category_colors[post.category] ?? "000000") )
-                    .overlay (
-                        RoundedRectangle(cornerRadius: 15)
-                            .strokeBorder(lineWidth: colorScheme == .dark ? 2 : 2)
-                            .foregroundColor(post.price == "Sold" || post.price == "Satisfied" ? Color(hex: color_new) : colorScheme == .light ? .gray : .gray)
-                    )
+               
             }
-           
+
         }
     }
     
@@ -129,3 +75,29 @@ struct PostImageView: View {
         }
     }
 }
+
+
+func getValidAspectRatio(image : UIImage?) -> Bool {
+    
+    if image == nil {
+        return false
+    } else {
+        let width = image!.size.width
+        let height = image!.size.height
+        
+        print("\(width)")
+        print("\(height)")
+        
+        let ratio = width/height
+        
+        if ratio < 0.5 || ratio > 1.5{
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    
+}
+
+
